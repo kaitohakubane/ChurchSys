@@ -1,0 +1,7 @@
+.pt-200 {
+    padding-top: 200px;
+}
+.bg-login {
+    background: url(../img/login-backgroud.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
