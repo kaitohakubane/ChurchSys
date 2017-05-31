@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ChurchSystem:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SpringMvcTemplate.war">
+      <element id="artifact" artifact-name="ChurchSystem:war exploded" />
+    </root>
+  </artifact>
+</component>

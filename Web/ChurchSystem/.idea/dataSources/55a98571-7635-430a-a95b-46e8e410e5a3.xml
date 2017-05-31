@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="src:main:webapp:resources:hibernate.cfg.xml/Hibernate">
+  <database-model serializer="dbm" rdbms="MSSQL" format-version="2.6">
+    <database id="1" name="SneakerGo">
+      <object-id>5</object-id>
+      <visible>1</visible>
+    </database>
+    <database id="2" name="master">
+      <object-id>1</object-id>
+    </database>
+    <database id="3" name="tempdb">
+      <object-id>2</object-id>
+    </database>
+    <database id="4" name="model">
+      <object-id>3</object-id>
+    </database>
+    <database id="5" name="msdb">
+      <object-id>4</object-id>
+    </database>
+    <schema id="6" parent="1" name="dbo">
+      <object-id>1</object-id>
+      <visible>1</visible>
+      <introspection-timestamp>2016-11-10.21:54:17.253</introspection-timestamp>
+    </schema>
+    <schema id="7" parent="1" name="guest">
+      <object-id>2</object-id>
+    </schema>
+    <schema id="8" parent="1" name="INFORMATION_SCHEMA">
+      <object-id>3</object-id>
+    </schema>
+    <schema id="9" parent="1" name="sys">
+      <object-id>4</object-id>
+    </schema>
+    <schema id="10" parent="1" name="db_owner">
+      <object-id>16384</object-id>
+    </schema>
+    <schema id="11" parent="1" name="db_accessadmin">
+      <object-id>16385</object-id>
+    </schema>
+    <schema id="12" parent="1" name="db_securityadmin">
+      <object-id>16386</object-id>
+    </schema>
+    <schema id="13" parent="1" name="db_ddladmin">
+      <object-id>16387</object-id>
+    </schema>
+    <schema id="14" parent="1" name="db_backupoperator">
+      <object-id>16389</object-id>
+    </schema>
+    <schema id="15" parent="1" name="db_datareader">
+      <object-id>16390</object-id>
+    </schema>
+    <schema id="16" parent="1" name="db_datawriter">
+      <object-id>16391</object-id>
+    </schema>
+    <schema id="17" parent="1" name="db_denydatareader">
+      <object-id>16392</object-id>
+    </schema>
+    <schema id="18" parent="1" name="db_denydatawriter">
+      <object-id>16393</object-id>
+    </schema>
+    <table id="19" parent="6" name="Account">
+      <object-id>2105058535</object-id>
+      <created-timestamp>2016-11-10.20:46:59.273</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.400</modified-timestamp>
+    </table>
+    <table id="20" parent="6" name="Attribute">
+      <object-id>21575115</object-id>
+      <created-timestamp>2016-11-10.20:46:59.287</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+    </table>
+    <table id="21" parent="6" name="Bill">
+      <object-id>213575799</object-id>
+      <created-timestamp>2016-11-10.20:46:59.303</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.467</modified-timestamp>
+    </table>
+    <table id="22" parent="6" name="BillDetail">
+      <object-id>277576027</object-id>
+      <created-timestamp>2016-11-10.20:46:59.350</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+    </table>
+    <table id="23" parent="6" name="Import">
+      <object-id>469576711</object-id>
+      <created-timestamp>2016-11-10.20:46:59.353</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+    </table>
+    <table id="24" parent="6" name="ImportDetail">
+      <object-id>533576939</object-id>
+      <created-timestamp>2016-11-10.20:46:59.357</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.473</modified-timestamp>
+    </table>
+    <table id="25" parent="6" name="Product">
+      <object-id>149575571</object-id>
+      <created-timestamp>2016-11-10.20:46:59.290</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.477</modified-timestamp>
+    </table>
+    <table id="26" parent="6" name="Sale">
+      <object-id>405576483</object-id>
+      <created-timestamp>2016-11-10.20:46:59.353</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+    </table>
+    <table id="27" parent="6" name="SaleProduct">
+      <object-id>341576255</object-id>
+      <created-timestamp>2016-11-10.20:46:59.353</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.473</modified-timestamp>
+    </table>
+    <table id="28" parent="6" name="Stock">
+      <object-id>85575343</object-id>
+      <created-timestamp>2016-11-10.20:46:59.287</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.473</modified-timestamp>
+    </table>
+    <column id="29" parent="19" name="accountID">
+      <mandatory>1</mandatory>
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="30" parent="19" name="password">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="31" parent="19" name="name">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="32" parent="19" name="address">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="33" parent="19" name="birthday">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="34" parent="19" name="phone">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="35" parent="19" name="email">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="36" parent="19" name="role">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="37" parent="19" name="enabled">
+      <data-type>bit|0</data-type>
+    </column>
+    <index id="38" parent="19" name="PK__Account__F267253E7F60ED59">
+      <name-surrogate>1</name-surrogate>
+      <columns>accountID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="39" parent="19" name="PK__Account__F267253E7F60ED59">
+      <name-surrogate>1</name-surrogate>
+      <object-id>5575058</object-id>
+      <created-timestamp>2016-11-10.20:46:59.287</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.287</modified-timestamp>
+      <columns>accountID</columns>
+      <underlying-index>PK__Account__F267253E7F60ED59</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="40" parent="20" name="attributeID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="41" parent="20" name="size">
+      <data-type>float|0</data-type>
+    </column>
+    <index id="42" parent="20" name="PK__Attribut__03B803D003317E3D">
+      <name-surrogate>1</name-surrogate>
+      <columns>attributeID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="43" parent="20" name="PK__Attribut__03B803D003317E3D">
+      <name-surrogate>1</name-surrogate>
+      <object-id>69575286</object-id>
+      <created-timestamp>2016-11-10.20:46:59.287</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.287</modified-timestamp>
+      <columns>attributeID</columns>
+      <underlying-index>PK__Attribut__03B803D003317E3D</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="44" parent="21" name="billID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="45" parent="21" name="accountID">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="46" parent="21" name="totalPrice">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="47" parent="21" name="date">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="48" parent="21" name="status">
+      <data-type>varchar(80)|0</data-type>
+    </column>
+    <column id="49" parent="21" name="enabled">
+      <data-type>bit|0</data-type>
+    </column>
+    <index id="50" parent="21" name="PK__Bill__6D903F230EA330E9">
+      <name-surrogate>1</name-surrogate>
+      <columns>billID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="51" parent="21" name="PK__Bill__6D903F230EA330E9">
+      <name-surrogate>1</name-surrogate>
+      <object-id>261575970</object-id>
+      <created-timestamp>2016-11-10.20:46:59.350</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.350</modified-timestamp>
+      <columns>billID</columns>
+      <underlying-index>PK__Bill__6D903F230EA330E9</underlying-index>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="52" parent="21" name="FK__Bill__accountID__239E4DCF">
+      <name-surrogate>1</name-surrogate>
+      <object-id>597577167</object-id>
+      <created-timestamp>2016-11-10.20:46:59.383</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.383</modified-timestamp>
+      <columns>accountID</columns>
+      <ref-key>~.Account.PK__Account__F267253E7F60ED59</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="53" parent="22" name="billID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="54" parent="22" name="productID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="55" parent="22" name="quantity">
+      <data-type>int|0</data-type>
+    </column>
+    <column id="56" parent="22" name="price">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="57" parent="22" name="PK__BillDeta__DF4132371273C1CD">
+      <name-surrogate>1</name-surrogate>
+      <columns>billID
+productID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="58" parent="22" name="PK__BillDeta__DF4132371273C1CD">
+      <name-surrogate>1</name-surrogate>
+      <object-id>325576198</object-id>
+      <created-timestamp>2016-11-10.20:46:59.350</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.350</modified-timestamp>
+      <columns>billID
+productID</columns>
+      <underlying-index>PK__BillDeta__DF4132371273C1CD</underlying-index>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="59" parent="22" name="FK__BillDetai__billI__24927208">
+      <name-surrogate>1</name-surrogate>
+      <object-id>613577224</object-id>
+      <created-timestamp>2016-11-10.20:46:59.467</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.467</modified-timestamp>
+      <columns>billID</columns>
+      <ref-key>~.Bill.PK__Bill__6D903F230EA330E9</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="60" parent="22" name="FK__BillDetai__produ__25869641">
+      <name-surrogate>1</name-surrogate>
+      <object-id>629577281</object-id>
+      <created-timestamp>2016-11-10.20:46:59.467</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.467</modified-timestamp>
+      <columns>productID</columns>
+      <ref-key>~.Product.PK__Product__2D10D14A0AD2A005</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="61" parent="23" name="importID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="62" parent="23" name="importDate">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="63" parent="23" name="Supplier">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <index id="64" parent="23" name="PK__Import__2CC5AB071DE57479">
+      <name-surrogate>1</name-surrogate>
+      <columns>importID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="65" parent="23" name="PK__Import__2CC5AB071DE57479">
+      <name-surrogate>1</name-surrogate>
+      <object-id>517576882</object-id>
+      <created-timestamp>2016-11-10.20:46:59.353</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.353</modified-timestamp>
+      <columns>importID</columns>
+      <underlying-index>PK__Import__2CC5AB071DE57479</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="66" parent="24" name="importID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="67" parent="24" name="productID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="68" parent="24" name="price">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="69" parent="24" name="quantity">
+      <data-type>int|0</data-type>
+    </column>
+    <index id="70" parent="24" name="PK__ImportDe__9E14A61321B6055D">
+      <name-surrogate>1</name-surrogate>
+      <columns>importID
+productID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="71" parent="24" name="PK__ImportDe__9E14A61321B6055D">
+      <name-surrogate>1</name-surrogate>
+      <object-id>581577110</object-id>
+      <created-timestamp>2016-11-10.20:46:59.357</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.357</modified-timestamp>
+      <columns>importID
+productID</columns>
+      <underlying-index>PK__ImportDe__9E14A61321B6055D</underlying-index>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="72" parent="24" name="FK__ImportDet__impor__29572725">
+      <name-surrogate>1</name-surrogate>
+      <object-id>693577509</object-id>
+      <created-timestamp>2016-11-10.20:46:59.470</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+      <columns>importID</columns>
+      <ref-key>~.Import.PK__Import__2CC5AB071DE57479</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="73" parent="24" name="FK__ImportDet__produ__286302EC">
+      <name-surrogate>1</name-surrogate>
+      <object-id>677577452</object-id>
+      <created-timestamp>2016-11-10.20:46:59.470</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+      <columns>productID</columns>
+      <ref-key>~.Product.PK__Product__2D10D14A0AD2A005</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="74" parent="25" name="productID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="75" parent="25" name="productName">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="76" parent="25" name="price">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="77" parent="25" name="picture">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="78" parent="25" name="nation">
+      <data-type>nvarchar(100)|0</data-type>
+    </column>
+    <column id="79" parent="25" name="description">
+      <data-type>nvarchar(255)|0</data-type>
+    </column>
+    <column id="80" parent="25" name="type">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="81" parent="25" name="enabled">
+      <data-type>bit|0</data-type>
+    </column>
+    <index id="82" parent="25" name="PK__Product__2D10D14A0AD2A005">
+      <name-surrogate>1</name-surrogate>
+      <columns>productID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="83" parent="25" name="PK__Product__2D10D14A0AD2A005">
+      <name-surrogate>1</name-surrogate>
+      <object-id>197575742</object-id>
+      <created-timestamp>2016-11-10.20:46:59.303</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.303</modified-timestamp>
+      <columns>productID</columns>
+      <underlying-index>PK__Product__2D10D14A0AD2A005</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="84" parent="26" name="saleID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="85" parent="26" name="salePercent">
+      <data-type>int|0</data-type>
+    </column>
+    <column id="86" parent="26" name="fromDate">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="87" parent="26" name="toDate">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="88" parent="26" name="enabled">
+      <data-type>bit|0</data-type>
+    </column>
+    <index id="89" parent="26" name="PK__Sale__FAE8F5151A14E395">
+      <name-surrogate>1</name-surrogate>
+      <columns>saleID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="90" parent="26" name="PK__Sale__FAE8F5151A14E395">
+      <name-surrogate>1</name-surrogate>
+      <object-id>453576654</object-id>
+      <created-timestamp>2016-11-10.20:46:59.353</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.353</modified-timestamp>
+      <columns>saleID</columns>
+      <underlying-index>PK__Sale__FAE8F5151A14E395</underlying-index>
+      <primary>1</primary>
+    </key>
+    <column id="91" parent="27" name="saleID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="92" parent="27" name="productID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <index id="93" parent="27" name="PK__SaleProd__4839F801164452B1">
+      <name-surrogate>1</name-surrogate>
+      <columns>saleID
+productID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="94" parent="27" name="PK__SaleProd__4839F801164452B1">
+      <name-surrogate>1</name-surrogate>
+      <object-id>389576426</object-id>
+      <created-timestamp>2016-11-10.20:46:59.353</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.353</modified-timestamp>
+      <columns>saleID
+productID</columns>
+      <underlying-index>PK__SaleProd__4839F801164452B1</underlying-index>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="95" parent="27" name="FK__SaleProdu__saleI__267ABA7A">
+      <name-surrogate>1</name-surrogate>
+      <object-id>645577338</object-id>
+      <created-timestamp>2016-11-10.20:46:59.470</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+      <columns>saleID</columns>
+      <ref-key>~.Sale.PK__Sale__FAE8F5151A14E395</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="96" parent="27" name="FK__SaleProdu__produ__276EDEB3">
+      <name-surrogate>1</name-surrogate>
+      <object-id>661577395</object-id>
+      <created-timestamp>2016-11-10.20:46:59.470</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+      <columns>productID</columns>
+      <ref-key>~.Product.PK__Product__2D10D14A0AD2A005</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="97" parent="28" name="attributeID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="98" parent="28" name="productID">
+      <mandatory>1</mandatory>
+      <data-type>int|0</data-type>
+    </column>
+    <column id="99" parent="28" name="quantity">
+      <data-type>int|0</data-type>
+    </column>
+    <index id="100" parent="28" name="PK__Stock__B1690EC407020F21">
+      <name-surrogate>1</name-surrogate>
+      <columns>attributeID
+productID</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+      <clustering>1</clustering>
+      <position>1</position>
+    </index>
+    <key id="101" parent="28" name="PK__Stock__B1690EC407020F21">
+      <name-surrogate>1</name-surrogate>
+      <object-id>133575514</object-id>
+      <created-timestamp>2016-11-10.20:46:59.290</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.290</modified-timestamp>
+      <columns>attributeID
+productID</columns>
+      <underlying-index>PK__Stock__B1690EC407020F21</underlying-index>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="102" parent="28" name="FK__Stock__attribute__2A4B4B5E">
+      <name-surrogate>1</name-surrogate>
+      <object-id>709577566</object-id>
+      <created-timestamp>2016-11-10.20:46:59.470</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.470</modified-timestamp>
+      <columns>attributeID</columns>
+      <ref-key>~.Attribute.PK__Attribut__03B803D003317E3D</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="103" parent="28" name="FK__Stock__productID__2B3F6F97">
+      <name-surrogate>1</name-surrogate>
+      <object-id>725577623</object-id>
+      <created-timestamp>2016-11-10.20:46:59.473</created-timestamp>
+      <modified-timestamp>2016-11-10.20:46:59.473</modified-timestamp>
+      <columns>productID</columns>
+      <ref-key>~.Product.PK__Product__2D10D14A0AD2A005</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>

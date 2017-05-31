@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <context:annotation-config/>
+    <context:component-scan base-package="com.sneakergo"/>
+    <context:property-placeholder location="classpath:properties/config.properties"/>
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/product-images/**" location="file:///${product.image.location}"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${database.driverClass}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+
+        <property name="packagesToScan" value="com.sneakergo.entity"></property>
+    </bean>
+
+    <!-- Transaction -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--Security-->
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/login" access="permitAll"/>
+
+
+        <security:logout logout-url="/admin/logout" logout-success-url="/login"/>
+
+        <security:form-login login-page="/login"
+                             username-parameter="accountID"
+                             password-parameter="password"
+                             authentication-failure-url="/login?error=true"
+                             default-target-url="/admin/"
+                             always-use-default-target="true"/>
+        <security:csrf disabled="true"/>
+        <security:session-management>
+            <security:concurrency-control max-sessions="1"/>
+        </security:session-management>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        authorities-by-username-query="SELECT accountID, role FROM account WHERE accountID = ?"
+                                        users-by-username-query="SELECT accountID, password, enabled FROM account WHERE accountID = ?"/>
+            <security:password-encoder hash="bcrypt"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/resources/views/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>
