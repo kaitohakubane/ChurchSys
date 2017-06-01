@@ -11,6 +11,7 @@ public class RoomEntity {
     private int roomId;
     private String roomName;
     private Integer roomStatus;
+    private Integer churchId;
 
     @Id
     @Column(name = "roomId")
@@ -42,6 +43,16 @@ public class RoomEntity {
         this.roomStatus = roomStatus;
     }
 
+    @Basic
+    @Column(name = "churchId")
+    public Integer getChurchId() {
+        return churchId;
+    }
+
+    public void setChurchId(Integer churchId) {
+        this.churchId = churchId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,6 +63,7 @@ public class RoomEntity {
         if (roomId != that.roomId) return false;
         if (roomName != null ? !roomName.equals(that.roomName) : that.roomName != null) return false;
         if (roomStatus != null ? !roomStatus.equals(that.roomStatus) : that.roomStatus != null) return false;
+        if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
 
         return true;
     }
@@ -61,6 +73,7 @@ public class RoomEntity {
         int result = roomId;
         result = 31 * result + (roomName != null ? roomName.hashCode() : 0);
         result = 31 * result + (roomStatus != null ? roomStatus.hashCode() : 0);
+        result = 31 * result + (churchId != null ? churchId.hashCode() : 0);
         return result;
     }
 }

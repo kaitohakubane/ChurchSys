@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "manager", schema = "churchsys", catalog = "")
 public class ManagerEntity {
-    private String managerId;
+    private int managerId;
     private String password;
     private Integer churchId;
     private String role;
@@ -17,14 +17,16 @@ public class ManagerEntity {
     private String accountNum;
     private Boolean enabled;
     private String email;
+    private String accountId;
+    private String managerName;
 
     @Id
     @Column(name = "managerId")
-    public String getManagerId() {
+    public int getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(String managerId) {
+    public void setManagerId(int managerId) {
         this.managerId = managerId;
     }
 
@@ -108,6 +110,26 @@ public class ManagerEntity {
         this.email = email;
     }
 
+    @Basic
+    @Column(name = "accountId")
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    @Basic
+    @Column(name = "managerName")
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -115,7 +137,7 @@ public class ManagerEntity {
 
         ManagerEntity that = (ManagerEntity) o;
 
-        if (managerId != null ? !managerId.equals(that.managerId) : that.managerId != null) return false;
+        if (managerId != that.managerId) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (role != null ? !role.equals(that.role) : that.role != null) return false;
@@ -124,13 +146,15 @@ public class ManagerEntity {
         if (accountNum != null ? !accountNum.equals(that.accountNum) : that.accountNum != null) return false;
         if (enabled != null ? !enabled.equals(that.enabled) : that.enabled != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (accountId != null ? !accountId.equals(that.accountId) : that.accountId != null) return false;
+        if (managerName != null ? !managerName.equals(that.managerName) : that.managerName != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = managerId != null ? managerId.hashCode() : 0;
+        int result = managerId;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (churchId != null ? churchId.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
@@ -139,6 +163,8 @@ public class ManagerEntity {
         result = 31 * result + (accountNum != null ? accountNum.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (accountId != null ? accountId.hashCode() : 0);
+        result = 31 * result + (managerName != null ? managerName.hashCode() : 0);
         return result;
     }
 }

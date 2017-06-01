@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "post", schema = "churchsys", catalog = "")
 public class PostEntity {
     private int postId;
-    private String managerId;
+    private Integer managerId;
     private String title;
     private String information;
     private Boolean isContribute;
@@ -26,11 +26,11 @@ public class PostEntity {
 
     @Basic
     @Column(name = "managerId")
-    public String getManagerId() {
+    public Integer getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(String managerId) {
+    public void setManagerId(Integer managerId) {
         this.managerId = managerId;
     }
 

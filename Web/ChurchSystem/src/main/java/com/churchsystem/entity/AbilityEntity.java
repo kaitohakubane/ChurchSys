@@ -8,17 +8,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ability", schema = "churchsys", catalog = "")
 public class AbilityEntity {
-    private String managerId;
+    private Integer managerId;
     private Integer subId;
     private int abilityId;
 
     @Basic
     @Column(name = "managerId")
-    public String getManagerId() {
+    public Integer getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(String managerId) {
+    public void setManagerId(Integer managerId) {
         this.managerId = managerId;
     }
 

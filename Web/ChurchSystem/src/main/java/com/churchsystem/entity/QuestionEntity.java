@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "question", schema = "churchsys", catalog = "")
 public class QuestionEntity {
     private int quesId;
-    private String managerId;
+    private Integer managerId;
     private String username;
     private String information;
     private String quesStatus;
@@ -27,11 +27,11 @@ public class QuestionEntity {
 
     @Basic
     @Column(name = "managerId")
-    public String getManagerId() {
+    public Integer getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(String managerId) {
+    public void setManagerId(Integer managerId) {
         this.managerId = managerId;
     }
 

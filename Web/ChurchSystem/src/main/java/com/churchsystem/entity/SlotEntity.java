@@ -12,7 +12,7 @@ public class SlotEntity {
     private int slotId;
     private Integer eventId;
     private Integer roomId;
-    private String managerId;
+    private Integer managerId;
     private Date slotDate;
     private Integer slotHour;
 
@@ -48,11 +48,11 @@ public class SlotEntity {
 
     @Basic
     @Column(name = "managerId")
-    public String getManagerId() {
+    public Integer getManagerId() {
         return managerId;
     }
 
-    public void setManagerId(String managerId) {
+    public void setManagerId(Integer managerId) {
         this.managerId = managerId;
     }
 
