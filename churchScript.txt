@@ -1,3 +1,4 @@
+drop database ChurchSys;
 create database ChurchSys;
 
 
@@ -5,7 +6,7 @@ use ChurchSys;
 
 CREATE TABLE Church (
 	
-	churchId int  ,
+	churchId int NOT NULL AUTO_INCREMENT ,
     
 	churchName nvarchar(255),
     
@@ -30,7 +31,7 @@ CREATE TABLE Church (
 
 create table Manager (
 	
-	managerId nvarchar(100) ,
+	managerId nvarchar(100) NOT NULL,
    
  	password nvarchar (255),
    
@@ -55,7 +56,7 @@ create table Ability (
     
 	subId int,
     
-	abilityId int,
+	abilityId int NOT NULL AUTO_INCREMENT,
     
 	primary key (abilityId)
 
@@ -77,14 +78,14 @@ create table Category(
 	
 	categoryId int,
     
-	catergoryName nvarchar (255),
+	categoryName nvarchar (255),
     
 	primary key (categoryId)
 
 );
 create table Room (
 	
-	roomId int,
+	roomId int NOT NULL AUTO_INCREMENT,
     
 	roomName nvarchar(50),
     
@@ -95,7 +96,7 @@ create table Room (
 );
 create table Event(
 	
-	eventId int,
+	eventId int NOT NULL AUTO_INCREMENT,
     
 	numOfSlot int,
     
@@ -114,7 +115,7 @@ create table Event(
 );
 create table Type (
 	
-	typeId int,
+	typeId int NOT NULL AUTO_INCREMENT,
     
 	description nvarchar(255),
     
@@ -123,16 +124,14 @@ create table Type (
 );
 create table Registration (
 	
-	regisId int,
+	regisId int NOT NULL AUTO_INCREMENT,
     
 	eventId int,
     
 	username nvarchar (255),
     
 	subId int,
-    
-	managerId nvarchar(100),
-    
+       
 	regisDate date,
     
 	estTime time,
@@ -148,7 +147,7 @@ create table Registration (
 );
 CREATE table Post (
 	
-	postId int,
+	postId int NOT NULL AUTO_INCREMENT,
     
 	managerId nvarchar(100),
 
@@ -162,7 +161,7 @@ CREATE table Post (
 );
 create table User (
 	
-	username nvarchar(255),
+	username nvarchar(255) NOT NULL,
     
 	password nvarchar(255),
     
@@ -175,7 +174,7 @@ create table User (
 );
 create table Slot (
 	
-	slotId int,
+	slotId int NOT NULL AUTO_INCREMENT,
 	
 	eventId int,
     
@@ -195,7 +194,7 @@ create table Slot (
 create table Question (
 
 	
-	quesId int,
+	quesId int NOT NULL AUTO_INCREMENT,
     
 	managerId nvarchar(100),
     
@@ -216,7 +215,7 @@ create table Contribution(
     
 	postId int,
     
-	contributeId int,
+	contributeId int NOT NULL AUTO_INCREMENT,
     
 	donate long,
     
@@ -230,7 +229,7 @@ create table RoomCapable (
     
 	subId int,
     
-	roomCapId int,
+	roomCapId int NOT NULL AUTO_INCREMENT,
     
     
 	primary key (roomCapId)
@@ -293,11 +292,11 @@ add foreign key (managerId) references Manager(managerId);
 
 alter table Ability
  add foreign key (subId) references Subject(subId);
-alter table Question add foreign key (subId) references Subject (subId)
+alter table Question add foreign key (subId) references Subject (subId);
 
 
 
 INSERT INTO Church(churchId,churchName ,longTitude, tel, startTime, endTime,description,lateTitude) 
 VALUES (1,'ABC','aaa','0123456789','2010/5/31 ',' 3000/5/21',' Nha Tho DN','aaaa');
 INSERT INTO Manager(managerId  ,password ,churchId ,role,tel ,certificate ,enabled ,email ) 
-VALUES ('hungmc','$2a$06$PCHDLeLTWHrmQReSR3hCUeZTINjWfIDj7iRssodGt9iiWcAVWQbaC','1','1','0904555555','adada',1,'email');
+VALUES ('hungmc','$2a$06$PCHDLeLTWHrmQReSR3hCUeZTINjWfIDj7iRssodGt9iiWcAVWQbaC','1','ROLE_ADMIN','0904555555','adada',1,'email');

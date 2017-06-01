@@ -41,6 +41,25 @@
         </property>
 
         <property name="packagesToScan" value="com.churchsystem.entity"></property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:com/churchsystem/entity/AbilityEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/CategoryEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/ChurchEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/ContributionEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/EventEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/ManagerEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/PostEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/QuestionEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/RegistrationEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/RoomEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/RoomcapableEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/SlotEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/SubjectEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/TypeEntity.hbm.xml</value>
+                <value>classpath:com/churchsystem/entity/UserEntity.hbm.xml</value>
+            </list>
+        </property>
     </bean>
 
     <!-- Transaction -->

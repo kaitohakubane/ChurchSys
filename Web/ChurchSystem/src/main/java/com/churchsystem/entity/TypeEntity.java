@@ -3,7 +3,7 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 5/31/2017.
+ * Created by hungmcse61561-admin on 6/1/2017.
  */
 @Entity
 @Table(name = "type", schema = "churchsys", catalog = "")

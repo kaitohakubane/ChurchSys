@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
- * Created by hungmcse61561-admin on 5/31/2017.
+ * Created by hungmcse61561-admin on 6/1/2017.
  */
 @Entity
 @Table(name = "registration", schema = "churchsys", catalog = "")
@@ -14,7 +14,6 @@ public class RegistrationEntity {
     private Integer eventId;
     private String username;
     private Integer subId;
-    private String managerId;
     private Date regisDate;
     private Time estTime;
     private Integer regisStatus;
@@ -59,16 +58,6 @@ public class RegistrationEntity {
 
     public void setSubId(Integer subId) {
         this.subId = subId;
-    }
-
-    @Basic
-    @Column(name = "managerId")
-    public String getManagerId() {
-        return managerId;
-    }
-
-    public void setManagerId(String managerId) {
-        this.managerId = managerId;
     }
 
     @Basic
@@ -132,7 +121,6 @@ public class RegistrationEntity {
         if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
         if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
-        if (managerId != null ? !managerId.equals(that.managerId) : that.managerId != null) return false;
         if (regisDate != null ? !regisDate.equals(that.regisDate) : that.regisDate != null) return false;
         if (estTime != null ? !estTime.equals(that.estTime) : that.estTime != null) return false;
         if (regisStatus != null ? !regisStatus.equals(that.regisStatus) : that.regisStatus != null) return false;
@@ -148,7 +136,6 @@ public class RegistrationEntity {
         result1 = 31 * result1 + (eventId != null ? eventId.hashCode() : 0);
         result1 = 31 * result1 + (username != null ? username.hashCode() : 0);
         result1 = 31 * result1 + (subId != null ? subId.hashCode() : 0);
-        result1 = 31 * result1 + (managerId != null ? managerId.hashCode() : 0);
         result1 = 31 * result1 + (regisDate != null ? regisDate.hashCode() : 0);
         result1 = 31 * result1 + (estTime != null ? estTime.hashCode() : 0);
         result1 = 31 * result1 + (regisStatus != null ? regisStatus.hashCode() : 0);

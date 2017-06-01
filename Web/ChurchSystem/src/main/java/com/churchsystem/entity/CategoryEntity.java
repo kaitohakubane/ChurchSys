@@ -3,13 +3,13 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 5/31/2017.
+ * Created by hungmcse61561-admin on 6/1/2017.
  */
 @Entity
 @Table(name = "category", schema = "churchsys", catalog = "")
 public class CategoryEntity {
     private int categoryId;
-    private String catergoryName;
+    private String categoryName;
 
     @Id
     @Column(name = "categoryId")
@@ -22,13 +22,13 @@ public class CategoryEntity {
     }
 
     @Basic
-    @Column(name = "catergoryName")
-    public String getCatergoryName() {
-        return catergoryName;
+    @Column(name = "categoryName")
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCatergoryName(String catergoryName) {
-        this.catergoryName = catergoryName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override
@@ -39,8 +39,7 @@ public class CategoryEntity {
         CategoryEntity that = (CategoryEntity) o;
 
         if (categoryId != that.categoryId) return false;
-        if (catergoryName != null ? !catergoryName.equals(that.catergoryName) : that.catergoryName != null)
-            return false;
+        if (categoryName != null ? !categoryName.equals(that.categoryName) : that.categoryName != null) return false;
 
         return true;
     }
@@ -48,7 +47,7 @@ public class CategoryEntity {
     @Override
     public int hashCode() {
         int result = categoryId;
-        result = 31 * result + (catergoryName != null ? catergoryName.hashCode() : 0);
+        result = 31 * result + (categoryName != null ? categoryName.hashCode() : 0);
         return result;
     }
 }

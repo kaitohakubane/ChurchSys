@@ -4,7 +4,22 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url"/>
-    <property name="connection.driver_class"/>
+    <property name="connection.url">jdbc:mysql://localhost:3306/churchsys</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <mapping class="com.churchsystem.entity.AbilityEntity"/>
+    <mapping class="com.churchsystem.entity.CategoryEntity"/>
+    <mapping class="com.churchsystem.entity.ChurchEntity"/>
+    <mapping class="com.churchsystem.entity.ContributionEntity"/>
+    <mapping class="com.churchsystem.entity.EventEntity"/>
+    <mapping class="com.churchsystem.entity.ManagerEntity"/>
+    <mapping class="com.churchsystem.entity.PostEntity"/>
+    <mapping class="com.churchsystem.entity.QuestionEntity"/>
+    <mapping class="com.churchsystem.entity.RegistrationEntity"/>
+    <mapping class="com.churchsystem.entity.RoomEntity"/>
+    <mapping class="com.churchsystem.entity.RoomcapableEntity"/>
+    <mapping class="com.churchsystem.entity.SlotEntity"/>
+    <mapping class="com.churchsystem.entity.SubjectEntity"/>
+    <mapping class="com.churchsystem.entity.TypeEntity"/>
+    <mapping class="com.churchsystem.entity.UserEntity"/>
   </session-factory>
 </hibernate-configuration>
