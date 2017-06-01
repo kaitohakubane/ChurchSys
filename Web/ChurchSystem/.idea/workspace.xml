@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f363a78-be37-44b1-8834-69e9a7c78f34" name="Default" comment="" />
+    <list default="true" id="9f363a78-be37-44b1-8834-69e9a7c78f34" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/SneakerGo_war.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/SneakerGo_war_exploded.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/40262b3c-b74e-4792-8539-14eb3e3c8f5e.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/55a98571-7635-430a-a95b-46e8e410e5a3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/BillDetailDisplayEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/BillDisplayEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ImportDisplayEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ProductSellEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/RevenueChart.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/SaleDisplayEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/SneakerOrder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/StockDisplayEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/AccountModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/AttributeModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/BillDetailModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/BillModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/ChartModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/ImportModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/ProductModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/SaleModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/StockModelInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/AttributeServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/BillDetailServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/BillServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/ChartServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/ImportServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/ProductServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/SaleServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/StockServiceInterface.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChurchSystem.iml" afterPath="$PROJECT_DIR$/ChurchSystem.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/ParamConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/ParamConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/utils/FileUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/utils/FileUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/utils/NumbericUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/utils/NumbericUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/utils/StringUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/utils/StringUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/AccountController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/AccountController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillDetailController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillDetailController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ChartController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ChartController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ImportController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ImportController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ProductController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ProductController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/SaleController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/SaleController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/StockController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/StockController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/AccountModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/AccountModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/AttributeModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/AttributeModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillDetailModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillDetailModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ChartModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ChartModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ImportModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ImportModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ProductModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ProductModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/SaleModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/SaleModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/StockModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/StockModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/common/CommonDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/common/CommonDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/AccountService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/AccountService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/AttributeService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/AttributeService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillDetailService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillDetailService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ChartService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ChartService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ImportService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ImportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ProductService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ProductService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/SaleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/SaleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/StockService.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/StockService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/AccountServiceInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/AccountServiceInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/properties/config.properties" afterPath="$PROJECT_DIR$/src/main/resources/properties/config.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../churchScript.txt" afterPath="$PROJECT_DIR$/../../churchScript.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/login-page.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/com/sneakergo/controller/AppTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/churchsystem/controller/AppTests.java" />
+    </list>
     <ignored path="SpringMvcTemplate.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,12 +98,6 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="DebuggerManager">
     <breakpoint_any converted="true">
@@ -75,12 +144,65 @@
     <favorites_list name="SpringMvcTemplate" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="test1.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/test1.jsp">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="122">
+              <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/properties/config.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageConstant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtilsConstant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="49" lean-forward="false" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mvc-dispatcher-servlet.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+              <folding>
+                <marker date="1496292378957" expanded="true" signature="4014:4069" ph="SELECT accou... account" />
+                <marker date="1496292378957" expanded="true" signature="4136:4204" ph="SELECT accou... account" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hibernate.cfg.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -96,10 +218,10 @@
         <option value="Tag Library Descriptor" />
         <option value="CSS File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -110,6 +232,7 @@
       <find>http://localhost:9080/SneakerGo/admin/bill-detail</find>
       <find>admin/bill-detail</find>
       <find>size</find>
+      <find>form-login</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -129,40 +252,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/lib/js/bill-detail-management.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/controller/AccountController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/entity/ProductSellEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/common/utils/StringUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/pages/bill-management-page.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/pages/sale-management-page.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/controller/SaleController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/common/utils/NumbericUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/controller/ChartController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/controller/BillDetailController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/controller/BillController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/model/AttributeModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/model/interfaces/AttributeModelInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/service/AttributeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/service/interfaces/AttributeServiceInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/controller/ImportController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/pages/stock-management-page.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/lib/js/common.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/lib/js/stock-management.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/entity/BillDetailDisplayEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/pages/bill-detail-management.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/common/constants/UtilsConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/pages/import-page.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/model/interfaces/SaleModelInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/service/SaleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/service/interfaces/SaleServiceInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/common/constants/PageConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/entity/RevenueChart.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/views/pages/chart-page.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/lib/js/chart-page.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/model/BillModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/model/SaleModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/common/constants/SQLParamConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/entity/ProductQuantityEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/model/interfaces/StockModelInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/service/interfaces/StockServiceInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/model/StockModel.java" />
@@ -177,9 +266,43 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/views/pages/dashboard.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/lib/js/product-page.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/sneakergo/controller/ProductController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/properties/config.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/test.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/test1.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/properties/config.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/StockController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/SaleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ProductController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ImportController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ChartController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillDetailController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/AccountController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/home-page.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/SaleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/AccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/AccountModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/AttributeModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillDetailModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ProductModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ChartModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ImportModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/SaleModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/StockModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/AccountServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/AttributeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillDetailService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ImportService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ProductService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ChartService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/StockService.java" />
+        <option value="$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.0.4.RELEASE/spring-security-core-4.0.4.RELEASE.jar!/org/springframework/security/core/context/SecurityContext.class" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/login-page.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
       </list>
     </option>
   </component>
@@ -233,9 +356,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -281,6 +401,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -339,6 +463,10 @@
               <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -380,12 +508,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="properties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="churchsystem" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -398,16 +559,16 @@
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Compressed/SWDProject/SneakerGo" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;SQL Server (Microsoft)" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/sneakergo" />
-    <property name="JPA.DatabaseSchemaImportDialog" value="40262b3c-b74e-4792-8539-14eb3e3c8f5e" />
+    <property name="JPA.DatabaseSchemaImportDialog" value="16528718-f3f7-45f3-a6f4-ce0ecc4182d9" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.26660252" />
+    <property name="project.structure.side.proportion" value="0.14678898" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="true" />
@@ -417,22 +578,24 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\SWD\SWDProject\SneakerGo\src\main\webapp\resources\js" />
-      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\Theme\assets\js" />
-      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js" />
-      <recent name="G:\SWDPro\SpringMvcTemplate\src\main\webapp\resources\Theme" />
-    </key>
-    <key name="ImportMappingsDialog.RecentPackages">
-      <recent name="com.sneakergo.entity" />
-      <recent name="entity" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker" />
       <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker\css" />
       <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker\js" />
       <recent name="G:\SWDPro\SneakerGo\src\main" />
       <recent name="G:\SWDPro\SneakerGo\src\main\java\com\sneakergo\resources" />
+    </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="com.churchsystem.entity" />
+      <recent name="" />
+      <recent name="com.sneakergo.entity" />
+      <recent name="entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\SWD\SWDProject\SneakerGo\src\main\webapp\resources\js" />
+      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\Theme\assets\js" />
+      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js" />
+      <recent name="G:\SWDPro\SpringMvcTemplate\src\main\webapp\resources\Theme" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -743,13 +906,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -861,7 +1017,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
+      <command value="run-script" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
@@ -887,12 +1043,12 @@
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 7.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.6" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:9089/SneakerGo/admin" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:9089/ChurchSystem/admin" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="SneakerGo:war exploded">
+        <artifact name="ChurchSystem:war">
           <settings>
-            <option name="CONTEXT_PATH" value="/SneakerGo" />
+            <option name="CONTEXT_PATH" value="/ChurchSystem" />
           </settings>
         </artifact>
       </deployment>
@@ -959,7 +1115,7 @@
       </ConfigurationWrapper>
       <method>
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="SneakerGo:war exploded" />
+          <artifact name="ChurchSystem:war" />
         </option>
       </method>
     </configuration>
@@ -1111,11 +1267,15 @@
       <workItem from="1496207393291" duration="1248000" />
       <workItem from="1496208822269" duration="487000" />
       <workItem from="1496159458570" duration="657000" />
+      <workItem from="1496259722830" duration="14060000" />
+      <workItem from="1496279383719" duration="1268000" />
+      <workItem from="1496286830262" duration="1847000" />
+      <workItem from="1496288966836" duration="3605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="348387000" />
+    <option name="totallyTimeSpent" value="369623000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1128,7 +1288,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1142,18 +1302,19 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33385828" sideWeight="0.7014563" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24836601" sideWeight="0.7014563" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19370079" sideWeight="0.48139158" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45061043" sideWeight="0.8823222" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29809222" sideWeight="0.30236796" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.215959" sideWeight="0.59343433" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22314675" sideWeight="0.32391304" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22314675" sideWeight="0.67608696" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29811716" sideWeight="0.40656567" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1164,10 +1325,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19409938" sideWeight="0.48139158" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37007874" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37795275" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1191,7 +1351,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="43" />
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1200,56 +1360,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/BillDetailModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/controller/BillDetailController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/controller/ImportController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/controller/BillController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/controller/ReportController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/interfaces/SaleModelInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/service/SaleService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/service/interfaces/SaleServiceInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/controller/ChartController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/common/constants/PageConstant.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/css/chart-page.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/morris.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/raphael.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/pages/chart-page.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/ChartModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/entity/RevenueChart.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/controller/SaleController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/js/chart-page.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/BillModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/SaleModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/ImportModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/entity/ProductQuantityEntity.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/common/constants/SQLParamConstant.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/interfaces/StockModelInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/StockModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/pages/import-page.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/common/constants/ParamConstant.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/service/ProductService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/service/interfaces/ProductServiceInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/interfaces/ProductModelInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/model/ProductModel.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/js/import-page.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/service/StockService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/service/interfaces/StockServiceInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/js/dashboard.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/controller/IndexController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/pages/dashboard.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/js/stock-management.js" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/js/common.js" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/pages/product-page.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sneakergo/entity/AttributeEntity.java" />
@@ -1259,10 +1369,268 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/test.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/common/data-table.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/views/pages/bill-detail-management.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/test1.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/StockController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="24" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/SaleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="33" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ImportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="27" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ChartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillDetailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="25" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/BillController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="31" column="16" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/AccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="23" column="16" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/img/login-backgroud.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="42" lean-forward="false" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/SaleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/AccountService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="3" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/AccountModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/AttributeModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/BillDetailModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/ChartModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="19" column="50" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/ProductModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="19" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/StockModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" column="2" lean-forward="true" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/SaleModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="30" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/ImportModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/AccountModelInterface.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/AccountServiceInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/AttributeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillDetailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/BillService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="19" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/StockService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="19" column="35" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/ChartService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="15" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="43" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/ImportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="19" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/home-page.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.0.4.RELEASE/spring-security-core-4.0.4.RELEASE.jar!/org/springframework/security/core/context/SecurityContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="53" lean-forward="false" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/login-page.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="117" lean-forward="false" selection-start-line="41" selection-start-column="117" selection-end-line="41" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ManagerEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="49" lean-forward="false" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1270,20 +1638,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="45" column="24" lean-forward="false" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+          <folding>
+            <marker date="1496292378957" expanded="true" signature="4014:4069" ph="SELECT accou... account" />
+            <marker date="1496292378957" expanded="true" signature="4136:4204" ph="SELECT accou... account" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/test1.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="119">
+          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -1294,11 +1667,11 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>SneakerGo:war</last-edited>
+          <last-edited>ChurchSystem:war</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.4080847" />
+                <option value="0.14678898" />
                 <option value="0.5" />
               </list>
             </option>
@@ -1307,11 +1680,11 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Hibernate (SneakerGo)|Hibernate</last-edited>
+          <last-edited>Hibernate</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.4080847" />
+                <option value="0.14678898" />
               </list>
             </option>
           </splitter-proportions>
@@ -1322,7 +1695,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.26660252" />
+                <option value="0.14678898" />
               </list>
             </option>
           </splitter-proportions>
@@ -1334,7 +1707,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.26660252" />
+                <option value="0.14678898" />
               </list>
             </option>
           </splitter-proportions>
@@ -1342,11 +1715,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>SneakerGo</last-edited>
+          <last-edited>Hibernate|ChurchSystem</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.26660252" />
+                <option value="0.14678898" />
               </list>
             </option>
           </splitter-proportions>
@@ -1366,11 +1739,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: mysql:mysql-connector-java:5.1.38</last-edited>
+          <last-edited>Maven: org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.26660252" />
+                <option value="0.14678898" />
               </list>
             </option>
           </splitter-proportions>

@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="src:main:webapp:resources:hibernate.cfg.xml/Hibernate" uuid="55a98571-7635-430a-a95b-46e8e410e5a3">
-      <database-info product="Microsoft SQL Server" version="10.50.4000" jdbc-version="4.0" driver-name="Microsoft JDBC Driver 4.0 for SQL Server" driver-version="4.0.2206.100">
-        <extra-name-characters>$#@</extra-name-characters>
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
-      <user-name>sa</user-name>
-      <introspection-schemas>SneakerGo:dbo</introspection-schemas>
-      <resolve-scope>SneakerGo:*</resolve-scope>
-      <unqualified-resolve-schemas>SneakerGo:*</unqualified-resolve-schemas>
-    </data-source>
-    <data-source name="dataSource" uuid="f5b92dd7-26e0-41b0-95c8-8d4fdf752bd2">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <first-sync>true</first-sync>
-      <user-name>${database.username}</user-name>
-    </data-source>
-    <data-source name="MySQL - sneakergo@localhost" uuid="40262b3c-b74e-4792-8539-14eb3e3c8f5e">
-      <database-info product="MySQL" version="5.7.16-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+    <data-source name="churchsys@localhost" uuid="16528718-f3f7-45f3-a6f4-ce0ecc4182d9">
+      <database-info product="MySQL" version="5.5.5-10.1.22-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:sneakergo</introspection-schemas>
-      <resolve-scope>sneakergo:</resolve-scope>
-      <unqualified-resolve-schemas>sneakergo:</unqualified-resolve-schemas>
+      <resolve-scope>churchsys:</resolve-scope>
     </data-source>
   </component>
 </project>

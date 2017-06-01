@@ -1,4 +1,4 @@
-package com.sneakergo.common.constants;
+package com.churchsystem.common.constants;
 
 /**
  * Created by Hung on 11/18/2016.

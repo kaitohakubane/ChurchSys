@@ -35,13 +35,14 @@ create table Manager (
  	password nvarchar (255),
    
  	churchId int,
-    role int,
+    
+	role varchar(50),
     
 	tel nvarchar (20),
     
 	certificate nvarchar(255),
 	accountNum nvarchar(255),
-	status int,
+	enabled bit,
     
 	email nvarchar(255),
     
@@ -293,3 +294,10 @@ add foreign key (managerId) references Manager(managerId);
 alter table Ability
  add foreign key (subId) references Subject(subId);
 alter table Question add foreign key (subId) references Subject (subId)
+
+
+
+INSERT INTO Church(churchId,churchName ,longTitude, tel, startTime, endTime,description,lateTitude) 
+VALUES (1,'ABC','aaa','0123456789','2010/5/31 ',' 3000/5/21',' Nha Tho DN','aaaa');
+INSERT INTO Manager(managerId  ,password ,churchId ,role,tel ,certificate ,enabled ,email ) 
+VALUES ('hungmc','$2a$06$PCHDLeLTWHrmQReSR3hCUeZTINjWfIDj7iRssodGt9iiWcAVWQbaC','1','1','0904555555','adada',1,'email');

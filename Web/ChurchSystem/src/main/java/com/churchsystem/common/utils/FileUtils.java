@@ -1,4 +1,4 @@
-package com.sneakergo.common.utils;
+package com.churchsystem.common.utils;
 
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;

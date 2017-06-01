@@ -21,20 +21,15 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="a.xml" value="4aba3604-733d-4547-b711-efb56e291bfc" />
-          <unit-entry name="com:sneakergo:resources:hibernate.cfg.xml" value="4aba3604-733d-4547-b711-efb56e291bfc" />
-          <unit-entry name="hibernate.cfg.xml" value="40262b3c-b74e-4792-8539-14eb3e3c8f5e" />
-          <unit-entry name="sessionFactory" value="40262b3c-b74e-4792-8539-14eb3e3c8f5e" />
-          <unit-entry name="src:main:webapp:resources:hibernate.cfg.xml" value="55a98571-7635-430a-a95b-46e8e410e5a3" />
+          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="sessionFactory" value="dataSource" />
         </datasource-map>
-        <naming-strategy-map>
-          <unit-entry name="sessionFactory" />
-        </naming-strategy-map>
+        <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">

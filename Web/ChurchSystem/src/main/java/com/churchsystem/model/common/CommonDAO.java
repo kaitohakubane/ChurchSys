@@ -1,4 +1,4 @@
-package com.sneakergo.model.common;
+package com.churchsystem.model.common;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

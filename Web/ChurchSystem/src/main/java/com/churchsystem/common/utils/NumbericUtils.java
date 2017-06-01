@@ -1,10 +1,8 @@
-package com.sneakergo.common.utils;
+package com.churchsystem.common.utils;
 
-import com.sneakergo.common.constants.ParamConstant;
-import com.sneakergo.common.constants.UtilsConstant;
+import com.churchsystem.common.constants.UtilsConstant;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 

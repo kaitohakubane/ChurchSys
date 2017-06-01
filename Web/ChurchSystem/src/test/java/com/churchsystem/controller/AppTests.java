@@ -1,4 +1,4 @@
-package com.sneakergo.controller;
+package com.churchsystem.controller;
 
 import org.junit.Before;
 import org.junit.Test;

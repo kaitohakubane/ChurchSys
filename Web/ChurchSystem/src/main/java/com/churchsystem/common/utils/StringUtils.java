@@ -1,7 +1,6 @@
-package com.sneakergo.common.utils;
+package com.churchsystem.common.utils;
 
-import com.sneakergo.common.constants.UtilsConstant;
-import org.jcp.xml.dsig.internal.dom.Utils;
+import com.churchsystem.common.constants.UtilsConstant;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.text.DateFormat;

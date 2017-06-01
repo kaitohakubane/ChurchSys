@@ -1,4 +1,4 @@
-package com.sneakergo.common.constants;
+package com.churchsystem.common.constants;
 
 /**
  * Created by Hung on 11/18/2016.
@@ -76,7 +76,7 @@ public class PageConstant {
      */
 
     // Home
-    public static final String HOME_PAGE = "dashboard";
+    public static final String HOME_PAGE = "home-page";
 
     // Login
     public static final String LOGIN_PAGE = "login-page";
