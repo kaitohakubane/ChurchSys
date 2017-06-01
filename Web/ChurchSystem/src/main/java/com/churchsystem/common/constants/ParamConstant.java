@@ -42,13 +42,10 @@ public class ParamConstant {
     public static final String DESCRIPTION = "description";
 
     /**
-     * Bill
+     * Registration
      */
-    public static final String LIST_BILL_ATTR = "listBill";
-    public static final String BILL_ID = "billId";
-    public static final String BILL = "bill";
-    public static final String BILL_DETAIL_LIST="listBillDetail";
-    public static final String CUSTOMER="customer";
+    public static final String LIST_REGISTRATION_ATTR = "registrationList";
+
 
     /**
      * Sale

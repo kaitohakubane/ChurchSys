@@ -12,7 +12,7 @@ public class SQLParamConstant {
 
 
     public static final String GET_AVAILABLE_ROOM_FOR_SUBJECT="SELECT * FROM room " +
-            "WHERE roomStatus roomId IN (SELECT roomId FROM roomcapable WHERE subId =: requireSubId)  ";
+            "WHERE roomStatus=true AND roomId IN (SELECT roomId FROM roomcapable WHERE subId =: requireSubId)  ";
     public static final String GET_MANAGER_FOR_SUBJECT="SELECT managerId,managerName FROM manager " +
             "WHERE managerId IN (SELECT managerId FROM ability WHERE subId =: requireSubId)";
 }

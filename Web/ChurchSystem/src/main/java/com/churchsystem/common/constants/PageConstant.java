@@ -25,8 +25,8 @@ public class PageConstant {
     public static final String ACCOUNT_REGISTER_URL="/api/register";
     public static final String CHECK_LOGIN_URL="/api/login";
 
-    // Product
-    public static final String PRODUCT_PAGE_URL = "/admin/product";
+    // Event
+    public static final String LOAD_EVENT_REGISTER = "/admin/event/load-event";
     public static final String ADD_PRODUCT_URL = "/admin/product/add";
     public static final String EDIT_PRODUCT_URL = "/admin/product/update";
     public static final String REMOVE_PRODUCT_URL = "/admin/product/remove";
@@ -34,8 +34,8 @@ public class PageConstant {
     public static final String GET_ALL_PRODUCT_URL="/api/product";
     public static final String GET_PRODUCT_SIZE="/api/product/get-size";
 
-    // Bill
-    public static final String BILL_PAGE_URL = "/admin/bill-management";
+    // Registration
+    public static final String REGISTRATION_MANAGEMENT_URL = "/admin/registration-management";
     public static final String UPDATE_BILL_URL = "/admin/bill-management/update";
     public static final String DELETE_BILL_URL = "/admin/bill-management/delete";
     public static final String SEARCH_BILL_URL="/admin/bill-management/search";
@@ -81,13 +81,13 @@ public class PageConstant {
     // Login
     public static final String LOGIN_PAGE = "login-page";
 
-    // Product
+    // Event
     public static final String PRODUCT_PAGE = "product-page";
     public static final String CREATE_PRODUCT_PAGE="add-product-page";
 
     // Bill
     public static final String BILL_PAGE = "bill-management-page";
-    public static final String BILL_DETAIL_PAGE="bill-detail-management";
+    public static final String REGISTRATION_PAGE="registration-page";
 
     // Sale
     public static final String SALE_PAGE = "sale-management-page";

@@ -102,9 +102,8 @@ create table Event(
 	eventId int NOT NULL AUTO_INCREMENT,
     
 	numOfSlot int,
-    
+	churchId int,
 	eventStatus int,
-    
 	examDate date,
     
 	subId int,
@@ -132,7 +131,7 @@ create table Registration (
 	eventId int,
     
 	username nvarchar (255),
-    
+	churchId int,    
 	subId int,
        
 	regisDate date,
@@ -296,7 +295,9 @@ add foreign key (managerId) references Manager(managerId);
 alter table Ability
  add foreign key (subId) references Subject(subId);
 alter table Question add foreign key (subId) references Subject (subId);
-alter table Room add foreign key (churchId) references church(churchId);
+alter table Room add foreign key (churchId) references Church(churchId);
+alter table Registration add foreign key (churchId) references Church(churchId);
+alter table Event add foreign key (churchId) references Church(churchId);
 
 
 
@@ -349,8 +350,8 @@ insert into Room(roomName,roomStatus,churchId)
 values ('103',1,1);
 
 
-insert into Event( numOfSlot,eventStatus,examDate,subId,StartDate,typeId)
-values (12,1,'2017/7/7',1,'2017/6/3',1);
+insert into Event( numOfSlot,eventStatus,churchId,examDate,subId,StartDate,typeId)
+values (12,1,1,'2017/7/7',1,'2017/6/3',1);
 
 
 insert into Slot(eventId, roomId,managerId,slotDate,slotHour)
@@ -367,8 +368,8 @@ insert into RoomCapable(roomId,subId)
 values (2,2);
 
 
-insert into Registration(username,subId,regisDate,estTime,regisStatus,result,message)
-values('hien',1,'2017/6/1',3,1,1,'xyz');
+insert into Registration(username,subId,regisDate,churchId,estTime,regisStatus,result,message)
+values('hien',1,'2017/6/1',1,3,1,1,'xyz');
 
 
 insert into Ability(managerId, subId)

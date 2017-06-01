@@ -9,7 +9,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
-<div class="nav-md">
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
@@ -261,6 +260,9 @@
                 </div>
             </div>
             <!-- /top navigation -->
+
+
+
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
@@ -271,6 +273,5 @@
             <!-- /footer content -->
         </div>
     </div>
-</div>
 </body>
 </html>

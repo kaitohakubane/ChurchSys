@@ -19,6 +19,7 @@ public class RegistrationEntity {
     private Integer regisStatus;
     private Integer result;
     private String message;
+    private Integer churchId;
 
     @Id
     @Column(name = "regisId")
@@ -110,6 +111,16 @@ public class RegistrationEntity {
         this.message = message;
     }
 
+    @Basic
+    @Column(name = "churchId")
+    public Integer getChurchId() {
+        return churchId;
+    }
+
+    public void setChurchId(Integer churchId) {
+        this.churchId = churchId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,6 +137,7 @@ public class RegistrationEntity {
         if (regisStatus != null ? !regisStatus.equals(that.regisStatus) : that.regisStatus != null) return false;
         if (result != null ? !result.equals(that.result) : that.result != null) return false;
         if (message != null ? !message.equals(that.message) : that.message != null) return false;
+        if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
 
         return true;
     }
@@ -141,6 +153,7 @@ public class RegistrationEntity {
         result1 = 31 * result1 + (regisStatus != null ? regisStatus.hashCode() : 0);
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + (message != null ? message.hashCode() : 0);
+        result1 = 31 * result1 + (churchId != null ? churchId.hashCode() : 0);
         return result1;
     }
 }
