@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.entity.TypeEntity;
 import com.churchsystem.model.interfaces.TypeModelInterface;
 import com.churchsystem.service.interfaces.TypeServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;

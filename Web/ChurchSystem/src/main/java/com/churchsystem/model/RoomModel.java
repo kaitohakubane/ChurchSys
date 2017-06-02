@@ -1,6 +1,7 @@
 package com.churchsystem.model;
 
 import com.churchsystem.common.constants.SQLParamConstant;
+import com.churchsystem.entity.RoomEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.RoomModelInterface;
 import org.hibernate.Criteria;

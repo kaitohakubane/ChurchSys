@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.entity.RoomEntity;
 import com.churchsystem.model.interfaces.RoomModelInterface;
 import com.churchsystem.service.interfaces.RoomServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;

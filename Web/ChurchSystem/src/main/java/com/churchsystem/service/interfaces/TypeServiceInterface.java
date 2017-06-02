@@ -1,5 +1,7 @@
 package com.churchsystem.service.interfaces;
 
+import com.churchsystem.entity.TypeEntity;
+
 import java.util.List;
 
 /**

@@ -1,5 +1,7 @@
 package com.churchsystem.model.interfaces;
 
+import com.churchsystem.entity.RoomEntity;
+
 import java.util.List;
 
 /**

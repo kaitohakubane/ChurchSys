@@ -1,5 +1,6 @@
 package com.churchsystem.model;
 
+import com.churchsystem.entity.TypeEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.TypeModelInterface;
 import org.springframework.stereotype.Repository;
