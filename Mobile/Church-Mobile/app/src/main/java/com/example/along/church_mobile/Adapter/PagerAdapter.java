@@ -1,8 +1,12 @@
-package com.example.along.church_mobile;
+package com.example.along.church_mobile.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.along.church_mobile.Fragment.GanToi;
+import com.example.along.church_mobile.Fragment.TenNhaTho;
+import com.example.along.church_mobile.Fragment.TimNangCao;
 
 
 /**

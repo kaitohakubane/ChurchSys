@@ -1,4 +1,4 @@
-package com.example.along.church_mobile;
+package com.example.along.church_mobile.Fragment;
 
 
 import android.os.Bundle;
@@ -7,20 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-
-
-
+import com.example.along.church_mobile.R;
 
 /**
  * Created by Long on 6/5/2017.
  */
 
-public class TenNhaTho extends Fragment {
+public class TimNangCao extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tim_nha_tho, container, false);
+        View rootView = inflater.inflate(R.layout.tim_nang_cao, container, false);
         return rootView;
 
     }

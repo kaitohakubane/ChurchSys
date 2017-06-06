@@ -1,10 +1,13 @@
-package com.example.along.church_mobile;
+package com.example.along.church_mobile.Activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.along.church_mobile.Adapter.PagerAdapter;
+import com.example.along.church_mobile.R;
 
 public class MainActivity extends AppCompatActivity  {
 
