@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
- * Created by hungmcse61561-admin on 6/1/2017.
+ * Created by hungmcse61561-admin on 6/6/2017.
  */
 @Entity
 @Table(name = "registration", schema = "churchsys", catalog = "")
@@ -13,13 +13,13 @@ public class RegistrationEntity {
     private int regisId;
     private Integer eventId;
     private String username;
+    private Integer churchId;
     private Integer subId;
     private Date regisDate;
     private Time estTime;
     private Integer regisStatus;
     private Integer result;
     private String message;
-    private Integer churchId;
 
     @Id
     @Column(name = "regisId")
@@ -49,6 +49,16 @@ public class RegistrationEntity {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Basic
+    @Column(name = "churchId")
+    public Integer getChurchId() {
+        return churchId;
+    }
+
+    public void setChurchId(Integer churchId) {
+        this.churchId = churchId;
     }
 
     @Basic
@@ -111,16 +121,6 @@ public class RegistrationEntity {
         this.message = message;
     }
 
-    @Basic
-    @Column(name = "churchId")
-    public Integer getChurchId() {
-        return churchId;
-    }
-
-    public void setChurchId(Integer churchId) {
-        this.churchId = churchId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -131,13 +131,13 @@ public class RegistrationEntity {
         if (regisId != that.regisId) return false;
         if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
         if (regisDate != null ? !regisDate.equals(that.regisDate) : that.regisDate != null) return false;
         if (estTime != null ? !estTime.equals(that.estTime) : that.estTime != null) return false;
         if (regisStatus != null ? !regisStatus.equals(that.regisStatus) : that.regisStatus != null) return false;
         if (result != null ? !result.equals(that.result) : that.result != null) return false;
         if (message != null ? !message.equals(that.message) : that.message != null) return false;
-        if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
 
         return true;
     }
@@ -147,13 +147,13 @@ public class RegistrationEntity {
         int result1 = regisId;
         result1 = 31 * result1 + (eventId != null ? eventId.hashCode() : 0);
         result1 = 31 * result1 + (username != null ? username.hashCode() : 0);
+        result1 = 31 * result1 + (churchId != null ? churchId.hashCode() : 0);
         result1 = 31 * result1 + (subId != null ? subId.hashCode() : 0);
         result1 = 31 * result1 + (regisDate != null ? regisDate.hashCode() : 0);
         result1 = 31 * result1 + (estTime != null ? estTime.hashCode() : 0);
         result1 = 31 * result1 + (regisStatus != null ? regisStatus.hashCode() : 0);
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + (message != null ? message.hashCode() : 0);
-        result1 = 31 * result1 + (churchId != null ? churchId.hashCode() : 0);
         return result1;
     }
 }

@@ -20,6 +20,6 @@ public class RegistrationModel extends CommonDAO implements RegistrationModelInt
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_REGISTRATION)
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<RegisterDisplayEntity> results=query.list();
-        return null;
+        return results;
     }
 }

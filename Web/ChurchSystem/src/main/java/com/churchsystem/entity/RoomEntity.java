@@ -3,15 +3,15 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 6/1/2017.
+ * Created by hungmcse61561-admin on 6/6/2017.
  */
 @Entity
 @Table(name = "room", schema = "churchsys", catalog = "")
 public class RoomEntity {
     private int roomId;
     private String roomName;
-    private Integer roomStatus;
     private Integer churchId;
+    private Integer roomStatus;
 
     @Id
     @Column(name = "roomId")
@@ -34,16 +34,6 @@ public class RoomEntity {
     }
 
     @Basic
-    @Column(name = "roomStatus")
-    public Integer getRoomStatus() {
-        return roomStatus;
-    }
-
-    public void setRoomStatus(Integer roomStatus) {
-        this.roomStatus = roomStatus;
-    }
-
-    @Basic
     @Column(name = "churchId")
     public Integer getChurchId() {
         return churchId;
@@ -51,6 +41,16 @@ public class RoomEntity {
 
     public void setChurchId(Integer churchId) {
         this.churchId = churchId;
+    }
+
+    @Basic
+    @Column(name = "roomStatus")
+    public Integer getRoomStatus() {
+        return roomStatus;
+    }
+
+    public void setRoomStatus(Integer roomStatus) {
+        this.roomStatus = roomStatus;
     }
 
     @Override
@@ -62,8 +62,8 @@ public class RoomEntity {
 
         if (roomId != that.roomId) return false;
         if (roomName != null ? !roomName.equals(that.roomName) : that.roomName != null) return false;
-        if (roomStatus != null ? !roomStatus.equals(that.roomStatus) : that.roomStatus != null) return false;
         if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
+        if (roomStatus != null ? !roomStatus.equals(that.roomStatus) : that.roomStatus != null) return false;
 
         return true;
     }
@@ -72,8 +72,8 @@ public class RoomEntity {
     public int hashCode() {
         int result = roomId;
         result = 31 * result + (roomName != null ? roomName.hashCode() : 0);
-        result = 31 * result + (roomStatus != null ? roomStatus.hashCode() : 0);
         result = 31 * result + (churchId != null ? churchId.hashCode() : 0);
+        result = 31 * result + (roomStatus != null ? roomStatus.hashCode() : 0);
         return result;
     }
 }

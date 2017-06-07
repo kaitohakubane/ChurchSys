@@ -29,22 +29,12 @@ public class EventController {
     ManagerServiceInterface managerServiceInterface;
 
     @ResponseBody
-    @RequestMapping(value= PageConstant.LOAD_EVENT_REGISTER,method= RequestMethod.GET)
-    public List<EventRegisterEntity> loadEventRegister(){
-        List<EventRegisterEntity> results=new ArrayList<EventRegisterEntity>();
+    @RequestMapping(value = PageConstant.LOAD_EVENT_REGISTER_URL, method = RequestMethod.GET)
+    public List<EventRegisterEntity> loadEventRegister() {
+        List<EventRegisterEntity> results = new ArrayList<EventRegisterEntity>();
 
-//
-//        for(int k=UtilsConstant.ZERO;k)
-//
-//
-//
-//        Iterator<TypeEntity> itr= typeServiceInterface.getAllType().iterator();
-//        while(itr.hasNext()){
-//            EventRegisterEntity eventRegisterEntity=new EventRegisterEntity();
-//            TypeEntity typeVar=itr.next();
-//            eventRegisterEntity.setTypeId(typeVar.getTypeId());
-//            eventRegisterEntity.setDescription(typeVar.getDescription());
-//        }
-    return null;
+        return null;
     }
+
+
 }

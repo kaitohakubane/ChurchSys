@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="churchsys@localhost" uuid="16528718-f3f7-45f3-a6f4-ce0ecc4182d9">
+    <database-info product="MySQL" version="5.5.5-10.1.22-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="churchsys">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="information_schema"/>
+      <schema id="3" name="mysql"/>
+      <schema id="4" name="performance_schema"/>
+      <schema id="5" name="phpmyadmin"/>
+      <schema id="6" name="sneakergo"/>
+      <schema id="7" name="test"/>
+      <table id="8" parent="1" name="ability"/>
+      <table id="9" parent="1" name="category"/>
+      <table id="10" parent="1" name="church"/>
+      <table id="11" parent="1" name="contribution"/>
+      <table id="12" parent="1" name="event"/>
+      <table id="13" parent="1" name="manager"/>
+      <table id="14" parent="1" name="post"/>
+      <table id="15" parent="1" name="question"/>
+      <table id="16" parent="1" name="registration"/>
+      <table id="17" parent="1" name="room"/>
+      <table id="18" parent="1" name="roomcapable"/>
+      <table id="19" parent="1" name="slot"/>
+      <table id="20" parent="1" name="subject"/>
+      <table id="21" parent="1" name="type"/>
+      <table id="22" parent="1" name="user"/>
+      <column id="23" parent="8" name="managerId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="24" parent="8" name="subId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="25" parent="8" name="abilityId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <index id="26" parent="8" name="managerId">
+        <columns>managerId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="27" parent="8" name="subId">
+        <columns>subId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="28" parent="8" name="PRIMARY">
+        <columns>abilityId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="29" parent="8" name="ability_ibfk_1">
+        <columns>managerId</columns>
+        <ref-key>~.manager.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="30" parent="8" name="ability_ibfk_2">
+        <columns>subId</columns>
+        <ref-key>~.subject.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="31" parent="9" name="categoryId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="32" parent="9" name="categoryName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <key id="33" parent="9" name="PRIMARY">
+        <columns>categoryId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="34" parent="10" name="churchId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="35" parent="10" name="churchName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="36" parent="10" name="longtitude">
+        <data-type>double|0</data-type>
+      </column>
+      <column id="37" parent="10" name="latetitude">
+        <data-type>double|0</data-type>
+      </column>
+      <column id="38" parent="10" name="tel">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="39" parent="10" name="startTime">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="40" parent="10" name="endTime">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="41" parent="10" name="description">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="42" parent="10" name="streamLink">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="43" parent="10" name="streamStatus">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <key id="44" parent="10" name="PRIMARY">
+        <columns>churchId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="45" parent="11" name="username">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="46" parent="11" name="postId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="47" parent="11" name="contributeId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="48" parent="11" name="donate">
+        <data-type>mediumtext|0</data-type>
+      </column>
+      <index id="49" parent="11" name="postId">
+        <columns>postId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="50" parent="11" name="username">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="51" parent="11" name="PRIMARY">
+        <columns>contributeId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="52" parent="11" name="contribution_ibfk_1">
+        <columns>username</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="53" parent="11" name="contribution_ibfk_2">
+        <columns>postId</columns>
+        <ref-key>~.post.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="54" parent="12" name="eventId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="55" parent="12" name="numOfSlot">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="56" parent="12" name="churchId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="57" parent="12" name="eventStatus">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="58" parent="12" name="examDate">
+        <data-type>date|0</data-type>
+      </column>
+      <column id="59" parent="12" name="subId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="60" parent="12" name="typeId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="61" parent="12" name="startDate">
+        <data-type>date|0</data-type>
+      </column>
+      <index id="62" parent="12" name="churchId">
+        <columns>churchId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="63" parent="12" name="subId">
+        <columns>subId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="64" parent="12" name="typeId">
+        <columns>typeId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="65" parent="12" name="PRIMARY">
+        <columns>eventId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="66" parent="12" name="event_ibfk_3">
+        <columns>churchId</columns>
+        <ref-key>~.church.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="67" parent="12" name="event_ibfk_1">
+        <columns>subId</columns>
+        <ref-key>~.subject.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="68" parent="12" name="event_ibfk_2">
+        <columns>typeId</columns>
+        <ref-key>~.type.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="69" parent="13" name="managerId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="70" parent="13" name="accountId">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="71" parent="13" name="password">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="72" parent="13" name="managerName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="73" parent="13" name="churchId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="74" parent="13" name="role">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="75" parent="13" name="tel">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="76" parent="13" name="certificate">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="77" parent="13" name="accountNum">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="78" parent="13" name="enabled">
+        <data-type>bit(1)|0</data-type>
+      </column>
+      <column id="79" parent="13" name="email">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <index id="80" parent="13" name="churchId">
+        <columns>churchId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="81" parent="13" name="PRIMARY">
+        <columns>managerId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="82" parent="13" name="manager_ibfk_1">
+        <columns>churchId</columns>
+        <ref-key>~.church.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="83" parent="14" name="postId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="84" parent="14" name="managerId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="85" parent="14" name="title">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="86" parent="14" name="information">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="87" parent="14" name="isContribute">
+        <data-type>bit(1)|0</data-type>
+      </column>
+      <index id="88" parent="14" name="managerId">
+        <columns>managerId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="89" parent="14" name="PRIMARY">
+        <columns>postId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="90" parent="14" name="post_ibfk_1">
+        <columns>managerId</columns>
+        <ref-key>~.manager.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="91" parent="15" name="quesId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="92" parent="15" name="managerId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="93" parent="15" name="username">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="94" parent="15" name="information">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="95" parent="15" name="quesStatus">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="96" parent="15" name="subId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="97" parent="15" name="managerId">
+        <columns>managerId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="98" parent="15" name="subId">
+        <columns>subId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="99" parent="15" name="username">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="100" parent="15" name="PRIMARY">
+        <columns>quesId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="101" parent="15" name="question_ibfk_1">
+        <columns>managerId</columns>
+        <ref-key>~.manager.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="102" parent="15" name="question_ibfk_2">
+        <columns>username</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="103" parent="15" name="question_ibfk_3">
+        <columns>subId</columns>
+        <ref-key>~.subject.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="104" parent="16" name="regisId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="105" parent="16" name="eventId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="106" parent="16" name="username">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="107" parent="16" name="churchId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="108" parent="16" name="subId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="109" parent="16" name="regisDate">
+        <data-type>date|0</data-type>
+      </column>
+      <column id="110" parent="16" name="estTime">
+        <data-type>time|0</data-type>
+      </column>
+      <column id="111" parent="16" name="regisStatus">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="112" parent="16" name="result">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="113" parent="16" name="message">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <index id="114" parent="16" name="churchId">
+        <columns>churchId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="115" parent="16" name="eventId">
+        <columns>eventId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="116" parent="16" name="subId">
+        <columns>subId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="117" parent="16" name="username">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="118" parent="16" name="PRIMARY">
+        <columns>regisId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="119" parent="16" name="registration_ibfk_1">
+        <columns>eventId</columns>
+        <ref-key>~.event.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="120" parent="16" name="registration_ibfk_3">
+        <columns>username</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="121" parent="16" name="registration_ibfk_4">
+        <columns>churchId</columns>
+        <ref-key>~.church.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="122" parent="16" name="registration_ibfk_2">
+        <columns>subId</columns>
+        <ref-key>~.subject.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="123" parent="17" name="roomId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="124" parent="17" name="roomName">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="125" parent="17" name="churchId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="126" parent="17" name="roomStatus">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="127" parent="17" name="churchId">
+        <columns>churchId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="128" parent="17" name="PRIMARY">
+        <columns>roomId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="129" parent="17" name="room_ibfk_1">
+        <columns>churchId</columns>
+        <ref-key>~.church.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="130" parent="18" name="roomId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="131" parent="18" name="subId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="132" parent="18" name="roomCapId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <index id="133" parent="18" name="roomId">
+        <columns>roomId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="134" parent="18" name="subId">
+        <columns>subId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="135" parent="18" name="PRIMARY">
+        <columns>roomCapId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="136" parent="18" name="roomcapable_ibfk_2">
+        <columns>roomId</columns>
+        <ref-key>~.room.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="137" parent="18" name="roomcapable_ibfk_1">
+        <columns>subId</columns>
+        <ref-key>~.subject.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="138" parent="19" name="slotId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="139" parent="19" name="eventId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="140" parent="19" name="roomId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="141" parent="19" name="managerId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="142" parent="19" name="slotDate">
+        <data-type>date|0</data-type>
+      </column>
+      <column id="143" parent="19" name="slotHour">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="144" parent="19" name="eventId">
+        <columns>eventId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="145" parent="19" name="managerId">
+        <columns>managerId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="146" parent="19" name="roomId">
+        <columns>roomId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="147" parent="19" name="PRIMARY">
+        <columns>slotId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="148" parent="19" name="slot_ibfk_1">
+        <columns>eventId</columns>
+        <ref-key>~.event.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="149" parent="19" name="slot_ibfk_2">
+        <columns>roomId</columns>
+        <ref-key>~.room.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="150" parent="19" name="slot_ibfk_3">
+        <columns>managerId</columns>
+        <ref-key>~.manager.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="151" parent="20" name="subId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="152" parent="20" name="subName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="153" parent="20" name="categoryId">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="154" parent="20" name="categoryId">
+        <columns>categoryId</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="155" parent="20" name="PRIMARY">
+        <columns>subId</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="156" parent="20" name="subject_ibfk_1">
+        <columns>categoryId</columns>
+        <ref-key>~.category.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="157" parent="21" name="typeId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="158" parent="21" name="description">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <key id="159" parent="21" name="PRIMARY">
+        <columns>typeId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="160" parent="22" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="161" parent="22" name="password">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="162" parent="22" name="tel">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="163" parent="22" name="mail">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <key id="164" parent="22" name="PRIMARY">
+        <columns>username</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

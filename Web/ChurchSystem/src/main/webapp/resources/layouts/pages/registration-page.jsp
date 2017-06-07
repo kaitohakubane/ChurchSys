@@ -53,39 +53,27 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>5</th>
-                                    <th>6</th>
+                                    <th>No.</th>
+                                    <th>Subject</th>
+                                    <th>Category</th>
+                                    <th>User</th>
+                                    <th>Registered Date</th>
+                                    <th>Registered Time</th>
+                                    <th>Message</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                    <td>6</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                    <td>6</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                    <td>6</td>
-                                </tr>
+                                <c:forEach var="item" items="${registrationList}" varStatus="counter">
+                                    <tr>
+                                        <td data-id="${item.regisId}">${counter.count}</td>
+                                        <td>${item.regisDate}</td>
+                                        <td data-id="${item.subId}">${item.subName}</td>
+                                        <td>${item.categoryName}</td>
+                                        <td>${item.username}</td>
+                                        <td>${item.estTime}</td>
+                                        <td>${item.message}</td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -116,12 +104,8 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Subject</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="form-control">
-                                                    <option>Choose option</option>
-                                                    <option>Option one</option>
-                                                    <option>Option two</option>
-                                                    <option>Option three</option>
-                                                    <option>Option four</option>
+                                                <select id="subject" class="form-control">
+                                                    <option>Lop Hon Nhan</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -129,19 +113,20 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Date</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <div>
-                                                    <input type='date' class="form-control"/>
+                                                    <input type='date' id="chosenDate" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Slot</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="form-control">
+                                                <select id="slot" class="form-control">
                                                     <option>Choose option</option>
-                                                    <option>Option one</option>
-                                                    <option>Option two</option>
-                                                    <option>Option three</option>
-                                                    <option>Option four</option>
+                                                    <option>Slot 1 (5am-7am)</option>
+                                                    <option>Slot 2 (7am - 11am)</option>
+                                                    <option>Slot 3 (1pm - 5pm)</option>
+                                                    <option>Slot 4 (5pm - 7pm)</option>
+                                                    <option>Slot 5 (7pm - 9pm)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -156,24 +141,23 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Room</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="form-control">
+                                                <select id="room" class="form-control">
                                                     <option>Choose option</option>
-                                                    <option>Option one</option>
-                                                    <option>Option two</option>
-                                                    <option>Option three</option>
-                                                    <option>Option four</option>
+                                                    <option>102</option>
+                                                    <option>204</option>
+                                                    <option>202</option>
+                                                    <option>103</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Manager</label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                <select class="form-control">
+                                                <select id="manager" class="form-control">
                                                     <option>Choose option</option>
-                                                    <option>Option one</option>
-                                                    <option>Option two</option>
-                                                    <option>Option three</option>
-                                                    <option>Option four</option>
+                                                    <option>Priest Hien</option>
+                                                    <option>Priest Vong</option>
+                                                    <option>Priest Kiet</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -201,10 +185,10 @@
                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <select class="form-control">
                                                     <option>Choose option</option>
-                                                    <option>Option one</option>
-                                                    <option>Option two</option>
-                                                    <option>Option three</option>
-                                                    <option>Option four</option>
+                                                    <option>Monday - Wednesday - Friday</option>
+                                                    <option>Tuesday - Thursday - Saturday</option>
+                                                    <option>Saturday - Sunday</option>
+                                                    <option>Sunday</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -215,7 +199,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Create</button>
+                        <button type="button" id="confirm-btn" class="btn btn-primary">Create</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>

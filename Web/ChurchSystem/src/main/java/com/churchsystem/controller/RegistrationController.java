@@ -28,4 +28,14 @@ public class RegistrationController {
         modelAndView.addObject(ParamConstant.LIST_REGISTRATION_ATTR,registerList);
         return modelAndView;
     }
+
+
+
+    @RequestMapping(value = PageConstant.SCHEDULE_URL, method = RequestMethod.GET)
+    public ModelAndView loadSchedule() {
+        ModelAndView modelAndView=new ModelAndView(PageConstant.SCHEDULE_PAGE);
+        return modelAndView;
+    }
+
+
 }

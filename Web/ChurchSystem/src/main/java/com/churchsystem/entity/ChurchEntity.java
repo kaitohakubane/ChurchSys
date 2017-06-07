@@ -4,19 +4,19 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by hungmcse61561-admin on 6/1/2017.
+ * Created by hungmcse61561-admin on 6/6/2017.
  */
 @Entity
 @Table(name = "church", schema = "churchsys", catalog = "")
 public class ChurchEntity {
     private int churchId;
     private String churchName;
-    private String longTitude;
+    private Double longtitude;
+    private Double latetitude;
     private String tel;
     private Timestamp startTime;
     private Timestamp endTime;
     private String description;
-    private String lateTitude;
     private String streamLink;
     private Integer streamStatus;
 
@@ -41,13 +41,23 @@ public class ChurchEntity {
     }
 
     @Basic
-    @Column(name = "longTitude")
-    public String getLongTitude() {
-        return longTitude;
+    @Column(name = "longtitude")
+    public Double getLongtitude() {
+        return longtitude;
     }
 
-    public void setLongTitude(String longTitude) {
-        this.longTitude = longTitude;
+    public void setLongtitude(Double longtitude) {
+        this.longtitude = longtitude;
+    }
+
+    @Basic
+    @Column(name = "latetitude")
+    public Double getLatetitude() {
+        return latetitude;
+    }
+
+    public void setLatetitude(Double latetitude) {
+        this.latetitude = latetitude;
     }
 
     @Basic
@@ -91,16 +101,6 @@ public class ChurchEntity {
     }
 
     @Basic
-    @Column(name = "lateTitude")
-    public String getLateTitude() {
-        return lateTitude;
-    }
-
-    public void setLateTitude(String lateTitude) {
-        this.lateTitude = lateTitude;
-    }
-
-    @Basic
     @Column(name = "streamLink")
     public String getStreamLink() {
         return streamLink;
@@ -129,12 +129,12 @@ public class ChurchEntity {
 
         if (churchId != that.churchId) return false;
         if (churchName != null ? !churchName.equals(that.churchName) : that.churchName != null) return false;
-        if (longTitude != null ? !longTitude.equals(that.longTitude) : that.longTitude != null) return false;
+        if (longtitude != null ? !longtitude.equals(that.longtitude) : that.longtitude != null) return false;
+        if (latetitude != null ? !latetitude.equals(that.latetitude) : that.latetitude != null) return false;
         if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
         if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
         if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (lateTitude != null ? !lateTitude.equals(that.lateTitude) : that.lateTitude != null) return false;
         if (streamLink != null ? !streamLink.equals(that.streamLink) : that.streamLink != null) return false;
         if (streamStatus != null ? !streamStatus.equals(that.streamStatus) : that.streamStatus != null) return false;
 
@@ -145,12 +145,12 @@ public class ChurchEntity {
     public int hashCode() {
         int result = churchId;
         result = 31 * result + (churchName != null ? churchName.hashCode() : 0);
-        result = 31 * result + (longTitude != null ? longTitude.hashCode() : 0);
+        result = 31 * result + (longtitude != null ? longtitude.hashCode() : 0);
+        result = 31 * result + (latetitude != null ? latetitude.hashCode() : 0);
         result = 31 * result + (tel != null ? tel.hashCode() : 0);
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
         result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (lateTitude != null ? lateTitude.hashCode() : 0);
         result = 31 * result + (streamLink != null ? streamLink.hashCode() : 0);
         result = 31 * result + (streamStatus != null ? streamStatus.hashCode() : 0);
         return result;

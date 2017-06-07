@@ -10,7 +10,9 @@ CREATE TABLE Church (
     
 	churchName nvarchar(255),
     
-	longTitude nvarchar(255),
+	longtitude double,
+
+	latetitude double,
     
 	tel nvarchar(255),
     
@@ -19,8 +21,6 @@ CREATE TABLE Church (
 	endTime DateTime,
     
 	description nvarchar (255),
-    
-	lateTitude nvarchar(255),
 
     	streamLink nvarchar(255),
 	streamStatus int,

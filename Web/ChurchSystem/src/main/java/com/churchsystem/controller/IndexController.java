@@ -27,7 +27,6 @@ public class IndexController {
         ModelAndView modelAndView;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
-
         if (!name.equalsIgnoreCase(UtilsConstant.ANONYMOUS_USER)) {
             modelAndView = new ModelAndView(PageConstant.HOME_PAGE_URL);
         } else {
