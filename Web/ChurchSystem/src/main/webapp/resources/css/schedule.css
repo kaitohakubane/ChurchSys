@@ -1,0 +1,6 @@
+#calendarPopup {
+    width: 300px;
+    position: fixed;
+    display: none;
+    z-index: 1;
+}
