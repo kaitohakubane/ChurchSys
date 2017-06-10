@@ -4,3 +4,7 @@
     display: none;
     z-index: 1;
 }
+
+/*For double click event*/
+.fc-content-skeleton { pointer-events: none; }
+.fc-event { pointer-events: all; }
