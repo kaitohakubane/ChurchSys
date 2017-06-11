@@ -44,10 +44,6 @@
                                 <div class='fc-event'>My Event 4</div>
                                 <div class='fc-event'>My Event 5</div>
                             </div>
-                            <p>
-                                <input type='checkbox' id='drop-remove' checked='checked'/>
-                                <label for='drop-remove'>remove after drop</label>
-                            </p>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -128,7 +124,7 @@
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <!-- FullCalendar -->
-<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+<script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
 <script src="<c:url value="/resources/js/schedule.js"/>"></script>

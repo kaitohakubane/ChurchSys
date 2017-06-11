@@ -84,10 +84,10 @@ function calendarInitialize() {
         },
         views: {
             agendaDay: {
-                minTime: '04:00:00',
-                maxTime: '21:00:00',
-                slotDuration: '02:00:00',
-                snapDuration: '01:00:00',
+                minTime: '04:30:00',
+                maxTime: '22:00:00',
+                slotDuration: '01:30:00',
+                snapDuration: '01:30:00',
                 allDaySlot: false,
                 selectable: true,
             }
@@ -138,10 +138,11 @@ function calendarInitialize() {
         // },
         drop: function(date) {
             $(this).remove();
+            console.log('drop');
         },
 
         eventReceive: function( event ) {
-            makeEventsDraggable();
+            // makeEventsDraggable();
         },
 
         eventDragStart: function( event, jsEvent, ui, view ) {
@@ -149,8 +150,7 @@ function calendarInitialize() {
             calEventStatus['calendar'] = '#calendar';
             calEventStatus['event_id'] = event._id;
         },
-        eventDragStop: function( event, jsEvent, ui, view ) { console.log('calendar 1 eventDragStop');
-
+        eventDragStop: function( event, jsEvent, ui, view,revertFunc ) { console.log('calendar 1 eventDragStop');
             if(isEventOverDiv(jsEvent.clientX, jsEvent.clientY)) {
                 $('#calendar').fullCalendar('removeEvents', event._id);
                 var el = $( "<div class='fc-event'>" ).appendTo( '#external-events-listing' ).text( event.title );
@@ -163,7 +163,22 @@ function calendarInitialize() {
             }
 
             calEventStatus = []; // Empty
-            makeEventsDraggable();
+            // makeEventsDraggable();
+
+
+
+        },
+        eventDrop:function( event, delta, revertFunc, jsEvent, ui, view ) {
+            console.log('eventDrop')
+            if(typeof event.end === 'undefined'||!event.end){
+                return;
+            }
+            var start=event.start.format('HH:mm');
+            var end=event.end.format('HH:mm');
+            if(start<'04:30'||end>'21:00'||start>end){
+                revertFunc();
+                console.log('revert');
+            }
         },
 
         events: [
@@ -192,6 +207,8 @@ function calendarInitialize() {
         droppable: true,
         dragRevertDuration: 0,
         eventLimit:true,
+        slotLabelFormat:'HH:mm',
+        timeFormat:'HH:mm'
     })
 
 }
@@ -199,26 +216,27 @@ function calendarInitialize() {
 
 
 // Event drop and Drag
-function makeEventsDraggable () {
-
-    $('.fc-draggable').each(function() {
-
-        // store data so the calendar knows to render an event upon drop
-        $(this).data('event', {
-            title: $.trim($(this).text()), // use the element's text as the event title
-            stick: true // maintain when user navigates (see docs on the renderEvent method)
-        });
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-            zIndex: 999,
-            revert: true,      // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-        });
-    });
-
-}
-
+// function makeEventsDraggable () {
+//
+//     $('.fc-draggable').each(function() {
+//
+//         // store data so the calendar knows to render an event upon drop
+//         $(this).data('event', {
+//             title: $.trim($(this).text()), // use the element's text as the event title
+//             stick: true, // maintain when user navigates (see docs on the renderEvent method)
+//             start: "06:00",
+//             duration:"01:30"
+//         });
+//
+//         // make the event draggable using jQuery UI
+//         $(this).draggable({
+//             zIndex: 999,
+//             revert: true,      // will cause the event to go back to its
+//             revertDuration: 0  //  original position after the drag
+//         });
+//     });
+//
+// }
 
 
 /* initialize the external events
@@ -229,7 +247,9 @@ function registerClassList(){
         // store data so the calendar knows to render an event upon drop
         $(this).data('event', {
             title: $.trim($(this).text()), // use the element's text as the event title
-            stick: true // maintain when user navigates (see docs on the renderEvent method)
+            stick: true, // maintain when user navigates (see docs on the renderEvent method)
+            start: "06:00",
+            duration:"01:30"
         });
 
         // make the event draggable using jQuery UI
