@@ -31,29 +31,26 @@
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
-                <%--<div class="page-title">--%>
-                    <%--<div class="title_left">--%>
-                        <%--<h3>Calendar--%>
-                            <%--<small>Click to add/edit events</small>--%>
-                        <%--</h3>--%>
-                    <%--</div>--%>
-
-                    <%--<div class="title_right">--%>
-                        <%--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">--%>
-                            <%--<div class="input-group">--%>
-                                <%--<input type="text" class="form-control" placeholder="Search for...">--%>
-                                <%--<span class="input-group-btn">--%>
-                      <%--<button class="btn btn-default" type="button">Go!</button>--%>
-                    <%--</span>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-
                 <div class="clearfix"></div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-2">
+                        <div id='external-events'>
+                            <div id='external-events-listing'>
+                                <h4>Ongoing Class</h4>
+                                <div class='fc-event'>My Event 1</div>
+                                <div class='fc-event'>My Event 2</div>
+                                <div class='fc-event'>My Event 3</div>
+                                <div class='fc-event'>My Event 4</div>
+                                <div class='fc-event'>My Event 5</div>
+                            </div>
+                            <p>
+                                <input type='checkbox' id='drop-remove' checked='checked'/>
+                                <label for='drop-remove'>remove after drop</label>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Calendar Events
@@ -72,88 +69,9 @@
         </div>
         <!-- /page content -->
 
-        <!-- calendar modal -->
-        <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">New Calendar Entry</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div id="testmodal" style="padding: 5px 20px;">
-                            <form id="antoform" class="form-horizontal calender" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">Title</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="title" name="title">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">Description</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control" style="height:55px;" id="descr"
-                                                  name="descr"></textarea>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary antosubmit">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel2">Edit Calendar Entry</h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <div id="testmodal2" style="padding: 5px 20px;">
-                            <form id="antoform2" class="form-horizontal calender" role="form">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">Title</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="title2" name="title2">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">Description</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control" style="height:55px;" id="descr2"
-                                                  name="descr"></textarea>
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
-        <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
-        <!-- /calendar modal -->
-
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
-
 
 <%--Event Register--%>
 <div class="container">
@@ -169,7 +87,8 @@
                             <div class="form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Please Input Name" required/><br/>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           placeholder="Please Input Name" required/><br/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -188,14 +107,15 @@
                             <div class="form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
-                                    <input type="time" class="form-control" id="time" name="time" placeholder="" required/><br/>
+                                    <input type="time" class="form-control" id="time" name="time" placeholder=""
+                                           required/><br/>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-success col-sm-12" >Edit event</button>
+                                <button type="submit" class="btn btn-success col-sm-12">Edit event</button>
                             </div>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-primary col-sm-12" >Create</button>
+                                <button type="submit" class="btn btn-primary col-sm-12">Create</button>
                             </div>
                         </form>
                     </div>
@@ -206,9 +126,9 @@
 </div>
 
 
-
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <!-- FullCalendar -->
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
 <script src="<c:url value="/resources/js/schedule.js"/>"></script>
