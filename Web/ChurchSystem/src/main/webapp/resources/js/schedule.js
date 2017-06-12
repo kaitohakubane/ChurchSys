@@ -4,12 +4,20 @@
 
 calendarInitialize();
 registerClassList();
+var creatingEvent;
 var calEventStatus = [];
 var defaultMovePlus = 5;
 var lastClicked = null;
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 $(document).ready(function () {
     terminatePopup();
+    $('#createEventbtn').on('click',function(){
+        $("#calendarPopup").fadeOut();
+        $('#calendar').fullCalendar( 'renderEvent', creatingEvent );
+
+    })
+
+
 })
 var isEventOverDiv = function(x, y) {
 
@@ -117,7 +125,19 @@ function calendarInitialize() {
                 }
             }
 
-
+            var eventName=$('#creatingEventName').val();
+            var eventType=$('#eventType').val();
+            if(eventName==''){
+                eventName='UnnamedEvent';
+            }
+            if(eventType==''){
+                eventType="UndefinedType"
+            }
+            creatingEvent={
+                title: eventName +"  -  "+ eventType,
+                start: date.format()+'T04:30',
+                color: '#24ea12'
+            }
 
 
         },
@@ -160,6 +180,7 @@ function calendarInitialize() {
                     revertDuration: 0
                 });
                 el.data('event', { title: event.title, id :event.id, stick: true });
+                registerClassList();
             }
 
             calEventStatus = []; // Empty
@@ -225,7 +246,8 @@ function calendarInitialize() {
 //             title: $.trim($(this).text()), // use the element's text as the event title
 //             stick: true, // maintain when user navigates (see docs on the renderEvent method)
 //             start: "06:00",
-//             duration:"01:30"
+//             duration:"01:30",
+//             color: '#24ea12'
 //         });
 //
 //         // make the event draggable using jQuery UI
@@ -242,14 +264,15 @@ function calendarInitialize() {
 /* initialize the external events
  -----------------------------------------------------------------*/
 function registerClassList(){
-    $('#external-events .fc-event').each(function() {
+    $('.fc-event').each(function() {
 
         // store data so the calendar knows to render an event upon drop
         $(this).data('event', {
             title: $.trim($(this).text()), // use the element's text as the event title
             stick: true, // maintain when user navigates (see docs on the renderEvent method)
             start: "06:00",
-            duration:"01:30"
+            duration:"01:30",
+            color: '#24ea12'
         });
 
         // make the event draggable using jQuery UI
@@ -262,5 +285,6 @@ function registerClassList(){
     });
 }
 // -------------------------------------------
+
 
 

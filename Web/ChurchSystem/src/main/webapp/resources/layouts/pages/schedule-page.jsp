@@ -83,35 +83,36 @@
                             <div class="form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                                    <input type="email" class="form-control" id="email" name="email"
+                                    <input type="text" class="form-control" id="creatingEventName" name="creatingEventName"
                                            placeholder="Please Input Name" required/><br/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group has-success">
                                     <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
-                                    <select class="form-control">
+                                    <select class="form-control" id="eventType">
                                         <option></option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                        <option>Wedding</option>
+                                        <option>Class 1</option>
+                                        <option>Join Class</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
-                                    <input type="time" class="form-control" id="time" name="time" placeholder=""
-                                           required/><br/>
+                                    <select class="form-control">
+                                        <option>Slot</option>
+                                        <option>1 (04:30 - 06:00) </option>
+                                        <option>2 (06:00 - 07:30) </option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-success col-sm-12">Edit event</button>
+                                <button type="submit" class="btn btn-success col-sm-12">Auto event</button>
                             </div>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-primary col-sm-12">Create</button>
+                                <button id="createEventbtn" class="btn btn-primary col-sm-12">Create</button>
                             </div>
                         </form>
                     </div>

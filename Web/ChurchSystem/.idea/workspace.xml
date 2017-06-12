@@ -80,21 +80,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="schedule-page.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="172" column="51" selection-start-line="172" selection-start-column="51" selection-end-line="172" selection-end-column="51" />
+            <state relative-caret-position="147">
+              <caret line="175" column="21" selection-start-line="175" selection-start-column="21" selection-end-line="175" selection-end-column="21" />
               <folding>
                 <element signature="e#0#54#0" expanded="false" />
               </folding>
@@ -197,8 +187,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/registration.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/common/menu.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/schedule.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js" />
       </list>
     </option>
   </component>
@@ -265,6 +255,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -627,8 +619,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -654,7 +644,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="schedule&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/css/schedule.css&#10;schedule.js&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/js/schedule.js&#10;menu&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/common/menu.jsp&#10;registrationControll&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;regis&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/registration-page.jsp&#10;registrationmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RegistrationModel.java&#10;registrationcontroller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;SQL&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;room mode&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;pageconstant&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;eventmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/EventModel.java&#10;home-pag&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/home-page.jsp&#10;param&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;registrationController&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;Page&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;RoomModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;typemodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;manager&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/ManagerModel.java&#10;TypeModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;RoomMo&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;sqlparam&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;controller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/IndexController.java&#10;Sql&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;product&#9;PSI&#9;JAVA://com.sneakergo.controller.ProductController&#10;bill&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/bill-management-page.js&#10;stock&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/stock-management.js&#10;import&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/import-page.js&#10;stockser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/StockService.java&#10;dash&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/views/pages/dashboard.jsp&#10;productmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/ProductModelInterface.java&#10;productser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/ProductService.java&#10;product.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/product-page.js&#10;stockmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/StockModelInterface.java&#10;sql&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/common/constants/SQLParamConstant.java&#10;salemodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/SaleModel.java&#10;stockmo&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/StockModel.java&#10;billmodel&#9;PSI&#9;JAVA://com.sneakergo.model.BillModel&#10;productcontrol&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;index&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/IndexController.java&#10;chart&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;salecon&#9;PSI&#9;JAVA://com.sneakergo.controller.SaleController&#10;chartcon&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ChartController.java&#10;productcontroller&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;chart-page.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;chartcont&#9;PSI&#9;JAVA://com.sneakergo.controller.ChartController&#10;saleserv&#9;PSI&#9;JAVA://com.sneakergo.service.SaleService&#10;stockse&#9;PSI&#9;JAVA://com.sneakergo.service.StockService&#10;productserv&#9;PSI&#9;JAVA://com.sneakergo.service.ProductService&#10;productcontro&#9;FILE&#9;file://C:/Users/Mr Kiet/Desktop/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;dashboar&#9;FILE&#9;file://C:/Users/Mr Kiet/Desktop/SWDProject/SneakerGo/src/main/webapp/resources/views/pages/dashboard.jsp" />
+    <property name="SearchEverywhereHistoryKey" value="sc&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/schedule-page.jsp&#10;schedule&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/css/schedule.css&#10;schedule.js&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/js/schedule.js&#10;menu&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/common/menu.jsp&#10;registrationControll&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;regis&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/registration-page.jsp&#10;registrationmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RegistrationModel.java&#10;registrationcontroller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;SQL&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;room mode&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;pageconstant&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;eventmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/EventModel.java&#10;home-pag&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/home-page.jsp&#10;param&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;registrationController&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;Page&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;RoomModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;typemodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;manager&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/ManagerModel.java&#10;TypeModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;RoomMo&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;sqlparam&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;controller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/IndexController.java&#10;Sql&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;product&#9;PSI&#9;JAVA://com.sneakergo.controller.ProductController&#10;bill&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/bill-management-page.js&#10;stock&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/stock-management.js&#10;import&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/import-page.js&#10;stockser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/StockService.java&#10;dash&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/views/pages/dashboard.jsp&#10;productmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/ProductModelInterface.java&#10;productser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/ProductService.java&#10;product.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/product-page.js&#10;stockmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/StockModelInterface.java&#10;sql&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/common/constants/SQLParamConstant.java&#10;salemodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/SaleModel.java&#10;stockmo&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/StockModel.java&#10;billmodel&#9;PSI&#9;JAVA://com.sneakergo.model.BillModel&#10;productcontrol&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;index&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/IndexController.java&#10;chart&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;salecon&#9;PSI&#9;JAVA://com.sneakergo.controller.SaleController&#10;chartcon&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ChartController.java&#10;productcontroller&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;chart-page.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;chartcont&#9;PSI&#9;JAVA://com.sneakergo.controller.ChartController&#10;saleserv&#9;PSI&#9;JAVA://com.sneakergo.service.SaleService&#10;stockse&#9;PSI&#9;JAVA://com.sneakergo.service.StockService&#10;productserv&#9;PSI&#9;JAVA://com.sneakergo.service.ProductService&#10;productcontro&#9;FILE&#9;file://C:/Users/Mr Kiet/Desktop/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -734,7 +724,10 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method />
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
@@ -757,7 +750,10 @@
       <Profilers>
         <option name="GAPID_DISABLE_PCS" value="false" />
       </Profilers>
-      <method />
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module />
@@ -1412,12 +1408,13 @@
       <workItem from="1497162289018" duration="5796000" />
       <workItem from="1497171416620" duration="569000" />
       <workItem from="1497193971577" duration="1277000" />
-      <workItem from="1497198553189" duration="5408000" />
+      <workItem from="1497198553189" duration="9530000" />
+      <workItem from="1497227506902" duration="3067000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="499070000" />
+    <option name="totallyTimeSpent" value="506259000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1429,7 +1426,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1471,46 +1468,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37795275" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44827586" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28818896" sideWeight="0.3023426" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.4935275" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2421875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2992126" sideWeight="0.6976574" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19212599" sideWeight="0.48139158" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45061043" sideWeight="0.8823222" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25549048" sideWeight="0.35763097" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25549048" sideWeight="0.64236903" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29811716" sideWeight="0.40656567" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37795275" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -1891,21 +1848,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="172" column="51" selection-start-line="172" selection-start-column="51" selection-end-line="172" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#54#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="56">
+          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="147">
+          <caret line="175" column="21" selection-start-line="175" selection-start-column="21" selection-end-line="175" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#54#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
