@@ -52,8 +52,9 @@
 
     <!--Security-->
     <security:http auto-config="true">
-        <security:intercept-url pattern="/" access="hasRole('ROLE_ADMIN')"/>
-        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/" access="permitAll"/>
+        <security:intercept-url pattern="/manager/**" access="hasAnyRole('ROLE_ADMIN','ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
         <security:intercept-url pattern="/login" access="permitAll"/>
 
 
@@ -62,9 +63,7 @@
         <security:form-login login-page="/login"
                              username-parameter="accountId"
                              password-parameter="password"
-                             authentication-failure-url="/login?error=true"
-                             default-target-url="/admin/"
-                             always-use-default-target="true"/>
+                             authentication-failure-url="/login?error=true"/>
         <security:csrf disabled="true"/>
         <security:session-management>
             <security:concurrency-control max-sessions="1"/>
@@ -74,8 +73,8 @@
     <security:authentication-manager>
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="dataSource"
-                                        authorities-by-username-query="SELECT accountId, role FROM manager WHERE accountId = ?"
-                                        users-by-username-query="SELECT accountId, password, enabled FROM manager WHERE accountId = ?"/>
+                                        authorities-by-username-query="SELECT accountId, role FROM user WHERE accountId = ?"
+                                        users-by-username-query="SELECT accountId, password, enabled FROM user WHERE accountId = ?"/>
             <security:password-encoder hash="bcrypt"/>
         </security:authentication-provider>
     </security:authentication-manager>

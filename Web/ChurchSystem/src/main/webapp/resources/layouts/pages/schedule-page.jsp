@@ -92,9 +92,9 @@
                                     <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
                                     <select class="form-control" id="eventType">
                                         <option></option>
-                                        <option>Wedding</option>
-                                        <option>Class 1</option>
-                                        <option>Join Class</option>
+                                        <option data-id="1">Wedding</option>
+                                        <option data-id='2'>Class 1</option>
+                                        <option data-id="3">Join Class</option>
                                     </select>
                                 </div>
                             </div>

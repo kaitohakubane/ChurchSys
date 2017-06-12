@@ -1,21 +1,22 @@
 package com.churchsystem.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Time;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "church", schema = "churchsys", catalog = "")
 public class ChurchEntity {
     private int churchId;
     private String churchName;
-    private Double longtitude;
-    private Double latetitude;
+    private Double longitude;
+    private Double latitude;
     private String tel;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private String mail;
+    private Time startTime;
+    private Time endTime;
     private String description;
     private String streamLink;
     private Integer streamStatus;
@@ -41,23 +42,23 @@ public class ChurchEntity {
     }
 
     @Basic
-    @Column(name = "longtitude")
-    public Double getLongtitude() {
-        return longtitude;
+    @Column(name = "longitude")
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setLongtitude(Double longtitude) {
-        this.longtitude = longtitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     @Basic
-    @Column(name = "latetitude")
-    public Double getLatetitude() {
-        return latetitude;
+    @Column(name = "latitude")
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setLatetitude(Double latetitude) {
-        this.latetitude = latetitude;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     @Basic
@@ -71,22 +72,32 @@ public class ChurchEntity {
     }
 
     @Basic
+    @Column(name = "mail")
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    @Basic
     @Column(name = "startTime")
-    public Timestamp getStartTime() {
+    public Time getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(Time startTime) {
         this.startTime = startTime;
     }
 
     @Basic
     @Column(name = "endTime")
-    public Timestamp getEndTime() {
+    public Time getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(Time endTime) {
         this.endTime = endTime;
     }
 
@@ -129,9 +140,10 @@ public class ChurchEntity {
 
         if (churchId != that.churchId) return false;
         if (churchName != null ? !churchName.equals(that.churchName) : that.churchName != null) return false;
-        if (longtitude != null ? !longtitude.equals(that.longtitude) : that.longtitude != null) return false;
-        if (latetitude != null ? !latetitude.equals(that.latetitude) : that.latetitude != null) return false;
+        if (longitude != null ? !longitude.equals(that.longitude) : that.longitude != null) return false;
+        if (latitude != null ? !latitude.equals(that.latitude) : that.latitude != null) return false;
         if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
+        if (mail != null ? !mail.equals(that.mail) : that.mail != null) return false;
         if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
         if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
@@ -145,9 +157,10 @@ public class ChurchEntity {
     public int hashCode() {
         int result = churchId;
         result = 31 * result + (churchName != null ? churchName.hashCode() : 0);
-        result = 31 * result + (longtitude != null ? longtitude.hashCode() : 0);
-        result = 31 * result + (latetitude != null ? latetitude.hashCode() : 0);
+        result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
+        result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
         result = 31 * result + (tel != null ? tel.hashCode() : 0);
+        result = 31 * result + (mail != null ? mail.hashCode() : 0);
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
         result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);

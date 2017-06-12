@@ -4,17 +4,27 @@
 
 calendarInitialize();
 registerClassList();
+
+//URL
+var CREATE_EVENT_URL="/manager/eventManagement/Add";
+var UPDATE_EVENT_URL="/manager/eventManagement/Update";
+var DELETE_EVENT_URL="manager/eventManagement/Delate";
+
+//local variable
 var creatingEvent;
 var calEventStatus = [];
+var eventList=[];
 var defaultMovePlus = 5;
 var lastClicked = null;
+
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 $(document).ready(function () {
     terminatePopup();
     $('#createEventbtn').on('click',function(){
         $("#calendarPopup").fadeOut();
         $('#calendar').fullCalendar( 'renderEvent', creatingEvent );
-
+        eventList.push(creatingEvent);
+        console.log(eventList);
     })
 
 
@@ -133,12 +143,13 @@ function calendarInitialize() {
             if(eventType==''){
                 eventType="UndefinedType"
             }
+
             creatingEvent={
                 title: eventName +"  -  "+ eventType,
                 start: date.format()+'T04:30',
-                color: '#24ea12'
+                color: '#24ea12',
+                subjectId: $('#eventType').data('id')
             }
-
 
         },
 
@@ -159,10 +170,14 @@ function calendarInitialize() {
         drop: function(date) {
             $(this).remove();
             console.log('drop');
+
         },
 
         eventReceive: function( event ) {
-            // makeEventsDraggable();
+
+            var event={
+
+            }
         },
 
         eventDragStart: function( event, jsEvent, ui, view ) {
@@ -286,5 +301,31 @@ function registerClassList(){
 }
 // -------------------------------------------
 
+
+function addEvent(event) {
+    $('#productModal').modal("hide");
+
+    var requestURL = contextPath + ADD_PRODUCT_URL;
+    var requestMethod = "POST";
+    var requestData = event;
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        processData: false,
+        contentType: false,
+        success: function () {
+            var notifyData = {
+                'title': ADD_PRODUCT_POPUP_TITLE,
+                'content': 'Add product successfully'
+            }
+            showNotifyModal(contextPath + PRODUCT_PAGE_URL, true, notifyData);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(textStatus);
+        }
+    });
+}
 
 

@@ -21,5 +21,7 @@
     <mapping class="com.churchsystem.entity.SubjectEntity"/>
     <mapping class="com.churchsystem.entity.TypeEntity"/>
     <mapping class="com.churchsystem.entity.UserEntity"/>
+      <mapping class="com.churchsystem.entity.InteractionEntity"/>
+      <mapping class="com.churchsystem.entity.SlothourEntity"/>
   </session-factory>
 </hibernate-configuration>

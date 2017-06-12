@@ -1,0 +1,9 @@
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+values ('hungmc', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Mai Cong Hung', 'ROLE_ADMIN', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'hungmc@gmail.com');
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+values ('kietta', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Tran Anh Kiet', 'ROLE_MANAGER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'hungmc@gmail.com');
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+values ('trungtq', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Tran Quang Trung', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'trungta@gmail.com');
+
+SELECT * FROM churchsys.user;

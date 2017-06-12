@@ -2,7 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f363a78-be37-44b1-8834-69e9a7c78f34" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/AbilityEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/CategoryEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ChurchEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ContributionEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/EventEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ManagerEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/PostEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/QuestionEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/RegistrationEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/RoomEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/RoomcapableEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/SlotEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/SubjectEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/TypeEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/UserEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ManagerService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/ManagerServiceInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../churchScript1_1.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/EventController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/EventController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/RegistrationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/RegistrationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ManagerModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ManagerModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RegistrationServiceInterface.java" afterPath="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RegistrationServiceInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp" />
     </list>
@@ -79,20 +108,7 @@
     <favorites_list name="SpringMvcTemplate" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="schedule.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="175" column="21" selection-start-line="175" selection-start-column="21" selection-end-line="175" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#54#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -102,10 +118,10 @@
         <option value="Tag Library Descriptor" />
         <option value="HTML File" />
         <option value="Interface" />
-        <option value="Jsp File" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -138,8 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ContributionEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/EventEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/PostEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/QuestionEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/RegistrationEntity.java" />
@@ -149,39 +163,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/SubjectEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/TypeEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/RegisterDisplayEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/RegistrationModelInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RegistrationServiceInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/RegistrationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ManagerEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/EventRegisterEntity.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/login-page.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/EventModel.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ManagerRefEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/ManagerModelInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/ManagerServiceInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/ManagerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/ParamConstant.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/home-page.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/common/page-footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/common/footer.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/RoomService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/RoomModelInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/TypeModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/RoomModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/TypeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/TypeModelInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RoomServiceInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/TypeServiceInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/RoomController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ManagerModel.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/RegistrationModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/EventController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/RegistrationController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/registration-page.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/common/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/registration.js" />
@@ -189,6 +184,27 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/schedule.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/map-page.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/RegistrationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RegistrationServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/RegistrationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/ManagerModelInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/RegistrationModelInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/RoomModelInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/TypeModelInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/RegistrationModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/RoomModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/ManagerModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/model/TypeModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/TypeServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RoomServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/TypeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/service/RoomService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/EventController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java" />
       </list>
     </option>
   </component>
@@ -255,8 +271,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -352,10 +366,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,32 +492,6 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ChurchSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ChurchSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -554,6 +538,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="churchsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="churchsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interfaces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -613,12 +635,74 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="churchsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChurchSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="churchsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -644,19 +728,18 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="sc&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/schedule-page.jsp&#10;schedule&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/css/schedule.css&#10;schedule.js&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/js/schedule.js&#10;menu&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/common/menu.jsp&#10;registrationControll&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;regis&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/registration-page.jsp&#10;registrationmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RegistrationModel.java&#10;registrationcontroller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;SQL&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;room mode&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;pageconstant&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;eventmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/EventModel.java&#10;home-pag&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/home-page.jsp&#10;param&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;registrationController&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;Page&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;RoomModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;typemodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;manager&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/ManagerModel.java&#10;TypeModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;RoomMo&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;sqlparam&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;controller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/IndexController.java&#10;Sql&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;product&#9;PSI&#9;JAVA://com.sneakergo.controller.ProductController&#10;bill&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/bill-management-page.js&#10;stock&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/stock-management.js&#10;import&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/import-page.js&#10;stockser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/StockService.java&#10;dash&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/views/pages/dashboard.jsp&#10;productmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/ProductModelInterface.java&#10;productser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/ProductService.java&#10;product.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/product-page.js&#10;stockmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/StockModelInterface.java&#10;sql&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/common/constants/SQLParamConstant.java&#10;salemodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/SaleModel.java&#10;stockmo&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/StockModel.java&#10;billmodel&#9;PSI&#9;JAVA://com.sneakergo.model.BillModel&#10;productcontrol&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;index&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/IndexController.java&#10;chart&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;salecon&#9;PSI&#9;JAVA://com.sneakergo.controller.SaleController&#10;chartcon&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ChartController.java&#10;productcontroller&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;chart-page.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;chartcont&#9;PSI&#9;JAVA://com.sneakergo.controller.ChartController&#10;saleserv&#9;PSI&#9;JAVA://com.sneakergo.service.SaleService&#10;stockse&#9;PSI&#9;JAVA://com.sneakergo.service.StockService&#10;productserv&#9;PSI&#9;JAVA://com.sneakergo.service.ProductService&#10;productcontro&#9;FILE&#9;file://C:/Users/Mr Kiet/Desktop/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java" />
+    <property name="SearchEverywhereHistoryKey" value="index&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/IndexController.java&#10;indexcon&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/IndexController.java&#10;sc&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/schedule-page.jsp&#10;schedule&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/css/schedule.css&#10;schedule.js&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/js/schedule.js&#10;menu&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/common/menu.jsp&#10;registrationControll&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;regis&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/registration-page.jsp&#10;registrationmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RegistrationModel.java&#10;registrationcontroller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;SQL&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;room mode&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;pageconstant&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;eventmodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/EventModel.java&#10;home-pag&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/webapp/resources/layouts/pages/home-page.jsp&#10;param&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;registrationController&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/RegistrationController.java&#10;Page&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/PageConstant.java&#10;RoomModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;typemodel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;manager&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/ManagerModel.java&#10;TypeModel&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/TypeModel.java&#10;RoomMo&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/model/RoomModel.java&#10;sqlparam&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;controller&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/controller/IndexController.java&#10;Sql&#9;FILE&#9;file://D:/Capstone/Project/Web/ChurchSystem/src/main/java/com/churchsystem/common/constants/SQLParamConstant.java&#10;product&#9;PSI&#9;JAVA://com.sneakergo.controller.ProductController&#10;bill&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/bill-management-page.js&#10;stock&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/stock-management.js&#10;import&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/import-page.js&#10;stockser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/StockService.java&#10;dash&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/views/pages/dashboard.jsp&#10;productmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/ProductModelInterface.java&#10;productser&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/service/ProductService.java&#10;product.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/product-page.js&#10;stockmodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/interfaces/StockModelInterface.java&#10;sql&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/common/constants/SQLParamConstant.java&#10;salemodel&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/SaleModel.java&#10;stockmo&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/model/StockModel.java&#10;billmodel&#9;PSI&#9;JAVA://com.sneakergo.model.BillModel&#10;productcontrol&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;chart&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;salecon&#9;PSI&#9;JAVA://com.sneakergo.controller.SaleController&#10;chartcon&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ChartController.java&#10;productcontroller&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/java/com/sneakergo/controller/ProductController.java&#10;chart-page.js&#9;FILE&#9;file://G:/SWD/SWDProject/SneakerGo/src/main/webapp/resources/lib/js/chart-page.js&#10;chartcont&#9;PSI&#9;JAVA://com.sneakergo.controller.ChartController&#10;saleserv&#9;PSI&#9;JAVA://com.sneakergo.service.SaleService&#10;stockse&#9;PSI&#9;JAVA://com.sneakergo.service.StockService&#10;productserv&#9;PSI&#9;JAVA://com.sneakergo.service.ProductService" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker" />
-      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker\css" />
-      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker\js" />
-      <recent name="G:\SWDPro\SneakerGo\src\main" />
-      <recent name="G:\SWDPro\SneakerGo\src\main\java\com\sneakergo\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\SWD\SWDProject\SneakerGo\src\main\webapp\resources\js" />
+      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\Theme\assets\js" />
+      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js" />
+      <recent name="G:\SWDPro\SpringMvcTemplate\src\main\webapp\resources\Theme" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.churchsystem.entity" />
@@ -664,11 +747,12 @@
       <recent name="com.sneakergo.entity" />
       <recent name="entity" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\SWD\SWDProject\SneakerGo\src\main\webapp\resources\js" />
-      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\Theme\assets\js" />
-      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js" />
-      <recent name="G:\SWDPro\SpringMvcTemplate\src\main\webapp\resources\Theme" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker" />
+      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker\css" />
+      <recent name="G:\SWDPro\SneakerGo\src\main\webapp\resources\js\bootstrap-datepicker\js" />
+      <recent name="G:\SWDPro\SneakerGo\src\main" />
+      <recent name="G:\SWDPro\SneakerGo\src\main\java\com\sneakergo\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -724,10 +808,7 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
@@ -750,10 +831,7 @@
       <Profilers>
         <option name="GAPID_DISABLE_PCS" value="false" />
       </Profilers>
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module />
@@ -1156,7 +1234,6 @@
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 7.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.6" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8088/ChurchSystem/admin" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ChurchSystem:war exploded">
@@ -1409,12 +1486,14 @@
       <workItem from="1497171416620" duration="569000" />
       <workItem from="1497193971577" duration="1277000" />
       <workItem from="1497198553189" duration="9530000" />
-      <workItem from="1497227506902" duration="3067000" />
+      <workItem from="1497227506902" duration="4891000" />
+      <workItem from="1497236710752" duration="5510000" />
+      <workItem from="1497293409655" duration="6366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="506259000" />
+    <option name="totallyTimeSpent" value="519959000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1427,7 +1506,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="6" side_tool="false" content_ui="tabs" />
@@ -1443,15 +1522,15 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49676377" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25549048" sideWeight="0.35763097" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25549048" sideWeight="0.36830837" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25549048" sideWeight="0.64236903" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25549048" sideWeight="0.63169163" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29811716" sideWeight="0.40656567" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39370078" sideWeight="0.6976574" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26456693" sideWeight="0.6976574" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1497,7 +1576,7 @@
           <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="51" />
+      <option name="time" value="55" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1506,62 +1585,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/entity/RoomEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-496">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ManagerRefEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/entity/ManagerEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/ManagerModelInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/RegistrationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/ManagerServiceInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/ManagerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/ParamConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="73" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1580,55 +1603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/RoomModelInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/TypeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/TypeServiceInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RoomServiceInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/TypeModelInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/TypeModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/RoomService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1653,13 +1627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/AccountModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-363">
@@ -1675,34 +1642,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/target/SpringMvcTemplate/WEB-INF/mvc-dispatcher-servlet.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/ManagerModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/RoomModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -1714,13 +1653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/RegistrationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1738,38 +1670,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/EventController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="63" column="54" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/RegistrationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/production/contacts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="62" column="71" selection-start-line="62" selection-start-column="71" selection-end-line="62" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="80" column="38" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1848,21 +1752,245 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+        <state relative-caret-position="170">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="175" column="21" selection-start-line="175" selection-start-column="21" selection-end-line="175" selection-end-column="21" />
+        <state relative-caret-position="-1411">
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding>
             <element signature="e#0#54#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RegistrationServiceInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/RegistrationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+          <folding>
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/schedule-page.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="96" column="58" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/layouts/pages/map-page.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/RegistrationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/ManagerModelInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/RegistrationModelInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/RoomModelInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/interfaces/TypeModelInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/RegistrationModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/RoomModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/ProductModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2099#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/ManagerModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/ManagerServiceInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/RoomServiceInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/EventController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+          <folding>
+            <element signature="e#1079#1100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/TypeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/RoomService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/service/interfaces/TypeServiceInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/model/TypeModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="65" column="75" selection-start-line="65" selection-start-column="75" selection-end-line="65" selection-end-column="75" />
+          <folding>
+            <marker date="1497302491577" expanded="true" signature="3984:4036" ph="SELECT accou... manager" />
+            <marker date="1497302491577" expanded="true" signature="4103:4168" ph="SELECT accou... manager" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/UtilsConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.2.RELEASE/spring-web-4.3.2.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="33" column="94" selection-start-line="33" selection-start-column="94" selection-end-line="33" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/common/constants/PageConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/churchsystem/controller/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -3,24 +3,34 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "contribution", schema = "churchsys", catalog = "")
 public class ContributionEntity {
-    private String username;
-    private Integer postId;
     private int contributeId;
+    private Integer userId;
+    private Integer postId;
     private String donate;
 
-    @Basic
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
+    @Id
+    @Column(name = "contributeId")
+    public int getContributeId() {
+        return contributeId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setContributeId(int contributeId) {
+        this.contributeId = contributeId;
+    }
+
+    @Basic
+    @Column(name = "userId")
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Basic
@@ -31,16 +41,6 @@ public class ContributionEntity {
 
     public void setPostId(Integer postId) {
         this.postId = postId;
-    }
-
-    @Id
-    @Column(name = "contributeId")
-    public int getContributeId() {
-        return contributeId;
-    }
-
-    public void setContributeId(int contributeId) {
-        this.contributeId = contributeId;
     }
 
     @Basic
@@ -61,7 +61,7 @@ public class ContributionEntity {
         ContributionEntity that = (ContributionEntity) o;
 
         if (contributeId != that.contributeId) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (postId != null ? !postId.equals(that.postId) : that.postId != null) return false;
         if (donate != null ? !donate.equals(that.donate) : that.donate != null) return false;
 
@@ -70,9 +70,9 @@ public class ContributionEntity {
 
     @Override
     public int hashCode() {
-        int result = username != null ? username.hashCode() : 0;
+        int result = contributeId;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (postId != null ? postId.hashCode() : 0);
-        result = 31 * result + contributeId;
         result = 31 * result + (donate != null ? donate.hashCode() : 0);
         return result;
     }

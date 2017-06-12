@@ -3,13 +3,13 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "post", schema = "churchsys", catalog = "")
 public class PostEntity {
     private int postId;
-    private Integer managerId;
+    private Integer conductorId;
     private String title;
     private String information;
     private Boolean isContribute;
@@ -25,13 +25,13 @@ public class PostEntity {
     }
 
     @Basic
-    @Column(name = "managerId")
-    public Integer getManagerId() {
-        return managerId;
+    @Column(name = "conductorId")
+    public Integer getConductorId() {
+        return conductorId;
     }
 
-    public void setManagerId(Integer managerId) {
-        this.managerId = managerId;
+    public void setConductorId(Integer conductorId) {
+        this.conductorId = conductorId;
     }
 
     @Basic
@@ -72,7 +72,7 @@ public class PostEntity {
         PostEntity that = (PostEntity) o;
 
         if (postId != that.postId) return false;
-        if (managerId != null ? !managerId.equals(that.managerId) : that.managerId != null) return false;
+        if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (information != null ? !information.equals(that.information) : that.information != null) return false;
         if (isContribute != null ? !isContribute.equals(that.isContribute) : that.isContribute != null) return false;
@@ -83,7 +83,7 @@ public class PostEntity {
     @Override
     public int hashCode() {
         int result = postId;
-        result = 31 * result + (managerId != null ? managerId.hashCode() : 0);
+        result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         result = 31 * result + (isContribute != null ? isContribute.hashCode() : 0);

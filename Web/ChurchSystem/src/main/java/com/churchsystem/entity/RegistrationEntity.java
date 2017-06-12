@@ -5,14 +5,14 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "registration", schema = "churchsys", catalog = "")
 public class RegistrationEntity {
     private int regisId;
     private Integer eventId;
-    private String username;
+    private Integer userId;
     private Integer churchId;
     private Integer subId;
     private Date regisDate;
@@ -42,13 +42,13 @@ public class RegistrationEntity {
     }
 
     @Basic
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
+    @Column(name = "userId")
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Basic
@@ -130,7 +130,7 @@ public class RegistrationEntity {
 
         if (regisId != that.regisId) return false;
         if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
         if (regisDate != null ? !regisDate.equals(that.regisDate) : that.regisDate != null) return false;
@@ -146,7 +146,7 @@ public class RegistrationEntity {
     public int hashCode() {
         int result1 = regisId;
         result1 = 31 * result1 + (eventId != null ? eventId.hashCode() : 0);
-        result1 = 31 * result1 + (username != null ? username.hashCode() : 0);
+        result1 = 31 * result1 + (userId != null ? userId.hashCode() : 0);
         result1 = 31 * result1 + (churchId != null ? churchId.hashCode() : 0);
         result1 = 31 * result1 + (subId != null ? subId.hashCode() : 0);
         result1 = 31 * result1 + (regisDate != null ? regisDate.hashCode() : 0);

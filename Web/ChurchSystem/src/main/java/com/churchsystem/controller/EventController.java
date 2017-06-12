@@ -2,7 +2,6 @@ package com.churchsystem.controller;
 
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.entity.EventRegisterEntity;
-import com.churchsystem.service.interfaces.ManagerServiceInterface;
 import com.churchsystem.service.interfaces.RoomServiceInterface;
 import com.churchsystem.service.interfaces.TypeServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,6 @@ public class EventController {
 
     @Autowired
     RoomServiceInterface roomServiceInterface;
-
-    @Autowired
-    ManagerServiceInterface managerServiceInterface;
 
     @ResponseBody
     @RequestMapping(value = PageConstant.LOAD_EVENT_REGISTER_URL, method = RequestMethod.GET)

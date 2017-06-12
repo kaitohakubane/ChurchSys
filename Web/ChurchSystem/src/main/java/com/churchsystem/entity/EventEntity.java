@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "event", schema = "churchsys", catalog = "")
@@ -17,6 +17,7 @@ public class EventEntity {
     private Integer subId;
     private Integer typeId;
     private Date startDate;
+    private String decription;
 
     @Id
     @Column(name = "eventId")
@@ -98,6 +99,16 @@ public class EventEntity {
         this.startDate = startDate;
     }
 
+    @Basic
+    @Column(name = "decription")
+    public String getDecription() {
+        return decription;
+    }
+
+    public void setDecription(String decription) {
+        this.decription = decription;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,6 +124,7 @@ public class EventEntity {
         if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
         if (typeId != null ? !typeId.equals(that.typeId) : that.typeId != null) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
+        if (decription != null ? !decription.equals(that.decription) : that.decription != null) return false;
 
         return true;
     }
@@ -127,6 +139,7 @@ public class EventEntity {
         result = 31 * result + (subId != null ? subId.hashCode() : 0);
         result = 31 * result + (typeId != null ? typeId.hashCode() : 0);
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
+        result = 31 * result + (decription != null ? decription.hashCode() : 0);
         return result;
     }
 }

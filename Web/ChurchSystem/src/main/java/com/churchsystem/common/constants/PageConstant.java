@@ -15,7 +15,11 @@ public class PageConstant {
 
     public static final String ADMIN_ROOT_PATH_URL = "/admin";
 
-    public static final String HOME_PAGE_URL = "/admin/home";
+    public static final String MANAGER_ROOT_PATH_URL = "/manager";
+
+    public static final String MANAGER_HOME_PAGE_URL = "/manager/home";
+
+
 
     // Login
     public static final String LOGIN_PAGE_URL = "/login";
@@ -56,6 +60,7 @@ public class PageConstant {
 
     // Home
     public static final String HOME_PAGE = "home-page";
+    public static final String MAP_PAGE="map-page";
 
     // Login
     public static final String LOGIN_PAGE = "login-page";

@@ -3,14 +3,14 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "question", schema = "churchsys", catalog = "")
 public class QuestionEntity {
     private int quesId;
-    private Integer managerId;
-    private String username;
+    private Integer conductorId;
+    private Integer userId;
     private String information;
     private String quesStatus;
     private Integer subId;
@@ -26,23 +26,23 @@ public class QuestionEntity {
     }
 
     @Basic
-    @Column(name = "managerId")
-    public Integer getManagerId() {
-        return managerId;
+    @Column(name = "conductorId")
+    public Integer getConductorId() {
+        return conductorId;
     }
 
-    public void setManagerId(Integer managerId) {
-        this.managerId = managerId;
+    public void setConductorId(Integer conductorId) {
+        this.conductorId = conductorId;
     }
 
     @Basic
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
+    @Column(name = "userId")
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Basic
@@ -83,8 +83,8 @@ public class QuestionEntity {
         QuestionEntity that = (QuestionEntity) o;
 
         if (quesId != that.quesId) return false;
-        if (managerId != null ? !managerId.equals(that.managerId) : that.managerId != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (information != null ? !information.equals(that.information) : that.information != null) return false;
         if (quesStatus != null ? !quesStatus.equals(that.quesStatus) : that.quesStatus != null) return false;
         if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
@@ -95,8 +95,8 @@ public class QuestionEntity {
     @Override
     public int hashCode() {
         int result = quesId;
-        result = 31 * result + (managerId != null ? managerId.hashCode() : 0);
-        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         result = 31 * result + (quesStatus != null ? quesStatus.hashCode() : 0);
         result = 31 * result + (subId != null ? subId.hashCode() : 0);

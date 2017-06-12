@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "slot", schema = "churchsys", catalog = "")
@@ -12,9 +12,9 @@ public class SlotEntity {
     private int slotId;
     private Integer eventId;
     private Integer roomId;
-    private Integer managerId;
+    private Integer conductorId;
     private Date slotDate;
-    private Integer slotHour;
+    private Integer slotHourId;
 
     @Id
     @Column(name = "slotId")
@@ -47,13 +47,13 @@ public class SlotEntity {
     }
 
     @Basic
-    @Column(name = "managerId")
-    public Integer getManagerId() {
-        return managerId;
+    @Column(name = "conductorId")
+    public Integer getConductorId() {
+        return conductorId;
     }
 
-    public void setManagerId(Integer managerId) {
-        this.managerId = managerId;
+    public void setConductorId(Integer conductorId) {
+        this.conductorId = conductorId;
     }
 
     @Basic
@@ -67,13 +67,13 @@ public class SlotEntity {
     }
 
     @Basic
-    @Column(name = "slotHour")
-    public Integer getSlotHour() {
-        return slotHour;
+    @Column(name = "slotHourId")
+    public Integer getSlotHourId() {
+        return slotHourId;
     }
 
-    public void setSlotHour(Integer slotHour) {
-        this.slotHour = slotHour;
+    public void setSlotHourId(Integer slotHourId) {
+        this.slotHourId = slotHourId;
     }
 
     @Override
@@ -86,9 +86,9 @@ public class SlotEntity {
         if (slotId != that.slotId) return false;
         if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
         if (roomId != null ? !roomId.equals(that.roomId) : that.roomId != null) return false;
-        if (managerId != null ? !managerId.equals(that.managerId) : that.managerId != null) return false;
+        if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
         if (slotDate != null ? !slotDate.equals(that.slotDate) : that.slotDate != null) return false;
-        if (slotHour != null ? !slotHour.equals(that.slotHour) : that.slotHour != null) return false;
+        if (slotHourId != null ? !slotHourId.equals(that.slotHourId) : that.slotHourId != null) return false;
 
         return true;
     }
@@ -98,9 +98,9 @@ public class SlotEntity {
         int result = slotId;
         result = 31 * result + (eventId != null ? eventId.hashCode() : 0);
         result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
-        result = 31 * result + (managerId != null ? managerId.hashCode() : 0);
+        result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
         result = 31 * result + (slotDate != null ? slotDate.hashCode() : 0);
-        result = 31 * result + (slotHour != null ? slotHour.hashCode() : 0);
+        result = 31 * result + (slotHourId != null ? slotHourId.hashCode() : 0);
         return result;
     }
 }

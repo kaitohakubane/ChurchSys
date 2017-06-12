@@ -13,5 +13,7 @@ public class UtilsConstant {
     public static final int THIRTY=30;
     public static final double HUNDRED_DOUBLE=100.0;
     public static final String ANONYMOUS_USER = "anonymousUser";
+    public static final String MANAGER_USER="ROLE_MANAGER";
+    public static final String NORMAL_USER="ROLE_USER";
     public static final String ZERO_STRING = "0";
 }

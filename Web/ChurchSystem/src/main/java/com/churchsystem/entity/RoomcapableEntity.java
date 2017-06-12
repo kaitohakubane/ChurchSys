@@ -3,14 +3,24 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 6/6/2017.
+ * Created by hungmcse61561-admin on 6/12/2017.
  */
 @Entity
 @Table(name = "roomcapable", schema = "churchsys", catalog = "")
 public class RoomcapableEntity {
+    private int roomCapId;
     private Integer roomId;
     private Integer subId;
-    private int roomCapId;
+
+    @Id
+    @Column(name = "roomCapId")
+    public int getRoomCapId() {
+        return roomCapId;
+    }
+
+    public void setRoomCapId(int roomCapId) {
+        this.roomCapId = roomCapId;
+    }
 
     @Basic
     @Column(name = "roomId")
@@ -32,16 +42,6 @@ public class RoomcapableEntity {
         this.subId = subId;
     }
 
-    @Id
-    @Column(name = "roomCapId")
-    public int getRoomCapId() {
-        return roomCapId;
-    }
-
-    public void setRoomCapId(int roomCapId) {
-        this.roomCapId = roomCapId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,9 +58,9 @@ public class RoomcapableEntity {
 
     @Override
     public int hashCode() {
-        int result = roomId != null ? roomId.hashCode() : 0;
+        int result = roomCapId;
+        result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
         result = 31 * result + (subId != null ? subId.hashCode() : 0);
-        result = 31 * result + roomCapId;
         return result;
     }
 }
