@@ -28,9 +28,9 @@ public class EventController {
     @RequestMapping(value = PageConstant.LOAD_EVENT_REGISTER_URL, method = RequestMethod.GET)
     public List<EventRegisterEntity> loadEventRegister() {
         List<EventRegisterEntity> results = new ArrayList<EventRegisterEntity>();
-
         return null;
     }
+
 
 
 }

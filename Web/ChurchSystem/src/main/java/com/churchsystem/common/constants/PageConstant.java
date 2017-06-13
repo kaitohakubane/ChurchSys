@@ -19,6 +19,8 @@ public class PageConstant {
 
     public static final String MANAGER_HOME_PAGE_URL = "/manager/home";
 
+    public static final String LOGIN_URL="/login";
+
 
 
     // Login
@@ -30,11 +32,11 @@ public class PageConstant {
     public static final String CHECK_LOGIN_URL="/api/login";
 
     // Event
-    public static final String LOAD_EVENT_REGISTER_URL = "/admin/event/load-event";
-    public static final String SCHEDULE_URL="/admin/schedule";
+    public static final String LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
+    public static final String SCHEDULE_URL="/manager/schedule";
 
     // Registration
-    public static final String REGISTRATION_MANAGEMENT_URL = "/admin/registration-management";
+    public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";
 
 
     // Room

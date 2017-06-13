@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-success col-sm-12">Auto event</button>
+                                <button class="btn btn-success col-sm-12">Auto event</button>
                             </div>
                             <div class="col-sm-6">
                                 <button id="createEventbtn" class="btn btn-primary col-sm-12">Create</button>
@@ -122,6 +122,65 @@
     </div>
 </div>
 
+<%--Event Detail--%>
+<div class="row eventDetailPopup" id="eventDetailPopup">
+    <div class="" style="width: 300px;">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Event Detail</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form class="form-horizontal form-label-left input_mask">
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Event title">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Slot:</label>
+                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-1">
+                            <input type="text" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Subject:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Assigned:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Room:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
+                            <button type="button" class="btn btn-default">Back</button>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <!-- FullCalendar -->

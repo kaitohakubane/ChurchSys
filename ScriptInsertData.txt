@@ -6,4 +6,113 @@ values ('kietta', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2'
 insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
 values ('trungtq', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Tran Quang Trung', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'trungta@gmail.com');
 
-SELECT * FROM churchsys.user;
+
+
+
+
+INSERT INTO Church(churchName,longitude,latitude,tel,mail,startTime,endTime,description,streamLink,streamStatus) 
+
+VALUES ('Chanh toa DN',1234,5678,'0123456789','ctdn@gmail.com','04:00:00', '21:00:00','abc', 'www.youtube.com/ctdn', 1);
+
+
+
+Insert into Type(description)
+values ('246');
+
+Insert into Type(description)
+values ('357');
+
+Insert into Type(description)
+values ('8');
+
+
+
+
+insert into Category(categoryName)
+values ('xinle');
+
+
+insert into category(categoryName)
+
+values ('lichconggiao');
+
+
+insert into category( categoryName)
+
+values ('dangkilopgiaoly');
+
+
+
+
+insert into Subject(subName,categoryId)
+
+values ('HonNhan',3);
+
+
+insert into Subject(subName,categoryId)
+
+values ('GiaoLy',3);
+
+
+insert into Room(roomName,roomStatus,churchId)
+
+values ('101',1,1);
+
+
+
+insert into Room(roomName,roomStatus,churchId)
+
+values ('102',1,1);
+
+
+
+
+
+
+
+
+insert into Room(roomName,roomStatus,churchId)
+
+values ('103',1,1);
+
+
+
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Le nhap dao',30,1,1,'2017/7/7',1,3,'2017/6/3','Day le le nhap doa',1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Lop giao li',30,1,1,'2017/7/7',1,1,'2017/6/3','Day la lop giao ly 1',1);
+
+
+insert into SlotHour(name,startTime,endTime) 
+
+values ('3','6:30:00','8:00:00');
+
+insert into SlotHour(name,startTime,endTime) 
+
+values ('4','9:00:00','10:30:00');
+
+insert into SlotHour(name,startTime,endTime) 
+
+values ('6','11:30:00','13:00:00');
+
+
+insert into Slot(eventId, roomId,conductorId,slotDate,slotHourId)
+
+values (1,1,1,'2017/6/12',1);
+
+
+insert into Slot(eventId, roomId,conductorId,slotDate,slotHourId)
+
+values (1,1,1,'2017/6/14',1);
+
+insert into Slot(eventId, roomId,conductorId,slotDate,slotHourId)
+
+values (2,3,1,'2017/6/18',3);
+
+
+
+

@@ -10,6 +10,7 @@ import java.sql.Date;
 @Table(name = "event", schema = "churchsys", catalog = "")
 public class EventEntity {
     private int eventId;
+    private String eventName;
     private Integer numOfSlot;
     private Integer churchId;
     private Integer eventStatus;
@@ -17,7 +18,8 @@ public class EventEntity {
     private Integer subId;
     private Integer typeId;
     private Date startDate;
-    private String decription;
+    private String description;
+    private Boolean privacy;
 
     @Id
     @Column(name = "eventId")
@@ -27,6 +29,16 @@ public class EventEntity {
 
     public void setEventId(int eventId) {
         this.eventId = eventId;
+    }
+
+    @Basic
+    @Column(name = "eventName")
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
     @Basic
@@ -100,13 +112,23 @@ public class EventEntity {
     }
 
     @Basic
-    @Column(name = "decription")
-    public String getDecription() {
-        return decription;
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Basic
+    @Column(name = "privacy")
+    public Boolean getPrivacy() {
+        return privacy;
+    }
+
+    public void setPrivacy(Boolean privacy) {
+        this.privacy = privacy;
     }
 
     @Override
@@ -117,6 +139,7 @@ public class EventEntity {
         EventEntity that = (EventEntity) o;
 
         if (eventId != that.eventId) return false;
+        if (eventName != null ? !eventName.equals(that.eventName) : that.eventName != null) return false;
         if (numOfSlot != null ? !numOfSlot.equals(that.numOfSlot) : that.numOfSlot != null) return false;
         if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (eventStatus != null ? !eventStatus.equals(that.eventStatus) : that.eventStatus != null) return false;
@@ -124,7 +147,8 @@ public class EventEntity {
         if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
         if (typeId != null ? !typeId.equals(that.typeId) : that.typeId != null) return false;
         if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
-        if (decription != null ? !decription.equals(that.decription) : that.decription != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (privacy != null ? !privacy.equals(that.privacy) : that.privacy != null) return false;
 
         return true;
     }
@@ -132,6 +156,7 @@ public class EventEntity {
     @Override
     public int hashCode() {
         int result = eventId;
+        result = 31 * result + (eventName != null ? eventName.hashCode() : 0);
         result = 31 * result + (numOfSlot != null ? numOfSlot.hashCode() : 0);
         result = 31 * result + (churchId != null ? churchId.hashCode() : 0);
         result = 31 * result + (eventStatus != null ? eventStatus.hashCode() : 0);
@@ -139,7 +164,8 @@ public class EventEntity {
         result = 31 * result + (subId != null ? subId.hashCode() : 0);
         result = 31 * result + (typeId != null ? typeId.hashCode() : 0);
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (decription != null ? decription.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (privacy != null ? privacy.hashCode() : 0);
         return result;
     }
 }

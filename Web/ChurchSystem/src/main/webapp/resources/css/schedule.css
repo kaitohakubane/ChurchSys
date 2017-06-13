@@ -1,9 +1,18 @@
 #calendarPopup {
-    width: 300px;
+    width:300px;
     position: fixed;
     display: none;
     z-index: 1;
 }
+
+#eventDetailPopup{
+    position: fixed;
+    display: none;
+    z-index: 100;
+}
+
+
+
 
 #external-events {
     float: left;
