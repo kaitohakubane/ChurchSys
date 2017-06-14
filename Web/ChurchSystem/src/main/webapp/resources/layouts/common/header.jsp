@@ -18,4 +18,5 @@
 <link href="<c:url value="/resources/lib/build/css/custom.min.css"/>" rel="stylesheet">
 <script language="javascript">
     var contextPath = "${pageContext.request.contextPath}";
+    var churchId=${sessionScope.churchId};
 </script>

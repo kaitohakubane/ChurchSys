@@ -34,6 +34,7 @@ public class PageConstant {
     // Event
     public static final String LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
     public static final String SCHEDULE_URL="/manager/schedule";
+    public static final String CREATE_EVENT_URL="/manager/eventManagement/Add";
 
     // Registration
     public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";

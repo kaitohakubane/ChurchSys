@@ -597,45 +597,48 @@
       <column id="166" parent="22" name="userId">
         <data-type>int(11)|0</data-type>
       </column>
-      <index id="167" parent="22" name="churchId">
+      <column id="167" parent="22" name="enabled">
+        <data-type>bit(1)|0</data-type>
+      </column>
+      <index id="168" parent="22" name="churchId">
         <columns>churchId</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="168" parent="22" name="userId">
+      <index id="169" parent="22" name="userId">
         <columns>userId</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="169" parent="22" name="PRIMARY">
+      <key id="170" parent="22" name="PRIMARY">
         <columns>interactionId</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="170" parent="22" name="interaction_ibfk_1">
+      <foreign-key id="171" parent="22" name="interaction_ibfk_1">
         <columns>churchId</columns>
         <ref-key>~.church.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="171" parent="22" name="interaction_ibfk_2">
+      <foreign-key id="172" parent="22" name="interaction_ibfk_2">
         <columns>userId</columns>
         <ref-key>~.user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="172" parent="23" name="slotHourId">
+      <column id="173" parent="23" name="slotHourId">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="173" parent="23" name="name">
+      <column id="174" parent="23" name="name">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="174" parent="23" name="startTime">
+      <column id="175" parent="23" name="startTime">
         <data-type>time|0</data-type>
       </column>
-      <column id="175" parent="23" name="endTime">
+      <column id="176" parent="23" name="endTime">
         <data-type>time|0</data-type>
       </column>
-      <key id="176" parent="23" name="PRIMARY">
+      <key id="177" parent="23" name="PRIMARY">
         <columns>slotHourId</columns>
         <primary>1</primary>
       </key>

@@ -23,8 +23,9 @@ $(document).ready(function () {
     terminateEventCreateMenu();
     $('#createEventbtn').on('click', function () {
         $("#calendarPopup").fadeOut();
-        $('#calendar').fullCalendar('renderEvent', creatingEvent);
-
+        var event=updateEvent(creatingEvent);
+        console.log(event);
+        $('#calendar').fullCalendar('renderEvent', event);
     })
 
 
@@ -64,7 +65,9 @@ function terminateEventCreateMenu() {
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
             ($('div#eventDetailPopup').has(e.target).length > 0)||($(e.target).attr('class').toString()
-                .indexOf('fc-title')>=0)||($(e.target).attr('class').toString().indexOf('fc-time')>=0))) {
+                .indexOf('fc-title')>=0)||($(e.target).attr('class').toString().indexOf('fc-time')>=0)||($(e.target)
+                .attr('class').toString()
+                .indexOf('fc-bg')>=0))) {
             $("#eventDetailPopup").fadeOut();
             console.log('close');
         }
@@ -317,7 +320,8 @@ function updateEvent(event) {
 
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
-    var requestData = normalizeEventObject(event);
+    var requestData = JSON.stringify(normalizeEventObject(event));
+    console.log(requestData);
     var result = null;
 
     $.ajax({
@@ -325,27 +329,30 @@ function updateEvent(event) {
         type: requestMethod,
         data: requestData,
         processData: false,
-        contentType: false,
+        contentType: 'application/json',
         dataType: 'json',
         success: function (res) {
             console.log('success');
+            console.log(res);
             result = res;
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
             console.error(textStatus);
         }
     });
-    console.log(result);
     return result;
 }
 
 //Normaliza data for event object
 function normalizeEventObject(event) {
+    console.log(event);
     var normalizedEvent = {
         eventName: event.title,
         subjectId: event.subjectId,
-        typeId: '',
+        duration:event.duration,
+        typeId: 1,
         startDate: event.start,
         privacy: 1
     }

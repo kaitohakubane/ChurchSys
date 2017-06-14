@@ -21,9 +21,12 @@ public class UserModel extends CommonDAO implements UserModelInterface {
         return result;
     }
 
-//    @Override
-//    public int getChurchIdByUserId(int userId){
-//        Criteria criteria=getSession().createCriteria(InteractionEntity.class).add(Restrictions.eq("userId",userId));
-//        InteractionEntity interactionEntity=criteria.
-//    }
+
+    @Override
+    public int getChurchIdByUserId(int userId){
+        Criteria criteria=getSession().createCriteria(InteractionEntity.class)
+                .add(Restrictions.eq("userId",userId)).add(Restrictions.eq("enabled",true));
+        InteractionEntity interactionEntity=(InteractionEntity) criteria.uniqueResult();
+        return interactionEntity.getChurchId();
+    }
 }

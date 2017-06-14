@@ -7,4 +7,5 @@ import com.churchsystem.entity.UserEntity;
  */
 public interface UserServiceInterface {
     UserEntity getUserByAccountId(String accountId);
+    int getChurchIdByUserId(int userId);
 }

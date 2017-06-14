@@ -30,16 +30,9 @@ public class ParamConstant {
     public static final String PASSWORD = "password";
 
     /**
-     * Product
+     * Church
      */
-    public static final String LIST_PRODUCT = "listProduct";
-    public static final String PRODUCT_ID = "productId";
-    public static final String PICTURE = "picture";
-    public static final String PRODUCT_NAME = "productName";
-    public static final String PRICE = "price";
-    public static final String SIZE = "size";
-    public static final String NATION = "nation";
-    public static final String DESCRIPTION = "description";
+    public static final String CHURCH_ID="churchId";
 
     /**
      * Registration
@@ -48,11 +41,9 @@ public class ParamConstant {
 
 
     /**
-     * Sale
+     * Event
      */
-    public static final String LIST_SALE_ATTR = "listSale";
-    public static final String SALE_ID = "saleId";
-    public static final String SALE_PERCENT = "salePercent";
+  public static final String EVENT_OBJECT="normalizedEvent";
 
     /**
      * Order

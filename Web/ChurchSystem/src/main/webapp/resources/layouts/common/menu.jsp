@@ -41,9 +41,9 @@
                     </li>
                     <li><a><i class="fa fa-edit"></i> Event <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="${pageContext.request.contextPath}/admin/registration-management">Registration
+                            <li><a href="${pageContext.request.contextPath}/manager/registration-management">Registration
                                 Management</a></li>
-                            <li><a href="${pageContext.request.contextPath}/admin/schedule">Event Schedule
+                            <li><a href="${pageContext.request.contextPath}/manager/schedule">Event Schedule
                             </a></li>
                         </ul>
 

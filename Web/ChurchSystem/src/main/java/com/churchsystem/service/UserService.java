@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
@@ -22,8 +23,9 @@ public class UserService implements UserServiceInterface {
         return userEntity;
     }
 
-//    @Override
-//    public int getChurchIdByUserId(int userId){
-//
-//    }
+    @Override
+    public int getChurchIdByUserId(int userId){
+        int  result=userModelInterface.getChurchIdByUserId(userId);
+        return result;
+    }
 }
