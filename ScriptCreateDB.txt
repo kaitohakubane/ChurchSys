@@ -204,7 +204,7 @@ create table SlotHour(
 	
 	slotHourId int not null auto_increment,
     
-	name nvarchar(255),
+	slotName nvarchar(255),
     
 	startTime time,
     

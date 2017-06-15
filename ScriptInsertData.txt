@@ -6,6 +6,8 @@ values ('kietta', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2'
 insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
 values ('trungtq', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Tran Quang Trung', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'trungta@gmail.com');
 
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+values ('kietta1', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'KietTA', 'ROLE_USER', '01234567890', 'User', '0123 456 789 0', 1, 'trungta@gmail.com');
 
 
 
@@ -19,17 +21,7 @@ values ('Nha Tho Hoa Minh',1234,5678,'0123456789','hoaminh@gmail.com','04:00:00'
 
 
 
-/*Event*/
-select * from event;
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
-values ('Giáo lí hôn nhân',30,1,1,null,30,1,'2017/6/3',null,1);
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
-values ('Giáo lí Thiếu Nhi 3',30,1,1,null,39,1,'2017/6/3',null,1);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
-values ('Giáo lí Dự Tòng',30,3,1,null,31,3,'2017/6/3',null,1);
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
-values ('Giáo lí Ấu Nhi 2',30,3,1,null,31,3,'2017/6/3',null,1);
 
 
 Insert into Type(description)
@@ -109,7 +101,36 @@ insert into Subject(subName,categoryId) values ('Lễ Đức Mẹ Vô Nhiễm Ng
 insert into Subject(subName,categoryId) values ('Lễ Chúa Giáng Sinh',1);
 insert into Subject(subName,categoryId) values ('Lễ Thánh Gia',1);
 
+/*Registration*/
 
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,30,null,null,1,1,'aaa');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,30,null,null,1,1,'bbb');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,39,null,null,1,1,'ccc');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,39,null,null,1,1,'ddd');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,31,null,null,1,1,'aaa');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,31,null,null,1,1,'bbb');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,35,null,null,1,1,'ccc');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,35,null,null,1,1,'ddd');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,35,null,null,1,1,'ddd');
+
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,2,33,null,null,1,1,'aaa');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,2,33,null,null,1,1,'bbb');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,2,40,null,null,1,1,'ccc');
+insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,2,40,null,null,1,1,'ddd');
+
+
+
+/*Event*/
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+values ('Giáo lí hôn nhân',30,1,1,null,30,1,'2017/6/3',null,1);
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+values ('Giáo lí Thiếu Nhi 3',30,1,1,null,39,1,'2017/6/3',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+values ('Giáo lí Dự Tòng',30,2,1,null,31,3,'2017/6/3',null,1);
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+values ('Giáo lí Ấu Nhi 2',30,2,1,null,35,3,'2017/6/3',null,1);
 insert into Room(roomName,roomStatus,churchId)
 
 values ('101',1,1);
@@ -124,20 +145,11 @@ insert into Room(roomName,roomStatus,churchId)
 values ('103',1,1);
 
 
-insert into SlotHour(name,startTime,endTime) 
+insert into SlotHour(slotName,startTime,endTime) 
 
-values ('3','6:30:00','8:00:00');
-
-insert into SlotHour(name,startTime,endTime) 
-
-values ('4','9:00:00','10:30:00');
-
-insert into SlotHour(name,startTime,endTime) 
-
-values ('6','11:30:00','13:00:00');
+values ('Slot 1','04:30:00','6:00:00');
 
 
-values (2,3,1,'2017/6/18',3);
 
 insert into interaction(userId,churchId,enabled) values(2,1,1);
 
