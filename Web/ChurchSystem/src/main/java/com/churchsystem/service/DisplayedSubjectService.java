@@ -1,6 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.entity.DisplayedSubjectEntity;
+import com.churchsystem.model.interfaces.DisplayedSubjectModelInterface;
 import com.churchsystem.service.interfaces.DisplayedSubjectServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,10 @@ import java.util.List;
 @Transactional
 public class DisplayedSubjectService implements DisplayedSubjectServiceInterface {
     @Autowired
-    DisplayedSubjectServiceInterface displayedSubjectServiceInterface;
+    DisplayedSubjectModelInterface displayedSubjectModelInterface;
 
     public List<DisplayedSubjectEntity> getDisplayedSubject() {
-        List<DisplayedSubjectEntity> result = displayedSubjectServiceInterface.getDisplayedSubject();
+        List<DisplayedSubjectEntity> result = displayedSubjectModelInterface.getDisplayedSubject();
         return result;
     }
 }
