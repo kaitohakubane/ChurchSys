@@ -16,10 +16,10 @@ import java.util.List;
 @Transactional
 public class RegisteredClassService implements RegisteredClassServiceInterface {
     @Autowired
-    RegisteredClassModelInterface registeredClassModelInterface;
+    RegisteredClassServiceInterface registeredClassServiceInterface;
 
-    public List<RegisteredClassEntity> getNumberOfRegistratedClassByChurchId(int churchId) {
-        List<RegisteredClassEntity> result = registeredClassModelInterface.getNumberOfRegistratedClassByChurchId(churchId);
+    public List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId) {
+        List<RegisteredClassEntity> result = registeredClassServiceInterface.getNumberOfRegisteredClassByChurchId(churchId);
         return result;
     }
 }

@@ -8,5 +8,5 @@ import java.util.List;
  * Created by Mr Kiet on 06/15/17.
  */
 public interface RegisteredClassServiceInterface {
-    List<RegisteredClassEntity> getNumberOfRegistratedClassByChurchId(int churchId);
+    List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId);
 }

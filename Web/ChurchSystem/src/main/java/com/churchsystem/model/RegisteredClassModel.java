@@ -16,8 +16,8 @@ import java.util.List;
 @Repository
 public class RegisteredClassModel extends CommonDAO implements RegisteredClassModelInterface {
     @Override
-    public List<RegisteredClassEntity> getNumberOfRegistratedClassByChurchId(int churchId) {
-        Query query = getSession().createQuery(SQLParamConstant.GET_NUMBER_OF_REGISTED_CLASS).setParameter("requireChurchId", churchId).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+    public List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId) {
+        Query query = getSession().createQuery(SQLParamConstant.GET_NUMBER_OF_REGISTERED_CLASS).setParameter("requireChurchId", churchId).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<RegisteredClassEntity> result = query.list();
         return result;
     }
