@@ -28,8 +28,10 @@ public class SQLParamConstant {
             "GROUP BY (s.subId)";
 
     public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +
-            " s.categoryId as categoryId, c.categoryName as categoryName " +
+            " s.categoryId as categoryId " +
             "FROM subject s, category c " +
             "WHERE s.categoryId = c.categoryId";
+
+
 
 }

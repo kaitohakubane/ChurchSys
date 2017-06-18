@@ -46,17 +46,14 @@ public class ParamConstant {
   public static final String EVENT_OBJECT="normalizedEvent";
 
     /**
-     * Order
+     * Subject
      */
-    public static final String ORDER = "order";
+    public static final String SUBJECT_LIST = "subjectList";
 
     /**
-     * Import Product
+     * Category
      */
-    public static final String LIST_IMPORT_ATTR = "listImport";
-    public static final String SUPPLIER = "supplier";
-    public static final String IMPORT_PRICE = "importPrice";
-    public static final String IMPORT_QUANTITY = "importQuantity";
+    public static final String CATEGORY_LIST="categoryList";
 
     /**
      * Stock

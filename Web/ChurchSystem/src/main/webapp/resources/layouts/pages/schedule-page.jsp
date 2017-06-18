@@ -21,7 +21,8 @@
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.print.css"/>" rel="stylesheet"
           media="print">
-
+    <%--Switchery--%>
+    <link href="<c:url value="/resources/lib/vendors/switchery/dist/switchery.min.css"/>" rel="stylesheet">
 
 </head>
 <body class="nav-md">
@@ -77,7 +78,7 @@
                     </div>
                     <div class="panel-body">
                         <form class="form" method="post">
-                            <div class="form-group has-success">
+                            <div class="col-md-8 form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                                     <input type="text" class="form-control" id="creatingEventName"
@@ -85,18 +86,35 @@
                                            placeholder="Please Input Name" required/><br/>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="col-md-4 form-group">
+                                <label class="control-label">Public</label>
+                                <label class="">
+                                    <input type="checkbox" class="js-switch" checked/>
+                                </label>
+                            </div>
+                            <div class="col-md-6 form-group left">
                                 <div class="input-group has-success">
                                     <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
-                                    <select class="form-control" id="eventType">
-                                        <option></option>
-                                        <option data-id="1">Wedding</option>
-                                        <option data-id='2'>Class 1</option>
-                                        <option data-id="3">Join Class</option>
+                                    <select class="form-control" id="category">
+                                        <c:forEach items="${categoryList}" var="item">
+                                            <option  value="${item.categoryId}">${item.categoryName}</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group has-success">
+                            <div class="col-md-6 form-group right">
+                                <div class="input-group has-success">
+                                    <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                                    <select class="form-control" id="eventType">
+                                        <c:forEach items="${subjectList}" var="item">
+                                            <option class="subClass" id="${item.subId}" value="${item.subName}"
+                                                    data-category="${item.categoryId}">${item.subName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
                                     <select class="form-control">
@@ -106,6 +124,7 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <button class="btn btn-success col-sm-12">Auto event</button>
                             </div>
@@ -185,7 +204,12 @@
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
+
+<!-- Switchery -->
+<script src="<c:url value="/resources/lib/vendors/switchery/dist/switchery.min.js"/>"></script>
+
 <script>
+    //    Class List
     var classList = [];
     <c:forEach items="${registeredClass}" var="item">
     var arr = [];
@@ -196,6 +220,8 @@
 
     classList.push(arr);
     </c:forEach>
+
+
 </script>
 <script src="<c:url value="/resources/js/schedule.js"/>"></script>
 

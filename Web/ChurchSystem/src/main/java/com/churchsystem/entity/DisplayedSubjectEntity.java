@@ -7,13 +7,11 @@ public class DisplayedSubjectEntity {
     private int subId;
     private String subName;
     private int categoryId;
-    private String categoryName;
 
-    public DisplayedSubjectEntity(int subId, String subName, int categoryId, String categoryName) {
+    public DisplayedSubjectEntity(int subId, String subName, int categoryId) {
         this.subId = subId;
         this.subName = subName;
         this.categoryId = categoryId;
-        this.categoryName = categoryName;
     }
 
     public DisplayedSubjectEntity() {
@@ -43,11 +41,4 @@ public class DisplayedSubjectEntity {
         this.categoryId = categoryId;
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
 }

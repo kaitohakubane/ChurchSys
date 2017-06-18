@@ -15,6 +15,7 @@ var lastClickedEvent = null;
 var lastEventColor = null;
 
 // Initial call -------------------------------------------------------
+generalInitial();
 calendarInitialize();
 classListInitial();
 registerClassList();
@@ -273,30 +274,43 @@ function calendarInitialize() {
 }
 
 
-// Event drop and Drag
-// function makeEventsDraggable () {
-//
-//     $('.fc-draggable').each(function() {
-//
-//         // store data so the calendar knows to render an event upon drop
-//         $(this).data('event', {
-//             title: $.trim($(this).text()), // use the element's text as the event title
-//             stick: true, // maintain when user navigates (see docs on the renderEvent method)
-//             start: "06:00",
-//             duration:"01:30",
-//             color: '#24ea12'
-//         });
-//
-//         // make the event draggable using jQuery UI
-//         $(this).draggable({
-//             zIndex: 999,
-//             revert: true,      // will cause the event to go back to its
-//             revertDuration: 0  //  original position after the drag
-//         });
-//     });
-//
-// }
+// General Initial set up for view
+function generalInitial(){
+    subjectDropdownEvent($('#category'));
+    $('#category').change(function() {
+        var firstVal = null;
+        var categoryValue = $(this).val();
+        $('#eventType option').each(function () {
+            var item = $(this);
+            if (!(item.data("category") == categoryValue)) {
+                item.hide();
+            } else {
+                if (firstVal == null) {
+                    firstVal = item.val();
+                }
+                item.show();
+            }
+        })
+        $('#eventType').val(firstVal);
+    })
+}
 
+function subjectDropdownEvent(category){
+    var firstVal=null;
+    var categoryValue=category.val();
+    $('#eventType option').each(function(){
+        var item=$(this);
+        if(!(item.data("category")==categoryValue)){
+            item.hide();
+        }else{
+            if(firstVal==null){
+                firstVal=item.val();
+            }
+            item.show();
+        }
+    })
+    $('#eventType').val(firstVal);
+}
 /* initialize the external events*/
 function classListInitial(){
     classList.forEach(function (item) {
