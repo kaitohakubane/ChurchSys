@@ -192,27 +192,17 @@ create table Slot (
     
 	conductorId int,
     
-	slotDate date,
+	slotDate date,    
+	
+	startTime time,
     
-	slotHourId int,
+	endTime time,
     
 	primary key (slotId)
     
 
 );
-create table SlotHour(
-	
-	slotHourId int not null auto_increment,
-    
-	name nvarchar(255),
-    
-	startTime time,
-    
-	endTime time,
-    
-	primary key (slotHourId)
 
-);
 create table interaction (
 	
 	interactionId int not null auto_increment,
@@ -304,8 +294,6 @@ alter table Contribution add foreign key (postId) references Post(postId);
 alter table Slot add foreign key (eventId) references Event(eventId);
 
 alter table Slot add foreign key (roomId) references Room (roomId);
-
-alter table Slot add foreign key (slotHourId) references SlotHour(slotHourId);
 
 alter table Slot add foreign key (conductorId) references User(userId);
 
