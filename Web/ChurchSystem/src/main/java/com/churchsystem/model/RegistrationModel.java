@@ -2,6 +2,7 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.RegisterDisplayEntity;
+import com.churchsystem.entity.RegisteredClassEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.RegistrationModelInterface;
 import org.hibernate.Criteria;
@@ -21,5 +22,13 @@ public class RegistrationModel extends CommonDAO implements RegistrationModelInt
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<RegisterDisplayEntity> results=query.list();
         return results;
+    }
+
+    @Override
+    public List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_REGISTERED_CLASS).
+                setParameter("requireChurchId", churchId).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<RegisteredClassEntity> result = query.list();
+        return result;
     }
 }

@@ -21,12 +21,14 @@ public class SQLParamConstant {
             "AND c.roomStatus =:status AND churchId=: selectedChurch";
 
     //KietTA
-    public static final String GET_NUMBER_OF_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName, count(s.subId) as numOfSlot " +
+    public static final String GET_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName," +
+            " count(s.subId) as numOfRegistration " +
             "FROM registration r, subject s " +
-            "WHERE r.churchId := requireChurchId and r.subId = s.subId " +
+            "WHERE r.churchId =:requireChurchId and r.subId = s.subId " +
             "GROUP BY (s.subId)";
 
-    public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName, s.categoryId as categoryId, c.categoryName as categoryName " +
+    public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +
+            " s.categoryId as categoryId, c.categoryName as categoryName " +
             "FROM subject s, category c " +
             "WHERE s.categoryId = c.categoryId";
 

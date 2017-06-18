@@ -22,6 +22,7 @@
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.print.css"/>" rel="stylesheet"
           media="print">
 
+
 </head>
 <body class="nav-md">
 <link href="<c:url value="/resources/css/schedule.css"/>" rel="stylesheet">
@@ -38,11 +39,7 @@
                         <div id='external-events'>
                             <div id='external-events-listing'>
                                 <h4>Ongoing Class</h4>
-                                <div class='fc-event'>My Event 1</div>
-                                <div class='fc-event'>My Event 2</div>
-                                <div class='fc-event'>My Event 3</div>
-                                <div class='fc-event'>My Event 4</div>
-                                <div class='fc-event'>My Event 5</div>
+
                             </div>
                         </div>
                     </div>
@@ -83,7 +80,8 @@
                             <div class="form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                                    <input type="text" class="form-control" id="creatingEventName" name="creatingEventName"
+                                    <input type="text" class="form-control" id="creatingEventName"
+                                           name="creatingEventName"
                                            placeholder="Please Input Name" required/><br/>
                                 </div>
                             </div>
@@ -103,8 +101,8 @@
                                     <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
                                     <select class="form-control">
                                         <option>Slot</option>
-                                        <option>1 (04:30 - 06:00) </option>
-                                        <option>2 (06:00 - 07:30) </option>
+                                        <option>1 (04:30 - 06:00)</option>
+                                        <option>2 (06:00 - 07:30)</option>
                                     </select>
                                 </div>
                             </div>
@@ -187,6 +185,19 @@
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
+<script>
+    var classList = [];
+    <c:forEach items="${registeredClass}" var="item">
+    var arr = [];
+
+    arr.push("<c:out value="${item.subId}" />");
+    arr.push("<c:out value="${item.subName}" />");
+    arr.push("<c:out value="${item.numOfRegistration}" />");
+
+    classList.push(arr);
+    </c:forEach>
+</script>
 <script src="<c:url value="/resources/js/schedule.js"/>"></script>
+
 </body>
 </html>

@@ -6,15 +6,16 @@ package com.churchsystem.entity;
 public class RegisteredClassEntity {
     private int subId;
     private String subName;
-    private int numOfSlot;
+    private int numOfRegistration;
 
     public RegisteredClassEntity() {
     }
 
-    public RegisteredClassEntity(int subId, String subName, int numOfSlot) {
+
+    public RegisteredClassEntity(int subId, String subName, int numOfRegistration) {
         this.subId = subId;
         this.subName = subName;
-        this.numOfSlot = numOfSlot;
+        this.numOfRegistration = numOfRegistration;
     }
 
     public int getSubId() {
@@ -33,11 +34,11 @@ public class RegisteredClassEntity {
         this.subName = subName;
     }
 
-    public int getNumOfSlot() {
-        return numOfSlot;
+    public int getNumOfRegistration() {
+        return numOfRegistration;
     }
 
-    public void setNumOfSlot(int numOfSlot) {
-        this.numOfSlot = numOfSlot;
+    public void setNumOfRegistration(int numOfRegistration) {
+        this.numOfRegistration = numOfRegistration;
     }
 }

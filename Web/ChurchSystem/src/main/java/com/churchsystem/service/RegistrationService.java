@@ -1,6 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.entity.RegisterDisplayEntity;
+import com.churchsystem.entity.RegisteredClassEntity;
 import com.churchsystem.model.interfaces.RegistrationModelInterface;
 import com.churchsystem.service.interfaces.RegistrationServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,10 @@ public class RegistrationService implements RegistrationServiceInterface {
     @Override
     public List<RegisterDisplayEntity> getRegistration() {
         return registrationModelInterface.getRegistration();
+    }
+
+    public List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId) {
+        List<RegisteredClassEntity> result = registrationModelInterface.getNumberOfRegisteredClassByChurchId(churchId);
+        return result;
     }
 }

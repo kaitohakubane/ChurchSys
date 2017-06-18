@@ -1,10 +1,6 @@
 /**
  * Created by hungmcse61561-admin on 6/9/2017.
  */
-
-calendarInitialize();
-registerClassList();
-
 //URL
 var CREATE_EVENT_URL = "/manager/eventManagement/Add";
 var UPDATE_EVENT_URL = "/manager/eventManagement/Update";
@@ -18,12 +14,20 @@ var lastClickedDay = null;
 var lastClickedEvent = null;
 var lastEventColor = null;
 
+// Initial call -------------------------------------------------------
+calendarInitialize();
+classListInitial();
+registerClassList();
+//---------------------------------------------------------------------
+
+
+
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 $(document).ready(function () {
     terminateEventCreateMenu();
     $('#createEventbtn').on('click', function () {
         $("#calendarPopup").fadeOut();
-        var event=updateEvent(creatingEvent);
+        var event = updateEvent(creatingEvent);
         console.log(event);
         $('#calendar').fullCalendar('renderEvent', event);
     })
@@ -59,17 +63,19 @@ function terminateEventCreateMenu() {
         }
 
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-            $('div#calendarPopup').has(e.target).length > 0)) {
+            $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
+                .indexOf('fc-widget-content')))) {
             $("#calendarPopup").fadeOut();
+            console.log('close');
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-            ($('div#eventDetailPopup').has(e.target).length > 0)||($(e.target).attr('class').toString()
-                .indexOf('fc-title')>=0)||($(e.target).attr('class').toString().indexOf('fc-time')>=0)||($(e.target)
+            ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
                 .attr('class').toString()
-                .indexOf('fc-bg')>=0))) {
+                .indexOf('fc-bg') >= 0))) {
             $("#eventDetailPopup").fadeOut();
-            console.log('close');
+
         }
     })
 }
@@ -103,7 +109,7 @@ function eventRegisterPopup(e, popup) {
         popup.css("bottom", "auto");
         popup.fadeIn();
     }
-    console.log("show");
+
 }
 
 function calendarInitialize() {
@@ -126,7 +132,10 @@ function calendarInitialize() {
         },
 
         select: function (start, end, allDay, jsEvent, view) {
-            // alert('you have clicked on this slot' + start.format());
+            var popup = $('#calendarPopup')
+            popup.fadeOut();
+            eventRegisterPopup(jsEvent, popup);
+            console.log("show");
         },
 
         dayClick: function (date, jsEvent, view) {
@@ -288,21 +297,30 @@ function calendarInitialize() {
 //
 // }
 
+/* initialize the external events*/
+function classListInitial(){
+    classList.forEach(function (item) {
+        var classTab = document.createElement('div');
+        classTab.className = "fc-event";
+        classTab.setAttribute('subId', item[0]);
+        classTab.textContent = item[1] + ": " + item[2];
+        $('#external-events-listing').append(classTab);
 
-/* initialize the external events
- -----------------------------------------------------------------*/
+    })
+}
+/* set attribute for event on drag table */
 function registerClassList() {
     $('#external-events .fc-event').each(function () {
-
-        // store data so the calendar knows to render an event upon drop
-        $(this).data('event', {
-            title: $.trim($(this).text()), // use the element's text as the event title
-            stick: true, // maintain when user navigates (see docs on the renderEvent method)
-            start: "06:00",
-            duration: "01:30",
-            color: '#24ea12',
-            privacy: 1
-        });
+            // store data so the calendar knows to render an event upon drop
+            $(this).data('event', {
+                title: $.trim($(this).text()), // use the element's text as the event title
+                stick: true, // maintain when user navigates (see docs on the renderEvent method)
+                start: "06:00",
+                duration: "01:30",
+                color: '#24ea12',
+                subId:$(this).attr('subId'),
+                privacy: 1
+            });
 
         // make the event draggable using jQuery UI
         $(this).draggable({
@@ -311,7 +329,7 @@ function registerClassList() {
             revertDuration: 0  //  original position after the drag
         });
 
-    });
+    })
 }
 // -------------------------------------------
 
@@ -351,7 +369,7 @@ function normalizeEventObject(event) {
     var normalizedEvent = {
         eventName: event.title,
         subjectId: event.subjectId,
-        duration:event.duration,
+        duration: event.duration,
         typeId: 1,
         startDate: event.start,
         privacy: 1

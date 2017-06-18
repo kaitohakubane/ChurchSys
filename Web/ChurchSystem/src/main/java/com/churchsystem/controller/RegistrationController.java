@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ import java.util.List;
 public class RegistrationController {
     @Autowired
     RegistrationServiceInterface registrationServiceInterface;
+
 
     @RequestMapping(value= PageConstant.REGISTRATION_MANAGEMENT_URL,method= RequestMethod.GET)
     public ModelAndView getAllRegistration(){
@@ -31,8 +33,11 @@ public class RegistrationController {
 
 
     @RequestMapping(value = PageConstant.SCHEDULE_URL, method = RequestMethod.GET)
-    public ModelAndView loadSchedule() {
+    public ModelAndView loadSchedule(HttpServletRequest request) {
         ModelAndView modelAndView=new ModelAndView(PageConstant.SCHEDULE_PAGE);
+        int churchId=(Integer)request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        modelAndView.addObject(ParamConstant.LIST_REGISTERED_CLASS_ATTR,
+                registrationServiceInterface.getNumberOfRegisteredClassByChurchId(churchId));
         return modelAndView;
     }
 

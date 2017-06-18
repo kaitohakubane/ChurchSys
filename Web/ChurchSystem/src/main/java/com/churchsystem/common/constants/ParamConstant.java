@@ -38,7 +38,7 @@ public class ParamConstant {
      * Registration
      */
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
-
+    public static final String LIST_REGISTERED_CLASS_ATTR="registeredClass";
 
     /**
      * Event

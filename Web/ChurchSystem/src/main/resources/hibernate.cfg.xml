@@ -11,7 +11,6 @@
     <mapping class="com.churchsystem.entity.ChurchEntity"/>
     <mapping class="com.churchsystem.entity.ContributionEntity"/>
     <mapping class="com.churchsystem.entity.EventEntity"/>
-    <mapping class="com.churchsystem.entity.ManagerEntity"/>
     <mapping class="com.churchsystem.entity.PostEntity"/>
     <mapping class="com.churchsystem.entity.QuestionEntity"/>
     <mapping class="com.churchsystem.entity.RegistrationEntity"/>
