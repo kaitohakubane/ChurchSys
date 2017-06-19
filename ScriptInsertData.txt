@@ -151,8 +151,30 @@ insert into interaction(userId,churchId,enabled) values(2,1,1);
 insert into interaction(userId,churchId,enabled) values(1,1,1);
 
 /*Slot*/
-insert into slot(eventId, roomId, conductorId, startTime, endTime) values(1,1,1,'2017-06-18 07:30:00','2017-06-18 10:30:00');
-insert into slot(eventId, roomId, conductorId, startTime, endTime) values(2,2,1,'2017-06-19 07:30:00','2017-06-19 12:00:00');
-insert into slot(eventId, roomId, conductorId, startTime, endTime) values(3,3,1,'2017-06-21 09:00:00','2017-06-21 12:00:00');
-insert into slot(eventId, roomId, conductorId, startTime, endTime) values(4,3,1,'2017-06-08 07:30:00','2017-06-08 09:00:00');
+insert into slot(eventId, roomId, conductorId) values(1,1,1);
+insert into slot(eventId, roomId, conductorId) values(2,2,1);
+insert into slot(eventId, roomId, conductorId) values(3,3,1);
+insert into slot(eventId, roomId, conductorId) values(4,3,1);
 
+/*SlotHour*/
+insert into SlotHour values (1,'Slot 1','04:30:00','6:00:00');
+
+insert into SlotHour values (2,'Slot 2','06:00:00','7:30:00');
+
+insert into SlotHour values (3,'Slot 3','07:30:00','9:00:00');
+
+insert into SlotHour values (4,'Slot 4','09:00:00','10:30:00');
+
+insert into SlotHour values (5,'Slot 5','10:30:00','12:00:00');
+
+insert into SlotHour values (6,'Slot 6','12:00:00','13:30:00');
+
+insert into SlotHour values (7,'Slot 7','13:30:00','15:00:00');
+
+insert into SlotHour values (8,'Slot 8','15:00:00','16:30:00');
+
+insert into SlotHour values (9,'Slot 9','16:30:00','18:00:00');
+
+insert into SlotHour values (10,'Slot 10','18:00:00','19:30:00');
+
+insert into SlotHour values (11,'Slot 11','19:30:00','21:00:00');

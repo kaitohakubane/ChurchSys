@@ -190,14 +190,34 @@ create table Slot (
 	roomId int,
     
 	conductorId int,
-	
-	startTime datetime,
     
-	endTime datetime,
-    
-	primary key (slotId)
-    
+	primary key (slotId)    
 
+);
+
+create table SlotHour(
+
+	slotHourId int NOT NULL ,
+
+	slotName nvarchar(50),
+
+	startTime time,
+
+	endTime time,
+
+	primary key (slotHourId)
+
+);
+
+create table Inclusion (
+	inclusionId int NOT NULL AUTO_INCREMENT,
+	
+	slotId int,
+	
+	slotHourId int,
+	
+	primary key (inclusionId)
+	
 );
 
 create table interaction (
@@ -207,11 +227,13 @@ create table interaction (
 	churchId int,
     
 	userId int,
+	
 	enabled bit,
     
 	primary key (interactionId)
 
 );
+
 create table Question (
 
 	
@@ -230,6 +252,7 @@ create table Question (
 	primary key (quesId)
 
 );
+
 create table Contribution(
 
 	contributeId int NOT NULL AUTO_INCREMENT,
@@ -243,6 +266,7 @@ create table Contribution(
 	primary key (contributeId)
 
 );
+
 create table RoomCapable (
 
 	roomCapId int NOT NULL AUTO_INCREMENT,
@@ -299,6 +323,10 @@ alter table Ability add foreign key (conductorId) references User(userId);
 alter table Ability add foreign key (subId) references Subject(subId);
 
 alter table Room add foreign key (churchId) references Church(churchId);
+
+alter table Inclusion add foreign key (slotId) references Slot(slotId);
+
+alter table Inclusion add foreign key (slotHourId) references SlotHour(slotHourId);
 
 alter table Interaction add foreign key (churchId) references Church(churchId);
 
