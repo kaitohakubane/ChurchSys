@@ -1,11 +1,10 @@
 package com.churchsystem.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
- * Created by hungmcse61561-admin on 6/12/2017.
+ * Created by hungmcse61561-admin on 6/18/2017.
  */
 @Entity
 @Table(name = "registration", schema = "churchsys", catalog = "")
@@ -15,8 +14,7 @@ public class RegistrationEntity {
     private Integer userId;
     private Integer churchId;
     private Integer subId;
-    private Date regisDate;
-    private Time estTime;
+    private Timestamp regisDate;
     private Integer regisStatus;
     private Integer result;
     private String message;
@@ -73,22 +71,12 @@ public class RegistrationEntity {
 
     @Basic
     @Column(name = "regisDate")
-    public Date getRegisDate() {
+    public Timestamp getRegisDate() {
         return regisDate;
     }
 
-    public void setRegisDate(Date regisDate) {
+    public void setRegisDate(Timestamp regisDate) {
         this.regisDate = regisDate;
-    }
-
-    @Basic
-    @Column(name = "estTime")
-    public Time getEstTime() {
-        return estTime;
-    }
-
-    public void setEstTime(Time estTime) {
-        this.estTime = estTime;
     }
 
     @Basic
@@ -134,7 +122,6 @@ public class RegistrationEntity {
         if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
         if (regisDate != null ? !regisDate.equals(that.regisDate) : that.regisDate != null) return false;
-        if (estTime != null ? !estTime.equals(that.estTime) : that.estTime != null) return false;
         if (regisStatus != null ? !regisStatus.equals(that.regisStatus) : that.regisStatus != null) return false;
         if (result != null ? !result.equals(that.result) : that.result != null) return false;
         if (message != null ? !message.equals(that.message) : that.message != null) return false;
@@ -150,7 +137,6 @@ public class RegistrationEntity {
         result1 = 31 * result1 + (churchId != null ? churchId.hashCode() : 0);
         result1 = 31 * result1 + (subId != null ? subId.hashCode() : 0);
         result1 = 31 * result1 + (regisDate != null ? regisDate.hashCode() : 0);
-        result1 = 31 * result1 + (estTime != null ? estTime.hashCode() : 0);
         result1 = 31 * result1 + (regisStatus != null ? regisStatus.hashCode() : 0);
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + (message != null ? message.hashCode() : 0);

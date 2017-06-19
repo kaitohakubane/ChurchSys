@@ -2,6 +2,7 @@ package com.churchsystem.entity;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  * Created by hungmcse61561-admin on 6/18/2017.
@@ -12,8 +13,8 @@ public class EventDataEntity {
     private int conductorId;
     private int roomId;
     private Integer subId;
-    private Date startTime;
-    private Date endTime;
+    private Timestamp startTime;
+    private Timestamp endTime;
     private String conductorName;
     private String roomName;
     private Boolean privacy;
@@ -25,8 +26,8 @@ public class EventDataEntity {
     public EventDataEntity() {
     }
 
-    public EventDataEntity(int slotId, int eventId, int conductorId, int roomId, Integer subId, Date startTime,
-                           Date endTime, String conductorName, String roomName, Boolean privacy, String description,
+    public EventDataEntity(int slotId, int eventId, int conductorId, int roomId, Integer subId, Timestamp startTime,
+                           Timestamp endTime, String conductorName, String roomName, Boolean privacy, String description,
                            String subName, Integer eventStatus, String eventName) {
         this.slotId = slotId;
         this.eventId = eventId;
@@ -84,19 +85,19 @@ public class EventDataEntity {
         this.subId = subId;
     }
 
-    public Date getStartTime() {
+    public Timestamp getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Timestamp getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 

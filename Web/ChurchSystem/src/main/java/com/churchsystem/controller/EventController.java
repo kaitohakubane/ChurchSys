@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -68,18 +69,20 @@ public class EventController {
     }
 
     @ResponseBody
-    @RequestMapping(value = PageConstant.CREATE_EVENT_URL, method = RequestMethod.POST)
-    public List<EventDisplayEntity> loadEventRegister() {
-        List<EventDataEntity>data= eventServiceInterface.getListOfEvent();
-        List<EventDisplayEntity>listEvent=new ArrayList<EventDisplayEntity>();
-        Iterator<EventDataEntity> itr=data.iterator();
-        while(itr.hasNext()){
-            EventDataEntity item=itr.next();
-
-        }
-
-        return null;
+    @RequestMapping(value = PageConstant.LOAD_EVENT_REGISTER_URL, method = RequestMethod.POST)
+    public List<EventDisplayEntity> loadEventRegister(HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        List<EventDisplayEntity>data= eventServiceInterface.getListOfEvent(churchId);
+        return data;
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.LOAD_PUBLIC_EVENT_REGISTER_URL, method = RequestMethod.POST)
+    public List<EventDisplayEntity> loadPublicEventRegister(HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        List<EventDisplayEntity>data= eventServiceInterface.getListOfPublicEvent(churchId);
+        return data;
+    }
 
 }

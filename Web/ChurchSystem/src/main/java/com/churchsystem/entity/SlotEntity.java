@@ -1,7 +1,7 @@
 package com.churchsystem.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by hungmcse61561-admin on 6/18/2017.
@@ -13,8 +13,8 @@ public class SlotEntity {
     private Integer eventId;
     private Integer roomId;
     private Integer conductorId;
-    private Date startTime;
-    private Date endTime;
+    private Timestamp startTime;
+    private Timestamp endTime;
 
     @Id
     @Column(name = "slotId")
@@ -58,21 +58,21 @@ public class SlotEntity {
 
     @Basic
     @Column(name = "startTime")
-    public Date getStartTime() {
+    public Timestamp getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }
 
     @Basic
     @Column(name = "endTime")
-    public Date getEndTime() {
+    public Timestamp getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 

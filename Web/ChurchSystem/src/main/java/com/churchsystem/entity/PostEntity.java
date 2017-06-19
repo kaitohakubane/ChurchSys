@@ -1,9 +1,10 @@
 package com.churchsystem.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
- * Created by hungmcse61561-admin on 6/12/2017.
+ * Created by hungmcse61561-admin on 6/18/2017.
  */
 @Entity
 @Table(name = "post", schema = "churchsys", catalog = "")
@@ -12,6 +13,7 @@ public class PostEntity {
     private Integer conductorId;
     private String title;
     private String information;
+    private Timestamp postDate;
     private Boolean isContribute;
 
     @Id
@@ -55,6 +57,16 @@ public class PostEntity {
     }
 
     @Basic
+    @Column(name = "postDate")
+    public Timestamp getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Timestamp postDate) {
+        this.postDate = postDate;
+    }
+
+    @Basic
     @Column(name = "isContribute")
     public Boolean getContribute() {
         return isContribute;
@@ -75,6 +87,7 @@ public class PostEntity {
         if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (information != null ? !information.equals(that.information) : that.information != null) return false;
+        if (postDate != null ? !postDate.equals(that.postDate) : that.postDate != null) return false;
         if (isContribute != null ? !isContribute.equals(that.isContribute) : that.isContribute != null) return false;
 
         return true;
@@ -86,6 +99,7 @@ public class PostEntity {
         result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
+        result = 31 * result + (postDate != null ? postDate.hashCode() : 0);
         result = 31 * result + (isContribute != null ? isContribute.hashCode() : 0);
         return result;
     }

@@ -12,10 +12,10 @@ import java.util.Date;
  */
 public class EventDisplayEntity {
     private int slotId;
-    private String eventName;
+    private String title;
     private String subName;
-    private String slotHourStart;
-    private String slotHourEnd;
+    private String start;
+    private String end;
     private String conductorName;
     private String roomName;
     private int privacy;
@@ -26,10 +26,10 @@ public class EventDisplayEntity {
 
     public EventDisplayEntity(EventDataEntity dataEntity) {
         this.slotId = dataEntity.getSlotId();
-        this.eventName = dataEntity.getEventName();
+        this.title = dataEntity.getEventName();
         this.subName = dataEntity.getSubName();
-        this.slotHourStart=StringUtils.formatDateToString(dataEntity.getStartTime());
-        this.slotHourEnd=StringUtils.formatDateToString(dataEntity.getEndTime());
+        this.start=StringUtils.formatDateToString(dataEntity.getStartTime());
+        this.end=StringUtils.formatDateToString(dataEntity.getEndTime());
         this.conductorName = dataEntity.getConductorName();
         this.roomName = dataEntity.getRoomName();
 
@@ -41,19 +41,6 @@ public class EventDisplayEntity {
         this.description=dataEntity.getDescription();
     }
 
-    public EventDisplayEntity(int slotId, String eventName, String subName, String slotHourStart,
-                              String slotHourEnd, String conductorName, String roomName, int privacy,
-                              String description) {
-        this.slotId = slotId;
-        this.eventName = eventName;
-        this.subName = subName;
-        this.slotHourStart = slotHourStart;
-        this.slotHourEnd = slotHourEnd;
-        this.conductorName = conductorName;
-        this.roomName = roomName;
-        this.privacy = privacy;
-        this.description = description;
-    }
 
     public int getSlotId() {
         return slotId;
@@ -63,12 +50,12 @@ public class EventDisplayEntity {
         this.slotId = slotId;
     }
 
-    public String getEventName() {
-        return eventName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getSubName() {
@@ -79,20 +66,20 @@ public class EventDisplayEntity {
         this.subName = subName;
     }
 
-    public String getSlotHourStart() {
-        return slotHourStart;
+    public String getStart() {
+        return start;
     }
 
-    public void setSlotHourStart(String slotHourStart) {
-        this.slotHourStart = slotHourStart;
+    public void setStart(String start) {
+        this.start = start;
     }
 
-    public String getSlotHourEnd() {
-        return slotHourEnd;
+    public String getEnd() {
+        return end;
     }
 
-    public void setSlotHourEnd(String slotHourEnd) {
-        this.slotHourEnd = slotHourEnd;
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     public String getConductorName() {

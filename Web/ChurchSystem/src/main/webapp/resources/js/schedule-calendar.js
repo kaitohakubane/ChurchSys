@@ -2,39 +2,36 @@
  * Created by hungmcse61561-admin on 6/9/2017.
  */
 //URL
-var CREATE_EVENT_URL = "/manager/eventManagement/Add";
-var UPDATE_EVENT_URL = "/manager/eventManagement/Update";
-var DELETE_EVENT_URL = "manager/eventManagement/Delete";
+
+var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 
 //local variable
 var creatingEvent;
 var calEventStatus = [];
-var defaultMovePlus = 10;
 var lastClickedDay = null;
 var lastClickedEvent = null;
 var lastEventColor = null;
+var eventList = [];
+var defaultMovePlus = 2;
 
 // Initial call -------------------------------------------------------
 generalInitial();
 calendarInitialize();
-classListInitial();
-registerClassList();
-//---------------------------------------------------------------------
 
+//---------------------------------------------------------------------
 
 
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 $(document).ready(function () {
-    terminateEventCreateMenu();
     $('#createEventbtn').on('click', function () {
         $("#calendarPopup").fadeOut();
         var event = updateEvent(creatingEvent);
-        console.log(event);
         $('#calendar').fullCalendar('renderEvent', event);
     })
 
 
 })
+
 var isEventOverDiv = function (x, y) {
 
     var external_events = $('#external-events');
@@ -54,32 +51,6 @@ var isEventOverDiv = function (x, y) {
 }
 
 
-function terminateEventCreateMenu() {
-
-    $(document).bind('click', function (e) {
-        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String)) {
-            $("#calendarPopup").fadeOut();
-            $("#eventDetailPopup").fadeOut();
-            return;
-        }
-
-        if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-            $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                .indexOf('fc-widget-content')))) {
-            $("#calendarPopup").fadeOut();
-            console.log('close');
-        }
-
-        if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-            ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
-                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
-                .attr('class').toString()
-                .indexOf('fc-bg') >= 0))) {
-            $("#eventDetailPopup").fadeOut();
-
-        }
-    })
-}
 
 
 function eventRegisterPopup(e, popup) {
@@ -194,6 +165,7 @@ function calendarInitialize() {
                 lastClickedEvent = $(this);
             }
             var popup = $('#eventDetailPopup');
+            inputEventPopupInformation(event);
             eventRegisterPopup(jsEvent, popup);
         },
 
@@ -250,18 +222,6 @@ function calendarInitialize() {
             }
         },
 
-        events: [
-            {
-                title: 'event3',
-                start: '2017-06-21T12:00:00',
-                end:'2017-06-21T13:30:00'
-            },
-            {
-                title: 'event3',
-                start: '2017-06-21T04:30:00',
-                end:'2017-06-21T06:00:00'
-            }
-        ],
         eventStartEditable: true,
         eventDurationEditable: true,
         droppable: true,
@@ -271,13 +231,19 @@ function calendarInitialize() {
         timeFormat: 'HH:mm'
     })
 
+
+    $("#calendar").fullCalendar('addEventSource', {
+        events: eventList,
+        color: '#43abc9'
+    })
 }
 
 
 // General Initial set up for view
-function generalInitial(){
+function generalInitial() {
+    loadEvent();
     subjectDropdownEvent($('#category'));
-    $('#category').change(function() {
+    $('#category').change(function () {
         var firstVal = null;
         var categoryValue = $(this).val();
         $('#eventType option').each(function () {
@@ -295,99 +261,50 @@ function generalInitial(){
     })
 }
 
-function subjectDropdownEvent(category){
-    var firstVal=null;
-    var categoryValue=category.val();
-    $('#eventType option').each(function(){
-        var item=$(this);
-        if(!(item.data("category")==categoryValue)){
-            item.hide();
-        }else{
-            if(firstVal==null){
-                firstVal=item.val();
-            }
-            item.show();
-        }
-    })
-    $('#eventType').val(firstVal);
-}
-/* initialize the external events*/
-function classListInitial(){
-    classList.forEach(function (item) {
-        var classTab = document.createElement('div');
-        classTab.className = "fc-event";
-        classTab.setAttribute('subId', item[0]);
-        classTab.textContent = item[1] + ": " + item[2];
-        $('#external-events-listing').append(classTab);
+function loadEvent() {
 
-    })
-}
-/* set attribute for event on drag table */
-function registerClassList() {
-    $('#external-events .fc-event').each(function () {
-            // store data so the calendar knows to render an event upon drop
-            $(this).data('event', {
-                title: $.trim($(this).text()), // use the element's text as the event title
-                stick: true, // maintain when user navigates (see docs on the renderEvent method)
-                start: "06:00",
-                duration: "01:30",
-                color: '#24ea12',
-                subId:$(this).attr('subId'),
-                privacy: 1
-            });
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-            zIndex: 999,
-            revert: true,      // will cause the event to go back to its
-            revertDuration: 0  //  original position after the drag
-        });
-
-    })
-}
-// -------------------------------------------
-
-
-function updateEvent(event) {
-
-    var requestURL = contextPath + CREATE_EVENT_URL;
+    var requestURL = contextPath + LOAD_EVENT_REGISTER_URL;
     var requestMethod = "POST";
-    var requestData = JSON.stringify(normalizeEventObject(event));
-    console.log(requestData);
-    var result = null;
 
     $.ajax({
         url: requestURL,
         type: requestMethod,
-        data: requestData,
+        async: false,
         processData: false,
-        contentType: 'application/json',
         dataType: 'json',
         success: function (res) {
-            console.log('success');
-            console.log(res);
-            result = res;
-
+            eventList = res;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
             console.error(textStatus);
         }
     });
-    return result;
 }
 
-//Normaliza data for event object
-function normalizeEventObject(event) {
-    console.log(event);
-    var normalizedEvent = {
-        eventName: event.title,
-        subjectId: event.subjectId,
-        duration: event.duration,
-        typeId: 1,
-        startDate: event.start,
-        privacy: 1
-    }
-    return normalizedEvent;
+function subjectDropdownEvent(category) {
+    var firstVal = null;
+    var categoryValue = category.val();
+    $('#eventType option').each(function () {
+        var item = $(this);
+        if (!(item.data("category") == categoryValue)) {
+            item.hide();
+        } else {
+            if (firstVal == null) {
+                firstVal = item.val();
+            }
+            item.show();
+        }
+    })
+    $('#eventType').val(firstVal);
 }
+
+
+
+
+
+
+
+
+
 

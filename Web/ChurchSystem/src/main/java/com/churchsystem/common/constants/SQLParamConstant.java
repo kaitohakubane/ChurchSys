@@ -18,7 +18,7 @@ public class SQLParamConstant {
     public static final String GET_ROOM_FOR_SUBJECT_IN_TIME = "SELECT c.roomId, c.roomName FROM room c " +
             "WHERE  c.roomId IN (SELECT roomId FROM roomcapable WHERE subId =: requireSubId) " +
             "AND c.roomId <> ANY (SELECT roomId FROM slot WHERE slotDate =: registeredDate  AND slotHour =: registeredHour) " +
-            "AND c.roomStatus =:status AND churchId=: selectedChurch";
+            "AND c.roomStatus =:status AND churchId =:requireChurchId";
 
     //KietTA
     public static final String GET_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName," +
@@ -37,6 +37,15 @@ public class SQLParamConstant {
             " s.startTime as startTime, s.endTime as endTime, u.userName as conductorName, r.roomName as roomName, " +
             "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
             "e.eventName as eventName FROM slot s,event e, room r, subject su, user u " +
-            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId";
+            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId" +
+            " AND e.churchId =:requireChurchId";
+
+    public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT ="SELECT s.slotId as slotId, s.eventId as eventId," +
+            " s.conductorId as conductorId, s.roomId as roomId, su.subId as subId," +
+            " s.startTime as startTime, s.endTime as endTime, u.userName as conductorName, r.roomName as roomName, " +
+            "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
+            "e.eventName as eventName FROM slot s,event e, room r, subject su, user u " +
+            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId" +
+            " AND e.privacy = true and e.churchId =:requireChurchId";
 
 }

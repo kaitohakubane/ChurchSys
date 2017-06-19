@@ -105,20 +105,20 @@ insert into Subject(subName,categoryId) values ('Lễ Thánh Gia',1);
 
 /*Registration*/
 
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,30,null,null,1,1,'aaa');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,30,null,null,1,1,'bbb');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,39,null,null,1,1,'ccc');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,39,null,null,1,1,'ddd');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,31,null,null,1,1,'aaa');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,31,null,null,1,1,'bbb');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,1,35,null,null,1,1,'ccc');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,35,null,null,1,1,'ddd');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,1,35,null,null,1,1,'ddd');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,3,1,30,null,1,1,'aaa');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,4,1,30,null,1,1,'bbb');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,3,1,39,null,1,1,'ccc');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,4,1,39,null,1,1,'ddd');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,3,1,31,null,1,1,'aaa');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,4,1,31,null,1,1,'bbb');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,3,1,35,null,1,1,'ccc');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,4,1,35,null,1,1,'ddd');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,4,1,35,null,1,1,'ddd');
 
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,2,33,null,null,1,1,'aaa');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,2,33,null,null,1,1,'bbb');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,3,2,40,null,null,1,1,'ccc');
-insert into registration(eventid, userid, churchid, subid, regisDate, estTime, regisStatus, result, message) values(null,4,2,40,null,null,1,1,'ddd');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,3,2,33,null,1,1,'aaa');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,4,2,33,null,1,1,'bbb');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,3,2,40,null,1,1,'ccc');
+insert into registration(eventid, userid, churchid, subid, regisDate, regisStatus, result, message) values(null,4,2,40,null,1,1,'ddd');
 
 
 

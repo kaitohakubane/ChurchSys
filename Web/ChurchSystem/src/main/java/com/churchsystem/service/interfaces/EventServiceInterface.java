@@ -1,6 +1,7 @@
 package com.churchsystem.service.interfaces;
 
 import com.churchsystem.entity.EventDataEntity;
+import com.churchsystem.entity.EventDisplayEntity;
 
 import java.util.List;
 
@@ -8,5 +9,6 @@ import java.util.List;
  * Created by hungmcse61561-admin on 6/18/2017.
  */
 public interface EventServiceInterface {
-    List<EventDataEntity> getListOfEvent();
+    List<EventDisplayEntity> getListOfEvent(int churchId);
+    List<EventDisplayEntity> getListOfPublicEvent(int churchId);
 }

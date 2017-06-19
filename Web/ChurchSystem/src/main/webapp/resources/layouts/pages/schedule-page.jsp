@@ -152,35 +152,35 @@
 
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Event title">
+                            <input type="text" id="eventPopupTitle" class="form-control" placeholder="Event title">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Slot:</label>
-                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-1">
-                            <input type="text" class="form-control" disabled="readonly">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" id="eventPopupTime" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Subject:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
-                            <input type="text" class="form-control" disabled="readonly">
+                            <input type="text" id="eventPopupSubject" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Assigned:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
-                            <input type="text" class="form-control" disabled="readonly">
+                            <input type="text" id="eventPopupConductor" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Room:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
-                            <input type="text" class="form-control" disabled="readonly">
+                            <input type="text" id="eventPopupRoom" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
@@ -223,7 +223,8 @@
 
 
 </script>
-<script src="<c:url value="/resources/js/schedule.js"/>"></script>
+<script src="<c:url value="/resources/js/schedule-calendar.js"/>"></script>
+<script src="<c:url value="/resources/js/schedule-general.js"/>"></script>
 
 </body>
 </html>

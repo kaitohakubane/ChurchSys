@@ -154,9 +154,7 @@ create table Registration (
     
 	subId int,
        
-	regisDate date,
-    
-	estTime time,
+	regisDate datetime,
     
 	regisStatus int,
     
@@ -176,6 +174,7 @@ CREATE table Post (
 	title nvarchar (255),    
     
 	information nvarchar (255),
+	postDate datetime,
     
 	isContribute bit,
     
@@ -192,9 +191,9 @@ create table Slot (
     
 	conductorId int,
 	
-	startTime date,
+	startTime datetime,
     
-	endTime date,
+	endTime datetime,
     
 	primary key (slotId)
     

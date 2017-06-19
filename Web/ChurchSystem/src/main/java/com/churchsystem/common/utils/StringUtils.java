@@ -4,6 +4,7 @@ import com.churchsystem.common.constants.UtilsConstant;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,8 +38,8 @@ public class StringUtils {
         return result;
     }
 
-    public static String formatDateToString(Date date){
-        String strDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").format(date);
+    public static String formatDateToString(Timestamp date){
+        String strDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(date);
         return strDate;
     }
 
