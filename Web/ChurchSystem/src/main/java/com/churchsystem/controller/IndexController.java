@@ -47,6 +47,12 @@ public class IndexController {
     }
 
 
+    @RequestMapping(value = {"/test"}, method = RequestMethod.GET)
+    public ModelAndView initTestPage() {
+        ModelAndView modelAndView = new ModelAndView("user-pages/event-page");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getAccount() {
         ModelAndView modelAndView;
