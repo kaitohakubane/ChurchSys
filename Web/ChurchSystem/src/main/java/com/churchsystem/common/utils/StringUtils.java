@@ -3,6 +3,7 @@ package com.churchsystem.common.utils;
 import com.churchsystem.common.constants.UtilsConstant;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +38,7 @@ public class StringUtils {
     }
 
     public static String formatDateToString(Date date){
-        String strDate = new SimpleDateFormat("dd-MM-yyyy").format(date);
+        String strDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").format(date);
         return strDate;
     }
 

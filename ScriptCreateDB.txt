@@ -84,7 +84,7 @@ create table Subject (
 );
 create table Category(
 	
-	categoryId int NOT NULL AUTO_INCREMENT,
+	categoryId int ,
     
 	categoryName nvarchar (255),
     
@@ -110,7 +110,7 @@ create table Event(
 	
 	eventId int NOT NULL AUTO_INCREMENT,
     
-    eventName nvarchar(255),
+    	eventName nvarchar(255),
     
 	numOfSlot int,
     
@@ -128,7 +128,7 @@ create table Event(
     
 	description nvarchar(255),
     
-    privacy bit,
+    	privacy bit,
     
 	primary key (eventId)
 
@@ -191,12 +191,10 @@ create table Slot (
 	roomId int,
     
 	conductorId int,
-    
-	slotDate date,    
 	
-	startTime time,
+	startTime date,
     
-	endTime time,
+	endTime date,
     
 	primary key (slotId)
     

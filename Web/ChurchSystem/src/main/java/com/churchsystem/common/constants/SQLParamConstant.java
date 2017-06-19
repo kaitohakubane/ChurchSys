@@ -30,8 +30,13 @@ public class SQLParamConstant {
     public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +
             " s.categoryId as categoryId " +
             "FROM subject s, category c " +
-            "WHERE s.categoryId = c.categoryId";
+            "WHERE s.categoryId = c.categoryId AND c.categoryId != 3";
 
-
+    public static final String GET_EVENT_DISPLAY_SLOT ="SELECT s.slotId as slotId, s.eventId as eventId," +
+            " s.conductorId as conductorId, s.roomId as roomId, su.subId as subId," +
+            " s.startTime as startTime, s.endTime as endTime, u.userName as conductorName, r.roomName as roomName, " +
+            "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
+            "e.eventName as eventName FROM slot s,event e, room r, subject su, user u " +
+            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId";
 
 }

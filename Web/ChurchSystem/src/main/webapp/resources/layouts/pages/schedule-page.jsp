@@ -188,7 +188,7 @@
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-default">Back</button>
+                            <button type="button" class="btn btn-default">OK</button>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </div>
                     </div>

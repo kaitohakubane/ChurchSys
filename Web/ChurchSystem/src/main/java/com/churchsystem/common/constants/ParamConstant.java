@@ -54,6 +54,7 @@ public class ParamConstant {
      * Category
      */
     public static final String CATEGORY_LIST="categoryList";
+    public static final int NOT_EVENT_CATEGORY_ID=3;
 
     /**
      * Stock

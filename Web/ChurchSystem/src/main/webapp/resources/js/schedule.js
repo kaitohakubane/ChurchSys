@@ -254,12 +254,12 @@ function calendarInitialize() {
             {
                 title: 'event3',
                 start: '2017-06-21T12:00:00',
-                allDay: false // will make the time show
+                end:'2017-06-21T13:30:00'
             },
             {
-                title: 'event4',
-                start: '2017-06-21T12:30:00',
-                allDay: false // will make the time show
+                title: 'event3',
+                start: '2017-06-21T04:30:00',
+                end:'2017-06-21T06:00:00'
             }
         ],
         eventStartEditable: true,

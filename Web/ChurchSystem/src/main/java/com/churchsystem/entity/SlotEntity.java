@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 6/12/2017.
+ * Created by hungmcse61561-admin on 6/18/2017.
  */
 @Entity
 @Table(name = "slot", schema = "churchsys", catalog = "")
@@ -13,8 +13,8 @@ public class SlotEntity {
     private Integer eventId;
     private Integer roomId;
     private Integer conductorId;
-    private Date slotDate;
-    private Integer slotHourId;
+    private Date startTime;
+    private Date endTime;
 
     @Id
     @Column(name = "slotId")
@@ -57,23 +57,23 @@ public class SlotEntity {
     }
 
     @Basic
-    @Column(name = "slotDate")
-    public Date getSlotDate() {
-        return slotDate;
+    @Column(name = "startTime")
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setSlotDate(Date slotDate) {
-        this.slotDate = slotDate;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
     @Basic
-    @Column(name = "slotHourId")
-    public Integer getSlotHourId() {
-        return slotHourId;
+    @Column(name = "endTime")
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setSlotHourId(Integer slotHourId) {
-        this.slotHourId = slotHourId;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     @Override
@@ -87,8 +87,8 @@ public class SlotEntity {
         if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
         if (roomId != null ? !roomId.equals(that.roomId) : that.roomId != null) return false;
         if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
-        if (slotDate != null ? !slotDate.equals(that.slotDate) : that.slotDate != null) return false;
-        if (slotHourId != null ? !slotHourId.equals(that.slotHourId) : that.slotHourId != null) return false;
+        if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
+        if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
 
         return true;
     }
@@ -99,8 +99,8 @@ public class SlotEntity {
         result = 31 * result + (eventId != null ? eventId.hashCode() : 0);
         result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
         result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
-        result = 31 * result + (slotDate != null ? slotDate.hashCode() : 0);
-        result = 31 * result + (slotHourId != null ? slotHourId.hashCode() : 0);
+        result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
+        result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
         return result;
     }
 }
