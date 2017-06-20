@@ -133,7 +133,7 @@ insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typ
 values ('Tiếp Sức Mùa Thi 2017',30,2,1,null,20,3,'2017/6/3',null,1);
 insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
 values ('An Táng Đa Minh Hiển',30,2,1,null,5,3,'2017/6/3',null,1);
-insert into Room(roomName,roomStatus,churchId)
+
 insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
 
 values ('Thánh Lễ',30,1,1,null,5,3,'2017/6/4',null,1);
