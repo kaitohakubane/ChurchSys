@@ -70,7 +70,7 @@
 <div class="container">
     <div class="row block-center calendarPopup" id="calendarPopup">
         <div id="form-box">
-            <form action="#" method="#">
+            <%--<div action="#" method="#">--%>
                 <div class="panel panel-success">
                     <div class="panel-heading" id="panel-heading">
                         <h2 class="titre text-center">Event</h2>
@@ -127,7 +127,7 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <button class="btn btn-success col-sm-12">Auto event</button>
+                                <button class="btn btn-success col-sm-12">Cancel</button>
                             </div>
                             <div class="col-sm-6">
                                 <button id="createEventbtn" class="btn btn-primary col-sm-12">Create</button>
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            <%--</div>--%>
         </div>
     </div>
 </div>
@@ -157,7 +157,7 @@
                         <div class="col-md-4 form-group pull-right">
                             <label class="control-label">Public</label>
                             <label class="">
-                                <input type="checkbox" class="js-switch" checked/>
+                                <input type="checkbox" id="eventDetailIsPublic" class="js-switch" checked/>
                             </label>
                         </div>
                     </div>

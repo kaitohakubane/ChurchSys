@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <!-- navbar left -->
-<div id="wrapper" class="active">
+<div id="wrapper">
     <div id="sidebar-wrapper">
         <ul id="sidebar_menu" class="sidebar-nav">
             <li class="sidebar-brand"><a id="menu-toggle" href="#">Nhà thờ Online<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>

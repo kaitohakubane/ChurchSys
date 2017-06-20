@@ -1,10 +1,13 @@
 package com.churchsystem.model;
 
+import com.churchsystem.common.constants.ParamConstant;
+import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -28,5 +31,13 @@ public class UserModel extends CommonDAO implements UserModelInterface {
                 .add(Restrictions.eq("userId",userId)).add(Restrictions.eq("enabled",true));
         InteractionEntity interactionEntity=(InteractionEntity) criteria.uniqueResult();
         return interactionEntity.getChurchId();
+    }
+
+    @Override
+    public int getSuitableConductorForSlot(int slotHourId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_CONDUCTOR_FOR_SLOT)
+                .setParameter(ParamConstant.SLOT_HOUR,slotHourId);
+        int result=(Integer)query.uniqueResult();
+        return result;
     }
 }

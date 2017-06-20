@@ -8,4 +8,5 @@ import com.churchsystem.entity.UserEntity;
 public interface UserModelInterface {
     UserEntity getUserByAccountId(String accountId);
     int getChurchIdByUserId(int userId);
+    int getSuitableConductorForSlot(int slotHourId);
 }

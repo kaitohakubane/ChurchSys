@@ -54,6 +54,7 @@ public class ParamConstant {
     public static final int APPROVE_STATUS=3;
     public static final int CONFLICT_STATUS=4;
     public static final int FINISH_STATUS=5;
+    public static final String EVENT_ID="eventId";
 
 
     /**
@@ -79,4 +80,10 @@ public class ParamConstant {
      */
     public static final String SLOT_HOUR_LIST = "slotHourList";
     public static final String SLOT_HOUR="slotHour";
+    public static final String CONDUCTOR_ID="conductorId";
+    public static final String SLOT_ID="slotId";
+    /**
+     * Room
+     */
+    public static final String ROOM_ID="roomId";
 }

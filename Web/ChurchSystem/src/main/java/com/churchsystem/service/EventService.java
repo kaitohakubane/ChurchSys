@@ -1,11 +1,11 @@
 package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
-import com.churchsystem.entity.EventDataEntity;
-import com.churchsystem.entity.EventDisplayEntity;
-import com.churchsystem.entity.EventEntity;
-import com.churchsystem.entity.SlotEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.EventModelInterface;
+import com.churchsystem.model.interfaces.RoomModelInterface;
+import com.churchsystem.model.interfaces.SlotModelInterface;
+import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.EventServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +23,15 @@ import java.util.List;
 public class EventService implements EventServiceInterface {
     @Autowired
     EventModelInterface eventModelInterface;
+
+    @Autowired
+    RoomModelInterface roomModelInterface;
+
+    @Autowired
+    UserModelInterface userModelInterface;
+
+    @Autowired
+    SlotModelInterface slotModelInterface;
 
     @Override
     public List<EventDisplayEntity> getListOfEvent(int churchId) {
@@ -50,7 +59,13 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public void createEvent(String eventName, Date eventDate,int subId, int slotHour,boolean privacy, int churchId){
+    public EventDataEntity getCreatedEvent(int slotId){
+        return eventModelInterface.getCreatedEvent(slotId);
+    }
+
+
+    @Override
+    public SlotEntity createEvent(String eventName, Date eventDate,int subId, int slotHour,boolean privacy, int churchId){
         EventEntity inputEvent=new EventEntity();
         inputEvent.setChurchId(churchId);
         inputEvent.setEventStatus(ParamConstant.APPROVE_STATUS);
@@ -60,8 +75,29 @@ public class EventService implements EventServiceInterface {
         inputEvent.setPrivacy(privacy);
         eventModelInterface.addNewEvent(inputEvent);
 
+        //Need to fix
+
+        int conductorId=userModelInterface.getSuitableConductorForSlot(slotHour);
+        int roomId=roomModelInterface.getSuitableRoomForSlot(slotHour);
+
+
         SlotEntity slotEntity=new SlotEntity();
+        slotEntity.setConductorId(conductorId);
+        slotEntity.setRoomId(roomId);
+        slotEntity.setSlotDate(eventDate);
+        slotModelInterface.addNewSlot(slotEntity);
+        return slotEntity;
+    }
 
-
+    @Override
+    public SlotEntity mappingResource(Date date,int subId,int conductorId,int churchId,int slotHour){
+        EventEntity eventEntity= eventModelInterface.getCreatingEvent(date,ParamConstant.APPROVE_STATUS,subId,churchId);
+        SlotEntity slotEntity=slotModelInterface.getUnassignedEventSlot(conductorId);
+        slotEntity.setEventId(eventEntity.getEventId());
+        InclusionEntity inclusionEntity=new InclusionEntity();
+        inclusionEntity.setSlotHourId(slotHour);
+        inclusionEntity.setSlotId(slotEntity.getSlotId());
+        slotModelInterface.mappingSlotHour(inclusionEntity);
+        return slotEntity;
     }
 }

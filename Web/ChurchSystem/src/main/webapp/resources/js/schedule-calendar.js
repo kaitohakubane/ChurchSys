@@ -27,8 +27,13 @@ $(document).ready(function () {
         $("#calendarPopup").fadeOut();
         var startTime=$("#slotNum").children(":selected").attr("id");
         var isPublic=$("#createEventPopupIsPublic").prop('checked');
-        createEvent(creatingEvent,startTime,isPublic);
-        // $('#calendar').fullCalendar('renderEvent', creatingEvent);
+        if(isPublic){
+            createEvent(creatingEvent,startTime,1);
+        }else{
+            createEvent(creatingEvent,startTime,0);
+        }
+        console.log(creatingEvent);
+        $('#calendar').fullCalendar('renderEvent', creatingEvent);
     })
 
 
@@ -137,7 +142,7 @@ function calendarInitialize() {
             }
 
             creatingEvent = {
-                title: eventName,
+                title: $('#creatingEventName').val(),
                 start: date.format() + 'T04:30',
                 color: '#24ea12',
                 duration: '01:30',
@@ -276,6 +281,7 @@ function loadEvent() {
         dataType: 'json',
         success: function (res) {
             eventList = res;
+            console.log(eventList);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -307,24 +313,23 @@ function createEvent(event,slotId,isPublic) {
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
     var requestData = {
-        eventTitle: event.title,
-        eventDate: event.start.split("T")[0],
-        subId: event.subjectId,
+        eventName: $('#creatingEventName').val(),
+        slotDate: event.start.split("T")[0],
+        subId: $('#eventType').children(":selected").attr("id"),
         slotHour: slotId,
-        isPublic: isPublic
+        privacy: isPublic
     }
-    console.log(requestData)
-    var result = null;
 
     $.ajax({
         url: requestURL,
         type: requestMethod,
-        data: requestData,
+        data: JSON.stringify(requestData),
         async:false,
+        contentType:'application/json',
         processData: false,
         dataType: 'json',
         success: function (res) {
-            creatingEvent = res;
+            creatingEvent=res;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

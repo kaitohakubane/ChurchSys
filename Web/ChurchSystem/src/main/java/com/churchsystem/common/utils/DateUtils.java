@@ -45,7 +45,7 @@ public class DateUtils {
     }
 
     public static Date getDate(String date) throws ParseException{
-        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date utilDate= sdf1.parse(date);
         java.sql.Date result=new Date(utilDate.getTime());
         return result;

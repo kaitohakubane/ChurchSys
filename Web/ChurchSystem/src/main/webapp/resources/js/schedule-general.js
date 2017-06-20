@@ -63,11 +63,23 @@ function normalizeEventObject(event) {
 
 function inputEventPopupInformation(event) {
     $('#eventPopupTitle').val(event.title);
-
     $('#eventPopupTime').val(event.start.format('HH:mm') + " - " + event.end.format('HH:mm'));
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
+    console.log(event.privacy == 0)
+    if (event.privacy == 0) {
+        if ($("#eventDetailIsPublic").prop('checked')) {
+            console.log($("#eventDetailIsPublic").prop('checked'));
+            $("#eventDetailIsPublic").click();
+            console.log('CLick')
+        }
+    } else{
+        if (!$("#eventDetailIsPublic").prop('checked')) {
+            $("#eventDetailIsPublic").click();
+        }
+    }
+
 
 }
 

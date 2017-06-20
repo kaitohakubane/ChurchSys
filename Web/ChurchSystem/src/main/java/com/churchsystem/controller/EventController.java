@@ -6,6 +6,8 @@ import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventDisplayEntity;
+import com.churchsystem.entity.EventJsonEntity;
+import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,16 +49,23 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_EVENT_URL, method = RequestMethod.POST)
-    public EventDisplayEntity loadEventRegister(@RequestParam(value = ParamConstant.EVENT_TITLE) String title,
-                                                @RequestParam(value = ParamConstant.EVENT_DATE) String date,
-                                                @RequestParam(value = ParamConstant.SUBJECT_ID) String inputSubId,
-                                                @RequestParam(value = ParamConstant.SLOT_HOUR) String inputSlotHour,
-                                                @RequestParam(value = ParamConstant.IS_PUBLIC) boolean isPublic) {
-        EventDisplayEntity eventDisplayEntity=new EventDisplayEntity();
+    public EventDisplayEntity loadEventRegister(@RequestBody EventJsonEntity eventJsonEntity,HttpServletRequest request) {
+        EventDisplayEntity eventDisplayEntity = null;
+        int churchId=(Integer)request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
-            Date slotDate= DateUtils.getDate(date);
-            int subId=Integer.parseInt(inputSubId);
-            int slotHour=Integer.parseInt(inputSlotHour);
+            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            int slotHour = Integer.parseInt(eventJsonEntity.getSlotHour());
+            int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+            boolean privacy = true;
+            if (intPrivacy == UtilsConstant.ZERO) {
+                privacy = false;
+            }
+            SlotEntity slotEntity=eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
+                    , privacy,churchId);
+            slotEntity=eventServiceInterface.mappingResource(slotDate,subId,slotEntity.getConductorId(),churchId,slotHour);
+            EventDataEntity eventDataEntity=eventServiceInterface.getCreatedEvent(slotEntity.getSlotId());
+            eventDisplayEntity=new EventDisplayEntity(eventDataEntity);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,16 +98,15 @@ public class EventController {
     @ResponseBody
     @RequestMapping(value = PageConstant.LOAD_PUBLIC_EVENT_REGISTER_URL, method = RequestMethod.POST)
     public List<EventDisplayEntity> loadPublicEventRegister(@PathVariable(value = "id") String id) {
-        int churchId= UtilsConstant.ZERO;
-        try{
-            churchId=Integer.parseInt(id);
-        }catch(Exception e){
+        int churchId = UtilsConstant.ZERO;
+        try {
+            churchId = Integer.parseInt(id);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         List<EventDisplayEntity> data = eventServiceInterface.getListOfPublicEvent(churchId);
         return data;
     }
-
 
 
 }

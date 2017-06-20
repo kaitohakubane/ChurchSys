@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface RoomModelInterface {
     List<RoomEntity> getRoomBySub(Integer subId);
+    int getSuitableRoomForSlot(int slotHourId);
 }

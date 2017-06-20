@@ -1,5 +1,6 @@
 package com.churchsystem.model;
 
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.EventEntity;
 import com.churchsystem.entity.InclusionEntity;
 import com.churchsystem.entity.SlotEntity;
@@ -9,6 +10,7 @@ import com.churchsystem.model.interfaces.SlotModelInterface;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.tags.Param;
 
 import java.util.List;
 
@@ -36,9 +38,16 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     }
 
     @Override
-    public SlotEntity getUnassignedEventSlot(){
-        Criteria criteria=getSession().createCriteria(SlotEntity.class).add(Restrictions.eq("subId",null));
+    public SlotEntity getUnassignedEventSlot(int conductorId){
+        Criteria criteria=getSession().createCriteria(SlotEntity.class)
+                .add(Restrictions.isNull(ParamConstant.EVENT_ID))
+                .add(Restrictions.eq(ParamConstant.CONDUCTOR_ID,conductorId));
         SlotEntity result=(SlotEntity) criteria.uniqueResult();
         return result;
+    }
+
+    @Override
+    public void updateSlot(SlotEntity slotEntity){
+        getSession().saveOrUpdate(slotEntity);
     }
 }

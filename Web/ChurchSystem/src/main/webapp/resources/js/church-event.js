@@ -29,6 +29,10 @@ function calendarInitial() {
                 selectable: true,
             }
         },
+        dayClick: function (date, jsEvent, view){
+
+        }
+        ,
         dayRender: function (date, element, view) {
             element.bind('dblclick', function () {
                 $('#calendar').fullCalendar('changeView', 'agendaDay');

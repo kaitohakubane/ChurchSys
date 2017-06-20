@@ -35,7 +35,7 @@ public class IndexController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserEntity userEntity= userServiceInterface.getUserByAccountId(auth.getName());
         int churchId=userServiceInterface.getChurchIdByUserId(userEntity.getUserId());
-        request.getSession().setAttribute("churchId",churchId);
+        request.getSession().setAttribute(ParamConstant.CHURCH_ID,churchId);
         ModelAndView modelAndView = new ModelAndView(PageConstant.HOME_PAGE);
         return modelAndView;
     }
