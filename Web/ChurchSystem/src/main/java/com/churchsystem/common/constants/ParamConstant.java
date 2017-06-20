@@ -46,6 +46,15 @@ public class ParamConstant {
     public static final String EVENT_OBJECT = "normalizedEvent";
     public static final String EVENT_TITLE="eventTitle";
     public static final String EVENT_DATE="eventDate";
+    public static final String IS_PUBLIC="isPublic";
+    public static final String EVENT_STATUS="status";
+    public static final String EVENT_SUBJECT_ID="eventSubId";
+    public static final int WAITING_FOR_APPROVE_STATUS=1;
+    public static final int DENY_STATUS=2;
+    public static final int APPROVE_STATUS=3;
+    public static final int CONFLICT_STATUS=4;
+    public static final int FINISH_STATUS=5;
+
 
     /**
      * Subject

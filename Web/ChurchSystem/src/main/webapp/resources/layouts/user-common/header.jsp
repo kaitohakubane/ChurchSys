@@ -12,3 +12,6 @@
 <link href="<c:url value="/resources/lib/vendors/bootstrap/dist/css/bootstrap.min.css"/>" rel="stylesheet">
 <!-- Font Awesome -->
 <link href="<c:url value="/resources/lib/vendors/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet">
+<script>
+    var contextPath = "${pageContext.request.contextPath}";
+</script>

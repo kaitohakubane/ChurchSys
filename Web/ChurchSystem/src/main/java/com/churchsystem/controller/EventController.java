@@ -2,6 +2,7 @@ package com.churchsystem.controller;
 
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
+import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventDisplayEntity;
@@ -49,7 +50,8 @@ public class EventController {
     public EventDisplayEntity loadEventRegister(@RequestParam(value = ParamConstant.EVENT_TITLE) String title,
                                                 @RequestParam(value = ParamConstant.EVENT_DATE) String date,
                                                 @RequestParam(value = ParamConstant.SUBJECT_ID) String inputSubId,
-                                                @RequestParam(value = ParamConstant.SLOT_HOUR) String inputSlotHour) {
+                                                @RequestParam(value = ParamConstant.SLOT_HOUR) String inputSlotHour,
+                                                @RequestParam(value = ParamConstant.IS_PUBLIC) boolean isPublic) {
         EventDisplayEntity eventDisplayEntity=new EventDisplayEntity();
         try {
             Date slotDate= DateUtils.getDate(date);
@@ -86,10 +88,17 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.LOAD_PUBLIC_EVENT_REGISTER_URL, method = RequestMethod.POST)
-    public List<EventDisplayEntity> loadPublicEventRegister(HttpServletRequest request) {
-        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+    public List<EventDisplayEntity> loadPublicEventRegister(@PathVariable(value = "id") String id) {
+        int churchId= UtilsConstant.ZERO;
+        try{
+            churchId=Integer.parseInt(id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         List<EventDisplayEntity> data = eventServiceInterface.getListOfPublicEvent(churchId);
         return data;
     }
+
+
 
 }

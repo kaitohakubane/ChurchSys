@@ -1,8 +1,10 @@
 /**
  * Created by hungmcse61561-admin on 6/14/2017.
  */
+var contextPath = "/ChurchSystem";
 var markers = [];
-var currentPositionMarker=[];
+var churchList = [];
+var currentPositionMarker = [];
 google.maps.event.addDomListener(window, 'load', initAutocomplete);
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -12,17 +14,17 @@ function initAutocomplete() {
 
     });
 
-    //Create get current position button
-    var centerControlDiv = document.createElement('div');
-    new positionControl(centerControlDiv, map);
-
-    centerControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    //Create get current position button
+    var centerControlDiv = document.createElement('div');
+    new positionControl(centerControlDiv, map);
+    centerControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv);
 
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function () {
@@ -47,34 +49,48 @@ function initAutocomplete() {
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
-        var place=places[0];
-            // .forEach(function (place) {
-            if (!place.geometry) {
-                console.log("Returned place contains no geometry");
-                return;
-            }
+        var place = places[0];
+        // .forEach(function (place) {
+        if (!place.geometry) {
+            console.log("Returned place contains no geometry");
+            return;
+        }
 
-            // Create a marker for place.
-            markers.push(new google.maps.Marker({
-                map: map,
-                title: place.name,
-                position: place.geometry.location
+        // Create a marker for place.
+        markers.push(new google.maps.Marker({
+            map: map,
+            title: place.name,
+            position: place.geometry.location
+        }));
 
-            }));
 
-            if (place.geometry.viewport) {
-                // Only geocodes have viewport.
-                bounds.union(place.geometry.viewport);
-            } else {
-                bounds.extend(place.geometry.location);
-            }
+        if (place.geometry.viewport) {
+            // Only geocodes have viewport.
+            bounds.union(place.geometry.viewport);
+        } else {
+            bounds.extend(place.geometry.location);
+        }
+
+        map.setCenter(place.geometry.location);
+
+        // Church Position
+        var pos = new google.maps.LatLng('16.066979', '108.223317');
+        var image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+        markers.push(new google.maps.Marker({
+            map: map,
+            icon: image,
+            position: pos,
+            id: 1
+        }))
+
+        churchEventRegister();
         // });
-        map.fitBounds(bounds);
+        // map.fitBounds(bounds);
     });
 
     /* Get your Location*/
     /*==================*/
-    getCurrentPosition(map,markers)
+    getCurrentPosition(map, markers)
 }
 
 /* Error case */
@@ -132,8 +148,29 @@ function positionControl(controlDiv, map) {
     controlUI.appendChild(controlImg);
     controlUI.addEventListener('click', function () {
         getCurrentPosition(map);
+
+        // Church Position
+        var pos = new google.maps.LatLng('16.066979', '108.223317');
+        var image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+        markers.push(new google.maps.Marker({
+            map: map,
+            icon: image,
+            position: pos,
+            id: 1
+        }))
+
+        churchEventRegister();
     });
 
+}
+
+function churchEventRegister() {
+    markers.forEach(function (e) {
+        e.addListener('click', function () {
+            console.log(e.id);
+            window.location.href = contextPath + "/church/" + e.id;
+        });
+    })
 }
 
 function getCurrentPosition(map) {
@@ -145,14 +182,15 @@ function getCurrentPosition(map) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            console.log(position.coords.latitude,position.coords.longitude);
-            if(currentPositionMarker.length==0){
+            if (currentPositionMarker.length == 0) {
                 currentPositionMarker.push(new google.maps.Marker({
                     map: map,
                     position: pos,
                 }));
             }
+
             map.setCenter(pos);
+
         }, function () {
             handleNoGeolocation(true);
         });

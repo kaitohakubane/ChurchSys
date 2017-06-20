@@ -36,10 +36,10 @@
         <div class="small-nav col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <a href="church.html" class="col-md-12 btn btn-default">Tin tức</a>
+                    <a href="${pageContext.request.contextPath}/church/${churchId}" class="col-md-12 btn btn-default">Tin tức</a>
                 </div>
                 <div class="col-md-4">
-                    <a href="event.html" class="col-md-12 btn btn-default">Sự kiện</a>
+                    <a href="#" class="col-md-12 btn btn-default">Sự kiện</a>
                 </div>
                 <div class="col-md-4">
                     <form>
@@ -80,7 +80,10 @@
 <!-- FullCalendar -->
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
-
+<script>
+    var churchId=<c:out value="${churchId}"/>
+</script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
+<script src="<c:url value="/resources/js/church-event.js"/>"></script>
 </body>
 </html>

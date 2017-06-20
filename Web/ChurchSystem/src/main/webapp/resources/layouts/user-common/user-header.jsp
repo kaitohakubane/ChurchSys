@@ -34,16 +34,16 @@
                     </ul>
                 </li>
             </ul>
-            <form id="mega-search" class="navbar-form navbar-right">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </span>
-                </div>
-            </form>
+            <%--<form id="mega-search" class="navbar-form navbar-right">--%>
+                <%--<div class="input-group">--%>
+                    <%--<input type="text" class="form-control" placeholder="Search...">--%>
+                    <%--<span class="input-group-btn">--%>
+                            <%--<button class="btn btn-default" type="button">--%>
+                                <%--<i class="glyphicon glyphicon-search"></i>--%>
+                            <%--</button>--%>
+                        <%--</span>--%>
+                <%--</div>--%>
+            <%--</form>--%>
         </div>
     </div>
 </nav>

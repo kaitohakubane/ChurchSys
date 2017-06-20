@@ -52,4 +52,8 @@ public class SQLParamConstant {
             "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId " +
             "AND e.churchId =:requireChurchId AND st.slotId=s.slotId AND e.privacy = true";
 
+    public static final String GET_CREATING_EVENT="SELECT * FROM event " +
+            "WHERE startDate =:eventDate AND eventStatus =:status AND subId =:eventSubId AND eventId " +
+            "NOT IN (SELECT eventId FROM slot WHERE slotDate =:eventDate)";
+
 }

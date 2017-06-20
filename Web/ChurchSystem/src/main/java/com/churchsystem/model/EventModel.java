@@ -1,5 +1,6 @@
 package com.churchsystem.model;
 
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
@@ -11,6 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -41,6 +43,16 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     public void addNewEvent(EventEntity eventEntity){
         getSession().persist(eventEntity);
     }
-    
+
+    @Override
+    public EventEntity getCreatingEvent(Date date,boolean status,int subId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.GET_CREATING_EVENT)
+                .setParameter(ParamConstant.EVENT_DATE,date).setParameter(ParamConstant.EVENT_STATUS,status)
+                .setParameter(ParamConstant.EVENT_SUBJECT_ID,subId);
+        EventEntity result=(EventEntity) query.uniqueResult();
+        return result;
+    }
+
+
 
 }

@@ -3,6 +3,7 @@ package com.churchsystem.model.interfaces;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -12,4 +13,5 @@ public interface EventModelInterface {
     List<EventDataEntity> getListOfEvent(int churchId);
     List<EventDataEntity> getListOfPublicEvent(int churchId);
     void addNewEvent(EventEntity eventEntity);
+    EventEntity getCreatingEvent(Date date, boolean status, int subId);
 }

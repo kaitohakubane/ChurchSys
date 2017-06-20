@@ -1,7 +1,10 @@
 package com.churchsystem.service;
 
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventDisplayEntity;
+import com.churchsystem.entity.EventEntity;
+import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.model.interfaces.EventModelInterface;
 import com.churchsystem.service.interfaces.EventServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -47,7 +50,17 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public void createEvent(String eventName, Date eventDate,int subId, int slotHour){
+    public void createEvent(String eventName, Date eventDate,int subId, int slotHour,boolean privacy, int churchId){
+        EventEntity inputEvent=new EventEntity();
+        inputEvent.setChurchId(churchId);
+        inputEvent.setEventStatus(ParamConstant.APPROVE_STATUS);
+        inputEvent.setStartDate(eventDate);
+        inputEvent.setEventName(eventName);
+        inputEvent.setSubId(subId);
+        inputEvent.setPrivacy(privacy);
+        eventModelInterface.addNewEvent(inputEvent);
+
+        SlotEntity slotEntity=new SlotEntity();
 
 
     }

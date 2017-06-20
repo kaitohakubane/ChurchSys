@@ -12,5 +12,5 @@ import java.util.List;
 public interface EventServiceInterface {
     List<EventDisplayEntity> getListOfEvent(int churchId);
     List<EventDisplayEntity> getListOfPublicEvent(int churchId);
-    void createEvent(String eventName, Date eventDate, int subId, int slotHour);
+    void createEvent(String eventName, java.sql.Date eventDate, int subId, int slotHour, boolean privacy, int churchId);
 }

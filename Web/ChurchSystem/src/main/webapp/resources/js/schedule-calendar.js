@@ -26,7 +26,8 @@ $(document).ready(function () {
     $('#createEventbtn').on('click', function () {
         $("#calendarPopup").fadeOut();
         var startTime=$("#slotNum").children(":selected").attr("id");
-        createEvent(creatingEvent,startTime);
+        var isPublic=$("#createEventPopupIsPublic").prop('checked');
+        createEvent(creatingEvent,startTime,isPublic);
         // $('#calendar').fullCalendar('renderEvent', creatingEvent);
     })
 
@@ -301,7 +302,7 @@ function subjectDropdownEvent(category) {
 }
 
 
-function createEvent(event,slotId) {
+function createEvent(event,slotId,isPublic) {
 
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
@@ -309,7 +310,8 @@ function createEvent(event,slotId) {
         eventTitle: event.title,
         eventDate: event.start.split("T")[0],
         subId: event.subjectId,
-        slotHour: slotId
+        slotHour: slotId,
+        isPublic: isPublic
     }
     console.log(requestData)
     var result = null;

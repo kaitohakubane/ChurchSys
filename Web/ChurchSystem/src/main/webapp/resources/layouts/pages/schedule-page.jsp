@@ -23,10 +23,9 @@
           media="print">
     <%--Switchery--%>
     <link href="<c:url value="/resources/lib/vendors/switchery/dist/switchery.min.css"/>" rel="stylesheet">
-
+    <link href="<c:url value="/resources/css/schedule.css"/>" rel="stylesheet">
 </head>
 <body class="nav-md">
-<link href="<c:url value="/resources/css/schedule.css"/>" rel="stylesheet">
 <div class="container body">
     <div class="main_container">
         <c:import url="/resources/layouts/common/menu.jsp"/>
@@ -88,7 +87,7 @@
                             <div class="col-md-4 form-group">
                                 <label class="control-label">Public</label>
                                 <label class="">
-                                    <input type="checkbox" class="js-switch" checked/>
+                                    <input type="checkbox" id="createEventPopupIsPublic" class="js-switch" checked/>
                                 </label>
                             </div>
                             <div class="col-md-6 form-group left">

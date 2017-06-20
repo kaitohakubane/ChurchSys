@@ -33,7 +33,7 @@ public class PageConstant {
 
     // Event
     public static final String LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
-    public static final String LOAD_PUBLIC_EVENT_REGISTER_URL = "/event/load-event/{id}";
+    public static final String LOAD_PUBLIC_EVENT_REGISTER_URL = "/church/{id}/schedule/load-event/";
     public static final String SCHEDULE_URL="/manager/schedule";
     public static final String CREATE_EVENT_URL="/manager/event/Add";
 
@@ -45,7 +45,8 @@ public class PageConstant {
 
 
     // Church
-    public static final String CHURCH_HOME_PAGE_URL="/church/{id}";
+    public static final String CHURCH_HOME_URL="/church/{id}";
+    public static final String CHURCH_SCHEDULE_URL="/church/{id}/schedule";
 
     // Contribution
 
@@ -80,7 +81,8 @@ public class PageConstant {
     public static final String SALE_PAGE = "sale-management-page";
 
     // Church
-    public static final String CHURCH_HOME_PAGE = "church-home-page";
+    public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
+    public static final String CHURCH_SCHEDULE_PAGE="/user-pages/event-page";
 
     // Manager
     public static final String STOCK_PAGE="stock-management-page";

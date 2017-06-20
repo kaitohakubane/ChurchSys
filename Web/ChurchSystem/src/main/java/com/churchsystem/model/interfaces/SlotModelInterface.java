@@ -13,4 +13,5 @@ public interface SlotModelInterface {
     List<SlothourEntity> getListOfSlotHour();
     void mappingSlotHour(InclusionEntity inclusionEntity);
     void addNewSlot(SlotEntity slotEntity);
+    SlotEntity getUnassignedEventSlot();
 }
