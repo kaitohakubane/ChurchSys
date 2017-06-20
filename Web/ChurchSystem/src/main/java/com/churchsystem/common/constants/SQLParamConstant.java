@@ -32,20 +32,24 @@ public class SQLParamConstant {
             "FROM subject s, category c " +
             "WHERE s.categoryId = c.categoryId AND c.categoryId != 3";
 
-    public static final String GET_EVENT_DISPLAY_SLOT ="SELECT s.slotId as slotId, s.eventId as eventId," +
-            " s.conductorId as conductorId, s.roomId as roomId, su.subId as subId," +
-            " s.startTime as startTime, s.endTime as endTime, u.userName as conductorName, r.roomName as roomName, " +
+    public static final String GET_EVENT_DISPLAY_SLOT ="SELECT s.slotId as slotId, s.eventId as eventId, " +
+            "s.conductorId as conductorId, s.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
+            "st.endTime as endTime, u.userName as conductorName,s.slotDate as slotDate, r.roomName as roomName, " +
             "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
-            "e.eventName as eventName FROM slot s,event e, room r, subject su, user u " +
-            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId" +
-            " AND e.churchId =:requireChurchId";
+            "e.eventName as eventName FROM slot s,event e, room r, subject su, user u, " +
+            "(SELECT i.slotId, MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime " +
+            "FROM slothour sh, inclusion i, slot s WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) st " +
+            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId " +
+            "AND e.churchId =:requireChurchId AND st.slotId=s.slotId";
 
-    public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT ="SELECT s.slotId as slotId, s.eventId as eventId," +
-            " s.conductorId as conductorId, s.roomId as roomId, su.subId as subId," +
-            " s.startTime as startTime, s.endTime as endTime, u.userName as conductorName, r.roomName as roomName, " +
+    public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT ="SELECT s.slotId as slotId, s.eventId as eventId, " +
+            "s.conductorId as conductorId, s.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
+            "st.endTime as endTime, u.userName as conductorName,s.slotDate as slotDate, r.roomName as roomName, " +
             "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
-            "e.eventName as eventName FROM slot s,event e, room r, subject su, user u " +
-            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId" +
-            " AND e.privacy = true and e.churchId =:requireChurchId";
+            "e.eventName as eventName FROM slot s,event e, room r, subject su, user u, " +
+            "(SELECT i.slotId, MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime " +
+            "FROM slothour sh, inclusion i, slot s WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) st " +
+            "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId " +
+            "AND e.churchId =:requireChurchId AND st.slotId=s.slotId AND e.privacy = true";
 
 }

@@ -25,8 +25,9 @@ var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 $(document).ready(function () {
     $('#createEventbtn').on('click', function () {
         $("#calendarPopup").fadeOut();
-        var event = updateEvent(creatingEvent);
-        $('#calendar').fullCalendar('renderEvent', event);
+        var startTime=$("#slotNum").children(":selected").attr("id");
+        createEvent(creatingEvent,startTime);
+        // $('#calendar').fullCalendar('renderEvent', creatingEvent);
     })
 
 
@@ -135,11 +136,11 @@ function calendarInitialize() {
             }
 
             creatingEvent = {
-                title: eventName + "  -  " + eventType,
+                title: eventName,
                 start: date.format() + 'T04:30',
                 color: '#24ea12',
                 duration: '01:30',
-                subjectId: $('#eventType').data('id'),
+                subjectId: $('#eventType').children(":selected").attr("id"),
                 privacy: 1
             }
 
@@ -300,7 +301,35 @@ function subjectDropdownEvent(category) {
 }
 
 
+function createEvent(event,slotId) {
 
+    var requestURL = contextPath + CREATE_EVENT_URL;
+    var requestMethod = "POST";
+    var requestData = {
+        eventTitle: event.title,
+        eventDate: event.start.split("T")[0],
+        subId: event.subjectId,
+        slotHour: slotId
+    }
+    console.log(requestData)
+    var result = null;
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async:false,
+        processData: false,
+        dataType: 'json',
+        success: function (res) {
+            creatingEvent = res;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    });
+}
 
 
 

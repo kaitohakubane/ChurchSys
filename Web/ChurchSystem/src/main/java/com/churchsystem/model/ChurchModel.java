@@ -3,6 +3,8 @@ package com.churchsystem.model;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,7 +13,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     @Override
-    public ChurchEntity getChurchById(){
-        return null;
+    public ChurchEntity getChurchById(int churchId){
+        Criteria criteria=getSession().createCriteria(ChurchEntity.class).add(Restrictions.eq("churchId",churchId));
+        ChurchEntity result=(ChurchEntity) criteria.uniqueResult();
+        return result;
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,5 +44,11 @@ public class EventService implements EventServiceInterface {
             listEvent.add(item);
         }
         return listEvent;
+    }
+
+    @Override
+    public void createEvent(String eventName, Date eventDate,int subId, int slotHour){
+
+
     }
 }

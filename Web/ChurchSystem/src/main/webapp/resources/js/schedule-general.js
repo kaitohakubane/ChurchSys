@@ -4,15 +4,10 @@
 var CREATE_EVENT_URL = "/manager/event/Add";
 var UPDATE_EVENT_URL = "/manager/event/Update";
 var DELETE_EVENT_URL = "/manager/event/Delete";
-
+//
 classListInitial();
 registerClassList();
 terminateEventCreateMenu();
-
-
-
-
-
 
 
 //--------------------------------Function-------------------------------
@@ -56,22 +51,20 @@ function registerClassList() {
 
 //Normaliza data for event object
 function normalizeEventObject(event) {
-    console.log(event);
     var normalizedEvent = {
         eventName: event.title,
         subjectId: event.subjectId,
-        duration: event.duration,
-        typeId: 1,
-        startDate: event.start,
+        endTime: event.end,
+        startTime: event.start,
         privacy: 1
     }
     return normalizedEvent;
 }
 
-function inputEventPopupInformation(event){
+function inputEventPopupInformation(event) {
     $('#eventPopupTitle').val(event.title);
 
-    $('#eventPopupTime').val(event.start.format('HH:mm')+" - "+event.end.format('HH:mm'));
+    $('#eventPopupTime').val(event.start.format('HH:mm') + " - " + event.end.format('HH:mm'));
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
@@ -107,31 +100,5 @@ function terminateEventCreateMenu() {
 
 // -------------------------------------------Ajax------------------------------
 
-function createEvent(event) {
 
-    var requestURL = contextPath + CREATE_EVENT_URL;
-    var requestMethod = "POST";
-    var requestData = JSON.stringify(normalizeEventObject(event));
-    console.log(requestData);
-    var result = null;
-
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: requestData,
-        processData: false,
-        contentType: 'application/json',
-        dataType: 'json',
-        success: function (res) {
-            console.log('success');
-            console.log(res);
-            result = res;
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
-            console.error(textStatus);
-        }
-    });
-    return result;
-}
 

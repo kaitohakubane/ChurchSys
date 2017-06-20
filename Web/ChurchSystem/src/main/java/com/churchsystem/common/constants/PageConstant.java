@@ -45,7 +45,7 @@ public class PageConstant {
 
 
     // Church
-
+    public static final String CHURCH_HOME_PAGE_URL="/church/{id}";
 
     // Contribution
 
@@ -80,7 +80,7 @@ public class PageConstant {
     public static final String SALE_PAGE = "sale-management-page";
 
     // Church
-    public static final String IMPORT_PAGE = "import-page";
+    public static final String CHURCH_HOME_PAGE = "church-home-page";
 
     // Manager
     public static final String STOCK_PAGE="stock-management-page";
@@ -89,5 +89,7 @@ public class PageConstant {
     public static final String DAILY_REPORT_PAGE = "daily-report-page";
     public static final String CHART_PAGE = "chart-page";
 
+    //Error Page
+    public static final String NOT_FOUND_PAGE="error-pages/404-page";
 
 }

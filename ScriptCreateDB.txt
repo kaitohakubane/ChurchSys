@@ -191,6 +191,8 @@ create table Slot (
     
 	conductorId int,
     
+    slotDate date,
+    
 	primary key (slotId)    
 
 );

@@ -3,7 +3,7 @@
 //import com.sneakergo.common.constants.PageConstant;
 //import com.sneakergo.common.constants.ParamConstant;
 //import com.sneakergo.common.constants.UtilsConstant;
-//import com.sneakergo.common.utils.NumbericUtils;
+//import com.sneakergo.common.utils.DateUtils;
 //import com.sneakergo.entity.*;
 //import com.sneakergo.service.interfaces.*;
 //import org.json.JSONArray;
@@ -129,7 +129,7 @@
 //            }
 //
 //            //Create bill
-//            billEntity.setDate(NumbericUtils.getCurrentDate());
+//            billEntity.setDate(DateUtils.getCurrentDate());
 //            billEntity.setAccountId(orders.get(UtilsConstant.ZERO).getAccountId());
 //            billEntity.setTotalPrice(String.valueOf(totalPrice));
 //            billEntity.setEnabled(true);

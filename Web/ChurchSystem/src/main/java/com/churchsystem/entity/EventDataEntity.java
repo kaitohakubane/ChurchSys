@@ -13,8 +13,9 @@ public class EventDataEntity {
     private int conductorId;
     private int roomId;
     private Integer subId;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private Date slotDate;
+    private Time startTime;
+    private Time endTime;
     private String conductorName;
     private String roomName;
     private Boolean privacy;
@@ -26,14 +27,15 @@ public class EventDataEntity {
     public EventDataEntity() {
     }
 
-    public EventDataEntity(int slotId, int eventId, int conductorId, int roomId, Integer subId, Timestamp startTime,
-                           Timestamp endTime, String conductorName, String roomName, Boolean privacy, String description,
-                           String subName, Integer eventStatus, String eventName) {
+    public EventDataEntity(int slotId, int eventId, int conductorId, int roomId, Integer subId, Date slotDate,
+                           Time startTime, Time endTime, String conductorName, String roomName, Boolean privacy,
+                           String description, String subName, Integer eventStatus, String eventName) {
         this.slotId = slotId;
         this.eventId = eventId;
         this.conductorId = conductorId;
         this.roomId = roomId;
         this.subId = subId;
+        this.slotDate = slotDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.conductorName = conductorName;
@@ -85,19 +87,27 @@ public class EventDataEntity {
         this.subId = subId;
     }
 
-    public Timestamp getStartTime() {
+    public Date getSlotDate() {
+        return slotDate;
+    }
+
+    public void setSlotDate(Date slotDate) {
+        this.slotDate = slotDate;
+    }
+
+    public Time getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(Time startTime) {
         this.startTime = startTime;
     }
 
-    public Timestamp getEndTime() {
+    public Time getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(Time endTime) {
         this.endTime = endTime;
     }
 

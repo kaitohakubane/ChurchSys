@@ -38,9 +38,16 @@ public class StringUtils {
         return result;
     }
 
-    public static String formatDateToString(Timestamp date){
-        String strDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(date);
+    public static String formatDateToString(Date date){
+        String strDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         return strDate;
+    }
+
+    public static String convertDateAndTimeToDateTime(Date date,Time time){
+        String dateStr=formatDateToString(date);
+        String timeStr=time.toString();
+        String result=dateStr+"T"+timeStr;
+        return result;
     }
 
 }

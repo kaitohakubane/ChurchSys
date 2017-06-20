@@ -2,6 +2,8 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.EventDataEntity;
+import com.churchsystem.entity.EventEntity;
+import com.churchsystem.entity.InclusionEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.EventModelInterface;
 import org.hibernate.Criteria;
@@ -34,4 +36,11 @@ public class EventModel extends CommonDAO implements EventModelInterface {
         List<EventDataEntity> result=query.list();
         return result;
     }
+
+    @Override
+    public void addNewEvent(EventEntity eventEntity){
+        getSession().persist(eventEntity);
+    }
+    
+
 }

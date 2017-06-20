@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ChurchService implements ChurchServiceInterface{
     @Autowired
     ChurchModelInterface churchModelInterface;
-    public ChurchEntity getChurchById(){
-        return churchModelInterface.getChurchById();
+    public ChurchEntity getChurchById(int churchId){
+        return churchModelInterface.getChurchById(churchId);
     }
 }

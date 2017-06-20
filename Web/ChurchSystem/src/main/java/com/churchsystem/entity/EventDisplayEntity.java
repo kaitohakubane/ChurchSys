@@ -28,8 +28,8 @@ public class EventDisplayEntity {
         this.slotId = dataEntity.getSlotId();
         this.title = dataEntity.getEventName();
         this.subName = dataEntity.getSubName();
-        this.start=StringUtils.formatDateToString(dataEntity.getStartTime());
-        this.end=StringUtils.formatDateToString(dataEntity.getEndTime());
+        this.start= StringUtils.convertDateAndTimeToDateTime(dataEntity.getSlotDate(),dataEntity.getStartTime());
+        this.end= StringUtils.convertDateAndTimeToDateTime(dataEntity.getSlotDate(),dataEntity.getEndTime());
         this.conductorName = dataEntity.getConductorName();
         this.roomName = dataEntity.getRoomName();
 

@@ -4,7 +4,7 @@
 //import com.sneakergo.common.constants.PageConstant;
 //import com.sneakergo.common.constants.ParamConstant;
 //import com.sneakergo.common.constants.UtilsConstant;
-//import com.sneakergo.common.utils.NumbericUtils;
+//import com.sneakergo.common.utils.DateUtils;
 //import com.sneakergo.common.utils.StringUtils;
 //import com.sneakergo.entity.AccountEntity;
 //import com.sneakergo.service.interfaces.AccountServiceInterface;
@@ -44,7 +44,7 @@
 //            accountEntity.setPhone(phone);
 //            accountEntity.setEmail(email);
 //            String[] birth = StringUtils.formatDate(birthday);
-//            Date dateOfBirth = NumbericUtils.getDate(birth[UtilsConstant.ZERO],
+//            Date dateOfBirth = DateUtils.getDate(birth[UtilsConstant.ZERO],
 //                    birth[UtilsConstant.ONE], birth[UtilsConstant.TWO]);
 //            accountEntity.setBirthday(dateOfBirth);
 //            accountServiceInterface.createAccount(accountEntity);

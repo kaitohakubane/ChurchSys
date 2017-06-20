@@ -3,13 +3,15 @@ package com.churchsystem.common.utils;
 import com.churchsystem.common.constants.UtilsConstant;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
  * Created by Hung on 11/22/2016.
  */
-public class NumbericUtils {
+public class DateUtils {
     public static Date getCurrentDate(){
         Date currentDate = new Date(GregorianCalendar.getInstance().getTimeInMillis());
         return currentDate;
@@ -40,6 +42,13 @@ public class NumbericUtils {
         catch(NumberFormatException e){
             return getCurrentDate();
         }
+    }
+
+    public static Date getDate(String date) throws ParseException{
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+        java.util.Date utilDate= sdf1.parse(date);
+        java.sql.Date result=new Date(utilDate.getTime());
+        return result;
     }
 
 }

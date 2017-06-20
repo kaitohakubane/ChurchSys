@@ -1,10 +1,10 @@
 package com.churchsystem.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 6/18/2017.
+ * Created by hungmcse61561-admin on 6/19/2017.
  */
 @Entity
 @Table(name = "slot", schema = "churchsys", catalog = "")
@@ -13,8 +13,7 @@ public class SlotEntity {
     private Integer eventId;
     private Integer roomId;
     private Integer conductorId;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private Date slotDate;
 
     @Id
     @Column(name = "slotId")
@@ -57,23 +56,13 @@ public class SlotEntity {
     }
 
     @Basic
-    @Column(name = "startTime")
-    public Timestamp getStartTime() {
-        return startTime;
+    @Column(name = "slotDate")
+    public Date getSlotDate() {
+        return slotDate;
     }
 
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
-    }
-
-    @Basic
-    @Column(name = "endTime")
-    public Timestamp getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
+    public void setSlotDate(Date slotDate) {
+        this.slotDate = slotDate;
     }
 
     @Override
@@ -87,8 +76,7 @@ public class SlotEntity {
         if (eventId != null ? !eventId.equals(that.eventId) : that.eventId != null) return false;
         if (roomId != null ? !roomId.equals(that.roomId) : that.roomId != null) return false;
         if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
-        if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
-        if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
+        if (slotDate != null ? !slotDate.equals(that.slotDate) : that.slotDate != null) return false;
 
         return true;
     }
@@ -99,8 +87,7 @@ public class SlotEntity {
         result = 31 * result + (eventId != null ? eventId.hashCode() : 0);
         result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
         result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
-        result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
-        result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
+        result = 31 * result + (slotDate != null ? slotDate.hashCode() : 0);
         return result;
     }
 }

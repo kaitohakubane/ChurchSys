@@ -11,12 +11,12 @@ public class ParamConstant {
     /**
      * Homepage
      */
-    public static final String NUMBER_OF_PRODUCT="numberOfProduct";
+    public static final String NUMBER_OF_PRODUCT = "numberOfProduct";
     public static final String NUMBER_OF_BILL = "numberOfBill";
-    public static final String NUMBER_OF_STOCK="numberOfStock";
-    public static final String NUMBER_OF_AVAILABLE_STOCK="numberOfAvailableStock";
-    public static final String NUMBER_OF_SALE="numberOfSale";
-    public static final String TOP_SELL_PRODUCT="topProduct";
+    public static final String NUMBER_OF_STOCK = "numberOfStock";
+    public static final String NUMBER_OF_AVAILABLE_STOCK = "numberOfAvailableStock";
+    public static final String NUMBER_OF_SALE = "numberOfSale";
+    public static final String TOP_SELL_PRODUCT = "topProduct";
 
     /**
      * Account
@@ -32,38 +32,42 @@ public class ParamConstant {
     /**
      * Church
      */
-    public static final String CHURCH_ID="churchId";
+    public static final String CHURCH_ID = "churchId";
 
     /**
      * Registration
      */
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
-    public static final String LIST_REGISTERED_CLASS_ATTR="registeredClass";
+    public static final String LIST_REGISTERED_CLASS_ATTR = "registeredClass";
 
     /**
      * Event
      */
-  public static final String EVENT_OBJECT="normalizedEvent";
+    public static final String EVENT_OBJECT = "normalizedEvent";
+    public static final String EVENT_TITLE="eventTitle";
+    public static final String EVENT_DATE="eventDate";
 
     /**
      * Subject
      */
     public static final String SUBJECT_LIST = "subjectList";
+    public static final String SUBJECT_ID="subId";
 
     /**
-     * Category
+     * Church
      */
-    public static final String CATEGORY_LIST="categoryList";
-    public static final int NOT_EVENT_CATEGORY_ID=3;
+    public static final String CATEGORY_LIST = "categoryList";
+    public static final int NOT_EVENT_CATEGORY_ID = 3;
 
     /**
-     * Stock
+     * Church
      */
-    public static final String LIST_STOCK_ATTR="listStock";
-    public static final String QUANTITY="quantity";
+    public static final String CHURCH_OBJECT = "churchObj";
+
 
     /**
-     * Chart
+     * Slot
      */
-    public static final String YEAR="year";
+    public static final String SLOT_HOUR_LIST = "slotHourList";
+    public static final String SLOT_HOUR="slotHour";
 }

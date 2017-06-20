@@ -134,7 +134,64 @@ values ('Tiếp Sức Mùa Thi 2017',30,2,1,null,20,3,'2017/6/3',null,1);
 insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
 values ('An Táng Đa Minh Hiển',30,2,1,null,5,3,'2017/6/3',null,1);
 insert into Room(roomName,roomStatus,churchId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
 
+values ('Thánh Lễ',30,1,1,null,5,3,'2017/6/4',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh hoạt cắm trại',30,1,1,null,2,3,'2017/6/6',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh hoạt Dâng Hoa',30,1,1,null,2,3,'2017/6/7',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh hoạt Khám Chữa Bệnh',30,1,1,null,2,3,'2017/6/11',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh hoạt Hát Lễ',30,2,1,null,5,3,'2017/6/6',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Lễ Hôn Phối',30,1,1,null,1,3,'2017/6/4',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Lễ Chầu',30,1,1,null,1,3,'2017/6/12',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Lễ Rữa Tội',30,1,1,null,1,3,'2017/6/21',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh Hoạt Từ Thiện',30,1,1,null,2,3,'2017/6/19',null,1);
+
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Lễ Giải Tội',30,1,1,null,1,3,'2017/6/20',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Lễ Trừ Quỹ',30,1,1,null,5,3,'2017/6/26',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh Hoạt Khám Chữa Bệnh',30,1,1,null,2,3,'2017/6/17',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh Hoạt Phân Công Đọc Kinh',30,1,1,null,2,3,'2017/6/14',null,1);
+
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy)
+
+values ('Sinh Hoạt Cắm Trại',30,1,1,null,2,3,'2017/6/24',null,1);
+
+insert into Room(roomName,roomStatus,churchId)
 values ('101',1,1);
 
 
@@ -151,10 +208,10 @@ insert into interaction(userId,churchId,enabled) values(2,1,1);
 insert into interaction(userId,churchId,enabled) values(1,1,1);
 
 /*Slot*/
-insert into slot(eventId, roomId, conductorId) values(1,1,1);
-insert into slot(eventId, roomId, conductorId) values(2,2,1);
-insert into slot(eventId, roomId, conductorId) values(3,3,1);
-insert into slot(eventId, roomId, conductorId) values(4,3,1);
+insert into slot(eventId, roomId, conductorId,slotDate) values(1,1,1,'2017-06-19');
+insert into slot(eventId, roomId, conductorId,slotDate) values(2,2,1,'2017-06-19');
+insert into slot(eventId, roomId, conductorId,slotDate) values(3,3,1,'2017-06-19');
+insert into slot(eventId, roomId, conductorId,slotDate) values(4,3,1,'2017-06-19');
 
 /*SlotHour*/
 insert into SlotHour values (1,'Slot 1','04:30:00','6:00:00');
@@ -178,3 +235,13 @@ insert into SlotHour values (9,'Slot 9','16:30:00','18:00:00');
 insert into SlotHour values (10,'Slot 10','18:00:00','19:30:00');
 
 insert into SlotHour values (11,'Slot 11','19:30:00','21:00:00');
+
+
+/*Inclusion*/
+
+insert into inclusion(slotId, slotHourId) values (1,1);
+insert into inclusion(slotId, slotHourId) values (1,2);
+insert into inclusion(slotId, slotHourId) values (1,3);
+
+insert into inclusion(slotId, slotHourId) values (2,4);
+insert into inclusion(slotId, slotHourId) values (2,5);

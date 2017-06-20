@@ -77,12 +77,11 @@
                         <h2 class="titre text-center">Event</h2>
                     </div>
                     <div class="panel-body">
-                        <form class="form" method="post">
+                        <div class="form">
                             <div class="col-md-8 form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
                                     <input type="text" class="form-control" id="creatingEventName"
-                                           name="creatingEventName"
                                            placeholder="Please Input Name" required/><br/>
                                 </div>
                             </div>
@@ -97,7 +96,7 @@
                                     <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
                                     <select class="form-control" id="category">
                                         <c:forEach items="${categoryList}" var="item">
-                                            <option  value="${item.categoryId}">${item.categoryName}</option>
+                                            <option value="${item.categoryId}">${item.categoryName}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -117,10 +116,13 @@
                             <div class="col-md-12 form-group has-success">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
-                                    <select class="form-control">
-                                        <option>Slot</option>
-                                        <option>1 (04:30 - 06:00)</option>
-                                        <option>2 (06:00 - 07:30)</option>
+                                    <select class="form-control" id="slotNum">
+                                        <option id="0">Auto</option>
+                                        <c:forEach items="${slotHourList}" var="item">
+                                            <option id="${item.slotHourId}" value="${item.startTime} - ${item.endTime}">
+                                                    ${item.startTime} - ${item.endTime}
+                                            </option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
@@ -131,7 +133,7 @@
                             <div class="col-sm-6">
                                 <button id="createEventbtn" class="btn btn-primary col-sm-12">Create</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -139,20 +141,25 @@
     </div>
 </div>
 
-<%--Event Detail--%>
 <div class="row eventDetailPopup" id="eventDetailPopup">
-    <div class="" style="width: 300px;">
+    <div class="" style="width: 400px;">
         <div class="x_panel">
             <div class="x_title">
                 <h2>Event Detail</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <form class="form-horizontal form-label-left input_mask">
+                <div class="form-horizontal form-label-left input_mask">
 
                     <div class="form-group">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <input type="text" id="eventPopupTitle" class="form-control" placeholder="Event title">
+                        </div>
+                        <div class="col-md-4 form-group pull-right">
+                            <label class="control-label">Public</label>
+                            <label class="">
+                                <input type="checkbox" class="js-switch" checked/>
+                            </label>
                         </div>
                     </div>
 
@@ -185,7 +192,6 @@
                     </div>
 
                     <div class="clearfix"></div>
-                    <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
                             <button type="button" class="btn btn-default">OK</button>
@@ -193,7 +199,7 @@
                         </div>
                     </div>
 
-                </form>
+                </div>
             </div>
         </div>
     </div>
