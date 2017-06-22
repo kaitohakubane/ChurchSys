@@ -49,17 +49,6 @@ function registerClassList() {
     })
 }
 
-//Normaliza data for event object
-function normalizeEventObject(event) {
-    var normalizedEvent = {
-        eventName: event.title,
-        subjectId: event.subjectId,
-        endTime: event.end,
-        startTime: event.start,
-        privacy: 1
-    }
-    return normalizedEvent;
-}
 
 function inputEventPopupInformation(event) {
     $('#eventPopupTitle').val(event.title);
@@ -67,7 +56,6 @@ function inputEventPopupInformation(event) {
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
-    console.log(event.privacy == 0)
     if (event.privacy == 0) {
         if ($("#eventDetailIsPublic").prop('checked')) {
             console.log($("#eventDetailIsPublic").prop('checked'));

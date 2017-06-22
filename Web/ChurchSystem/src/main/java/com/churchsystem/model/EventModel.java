@@ -56,11 +56,11 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     }
 
     @Override
-    public EventDataEntity getCreatedEvent(int slotId){
-        Query query=getSession().createSQLQuery(SQLParamConstant.GET_EVENT_BY_SLOTID)
-                .setParameter(ParamConstant.SLOT_ID,slotId)
+    public List<EventDataEntity> getCreatedEvent(int eventId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.GET_DISPLAY_EVENT_BY_EVENT_ID)
+                .setParameter(ParamConstant.EVENT_ID,eventId)
                 .setResultTransformer(Transformers.aliasToBean(EventDataEntity.class));
-        EventDataEntity result=(EventDataEntity) query.uniqueResult();
+        List<EventDataEntity> result= query.list();
         return result;
     }
 

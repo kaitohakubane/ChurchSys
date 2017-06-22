@@ -43,6 +43,9 @@ public class IndexController {
     @RequestMapping(value = {PageConstant.ROOT_PATH_URL}, method = RequestMethod.GET)
     public ModelAndView initHomePage() {
         ModelAndView modelAndView = new ModelAndView(PageConstant.MAP_PAGE);
+
+        String testString ="2;4;6;7";
+
         return modelAndView;
     }
 

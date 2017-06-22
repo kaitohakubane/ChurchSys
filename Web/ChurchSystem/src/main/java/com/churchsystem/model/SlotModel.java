@@ -50,4 +50,11 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     public void updateSlot(SlotEntity slotEntity){
         getSession().saveOrUpdate(slotEntity);
     }
+
+    @Override
+    public List<SlotEntity> getSlotByEventId(int eventId){
+        Criteria criteria=getSession().createCriteria(SlotEntity.class).add(Restrictions.eq("eventId",eventId));
+        List<SlotEntity> slotEntities=criteria.list();
+        return slotEntities;
+    }
 }

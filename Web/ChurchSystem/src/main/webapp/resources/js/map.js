@@ -4,7 +4,6 @@
 var contextPath = "/ChurchSystem";
 var markers = [];
 var churchList = [];
-var currentPositionMarker = [];
 google.maps.event.addDomListener(window, 'load', initAutocomplete);
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -182,12 +181,11 @@ function getCurrentPosition(map) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            if (currentPositionMarker.length == 0) {
-                currentPositionMarker.push(new google.maps.Marker({
-                    map: map,
-                    position: pos,
-                }));
-            }
+            markers.push(new google.maps.Marker({
+                map: map,
+                position: pos,
+            }));
+
 
             map.setCenter(pos);
 

@@ -59,29 +59,38 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public EventDataEntity getCreatedEvent(int slotId){
-        return eventModelInterface.getCreatedEvent(slotId);
+    public List<EventDisplayEntity> getCreatedEvent(int eventId){
+        List<EventDataEntity> eventDataEntities= eventModelInterface.getCreatedEvent(eventId);
+        List<EventDisplayEntity> result=new ArrayList<EventDisplayEntity>();
+        for(int i=0;i<eventDataEntities.size();i++){
+            EventDisplayEntity item=new EventDisplayEntity(eventDataEntities.get(i));
+            result.add(item);
+        }
+        return result;
     }
 
 
     @Override
-    public SlotEntity createEvent(String eventName, Date eventDate,int subId, int slotHour,boolean privacy, int churchId){
+    public void createEvent(String eventName, Date eventDate,int subId, int slotHour,boolean privacy, int churchId){
         EventEntity inputEvent=new EventEntity();
         inputEvent.setChurchId(churchId);
-        inputEvent.setEventStatus(ParamConstant.APPROVE_STATUS);
+        inputEvent.setEventStatus(ParamConstant.CONFLICT_STATUS);
         inputEvent.setStartDate(eventDate);
         inputEvent.setEventName(eventName);
         inputEvent.setSubId(subId);
         inputEvent.setPrivacy(privacy);
         eventModelInterface.addNewEvent(inputEvent);
+    }
 
+
+    public SlotEntity createSlotForEvent( Date eventDate, int slotHour, int churchId,int subId){
         //Need to fix
-
-        int conductorId=userModelInterface.getSuitableConductorForSlot(slotHour);
-        int roomId=roomModelInterface.getSuitableRoomForSlot(slotHour);
-
+        EventEntity eventEntity= eventModelInterface.getCreatingEvent(eventDate,ParamConstant.CONFLICT_STATUS,subId,churchId);
+        int conductorId=userModelInterface.getSuitableConductorForSlot(slotHour,eventDate,churchId);
+        int roomId=roomModelInterface.getSuitableRoomForSlot(slotHour,eventDate,churchId);
 
         SlotEntity slotEntity=new SlotEntity();
+        slotEntity.setEventId(eventEntity.getEventId());
         slotEntity.setConductorId(conductorId);
         slotEntity.setRoomId(roomId);
         slotEntity.setSlotDate(eventDate);
@@ -90,14 +99,16 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public SlotEntity mappingResource(Date date,int subId,int conductorId,int churchId,int slotHour){
-        EventEntity eventEntity= eventModelInterface.getCreatingEvent(date,ParamConstant.APPROVE_STATUS,subId,churchId);
-        SlotEntity slotEntity=slotModelInterface.getUnassignedEventSlot(conductorId);
-        slotEntity.setEventId(eventEntity.getEventId());
-        InclusionEntity inclusionEntity=new InclusionEntity();
-        inclusionEntity.setSlotHourId(slotHour);
-        inclusionEntity.setSlotId(slotEntity.getSlotId());
-        slotModelInterface.mappingSlotHour(inclusionEntity);
-        return slotEntity;
+    public void mappingResource(int eventId,int slotHour){
+//        EventEntity eventEntity= eventModelInterface.getCreatingEvent(date,ParamConstant.APPROVE_STATUS,subId,churchId);
+//        SlotEntity slotEntity=slotModelInterface.getUnassignedEventSlot(conductorId);
+
+        List<SlotEntity> slotEntities=slotModelInterface.getSlotByEventId(eventId);
+        for(int i=0;i<slotEntities.size();i++){
+            InclusionEntity inclusionEntity=new InclusionEntity();
+            inclusionEntity.setSlotHourId(slotHour);
+            inclusionEntity.setSlotId(slotEntities.get(i).getSlotId());
+            slotModelInterface.mappingSlotHour(inclusionEntity);
+        }
     }
 }

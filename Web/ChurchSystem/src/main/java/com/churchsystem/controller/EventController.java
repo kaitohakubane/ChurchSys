@@ -49,8 +49,8 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_EVENT_URL, method = RequestMethod.POST)
-    public EventDisplayEntity loadEventRegister(@RequestBody EventJsonEntity eventJsonEntity,HttpServletRequest request) {
-        EventDisplayEntity eventDisplayEntity = null;
+    public List<EventDisplayEntity> loadEventRegister(@RequestBody EventJsonEntity eventJsonEntity,HttpServletRequest request) {
+        List<EventDisplayEntity> result=null;
         int churchId=(Integer)request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
@@ -61,16 +61,20 @@ public class EventController {
             if (intPrivacy == UtilsConstant.ZERO) {
                 privacy = false;
             }
-            SlotEntity slotEntity=eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
+
+            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
                     , privacy,churchId);
-            slotEntity=eventServiceInterface.mappingResource(slotDate,subId,slotEntity.getConductorId(),churchId,slotHour);
-            EventDataEntity eventDataEntity=eventServiceInterface.getCreatedEvent(slotEntity.getSlotId());
-            eventDisplayEntity=new EventDisplayEntity(eventDataEntity);
+
+            SlotEntity slotEntity=eventServiceInterface.createSlotForEvent(slotDate,slotHour,churchId,subId);
+
+            eventServiceInterface.mappingResource(slotEntity.getEventId(),slotHour);
+
+            result=eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return eventDisplayEntity;
+        return result;
     }
 
     @RequestMapping(value = PageConstant.SCHEDULE_URL, method = RequestMethod.GET)

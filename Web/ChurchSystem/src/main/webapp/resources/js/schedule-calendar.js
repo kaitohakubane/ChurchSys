@@ -13,6 +13,7 @@ var lastClickedEvent = null;
 var lastEventColor = null;
 var eventList = [];
 var defaultMovePlus = 2;
+var listOfCreatingEvent=[]
 
 // Initial call -------------------------------------------------------
 generalInitial();
@@ -25,15 +26,16 @@ var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 $(document).ready(function () {
     $('#createEventbtn').on('click', function () {
         $("#calendarPopup").fadeOut();
-        var startTime=$("#slotNum").children(":selected").attr("id");
-        var isPublic=$("#createEventPopupIsPublic").prop('checked');
-        if(isPublic){
-            createEvent(creatingEvent,startTime,1);
-        }else{
-            createEvent(creatingEvent,startTime,0);
+        var startTime = $("#slotNum").children(":selected").attr("id");
+        var isPublic = $("#createEventPopupIsPublic").prop('checked');
+        if (isPublic) {
+            createEvent(creatingEvent, startTime, 1);
+        } else {
+            createEvent(creatingEvent, startTime, 0);
         }
-        console.log(creatingEvent);
-        $('#calendar').fullCalendar('renderEvent', creatingEvent);
+        console.log(listOfCreatingEvent)
+        $('#calendar').fullCalendar('renderEvents', listOfCreatingEvent);
+
     })
 
 
@@ -56,8 +58,6 @@ var isEventOverDiv = function (x, y) {
     return false;
 
 }
-
-
 
 
 function eventRegisterPopup(e, popup) {
@@ -131,22 +131,20 @@ function calendarInitialize() {
                     lastClickedDay = $(this);
                 }
             }
+            clearCreatingEventPopup();
 
-            var eventName = $('#creatingEventName').val();
-            var eventType = $('#eventType').val();
-            if (eventName == '') {
-                eventName = 'UnnamedEvent';
-            }
-            if (eventType == '') {
-                eventType = "UndefinedType"
-            }
+            // var eventName = $('#creatingEventName').val();
+            // var eventType = $('#eventType').val();
+            // if (eventName == '') {
+            //     eventName = 'UnnamedEvent';
+            // }
+            // if (eventType == '') {
+            //     eventType = "UndefinedType"
+            // }
 
             creatingEvent = {
-                title: $('#creatingEventName').val(),
                 start: date.format() + 'T04:30',
                 color: '#24ea12',
-                duration: '01:30',
-                subjectId: $('#eventType').children(":selected").attr("id"),
                 privacy: 1
             }
 
@@ -268,6 +266,16 @@ function generalInitial() {
     })
 }
 
+function clearCreatingEventPopup() {
+    $("#creatingEventName").val("");
+    $("#dropDownList").prop("selectedIndex", 0);
+
+    if (!$("#eventDetailIsPublic").prop('checked')) {
+        $("#eventDetailIsPublic").click();
+    }
+
+}
+
 function loadEvent() {
 
     var requestURL = contextPath + LOAD_EVENT_REGISTER_URL;
@@ -308,7 +316,7 @@ function subjectDropdownEvent(category) {
 }
 
 
-function createEvent(event,slotId,isPublic) {
+function createEvent(event, slotId, isPublic) {
 
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
@@ -324,12 +332,12 @@ function createEvent(event,slotId,isPublic) {
         url: requestURL,
         type: requestMethod,
         data: JSON.stringify(requestData),
-        async:false,
-        contentType:'application/json',
+        async: false,
+        contentType: 'application/json',
         processData: false,
         dataType: 'json',
         success: function (res) {
-            creatingEvent=res;
+            listOfCreatingEvent = res;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

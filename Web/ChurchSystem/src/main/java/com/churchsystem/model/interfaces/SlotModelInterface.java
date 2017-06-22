@@ -15,4 +15,5 @@ public interface SlotModelInterface {
     void addNewSlot(SlotEntity slotEntity);
     SlotEntity getUnassignedEventSlot(int conductorId);
     void updateSlot(SlotEntity slotEntity);
+    List<SlotEntity> getSlotByEventId(int slotId);
 }

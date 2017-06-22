@@ -9,6 +9,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,9 +27,10 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
     }
 
     @Override
-    public int getSuitableRoomForSlot(int slotHourId) {
+    public int getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId) {
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_ROOM_FOR_SLOT)
-                .setParameter(ParamConstant.SLOT_HOUR,slotHourId);
+                .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
+                .setParameter(ParamConstant.SLOT_DATE,slotDate);
         int result=(Integer)query.uniqueResult();
         return result;
     }

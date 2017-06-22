@@ -1,0 +1,112 @@
+
+
+/* 
+Hàm truyền trả về thời gian bắt đầu và thời gian kết thúc của slot.
+Bảng s1
+*/
+select /*i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime */*
+from slothour sh, inclusion i, slot s
+where i.slotId = s.slotid and sh.slotHourId = i.slotHourId
+group by s.slotid
+;
+
+/* 
+Hàm trả về bảng các thuộc tính của slot
+bảng S2
+*/
+Select s.slotId, s.eventId, s.roomId, s.conductorId, s.slotDate, s1.startTime, s1.endTime 
+from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime 
+			from slothour sh, inclusion i, slot s
+			where i.slotId = s.slotid and sh.slotHourId = i.slotHourId
+			group by s.slotid) s1
+where s.slotId = s1.slotId 
+;
+
+/*
+Hàm nhận vào slotHourId trả về startTime, endTime
+bảng s3
+*/
+select startTime, endTime 
+from slothour 
+where slotHourId = 2  /*param*/
+;
+
+/*...............
+Hàm trả về DS các room đang hoạt động
+*/				
+select s2.roomId
+From (Select s.slotId, s.eventId, s.roomId, s.conductorId, s.slotDate, s1.startTime, s1.endTime 
+	from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime 
+						from slothour sh, inclusion i, slot s
+						where i.slotId = s.slotid and sh.slotHourId = i.slotHourId
+						group by s.slotid) s1
+	where s.slotId = s1.slotId) s2,
+    (select startTime, endTime 
+	from slothour 
+	where slotHourId = 2) s3 /*số 2 là param*/
+Where (s2.startTime <= s3.endTime
+AND s2.endTime >= s3.startTime)
+AND s2.slotDate = '2017-06-19' /*param*/
+;
+/*
+Hàm trả về các room đang KHÔNg hoạt động
+*/
+select roomId, roomName 
+from room
+where churchid = 1 /*param*/
+AND roomId NOT IN (select s2.roomId
+					From (Select s.slotId, s.eventId, s.roomId, s.conductorId, s.slotDate, s1.startTime, s1.endTime 
+						from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime 
+											from slothour sh, inclusion i, slot s
+											where i.slotId = s.slotid and sh.slotHourId = i.slotHourId
+											group by s.slotid) s1
+						where s.slotId = s1.slotId) s2,
+						(select startTime, endTime 
+						from slothour 
+						where slotHourId = 2) s3 /*số 2 là param*/
+					Where (s2.startTime <= s3.endTime
+					AND s2.endTime >= s3.startTime)
+					AND s2.slotDate = '2017-06-19') /*param*/
+;                    
+                    
+                    
+/*...............
+Hàm trả về DS các người phụ trách đang hoạt động
+*/				
+select s2.conductorId
+From (Select s.slotId, s.eventId, s.roomId, s.conductorId, s.slotDate, s1.startTime, s1.endTime 
+	from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime 
+						from slothour sh, inclusion i, slot s
+						where i.slotId = s.slotid and sh.slotHourId = i.slotHourId
+						group by s.slotid) s1
+	where s.slotId = s1.slotId) s2,
+    (select startTime, endTime 
+	from slothour 
+	where slotHourId = 2) s3 /*số 2 là param*/
+Where (s2.startTime <= s3.endTime
+AND s2.endTime >= s3.startTime)
+AND s2.slotDate = '2017-06-19' /*param*/
+;
+
+
+/*
+Hàm trả về các người phụ trách đang KHÔNg hoạt động
+*/
+select distinct u.userId, u.userName 
+from user u, church c, interaction i
+where i.churchid = 1 /*param*/
+and i.userId = u.userId
+AND u.userId NOT IN (select s2.conductorId
+					From (Select s.slotId, s.eventId, s.roomId, s.conductorId, s.slotDate, s1.startTime, s1.endTime 
+						from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime 
+											from slothour sh, inclusion i, slot s
+											where i.slotId = s.slotid and sh.slotHourId = i.slotHourId
+											group by s.slotid) s1
+						where s.slotId = s1.slotId) s2,
+						(select startTime, endTime 
+						from slothour 
+						where slotHourId = 2) s3 /*số 2 là param*/
+					Where (s2.startTime <= s3.endTime
+					AND s2.endTime >= s3.startTime)
+					AND s2.slotDate = '2017-06-19') /*param*/
+;

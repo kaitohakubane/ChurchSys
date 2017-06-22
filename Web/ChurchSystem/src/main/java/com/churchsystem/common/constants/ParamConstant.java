@@ -82,6 +82,7 @@ public class ParamConstant {
     public static final String SLOT_HOUR="slotHour";
     public static final String CONDUCTOR_ID="conductorId";
     public static final String SLOT_ID="slotId";
+    public static final String SLOT_DATE="slotDate";
     /**
      * Room
      */

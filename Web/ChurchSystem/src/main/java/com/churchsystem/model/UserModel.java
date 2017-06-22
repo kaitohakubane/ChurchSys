@@ -11,6 +11,8 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+
 /**
  * Created by hungmcse61561-admin on 6/13/2017.
  */
@@ -34,9 +36,10 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
-    public int getSuitableConductorForSlot(int slotHourId){
+    public int getSuitableConductorForSlot(int slotHourId,Date slotDate,int churchId){
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_CONDUCTOR_FOR_SLOT)
-                .setParameter(ParamConstant.SLOT_HOUR,slotHourId);
+                .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
+                .setParameter(ParamConstant.SLOT_DATE,slotDate);
         int result=(Integer)query.uniqueResult();
         return result;
     }
