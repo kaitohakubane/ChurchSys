@@ -4,6 +4,7 @@ import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.entity.UserEntity;
+import com.churchsystem.service.common.ChurchMailSender;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.Charset;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,6 +31,8 @@ public class IndexController {
 
     @Autowired
     UserServiceInterface userServiceInterface;
+    @Autowired
+    ChurchMailSender mailMail;
 
     @RequestMapping(value = {PageConstant.MANAGER_ROOT_PATH_URL}, method = RequestMethod.GET)
     public ModelAndView initManagerHomePage(HttpServletRequest request) {
@@ -45,6 +49,8 @@ public class IndexController {
         ModelAndView modelAndView = new ModelAndView(PageConstant.MAP_PAGE);
 
         String testString ="2;4;6;7";
+
+
 
         return modelAndView;
     }

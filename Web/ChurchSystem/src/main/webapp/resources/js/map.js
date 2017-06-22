@@ -1,6 +1,7 @@
 /**
  * Created by hungmcse61561-admin on 6/14/2017.
  */
+
 var contextPath = "/ChurchSystem";
 var markers = [];
 var churchList = [];
@@ -9,8 +10,7 @@ function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 16.0544, lng: 108.2022},
         zoom: 13,
-        mapTypeId: 'roadmap'
-
+        mapTypeId: 'roadmap',
     });
 
 
@@ -39,7 +39,7 @@ function initAutocomplete() {
         if (places.length == 0) {
             return;
         }
-
+        console.log(markers)
         // Clear out the old markers.
         markers.forEach(function (marker) {
             marker.setMap(null);
@@ -59,7 +59,8 @@ function initAutocomplete() {
         markers.push(new google.maps.Marker({
             map: map,
             title: place.name,
-            position: place.geometry.location
+            position: place.geometry.location,
+
         }));
 
 
@@ -74,12 +75,11 @@ function initAutocomplete() {
 
         // Church Position
         var pos = new google.maps.LatLng('16.066979', '108.223317');
-        var image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
         markers.push(new google.maps.Marker({
             map: map,
             icon: image,
             position: pos,
-            id: 1
+            id: 1,
         }))
 
         churchEventRegister();
@@ -150,12 +150,12 @@ function positionControl(controlDiv, map) {
 
         // Church Position
         var pos = new google.maps.LatLng('16.066979', '108.223317');
-        var image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
         markers.push(new google.maps.Marker({
             map: map,
             icon: image,
             position: pos,
-            id: 1
+            id: 1,
+
         }))
 
         churchEventRegister();
@@ -185,8 +185,6 @@ function getCurrentPosition(map) {
                 map: map,
                 position: pos,
             }));
-
-
             map.setCenter(pos);
 
         }, function () {

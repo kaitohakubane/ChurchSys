@@ -13,6 +13,7 @@
     <title>Home page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
     <link href="<c:url value="/resources/css/map.css"/>" rel="stylesheet">
+
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -35,7 +36,9 @@
 <script src="<c:url value="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxrUsPf9t6b1RbI04YsBQnC-FqJmMATZk&libraries=places"
 />"></script>
 <c:import url="/resources/layouts/common/footer.jsp"/>
+<script>
+    var image="<c:url value="/resources/img/icons8-Church-48.png"/>"
+</script>
 <script src="<c:url value="/resources/js/map.js"/>"></script>
-
 </body>
 </html>
