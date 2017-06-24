@@ -208,10 +208,10 @@ insert into interaction(userId,churchId,enabled) values(2,1,1);
 insert into interaction(userId,churchId,enabled) values(1,1,1);
 
 /*Slot*/
-insert into slot(eventId, roomId, conductorId,slotDate) values(1,1,1,'2017-06-19');
-insert into slot(eventId, roomId, conductorId,slotDate) values(2,2,1,'2017-06-19');
-insert into slot(eventId, roomId, conductorId,slotDate) values(3,3,1,'2017-06-19');
-insert into slot(eventId, roomId, conductorId,slotDate) values(4,3,1,'2017-06-19');
+insert into slot(eventId, roomId, conductorId,slotDate,slotStatus) values(1,1,1,'2017-06-19',1);
+insert into slot(eventId, roomId, conductorId,slotDate,slotStatus) values(2,2,1,'2017-06-19',1);
+insert into slot(eventId, roomId, conductorId,slotDate,slotStatus) values(3,3,1,'2017-06-19',1);
+insert into slot(eventId, roomId, conductorId,slotDate,slotStatus) values(4,3,1,'2017-06-19',1);
 
 /*SlotHour*/
 insert into SlotHour values (1,'Slot 1','04:30:00','6:00:00');

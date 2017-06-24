@@ -27,11 +27,21 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
     }
 
     @Override
-    public int getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId) {
+    public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId) {
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_ROOM_FOR_SLOT)
                 .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
                 .setParameter(ParamConstant.SLOT_DATE,slotDate);
-        int result=(Integer)query.uniqueResult();
+        Integer result=(Integer)query.uniqueResult();
         return result;
     }
+
+    @Override
+    public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId,int roomId) {
+        Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_ROOM_FOR_SLOT)
+                .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
+                .setParameter(ParamConstant.SLOT_DATE,slotDate).setParameter(ParamConstant.ROOM_ID,roomId);
+        Integer result=(Integer)query.uniqueResult();
+        return result;
+    }
+
 }

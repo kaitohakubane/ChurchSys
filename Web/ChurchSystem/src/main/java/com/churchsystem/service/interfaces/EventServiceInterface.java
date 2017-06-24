@@ -1,6 +1,5 @@
 package com.churchsystem.service.interfaces;
 
-import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventDisplayEntity;
 import com.churchsystem.entity.SlotEntity;
 

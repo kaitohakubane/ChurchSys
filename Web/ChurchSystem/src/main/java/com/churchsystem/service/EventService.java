@@ -10,6 +10,7 @@ import com.churchsystem.service.interfaces.EventServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.tags.Param;
 
 import java.util.ArrayList;
 import java.sql.Date;
@@ -74,7 +75,7 @@ public class EventService implements EventServiceInterface {
     public void createEvent(String eventName, Date eventDate,int subId, int slotHour,boolean privacy, int churchId){
         EventEntity inputEvent=new EventEntity();
         inputEvent.setChurchId(churchId);
-        inputEvent.setEventStatus(ParamConstant.CONFLICT_STATUS);
+        inputEvent.setEventStatus(ParamConstant.WAITING_FOR_APPROVE_STATUS);
         inputEvent.setStartDate(eventDate);
         inputEvent.setEventName(eventName);
         inputEvent.setSubId(subId);
@@ -83,13 +84,21 @@ public class EventService implements EventServiceInterface {
     }
 
 
+
     public SlotEntity createSlotForEvent( Date eventDate, int slotHour, int churchId,int subId){
         //Need to fix
-        EventEntity eventEntity= eventModelInterface.getCreatingEvent(eventDate,ParamConstant.CONFLICT_STATUS,subId,churchId);
-        int conductorId=userModelInterface.getSuitableConductorForSlot(slotHour,eventDate,churchId);
-        int roomId=roomModelInterface.getSuitableRoomForSlot(slotHour,eventDate,churchId);
-
+        EventEntity eventEntity= eventModelInterface.getCreatingEvent(eventDate,ParamConstant.WAITING_FOR_APPROVE_STATUS,subId,churchId);
+        Integer conductorId=userModelInterface.getSuitableConductorForSlot(slotHour,eventDate,churchId);
+        Integer roomId=roomModelInterface.getSuitableRoomForSlot(slotHour,eventDate,churchId);
         SlotEntity slotEntity=new SlotEntity();
+        if(conductorId==null||roomId==null){
+            slotEntity.setSlotStatus(ParamConstant.CONFLICT_STATUS);
+        }else{
+            slotEntity.setSlotStatus(ParamConstant.OK_STATUS);
+            eventEntity.setEventStatus(ParamConstant.APPROVE_STATUS);
+            eventModelInterface.updateEvent(eventEntity);
+        }
+
         slotEntity.setEventId(eventEntity.getEventId());
         slotEntity.setConductorId(conductorId);
         slotEntity.setRoomId(roomId);
@@ -100,8 +109,6 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public void mappingResource(int eventId,int slotHour){
-//        EventEntity eventEntity= eventModelInterface.getCreatingEvent(date,ParamConstant.APPROVE_STATUS,subId,churchId);
-//        SlotEntity slotEntity=slotModelInterface.getUnassignedEventSlot(conductorId);
 
         List<SlotEntity> slotEntities=slotModelInterface.getSlotByEventId(eventId);
         for(int i=0;i<slotEntities.size();i++){

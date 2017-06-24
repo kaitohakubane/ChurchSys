@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface RoomModelInterface {
     List<RoomEntity> getRoomBySub(Integer subId);
-    int getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId);
+    Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId);
+    Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId,int roomId);
 }

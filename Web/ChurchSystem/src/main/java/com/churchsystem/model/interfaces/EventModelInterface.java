@@ -15,4 +15,5 @@ public interface EventModelInterface {
     void addNewEvent(EventEntity eventEntity);
     EventEntity getCreatingEvent(Date date, int status, int subId,int churchId);
     List<EventDataEntity> getCreatedEvent(int eventId);
+    void updateEvent(EventEntity eventEntity);
 }

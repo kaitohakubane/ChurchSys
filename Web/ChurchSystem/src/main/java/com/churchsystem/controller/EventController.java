@@ -4,7 +4,6 @@ import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
-import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventDisplayEntity;
 import com.churchsystem.entity.EventJsonEntity;
 import com.churchsystem.entity.SlotEntity;
@@ -16,9 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -49,9 +45,9 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_EVENT_URL, method = RequestMethod.POST)
-    public List<EventDisplayEntity> loadEventRegister(@RequestBody EventJsonEntity eventJsonEntity,HttpServletRequest request) {
-        List<EventDisplayEntity> result=null;
-        int churchId=(Integer)request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+    public List<EventDisplayEntity> createEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        List<EventDisplayEntity> result = null;
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
             int subId = Integer.parseInt(eventJsonEntity.getSubId());
@@ -63,13 +59,13 @@ public class EventController {
             }
 
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
-                    , privacy,churchId);
+                    , privacy, churchId);
 
-            SlotEntity slotEntity=eventServiceInterface.createSlotForEvent(slotDate,slotHour,churchId,subId);
+            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
 
-            eventServiceInterface.mappingResource(slotEntity.getEventId(),slotHour);
+            eventServiceInterface.mappingResource(slotEntity.getEventId(), slotHour);
 
-            result=eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
+            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,5 +108,57 @@ public class EventController {
         return data;
     }
 
+
+    @RequestMapping(value = PageConstant.UPDATE_EVENT_URL, method = RequestMethod.POST)
+    public ModelAndView editEvent(@RequestParam(value = ParamConstant.SLOT_ID) String id) {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.NOT_FOUND_PAGE);
+        try {
+            int slotId = Integer.parseInt(id);
+/*
+            Code to intial information here
+ */
+            modelAndView =new ModelAndView(PageConstant.EDIT_EVENT_PAGE);
+
+        } catch (Exception e) {
+
+        }
+
+        return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CREATE_CLASS_URL, method = RequestMethod.POST)
+    public List<EventDisplayEntity> loadEventRegister(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        List<EventDisplayEntity> result = null;
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            int slotHour = Integer.parseInt(eventJsonEntity.getSlotHour());
+            int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+            boolean privacy = true;
+            if (intPrivacy == UtilsConstant.ZERO) {
+                privacy = false;
+            }
+
+            //Create Class
+            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
+                    , privacy, churchId);
+
+
+            int dayOfWeek=DateUtils.getDayOfWeek(eventJsonEntity.getSlotDate());
+
+
+            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
+
+            eventServiceInterface.mappingResource(slotEntity.getEventId(), slotHour);
+
+            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 }

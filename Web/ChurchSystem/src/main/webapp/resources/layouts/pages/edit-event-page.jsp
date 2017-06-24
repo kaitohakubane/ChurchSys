@@ -56,7 +56,7 @@
                                     </div>
 
                                     <div class="col-md-5 col-sm-5 col-xs-12 form-group has-feedback">
-                                        <input type="date" class="form-control has-feedback-left"">
+                                        <input type="date" class="form-control has-feedback-left">
                                         <span class="fa fa-calendar form-control-feedback left"
                                               aria-hidden="true"></span>
                                     </div>

@@ -9,16 +9,21 @@ public class EventJsonEntity {
     private String subId;
     private String slotHour;
     private String privacy;
+    private String typeString;
+    private String numOfSlot;
 
-    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy) {
+    public EventJsonEntity() {
+    }
+
+    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy, String typeString,
+                           String numOfSlot) {
         this.eventName = eventName;
         this.slotDate = slotDate;
         this.subId = subId;
         this.slotHour = slotHour;
         this.privacy = privacy;
-    }
-
-    public EventJsonEntity() {
+        this.typeString = typeString;
+        this.numOfSlot = numOfSlot;
     }
 
     public String getEventName() {
@@ -53,11 +58,27 @@ public class EventJsonEntity {
         this.slotHour = slotHour;
     }
 
+    public String getNumOfSlot() {
+        return numOfSlot;
+    }
+
+    public void setNumOfSlot(String numOfSlot) {
+        this.numOfSlot = numOfSlot;
+    }
+
     public String getPrivacy() {
         return privacy;
     }
 
     public void setPrivacy(String privacy) {
         this.privacy = privacy;
+    }
+
+    public String getTypeString() {
+        return typeString;
+    }
+
+    public void setTypeString(String typeString) {
+        this.typeString = typeString;
     }
 }

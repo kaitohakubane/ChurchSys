@@ -20,6 +20,7 @@ public class EventDisplayEntity {
     private String roomName;
     private int privacy;
     private String description;
+    private int status;
 
     public EventDisplayEntity() {
     }
@@ -39,8 +40,16 @@ public class EventDisplayEntity {
             this.privacy = UtilsConstant.ZERO;
         }
         this.description=dataEntity.getDescription();
+        this.status=dataEntity.getStatus();
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public int getSlotId() {
         return slotId;

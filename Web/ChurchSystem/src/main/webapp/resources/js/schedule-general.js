@@ -1,7 +1,7 @@
 /**
  * Created by hungmcse61561-admin on 6/18/2017.
  */
-var CREATE_EVENT_URL = "/manager/event/Add";
+
 var UPDATE_EVENT_URL = "/manager/event/Update";
 var DELETE_EVENT_URL = "/manager/event/Delete";
 //
@@ -56,6 +56,7 @@ function inputEventPopupInformation(event) {
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
+
     if (event.privacy == 0) {
         if ($("#eventDetailIsPublic").prop('checked')) {
             console.log($("#eventDetailIsPublic").prop('checked'));
@@ -68,7 +69,12 @@ function inputEventPopupInformation(event) {
         }
     }
 
-
+    $("#editSlotButton").on("click",function(){
+        var parameter={
+            slotId:event.slotId
+        }
+        post(contextPath+UPDATE_EVENT_URL,parameter);
+    })
 }
 
 function terminateEventCreateMenu() {
@@ -98,7 +104,30 @@ function terminateEventCreateMenu() {
     })
 }
 
-// -------------------------------------------Ajax------------------------------
+
+// Post to the provided URL with the specified parameters.
+function post(path, parameters) {
+    var form = $('<form></form>');
+
+    form.attr("method", "post");
+    form.attr("action", path);
+
+    $.each(parameters, function(key, value) {
+        var field = $('<input></input>');
+
+        field.attr("type", "hidden");
+        field.attr("name", key);
+        field.attr("value", value);
+
+        form.append(field);
+    });
+
+    // The form needs to be a part of the document in
+    // order for us to be able to submit it.
+    $(document.body).append(form);
+    form.submit();
+}
+
 
 
 

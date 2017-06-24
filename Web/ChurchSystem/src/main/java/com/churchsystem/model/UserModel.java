@@ -36,11 +36,20 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
-    public int getSuitableConductorForSlot(int slotHourId,Date slotDate,int churchId){
+    public Integer getSuitableConductorForSlot(int slotHourId,Date slotDate,int churchId){
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_CONDUCTOR_FOR_SLOT)
                 .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
                 .setParameter(ParamConstant.SLOT_DATE,slotDate);
-        int result=(Integer)query.uniqueResult();
+        Integer result=(Integer)query.uniqueResult();
+        return result;
+    }
+
+    @Override
+    public Integer checkConductorForSlot(int slotHourId,Date slotDate,int churchId,int conductorId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.CHECK_CONDUCTOR_FOR_SLOT)
+                .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
+                .setParameter(ParamConstant.SLOT_DATE,slotDate).setParameter(ParamConstant.CONDUCTOR_ID,conductorId);
+        Integer result=(Integer)query.uniqueResult();
         return result;
     }
 }

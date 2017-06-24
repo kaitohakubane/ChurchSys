@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 6/19/2017.
+ * Created by hungmcse61561-admin on 6/23/2017.
  */
 @Entity
 @Table(name = "slot", schema = "churchsys", catalog = "")
@@ -14,6 +14,7 @@ public class SlotEntity {
     private Integer roomId;
     private Integer conductorId;
     private Date slotDate;
+    private Integer slotStatus;
 
     @Id
     @Column(name = "slotId")
@@ -65,6 +66,16 @@ public class SlotEntity {
         this.slotDate = slotDate;
     }
 
+    @Basic
+    @Column(name = "slotStatus")
+    public Integer getSlotStatus() {
+        return slotStatus;
+    }
+
+    public void setSlotStatus(Integer slotStatus) {
+        this.slotStatus = slotStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,6 +88,7 @@ public class SlotEntity {
         if (roomId != null ? !roomId.equals(that.roomId) : that.roomId != null) return false;
         if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
         if (slotDate != null ? !slotDate.equals(that.slotDate) : that.slotDate != null) return false;
+        if (slotStatus != null ? !slotStatus.equals(that.slotStatus) : that.slotStatus != null) return false;
 
         return true;
     }
@@ -88,6 +100,7 @@ public class SlotEntity {
         result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
         result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
         result = 31 * result + (slotDate != null ? slotDate.hashCode() : 0);
+        result = 31 * result + (slotStatus != null ? slotStatus.hashCode() : 0);
         return result;
     }
 }

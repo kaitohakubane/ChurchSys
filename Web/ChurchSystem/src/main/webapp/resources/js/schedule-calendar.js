@@ -4,6 +4,8 @@
 //URL
 
 var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
+var CREATE_EVENT_URL = "/manager/event/Add";
+var CREATE_CLASS_URL = "/manager/class/Add";
 
 //local variable
 var creatingEvent;
@@ -13,8 +15,9 @@ var lastClickedEvent = null;
 var lastEventColor = null;
 var eventList = [];
 var defaultMovePlus = 2;
-var listOfCreatingEvent=[]
-
+var listOfCreatingEvent = []
+var ClassCategoryNum = 4;
+var defaultTimeSlot="04:30:00 - 06:00:00"
 // Initial call -------------------------------------------------------
 generalInitial();
 calendarInitialize();
@@ -28,12 +31,29 @@ $(document).ready(function () {
         $("#calendarPopup").fadeOut();
         var startTime = $("#slotNum").children(":selected").attr("id");
         var isPublic = $("#createEventPopupIsPublic").prop('checked');
+        var policy = 0;
         if (isPublic) {
-            createEvent(creatingEvent, startTime, 1);
-        } else {
-            createEvent(creatingEvent, startTime, 0);
+            policy = 1;
         }
+
+        console.log($("#category").children(":selected").val());
+        if ($("#category").children(":selected").val() == ClassCategoryNum) {
+
+        } else {
+            createEvent(creatingEvent, startTime, policy);
+        }
+
+
         console.log(listOfCreatingEvent)
+        listOfCreatingEvent.forEach(function (e) {
+            console.log(e.status)
+            if (e.status == 0) {
+                e.color= '#ef0909'
+            }else{
+                e.color= '#24ea12'
+            }
+        })
+
         $('#calendar').fullCalendar('renderEvents', listOfCreatingEvent);
 
     })
@@ -61,6 +81,7 @@ var isEventOverDiv = function (x, y) {
 
 
 function eventRegisterPopup(e, popup) {
+    console.log("popup")
     var windowHeight = $(window).height() / 2;
     var windowWidth = $(window).width() / 2;
     if (e.clientY > windowHeight && e.clientX <= windowWidth) {
@@ -89,6 +110,7 @@ function eventRegisterPopup(e, popup) {
         popup.fadeIn();
     }
 
+
 }
 
 function calendarInitialize() {
@@ -102,7 +124,7 @@ function calendarInitialize() {
         views: {
             agendaDay: {
                 minTime: '04:30:00',
-                maxTime: '22:00:00',
+                maxTime: '21:00:00',
                 slotDuration: '01:30:00',
                 snapDuration: '01:30:00',
                 allDaySlot: false,
@@ -110,11 +132,14 @@ function calendarInitialize() {
             }
         },
 
-        select: function (start, end, allDay, jsEvent, view) {
+        select: function (start, end, jsEvent, view) {
             var popup = $('#calendarPopup')
-            popup.fadeOut();
+            console.log('select')
+            var startTime=start.format("HH:mm:ss");
+            var endTime=end.format("HH:mm:ss")
+            var timeSlot=startTime+" - "+endTime;
+            clearCreatingEventPopup(timeSlot);
             eventRegisterPopup(jsEvent, popup);
-            console.log("show");
         },
 
         dayClick: function (date, jsEvent, view) {
@@ -131,20 +156,10 @@ function calendarInitialize() {
                     lastClickedDay = $(this);
                 }
             }
-            clearCreatingEventPopup();
 
-            // var eventName = $('#creatingEventName').val();
-            // var eventType = $('#eventType').val();
-            // if (eventName == '') {
-            //     eventName = 'UnnamedEvent';
-            // }
-            // if (eventType == '') {
-            //     eventType = "UndefinedType"
-            // }
-
+            clearCreatingEventPopup(defaultTimeSlot);
             creatingEvent = {
                 start: date.format() + 'T04:30',
-                color: '#24ea12',
                 privacy: 1
             }
 
@@ -214,6 +229,19 @@ function calendarInitialize() {
 
 
         },
+
+        eventResize: function (event, delta, revertFunc) {
+
+
+            var start = event.start.format('HH:mm');
+            var end = event.end.format('HH:mm');
+            if (start < '04:30' || end > '21:00' || start > end) {
+                revertFunc();
+                console.log('revert');
+            }
+
+        },
+
         eventDrop: function (event, delta, revertFunc, jsEvent, ui, view) {
             console.log('eventDrop')
             if (typeof event.end === 'undefined' || !event.end) {
@@ -232,6 +260,7 @@ function calendarInitialize() {
         droppable: true,
         dragRevertDuration: 0,
         eventLimit: true,
+        eventOrder:"status",
         slotLabelFormat: 'HH:mm',
         timeFormat: 'HH:mm'
     })
@@ -266,14 +295,19 @@ function generalInitial() {
     })
 }
 
-function clearCreatingEventPopup() {
+function clearCreatingEventPopup(timeSlot) {
     $("#creatingEventName").val("");
-    $("#dropDownList").prop("selectedIndex", 0);
+    $("#category").prop("selectedIndex", 0);
 
     if (!$("#eventDetailIsPublic").prop('checked')) {
         $("#eventDetailIsPublic").click();
     }
+    console.log(timeSlot);
+    if(timeSlot==""){
+        timeSlot=defaultTimeSlot;
+    }
 
+    $("#slotNum").val(timeSlot);
 }
 
 function loadEvent() {
@@ -289,7 +323,15 @@ function loadEvent() {
         dataType: 'json',
         success: function (res) {
             eventList = res;
-            console.log(eventList);
+            eventList.forEach(function (e) {
+
+                if (e.status == 0) {
+                    e.color= '#ef0909'
+                }
+
+                console.log(e)
+            })
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -319,6 +361,36 @@ function subjectDropdownEvent(category) {
 function createEvent(event, slotId, isPublic) {
 
     var requestURL = contextPath + CREATE_EVENT_URL;
+    var requestMethod = "POST";
+    var requestData = {
+        eventName: $('#creatingEventName').val(),
+        slotDate: event.start.split("T")[0],
+        subId: $('#eventType').children(":selected").attr("id"),
+        slotHour: slotId,
+        privacy: isPublic
+    }
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        dataType: 'json',
+        success: function (res) {
+            listOfCreatingEvent = res;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    });
+}
+
+function createClass(event, slotId, isPublic) {
+
+    var requestURL = contextPath + CREATE_CLASS_URL;
     var requestMethod = "POST";
     var requestData = {
         eventName: $('#creatingEventName').val(),

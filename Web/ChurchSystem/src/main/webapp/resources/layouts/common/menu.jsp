@@ -18,9 +18,6 @@
 
         <!-- menu profile quick info -->
         <div class="profile clearfix">
-            <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-            </div>
             <div class="profile_info">
                 <span>Welcome,</span>
                 <h2>Hung Mai</h2>
@@ -84,7 +81,7 @@
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
-                        <img src="images/img.jpg" alt="">Hung Akai
+                        Hung Akai
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">

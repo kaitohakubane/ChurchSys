@@ -1,7 +1,6 @@
 package com.churchsystem.model;
 
 import com.churchsystem.common.constants.ParamConstant;
-import com.churchsystem.entity.EventEntity;
 import com.churchsystem.entity.InclusionEntity;
 import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.entity.SlothourEntity;
@@ -10,7 +9,6 @@ import com.churchsystem.model.interfaces.SlotModelInterface;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.servlet.tags.Param;
 
 import java.util.List;
 

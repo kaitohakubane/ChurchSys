@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 /**
  * Created by Hung on 11/22/2016.
@@ -44,11 +45,22 @@ public class DateUtils {
         }
     }
 
-    public static Date getDate(String date) throws ParseException{
+    public static Date getDate(String date) throws ParseException {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date utilDate= sdf1.parse(date);
-        java.sql.Date result=new Date(utilDate.getTime());
-        return result;
+            java.util.Date utilDate= sdf1.parse(date);
+            java.sql.Date result=new Date(utilDate.getTime());
+            return result;
     }
+
+    public static int getDayOfWeek(String date )throws ParseException {
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date utilDate= sdf1.parse(date);
+            Calendar cal=Calendar.getInstance();
+            cal.setTime(utilDate);
+            int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
+            return dayOfWeek;
+    }
+
 
 }

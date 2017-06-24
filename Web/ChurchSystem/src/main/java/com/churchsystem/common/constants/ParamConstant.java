@@ -52,8 +52,9 @@ public class ParamConstant {
     public static final int WAITING_FOR_APPROVE_STATUS=1;
     public static final int DENY_STATUS=2;
     public static final int APPROVE_STATUS=3;
-    public static final int CONFLICT_STATUS=4;
-    public static final int FINISH_STATUS=5;
+    public static final int CONFLICT_STATUS=0;
+    public static final int OK_STATUS=1;
+    public static final int FINISH_STATUS=4;
     public static final String EVENT_ID="eventId";
 
 

@@ -10,5 +10,6 @@ import java.sql.Date;
 public interface UserModelInterface {
     UserEntity getUserByAccountId(String accountId);
     int getChurchIdByUserId(int userId);
-    int getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId);
+    Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId);
+    Integer checkConductorForSlot(int slotHourId,Date slotDate,int churchId,int conductorId);
 }

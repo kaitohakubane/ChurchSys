@@ -24,7 +24,7 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     @Override
     public List<EventDataEntity> getListOfEvent(int churchId){
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_EVENT_DISPLAY_SLOT)
-                .setParameter("requireChurchId",churchId)
+                .setParameter(ParamConstant.CHURCH_ID,churchId)
                 .setResultTransformer(Transformers.aliasToBean(EventDataEntity.class));
         List<EventDataEntity> result=query.list();
         return result;
@@ -33,7 +33,7 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     @Override
     public List<EventDataEntity> getListOfPublicEvent(int churchId){
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_PUBLIC_EVENT_DISPLAY_SLOT)
-                .setParameter("requireChurchId",churchId)
+                .setParameter(ParamConstant.CHURCH_ID,churchId)
                 .setResultTransformer(Transformers.aliasToBean(EventDataEntity.class));
         List<EventDataEntity> result=query.list();
         return result;
@@ -42,6 +42,11 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     @Override
     public void addNewEvent(EventEntity eventEntity){
         getSession().persist(eventEntity);
+    }
+
+    @Override
+    public void updateEvent(EventEntity eventEntity){
+        getSession().saveOrUpdate(eventEntity);
     }
 
     @Override
