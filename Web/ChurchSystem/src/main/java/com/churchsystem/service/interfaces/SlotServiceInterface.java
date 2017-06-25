@@ -1,6 +1,8 @@
 package com.churchsystem.service.interfaces;
 
+import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.entity.SlothourEntity;
+import com.churchsystem.entity.TypeEntity;
 
 import java.util.List;
 
@@ -9,4 +11,7 @@ import java.util.List;
  */
 public interface SlotServiceInterface {
     List<SlothourEntity> getListOfSlotHour();
+    TypeEntity getTypeByDescription(String type);
+    void addNewType(TypeEntity typeEntity);
+    List<SlotEntity> getSlotByEventId(int eventId);
 }

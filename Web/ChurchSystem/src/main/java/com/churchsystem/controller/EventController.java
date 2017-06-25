@@ -4,9 +4,8 @@ import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
-import com.churchsystem.entity.EventDisplayEntity;
-import com.churchsystem.entity.EventJsonEntity;
-import com.churchsystem.entity.SlotEntity;
+import com.churchsystem.entity.*;
+import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +43,10 @@ public class EventController {
     @Autowired
     SlotServiceInterface slotServiceInterface;
 
+    @Autowired
+    UserServiceInterface userServiceInterface;
+
+
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_EVENT_URL, method = RequestMethod.POST)
     public List<EventDisplayEntity> createEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
@@ -59,11 +63,14 @@ public class EventController {
             }
 
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
-                    , privacy, churchId);
+                    , privacy, churchId, null, null);
 
             SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
+            List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
+            for (int i = 0; i < slotEntities.size(); i++) {
+                eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
+            }
 
-            eventServiceInterface.mappingResource(slotEntity.getEventId(), slotHour);
 
             result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
 
@@ -117,7 +124,7 @@ public class EventController {
 /*
             Code to intial information here
  */
-            modelAndView =new ModelAndView(PageConstant.EDIT_EVENT_PAGE);
+            modelAndView = new ModelAndView(PageConstant.EDIT_EVENT_PAGE);
 
         } catch (Exception e) {
 
@@ -128,7 +135,7 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_CLASS_URL, method = RequestMethod.POST)
-    public List<EventDisplayEntity> loadEventRegister(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+    public List<EventDisplayEntity> createClass(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
         List<EventDisplayEntity> result = null;
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
@@ -140,25 +147,71 @@ public class EventController {
             if (intPrivacy == UtilsConstant.ZERO) {
                 privacy = false;
             }
+            int numberOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
+            Date examDate = DateUtils.getDate(eventJsonEntity.getExamDate());
+
+
+            TypeEntity typeEntity = slotServiceInterface.getTypeByDescription(eventJsonEntity.getType());
+            if (typeEntity == null) {
+                typeEntity = new TypeEntity();
+                typeEntity.setDescription(eventJsonEntity.getType());
+                slotServiceInterface.addNewType(typeEntity);
+                typeEntity = slotServiceInterface.getTypeByDescription(eventJsonEntity.getType());
+            }
 
             //Create Class
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
-                    , privacy, churchId);
+                    , privacy, churchId, examDate, typeEntity.getTypeId());
+
+            List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
+
+            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
+                    subId, churchId);
 
 
-            int dayOfWeek=DateUtils.getDayOfWeek(eventJsonEntity.getSlotDate());
+            Integer conductorId = null;
+            Integer roomId = null;
+            Date safeDate = null;
+            for (int i = 0; i < datesOfClass.size(); i++) {
+                Date item = datesOfClass.get(i);
+                conductorId = userServiceInterface.getSuitableConductorForSlot(slotHour, item, churchId);
+                roomId = roomServiceInterface.getSuitableRoomForSlot(slotHour, item, churchId);
+                if (conductorId != null && roomId != null) {
+                    safeDate = item;
+                    break;
+                }
+            }
+
+            if (safeDate != null) {
+                for (int i = 0; i < datesOfClass.size(); i++) {
+                    Date itemDate = datesOfClass.get(i);
+                    eventServiceInterface.createSlotForClass(eventEntity.getEventId(), slotHour, churchId,
+                            roomId, conductorId, itemDate);
+                }
+
+                List<SlotEntity> slotEntities=slotServiceInterface.getSlotByEventId(eventEntity.getEventId());
+
+                for(SlotEntity slotEntity:slotEntities){
+                    eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
+                }
 
 
-            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
+                result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId());
 
-            eventServiceInterface.mappingResource(slotEntity.getEventId(), slotHour);
 
-            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
+                eventEntity.setEventStatus(ParamConstant.APPROVE_STATUS);
+                eventServiceInterface.updateEvent(eventEntity);
+
+            } else {
+                eventEntity.setEventStatus(ParamConstant.CONFLICT_STATUS);
+                eventServiceInterface.updateEvent(eventEntity);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
+
 
 }

@@ -3,6 +3,7 @@ package com.churchsystem.model.interfaces;
 import com.churchsystem.entity.InclusionEntity;
 import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.entity.SlothourEntity;
+import com.churchsystem.entity.TypeEntity;
 
 import java.util.List;
 
@@ -15,5 +16,7 @@ public interface SlotModelInterface {
     void addNewSlot(SlotEntity slotEntity);
     SlotEntity getUnassignedEventSlot(int conductorId);
     void updateSlot(SlotEntity slotEntity);
-    List<SlotEntity> getSlotByEventId(int slotId);
+    List<SlotEntity> getSlotByEventId(int eventId);
+    TypeEntity getTypeByDescription(String type);
+    void addNewType(TypeEntity typeEntity);
 }

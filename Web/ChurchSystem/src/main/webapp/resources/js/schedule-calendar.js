@@ -38,7 +38,8 @@ $(document).ready(function () {
 
         console.log($("#category").children(":selected").val());
         if ($("#category").children(":selected").val() == ClassCategoryNum) {
-
+            console.log("OK")
+            createClass(creatingEvent,startTime,policy);
         } else {
             createEvent(creatingEvent, startTime, policy);
         }
@@ -196,11 +197,9 @@ function calendarInitialize() {
 
         drop: function (date) {
             $(this).remove();
-            console.log('drop');
         },
 
         eventReceive: function (event) {
-            console.log('event Receive')
 
             $('#calendar').fullCalendar('updateEvent', event);
         },
@@ -397,7 +396,10 @@ function createClass(event, slotId, isPublic) {
         slotDate: event.start.split("T")[0],
         subId: $('#eventType').children(":selected").attr("id"),
         slotHour: slotId,
-        privacy: isPublic
+        privacy: isPublic,
+        numOfSlot:10,
+        examDate:"2017-08-30",
+        type:"2;4;6"
     }
 
     $.ajax({

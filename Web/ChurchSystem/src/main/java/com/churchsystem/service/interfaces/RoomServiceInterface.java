@@ -2,6 +2,7 @@ package com.churchsystem.service.interfaces;
 
 import com.churchsystem.entity.RoomEntity;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface RoomServiceInterface {
     List<RoomEntity> getRoomBySub(Integer subId);
+    Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId);
+    Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId,int roomId);
 }

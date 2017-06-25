@@ -88,7 +88,7 @@ public class SQLParamConstant {
             "group by s.slotid) s1 where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
             "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)";
 
-    public static final String CHECK_ROOM_FOR_SLOT = "select roomId from room where churchId =:churchId AND roomId =:roomId" +
+    public static final String CHECK_ROOM_FOR_SLOT = "select roomId from room where churchId =:churchId AND roomId =:roomId " +
             "AND roomId NOT IN (select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime," +
             " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +

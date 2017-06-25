@@ -4,6 +4,7 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.InclusionEntity;
 import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.entity.SlothourEntity;
+import com.churchsystem.entity.TypeEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.SlotModelInterface;
 import org.hibernate.Criteria;
@@ -51,8 +52,20 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
 
     @Override
     public List<SlotEntity> getSlotByEventId(int eventId){
-        Criteria criteria=getSession().createCriteria(SlotEntity.class).add(Restrictions.eq("eventId",eventId));
+        Criteria criteria=getSession().createCriteria(SlotEntity.class).add(Restrictions.eq(ParamConstant.EVENT_ID,eventId));
         List<SlotEntity> slotEntities=criteria.list();
         return slotEntities;
+    }
+
+    @Override
+    public TypeEntity getTypeByDescription(String type){
+        Criteria criteria=getSession().createCriteria(TypeEntity.class).add(Restrictions.eq(ParamConstant.TYPE_DESCRIPTION,type));
+        TypeEntity typeEntity=(TypeEntity) criteria.uniqueResult();
+        return typeEntity;
+    }
+
+    @Override
+    public void addNewType(TypeEntity typeEntity){
+        getSession().persist(typeEntity);
     }
 }

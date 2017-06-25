@@ -44,25 +44,25 @@ public class ParamConstant {
      * Event
      */
     public static final String EVENT_OBJECT = "normalizedEvent";
-    public static final String EVENT_TITLE="eventTitle";
-    public static final String EVENT_DATE="eventDate";
-    public static final String IS_PUBLIC="isPublic";
-    public static final String EVENT_STATUS="status";
-    public static final String EVENT_SUBJECT_ID="eventSubId";
-    public static final int WAITING_FOR_APPROVE_STATUS=1;
-    public static final int DENY_STATUS=2;
-    public static final int APPROVE_STATUS=3;
-    public static final int CONFLICT_STATUS=0;
-    public static final int OK_STATUS=1;
-    public static final int FINISH_STATUS=4;
-    public static final String EVENT_ID="eventId";
+    public static final String EVENT_TITLE = "eventTitle";
+    public static final String EVENT_DATE = "eventDate";
+    public static final String IS_PUBLIC = "isPublic";
+    public static final String EVENT_STATUS = "status";
+    public static final String EVENT_SUBJECT_ID = "eventSubId";
+    public static final int WAITING_FOR_APPROVE_STATUS = 1;
+    public static final int DENY_STATUS = 2;
+    public static final int APPROVE_STATUS = 3;
+    public static final int CONFLICT_STATUS = 0;
+    public static final int OK_STATUS = 1;
+    public static final int FINISH_STATUS = 4;
+    public static final String EVENT_ID = "eventId";
 
 
     /**
      * Subject
      */
     public static final String SUBJECT_LIST = "subjectList";
-    public static final String SUBJECT_ID="subId";
+    public static final String SUBJECT_ID = "subId";
 
     /**
      * Church
@@ -80,12 +80,19 @@ public class ParamConstant {
      * Slot
      */
     public static final String SLOT_HOUR_LIST = "slotHourList";
-    public static final String SLOT_HOUR="slotHour";
-    public static final String CONDUCTOR_ID="conductorId";
-    public static final String SLOT_ID="slotId";
-    public static final String SLOT_DATE="slotDate";
+    public static final String SLOT_HOUR = "slotHour";
+    public static final String CONDUCTOR_ID = "conductorId";
+    public static final String SLOT_ID = "slotId";
+    public static final String SLOT_DATE = "slotDate";
+
     /**
      * Room
      */
-    public static final String ROOM_ID="roomId";
+
+    public static final String ROOM_ID = "roomId";
+
+    /**
+     * Type
+     */
+    public static final String TYPE_DESCRIPTION="description";
 }
