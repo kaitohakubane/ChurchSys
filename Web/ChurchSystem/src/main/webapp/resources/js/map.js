@@ -10,6 +10,7 @@ function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 16.0544, lng: 108.2022},
         zoom: 13,
+        mapTypeControl: false,
         mapTypeId: 'roadmap',
     });
 
@@ -23,7 +24,7 @@ function initAutocomplete() {
     var centerControlDiv = document.createElement('div');
     new positionControl(centerControlDiv, map);
     centerControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv);
+    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv);
 
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function () {
@@ -195,3 +196,13 @@ function getCurrentPosition(map) {
         handleNoGeolocation(false);
     }
 }
+
+    $("#geolocationBtn").click(function(e) {
+        e.preventDefault();
+        $("#geolocationBtn").toggleClass("onclick");
+    });
+
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+    });

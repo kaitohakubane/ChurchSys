@@ -72,13 +72,13 @@
     </div>
 </div>
 <!-- end page content -->
-<div class="" style="width: 400px;">
-    <div class="x_panel">
-        <div class="x_title">
-            <h2>Đăng kí sự kiện</h2>
+<div class="" style="width: 350px; display: none;">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4>Đăng kí sự kiện</h4>
             <div class="clearfix"></div>
         </div>
-        <div class="x_content">
+        <div class="panel-body">
             <div class="form-horizontal form-label-left">
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Sự kiện</label>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="ln_solid"></div>
+                <hr>
                 <div class="form-group">
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
                         <button type="button" class="btn btn-default">Cancel</button>

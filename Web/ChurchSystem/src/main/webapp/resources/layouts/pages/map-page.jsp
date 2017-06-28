@@ -11,32 +11,40 @@
 <html>
 <head>
     <title>Home page</title>
-    <c:import url="/resources/layouts/common/header.jsp"/>
+    <c:import url="/resources/layouts/user-common/header.jsp"/>
     <link href="<c:url value="/resources/css/map.css"/>" rel="stylesheet">
 
 </head>
-<body class="nav-md">
-<div class="container body">
-    <div class="main_container">
-        <c:import url="/resources/layouts/common/user-menu.jsp"/>
-        <div class="right_col" role="main">
-            <div class="page-title">
-                <div class="title_left">
-                    <h3>Map</h3>
-                </div>
-            </div>
-            <div class="size">
-                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                <div id="map" style="height: 590px; width: 1080px;"></div>
+<body>
+
+<!-- navbar -->
+<nav class="navbar navbar-default navbar-fixed-top mega-nav">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="MainMenu">
+            <ul class="nav navbar-nav menu-list">
+                <li><a href="#" class="icon-top"><img alt="Church Icon" src="<c:url value="/resources/img/icon.png"/>" class="icon-img"></a></li>
+            </ul>
+            <div class="navbar-right">
+                <ul class="nav-right">
+                    <li><a href="#" class="button">Đăng ký</a></li>
+                    <li><a href="#" class="button">Đăng nhập</a></li>
+                </ul>
             </div>
         </div>
-        <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
-</div>
+</nav>
+<!-- end navbar -->
+<c:import url="/resources/layouts/user-common/vertical-navbar.jsp"/>
 
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<div id="map" class="col-md-12"></div>
+<div class="geolocation"><div id="geolocationBtn" class="icon"></div></div>
+
+
+<c:import url="/resources/layouts/user-common/footer.jsp"/>
 <script src="<c:url value="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxrUsPf9t6b1RbI04YsBQnC-FqJmMATZk&libraries=places"
 />"></script>
-<c:import url="/resources/layouts/common/footer.jsp"/>
+
 <script>
     var image = "<c:url value="/resources/img/icons8-Church-48.png"/>"
 </script>

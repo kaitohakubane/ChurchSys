@@ -224,7 +224,6 @@ footer p {
     margin-left: -200px;
     left: 40px;
     width: 200px;
-    background: #fff;
     position: fixed;
     height: 100%;
     z-index: 10000;
@@ -258,7 +257,7 @@ footer p {
     text-indent: 20px;
 }
 
-.sidebar-nav li a:hover {
+#wrapper.active .sidebar-nav li a:hover {
     color: #fff;
     background: #0075b3;
     text-decoration: none;
@@ -283,6 +282,13 @@ li.sidebar-brand a {
     left: 200px;
     width: 200px;
     transition: all .4s ease 0s;
+    background: #2a8fcf;
+}
+#wrapper.active .sidebar-nav li a{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: #2a8fcf;
+    color: #fff;
 }
 .footer-nav {
     margin-bottom: 0;

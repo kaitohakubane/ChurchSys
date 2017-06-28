@@ -146,6 +146,7 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Event Detail</h2>
+                <button type="button" class="btn btn-primary pull-right">Stream</button>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -288,8 +289,8 @@
 <!-- /popup -->
 
 
-====================================================
-====================================================
+<%--====================================================--%>
+<%--====================================================--%>
 
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
