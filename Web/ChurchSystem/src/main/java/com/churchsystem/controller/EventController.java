@@ -1,5 +1,6 @@
 package com.churchsystem.controller;
 
+import com.churchsystem.common.api.YoutubeAPI;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
@@ -219,5 +220,16 @@ public class EventController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CREATE_STREAM_EVENT, method = RequestMethod.POST)
+    public int loadPublicEventRegister() {
+        try {
+            YoutubeAPI.createBroadcast("broadcastName",new Date(System.currentTimeMillis()));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return UtilsConstant.ONE;
+    }
 
 }

@@ -34,8 +34,6 @@
     </div>
 </div>
 
-
-
 <script src="<c:url value="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxrUsPf9t6b1RbI04YsBQnC-FqJmMATZk&libraries=places"
 />"></script>
 <c:import url="/resources/layouts/common/footer.jsp"/>

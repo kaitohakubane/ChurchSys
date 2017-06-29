@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Use the YouTube Live Streaming API to insert a broadcast and a stream
@@ -23,7 +24,7 @@ import java.util.List;
  *
  * @author Ibrahim Ulukaya
  */
-public class Youtube {
+public class YoutubeAPI {
 
     /**
      * Define a global instance of a Youtube object, which will be used
@@ -43,7 +44,7 @@ public class Youtube {
         // times for the broadcast. Currently, those times are hard-coded.
         LiveBroadcastSnippet broadcastSnippet = new LiveBroadcastSnippet();
         broadcastSnippet.setTitle(broadcastTitle);
-        broadcastSnippet.setScheduledStartTime(new DateTime(startTime));
+        broadcastSnippet.setScheduledStartTime(new DateTime(startTime, TimeZone.getTimeZone("Asia/Ho_Chi_Minh")));
         // Set the broadcast's privacy status to "private". See:
         // https://developers.google.com/youtube/v3/live/docs/liveBroadcasts#status.privacyStatus
         LiveBroadcastStatus status = new LiveBroadcastStatus();
