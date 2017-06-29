@@ -18,6 +18,6 @@ public class UtilsConstant {
     public static final String NORMAL_USER="ROLE_USER";
     public static final String ZERO_STRING = "0";
     public static final String REDIRECT_STRING="redirect:";
-    public static final String DEFAULT_DELIMETER=";";
+    public static final String DEFAULT_DELIMETER=",";
     public static final String DEFAULT_DATE_FORMAT="yyyy-MM-dd";
 }

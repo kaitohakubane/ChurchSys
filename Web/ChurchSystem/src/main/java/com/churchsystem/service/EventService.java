@@ -95,10 +95,10 @@ public class EventService implements EventServiceInterface {
         Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId);
         SlotEntity slotEntity = new SlotEntity();
         if (conductorId == null || roomId == null) {
-            slotEntity.setSlotStatus(ParamConstant.CONFLICT_STATUS);
+            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
         } else {
-            slotEntity.setSlotStatus(ParamConstant.OK_STATUS);
-            eventEntity.setEventStatus(ParamConstant.APPROVE_STATUS);
+            slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
+            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventModelInterface.updateEvent(eventEntity);
         }
 
@@ -116,9 +116,9 @@ public class EventService implements EventServiceInterface {
         SlotEntity slotEntity = new SlotEntity();
         if (userModelInterface.checkConductorForSlot(slotHour, itemDate, churchId, conductorId) == null ||
                 roomModelInterface.checkRoomForSlot(slotHour, itemDate, churchId, roomId) == null) {
-            slotEntity.setSlotStatus(ParamConstant.CONFLICT_STATUS);
+            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
         } else {
-            slotEntity.setSlotStatus(ParamConstant.OK_STATUS);
+            slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
         }
         slotEntity.setEventId(eventId);
         slotEntity.setConductorId(conductorId);

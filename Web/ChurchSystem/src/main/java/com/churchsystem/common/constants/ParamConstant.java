@@ -39,6 +39,10 @@ public class ParamConstant {
      */
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
     public static final String LIST_REGISTERED_CLASS_ATTR = "registeredClass";
+    public static final int REGISTRATION_WAITING_STATUS=1;
+    public static final int REGISTRATION_DENY_STATUS=2;
+    public static final int REGISTRATION_FINISH_STATUS=3;
+    public static final String REGISTRATION_STATUS="regisStatus";
 
     /**
      * Event
@@ -50,11 +54,9 @@ public class ParamConstant {
     public static final String EVENT_STATUS = "status";
     public static final String EVENT_SUBJECT_ID = "eventSubId";
     public static final int WAITING_FOR_APPROVE_STATUS = 1;
-    public static final int DENY_STATUS = 2;
-    public static final int APPROVE_STATUS = 3;
-    public static final int CONFLICT_STATUS = 0;
-    public static final int OK_STATUS = 1;
-    public static final int FINISH_STATUS = 4;
+    public static final int EVENT_DENY_STATUS = 2;
+    public static final int EVENT_APPROVE_STATUS = 3;
+    public static final int EVENT_FINISH_STATUS = 4;
     public static final String EVENT_ID = "eventId";
 
 
@@ -84,7 +86,8 @@ public class ParamConstant {
     public static final String CONDUCTOR_ID = "conductorId";
     public static final String SLOT_ID = "slotId";
     public static final String SLOT_DATE = "slotDate";
-
+    public static final int SLOT_CONFLICT_STATUS = 0;
+    public static final int SLOT_OK_STATUS = 1;
     /**
      * Room
      */

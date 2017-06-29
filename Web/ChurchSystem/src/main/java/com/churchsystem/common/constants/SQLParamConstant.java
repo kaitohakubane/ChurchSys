@@ -28,7 +28,7 @@ public class SQLParamConstant {
     public static final String GET_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName," +
             " count(s.subId) as numOfRegistration " +
             "FROM registration r, subject s " +
-            "WHERE r.churchId =:requireChurchId and r.subId = s.subId " +
+            "WHERE r.churchId =:churchId and r.subId = s.subId AND regisStatus = 1 " +
             "GROUP BY (s.subId)";
 
     public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +

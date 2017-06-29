@@ -2,6 +2,7 @@ package com.churchsystem.service;
 
 import com.churchsystem.entity.RegisterDisplayEntity;
 import com.churchsystem.entity.RegisteredClassEntity;
+import com.churchsystem.entity.RegistrationEntity;
 import com.churchsystem.model.interfaces.RegistrationModelInterface;
 import com.churchsystem.service.interfaces.RegistrationServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,29 @@ public class RegistrationService implements RegistrationServiceInterface {
         return registrationModelInterface.getRegistration();
     }
 
+    @Override
     public List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId) {
         List<RegisteredClassEntity> result = registrationModelInterface.getNumberOfRegisteredClassByChurchId(churchId);
         return result;
+    }
+
+    @Override
+    public List<RegistrationEntity> getRegistrationBySubId(int subId){
+        return registrationModelInterface.getRegistrationBySubId(subId);
+    }
+
+    @Override
+    public void updateRegistration(RegistrationEntity registrationEntity){
+        registrationModelInterface.updateRegistration(registrationEntity);
+    }
+
+    @Override
+    public void addRegistration(RegistrationEntity registrationEntity){
+        registrationModelInterface.addRegistration(registrationEntity);
+    }
+
+    @Override
+    public List<RegistrationEntity> getWaitingRegistrationBySubId(int subId){
+        return registrationModelInterface.getWaitingRegistrationBySubId(subId);
     }
 }

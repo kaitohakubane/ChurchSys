@@ -1,12 +1,15 @@
 package com.churchsystem.model;
 
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.RegisterDisplayEntity;
 import com.churchsystem.entity.RegisteredClassEntity;
+import com.churchsystem.entity.RegistrationEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.RegistrationModelInterface;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,8 +30,37 @@ public class RegistrationModel extends CommonDAO implements RegistrationModelInt
     @Override
     public List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_REGISTERED_CLASS).
-                setParameter("requireChurchId", churchId).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+                setParameter(ParamConstant.CHURCH_ID, churchId).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<RegisteredClassEntity> result = query.list();
         return result;
     }
+
+
+    @Override
+    public List<RegistrationEntity> getRegistrationBySubId(int subId){
+        Criteria criteria=getSession().createCriteria(RegistrationEntity.class).add(Restrictions.eq(ParamConstant.SUBJECT_ID,subId));
+        List<RegistrationEntity> registrationEntities=criteria.list();
+        return registrationEntities;
+    }
+
+    @Override
+    public List<RegistrationEntity> getWaitingRegistrationBySubId(int subId){
+        Criteria criteria=getSession().createCriteria(RegistrationEntity.class).add(Restrictions.eq(ParamConstant.SUBJECT_ID,subId))
+                .add(Restrictions.eq(ParamConstant.REGISTRATION_STATUS,ParamConstant.REGISTRATION_WAITING_STATUS));
+        List<RegistrationEntity> registrationEntities=criteria.list();
+        return registrationEntities;
+    }
+
+
+
+    @Override
+    public void updateRegistration(RegistrationEntity registrationEntity){
+        getSession().saveOrUpdate(registrationEntity);
+    }
+
+    @Override
+    public void addRegistration(RegistrationEntity registrationEntity){
+        getSession().persist(registrationEntity);
+    }
+
 }

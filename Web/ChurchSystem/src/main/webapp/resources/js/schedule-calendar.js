@@ -17,7 +17,7 @@ var eventList = [];
 var defaultMovePlus = 2;
 var listOfCreatingEvent = []
 var ClassCategoryNum = 4;
-var defaultTimeSlot="04:30:00 - 06:00:00"
+var defaultTimeSlot = "04:30:00 - 06:00:00"
 // Initial call -------------------------------------------------------
 generalInitial();
 calendarInitialize();
@@ -28,7 +28,7 @@ calendarInitialize();
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 $(document).ready(function () {
     $('#createEventbtn').on('click', function () {
-        $("#calendarPopup").fadeOut();
+
         var startTime = $("#slotNum").children(":selected").attr("id");
         var isPublic = $("#createEventPopupIsPublic").prop('checked');
         var policy = 0;
@@ -36,30 +36,62 @@ $(document).ready(function () {
             policy = 1;
         }
 
-        console.log($("#category").children(":selected").val());
         if ($("#category").children(":selected").val() == ClassCategoryNum) {
-            console.log("OK")
-            createClass(creatingEvent,startTime,policy);
+            $("#createClass").modal("show");
         } else {
             createEvent(creatingEvent, startTime, policy);
+            $("#calendarPopup").fadeOut();
+            listOfCreatingEvent.forEach(function (e) {
+                console.log(e.status)
+                if (e.status == 0) {
+                    e.color = '#ef0909'
+                } else {
+                    e.color = '#24ea12'
+                }
+            })
+
+            $('#calendar').fullCalendar('renderEvents', listOfCreatingEvent);
         }
 
 
-        console.log(listOfCreatingEvent)
-        listOfCreatingEvent.forEach(function (e) {
-            console.log(e.status)
-            if (e.status == 0) {
-                e.color= '#ef0909'
-            }else{
-                e.color= '#24ea12'
-            }
-        })
+    })
 
-        $('#calendar').fullCalendar('renderEvents', listOfCreatingEvent);
+    $('#createClassbtn').on('click', function () {
+        var startTime = $("#slotNum").children(":selected").attr("id");
+        var isPublic = $("#createEventPopupIsPublic").prop('checked');
+        var policy = 0;
+        if (isPublic) {
+            policy = 1;
+        }
+        var subId = $('#eventType').children(":selected").attr("id");
+        createClass(creatingEvent, startTime, policy);
+        if (listOfCreatingEvent != null) {
+            $("#createClass").modal("hide");
+            $("#calendarPopup").fadeOut();
+            $('#external-events div').each(function () {
+                if ($(this).attr('subId') == subId) {
+                    $(this).remove();
+                }
+            })
 
+            listOfCreatingEvent.forEach(function (e) {
+                if (e.status == 0) {
+                    e.color = '#ef0909'
+                } else {
+                    e.color = '#24ea12'
+                }
+            })
+
+            $('#calendar').fullCalendar('renderEvents', listOfCreatingEvent);
+        } else {
+
+        }
     })
 
 
+    $('#cancelEventbtn').on('click', function () {
+        $('#calendarPopup').fadeOut(s);
+    })
 })
 
 var isEventOverDiv = function (x, y) {
@@ -136,9 +168,9 @@ function calendarInitialize() {
         select: function (start, end, jsEvent, view) {
             var popup = $('#calendarPopup')
             console.log('select')
-            var startTime=start.format("HH:mm:ss");
-            var endTime=end.format("HH:mm:ss")
-            var timeSlot=startTime+" - "+endTime;
+            var startTime = start.format("HH:mm:ss");
+            var endTime = end.format("HH:mm:ss")
+            var timeSlot = startTime + " - " + endTime;
             clearCreatingEventPopup(timeSlot);
             eventRegisterPopup(jsEvent, popup);
         },
@@ -197,11 +229,17 @@ function calendarInitialize() {
 
         drop: function (date) {
             $(this).remove();
+            console.log($(this).attr("subId"))
         },
 
         eventReceive: function (event) {
+            if (false) {
+                $('#calendar').fullCalendar('updateEvent', event);
+            } else {
+                appendClassToList(event.subId)
+            }
 
-            $('#calendar').fullCalendar('updateEvent', event);
+
         },
 
         eventDragStart: function (event, jsEvent, ui, view) {
@@ -259,7 +297,7 @@ function calendarInitialize() {
         droppable: true,
         dragRevertDuration: 0,
         eventLimit: true,
-        eventOrder:"status",
+        eventOrder: "status",
         slotLabelFormat: 'HH:mm',
         timeFormat: 'HH:mm'
     })
@@ -297,13 +335,13 @@ function generalInitial() {
 function clearCreatingEventPopup(timeSlot) {
     $("#creatingEventName").val("");
     $("#category").prop("selectedIndex", 0);
-
+    subjectDropdownEvent($("#category"))
     if (!$("#eventDetailIsPublic").prop('checked')) {
         $("#eventDetailIsPublic").click();
     }
     console.log(timeSlot);
-    if(timeSlot==""){
-        timeSlot=defaultTimeSlot;
+    if (timeSlot == "") {
+        timeSlot = defaultTimeSlot;
     }
 
     $("#slotNum").val(timeSlot);
@@ -325,10 +363,8 @@ function loadEvent() {
             eventList.forEach(function (e) {
 
                 if (e.status == 0) {
-                    e.color= '#ef0909'
+                    e.color = '#ef0909'
                 }
-
-                console.log(e)
             })
 
         },
@@ -397,9 +433,9 @@ function createClass(event, slotId, isPublic) {
         subId: $('#eventType').children(":selected").attr("id"),
         slotHour: slotId,
         privacy: isPublic,
-        numOfSlot:10,
-        examDate:"2017-08-30",
-        type:"2;4;6"
+        numOfSlot: $("#numberOfSlot").val(),
+        examDate: "2017-08-30",
+        type: dayArray.toString()
     }
 
     $.ajax({

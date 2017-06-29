@@ -72,6 +72,59 @@
     </div>
 </div>
 <!-- end page content -->
+<div class="" style="width: 400px;">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Đăng kí sự kiện</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="form-horizontal form-label-left">
+                <div class="form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Sự kiện</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <select class="form-control">
+                            <option>Choose option</option>
+                            <option>Đám ma</option>
+                            <option>Đám cưới</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div>
+                            <input type='date' class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Bắt đầu lúc</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="time" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Dự kiến khoảng</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" placeholder="Số giờ">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
+                        <button type="button" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <c:import url="/resources/layouts/user-common/user-footer.jsp"/>
 

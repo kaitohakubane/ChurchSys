@@ -195,15 +195,21 @@ public class EventController {
                     eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
                 }
 
+                List<RegistrationEntity> registrationEntities=registrationServiceInterface.getWaitingRegistrationBySubId(subId);
+                for(RegistrationEntity entity: registrationEntities){
+                    entity.setEventId(eventEntity.getEventId());
+                    entity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
+                    registrationServiceInterface.updateRegistration(entity);
+                }
 
                 result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId());
 
 
-                eventEntity.setEventStatus(ParamConstant.APPROVE_STATUS);
+                eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
                 eventServiceInterface.updateEvent(eventEntity);
 
             } else {
-                eventEntity.setEventStatus(ParamConstant.CONFLICT_STATUS);
+                eventEntity.setEventStatus(ParamConstant.EVENT_DENY_STATUS);
                 eventServiceInterface.updateEvent(eventEntity);
             }
 

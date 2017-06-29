@@ -24,6 +24,8 @@
     <%--Switchery--%>
     <link href="<c:url value="/resources/lib/vendors/switchery/dist/switchery.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/schedule.css"/>" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="<c:url value="/resources/lib/vendors/iCheck/skins/flat/green.css"/>" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -126,7 +128,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <button class="btn btn-success col-sm-12">Cancel</button>
+                            <button id="cancelEventbtn" class="btn btn-success col-sm-12">Cancel</button>
                         </div>
                         <div class="col-sm-6">
                             <button id="createEventbtn" class="btn btn-primary col-sm-12">Create</button>
@@ -203,11 +205,101 @@
     </div>
 </div>
 
+
+<!-- popup -->
+<div id="createClass" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create new class</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Class information</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br/>
+                            <form class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Number of student:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Number of slot:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div>
+                                            <input type="number" id="numberOfSlot" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Exam date:</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div>
+                                            <input type="date" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Schedule:</label>
+                                    <label class="control-label">
+                                        <input type="checkbox" id="2" class="flat day-checkbox"> Mon
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="3" class="flat day-checkbox"> Tue
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="4" class="flat day-checkbox"> Wed
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="5" class="flat day-checkbox"> Thus
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="6" class="flat day-checkbox"> Fri
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="7" class="flat day-checkbox"> Sat
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="8" class="flat day-checkbox"> Sun
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" id="createClassbtn" class="btn btn-primary">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        <!-- /Modal content-->
+    </div>
+</div>
+<!-- /popup -->
+
+
+====================================================
+====================================================
+
+
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <!-- FullCalendar -->
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
+
+<!-- iCheck -->
+<script src="<c:url value="/resources/lib/vendors/iCheck/icheck.min.js"/>"></script>
 
 <!-- Switchery -->
 <script src="<c:url value="/resources/lib/vendors/switchery/dist/switchery.min.js"/>"></script>

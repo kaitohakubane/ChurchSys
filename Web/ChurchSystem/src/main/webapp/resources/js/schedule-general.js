@@ -4,10 +4,30 @@
 
 var UPDATE_EVENT_URL = "/manager/event/Update";
 var DELETE_EVENT_URL = "/manager/event/Delete";
+var dayArray = [];
 //
 classListInitial();
 registerClassList();
-terminateEventCreateMenu();
+$(document).ready(function () {
+    terminateEventCreateMenu();
+    $('.day-checkbox').on('ifChecked', function(event){
+        dayArray.push(event.target.id)
+        dayArray.sort(function (a, b) {
+            return a - b;
+        })
+        console.log(dayArray)
+    });
+
+    $('.day-checkbox').on('ifUnchecked', function(event){
+        var index = dayArray.indexOf(event.target.id);
+        if (index > -1) {
+            dayArray.splice(index, 1);
+        }
+        console.log(dayArray)
+    });
+
+
+})
 
 
 //--------------------------------Function-------------------------------
@@ -63,28 +83,30 @@ function inputEventPopupInformation(event) {
             $("#eventDetailIsPublic").click();
             console.log('CLick')
         }
-    } else{
+    } else {
         if (!$("#eventDetailIsPublic").prop('checked')) {
             $("#eventDetailIsPublic").click();
         }
     }
 
-    $("#editSlotButton").on("click",function(){
-        var parameter={
-            slotId:event.slotId
+    $("#editSlotButton").on("click", function () {
+        var parameter = {
+            slotId: event.slotId
         }
-        post(contextPath+UPDATE_EVENT_URL,parameter);
+        post(contextPath + UPDATE_EVENT_URL, parameter);
     })
 }
 
 function terminateEventCreateMenu() {
 
     $(document).bind('click', function (e) {
-        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String)) {
+        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String ||
+            $(e.target).prop("tagName") == "small")) {
             $("#calendarPopup").fadeOut();
             $("#eventDetailPopup").fadeOut();
             return;
         }
+
 
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
             $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
@@ -112,7 +134,7 @@ function post(path, parameters) {
     form.attr("method", "post");
     form.attr("action", path);
 
-    $.each(parameters, function(key, value) {
+    $.each(parameters, function (key, value) {
         var field = $('<input></input>');
 
         field.attr("type", "hidden");
@@ -128,6 +150,19 @@ function post(path, parameters) {
     form.submit();
 }
 
+function appendClassToList(subId) {
+    var classTab = document.createElement('div');
+    classList.forEach(function (item) {
+        if (item[0] == subId) {
+            classTab.className = "fc-event";
+            classTab.setAttribute('subId', item[0]);
+            classTab.textContent = item[1] + ": " + item[2];
+            $('#external-events-listing').append(classTab);
+        }
+
+    })
+    registerClassList();
+}
 
 
 

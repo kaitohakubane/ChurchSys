@@ -77,7 +77,7 @@ public class DateUtils {
         Calendar cal = Calendar.getInstance();
         cal.setTime(utilDate);
         List<Date> result = new ArrayList<Date>();
-        List<Integer> arrayOfDate = getListOfIntFromString(arrayOfDay, ";");
+        List<Integer> arrayOfDate = getListOfIntFromString(arrayOfDay, UtilsConstant.DEFAULT_DELIMETER);
 
         //Get most recent date;
         int min=UtilsConstant.WEEK_DAY;
