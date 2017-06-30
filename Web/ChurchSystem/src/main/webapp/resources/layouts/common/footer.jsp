@@ -18,3 +18,5 @@
 <script src="<c:url value="/resources/lib/vendors/nprogress/nprogress.js"/>"></script>
 <!-- Custom Theme Scripts -->
 <script src="<c:url value="/resources/lib/build/js/custom.min.js"/>"></script>
+
+<script src="<c:url value="/resources/js/common.js"/>"></script>

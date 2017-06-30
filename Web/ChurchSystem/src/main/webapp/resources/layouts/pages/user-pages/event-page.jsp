@@ -23,6 +23,7 @@
 
     <!-- CSS -->
     <link href="<c:url value="/resources/css/church.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/event-page.css"/>" rel="stylesheet">
 </head>
 <body>
 <c:import url="/resources/layouts/user-common/user-header.jsp"/>
@@ -36,7 +37,8 @@
         <div class="small-nav col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/church/${churchId}" class="col-md-12 btn btn-default">Tin tức</a>
+                    <a href="${pageContext.request.contextPath}/church/${churchId}" class="col-md-12 btn btn-default">Tin
+                        tức</a>
                 </div>
                 <div class="col-md-4">
                     <a href="#" class="col-md-12 btn btn-default">Sự kiện</a>
@@ -72,7 +74,7 @@
     </div>
 </div>
 <!-- end page content -->
-<div class="" style="width: 350px; display: none;">
+<div class="" style="width: 350px;" id="eventCreator">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Đăng kí sự kiện</h4>
@@ -90,14 +92,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <div>
-                            <input type='date' class="form-control"/>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Bắt đầu lúc</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
@@ -125,6 +120,63 @@
 </div>
 
 
+<div class="row eventDetailPopup" id="eventDetailPopup">
+    <div class="" style="width: 300px;">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4>Event Detail</h4>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal form-label-left input_mask">
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" disabled="readonly" id="eventPopupTitle" class="form-control"
+                                   placeholder="Event title">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Slot:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" id="eventPopupTime" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Subject:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" id="eventPopupSubject" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Assigned:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" id="eventPopupConductor" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Room:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                            <input type="text" id="eventPopupRoom" class="form-control" disabled="readonly">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-9">
+                            <button id="eventDetailBtn" type="button" class="btn btn-default">OK</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <c:import url="/resources/layouts/user-common/user-footer.jsp"/>
 
@@ -134,7 +186,8 @@
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
 <script>
-    var churchId=<c:out value="${churchId}"/>
+    var churchId =
+    <c:out value="${churchId}"/>
 </script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/church-event.js"/>"></script>

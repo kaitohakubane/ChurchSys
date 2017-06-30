@@ -1,0 +1,11 @@
+#eventDetailPopup{
+    position: fixed;
+    display: none;
+    z-index: 100;
+}
+
+#eventCreator{
+    position: fixed;
+    display: none;
+    z-index: 100;
+}

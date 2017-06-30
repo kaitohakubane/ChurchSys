@@ -12,3 +12,4 @@
 <script src="<c:url value="/resources/lib/vendors/jquery/dist/jquery.min.js"/>"></script>
 <!-- Bootstrap -->
 <script src="<c:url value="/resources/lib/vendors/bootstrap/dist/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/js/common.js"/>"></script>
