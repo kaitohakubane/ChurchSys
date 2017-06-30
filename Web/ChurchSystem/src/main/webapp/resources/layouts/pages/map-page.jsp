@@ -26,7 +26,7 @@
             </ul>
             <div class="navbar-right">
                 <ul class="nav-right">
-                    <li><a href="#" class="button">Đăng ký</a></li>
+                    <li><a id="registerBtn" class="button">Đăng ký</a></li>
                     <li><a href="#" class="button">Đăng nhập</a></li>
                 </ul>
             </div>
@@ -34,11 +34,37 @@
     </div>
 </nav>
 <!-- end navbar -->
+
+<!-- popup -->
+<div id="stream" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Stream</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="videoWrapper">
+                        <iframe width="480" height="360" src="https://www.youtube.com/embed/ddFvjfvPnqk" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /Modal content-->
+    </div>
+</div>
+<!-- /popup -->
+
 <c:import url="/resources/layouts/user-common/vertical-navbar.jsp"/>
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map" class="col-md-12"></div>
-<div class="geolocation"><div id="geolocationBtn" class="icon"></div></div>
+<div id="geocontainer" class="geolocation"><div id="geolocationBtn" class="icon"></div></div>
 
 
 <c:import url="/resources/layouts/user-common/footer.jsp"/>

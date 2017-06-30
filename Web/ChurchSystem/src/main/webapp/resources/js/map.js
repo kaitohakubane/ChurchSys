@@ -5,6 +5,15 @@
 var contextPath = "/ChurchSystem";
 var markers = [];
 var churchList = [];
+$(document).ready(function () {
+    $("#registerBtn").on("click", function () {
+        $("#stream").modal("show");
+    })
+
+
+})
+
+
 google.maps.event.addDomListener(window, 'load', initAutocomplete);
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -21,10 +30,10 @@ function initAutocomplete() {
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     //Create get current position button
-    var centerControlDiv = document.createElement('div');
+    var centerControlDiv = document.getElementById('geocontainer');
     new positionControl(centerControlDiv, map);
     centerControlDiv.index = 1;
-    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv);
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(centerControlDiv);
 
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function () {
@@ -137,16 +146,10 @@ function project(latLng) {
 
 function positionControl(controlDiv, map) {
 
-    // Set CSS for the control border.
-    var controlUI = document.createElement('div');
-    controlUI.style.cursor = 'pointer';
-    controlDiv.appendChild(controlUI);
+    controlDiv.style.cursor = 'pointer';
 
-    var controlImg = document.createElement('i');
-    controlImg.className = "fa fa-crosshairs";
 
-    controlUI.appendChild(controlImg);
-    controlUI.addEventListener('click', function () {
+    controlDiv.addEventListener('click', function () {
         getCurrentPosition(map);
 
         // Church Position
@@ -197,12 +200,12 @@ function getCurrentPosition(map) {
     }
 }
 
-    $("#geolocationBtn").click(function(e) {
-        e.preventDefault();
-        $("#geolocationBtn").toggleClass("onclick");
-    });
+$("#geolocationBtn").click(function (e) {
+    e.preventDefault();
+    $("#geolocationBtn").toggleClass("onclick");
+});
 
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-    });
+$("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("active");
+});

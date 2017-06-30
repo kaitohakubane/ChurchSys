@@ -20,4 +20,5 @@ public class UtilsConstant {
     public static final String REDIRECT_STRING="redirect:";
     public static final String DEFAULT_DELIMETER=",";
     public static final String DEFAULT_DATE_FORMAT="yyyy-MM-dd";
+    public static final int DEFAULT_THREAD_SLEEP=1000;
 }

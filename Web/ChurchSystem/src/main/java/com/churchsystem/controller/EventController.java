@@ -8,7 +8,9 @@ import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.*;
+import com.google.api.services.youtube.model.LiveBroadcast;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +25,9 @@ import java.util.List;
  */
 @Controller
 public class EventController {
+    @Value("${server.port}")
+    int serverPort;
+
     @Autowired
     TypeServiceInterface typeServiceInterface;
 
@@ -224,8 +229,10 @@ public class EventController {
     @RequestMapping(value = PageConstant.CREATE_STREAM_EVENT, method = RequestMethod.POST)
     public int loadPublicEventRegister() {
         try {
-            YoutubeAPI.createBroadcast("broadcastName",new Date(System.currentTimeMillis()));
+            String broadcastId=YoutubeAPI.createBroadcast("broadcastName",new Date(System.currentTimeMillis()),8080);
+            String streamId=YoutubeAPI.createStream("streamName","480p");
 
+//            System.out.println("Stream Id: "+liveBroadcast.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }

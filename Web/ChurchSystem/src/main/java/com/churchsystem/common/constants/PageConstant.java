@@ -37,7 +37,7 @@ public class PageConstant {
     public static final String SCHEDULE_URL="/manager/schedule";
     public static final String CREATE_EVENT_URL="/manager/event/Add";
     public static final String UPDATE_EVENT_URL="/manager/event/Update";
-    public static final String CREATE_STREAM_EVENT="/manager/event/stream/create";
+    public static final String CREATE_STREAM_EVENT="/test/event/stream/create";
     //Class
     public static final String CREATE_CLASS_URL="/manager/class/Add";
 
