@@ -186,8 +186,7 @@
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
 <script>
-    var churchId =
-    <c:out value="${churchId}"/>
+    var churchId =<c:out value="${churchId}"/>
 </script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/church-event.js"/>"></script>

@@ -13,15 +13,15 @@ values ('kietta1', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2
 
 
 /*Church*/
-insert into Church(churchName,longitude,latitude,tel,mail,startTime,endTime,description,streamLink,streamStatus)
-values ('Nha Tho Khanh Hoa',1234,5678,'0123456789','khanhhoa@gmail.com','04:00:00', '21:00:00','abc', 'www.youtube.com/khdn', 1);
+insert into Church(churchName,longitude,latitude,tel,mail,startTime,endTime,description,streamLink)
+values ('Nha Tho Khanh Hoa',1234,5678,'0123456789','khanhhoa@gmail.com','04:00:00', '21:00:00','abc', 'www.youtube.com/khdn');
 
-insert into Church(churchName,longitude,latitude,tel,mail,startTime,endTime,description,streamLink,streamStatus)
-values ('Nha Tho Hoa Minh',1234,5678,'0123456789','hoaminh@gmail.com','04:00:00', '21:00:00','xyz', 'www.youtube.com/hmdn', 0);
+insert into Church(churchName,longitude,latitude,tel,mail,startTime,endTime,description,streamLink)
+values ('Nha Tho Hoa Minh',1234,5678,'0123456789','hoaminh@gmail.com','04:00:00', '21:00:00','xyz', 'www.youtube.com/hmdn');
 
 
-insert into Church(churchName,longitude,latitude,tel,mail,startTime,endTime,description,streamLink,streamStatus)
-values ('Chánh tòa Đà Nẵng',16.066979,108.223317,'0123456789','ctdn@gmail.com','04:00:00', '21:00:00','xyz', 'www.youtube.com/ctdn', 1);
+insert into Church(churchName,longitude,latitude,tel,mail,startTime,endTime,description,streamLink)
+values ('Chánh tòa Đà Nẵng',16.066979,108.223317,'0123456789','ctdn@gmail.com','04:00:00', '21:00:00','xyz', 'www.youtube.com/ctdn');
 
 
 

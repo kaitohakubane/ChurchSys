@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 6/23/2017.
+ * Created by hungmcse61561-admin on 6/30/2017.
  */
 @Entity
 @Table(name = "slot", schema = "churchsys", catalog = "")
@@ -15,6 +15,8 @@ public class SlotEntity {
     private Integer conductorId;
     private Date slotDate;
     private Integer slotStatus;
+    private String streamLink;
+    private String streamCode;
 
     @Id
     @Column(name = "slotId")
@@ -76,6 +78,26 @@ public class SlotEntity {
         this.slotStatus = slotStatus;
     }
 
+    @Basic
+    @Column(name = "streamLink")
+    public String getStreamLink() {
+        return streamLink;
+    }
+
+    public void setStreamLink(String streamLink) {
+        this.streamLink = streamLink;
+    }
+
+    @Basic
+    @Column(name = "streamCode")
+    public String getStreamCode() {
+        return streamCode;
+    }
+
+    public void setStreamCode(String streamCode) {
+        this.streamCode = streamCode;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,6 +111,8 @@ public class SlotEntity {
         if (conductorId != null ? !conductorId.equals(that.conductorId) : that.conductorId != null) return false;
         if (slotDate != null ? !slotDate.equals(that.slotDate) : that.slotDate != null) return false;
         if (slotStatus != null ? !slotStatus.equals(that.slotStatus) : that.slotStatus != null) return false;
+        if (streamLink != null ? !streamLink.equals(that.streamLink) : that.streamLink != null) return false;
+        if (streamCode != null ? !streamCode.equals(that.streamCode) : that.streamCode != null) return false;
 
         return true;
     }
@@ -101,6 +125,8 @@ public class SlotEntity {
         result = 31 * result + (conductorId != null ? conductorId.hashCode() : 0);
         result = 31 * result + (slotDate != null ? slotDate.hashCode() : 0);
         result = 31 * result + (slotStatus != null ? slotStatus.hashCode() : 0);
+        result = 31 * result + (streamLink != null ? streamLink.hashCode() : 0);
+        result = 31 * result + (streamCode != null ? streamCode.hashCode() : 0);
         return result;
     }
 }

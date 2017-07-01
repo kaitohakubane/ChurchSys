@@ -50,13 +50,11 @@ public class IndexController {
 
         String testString ="2;4;6;7";
 
-
-
         return modelAndView;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView getAccount() {
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public ModelAndView loginHandler() {
         ModelAndView modelAndView;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
@@ -67,7 +65,6 @@ public class IndexController {
         }else{
             modelAndView = new ModelAndView(PageConstant.LOGIN_PAGE);
         }
-
         return modelAndView;
     }
 

@@ -69,6 +69,7 @@ function calendarInitial() {
         ,
         dayRender: function (date, element, view) {
             element.bind('dblclick', function () {
+
                 $('#calendar').fullCalendar('changeView', 'agendaDay');
                 $('#calendar').fullCalendar('gotoDate', date);
             });

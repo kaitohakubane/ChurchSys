@@ -25,8 +25,6 @@ CREATE TABLE Church (
 	description nvarchar (255),
 
 	streamLink nvarchar(255),
-        
-	streamStatus int,
     
 	PRIMARY KEY (churchId)
 
@@ -192,7 +190,10 @@ create table Slot (
 	conductorId int,
     
     	slotDate date,
+
 	slotStatus int,
+	streamLink nvarchar(50),
+	streamCode nvarchar(50),
     
 	primary key (slotId)    
 

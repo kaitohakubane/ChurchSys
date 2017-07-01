@@ -58,10 +58,11 @@
         <security:intercept-url pattern="/login" access="permitAll"/>
 
 
-        <security:logout logout-url="/admin/logout" logout-success-url="/login"/>
+        <security:logout logout-url="/admin/logout" logout-success-url="/index"/>
 
-        <security:form-login login-page="/login"
+        <security:form-login login-page="/index"
                              username-parameter="accountId"
+                             default-target-url="/index"
                              password-parameter="password"
                              authentication-failure-url="/login?error=true"/>
         <security:csrf disabled="true"/>

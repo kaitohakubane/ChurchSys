@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Time;
 
 /**
- * Created by hungmcse61561-admin on 6/12/2017.
+ * Created by hungmcse61561-admin on 6/30/2017.
  */
 @Entity
 @Table(name = "church", schema = "churchsys", catalog = "")
@@ -19,7 +19,6 @@ public class ChurchEntity {
     private Time endTime;
     private String description;
     private String streamLink;
-    private Integer streamStatus;
 
     @Id
     @Column(name = "churchId")
@@ -121,16 +120,6 @@ public class ChurchEntity {
         this.streamLink = streamLink;
     }
 
-    @Basic
-    @Column(name = "streamStatus")
-    public Integer getStreamStatus() {
-        return streamStatus;
-    }
-
-    public void setStreamStatus(Integer streamStatus) {
-        this.streamStatus = streamStatus;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -148,7 +137,6 @@ public class ChurchEntity {
         if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (streamLink != null ? !streamLink.equals(that.streamLink) : that.streamLink != null) return false;
-        if (streamStatus != null ? !streamStatus.equals(that.streamStatus) : that.streamStatus != null) return false;
 
         return true;
     }
@@ -165,7 +153,6 @@ public class ChurchEntity {
         result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (streamLink != null ? streamLink.hashCode() : 0);
-        result = 31 * result + (streamStatus != null ? streamStatus.hashCode() : 0);
         return result;
     }
 }

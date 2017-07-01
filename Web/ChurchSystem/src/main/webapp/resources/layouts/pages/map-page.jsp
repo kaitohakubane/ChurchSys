@@ -27,7 +27,7 @@
             <div class="navbar-right">
                 <ul class="nav-right">
                     <li><a id="registerBtn" class="button">Đăng ký</a></li>
-                    <li><a href="#" class="button">Đăng nhập</a></li>
+                    <li><a href="${pageContext.request.contextPath}/index" class="button">Đăng nhập</a></li>
                 </ul>
             </div>
         </div>
