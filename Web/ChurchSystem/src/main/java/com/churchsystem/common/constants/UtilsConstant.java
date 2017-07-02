@@ -20,5 +20,7 @@ public class UtilsConstant {
     public static final String REDIRECT_STRING="redirect:";
     public static final String DEFAULT_DELIMETER=",";
     public static final String DEFAULT_DATE_FORMAT="yyyy-MM-dd";
-    public static final int DEFAULT_THREAD_SLEEP=1000;
+    public static final int YOUTUBE_EVENT_STATUS_DELAY=10000;
+    public static final int DEFAULT_DELAY_STREAM_CREATING=3000000;
+    public static final int DEFAULT_VALIDATE_PORT=8080;
 }

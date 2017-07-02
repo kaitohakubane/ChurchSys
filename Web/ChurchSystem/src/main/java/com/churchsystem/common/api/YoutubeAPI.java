@@ -46,7 +46,7 @@ public class YoutubeAPI {
         // times for the broadcast. Currently, those times are hard-coded.
         LiveBroadcastSnippet broadcastSnippet = new LiveBroadcastSnippet();
         broadcastSnippet.setTitle(broadcastTitle);
-        broadcastSnippet.setScheduledStartTime(new DateTime(startTime, TimeZone.getTimeZone("Asia/Ho_Chi_Minh")));
+        broadcastSnippet.setScheduledStartTime(new DateTime(startTime));
         // Set the broadcast's privacy status to "private". See:
         // https://developers.google.com/youtube/v3/live/docs/liveBroadcasts#status.privacyStatus
         LiveBroadcastStatus status = new LiveBroadcastStatus();
@@ -109,6 +109,7 @@ public class YoutubeAPI {
             returnedList = returnedListResponse.getItems();
             workingBroadcast = returnedList.get(0);
             System.out.println("[DEBUG] Waiting for broadcast change transition" + workingBroadcast.getStatus().getLifeCycleStatus());
+            Thread.sleep(UtilsConstant.YOUTUBE_EVENT_STATUS_DELAY);
         } while (!workingBroadcast.getStatus().getLifeCycleStatus().equalsIgnoreCase("testing"));
         broadcastTransition = youtube.liveBroadcasts().transition("live", workingBroadcast.getId(),
                 "status,id");

@@ -7,4 +7,5 @@ import com.churchsystem.entity.ChurchEntity;
  */
 public interface ChurchServiceInterface {
     ChurchEntity getChurchById(int churchId);
+    void updateChurch(ChurchEntity churchEntity);
 }

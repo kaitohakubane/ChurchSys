@@ -98,4 +98,9 @@ public class ParamConstant {
      * Type
      */
     public static final String TYPE_DESCRIPTION="description";
+
+    /**
+     * Stream
+     */
+    public static final String STREAM_RESOLUTION="resolution";
 }

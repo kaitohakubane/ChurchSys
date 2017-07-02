@@ -37,7 +37,13 @@ public class PageConstant {
     public static final String SCHEDULE_URL="/manager/schedule";
     public static final String CREATE_EVENT_URL="/manager/event/Add";
     public static final String UPDATE_EVENT_URL="/manager/event/Update";
-    public static final String CREATE_STREAM_EVENT="/test/event/stream/create";
+
+    //Stream
+    public static final String STREAM_URL="/manager/stream";
+    public static final String SCHEDULE_STREAM_URL="/manager/stream/Schedule";
+    public static final String CREATE_STREAM_URL="/manager/stream/Add";
+    public static final String REMOVE_STREAM_URL="/manager/stream/Delete";
+
     //Class
     public static final String CREATE_CLASS_URL="/manager/class/Add";
 
@@ -77,6 +83,7 @@ public class PageConstant {
     // Event
     public static final String SCHEDULE_PAGE="schedule-page";
     public static final String EDIT_EVENT_PAGE="edit-event-page";
+    public static final String STREAM_PAGE="stream-page";
 
     // Registration
     public static final String BILL_PAGE = "bill-management-page";

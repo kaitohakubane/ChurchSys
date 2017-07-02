@@ -18,4 +18,9 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
         ChurchEntity result=(ChurchEntity) criteria.uniqueResult();
         return result;
     }
+
+    @Override
+    public void updateChurch(ChurchEntity churchEntity){
+        getSession().saveOrUpdate(churchEntity);
+    }
 }
