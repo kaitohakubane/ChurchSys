@@ -55,8 +55,8 @@ public class PageConstant {
     // Contribution
 
 
-    // Manager
-
+    // User
+    public static final String USER_NOTIFICATION_URL="/user/notification";
 
     // Slot
 
@@ -89,14 +89,15 @@ public class PageConstant {
     public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
     public static final String CHURCH_SCHEDULE_PAGE="/user-pages/event-page";
 
-    // Manager
-    public static final String STOCK_PAGE="stock-management-page";
+    // User
+   public static final String NOTIFICATION_PAGE="notification-page";
 
     // Slot
     public static final String DAILY_REPORT_PAGE = "daily-report-page";
     public static final String CHART_PAGE = "chart-page";
 
-    //Error Page
+    //Error
     public static final String NOT_FOUND_PAGE="error-pages/404-page";
+
 
 }

@@ -10,7 +10,7 @@ classListInitial();
 registerClassList();
 $(document).ready(function () {
     terminateEventCreateMenu();
-    $('.day-checkbox').on('ifChecked', function(event){
+    $('.day-checkbox').on('ifChecked', function (event) {
         dayArray.push(event.target.id)
         dayArray.sort(function (a, b) {
             return a - b;
@@ -18,7 +18,7 @@ $(document).ready(function () {
         console.log(dayArray)
     });
 
-    $('.day-checkbox').on('ifUnchecked', function(event){
+    $('.day-checkbox').on('ifUnchecked', function (event) {
         var index = dayArray.indexOf(event.target.id);
         if (index > -1) {
             dayArray.splice(index, 1);
@@ -100,8 +100,12 @@ function inputEventPopupInformation(event) {
 function terminateEventCreateMenu() {
 
     $(document).bind('click', function (e) {
-        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String ||
-            $(e.target).prop("tagName") == "small")) {
+        if ($(e.target).prop("tagName").toUpperCase() == "SMALL") {
+            return;
+        }
+
+        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String
+            )) {
             $("#calendarPopup").fadeOut();
             $("#eventDetailPopup").fadeOut();
             return;

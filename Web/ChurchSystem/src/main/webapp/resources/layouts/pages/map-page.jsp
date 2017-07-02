@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Home page</title>
@@ -26,6 +27,11 @@
             </ul>
             <div class="navbar-right">
                 <ul class="nav-right">
+                    <sec:authentication var="principal" property="principal" />
+                    <%--<sec:authorize access="isAuthenticated()">--%>
+                        ${principal.username}
+                    <%--</sec:authorize>--%>
+                    <%--<li><a class="button">${user.role}</a></li>--%>
                     <li><a id="registerBtn" class="button">Đăng ký</a></li>
                     <li><a href="${pageContext.request.contextPath}/index" class="button">Đăng nhập</a></li>
                 </ul>

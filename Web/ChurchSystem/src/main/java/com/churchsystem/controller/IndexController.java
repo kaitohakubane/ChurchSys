@@ -54,12 +54,15 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView loginHandler() {
+    public ModelAndView loginHandler(HttpServletRequest request) {
         ModelAndView modelAndView;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
         if (authorities.contains(new SimpleGrantedAuthority(UtilsConstant.MANAGER_USER))) {
             modelAndView = new ModelAndView(PageConstant.HOME_PAGE);
+            UserEntity userEntity= userServiceInterface.getUserByAccountId(auth.getName());
+            int churchId=userServiceInterface.getChurchIdByUserId(userEntity.getUserId());
+            request.getSession().setAttribute(ParamConstant.CHURCH_ID,churchId);
         } else if(authorities.contains(new SimpleGrantedAuthority(UtilsConstant.NORMAL_USER))) {
             modelAndView=new ModelAndView(PageConstant.MAP_PAGE);
         }else{
