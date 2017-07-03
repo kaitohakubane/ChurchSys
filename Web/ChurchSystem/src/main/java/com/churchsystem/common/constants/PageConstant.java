@@ -43,6 +43,8 @@ public class PageConstant {
     public static final String SCHEDULE_STREAM_URL="/manager/stream/Schedule";
     public static final String CREATE_STREAM_URL="/manager/stream/Add";
     public static final String REMOVE_STREAM_URL="/manager/stream/Delete";
+    public static final String START_STREAM_URL="/manager/stream/Start";
+    public static final String FINISH_STREAM_URL="/manager/stream/Finish";
 
     //Class
     public static final String CREATE_CLASS_URL="/manager/class/Add";

@@ -23,4 +23,5 @@ public class UtilsConstant {
     public static final int YOUTUBE_EVENT_STATUS_DELAY=10000;
     public static final int DEFAULT_DELAY_STREAM_CREATING=3000000;
     public static final int DEFAULT_VALIDATE_PORT=8080;
+    public static final int STREAM_ON_STATUS=1;
 }

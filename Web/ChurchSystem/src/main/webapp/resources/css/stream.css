@@ -1,0 +1,22 @@
+.carousel-inner .item img {
+
+    margin: auto;
+
+}
+.carousel-caption {
+    color: #000;
+}
+.videoWrapper {
+    position: relative;
+    padding-bottom: 55%;
+    padding-top: 25px;
+    height: 0;
+    border: 5px solid #eee;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

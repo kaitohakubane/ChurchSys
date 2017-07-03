@@ -5,6 +5,7 @@ import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.entity.ChurchEntity;
+import com.churchsystem.entity.StreamEntity;
 import com.churchsystem.entity.StreamJsonEntity;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,21 +35,47 @@ public class StreamController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_STREAM_URL, method = RequestMethod.POST)
-    public String loadPublicEventRegister(@RequestBody StreamJsonEntity streamJsonEntity, HttpServletRequest request) {
-        String streamCode=null;
+    public StreamEntity loadPublicEventRegister(@RequestBody StreamJsonEntity streamJsonEntity, HttpServletRequest request) {
+        StreamEntity streamEntity=new StreamEntity();
         try {
-            String streamLink=YoutubeAPI.createBroadcast(streamJsonEntity.getStreamTitle(),
+            String streamLink = YoutubeAPI.createBroadcast(streamJsonEntity.getStreamTitle(),
                     new Date(System.currentTimeMillis() + UtilsConstant.DEFAULT_DELAY_STREAM_CREATING)
                     , UtilsConstant.DEFAULT_VALIDATE_PORT);
-            streamCode=YoutubeAPI.createStream(streamLink,streamJsonEntity.getResolution());
-            int churchId=(Integer)request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-            ChurchEntity churchEntity=churchServiceInterface.getChurchById(churchId);
-            churchEntity.setStreamLink(churchEntity.getStreamLink()+UtilsConstant.DEFAULT_DELIMETER+streamLink);
+            String streamCode = YoutubeAPI.createStream(streamLink, streamJsonEntity.getResolution());
+            YoutubeAPI.bindingBroadcastAndStream(streamCode, streamLink);
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            churchEntity.setStreamLink(churchEntity.getStreamLink() + UtilsConstant.DEFAULT_DELIMETER + streamLink);
             churchServiceInterface.updateChurch(churchEntity);
+            streamEntity.setStreamLink(streamLink);
+            streamEntity.setStreamCode(streamCode);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return streamCode;
+        return streamEntity;
     }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.START_STREAM_URL, method = RequestMethod.POST)
+    public int startStream(@RequestParam(value = ParamConstant.STREAM_LINK) String broadcastId) {
+        try{
+            YoutubeAPI.liveStream(broadcastId);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return UtilsConstant.STREAM_ON_STATUS;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.FINISH_STREAM_URL, method = RequestMethod.POST)
+    public void loadStreamPage(@RequestParam(value = ParamConstant.STREAM_LINK) String broadcastId) {
+        try{
+            YoutubeAPI.completeStream(broadcastId);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

@@ -94,4 +94,11 @@ public class SQLParamConstant {
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
             "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)";
+
+    public static final String GET_STREAMING_EVENT_IN_DATE="SELECT e.eventName as eventName,ssh.slotId as slotId, " +
+            "ssh.slotDate as slotDate, ssh.streamCode as streamCode, ssh.streamLink as streamLink, ssh.startTime as startTime," +
+            " ssh.endTime as endTime FROM (SELECT s.slotId,s.slotDate,s.eventId,s.streamCode,s.streamLink, " +
+            "MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime FROM slot s,slothour sh,inclusion i WHERE " +
+            "s.slotDate =:slotDate AND s.streamLink IS NOT NULL AND s.slotStatus!= 3 " +
+            "AND s.slotId=i.slotId AND sh.slotHourId=i.slotHourId GROUP BY s.slotId) ssh,event e WHERE ssh.eventId =e.eventId";
 }

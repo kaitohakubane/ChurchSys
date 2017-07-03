@@ -103,4 +103,5 @@ public class ParamConstant {
      * Stream
      */
     public static final String STREAM_RESOLUTION="resolution";
+    public static final String STREAM_LINK="streamLink";
 }

@@ -36,15 +36,11 @@
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
 
                     </li>
-                    <li><a><i class="fa fa-edit"></i> Event <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="${pageContext.request.contextPath}/manager/registration-management">Registration
-                                Management</a></li>
-                            <li><a href="${pageContext.request.contextPath}/manager/schedule">Event Schedule
-                            </a></li>
-                        </ul>
-
+                    <li><a href="${pageContext.request.contextPath}/manager/registration-management">Registration
+                        Management</a>
                     </li>
+                    <li><a href="${pageContext.request.contextPath}/manager/schedule">Event Schedule</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/stream">Stream</a></li>
                 </ul>
             </div>
         </div>

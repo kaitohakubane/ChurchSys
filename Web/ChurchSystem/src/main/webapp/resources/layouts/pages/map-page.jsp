@@ -23,15 +23,17 @@
     <div class="container">
         <div class="collapse navbar-collapse" id="MainMenu">
             <ul class="nav navbar-nav menu-list">
-                <li><a href="#" class="icon-top"><img alt="Church Icon" src="<c:url value="/resources/img/icon.png"/>" class="icon-img"></a></li>
+                <li><a href="#" class="icon-top"><img alt="Church Icon" src="<c:url value="/resources/img/icon.png"/>"
+                                                      class="icon-img"></a></li>
             </ul>
             <div class="navbar-right">
                 <ul class="nav-right">
-                    <sec:authentication var="principal" property="principal" />
-                    <%--<sec:authorize access="isAuthenticated()">--%>
-                        ${principal.username}
-                    <%--</sec:authorize>--%>
-                    <%--<li><a class="button">${user.role}</a></li>--%>
+
+                    <sec:authentication var="principal" property="principal"/>
+                    <c:if test="${principal ne 'anonymousUser'}">
+                            ${principal.username}
+                    </c:if>
+
                     <li><a id="registerBtn" class="button">Đăng ký</a></li>
                     <li><a href="${pageContext.request.contextPath}/index" class="button">Đăng nhập</a></li>
                 </ul>
@@ -52,7 +54,8 @@
             <div class="modal-body">
                 <div class="col-md-12">
                     <div class="videoWrapper">
-                        <iframe width="480" height="360" src="https://www.youtube.com/embed/ddFvjfvPnqk" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="480" height="360" src="https://www.youtube.com/embed/ddFvjfvPnqk" frameborder="0"
+                                allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -70,7 +73,9 @@
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map" class="col-md-12"></div>
-<div id="geocontainer" class="geolocation"><div id="geolocationBtn" class="icon"></div></div>
+<div id="geocontainer" class="geolocation">
+    <div id="geolocationBtn" class="icon"></div>
+</div>
 
 
 <c:import url="/resources/layouts/user-common/footer.jsp"/>

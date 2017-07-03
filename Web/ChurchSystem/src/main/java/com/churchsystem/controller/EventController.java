@@ -71,6 +71,9 @@ public class EventController {
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
                     , privacy, churchId, null, null);
 
+            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
+                    subId, churchId);
+
             SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
             List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
             for (int i = 0; i < slotEntities.size(); i++) {
@@ -79,7 +82,8 @@ public class EventController {
 
 
             result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
-
+            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
+            eventServiceInterface.updateEvent(eventEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -225,18 +229,5 @@ public class EventController {
         return result;
     }
 
-    @ResponseBody
-    @RequestMapping(value = PageConstant.CREATE_STREAM_EVENT, method = RequestMethod.POST)
-    public int loadPublicEventRegister() {
-        try {
-            String broadcastId=YoutubeAPI.createBroadcast("broadcastName",new Date(System.currentTimeMillis()),8080);
-            String streamId=YoutubeAPI.createStream("streamName","480p");
-
-//            System.out.println("Stream Id: "+liveBroadcast.getId());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return UtilsConstant.ONE;
-    }
 
 }
