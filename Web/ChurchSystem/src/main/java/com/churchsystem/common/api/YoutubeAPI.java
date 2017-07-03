@@ -62,7 +62,7 @@ public class YoutubeAPI {
     }
 
 
-    public static String createStream(String streamTitle, String resolution) throws IOException {
+    public static String createStream(String streamTitle, String resolution,String broadcastId) throws IOException {
         // Create a snippet with the video stream's title.
         LiveStreamSnippet streamSnippet = new LiveStreamSnippet();
         streamSnippet.setTitle(streamTitle);
@@ -77,17 +77,15 @@ public class YoutubeAPI {
         YouTube.LiveStreams.Insert liveStreamInsert =
                 youtube.liveStreams().insert("snippet,cdn", stream);
         LiveStream returnedStream = liveStreamInsert.execute();
+
+        YouTube.LiveBroadcasts.Bind liveBroadcastBind =
+                youtube.liveBroadcasts().bind(broadcastId, "id,contentDetails");
+        liveBroadcastBind.setStreamId(returnedStream.getId());
+        liveBroadcastBind.execute();
+
         return returnedStream.getCdn().getIngestionInfo().getStreamName();
     }
 
-
-    public static String bindingBroadcastAndStream(String streamId, String broadcastId) throws IOException {
-        YouTube.LiveBroadcasts.Bind liveBroadcastBind =
-                youtube.liveBroadcasts().bind(broadcastId, "id,contentDetails");
-        liveBroadcastBind.setStreamId(streamId);
-        LiveBroadcast returnedBroadcast = liveBroadcastBind.execute();
-        return returnedBroadcast.getId();
-    }
 
 
     public static String liveStream(String broadcastId) throws IOException, InterruptedException {

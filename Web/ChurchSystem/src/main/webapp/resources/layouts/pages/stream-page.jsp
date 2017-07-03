@@ -83,7 +83,7 @@
                     <div class="col-md-4 col-md-offset-2" style="margin-top: 10px">
                         <label class="col-md-3 col-sm-3 col-xs-12">Mã xác nhận :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" disabled="disabled" style="border: 2px solid red;">
+                            <input type="text" disabled="disabled" id="streamCode" style="border: 2px solid red;">
                         </div>
                     </div>
                     <div class="col-md-2 col-md-offset-3">
@@ -111,8 +111,60 @@
     </div>
 </div>
 
+<!-- popup -->
+<div id="registration" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Đặt tên sự kiện Stream</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên Stream :</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" id="streamTitle" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Độ phân giải :</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="resolution">
+                                            <option>240p</option>
+                                            <option>360p</option>
+                                            <option>480p</option>
+                                            <option>720p</option>
+                                            <option>1080p</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" id="createStreambtn" class="btn btn-primary" >OK</button>
+            </div>
+        </div>
+        <!-- /Modal content-->
+    </div>
+</div>
+<!-- /popup -->
+<!-- /popup -->
 <!-- jQuery -->
 <c:import url="/resources/layouts/common/footer.jsp"/>
+<script>
+    var streamLink="<c:out value="${streamLink}"></c:out>"
+    var streamCode="<c:out value="${streamCode}"></c:out>"
+</script>
+
 <script src="<c:url value="/resources/js/stream.js"/>"></script>
 </body>
 </html>
