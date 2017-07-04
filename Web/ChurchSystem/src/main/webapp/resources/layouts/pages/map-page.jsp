@@ -30,12 +30,24 @@
                 <ul class="nav-right">
 
                     <sec:authentication var="principal" property="principal"/>
-                    <c:if test="${principal ne 'anonymousUser'}">
-                            ${principal.username}
-                    </c:if>
+                    <c:choose>
 
-                    <li><a id="registerBtn" class="button">Đăng ký</a></li>
-                    <li><a href="${pageContext.request.contextPath}/index" class="button">Đăng nhập</a></li>
+                        <c:when test="${principal ne 'anonymousUser'}">
+                            <li class="profile">
+                                <div>
+                                    <strong>${principal.username}</strong>
+                                </div>
+                            </li>
+                            <li><a href="#" class="button">Đăng xuất</a></li>
+
+                        </c:when>
+                        <c:when test="${principal eq 'anonymousUser'}">
+                            <li><a id="registerBtn" class="button">Đăng ký</a></li>
+                            <li><a href="${pageContext.request.contextPath}/index" class="button">Đăng nhập</a></li>
+                        </c:when>
+                    </c:choose>
+
+
                 </ul>
             </div>
         </div>
@@ -83,7 +95,7 @@
 />"></script>
 
 <script>
-    var image = "<c:url value="/resources/img/icons8-Church-48.png"/>"
+    var icon = "<c:url value="/resources/img/icons8-Church-48.png"/>"
 </script>
 <script src="<c:url value="/resources/js/map.js"/>"></script>
 </body>

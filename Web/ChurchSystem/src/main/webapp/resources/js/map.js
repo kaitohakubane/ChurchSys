@@ -3,6 +3,10 @@
  */
 
 var contextPath = "/ChurchSystem";
+var image = {
+    url:icon,
+    scaledSize: new google.maps.Size(50, 50),
+}
 var markers = [];
 var churchList = [];
 $(document).ready(function () {
@@ -84,6 +88,9 @@ function initAutocomplete() {
         map.setCenter(place.geometry.location);
 
         // Church Position
+
+
+
         var pos = new google.maps.LatLng('16.066979', '108.223317');
         markers.push(new google.maps.Marker({
             map: map,
