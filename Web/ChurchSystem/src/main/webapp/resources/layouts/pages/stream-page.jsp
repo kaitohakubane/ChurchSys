@@ -112,7 +112,7 @@
 </div>
 
 <!-- popup -->
-<div id="registration" class="modal fade" role="dialog">
+<div id="registration" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">

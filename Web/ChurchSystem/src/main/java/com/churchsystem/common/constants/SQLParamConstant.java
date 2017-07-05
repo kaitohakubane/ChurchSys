@@ -101,4 +101,9 @@ public class SQLParamConstant {
             "MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime FROM slot s,slothour sh,inclusion i WHERE " +
             "s.slotDate =:slotDate AND s.streamLink IS NOT NULL AND s.slotStatus!= 3 " +
             "AND s.slotId=i.slotId AND sh.slotHourId=i.slotHourId GROUP BY s.slotId) ssh,event e WHERE ssh.eventId =e.eventId";
+
+
+    public static final String GET_NEARBY_LOCATION="SELECT churchId, ( 6371 * acos( cos( radians(:inputLatitude) ) * " +
+            "cos( radians( latitude ) ) * cos( radians( longitude ) - radians(:inputLongitude) ) + sin( radians(:inLatitude) )" +
+            " * sin( radians( latitude ) ) ) ) AS distance FROM church HAVING distance <:distance ORDER BY distance";
 }
