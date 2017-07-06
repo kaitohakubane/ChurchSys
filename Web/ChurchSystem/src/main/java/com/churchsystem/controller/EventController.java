@@ -5,6 +5,7 @@ import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
+import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.*;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,8 +73,6 @@ public class EventController {
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
                     , privacy, churchId, null, null);
 
-            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId);
 
             SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
             List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
@@ -80,10 +80,12 @@ public class EventController {
                 eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
             }
 
-
-            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
+            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+            eventEntity.setNumOfSlot(UtilsConstant.ONE);
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
+
+            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,6 +104,7 @@ public class EventController {
                 .addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour());
         return modelAndView;
     }
+
 
     @ResponseBody
     @RequestMapping(value = PageConstant.LOAD_EVENT_REGISTER_URL, method = RequestMethod.POST)
@@ -127,20 +130,62 @@ public class EventController {
 
 
     @RequestMapping(value = PageConstant.UPDATE_EVENT_URL, method = RequestMethod.POST)
-    public ModelAndView editEvent(@RequestParam(value = ParamConstant.SLOT_ID) String id) {
+    public ModelAndView editEvent(@RequestParam(value = ParamConstant.SLOT_ID) String id, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.NOT_FOUND_PAGE);
         try {
             int slotId = Integer.parseInt(id);
-/*
-            Code to intial information here
- */
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
+            List<SlothourEntity> slothourEntities = slotServiceInterface.getListOfSlotHour();
             modelAndView = new ModelAndView(PageConstant.EDIT_EVENT_PAGE);
-
+            modelAndView.addObject(ParamConstant.SLOT_ENTITY, eventDataEntity)
+                    .addObject(ParamConstant.SLOT_HOUR_LIST, slothourEntities);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.LOAD_CONDUCTOR, method = RequestMethod.POST)
+    public List<UserEntity> loadEventConductor(@RequestParam(value = ParamConstant.SLOT_ID) String id,
+                                               @RequestParam(value = ParamConstant.START_TIME) String currentStartTime,
+                                               @RequestParam(value = ParamConstant.END_TIME) String currentEndTime,
+                                               HttpServletRequest request) {
+        int slotId = Integer.parseInt(id);
+        Time startTime = Time.valueOf(currentStartTime);
+        Time endTime = Time.valueOf(currentEndTime);
+
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
+        List<UserEntity> userEntities = userServiceInterface.getListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
+        UserEntity currentConductor = userServiceInterface.getUserByUserId(eventDataEntity.getConductorId());
+        if (!userEntities.contains(currentConductor)) {
+            userEntities.add(currentConductor);
+        }
+        return userEntities;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.LOAD_ROOM, method = RequestMethod.POST)
+    public List<RoomEntity> loadEventRoom(@RequestParam(value = ParamConstant.SLOT_ID) String id,
+                                          @RequestParam(value = ParamConstant.START_TIME) String currentStartTime,
+                                          @RequestParam(value = ParamConstant.END_TIME) String currentEndTime,
+                                          HttpServletRequest request) {
+        int slotId = Integer.parseInt(id);
+        Time startTime = Time.valueOf(currentStartTime);
+        Time endTime = Time.valueOf(currentEndTime);
+
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
+        List<RoomEntity> roomEntities = roomServiceInterface.getListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
+
+        RoomEntity currentRoom = roomServiceInterface.getRoomById(eventDataEntity.getRoomId());
+        if (!roomEntities.contains(currentRoom)) {
+            roomEntities.add(currentRoom);
+        }
+        return roomEntities;
     }
 
     @ResponseBody
@@ -199,14 +244,14 @@ public class EventController {
                             roomId, conductorId, itemDate);
                 }
 
-                List<SlotEntity> slotEntities=slotServiceInterface.getSlotByEventId(eventEntity.getEventId());
+                List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(eventEntity.getEventId());
 
-                for(SlotEntity slotEntity:slotEntities){
+                for (SlotEntity slotEntity : slotEntities) {
                     eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
                 }
 
-                List<RegistrationEntity> registrationEntities=registrationServiceInterface.getWaitingRegistrationBySubId(subId);
-                for(RegistrationEntity entity: registrationEntities){
+                List<RegistrationEntity> registrationEntities = registrationServiceInterface.getWaitingRegistrationBySubId(subId);
+                for (RegistrationEntity entity : registrationEntities) {
                     entity.setEventId(eventEntity.getEventId());
                     entity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
                     registrationServiceInterface.updateRegistration(entity);
@@ -227,6 +272,68 @@ public class EventController {
             e.printStackTrace();
         }
         return result;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CREATE_STREAM_EVENT, method = RequestMethod.POST)
+    public int loadPublicEventRegister() {
+        try {
+//            String broadcastId = YoutubeAPI.createBroadcast("broadcastName", new Date(System.currentTimeMillis()), 8080);
+//            String streamId = YoutubeAPI.createStream("streamName", "480p");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return UtilsConstant.ONE;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATED_EVENT, method = RequestMethod.POST)
+    public void updateSingleEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            System.out.println(eventJsonEntity.getSlotHour());
+            ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
+            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
+            int roomId = Integer.parseInt(eventJsonEntity.getRoomId());
+            int privacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            slotEntity.setSlotDate(slotDate);
+            slotEntity.setConductorId(conductorId);
+            slotEntity.setRoomId(roomId);
+            slotEntity.setSlotStatus(privacy);
+
+           slotServiceInterface.updateSlot(slotEntity);
+
+            slotServiceInterface.deleteSlotHourBySlotId(slotId);
+
+            for (int i = 0; i < slotHour.size(); i++) {
+                eventServiceInterface.mappingResource(slotId, slotHour.get(i));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+//            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
+//            List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
+//            for (int i = 0; i < slotEntities.size(); i++) {
+//                eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
+//            }
+//
+//
+//            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return result;
     }
 
 

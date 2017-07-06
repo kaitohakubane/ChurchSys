@@ -64,7 +64,7 @@
                              username-parameter="accountId"
                              default-target-url="/index"
                              password-parameter="password"
-                             authentication-failure-url="/login?error=true"/>
+                             authentication-failure-url="/index?error=true"/>
         <security:csrf disabled="true"/>
         <security:session-management>
             <security:concurrency-control max-sessions="1"/>

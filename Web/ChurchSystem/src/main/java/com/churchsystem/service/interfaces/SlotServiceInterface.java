@@ -11,7 +11,16 @@ import java.util.List;
  */
 public interface SlotServiceInterface {
     List<SlothourEntity> getListOfSlotHour();
+
     TypeEntity getTypeByDescription(String type);
+
     void addNewType(TypeEntity typeEntity);
+
     List<SlotEntity> getSlotByEventId(int eventId);
+
+    SlotEntity getSlotById(int slotId);
+
+    void deleteSlotHourBySlotId(int slotId);
+
+    void updateSlot(SlotEntity SlotEntity);
 }

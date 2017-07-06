@@ -3,6 +3,7 @@ package com.churchsystem.model.interfaces;
 import com.churchsystem.entity.RoomEntity;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 /**
@@ -10,6 +11,12 @@ import java.util.List;
  */
 public interface RoomModelInterface {
     List<RoomEntity> getRoomBySub(Integer subId);
+
+    RoomEntity getRoomById(Integer roomId);
+
     Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId);
-    Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId,int roomId);
+
+    List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
+
+    Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId);
 }

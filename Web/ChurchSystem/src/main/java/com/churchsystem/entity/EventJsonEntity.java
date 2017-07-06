@@ -13,12 +13,13 @@ public class EventJsonEntity {
     private String numOfSlot;
     private String examDate;
     private String type;
-
+    private String slotId;
+    private String conductorId;
+    private String roomId;
     public EventJsonEntity() {
     }
 
-    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy,
-                           String typeString, String numOfSlot, String examDate, String type) {
+    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy, String typeString, String numOfSlot, String examDate, String type, String slotId, String conductorId, String roomId) {
         this.eventName = eventName;
         this.slotDate = slotDate;
         this.subId = subId;
@@ -28,22 +29,9 @@ public class EventJsonEntity {
         this.numOfSlot = numOfSlot;
         this.examDate = examDate;
         this.type = type;
-    }
-
-    public String getExamDate() {
-        return examDate;
-    }
-
-    public void setExamDate(String examDate) {
-        this.examDate = examDate;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        this.slotId = slotId;
+        this.conductorId = conductorId;
+        this.roomId = roomId;
     }
 
     public String getEventName() {
@@ -78,14 +66,6 @@ public class EventJsonEntity {
         this.slotHour = slotHour;
     }
 
-    public String getNumOfSlot() {
-        return numOfSlot;
-    }
-
-    public void setNumOfSlot(String numOfSlot) {
-        this.numOfSlot = numOfSlot;
-    }
-
     public String getPrivacy() {
         return privacy;
     }
@@ -100,5 +80,53 @@ public class EventJsonEntity {
 
     public void setTypeString(String typeString) {
         this.typeString = typeString;
+    }
+
+    public String getNumOfSlot() {
+        return numOfSlot;
+    }
+
+    public void setNumOfSlot(String numOfSlot) {
+        this.numOfSlot = numOfSlot;
+    }
+
+    public String getExamDate() {
+        return examDate;
+    }
+
+    public void setExamDate(String examDate) {
+        this.examDate = examDate;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getSlotId() {
+        return slotId;
+    }
+
+    public void setSlotId(String slotId) {
+        this.slotId = slotId;
+    }
+
+    public String getConductorId() {
+        return conductorId;
+    }
+
+    public void setConductorId(String conductorId) {
+        this.conductorId = conductorId;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 }

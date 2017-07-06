@@ -111,6 +111,10 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
+    public EventEntity getEventById(int eventId){
+        return eventModelInterface.getEventById(eventId);
+    }
+    @Override
     public SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate) {
         //Need to fix
         SlotEntity slotEntity = new SlotEntity();
@@ -148,4 +152,8 @@ public class EventService implements EventServiceInterface {
         eventModelInterface.updateEvent(eventEntity);
     }
 
+    @Override
+    public EventDataEntity getEventBySlotId(int slotId, int churchId){
+        return eventModelInterface.getEventBySlotId(slotId, churchId);
+    };
 }

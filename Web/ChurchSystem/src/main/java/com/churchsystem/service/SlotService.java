@@ -20,20 +20,36 @@ public class SlotService implements SlotServiceInterface {
     @Autowired
     SlotModelInterface slotModelInterface;
 
-    public List<SlothourEntity> getListOfSlotHour(){
+    public List<SlothourEntity> getListOfSlotHour() {
         return slotModelInterface.getListOfSlotHour();
     }
+
     @Override
-    public TypeEntity getTypeByDescription(String type){
+    public TypeEntity getTypeByDescription(String type) {
         return slotModelInterface.getTypeByDescription(type);
     }
 
     @Override
-    public void addNewType(TypeEntity typeEntity){
+    public void deleteSlotHourBySlotId(int slotId) {
+        slotModelInterface.deleteSlotHourBySlotId(slotId);
+    }
+
+    @Override
+    public SlotEntity getSlotById(int slotId) {
+        return slotModelInterface.getSlotById(slotId);
+    }
+
+    @Override
+    public void updateSlot(SlotEntity SlotEntity){
+        slotModelInterface.updateSlot(SlotEntity);
+    }
+
+    @Override
+    public void addNewType(TypeEntity typeEntity) {
         slotModelInterface.addNewType(typeEntity);
     }
 
-    public List<SlotEntity> getSlotByEventId(int eventId){
-        return slotModelInterface.getSlotByEventId( eventId);
+    public List<SlotEntity> getSlotByEventId(int eventId) {
+        return slotModelInterface.getSlotByEventId(eventId);
     }
 }

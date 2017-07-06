@@ -10,6 +10,7 @@ public class UtilsConstant {
     public static final int TWO = 2;
     public static final int WEEK_DAY=7;
     public static final String TIME_DELIMETER="-";
+    public static final String SLOT_HOUR_DELIMETER=",";
     public static final int SEVEN=7;
     public static final int THIRTY=30;
     public static final double HUNDRED_DOUBLE=100.0;

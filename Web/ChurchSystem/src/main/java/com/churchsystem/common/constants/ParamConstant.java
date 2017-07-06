@@ -39,10 +39,10 @@ public class ParamConstant {
      */
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
     public static final String LIST_REGISTERED_CLASS_ATTR = "registeredClass";
-    public static final int REGISTRATION_WAITING_STATUS=1;
-    public static final int REGISTRATION_DENY_STATUS=2;
-    public static final int REGISTRATION_FINISH_STATUS=3;
-    public static final String REGISTRATION_STATUS="regisStatus";
+    public static final int REGISTRATION_WAITING_STATUS = 1;
+    public static final int REGISTRATION_DENY_STATUS = 2;
+    public static final int REGISTRATION_FINISH_STATUS = 3;
+    public static final String REGISTRATION_STATUS = "regisStatus";
 
     /**
      * Event
@@ -84,19 +84,29 @@ public class ParamConstant {
     public static final String SLOT_HOUR_LIST = "slotHourList";
     public static final String SLOT_HOUR = "slotHour";
     public static final String CONDUCTOR_ID = "conductorId";
+    public static final String CONDUCTOR_LIST = "conductorList";
     public static final String SLOT_ID = "slotId";
     public static final String SLOT_DATE = "slotDate";
     public static final int SLOT_CONFLICT_STATUS = 0;
     public static final int SLOT_OK_STATUS = 1;
+    public static final String SLOT_ENTITY = "slotEntity";
+    public static final String NEW_START_TIME = "newStartTime";
+    public static final String NEW_END_TIME = "newEndTime";
+    public static final String START_TIME = "startTime";
+    public static final String END_TIME = "endTime";
+
+
     /**
      * Room
      */
 
     public static final String ROOM_ID = "roomId";
+    public static final String ROOM_LIST = "roomList";
 
     /**
      * Type
      */
+
     public static final String TYPE_DESCRIPTION="description";
 
     /**
@@ -106,4 +116,5 @@ public class ParamConstant {
     public static final String STREAM_LINK="streamLink";
     public static final String STREAM_CODE="streamCode";
     public static final String STREAM_TITLE="streamTitle";
+
 }

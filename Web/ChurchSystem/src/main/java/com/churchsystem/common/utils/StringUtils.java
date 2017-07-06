@@ -7,6 +7,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -35,6 +36,18 @@ public class StringUtils {
     public static String[] formatDate(String date){
         String delimeter = UtilsConstant.TIME_DELIMETER;
         String[] result=date.split(delimeter);
+        return result;
+    }
+
+    public static ArrayList<Integer> convertStringToListOfSlotHour(String s){
+        String delimeter = UtilsConstant.SLOT_HOUR_DELIMETER;
+        String[] temp = s.split(delimeter);
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        int firstSlotHour = Integer.parseInt(temp[0]);
+        int lastSlotHour =Integer.parseInt(temp[1]);
+        for (int i = firstSlotHour; i <= lastSlotHour ; i++) {
+            result.add(i);
+        }
         return result;
     }
 

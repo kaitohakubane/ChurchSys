@@ -363,6 +363,7 @@ function createEvent(event, slotId, isPublic) {
 
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
+    console.log()
     var requestData = {
         eventName: $('#creatingEventName').val(),
         slotDate: event.start.split("T")[0],

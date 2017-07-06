@@ -3,13 +3,16 @@ package com.churchsystem.model;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.RoomEntity;
+import com.churchsystem.entity.UserEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.RoomModelInterface;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +28,12 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
         List<RoomEntity> results=query.list();
         return results;
     }
-
+    @Override
+    public RoomEntity getRoomById(Integer roomId){
+        Criteria criteria = getSession().createCriteria(RoomEntity.class).add(Restrictions.eq("roomId", roomId));
+        RoomEntity result = (RoomEntity) criteria.uniqueResult();
+        return result;
+    }
     @Override
     public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId) {
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_ROOM_FOR_SLOT)
@@ -34,7 +42,16 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
         Integer result=(Integer)query.uniqueResult();
         return result;
     }
-
+    public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId){
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_ROOM_FOR_SLOT)
+                .setParameter(ParamConstant.NEW_START_TIME,newStartTime)
+                .setParameter(ParamConstant.NEW_END_TIME,newEndTime)
+                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.SLOT_DATE, slotDate)
+                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<RoomEntity> result = query.list();
+        return result;
+    }
     @Override
     public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId,int roomId) {
         Query query=getSession().createSQLQuery(SQLParamConstant.CHECK_ROOM_FOR_SLOT)

@@ -18,5 +18,7 @@ public interface SlotModelInterface {
     void updateSlot(SlotEntity slotEntity);
     List<SlotEntity> getSlotByEventId(int eventId);
     TypeEntity getTypeByDescription(String type);
+    SlotEntity getSlotById(int slotId);
     void addNewType(TypeEntity typeEntity);
+    void deleteSlotHourBySlotId (int slotId);
 }

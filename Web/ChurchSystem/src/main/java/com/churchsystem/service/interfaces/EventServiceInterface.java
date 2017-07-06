@@ -1,5 +1,6 @@
 package com.churchsystem.service.interfaces;
 
+import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventDisplayEntity;
 import com.churchsystem.entity.EventEntity;
 import com.churchsystem.entity.SlotEntity;
@@ -16,10 +17,11 @@ public interface EventServiceInterface {
     void createEvent(String eventName,Date eventDate, int subId, int slotHour, boolean privacy,
                      int churchId,Date examDate,Integer typeId);
     void mappingResource(int slotId,int slotHour);
+    EventEntity getEventById (int eventId);
     List<EventDisplayEntity> getCreatedEvent(int slotId);
     SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId);
     SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate);
     EventEntity getCreatingEvent(Date date, int status, int subId, int churchId);
     void updateEvent(EventEntity eventEntity);
-
+    EventDataEntity getEventBySlotId(int slotId, int churchId);
 }

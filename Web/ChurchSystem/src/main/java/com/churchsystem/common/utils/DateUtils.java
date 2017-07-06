@@ -3,6 +3,7 @@ package com.churchsystem.common.utils;
 import com.churchsystem.common.constants.UtilsConstant;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -110,5 +111,11 @@ public class DateUtils {
         return result;
     }
 
+    public static Time parseStringToTime(String string) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        long ms = simpleDateFormat.parse(string).getTime();
+        Time t = new Time(ms);
+        return t;
+    }
 
 }

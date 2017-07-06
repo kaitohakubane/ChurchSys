@@ -12,6 +12,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.util.List;
 
 /**
  * Created by hungmcse61561-admin on 6/13/2017.
@@ -21,35 +23,53 @@ public class UserModel extends CommonDAO implements UserModelInterface {
 
     @Override
     public UserEntity getUserByAccountId(String accountId) {
-        Criteria criteria=getSession().createCriteria(UserEntity.class).add(Restrictions.eq("accountId",accountId));
-        UserEntity result=(UserEntity) criteria.uniqueResult();
+        Criteria criteria = getSession().createCriteria(UserEntity.class).add(Restrictions.eq("accountId", accountId));
+        UserEntity result = (UserEntity) criteria.uniqueResult();
         return result;
     }
 
+    @Override
+    public UserEntity getUserByUserId(int userId){
+        Criteria criteria = getSession().createCriteria(UserEntity.class).add(Restrictions.eq("userId", userId));
+        UserEntity result = (UserEntity) criteria.uniqueResult();
+        return result;
+    }
 
     @Override
-    public int getChurchIdByUserId(int userId){
-        Criteria criteria=getSession().createCriteria(InteractionEntity.class)
-                .add(Restrictions.eq("userId",userId)).add(Restrictions.eq("enabled",true));
-        InteractionEntity interactionEntity=(InteractionEntity) criteria.uniqueResult();
+    public int getChurchIdByUserId(int userId) {
+        Criteria criteria = getSession().createCriteria(InteractionEntity.class)
+                .add(Restrictions.eq("userId", userId)).add(Restrictions.eq("enabled", true));
+        InteractionEntity interactionEntity = (InteractionEntity) criteria.uniqueResult();
         return interactionEntity.getChurchId();
     }
 
     @Override
-    public Integer getSuitableConductorForSlot(int slotHourId,Date slotDate,int churchId){
-        Query query=getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_CONDUCTOR_FOR_SLOT)
-                .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
-                .setParameter(ParamConstant.SLOT_DATE,slotDate);
-        Integer result=(Integer)query.uniqueResult();
+    public Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_CONDUCTOR_FOR_SLOT)
+                .setParameter(ParamConstant.SLOT_HOUR, slotHourId).setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.SLOT_DATE, slotDate);
+        Integer result = (Integer) query.uniqueResult();
         return result;
     }
 
     @Override
-    public Integer checkConductorForSlot(int slotHourId,Date slotDate,int churchId,int conductorId){
-        Query query=getSession().createSQLQuery(SQLParamConstant.CHECK_CONDUCTOR_FOR_SLOT)
-                .setParameter(ParamConstant.SLOT_HOUR,slotHourId).setParameter(ParamConstant.CHURCH_ID,churchId)
-                .setParameter(ParamConstant.SLOT_DATE,slotDate).setParameter(ParamConstant.CONDUCTOR_ID,conductorId);
-        Integer result=(Integer)query.uniqueResult();
+    public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_CONDUCTOR_FOR_SLOT)
+                .setParameter(ParamConstant.NEW_START_TIME,newStartTime)
+                .setParameter(ParamConstant.NEW_END_TIME,newEndTime)
+                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.SLOT_DATE, slotDate)
+                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<UserEntity> result = query.list();
+        return result;
+    }
+
+    @Override
+    public Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.CHECK_CONDUCTOR_FOR_SLOT)
+                .setParameter(ParamConstant.SLOT_HOUR, slotHourId).setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.SLOT_DATE, slotDate).setParameter(ParamConstant.CONDUCTOR_ID, conductorId);
+        Integer result = (Integer) query.uniqueResult();
         return result;
     }
 }
