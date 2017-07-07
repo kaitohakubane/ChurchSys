@@ -38,16 +38,7 @@
                     <a href="${pageContext.request.contextPath}/church/schedule?churchId=${churchId}" class="col-md-12 btn btn-default">Sự kiện</a>
                 </div>
                 <div class="col-md-4">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>
-                            </span>
-                        </div>
-                    </form>
+                    <a href="#" class="col-md-12 btn btn-default">Đăng ký lớp học</a>
                 </div>
             </div>
         </div>

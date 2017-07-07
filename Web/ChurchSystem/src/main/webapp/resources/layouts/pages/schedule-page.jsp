@@ -44,6 +44,27 @@
 
                             </div>
                         </div>
+                        <div class="color-description">
+                            <h4>Color Description</h4>
+                            <ul>
+                                <li style="color: #01ff70">
+                                    <i class="fa fa-square"></i>
+                                    <span>Khẽ thôi cưng à !!!</span>
+                                </li>
+                                <li style="color: #3c8dbc">
+                                    <i class="fa fa-square"></i>
+                                    <span>Khẽ thôi cưng à !!!</span>
+                                </li>
+                                <li style="color: #dd4b39">
+                                    <i class="fa fa-square"></i>
+                                    <span>Khẽ thôi cưng à !!!</span>
+                                </li>
+                                <li style="color: #777">
+                                    <i class="fa fa-square"></i>
+                                    <span>Khẽ thôi cưng à !!!</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-md-10">
                         <div class="x_panel">

@@ -19,6 +19,7 @@
                 <li><a href="#">Lịch công giáo</a></li>
                 <li><a href="#">Hỏi đáp</a></li>
                 <li><a href="#">Thánh lễ</a></li>
+                <li><a href="#">Đăng kí lớp học</a></li>
                 <li class="dropdown list-category">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-navicon"></i> Thư viện <i class="fa fa-caret-down" aria-hidden="true"></i>
