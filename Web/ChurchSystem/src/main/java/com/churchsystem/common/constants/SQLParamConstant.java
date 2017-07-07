@@ -104,10 +104,6 @@ public class SQLParamConstant {
             "AND s.slotId=i.slotId AND sh.slotHourId=i.slotHourId GROUP BY s.slotId) ssh,event e WHERE ssh.eventId =e.eventId";
 
 
-    public static final String GET_NEARBY_LOCATION = "SELECT churchId, ( 6371 * acos( cos( radians(:inputLatitude) ) * " +
-            "cos( radians( latitude ) ) * cos( radians( longitude ) - radians(:inputLongitude) ) + sin( radians(:inLatitude) )" +
-            " * sin( radians( latitude ) ) ) ) AS distance FROM church HAVING distance <:distance ORDER BY distance";
-
     public static final String GET_EVENT_FROM_SLOT_ID = "SELECT sru.slotId as slotId, e.eventId as eventId, " +
             "sru.conductorId as conductorId, sru.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
             "st.endTime as endTime, sru.userName as conductorName, sru.slotDate as slotDate, sru.roomName as roomName, " +
@@ -133,4 +129,10 @@ public class SQLParamConstant {
             "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId";
 
     public static final String DELETE_SLOT_HOUR_BY_SLOT_ID = "DELETE FROM inclusion where slotId =:slotId";
+
+    public static final String GET_NEARBY_LOCATION="SELECT churchId as churchId, ( 6371 * acos( cos( radians(:inputLatitude) ) * " +
+            "cos( radians( latitude ) ) * cos( radians( longitude ) - radians(:inputLongitude) ) + sin( radians(:inputLatitude) )" +
+            " * sin( radians( latitude ) ) ) ) AS distance, churchName as churchName, tel as tel, startTime as startTime, endTime as endTime," +
+            " description as description, streamLink as streamLink, longitude as longitude, latitude as latitude FROM church HAVING distance <:distance ORDER BY distance";
+
 }

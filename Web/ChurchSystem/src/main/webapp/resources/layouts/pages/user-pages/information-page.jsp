@@ -35,7 +35,7 @@
                     <a href="#" class="col-md-12 btn btn-default">Tin tức</a>
                 </div>
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/church/${churchId}/schedule" class="col-md-12 btn btn-default">Sự kiện</a>
+                    <a href="${pageContext.request.contextPath}/church/schedule?churchId=${churchId}" class="col-md-12 btn btn-default">Sự kiện</a>
                 </div>
                 <div class="col-md-4">
                     <form>

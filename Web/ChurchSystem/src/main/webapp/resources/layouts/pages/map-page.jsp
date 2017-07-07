@@ -56,7 +56,7 @@
 <!-- end navbar -->
 
 <!-- popup -->
-<div id="stream" class="modal fade" role="dialog">
+<div id="stream" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -66,14 +66,14 @@
             <div class="modal-body">
                 <div class="col-md-12">
                     <div class="videoWrapper">
-                        <iframe width="480" height="360" src="https://www.youtube.com/embed/ddFvjfvPnqk" frameborder="0"
+                        <iframe id="youtubeVideo" width="480" height="360" src="https://www.youtube.com/embed/ddFvjfvPnqk" frameborder="0"
                                 allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
             <div class="clearfix"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="closeBtn" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
         <!-- /Modal content-->

@@ -14,7 +14,7 @@
     <div class="container">
         <div class="collapse navbar-collapse" id="MainMenu">
             <ul class="nav navbar-nav menu-list">
-                <li><a href="#" class="icon-top"><img alt="Church Icon" src="<c:url value="/resources/img/icon.png"/>" class="icon-img"></a></li>
+                <li><a href="${pageContext.request.contextPath}/" class="icon-top"><img alt="Church Icon" src="<c:url value="/resources/img/icon.png"/>" class="icon-img"></a></li>
                 <li><a href="#">Trang chủ</a></li>
                 <li><a href="#">Lịch công giáo</a></li>
                 <li><a href="#">Hỏi đáp</a></li>

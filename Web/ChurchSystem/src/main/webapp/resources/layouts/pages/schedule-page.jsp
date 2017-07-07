@@ -208,7 +208,7 @@
 
 
 <!-- popup -->
-<div id="createClass" class="modal fade" role="dialog">
+<div id="createClass" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">

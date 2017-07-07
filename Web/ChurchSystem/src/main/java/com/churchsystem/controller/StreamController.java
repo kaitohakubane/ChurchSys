@@ -29,26 +29,32 @@ public class StreamController {
     public ModelAndView loadStreamPage(@RequestParam(value = ParamConstant.STREAM_LINK, required = false) String streamLink,
                                        @RequestParam(value = ParamConstant.STREAM_CODE, required = false) String streamCode) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.STREAM_PAGE);
-        modelAndView.addObject(ParamConstant.STREAM_CODE,streamCode);
-        modelAndView.addObject(ParamConstant.STREAM_LINK,streamLink);
+        modelAndView.addObject(ParamConstant.STREAM_CODE, streamCode);
+        modelAndView.addObject(ParamConstant.STREAM_LINK, streamLink);
         return modelAndView;
     }
 
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_STREAM_URL, method = RequestMethod.POST)
-    public StreamEntity loadPublicEventRegister(@RequestParam(value=ParamConstant.STREAM_TITLE) String streamTitle,
-            @RequestParam(value=ParamConstant.STREAM_RESOLUTION) String resolution, HttpServletRequest request) {
+    public StreamEntity loadPublicEventRegister(@RequestParam(value = ParamConstant.STREAM_TITLE) String streamTitle,
+                                                @RequestParam(value = ParamConstant.STREAM_RESOLUTION) String resolution, HttpServletRequest request) {
         StreamEntity streamEntity = new StreamEntity();
         try {
 
             String streamLink = YoutubeAPI.createBroadcast(streamTitle,
                     new Date(System.currentTimeMillis() + UtilsConstant.DEFAULT_DELAY_STREAM_CREATING)
                     , UtilsConstant.DEFAULT_VALIDATE_PORT);
-            String streamCode = YoutubeAPI.createStream(streamLink, resolution,streamLink);
+            String streamCode = YoutubeAPI.createStream(streamLink, resolution, streamLink);
             int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
-            churchEntity.setStreamLink(churchEntity.getStreamLink() + UtilsConstant.DEFAULT_DELIMETER + streamLink);
+
+            if (churchEntity.getStreamLink() == null || churchEntity.getStreamLink() == "") {
+                churchEntity.setStreamLink(churchEntity.getStreamLink() + UtilsConstant.DEFAULT_DELIMETER + streamLink);
+            } else {
+                churchEntity.setStreamLink(streamLink);
+            }
+
             churchServiceInterface.updateChurch(churchEntity);
             streamEntity.setStreamLink(streamLink);
             streamEntity.setStreamCode(streamCode);
@@ -70,13 +76,18 @@ public class StreamController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.FINISH_STREAM_URL, method = RequestMethod.POST)
-    public void finishStream(@RequestParam(value = ParamConstant.STREAM_LINK) String broadcastId) {
+    public void finishStream(@RequestParam(value = ParamConstant.STREAM_LINK) String broadcastId, HttpServletRequest request) {
         try {
+
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            churchEntity.setStreamLink(churchEntity.getStreamLink().replace(broadcastId, ""));
+            churchServiceInterface.updateChurch(churchEntity);
             YoutubeAPI.completeStream(broadcastId);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 }

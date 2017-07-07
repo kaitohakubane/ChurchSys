@@ -5,6 +5,7 @@
 var CREATE_STREAM_URL = "/manager/stream/Add";
 var START_STREAM_URL="/manager/stream/Start";
 var FINISH_STREAM_URL="/manager/stream/Finish";
+var MANAGER_MAIN_PAGE_URL="/manager/"
 var streamEntity;
 $(document).ready(function () {
     Initial();
@@ -36,6 +37,7 @@ function Initial() {
 
     $("#end").on("click",function(){
         completeStream();
+        window.location.href=contextPath+MANAGER_MAIN_PAGE_URL;
     })
 
 }
@@ -70,10 +72,10 @@ function streamOnAir(link){
         "streamLink":link
     };
     var requestURL=contextPath+START_STREAM_URL;
-    var requestType="POST"
+    var requestMethod="POST"
     $.ajax({
         url: requestURL,
-        type:requestType,
+        type:requestMethod,
         data:requestData,
         async: false,
         success: function(){

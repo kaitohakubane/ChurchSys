@@ -41,40 +41,41 @@ public class PageConstant {
     public static final String LOAD_CONDUCTOR = "/manager/event/load-conductor";
     public static final String LOAD_ROOM = "/manager/event/load-room";
 
+
     //Stream
-    public static final String STREAM_URL="/manager/stream";
-    public static final String SCHEDULE_STREAM_URL="/manager/stream/Schedule";
-    public static final String CREATE_STREAM_URL="/manager/stream/Add";
-    public static final String REMOVE_STREAM_URL="/manager/stream/Delete";
-    public static final String START_STREAM_URL="/manager/stream/Start";
-    public static final String FINISH_STREAM_URL="/manager/stream/Finish";
+    public static final String STREAM_URL = "/manager/stream";
+    public static final String SCHEDULE_STREAM_URL = "/manager/stream/Schedule";
+    public static final String CREATE_STREAM_URL = "/manager/stream/Add";
+    public static final String REMOVE_STREAM_URL = "/manager/stream/Delete";
+    public static final String START_STREAM_URL = "/manager/stream/Start";
+    public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
 
 
     public static final String CREATE_STREAM_EVENT = "/test/event/stream/create";
-
-
-
-
 
     //Class
     public static final String CREATE_CLASS_URL = "/manager/class/Add";
 
     // Registration
     public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";
-
+    public static final String ADD_REGISTRATION = "/user/registration/Add";
 
     // Room
 
 
     // Church
-    public static final String CHURCH_HOME_URL = "/church/{id}";
-    public static final String CHURCH_SCHEDULE_URL = "/church/{id}/schedule";
+
+    public static final String CHURCH_HOME_URL = "/church";
+    public static final String CHURCH_SCHEDULE_URL = "/church/schedule";
+    public static final String CHURCH_SEARCH_URL = "/church/Search";
+
+
 
     // Contribution
 
 
     // User
-    public static final String USER_NOTIFICATION_URL="/user/notification";
+    public static final String USER_NOTIFICATION_URL = "/user/notification";
 
     // Slot
 
@@ -94,15 +95,11 @@ public class PageConstant {
 
     // Event
 
-    public static final String SCHEDULE_PAGE="schedule-page";
-    public static final String EDIT_EVENT_PAGE="edit-event-page";
-    public static final String STREAM_PAGE="stream-page";
-
-
-
+    public static final String SCHEDULE_PAGE = "schedule-page";
+    public static final String EDIT_EVENT_PAGE = "edit-event-page";
+    public static final String STREAM_PAGE = "stream-page";
 
     // Registration
-    public static final String BILL_PAGE = "bill-management-page";
     public static final String REGISTRATION_PAGE = "registration-page";
 
     // Room
@@ -113,19 +110,13 @@ public class PageConstant {
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
 
     // User
-   public static final String NOTIFICATION_PAGE="notification-page";
-
-    // Manager
-    public static final String STOCK_PAGE = "stock-management-page";
+    public static final String NOTIFICATION_PAGE = "notification-page";
 
     // Slot
     public static final String DAILY_REPORT_PAGE = "daily-report-page";
     public static final String CHART_PAGE = "chart-page";
 
-
     //Error
-    public static final String NOT_FOUND_PAGE="error-pages/404-page";
-
-
+    public static final String NOT_FOUND_PAGE = "error-pages/404-page";
 
 }

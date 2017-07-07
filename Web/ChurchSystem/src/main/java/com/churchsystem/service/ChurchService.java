@@ -1,11 +1,14 @@
 package com.churchsystem.service;
 
 import com.churchsystem.entity.ChurchEntity;
+import com.churchsystem.entity.ChurchMapEntity;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Mr Kiet on 06/14/17.
@@ -25,5 +28,10 @@ public class ChurchService implements ChurchServiceInterface{
     @Override
     public  void updateChurch(ChurchEntity churchEntity){
         churchModelInterface.updateChurch(churchEntity);
+    }
+
+    @Override
+    public List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius ){
+        return churchModelInterface.getNearbyChurch(latitude,longitude,radius);
     }
 }
