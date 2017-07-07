@@ -176,18 +176,18 @@ function getCurrentPosition(map, isGetChurch) {
 
 
 function createMarker(latlng, churchId, churchName, description, tel, startTime, endTime, streamLink) {
-    var html = "<b>" + churchName + "</b> <br/>" + description + "</br> Phone number: " + tel + "</br>" + "Giờ lễ " +
-        startTime + " - " + endTime + "<br/>";
+    var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + description + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
+        startTime + " - " + endTime + "</div>";
     if (!(streamLink == null || streamLink == "")) {
         var stream = streamLink.split(",")
         stream.forEach(function (e) {
             html = html + "<button class='churchStreamBtn' id=" + e + " onclick='watchStream(this)' >" +
-                "Watching Stream </button> </br>"
+                "Streaming </button> <p class='stream-title'>Stream hành lễ</p></br>"
         })
 
     }
-    html = html + "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
     html = html + "<button class='churchFollowBtn' id=" + churchId + ">Follow </button>"
+    html = html + "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
 
 
     var marker = new google.maps.Marker({

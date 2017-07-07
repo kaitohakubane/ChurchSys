@@ -257,3 +257,47 @@ a.button {
 li.profile {
     margin-top: 15px;
 }
+button.churchStreamBtn {
+    color: #fff;
+    padding: 5px;
+    margin-bottom: 5px;
+    background: #26B99A;
+    border: 1px solid #169F85;
+    border-radius: 3px;
+}
+button.churchStreamBtn:hover {
+    background-color: #038238;
+    transition: all 0.8s;
+}
+
+button.churchBtn {
+    color: #fff;
+    padding: 5px;
+    margin-left: 5px;
+    background: #26B99A;
+    border: 1px solid #169F85;
+    border-radius: 3px;
+}
+button.churchBtn:hover {
+    background-color: #038238;
+    transition: all 0.8s;
+}
+
+button.churchFollowBtn {
+    color: #fff;
+    padding: 5px;
+    background: #26B99A;
+    border: 1px solid #169F85;
+    border-radius: 3px;
+}
+button.churchFollowBtn:hover {
+    background-color: #038238;
+    transition: all 0.8s;
+}
+.stream-title {
+    display: inline;
+    font-size: 14px;
+}
+.info-txt {
+    font-size: 14px;
+}
