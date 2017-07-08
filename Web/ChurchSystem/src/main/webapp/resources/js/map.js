@@ -29,9 +29,9 @@ $(document).ready(function () {
         $("#wrapper").toggleClass("active");
     });
 
-    $("#closeBtn").click(function(){
+    $("#closeBtn").click(function () {
 
-        $("#youtubeVideo").attr('src',"");
+        $("#youtubeVideo").attr('src', "");
 
     })
 })
@@ -175,15 +175,16 @@ function getCurrentPosition(map, isGetChurch) {
 }
 
 
-function createMarker(latlng, churchId, churchName, description, tel, startTime, endTime, streamLink) {
-    var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + description + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
+function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName) {
+    var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>";
     if (!(streamLink == null || streamLink == "")) {
         var stream = streamLink.split(",")
-        stream.forEach(function (e) {
-            html = html + "<button class='churchStreamBtn' id=" + e + " onclick='watchStream(this)' >" +
-                "Streaming </button> <p class='stream-title'>Stream hành lễ</p></br>"
-        })
+        var name = streamName.split(",")
+        for (var i = 0; i < stream.length; i++) {
+            html = html + "<button class='churchStreamBtn' id=" + stream[i] + " onclick='watchStream(this)' >" +
+                "Streaming </button> <p class='stream-title'>"+ name[i] +"</p></br>"
+        }
 
     }
     html = html + "<button class='churchFollowBtn' id=" + churchId + ">Follow </button>"
@@ -229,7 +230,7 @@ function searchNearLocationAjaxCall(center) {
                 var latlng = new google.maps.LatLng(
                     parseFloat(e.latitude),
                     parseFloat(e.longitude));
-                createMarker(latlng, e.churchId, e.churchName, e.description, e.tel, e.startTime, e.endTime, e.streamLink)
+                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName)
                 bounds.extend(latlng);
 
             })
@@ -247,8 +248,8 @@ function watchStream(e) {
     $("#youtubeVideo").attr('src', "https://www.youtube.com/embed/" + e.getAttribute("id") + "?autoplay=1")
 }
 
-function gotoChurchPage(e){
-            window.location.href = contextPath + "/church"+"?churchId="+e.getAttribute("id");
-            console.log("RUN RUN")
+function gotoChurchPage(e) {
+    window.location.href = contextPath + "/church" + "?churchId=" + e.getAttribute("id");
+    console.log("RUN RUN")
 
 }

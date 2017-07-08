@@ -13,7 +13,7 @@ public interface EventModelInterface {
     List<EventDataEntity> getListOfEvent(int churchId);
     List<EventDataEntity> getListOfPublicEvent(int churchId);
     void addNewEvent(EventEntity eventEntity);
-    EventEntity getCreatingEvent(Date date, int status, int subId,int churchId);
+    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId,boolean isRegistered);
     EventEntity getEventById (int eventId);
     List<EventDataEntity> getCreatedEvent(int eventId);
     void updateEvent(EventEntity eventEntity);

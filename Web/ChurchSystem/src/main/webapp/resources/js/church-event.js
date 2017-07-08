@@ -3,6 +3,7 @@
  */
 
 var LOAD_PUBLIC_EVENT_REGISTER_URL = "/church/" + churchId + "/schedule/load-event/";
+var ADD_REGISTRATION = "/user/registration/Add";
 var eventList = [];
 var lastClickedDay = null;
 var lastClickedEvent = null;
@@ -13,6 +14,8 @@ var defaultMovePlus = 2;
 terminateEventMenu()
 loadEvent();
 calendarInitial();
+generalIntial();
+
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 
 function calendarInitial() {
@@ -86,6 +89,17 @@ function calendarInitial() {
     })
 }
 
+
+function generalIntial() {
+    $("#estTime").val("1");
+    $("#eventRegisteredBtn").on("click", function () {
+        var estTime = $("#estTime").val();
+        var startTime = "18:00:00"
+        var subId = $("#subjectId").val();
+        registerEvent(creatingEvent, churchId, startTime, estTime, subId)
+    })
+}
+
 function loadEvent() {
 
     var requestURL = contextPath + LOAD_PUBLIC_EVENT_REGISTER_URL;
@@ -107,6 +121,38 @@ function loadEvent() {
     });
 }
 
+function registerEvent(event, churchId, startTime, estTime, subId) {
+    var requestURL = contextPath + ADD_REGISTRATION;
+    var requestMethod = "POST";
+    var requestData = {
+        "churchId": churchId,
+        "regisStartTime": startTime,
+        "estTime": estTime,
+        "slotDate": event.start.split("T")[0],
+        "subId": subId
+    }
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+
+        success: function (res) {
+            if(res==1){
+                alert("SUCCESS")
+            }else{
+                alert("FAIL")
+            }
+            window.location.reload();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    });
+}
+
 
 function inputEventPopupInformation(event) {
     $('#eventPopupTitle').val(event.title);
@@ -114,7 +160,7 @@ function inputEventPopupInformation(event) {
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
-    $('#eventDetailBtn').on("click",function(){
+    $('#eventDetailBtn').on("click", function () {
         $('#eventDetailPopup').fadeOut()
     })
 }
@@ -147,3 +193,4 @@ function terminateEventMenu() {
         }
     })
 }
+

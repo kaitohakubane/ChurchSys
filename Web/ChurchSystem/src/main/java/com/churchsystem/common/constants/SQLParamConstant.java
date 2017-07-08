@@ -58,7 +58,8 @@ public class SQLParamConstant {
             "AND e.churchId =:churchId AND st.slotId=s.slotId AND e.privacy = true";
 
     public static final String GET_CREATING_EVENT = "SELECT * FROM event " +
-            "WHERE startDate =:eventDate AND eventStatus =:status AND churchId =:churchId AND subId =:eventSubId AND eventId" +
+            "WHERE startDate =:eventDate AND eventStatus =:status AND churchId =:churchId AND subId =:eventSubId AND " +
+            "isRegistered =:isRegistered AND eventId" +
             " NOT IN ( SELECT eventId FROM Slot WHERE eventId IS NOT NULL)";
     ;
 
@@ -133,6 +134,29 @@ public class SQLParamConstant {
     public static final String GET_NEARBY_LOCATION="SELECT churchId as churchId, ( 6371 * acos( cos( radians(:inputLatitude) ) * " +
             "cos( radians( latitude ) ) * cos( radians( longitude ) - radians(:inputLongitude) ) + sin( radians(:inputLatitude) )" +
             " * sin( radians( latitude ) ) ) ) AS distance, churchName as churchName, tel as tel, startTime as startTime, endTime as endTime," +
-            " description as description, streamLink as streamLink, longitude as longitude, latitude as latitude FROM church HAVING distance <:distance ORDER BY distance";
+            " description as description, streamLink as streamLink, longitude as longitude, latitude as latitude,streamName as streamName, " +
+            "address as address FROM " +
+            "church HAVING distance <:distance ORDER BY distance";
+
+    public static final String GET_ON_PLAN_CLASS="SELECT e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
+            " su.subName as subName,t.description as typeName, " +
+            "sh.startTime as startTime, sh.endTime as endTime FROM event e,slot s,inclusion i,slothour sh,subject su, type t " +
+            "WHERE e.eventStatus =:status AND e.startDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
+            "su.categoryId =:categoryId AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
+            "e.typeId =t.typeId AND e.churchId =:churchId LIMIT 1";
+
+    public static final String GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT = "select distinct u.userId from user u, church c," +
+            " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId NOT IN (select s2.conductorId " +
+            "From (Select s.slotId, s.conductorId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, " +
+            "max(sh.endTime) as endTime from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId " +
+            "group by s.slotid) s1 where s.slotId = s1.slotId) s2 " +
+            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.conductorId IS NOT NULL) ORDER BY userId";
+    public static final String GET_LIST_SUITABLE_ROOM_ID_FOR_SLOT = "select roomId from room where churchId =:churchId " +
+            "AND roomId NOT IN (select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime," +
+            " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
+            "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
+            "where s.slotId = s1.slotId) s2 " +
+            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId";
+
 
 }

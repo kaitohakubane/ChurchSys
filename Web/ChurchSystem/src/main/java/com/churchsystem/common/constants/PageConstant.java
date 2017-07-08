@@ -51,7 +51,6 @@ public class PageConstant {
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
 
 
-    public static final String CREATE_STREAM_EVENT = "/test/event/stream/create";
 
     //Class
     public static final String CREATE_CLASS_URL = "/manager/class/Add";
@@ -59,6 +58,7 @@ public class PageConstant {
     // Registration
     public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";
     public static final String ADD_REGISTRATION = "/user/registration/Add";
+    public static final String GET_ON_PLAN_CLASS_URL="/church/class";
 
     // Room
 
@@ -68,8 +68,7 @@ public class PageConstant {
     public static final String CHURCH_HOME_URL = "/church";
     public static final String CHURCH_SCHEDULE_URL = "/church/schedule";
     public static final String CHURCH_SEARCH_URL = "/church/Search";
-
-
+    public static final String CLASS_URL="/church/class";
 
     // Contribution
 
@@ -108,6 +107,7 @@ public class PageConstant {
     // Church
     public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
+    public static final String CHURCH_CLASS_PAGE="/user-pages/class-registration-page";
 
     // User
     public static final String NOTIFICATION_PAGE = "notification-page";

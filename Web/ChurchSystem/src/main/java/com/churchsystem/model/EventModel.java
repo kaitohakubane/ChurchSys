@@ -4,7 +4,6 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
-import com.churchsystem.entity.InclusionEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.EventModelInterface;
 import org.hibernate.Criteria;
@@ -51,11 +50,11 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     }
 
     @Override
-    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId) {
+    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId,boolean isRegistered) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_CREATING_EVENT)
                 .setParameter(ParamConstant.EVENT_DATE, date).setParameter(ParamConstant.EVENT_STATUS, status)
                 .setParameter(ParamConstant.EVENT_SUBJECT_ID, subId)
-                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.CHURCH_ID, churchId).setParameter(ParamConstant.IS_EVENT_REGISTERED,isRegistered)
                 .setResultTransformer(Transformers.aliasToBean(EventEntity.class));
         EventEntity result = (EventEntity) query.uniqueResult();
         return result;
@@ -83,7 +82,6 @@ public class EventModel extends CommonDAO implements EventModelInterface {
                 setParameter(ParamConstant.SLOT_ID, slotId).setParameter(ParamConstant.CHURCH_ID, churchId).
                 setResultTransformer(Transformers.aliasToBean(EventDataEntity.class));
         EventDataEntity result = (EventDataEntity) query.uniqueResult();
-        System.out.println(result.toString());
         return result;
     }
 }

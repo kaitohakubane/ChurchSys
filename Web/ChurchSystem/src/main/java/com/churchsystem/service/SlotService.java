@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.entity.SlothourEntity;
 import com.churchsystem.entity.TypeEntity;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Time;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -49,7 +52,15 @@ public class SlotService implements SlotServiceInterface {
         slotModelInterface.addNewType(typeEntity);
     }
 
+    @Override
     public List<SlotEntity> getSlotByEventId(int eventId) {
         return slotModelInterface.getSlotByEventId(eventId);
+    }
+
+    @Override
+    public List<SlothourEntity> getSlotHourByTimeRange(String startTimeStr, int estTime ) throws ParseException{
+        Time startTime= DateUtils.parseStringToTime(startTimeStr);
+        Time endTime=DateUtils.getEndTimeFromRange(startTime,estTime);
+        return slotModelInterface.getSlotHourByTimeRange(startTime,endTime);
     }
 }

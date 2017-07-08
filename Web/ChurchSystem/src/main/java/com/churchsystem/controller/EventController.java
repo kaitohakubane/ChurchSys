@@ -70,18 +70,18 @@ public class EventController {
                 privacy = false;
             }
 
-            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
-                    , privacy, churchId, null, null);
+            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId
+                    , privacy, churchId, null, ParamConstant.NON_REPEAT_TYPE,false,UtilsConstant.ONE);
 
-
-            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
+            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
+                    subId, churchId,false);
+            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId,eventEntity.getEventId());
             List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
             for (int i = 0; i < slotEntities.size(); i++) {
                 eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
             }
 
-            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
-            eventEntity.setNumOfSlot(UtilsConstant.ONE);
+
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
 
@@ -215,13 +215,13 @@ public class EventController {
             }
 
             //Create Class
-            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId, slotHour
-                    , privacy, churchId, examDate, typeEntity.getTypeId());
+            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId
+                    , privacy, churchId, examDate, typeEntity.getTypeId(),false,numberOfSlot);
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId);
+                    subId, churchId,false);
 
 
             Integer conductorId = null;
@@ -276,26 +276,11 @@ public class EventController {
 
 
     @ResponseBody
-    @RequestMapping(value = PageConstant.CREATE_STREAM_EVENT, method = RequestMethod.POST)
-    public int loadPublicEventRegister() {
-        try {
-//            String broadcastId = YoutubeAPI.createBroadcast("broadcastName", new Date(System.currentTimeMillis()), 8080);
-//            String streamId = YoutubeAPI.createStream("streamName", "480p");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return UtilsConstant.ONE;
-    }
-
-
-    @ResponseBody
     @RequestMapping(value = PageConstant.UPDATED_EVENT, method = RequestMethod.POST)
     public void updateSingleEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
-            System.out.println(eventJsonEntity.getSlotHour());
             ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
             int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());

@@ -90,9 +90,13 @@ function streamOnAir(link){
 function completeStream(){
     var requestURL=contextPath+FINISH_STREAM_URL;
     var requestType="POST"
+    var requestData={
+        "streamLink":streamEntity.streamLink
+    }
     $.ajax({
         url: requestURL,
         type:requestType,
+        data:requestData,
         success: function(){
 
         },

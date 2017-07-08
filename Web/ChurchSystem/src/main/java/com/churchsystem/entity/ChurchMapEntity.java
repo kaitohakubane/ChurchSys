@@ -16,12 +16,22 @@ public class ChurchMapEntity {
     private Time endTime;
     private String description;
     private String streamLink;
+    private String streamName;
+    private String address;
+
+    public String getStreamName() {
+        return streamName;
+    }
+
+    public void setStreamName(String streamName) {
+        this.streamName = streamName;
+    }
 
     public ChurchMapEntity() {
     }
 
     public ChurchMapEntity(Integer churchId, String churchName, Double longitude, Double latitude, double distance,
-                           String tel, Time startTime, Time endTime, String description, String streamLink) {
+                           String tel, Time startTime, Time endTime, String description, String streamLink, String streamName, String address) {
         this.churchId = churchId;
         this.churchName = churchName;
         this.longitude = longitude;
@@ -32,6 +42,16 @@ public class ChurchMapEntity {
         this.endTime = endTime;
         this.description = description;
         this.streamLink = streamLink;
+        this.streamName = streamName;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getChurchId() {

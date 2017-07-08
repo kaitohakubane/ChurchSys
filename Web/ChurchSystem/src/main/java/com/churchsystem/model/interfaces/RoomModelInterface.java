@@ -19,4 +19,6 @@ public interface RoomModelInterface {
     List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
 
     Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId);
+
+    List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
 }

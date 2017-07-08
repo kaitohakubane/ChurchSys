@@ -5,6 +5,7 @@ import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.entity.SlothourEntity;
 import com.churchsystem.entity.TypeEntity;
 
+import java.sql.Time;
 import java.util.List;
 
 /**
@@ -21,4 +22,5 @@ public interface SlotModelInterface {
     SlotEntity getSlotById(int slotId);
     void addNewType(TypeEntity typeEntity);
     void deleteSlotHourBySlotId (int slotId);
+    List<SlothourEntity> getSlotHourByTimeRange(Time startTime, Time endTime );
 }

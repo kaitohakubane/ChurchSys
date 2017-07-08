@@ -6,7 +6,6 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.StreamEntity;
-import com.churchsystem.entity.StreamJsonEntity;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,6 +54,11 @@ public class StreamController {
                 churchEntity.setStreamLink(streamLink);
             }
 
+            if(churchEntity.getStreamName()==null||churchEntity.getStreamName()==""){
+                churchEntity.setStreamName(churchEntity.getStreamName() + UtilsConstant.DEFAULT_DELIMETER + streamTitle);
+            } else {
+                churchEntity.setStreamName(streamTitle);
+            }
             churchServiceInterface.updateChurch(churchEntity);
             streamEntity.setStreamLink(streamLink);
             streamEntity.setStreamCode(streamCode);
@@ -82,9 +86,11 @@ public class StreamController {
             int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             churchEntity.setStreamLink(churchEntity.getStreamLink().replace(broadcastId, ""));
-            churchServiceInterface.updateChurch(churchEntity);
-            YoutubeAPI.completeStream(broadcastId);
 
+            String title=YoutubeAPI.completeStream(broadcastId);
+
+            churchEntity.setStreamName(churchEntity.getStreamLink().replace(title, ""));
+            churchServiceInterface.updateChurch(churchEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }

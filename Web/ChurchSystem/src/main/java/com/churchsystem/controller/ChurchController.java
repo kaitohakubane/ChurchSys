@@ -27,8 +27,7 @@ public class ChurchController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.CHURCH_HOME_PAGE).
-                        addObject(ParamConstant.CHURCH_ID, churchId);
+                modelAndView = new ModelAndView(PageConstant.CHURCH_HOME_PAGE);
             }
 
         } catch (NumberFormatException e) {
@@ -44,8 +43,7 @@ public class ChurchController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.CHURCH_SCHEDULE_PAGE)
-                        .addObject(ParamConstant.CHURCH_ID, churchId);
+                modelAndView = new ModelAndView(PageConstant.CHURCH_SCHEDULE_PAGE);
             }
 
         } catch (NumberFormatException e) {

@@ -1,6 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
+import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.EventModelInterface;
 import com.churchsystem.model.interfaces.RoomModelInterface;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.tags.Param;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
@@ -73,8 +75,8 @@ public class EventService implements EventServiceInterface {
 
 
     @Override
-    public void createEvent(String eventName, Date eventDate, int subId, int slotHour, boolean privacy, int churchId
-            , Date examDate, Integer typeId) {
+    public void createEvent(String eventName, Date eventDate, int subId, boolean privacy, int churchId
+            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot) {
         EventEntity inputEvent = new EventEntity();
         inputEvent.setChurchId(churchId);
         inputEvent.setEventStatus(ParamConstant.WAITING_FOR_APPROVE_STATUS);
@@ -84,13 +86,14 @@ public class EventService implements EventServiceInterface {
         inputEvent.setPrivacy(privacy);
         inputEvent.setTypeId(typeId);
         inputEvent.setExamDate(examDate);
+        inputEvent.setRegistered(isRegistered);
+        inputEvent.setNumOfSlot(numberOfSlot);
         eventModelInterface.addNewEvent(inputEvent);
     }
 
     @Override
-    public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId) {
+    public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId) {
         //Need to fix
-        EventEntity eventEntity = eventModelInterface.getCreatingEvent(eventDate, ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId);
         Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId);
         Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId);
         SlotEntity slotEntity = new SlotEntity();
@@ -98,11 +101,9 @@ public class EventService implements EventServiceInterface {
             slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
         } else {
             slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
-            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
-            eventModelInterface.updateEvent(eventEntity);
         }
 
-        slotEntity.setEventId(eventEntity.getEventId());
+        slotEntity.setEventId(eventId);
         slotEntity.setConductorId(conductorId);
         slotEntity.setRoomId(roomId);
         slotEntity.setSlotDate(eventDate);
@@ -111,9 +112,10 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public EventEntity getEventById(int eventId){
+    public EventEntity getEventById(int eventId) {
         return eventModelInterface.getEventById(eventId);
     }
+
     @Override
     public SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate) {
         //Need to fix
@@ -143,8 +145,29 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId) {
-        return eventModelInterface.getCreatingEvent(date, status, subId, churchId);
+    public SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate) {
+        Integer conductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId).get(UtilsConstant.ZERO);
+        Integer roomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId).get(UtilsConstant.ZERO);
+        SlotEntity slotEntity = new SlotEntity();
+
+        if (conductorId == null || roomId == null) {
+            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+        } else {
+            slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
+        }
+
+        slotEntity.setEventId(eventId);
+        slotEntity.setConductorId(conductorId);
+        slotEntity.setRoomId(roomId);
+        slotEntity.setSlotDate(itemDate);
+        slotModelInterface.addNewSlot(slotEntity);
+        return slotEntity;
+    }
+
+
+    @Override
+    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered) {
+        return eventModelInterface.getCreatingEvent(date, status, subId, churchId, isRegistered);
     }
 
     @Override
@@ -153,7 +176,9 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public EventDataEntity getEventBySlotId(int slotId, int churchId){
+    public EventDataEntity getEventBySlotId(int slotId, int churchId) {
         return eventModelInterface.getEventBySlotId(slotId, churchId);
-    };
+    }
+
+    ;
 }

@@ -13,6 +13,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Time;
 import java.util.List;
 
 /**
@@ -82,5 +83,14 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     @Override
     public void addNewType(TypeEntity typeEntity) {
         getSession().persist(typeEntity);
+    }
+
+    @Override
+    public List<SlothourEntity> getSlotHourByTimeRange(Time startTime,Time endTime ){
+        Criteria criteria=getSession().createCriteria(SlothourEntity.class)
+                .add(Restrictions.le(ParamConstant.START_TIME,endTime))
+                .add(Restrictions.ge(ParamConstant.END_TIME,startTime));
+        List<SlothourEntity> result=criteria.list();
+        return result;
     }
 }

@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.entity.ClassDisplayEntity;
 import com.churchsystem.entity.RegisterDisplayEntity;
 import com.churchsystem.entity.RegisteredClassEntity;
 import com.churchsystem.entity.RegistrationEntity;
@@ -49,5 +50,10 @@ public class RegistrationService implements RegistrationServiceInterface {
     @Override
     public List<RegistrationEntity> getWaitingRegistrationBySubId(int subId){
         return registrationModelInterface.getWaitingRegistrationBySubId(subId);
+    }
+
+    @Override
+    public List<ClassDisplayEntity> getOnPlanClass(int churchId){
+        return registrationModelInterface.getOnPlanClass(churchId);
     }
 }

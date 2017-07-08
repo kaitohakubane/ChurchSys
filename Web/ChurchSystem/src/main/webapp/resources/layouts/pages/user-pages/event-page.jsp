@@ -37,14 +37,14 @@
         <div class="small-nav col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/church?churchId=${churchId}" class="col-md-12 btn btn-default">Tin
+                    <a href="${pageContext.request.contextPath}/church?churchId=${param.churchId}" class="col-md-12 btn btn-default">Tin
                         tức</a>
                 </div>
                 <div class="col-md-4">
-                    <a href="#" class="col-md-12 btn btn-default">Sự kiện</a>
+                    <a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}" class="col-md-12 btn btn-default">Sự kiện</a>
                 </div>
                 <div class="col-md-4">
-                    <a href="#" class="col-md-12 btn btn-default">Đăng ký lớp học</a>
+                    <a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}" class="col-md-12 btn btn-default">Đăng ký lớp học</a>
                 </div>
             </div>
         </div>
@@ -76,10 +76,10 @@
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Sự kiện</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <select class="form-control">
+                        <select id="subjectId" class="form-control">
                             <option>Choose option</option>
-                            <option>Đám ma</option>
-                            <option>Đám cưới</option>
+                            <option value="27">Đám ma</option>
+                            <option value="28">Đám cưới</option>
                         </select>
                     </div>
                 </div>
@@ -87,13 +87,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Bắt đầu lúc</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <input type="time" class="form-control">
+                        <input type="time" id="startTime" value="18:00:00" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Dự kiến khoảng</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Số giờ">
+                        <input type="text" id="estTime" class="form-control" placeholder="Số giờ">
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -101,7 +101,7 @@
                 <div class="form-group">
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
                         <button type="button" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="button" id="eventRegisteredBtn" class="btn btn-primary">Create</button>
                     </div>
                 </div>
 
@@ -177,8 +177,7 @@
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
 <script>
-    var churchId =
-    <c:out value="${churchId}"/>
+    var churchId =${param.churchId}
 </script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/church-event.js"/>"></script>

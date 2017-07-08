@@ -33,11 +33,6 @@ public class StringUtils {
         return new BCryptPasswordEncoder().matches(rawPass, encodedPass);
     }
 
-    public static String[] formatDate(String date){
-        String delimeter = UtilsConstant.TIME_DELIMETER;
-        String[] result=date.split(delimeter);
-        return result;
-    }
 
     public static ArrayList<Integer> convertStringToListOfSlotHour(String s){
         String delimeter = UtilsConstant.SLOT_HOUR_DELIMETER;

@@ -4,6 +4,8 @@ import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.entity.SlothourEntity;
 import com.churchsystem.entity.TypeEntity;
 
+import java.sql.Time;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -23,4 +25,6 @@ public interface SlotServiceInterface {
     void deleteSlotHourBySlotId(int slotId);
 
     void updateSlot(SlotEntity SlotEntity);
+
+    List<SlothourEntity> getSlotHourByTimeRange(String startTime, int estTime ) throws ParseException;
 }

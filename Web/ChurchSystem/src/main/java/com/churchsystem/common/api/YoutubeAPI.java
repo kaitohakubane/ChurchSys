@@ -128,7 +128,7 @@ public class YoutubeAPI {
         YouTube.LiveBroadcasts.Transition broadcastTransition = youtube.liveBroadcasts().transition("complete", workingBroadcast.getId(),
                 "status,id");
         workingBroadcast = broadcastTransition.execute();
-        return workingBroadcast.getId();
+        return returnedList.get(0).getSnippet().getTitle();
     }
 
 }

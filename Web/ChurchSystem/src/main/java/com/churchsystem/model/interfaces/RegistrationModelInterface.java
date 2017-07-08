@@ -1,5 +1,6 @@
 package com.churchsystem.model.interfaces;
 
+import com.churchsystem.entity.ClassDisplayEntity;
 import com.churchsystem.entity.RegisterDisplayEntity;
 import com.churchsystem.entity.RegisteredClassEntity;
 import com.churchsystem.entity.RegistrationEntity;
@@ -16,4 +17,5 @@ public interface RegistrationModelInterface {
     void updateRegistration(RegistrationEntity registrationEntity);
     void addRegistration(RegistrationEntity registrationEntity);
     List<RegistrationEntity> getWaitingRegistrationBySubId(int subId);
+    List<ClassDisplayEntity> getOnPlanClass(int churchId);
 }

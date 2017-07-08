@@ -4,7 +4,6 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.ChurchMapEntity;
-import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import org.hibernate.Criteria;

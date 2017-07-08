@@ -2,6 +2,7 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
+import com.churchsystem.entity.ClassDisplayEntity;
 import com.churchsystem.entity.RegisterDisplayEntity;
 import com.churchsystem.entity.RegisteredClassEntity;
 import com.churchsystem.entity.RegistrationEntity;
@@ -51,6 +52,14 @@ public class RegistrationModel extends CommonDAO implements RegistrationModelInt
         return registrationEntities;
     }
 
+    @Override
+    public List<ClassDisplayEntity> getOnPlanClass(int churchId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.GET_ON_PLAN_CLASS).setParameter(ParamConstant.CHURCH_ID,churchId)
+                .setParameter(ParamConstant.EVENT_STATUS,ParamConstant.EVENT_APPROVE_STATUS)
+                .setParameter(ParamConstant.CATEGORY_ID,ParamConstant.CLASS_CATEGORY).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<ClassDisplayEntity> classDisplayEntities=query.list();
+        return classDisplayEntities;
+    }
 
 
     @Override
