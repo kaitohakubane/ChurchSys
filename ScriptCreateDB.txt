@@ -129,7 +129,7 @@ create table Event(
 	description nvarchar(255),
     
     	privacy bit,
-	approverId int,
+	isRegistered bit,
     
 	primary key (eventId)
 
@@ -298,7 +298,6 @@ alter table Event add foreign key (subId) references Subject(subId);
 alter table Event add foreign key (churchId) references church(churchId);
 
 alter table Event add foreign key (typeId) references type (typeId);
-alter table Event add foreign key (approverId) references User (userId);
 
 alter table Registration add foreign key (eventId) references Event(eventId);
 

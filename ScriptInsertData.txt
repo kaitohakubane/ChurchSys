@@ -30,6 +30,7 @@ values ('Chánh tòa Đà Nẵng',108.223317,16.066979,'156 Trần Phú, Hải C
 
 
 
+Insert into Type (description) values ('NonRepeat');
 
 Insert into Type(description)
 values ('246');
@@ -129,72 +130,72 @@ insert into registration(eventid, userid, churchid, subid, regisDate, regisStatu
 
 /*Event*/
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
-values ('Khám bệnh tháng 6',30,1,4,null,17,1,'2017/6/3',null,1,1);
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
-values ('Hiến máu tháng 6',30,1,4,null,15,1,'2017/6/3',null,1,1);
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
+values ('Khám bệnh tháng 6',30,1,4,null,17,1,'2017/6/3',null,1,0);
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
+values ('Hiến máu tháng 6',30,1,4,null,15,1,'2017/6/3',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
-values ('Tiếp Sức Mùa Thi 2017',30,2,4,null,20,3,'2017/6/3',null,1,1);
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
-values ('An Táng Đa Minh Hiển',30,2,4,null,5,3,'2017/6/3',null,1,1);
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
+values ('Tiếp Sức Mùa Thi 2017',30,2,4,null,20,3,'2017/6/3',null,1,0);
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
+values ('An Táng Đa Minh Hiển',30,2,4,null,5,3,'2017/6/3',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Thánh Lễ',30,1,1,null,5,1,'2017/6/4',null,1,1);
+values ('Thánh Lễ',30,1,1,null,5,1,'2017/6/4',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh hoạt cắm trại',30,1,4,null,2,3,'2017/6/6',null,1,2);
+values ('Sinh hoạt cắm trại',30,1,4,null,2,3,'2017/6/6',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh hoạt Dâng Hoa',30,1,4,null,2,3,'2017/6/7',null,1,2);
+values ('Sinh hoạt Dâng Hoa',30,1,4,null,2,3,'2017/6/7',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh hoạt Khám Chữa Bệnh',30,1,4,null,2,3,'2017/6/11',null,1,2);
+values ('Sinh hoạt Khám Chữa Bệnh',30,1,4,null,2,3,'2017/6/11',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh hoạt Hát Lễ',30,2,4,null,5,3,'2017/6/6',null,1,2);
+values ('Sinh hoạt Hát Lễ',30,2,4,null,5,3,'2017/6/6',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Lễ Hôn Phối',30,1,4,null,1,3,'2017/6/4',null,1,2);
+values ('Lễ Hôn Phối',30,1,4,null,1,3,'2017/6/4',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Lễ Chầu',30,1,4,null,1,3,'2017/6/12',null,1,2);
+values ('Lễ Chầu',30,1,4,null,1,3,'2017/6/12',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Lễ Rữa Tội',30,1,4,null,1,3,'2017/6/21',null,1,2);
+values ('Lễ Rữa Tội',30,1,4,null,1,3,'2017/6/21',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh Hoạt Từ Thiện',30,1,4,null,2,3,'2017/6/19',null,1,2);
+values ('Sinh Hoạt Từ Thiện',30,1,4,null,2,3,'2017/6/19',null,1,0);
 
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Lễ Giải Tội',30,1,4,null,1,3,'2017/6/20',null,1,2);
+values ('Lễ Giải Tội',30,1,4,null,1,3,'2017/6/20',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Lễ Trừ Quỹ',30,1,4,null,5,3,'2017/6/26',null,1,2);
+values ('Lễ Trừ Quỹ',30,1,4,null,5,3,'2017/6/26',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh Hoạt Khám Chữa Bệnh',30,1,4,null,2,3,'2017/6/17',null,1,2);
+values ('Sinh Hoạt Khám Chữa Bệnh',30,1,4,null,2,3,'2017/6/17',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh Hoạt Phân Công Đọc Kinh',30,1,4,null,2,3,'2017/6/14',null,1,1);
+values ('Sinh Hoạt Phân Công Đọc Kinh',30,1,4,null,2,3,'2017/6/14',null,1,0);
 
-insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,approverId)
+insert into Event(eventName, numOfSlot, churchId, eventStatus,examDate,subId,typeId,StartDate, description, privacy,isRegistered)
 
-values ('Sinh Hoạt Cắm Trại',30,1,4,null,2,3,'2017/6/24',null,1,1);
+values ('Sinh Hoạt Cắm Trại',30,1,4,null,2,3,'2017/6/24',null,1,0);
 
 insert into Room(roomName,roomStatus,churchId)
 values ('101',1,1);
