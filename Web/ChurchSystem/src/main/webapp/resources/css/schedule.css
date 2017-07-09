@@ -18,12 +18,12 @@
     padding: 0 10px;
     border: 1px solid #ccc;
     background: #eee;
-    text-align: center;
 }
 .color-description h4 {
     font-size: 16px;
     margin-top: 0;
     padding-top: 1em;
+    text-align: center;
 }
 
 .color-description ul {

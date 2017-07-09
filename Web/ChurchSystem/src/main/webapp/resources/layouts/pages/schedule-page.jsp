@@ -17,6 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calendar Page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
+
+    <link href="<c:url value="/resources/lib/src/js/jquery-ui.min.css"/>" rel="stylesheet">
     <!-- FullCalendar -->
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.print.css"/>" rel="stylesheet"
@@ -40,7 +42,7 @@
                     <div class="col-md-2">
                         <div id='external-events'>
                             <div id='external-events-listing'>
-                                <h4>Các lớp đang được đăng ký</h4>
+                                <h4>Lớp đang được đăng ký</h4>
 
                             </div>
                         </div>
@@ -265,7 +267,7 @@
                                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Exam date:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <div>
-                                            <input type="date" class="form-control"/>
+                                            <input type="text" class="form-control" id="datepicker"/>
                                         </div>
                                     </div>
                                 </div>

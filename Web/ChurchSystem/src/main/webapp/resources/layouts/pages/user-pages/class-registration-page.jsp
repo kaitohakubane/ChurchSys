@@ -26,9 +26,7 @@
 <!-- church-info -->
 <div class="container">
     <div class="row">
-        <div class="church-info col-md-12">
-
-        </div>
+        <c:import url="/resources/layouts/user-common/church-info.jsp"/>
         <div class="small-nav col-md-12">
             <div class="row">
                 <div class="col-md-4">
@@ -42,7 +40,7 @@
                 </div>
                 <div class="col-md-4">
                     <a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}"
-                       class="col-md-12 btn btn-default">Đăng ký lớp học</a>
+                       class="col-md-12 btn btn-default active">Đăng ký lớp học</a>
                 </div>
             </div>
         </div>

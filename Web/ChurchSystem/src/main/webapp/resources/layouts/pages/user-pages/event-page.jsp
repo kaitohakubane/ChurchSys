@@ -18,6 +18,7 @@
     <title>Information Page</title>
     <c:import url="/resources/layouts/user-common/header.jsp"/>
 
+    <link href="<c:url value="/resources/lib/src/js/w2ui-1.5.rc1.min.css"/>" rel="stylesheet">
     <!-- FullCalendar -->
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.css"/>" rel="stylesheet">
 
@@ -31,9 +32,7 @@
 <!-- church-info -->
 <div class="container">
     <div class="row">
-        <div class="church-info col-md-12">
-
-        </div>
+        <c:import url="/resources/layouts/user-common/church-info.jsp"/>
         <div class="small-nav col-md-12">
             <div class="row">
                 <div class="col-md-4">
@@ -41,7 +40,7 @@
                         tức</a>
                 </div>
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}" class="col-md-12 btn btn-default">Sự kiện</a>
+                    <a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}" class="col-md-12 btn btn-default active">Sự kiện</a>
                 </div>
                 <div class="col-md-4">
                     <a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}" class="col-md-12 btn btn-default">Đăng ký lớp học</a>
@@ -87,7 +86,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Bắt đầu lúc</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <input type="time" id="startTime" value="18:00:00" class="form-control">
+                        <input type="eu-time" id="startTime" value="18:00" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -173,11 +172,13 @@
 
 <c:import url="/resources/layouts/user-common/footer.jsp"/>
 
+<script src="<c:url value="/resources/lib/src/js/w2ui-1.5.rc1.min.js"/>"></script>
 <!-- FullCalendar -->
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
 <script>
     var churchId =${param.churchId}
+        $('input[type=eu-time]').w2field('time', { format: 'h24', start: '4:30 am', end: '9:00 pm' });
 </script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/church-event.js"/>"></script>

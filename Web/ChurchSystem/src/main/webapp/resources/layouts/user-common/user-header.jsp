@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <!-- navbar -->
 <nav class="navbar navbar-default navbar-fixed-top mega-nav">
@@ -35,16 +36,30 @@
                     </ul>
                 </li>
             </ul>
-            <%--<form id="mega-search" class="navbar-form navbar-right">--%>
-                <%--<div class="input-group">--%>
-                    <%--<input type="text" class="form-control" placeholder="Search...">--%>
-                    <%--<span class="input-group-btn">--%>
-                            <%--<button class="btn btn-default" type="button">--%>
-                                <%--<i class="glyphicon glyphicon-search"></i>--%>
-                            <%--</button>--%>
-                        <%--</span>--%>
-                <%--</div>--%>
-            <%--</form>--%>
+            <div class="pull-right">
+                <ul class="nav-right">
+
+                    <sec:authentication var="principal" property="principal"/>
+                    <c:choose>
+
+                        <c:when test="${principal ne 'anonymousUser'}">
+                            <li class="profile">
+                                <div>
+                                    <strong>${principal.username}</strong>
+                                </div>
+                            </li>
+                            <li><a href="#" class="button">Đăng xuất</a></li>
+
+                        </c:when>
+                        <c:when test="${principal eq 'anonymousUser'}">
+                            <li><a id="registerBtn" class="button">Đăng ký</a></li>
+                            <li><a href="${pageContext.request.contextPath}/index" class="button">Đăng nhập</a></li>
+                        </c:when>
+                    </c:choose>
+
+
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

@@ -146,6 +146,10 @@ function appendClassToList(subId) {
     })
     registerClassList();
 }
+$( function() {
+    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker('option', 'dateFormat' , 'dd-mm-yy');
+} );
 
 
 

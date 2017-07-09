@@ -83,12 +83,36 @@ ol, ul {
     background: #0075b3;
     transition: all 200ms ease-out;
 }
+.nav-right li {
+    float: left;
+    list-style: none;
+    margin-top: 15px;
+}
+.nav-right li a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+}
+.nav-right li a:hover {
+    background-color: #673ab7;
+    transition: 0.8s all;
+}
+a.button {
+    background-color: #3f51b5;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+li.profile {
+    margin-top: 15px;
+}
 /*end navbar*/
 /*=====================*/
 /*church info*/
 .church-info {
-    height: 100px;
     background-color: #fff;
+    margin-top: 55px;
+    margin-bottom: 5px;
+    border:5px double #ccc;
 }
 .small-nav {
     margin-bottom: 5px;

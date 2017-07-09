@@ -26,7 +26,7 @@
                 <li><a href="#" class="icon-top"><img alt="Church Icon" src="<c:url value="/resources/img/icon.png"/>"
                                                       class="icon-img"></a></li>
             </ul>
-            <div class="navbar-right">
+            <div class="pull-right">
                 <ul class="nav-right">
 
                     <sec:authentication var="principal" property="principal"/>

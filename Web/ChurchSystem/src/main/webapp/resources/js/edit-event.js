@@ -12,7 +12,7 @@ var event;
 $(document).ready(function () {
     Initial();
     $("#slotDate").datepicker();
-    $("#slotDate").datepicker('option', 'dateFormat', 'yy-mm-dd');
+    $("#slotDate").datepicker('option', 'dateFormat', 'dd-mm-yy');
     inputEditEventInformation();
 })
 
