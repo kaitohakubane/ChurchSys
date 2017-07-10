@@ -40,7 +40,7 @@
                     <div class="col-md-2">
                         <div id='external-events'>
                             <div id='external-events-listing'>
-                                <h4>Ongoing Class</h4>
+                                <h4>Các lớp đang được đăng ký</h4>
 
                             </div>
                         </div>
@@ -49,19 +49,19 @@
                             <ul>
                                 <li style="color: #01ff70">
                                     <i class="fa fa-square"></i>
-                                    <span>Khẽ thôi cưng à !!!</span>
+                                    <span>Vừa tạo</span>
                                 </li>
                                 <li style="color: #3c8dbc">
                                     <i class="fa fa-square"></i>
-                                    <span>Khẽ thôi cưng à !!!</span>
+                                    <span>Bình thường</span>
                                 </li>
                                 <li style="color: #dd4b39">
                                     <i class="fa fa-square"></i>
-                                    <span>Khẽ thôi cưng à !!!</span>
+                                    <span>Có vấn đề</span>
                                 </li>
                                 <li style="color: #777">
                                     <i class="fa fa-square"></i>
-                                    <span>Khẽ thôi cưng à !!!</span>
+                                    <span>Đã qua</span>
                                 </li>
                             </ul>
                         </div>

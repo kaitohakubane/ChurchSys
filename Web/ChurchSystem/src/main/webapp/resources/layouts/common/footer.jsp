@@ -18,5 +18,31 @@
 <script src="<c:url value="/resources/lib/vendors/nprogress/nprogress.js"/>"></script>
 <!-- Custom Theme Scripts -->
 <script src="<c:url value="/resources/lib/build/js/custom.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/external/stomp.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/external/sockjs-0.3.4.min.js"/>"></script>
+
+<script>
+    function connect() {
+
+        // Create and init the SockJS object
+        var socket = new SockJS('<c:url value='/ws'/>');
+
+        var stompClient = Stomp.over(socket);
+
+        // Subscribe the '/notify' channell
+        stompClient.connect({}, function (frame) {
+            stompClient.subscribe('/user/queue/notify', function (notification) {
+                console.log(notification);
+                // Call the notify function when receive a notification
+                notify(JSON.parse(notification.body).content, JSON.parse(notification.body).type,
+                        JSON.parse(notification.body).link);
+
+            });
+        });
+
+        return;
+    } // function connect
+    connect();
+</script>
 
 <script src="<c:url value="/resources/js/common.js"/>"></script>

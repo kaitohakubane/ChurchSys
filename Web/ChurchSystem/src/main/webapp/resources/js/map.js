@@ -95,11 +95,11 @@ function initAutocomplete() {
             position: place.geometry.location,
         }));
 
-        map.setCenter(place.geometry.location);
+
 
         // Church Position
         searchNearLocationAjaxCall(place.geometry.location);
-
+        map.setCenter(place.geometry.location);
 
     });
 

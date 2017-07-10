@@ -138,12 +138,12 @@ public class SQLParamConstant {
             "address as address FROM " +
             "church HAVING distance <:distance ORDER BY distance";
 
-    public static final String GET_ON_PLAN_CLASS="SELECT e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
+    public static final String GET_ON_PLAN_CLASS="SELECT distinct e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
             " su.subName as subName,t.description as typeName, " +
             "sh.startTime as startTime, sh.endTime as endTime FROM event e,slot s,inclusion i,slothour sh,subject su, type t " +
             "WHERE e.eventStatus =:status AND e.startDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
             "su.categoryId =:categoryId AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
-            "e.typeId =t.typeId AND e.churchId =:churchId LIMIT 1";
+            "e.typeId =t.typeId AND e.churchId =:churchId";
 
     public static final String GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT = "select distinct u.userId from user u, church c," +
             " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId NOT IN (select s2.conductorId " +

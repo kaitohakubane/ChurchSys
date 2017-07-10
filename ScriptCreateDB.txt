@@ -15,7 +15,7 @@ CREATE TABLE Church (
 	latitude double,
     
 	tel nvarchar(50),
-	address nvarchar(50),
+	address nvarchar(255),
     
 	mail nvarchar(255),
     

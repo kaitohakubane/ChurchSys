@@ -1,6 +1,17 @@
 /**
  * Created by hungmcse61561-admin on 6/29/2017.
  */
+
+
+/**
+ * Display the notification message.
+ */
+function notify(message,type,link) {
+    $("#notifications-area").append(message)
+    return;
+}
+
+
 function eventRegisterPopup(e, popup) {
     console.log("popup")
     var windowHeight = $(window).height() / 2;

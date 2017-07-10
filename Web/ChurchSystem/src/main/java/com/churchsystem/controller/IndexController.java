@@ -12,12 +12,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.Charset;
 import java.security.Principal;
 import java.sql.Time;
@@ -49,9 +51,6 @@ public class IndexController {
     @RequestMapping(value = {PageConstant.ROOT_PATH_URL}, method = RequestMethod.GET)
     public ModelAndView initHomePage() {
         ModelAndView modelAndView = new ModelAndView(PageConstant.MAP_PAGE);
-
-        String testString ="2;4;6;7";
-
         return modelAndView;
     }
 
@@ -71,5 +70,16 @@ public class IndexController {
             modelAndView = new ModelAndView(PageConstant.LOGIN_PAGE);
         }
         return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutHandler(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/";
     }
 }

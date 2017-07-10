@@ -38,7 +38,7 @@
                                     <strong>${principal.username}</strong>
                                 </div>
                             </li>
-                            <li><a href="#" class="button">Đăng xuất</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout" class="button">Đăng xuất</a></li>
 
                         </c:when>
                         <c:when test="${principal eq 'anonymousUser'}">

@@ -19,6 +19,6 @@
     <c:import url="/resources/layouts/common/header.jsp"/>
 </head>
 <body>
-<h1> DM thằng ngu này. Ai bảo mày nhập link</h1>
+<h1> Error happen </h1>
 </body>
 </html>
