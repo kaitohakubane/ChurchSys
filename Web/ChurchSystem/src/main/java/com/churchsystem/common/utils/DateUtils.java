@@ -7,8 +7,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalTime;
 import java.util.*;
 
 /**
@@ -65,7 +63,7 @@ public class DateUtils {
 
     public static Date nextDayOfWeek(int dow, Calendar cal) {
         int diff = dow - cal.get(Calendar.DAY_OF_WEEK);
-        if (!(diff >= 0)) {
+        if (!(diff > 0)) {
             diff += 7;
         }
 
@@ -93,12 +91,17 @@ public class DateUtils {
             }
         }
 
+        int dif =(arrayOfDate.get(recent%arrayOfDate.size())-cal.get(Calendar.DAY_OF_WEEK));
+        if(dif==0){
+            Date item = new Date(cal.getTimeInMillis());
+            result.add(item);
+        }
+
 
         for (int i = recent; i < numberOfSlot + recent; i++) {
             int k = i % arrayOfDate.size();
             Date item = nextDayOfWeek(arrayOfDate.get(k), cal);
             result.add(item);
-
         }
         return result;
     }

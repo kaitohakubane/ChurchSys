@@ -11,20 +11,22 @@
 <html>
 <head>
     <title>Home page</title>
-    <c:import url="/resources/layouts/common/header.jsp"/>;
+    <c:import url="/resources/layouts/common/header.jsp"/>
 </head>
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
         <c:import url="/resources/layouts/common/menu.jsp"/>
         <%--Content    --%>
-
-
+        <div class="right_col" role="main">
+            <textarea id="notifications-area" cols="1200" rows="10" readonly="readonly"></textarea>
+        </div>
         <%--Content end--%>
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/js/test.js"/>"></script>
+
 </body>
 </html>

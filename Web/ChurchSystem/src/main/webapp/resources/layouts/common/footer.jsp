@@ -20,7 +20,7 @@
 <script src="<c:url value="/resources/lib/build/js/custom.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/external/stomp.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/external/sockjs-0.3.4.min.js"/>"></script>
-
+<script src="<c:url value="/resources/js/common.js"/>"></script>
 <script>
     function connect() {
 
@@ -45,4 +45,4 @@
     connect();
 </script>
 
-<script src="<c:url value="/resources/js/common.js"/>"></script>
+

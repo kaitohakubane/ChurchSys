@@ -7,8 +7,12 @@
  * Display the notification message.
  */
 function notify(message,type,link) {
-    $("#notifications-area").append(message)
-    return;
+    $("#menu1").append("<li> <a> <span>Chính tòa Đà Nẵng</span> <span class='message'> " +
+        "Film festivals used to be do-or-die moments for movie makers. They were where... </span> </a> </li>")
+
+    var count=parseInt($("#numberOfNoti").html());
+    $("#numberOfNoti").html(count+1);
+
 }
 
 

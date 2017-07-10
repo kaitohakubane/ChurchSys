@@ -3,6 +3,8 @@ package com.churchsystem.controller;
 import com.churchsystem.entity.Notification;
 import com.churchsystem.service.common.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,14 +22,11 @@ public class NotificationController {
     @ResponseBody
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public void someAction() {
-
-        // Do an action here
-        // ...
-
-        // Send the notification to "UserA" (by username)
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loginUser=auth.getName();
         notificationService.notify(
                 new Notification("SS", 1, "https://www.youtube.com/watch?v=nqUpqUJ3ZNo"), // notification object
-                "hungmc"                    // username
+                loginUser                    // username
         );
     }
 
