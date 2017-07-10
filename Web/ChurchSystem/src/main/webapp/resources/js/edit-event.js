@@ -12,15 +12,20 @@ var event;
 $(document).ready(function () {
     Initial();
     $("#slotDate").datepicker();
-    $("#slotDate").datepicker('option', 'dateFormat', 'dd-mm-yy');
+    $("#slotDate").datepicker('option', 'dateFormat', 'yy-mm-dd');
     inputEditEventInformation();
 })
 
-
-$("#startTime").on('change', function () {
+$("#startTime").on('focus', function () {
+    console.log("Saving value " + $(this).val());
+    $(this).data('val', $(this).val());
+}).on('change', function () {
         console.log("startTime change")
         if ($("#startTime").val() >= $("#endTime").val()) {
-
+            alert("Invalid Start Time")
+            var prev = $(this).data('val');
+            console.log("Prev value " + prev);
+            $("#startTime").val(prev);
         } else {
             console.log("run")
             loadEventConductor($("#startTime").val(), $("#endTime").val());
@@ -29,10 +34,16 @@ $("#startTime").on('change', function () {
     }
 )
 
-$("#endTime").on('change', function () {
+$("#endTime").on('focus', function () {
+    console.log("Saving value " + $(this).val());
+    $(this).data('val', $(this).val());
+}).on('change', function () {
         console.log("endTime change")
         if ($("#endTime").val() <= $("#startTime").val()) {
-
+            alert("Invalid End Time");
+            var prev = $(this).data('val');
+            console.log("Prev value " + prev);
+            $("#endTime").val(prev);
         } else {
             console.log("run")
 
@@ -42,18 +53,37 @@ $("#endTime").on('change', function () {
     }
 )
 
-$("#slotDate").on('change', function (){
+$("#slotDate").on('focus', function () {
+    console.log("Saving value " + $(this).val());
+    $(this).data('val', $(this).val());
+}).on('change', function () {
     console.log("Date is changed!")
-    var currentDate = new Date(year,month,day)
-    if($("#slotDate").val()<currentDate.getDate()){
-        console.log("lỗi");
-    }else{
+    var currentDate = new Date();
+    var year = currentDate.getFullYear();
+    var month = currentDate.getMonth() + 1;
+    var day = currentDate.getDate();
+
+    var selectedDate = new Date($("#slotDate").val());
+    console.log(selectedDate);
+    console.log(currentDate)
+    if (selectedDate < currentDate) {
+        alert("Invalid Date");
+        var prev = $(this).data('val');
+        console.log("Prev value " + prev);
+        $("#slotDate").val(prev);
+    }
+    else {
         console.log("Not lỗi");
         loadEventConductor($("#startTime").val(), $("#endTime").val());
         loadEventRoom($("#startTime").val(), $("#endTime").val());
     }
 })
 
+
+$("#btnBack").on("click", function () {
+    window.location.href = contextPath + SCHEDULE_URL;
+
+})
 
 $("#btnSave").on("click", function updateEvent(e) {
     e.preventDefault();
@@ -87,11 +117,12 @@ $("#btnSave").on("click", function updateEvent(e) {
         contentType: 'application/json',
         processData: false,
         success: function () {
-            var slotId=$("#txtTitle").data("id");
+            var slotId = $("#txtTitle").data("id");
             var parameter = {
                 slotId: slotId
             }
             post(contextPath + UPDATE_EVENT_URL, parameter);
+            alert("Update success!");
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

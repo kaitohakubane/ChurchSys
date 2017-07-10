@@ -52,6 +52,9 @@ public class UserService implements UserServiceInterface {
     public Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId) {
         return userModelInterface.checkConductorForSlot(slotHourId, slotDate, churchId, conductorId);
     }
-
+    @Override
+    public List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId){
+        return userModelInterface.getIdListSuitableConductorForSlot(newStartTime,newEndTime,slotDate,churchId);
+    }
 
 }

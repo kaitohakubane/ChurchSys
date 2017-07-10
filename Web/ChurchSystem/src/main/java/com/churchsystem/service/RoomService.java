@@ -45,5 +45,8 @@ public class RoomService implements RoomServiceInterface{
         return roomModelInterface.checkRoomForSlot(slotHourId,slotDate,churchId,roomId);
     }
 
-
+@Override
+    public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId){
+        return roomModelInterface.getIdListSuitableRoomForSlot(newStartTime,newEndTime,slotDate,churchId);
+}
 }

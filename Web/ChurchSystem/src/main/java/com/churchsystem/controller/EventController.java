@@ -71,11 +71,11 @@ public class EventController {
             }
 
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId
-                    , privacy, churchId, null, ParamConstant.NON_REPEAT_TYPE,false,UtilsConstant.ONE);
+                    , privacy, churchId, null, ParamConstant.NON_REPEAT_TYPE, false, UtilsConstant.ONE);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId,false);
-            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId,eventEntity.getEventId());
+                    subId, churchId, false);
+            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId, eventEntity.getEventId());
             List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
             for (int i = 0; i < slotEntities.size(); i++) {
                 eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
@@ -159,9 +159,10 @@ public class EventController {
 
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
-        List<UserEntity> userEntities = userServiceInterface.getListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
         UserEntity currentConductor = userServiceInterface.getUserByUserId(eventDataEntity.getConductorId());
-        if (!userEntities.contains(currentConductor)) {
+        List<UserEntity> userEntities = userServiceInterface.getListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
+        List<Integer> conductorIdList = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
+        if (!conductorIdList.contains(currentConductor.getUserId())) {
             userEntities.add(currentConductor);
         }
         return userEntities;
@@ -179,10 +180,11 @@ public class EventController {
 
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
-        List<RoomEntity> roomEntities = roomServiceInterface.getListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
-
         RoomEntity currentRoom = roomServiceInterface.getRoomById(eventDataEntity.getRoomId());
-        if (!roomEntities.contains(currentRoom)) {
+        List<RoomEntity> roomEntities = roomServiceInterface.getListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
+        List<Integer> roomIdList = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
+
+        if (!roomIdList.contains(currentRoom.getRoomId())) {
             roomEntities.add(currentRoom);
         }
         return roomEntities;
@@ -216,12 +218,12 @@ public class EventController {
 
             //Create Class
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId
-                    , privacy, churchId, examDate, typeEntity.getTypeId(),false,numberOfSlot);
+                    , privacy, churchId, examDate, typeEntity.getTypeId(), false, numberOfSlot);
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId,false);
+                    subId, churchId, false);
 
 
             Integer conductorId = null;
@@ -293,7 +295,7 @@ public class EventController {
             slotEntity.setRoomId(roomId);
             slotEntity.setSlotStatus(privacy);
 
-           slotServiceInterface.updateSlot(slotEntity);
+            slotServiceInterface.updateSlot(slotEntity);
 
             slotServiceInterface.deleteSlotHourBySlotId(slotId);
 
