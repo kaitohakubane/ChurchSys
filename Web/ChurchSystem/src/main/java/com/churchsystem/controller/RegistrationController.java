@@ -5,6 +5,7 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.entity.*;
+import com.churchsystem.service.common.NotificationService;
 import com.churchsystem.service.interfaces.*;
 import org.jcp.xml.dsig.internal.dom.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class RegistrationController {
 
     @Autowired
     SlotServiceInterface slotServiceInterface;
+
+    @Autowired
+    private NotificationService notificationService;
 
 
     @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
@@ -73,7 +77,6 @@ public class RegistrationController {
             for (int i = 0; i < slothourEntities.size(); i++) {
                 eventServiceInterface.mappingResource(slotEntities.get(0).getSlotId(),slothourEntities.get(i).getSlotHourId());
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

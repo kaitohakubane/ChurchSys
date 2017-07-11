@@ -33,19 +33,35 @@ public class ParamConstant {
      * Church
      */
     public static final String CHURCH_ID = "churchId";
+
     public static final String CHURCH_LIST = "churchList";
+
+    public static final String CATEGORY_LIST = "categoryList";
+    public static final int NOT_EVENT_CATEGORY_ID = 3;
+    public static final String CHURCH_OBJECT = "churchObj";
+    public static final String INPUT_LONGITUDE="inputLongitude";
+    public static final String INPUT_LATITUDE="inputLatitude";
+    public static final String DISTANCE="distance";
+    public static final int DEFAULT_RADIUS=10;
+    public static final int ADDITIONAL_DISTANCE=20;
+    public static final int MAXIMUM_DISTANCE=50;
+
     /**
      * Registration
      */
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
     public static final String LIST_REGISTERED_CLASS_ATTR = "registeredClass";
-    public static final String ON_PLAN_CLASS_LIST = "onPlanClassList";
-    public static final int REGISTRATION_WAITING_STATUS = 1;
-    public static final int REGISTRATION_DENY_STATUS = 2;
-    public static final int REGISTRATION_FINISH_STATUS = 3;
-    public static final String REGISTRATION_STATUS = "regisStatus";
-    public static final String REGISTRATION_START_TIME = "regisStartTime";
-    public static final String REGISTRATION_EST_TIME = "estTime";
+
+
+    public static final String ON_PLAN_CLASS_LIST="onPlanClassList";
+    public static final int REGISTRATION_WAITING_STATUS=1;
+    public static final int REGISTRATION_DENY_STATUS=2;
+    public static final int REGISTRATION_FINISH_STATUS=3;
+    public static final String REGISTRATION_STATUS="regisStatus";
+    public static final String REGISTRATION_START_TIME="regisStartTime";
+    public static final String REGISTRATION_EST_TIME="estTime";
+
+
     /**
      * Event
      */
@@ -72,21 +88,11 @@ public class ParamConstant {
     public static final String SUBJECT_ID = "subId";
 
     /**
-     * Church
+     * Notification
      */
-    public static final String CATEGORY_LIST = "categoryList";
-    public static final int NOT_EVENT_CATEGORY_ID = 3;
-
-    /**
-     * Church
-     */
-    public static final String CHURCH_OBJECT = "churchObj";
-    public static final String INPUT_LONGITUDE = "inputLongitude";
-    public static final String INPUT_LATITUDE = "inputLatitude";
-    public static final String DISTANCE = "distance";
-    public static final int DEFAULT_RADIUS = 10;
-    public static final int ADDITIONAL_DISTANCE = 20;
-    public static final int MAXIMUM_DISTANCE = 50;
+    public static final String NOTIFICATION_LINK="notificationLink";
+    public static final String NOTIFICATION_INFORMATION="notificationInformation";
+    public static final String STREAM_MESSAGE=" đang được trực tuyến";
 
 
     /**
