@@ -50,6 +50,9 @@ public class PageConstant {
     public static final String START_STREAM_URL = "/manager/stream/Start";
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
 
+    //Notification
+    public static final String STREAM_NOTIFICATION_URL="/manager/stream/notification";
+
 
 
     //Class

@@ -26,4 +26,5 @@ public class UtilsConstant {
     public static final int STREAM_ON_STATUS=1;
     public static final String TIME_DELIMETER=":";
     public static final int TEN=10;
+    public static final String EVENT_NAME_PRE="Sự kiện ";
 }
