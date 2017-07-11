@@ -70,11 +70,13 @@ public class PageConstant {
     public static final String CHURCH_SEARCH_URL = "/church/Search";
     public static final String CLASS_URL="/church/class";
 
+    public static final String CHURCH_MANAGEMENT_URL = "/admin/church-management";
     // Contribution
 
 
     // User
     public static final String USER_NOTIFICATION_URL = "/user/notification";
+    public static final String PRIEST_MANAGEMENT_URL ="/manager/priest-manager";
 
     // Slot
 
@@ -109,8 +111,12 @@ public class PageConstant {
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
     public static final String CHURCH_CLASS_PAGE="/user-pages/class-registration-page";
 
+    public static final String CHURCH_MANAGEMENT_PAGE = "church-management-page";
+
+
     // User
     public static final String NOTIFICATION_PAGE = "notification-page";
+    public static final String PRIEST_MANAGEMENT_PAGE = "priest-management-page";
 
     // Slot
     public static final String DAILY_REPORT_PAGE = "daily-report-page";

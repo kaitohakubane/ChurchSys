@@ -21,5 +21,5 @@ public interface UserServiceInterface {
     List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
     List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
     Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId);
-
+    List<UserEntity> getAllPriest(int churchId);
 }

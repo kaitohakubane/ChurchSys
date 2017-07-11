@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Trung
-  Date: 6/1/2017
-  Time: 3:42 PM
-  To change this template use File | Settings | File Templates.
---%>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration Page</title>
+    <title>Church Management Page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
     <!-- Datatables -->
     <link href="<c:url value="/resources/lib/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"/>"
@@ -39,11 +32,11 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Registration</h2>
+                            <h2>Quản lí thành viên</h2>
                             <div class="pull-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#createEvent">
-                                    Create Event
+                                    Thêm thành viên
                                 </button>
                                 <button type="button" class="btn btn-primary">Reject</button>
                             </div>
@@ -53,27 +46,25 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Subject</th>
-                                    <th>Category</th>
-                                    <th>User</th>
-                                    <th>Registered Date</th>
-                                    <th>Registered Time</th>
-                                    <th>Message</th>
+                                    <th>ID</th>
+                                    <th>Tên đăng nhập</th>
+                                    <th>Tên linh mục</th>
+                                    <th>SĐT</th>
+                                    <th>Chứng chỉ</th>
+                                    <th>Email</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <%--<c:forEach var="item" items="${registrationList}" varStatus="counter">--%>
-                                    <%--<tr>--%>
-                                        <%--<td data-id="${item.regisId}">${counter.count}</td>--%>
-                                        <%--<td>${item.regisDate}</td>--%>
-                                        <%--<td data-id="${item.subId}">${item.subName}</td>--%>
-                                        <%--<td>${item.categoryName}</td>--%>
-                                        <%--<td>${item.username}</td>--%>
-                                        <%--<td>${item.estTime}</td>--%>
-                                        <%--<td>${item.message}</td>--%>
-                                    <%--</tr>--%>
-                                <%--</c:forEach>--%>
+                                <c:forEach var="item" items="${priestList}">
+                                    <tr>
+                                        <td>${item.userId}</td>
+                                        <td>${item.accountId}</td>
+                                        <td>${item.userName}</td>
+                                        <td>${item.tel}</td>
+                                        <td>${item.certificate}</td>
+                                        <td>${item.email}</td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

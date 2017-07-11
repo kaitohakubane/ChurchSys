@@ -33,19 +33,19 @@ public class ParamConstant {
      * Church
      */
     public static final String CHURCH_ID = "churchId";
-
+    public static final String CHURCH_LIST = "churchList";
     /**
      * Registration
      */
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
     public static final String LIST_REGISTERED_CLASS_ATTR = "registeredClass";
-    public static final String ON_PLAN_CLASS_LIST="onPlanClassList";
-    public static final int REGISTRATION_WAITING_STATUS=1;
-    public static final int REGISTRATION_DENY_STATUS=2;
-    public static final int REGISTRATION_FINISH_STATUS=3;
-    public static final String REGISTRATION_STATUS="regisStatus";
-    public static final String REGISTRATION_START_TIME="regisStartTime";
-    public static final String REGISTRATION_EST_TIME="estTime";
+    public static final String ON_PLAN_CLASS_LIST = "onPlanClassList";
+    public static final int REGISTRATION_WAITING_STATUS = 1;
+    public static final int REGISTRATION_DENY_STATUS = 2;
+    public static final int REGISTRATION_FINISH_STATUS = 3;
+    public static final String REGISTRATION_STATUS = "regisStatus";
+    public static final String REGISTRATION_START_TIME = "regisStartTime";
+    public static final String REGISTRATION_EST_TIME = "estTime";
     /**
      * Event
      */
@@ -54,16 +54,16 @@ public class ParamConstant {
     public static final String EVENT_DATE = "eventDate";
     public static final String IS_PUBLIC = "isPublic";
     public static final String EVENT_STATUS = "status";
-    public static final String IS_EVENT_REGISTERED="isRegistered";
+    public static final String IS_EVENT_REGISTERED = "isRegistered";
     public static final String EVENT_SUBJECT_ID = "eventSubId";
     public static final int WAITING_FOR_APPROVE_STATUS = 1;
     public static final int EVENT_DENY_STATUS = 2;
     public static final int EVENT_APPROVE_STATUS = 3;
     public static final int EVENT_FINISH_STATUS = 4;
     public static final String EVENT_ID = "eventId";
-    public static final String USER_DEFAULT_EVENT_NAME="Registered Event";
-    public static final String CATEGORY_ID="categoryId";
-    public static final int CLASS_CATEGORY=4;
+    public static final String USER_DEFAULT_EVENT_NAME = "Registered Event";
+    public static final String CATEGORY_ID = "categoryId";
+    public static final int CLASS_CATEGORY = 4;
 
     /**
      * Subject
@@ -81,12 +81,12 @@ public class ParamConstant {
      * Church
      */
     public static final String CHURCH_OBJECT = "churchObj";
-    public static final String INPUT_LONGITUDE="inputLongitude";
-    public static final String INPUT_LATITUDE="inputLatitude";
-    public static final String DISTANCE="distance";
-    public static final int DEFAULT_RADIUS=10;
-    public static final int ADDITIONAL_DISTANCE=20;
-    public static final int MAXIMUM_DISTANCE=50;
+    public static final String INPUT_LONGITUDE = "inputLongitude";
+    public static final String INPUT_LATITUDE = "inputLatitude";
+    public static final String DISTANCE = "distance";
+    public static final int DEFAULT_RADIUS = 10;
+    public static final int ADDITIONAL_DISTANCE = 20;
+    public static final int MAXIMUM_DISTANCE = 50;
 
 
     /**
@@ -118,15 +118,19 @@ public class ParamConstant {
      * Type
      */
 
-    public static final String TYPE_DESCRIPTION="description";
-    public static final int NON_REPEAT_TYPE=1;
+    public static final String TYPE_DESCRIPTION = "description";
+    public static final int NON_REPEAT_TYPE = 1;
 
     /**
      * Stream
      */
-    public static final String STREAM_RESOLUTION="resolution";
-    public static final String STREAM_LINK="streamLink";
-    public static final String STREAM_CODE="streamCode";
-    public static final String STREAM_TITLE="streamTitle";
+    public static final String STREAM_RESOLUTION = "resolution";
+    public static final String STREAM_LINK = "streamLink";
+    public static final String STREAM_CODE = "streamCode";
+    public static final String STREAM_TITLE = "streamTitle";
 
+    /**
+     * User
+     */
+    public static final String PRIEST_LIST = "priestList";
 }

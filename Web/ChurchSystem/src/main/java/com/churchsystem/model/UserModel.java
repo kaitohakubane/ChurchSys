@@ -29,7 +29,7 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
-    public UserEntity getUserByUserId(int userId){
+    public UserEntity getUserByUserId(int userId) {
         Criteria criteria = getSession().createCriteria(UserEntity.class).add(Restrictions.eq("userId", userId));
         UserEntity result = (UserEntity) criteria.uniqueResult();
         return result;
@@ -55,8 +55,8 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     @Override
     public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_CONDUCTOR_FOR_SLOT)
-                .setParameter(ParamConstant.NEW_START_TIME,newStartTime)
-                .setParameter(ParamConstant.NEW_END_TIME,newEndTime)
+                .setParameter(ParamConstant.NEW_START_TIME, newStartTime)
+                .setParameter(ParamConstant.NEW_END_TIME, newEndTime)
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
                 .setParameter(ParamConstant.SLOT_DATE, slotDate)
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
@@ -77,11 +77,20 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     @Override
     public List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT)
-                .setParameter(ParamConstant.NEW_START_TIME,newStartTime)
-                .setParameter(ParamConstant.NEW_END_TIME,newEndTime)
+                .setParameter(ParamConstant.NEW_START_TIME, newStartTime)
+                .setParameter(ParamConstant.NEW_END_TIME, newEndTime)
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
                 .setParameter(ParamConstant.SLOT_DATE, slotDate);
         List<Integer> result = query.list();
         return result;
+    }
+
+    @Override
+    public List<UserEntity> getAllPriest(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_ALL_PRIEST)
+                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<UserEntity> userEntities = query.list();
+        return userEntities;
     }
 }

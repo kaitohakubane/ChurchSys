@@ -1,6 +1,7 @@
 package com.churchsystem.controller;
 
 import com.churchsystem.common.constants.PageConstant;
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.service.interfaces.UserServiceInterface;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by hungmcse61561-admin on 7/1/2017.
@@ -35,6 +38,14 @@ public class UserController {
         } else if(authorities.contains(new SimpleGrantedAuthority(UtilsConstant.NORMAL_USER))) {
             modelAndView=new ModelAndView(PageConstant.MAP_PAGE);
         }
+        return modelAndView;
+    }
+    @RequestMapping(value = PageConstant.PRIEST_MANAGEMENT_URL, method = RequestMethod.GET)
+    public ModelAndView getAllChurch(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.PRIEST_MANAGEMENT_PAGE);
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        List<UserEntity> userEntities = userServiceInterface.getAllPriest(churchId);
+        modelAndView.addObject(ParamConstant.PRIEST_LIST, userEntities);
         return modelAndView;
     }
 }

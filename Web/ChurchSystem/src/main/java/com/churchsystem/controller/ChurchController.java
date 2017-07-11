@@ -2,6 +2,7 @@ package com.churchsystem.controller;
 
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
+import com.churchsystem.entity.ChurchDisplayEntity;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.ChurchMapEntity;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
@@ -76,4 +77,11 @@ public class ChurchController {
         return result;
     }
 
+    @RequestMapping(value = PageConstant.CHURCH_MANAGEMENT_URL, method = RequestMethod.GET)
+    public ModelAndView getAllChurch() {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.CHURCH_MANAGEMENT_PAGE);
+        List<ChurchDisplayEntity> churchDisplayEntities = churchServiceInterface.getAllChurch();
+        modelAndView.addObject(ParamConstant.CHURCH_LIST, churchDisplayEntities);
+        return modelAndView;
+    }
 }

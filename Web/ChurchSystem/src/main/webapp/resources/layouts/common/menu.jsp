@@ -36,11 +36,11 @@
                     <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
 
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/manager/registration-management">Registration
-                        Management</a>
+                    <li><a href="${pageContext.request.contextPath}/admin/church-management">Quản lí nhà thờ</a>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/manager/schedule">Event Schedule</a></li>
                     <li><a href="${pageContext.request.contextPath}/manager/stream">Stream</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/priest-manager">Quản lí thành viên nhà thờ</a></li>
                 </ul>
             </div>
         </div>

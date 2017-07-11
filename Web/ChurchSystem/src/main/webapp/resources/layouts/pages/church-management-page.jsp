@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration Page</title>
+    <title>Church Management Page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
     <!-- Datatables -->
     <link href="<c:url value="/resources/lib/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"/>"
@@ -39,11 +39,11 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Registration</h2>
+                            <h2>Quản lí nhà thờ</h2>
                             <div class="pull-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#createEvent">
-                                    Create Event
+                                    Thêm nhà thờ
                                 </button>
                                 <button type="button" class="btn btn-primary">Reject</button>
                             </div>
@@ -53,27 +53,47 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Subject</th>
-                                    <th>Category</th>
-                                    <th>User</th>
-                                    <th>Registered Date</th>
-                                    <th>Registered Time</th>
-                                    <th>Message</th>
+                                    <th>ID</th>
+                                    <th>Tên nhà thờ</th>
+                                    <th>Kinh độ</th>
+                                    <th>Vĩ độ</th>
+                                    <th>Điện thoại</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Email</th>
+                                    <th>Giờ mở cửa</th>
+                                    <th>Giờ đóng cửa</th>
+                                    <th>Thông tin mô tả</th>
+                                    <th>Người quản lí</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <%--<c:forEach var="item" items="${registrationList}" varStatus="counter">--%>
-                                    <%--<tr>--%>
-                                        <%--<td data-id="${item.regisId}">${counter.count}</td>--%>
-                                        <%--<td>${item.regisDate}</td>--%>
-                                        <%--<td data-id="${item.subId}">${item.subName}</td>--%>
-                                        <%--<td>${item.categoryName}</td>--%>
-                                        <%--<td>${item.username}</td>--%>
-                                        <%--<td>${item.estTime}</td>--%>
-                                        <%--<td>${item.message}</td>--%>
-                                    <%--</tr>--%>
-                                <%--</c:forEach>--%>
+                                <c:forEach var="item" items="${churchList}">
+                                    <tr>
+                                        <td>${item.churchId}</td>
+                                        <td>${item.churchName}</td>
+                                        <td>${item.longitude}</td>
+                                        <td>${item.latitude}</td>
+                                        <td>${item.tel}</td>
+                                        <td>${item.address}</td>
+                                        <td>${item.mail}</td>
+                                        <td>${item.startTime}</td>
+                                        <td>${item.endTime}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.accountId}</td>
+                                        <td>
+                                            <button type="button" id="${item.churchId}btn"><c:choose>
+
+                                                <c:when test="${not empty item.userId}">
+                                                    Đổi người quản lí
+                                                </c:when>
+                                                <c:when test="${empty item.userId}">
+                                                    Tạo người quản lí
+                                                </c:when>
+                                            </c:choose></button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

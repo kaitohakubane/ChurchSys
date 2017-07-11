@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.entity.ChurchDisplayEntity;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.ChurchMapEntity;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
@@ -33,5 +34,10 @@ public class ChurchService implements ChurchServiceInterface{
     @Override
     public List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius ){
         return churchModelInterface.getNearbyChurch(latitude,longitude,radius);
+    }
+
+    @Override
+    public List<ChurchDisplayEntity> getAllChurch(){
+        return  churchModelInterface.getAllChurch();
     }
 }

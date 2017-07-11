@@ -158,5 +158,10 @@ public class SQLParamConstant {
             "where s.slotId = s1.slotId) s2 " +
             "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId";
 
+    public static final String GET_LIST_DISPLAYED_CHURCH = "SELECT s1.*,u.accountId FROM (SELECT c.*, i.userId FROM church c " +
+            "LEFT JOIN interaction i ON c.churchId = i.churchId GROUP BY c.churchId) s1 " +
+            "LEFT JOIN user u ON s1.userId = u.userId AND u.role ='ROLE_MANAGER' ORDER BY s1.churchId";
+
+    public static final String GET_ALL_PRIEST ="SELECT u.* FROM user u, interaction i WHERE u.userId = i.userId AND u.role='ROLE_PRIEST' AND i.churchId =:churchId";
 
 }

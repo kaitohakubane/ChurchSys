@@ -1,5 +1,6 @@
 package com.churchsystem.model.interfaces;
 
+import com.churchsystem.entity.ChurchDisplayEntity;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.ChurchMapEntity;
 
@@ -12,4 +13,5 @@ public interface ChurchModelInterface {
     ChurchEntity getChurchById(int churchId);
     void updateChurch(ChurchEntity churchEntity);
     List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius );
+    List<ChurchDisplayEntity> getAllChurch();
 }

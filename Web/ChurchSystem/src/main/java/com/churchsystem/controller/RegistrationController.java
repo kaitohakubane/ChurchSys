@@ -35,8 +35,8 @@ public class RegistrationController {
     @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllRegistration() {
         ModelAndView modelAndView = new ModelAndView(PageConstant.REGISTRATION_PAGE);
-        List<RegisterDisplayEntity> registerList = registrationServiceInterface.getRegistration();
-        modelAndView.addObject(ParamConstant.LIST_REGISTRATION_ATTR, registerList);
+//        List<RegisterDisplayEntity> registerList = registrationServiceInterface.getRegistration();
+//        modelAndView.addObject(ParamConstant.LIST_REGISTRATION_ATTR, registerList);
         return modelAndView;
     }
 

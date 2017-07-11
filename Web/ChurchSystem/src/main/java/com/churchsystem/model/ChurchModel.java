@@ -2,6 +2,7 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
+import com.churchsystem.entity.ChurchDisplayEntity;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.ChurchMapEntity;
 import com.churchsystem.model.common.CommonDAO;
@@ -38,5 +39,12 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
                 .setParameter(ParamConstant.DISTANCE,radius).setResultTransformer(Transformers.aliasToBean(ChurchMapEntity.class));
         List<ChurchMapEntity> churchMapEntities= query.list();
         return churchMapEntities;
+    }
+
+    @Override
+    public List<ChurchDisplayEntity> getAllChurch(){
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_DISPLAYED_CHURCH).setResultTransformer(Transformers.aliasToBean(ChurchDisplayEntity.class));
+        List<ChurchDisplayEntity> churchDisplayEntities = query.list();
+        return  churchDisplayEntities;
     }
 }
