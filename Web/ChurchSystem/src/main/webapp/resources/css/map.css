@@ -123,9 +123,9 @@ html, body {
 /*vertical-navbar*/
 
 #sidebar-wrapper {
-    margin-left: -200px;
+    margin-left: -230px;
     left: 40px;
-    width: 200px;
+    width: 230px;
     position: fixed;
     height: 100%;
     z-index: 10000;
@@ -135,7 +135,7 @@ html, body {
 .sidebar-nav {
     display: block;
     float: left;
-    width: 200px;
+    width: 230px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -146,7 +146,7 @@ html, body {
     display: block;
     float: left;
     text-decoration: none;
-    width: 200px;
+    width: 230px;
     -webkit-transition: background .5s;
     -moz-transition: background .5s;
     -o-transition: background .5s;
@@ -156,12 +156,12 @@ html, body {
 
 .sidebar-nav li {
     line-height: 40px;
-    text-indent: 20px;
+    text-indent: 44px;
 }
 
 #wrapper.active .sidebar-nav li a:hover {
     color: #fff;
-    background: #0075b3;
+    background: #64992d;
     text-decoration: none;
 }
 
@@ -170,7 +170,7 @@ html, body {
     line-height: 50px;
 }
 li.sidebar-brand a {
-    background-color: #2a8fcf;
+    background-color: #7ab33e;
     border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 #main_icon
@@ -181,28 +181,25 @@ li.sidebar-brand a {
     color: #fff;
 }
 #wrapper.active #sidebar-wrapper {
-    left: 200px;
-    width: 200px;
+    left: 230px;
+    width: 230px;
     transition: all .4s ease 0s;
-    background: #2a8fcf;
+    background: #fff;
 }
 #wrapper.active .sidebar-nav li a{
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: #2a8fcf;
+    background-color: #7ab33e;
     color: #fff;
-}
-.footer-nav {
-    margin-bottom: 0;
-    left: 0;
-    height: 35px;
-    background-color: #2a8fcf;
-    clear: both;
-    display: block;
 }
 
 /*=======*/
 /*nav*/
+a:hover {
+    text-decoration: none;
+}
+ol, ul {
+    list-style: none;
+}
 .icon-top {
     width: 50px;
     height: 50px;
@@ -214,7 +211,7 @@ li.sidebar-brand a {
     left: 0px;
 }
 .mega-nav {
-    background:#2a8fcf;
+    background:#7ab33e;
     border-radius:0;
     margin-bottom:0;
 }
@@ -225,7 +222,13 @@ li.sidebar-brand a {
     -ms-transition: all 200ms ease-out;
 }
 .mega-nav.navbar-default .navbar-nav > li > a:hover {
-    background:#0075b3;
+    background:#64992d;
+}
+.mega-nav.navbar-default .navbar-nav > li.dropdown > a:hover,
+.mega-nav.navbar-default .navbar-nav > li.dropdown > a:focus,
+.mega-nav.navbar-default .navbar-nav > li.dropdown > a:active{
+    background:#64992d;
+    color:#fff;
 }
 #MainMenu {
     padding-left:0;
@@ -234,6 +237,29 @@ li.sidebar-brand a {
     transition: all 200ms ease-out;
     -webkit-transition: all 200ms ease-out;
     -ms-transition: all 200ms ease-out;
+}
+#MainMenu .menu-list > li + li {
+    border-left:1px solid rgba(255, 255, 255, 0.5);
+}
+
+.mega-nav.navbar-default .navbar-nav > li.menu-list .list-category a {
+    color:#333;
+}
+.dropdown-menu.mega-dropdown-menu{
+    background:#7ab33e;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 0px;
+}
+.dropdown-menu.mega-dropdown-menu li a {
+    color: #fff;
+    border-bottom:1px solid rgba(255, 255, 255, 0.5);
+}
+.dropdown-menu.mega-dropdown-menu li:last-child a {
+    border-bottom:none;
+}
+.dropdown-menu.mega-dropdown-menu li a:hover {
+    background: #64992d;
+    transition: all 200ms ease-out;
 }
 .nav-right li {
     float: left;
@@ -246,17 +272,16 @@ li.sidebar-brand a {
     color: #fff;
 }
 .nav-right li a:hover {
-    background-color: #673ab7;
+    background-color: #528221;
     transition: 0.8s all;
 }
 a.button {
-    background-color: #3f51b5;
+    background-color: #64992d;
     border-radius: 5px;
     margin-left: 5px;
 }
-li.profile {
-    margin-top: 15px;
-}
+/*end navbar*/
+
 button.churchStreamBtn {
     color: #fff;
     padding: 5px;
@@ -300,4 +325,34 @@ button.churchFollowBtn:hover {
 }
 .info-txt {
     font-size: 14px;
+}
+/*=============================*/
+/*=======================*/
+/*regis*/
+.main-login{
+    background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+.main-center{
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 10px 40px;
+    background:#7ab33e;
+    color: #FFF;
+    text-shadow: none;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
+span.input-group-addon i {
+    color: #7ab33e;
 }

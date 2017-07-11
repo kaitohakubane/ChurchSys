@@ -18,42 +18,7 @@
 </head>
 <body>
 
-<!-- navbar -->
-<nav class="navbar navbar-default navbar-fixed-top mega-nav">
-    <div class="container">
-        <div class="collapse navbar-collapse" id="MainMenu">
-            <ul class="nav navbar-nav menu-list">
-                <li><a href="#" class="icon-top"><img alt="Church Icon" src="<c:url value="/resources/img/icon.png"/>"
-                                                      class="icon-img"></a></li>
-            </ul>
-            <div class="pull-right">
-                <ul class="nav-right">
-
-                    <sec:authentication var="principal" property="principal"/>
-                    <c:choose>
-
-                        <c:when test="${principal ne 'anonymousUser'}">
-                            <li class="profile">
-                                <div>
-                                    <strong>${principal.username}</strong>
-                                </div>
-                            </li>
-                            <li><a href="${pageContext.request.contextPath}/logout" class="button">Đăng xuất</a></li>
-
-                        </c:when>
-                        <c:when test="${principal eq 'anonymousUser'}">
-                            <li><a id="registerBtn" class="button">Đăng ký</a></li>
-                            <li><a href="${pageContext.request.contextPath}/index" class="button">Đăng nhập</a></li>
-                        </c:when>
-                    </c:choose>
-
-
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
-<!-- end navbar -->
+<c:import url="/resources/layouts/user-common/user-header.jsp"/>
 
 <!-- popup -->
 <div id="stream" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">

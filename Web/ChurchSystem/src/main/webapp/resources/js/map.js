@@ -15,9 +15,6 @@ var infoWindow;
 var listOfLocation;
 
 $(document).ready(function () {
-    $("#registerBtn").on("click", function () {
-        $("#stream").modal("show");
-    })
 
     $("#geolocationBtn").click(function (e) {
         e.preventDefault();
@@ -33,7 +30,14 @@ $(document).ready(function () {
 
         $("#youtubeVideo").attr('src', "");
 
-    })
+    });
+
+    //Hover Menu in Header
+    $('ul.nav li.dropdown').hover(function () {
+        $(this).find('.drop-hover').stop(true, true).delay(200).fadeIn(200);
+    }, function () {
+        $(this).find('.drop-hover').stop(true, true).delay(200).fadeOut(200);
+    });
 })
 
 

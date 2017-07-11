@@ -14,13 +14,13 @@
         <ul id="sidebar_menu" class="sidebar-nav">
             <li class="sidebar-brand"><a id="menu-toggle" href="#">Nhà thờ Online<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
         </ul>
-        <ul class="sidebar-nav" id="sidebar">
-            <li><a>Church Followed</a></li>
-            <li><a>Event Involed</a></li>
-            <li><a>Catholic Calendar</a></li>
-            <li><a>View Masses</a></li>
-            <li><a>library</a></li>
-        </ul>
+        <%--<ul class="sidebar-nav" id="sidebar">--%>
+            <%--<li><a>Church Followed</a></li>--%>
+            <%--<li><a>Event Involed</a></li>--%>
+            <%--<li><a>Catholic Calendar</a></li>--%>
+            <%--<li><a>View Masses</a></li>--%>
+            <%--<li><a>library</a></li>--%>
+        <%--</ul>--%>
     </div>
 </div>
 <!-- end navbar left -->

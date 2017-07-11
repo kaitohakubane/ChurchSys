@@ -22,31 +22,32 @@
 </head>
 <body>
 <c:import url="/resources/layouts/user-common/user-header.jsp"/>
-<c:import url="/resources/layouts/user-common/vertical-navbar.jsp"/>
+<%--<c:import url="/resources/layouts/user-common/vertical-navbar.jsp"/>--%>
 <!-- church-info -->
 <div class="container">
     <div class="row">
         <c:import url="/resources/layouts/user-common/church-info.jsp"/>
-        <div class="small-nav col-md-12">
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/church?churchId=${param.churchId}"
-                       class="col-md-12 btn btn-default">Tin
-                        tức</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}"
-                       class="col-md-12 btn btn-default">Sự kiện</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}"
-                       class="col-md-12 btn btn-default active">Đăng ký lớp học</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="border-top"></div>
-        </div>
+        <c:import url="/resources/layouts/user-common/navbar-private.jsp"/>
+        <%--<div class="small-nav col-md-12">--%>
+            <%--<div class="row">--%>
+                <%--<div class="col-md-4">--%>
+                    <%--<a href="${pageContext.request.contextPath}/church?churchId=${param.churchId}"--%>
+                       <%--class="col-md-12 btn btn-default">Tin--%>
+                        <%--tức</a>--%>
+                <%--</div>--%>
+                <%--<div class="col-md-4">--%>
+                    <%--<a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}"--%>
+                       <%--class="col-md-12 btn btn-default">Sự kiện</a>--%>
+                <%--</div>--%>
+                <%--<div class="col-md-4">--%>
+                    <%--<a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}"--%>
+                       <%--class="col-md-12 btn btn-default active">Đăng ký lớp học</a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="col-md-12">--%>
+            <%--<div class="border-top"></div>--%>
+        <%--</div>--%>
     </div>
 </div>
 <!-- end church info -->
