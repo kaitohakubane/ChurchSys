@@ -286,6 +286,26 @@ create table RoomCapable (
 
 );
 
+create table Notification (
+
+	notificationId int NOT NULL AUTO_INCREMENT,
+    
+	userId int,
+    
+	type int,
+	
+	sender nvarchar(255),
+
+	information nvarchar(255),
+    
+	link nvarchar(255),
+
+	time datetime,
+
+	primary key (notificationId)
+
+);
+
 
 alter table Subject add foreign key (categoryId) references Category(categoryId);
 
@@ -338,3 +358,4 @@ alter table Inclusion add foreign key (slotHourId) references SlotHour(slotHourI
 alter table Interaction add foreign key (churchId) references Church(churchId);
 
 alter table Interaction add foreign key (userId) references User(userId);
+

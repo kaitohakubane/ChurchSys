@@ -5,15 +5,13 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.entity.*;
-import com.churchsystem.service.common.NotificationService;
+import com.churchsystem.service.common.NotificationRealTimeService;
 import com.churchsystem.service.interfaces.*;
-import org.jcp.xml.dsig.internal.dom.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
@@ -33,7 +31,7 @@ public class RegistrationController {
     SlotServiceInterface slotServiceInterface;
 
     @Autowired
-    private NotificationService notificationService;
+    private NotificationRealTimeService notificationRealTimeService;
 
 
     @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)

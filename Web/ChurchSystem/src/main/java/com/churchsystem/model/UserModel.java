@@ -85,6 +85,7 @@ public class UserModel extends CommonDAO implements UserModelInterface {
         return result;
     }
 
+
     @Override
     public List<UserEntity> getAllPriest(int churchId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_ALL_PRIEST)
@@ -92,5 +93,30 @@ public class UserModel extends CommonDAO implements UserModelInterface {
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<UserEntity> userEntities = query.list();
         return userEntities;
+    }
+
+    @Override
+    public List<String> getListOfChurchFollower(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_OF_CHURCH_FOLLOWER_ACCOUNT)
+                .setParameter(ParamConstant.CHURCH_ID, churchId);
+        List<String> result = query.list();
+        return result;
+    }
+
+    @Override
+    public String getChurchManagerAccount(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_CHURCH_MANAGER_ACCOUNT)
+                .setParameter(ParamConstant.CHURCH_ID, churchId);
+        String result = (String)query.uniqueResult();
+        return result;
+    }
+
+
+    @Override
+    public List<String> getEventRegisteredUserAccount(int eventId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_EVENT_REGISTERED_USER_ACCOUNT)
+                .setParameter(ParamConstant.EVENT_ID, eventId);
+        List<String> result = query.list();
+        return result;
     }
 }

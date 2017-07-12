@@ -28,10 +28,11 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public UserEntity getUserByUserId(int userId){
+    public UserEntity getUserByUserId(int userId) {
         UserEntity userEntity = userModelInterface.getUserByUserId(userId);
         return userEntity;
     }
+
     @Override
     public int getChurchIdByUserId(int userId) {
         int result = userModelInterface.getChurchIdByUserId(userId);
@@ -42,22 +43,42 @@ public class UserService implements UserServiceInterface {
     public Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId) {
         return userModelInterface.getSuitableConductorForSlot(slotHourId, slotDate, churchId);
     }
+
     @Override
     public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
         List<UserEntity> userEntities = (List<UserEntity>) userModelInterface
-                .getListSuitableConductorForSlot(newStartTime,newEndTime, slotDate, churchId);
+                .getListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId);
         return userEntities;
     }
+
     @Override
     public Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId) {
         return userModelInterface.checkConductorForSlot(slotHourId, slotDate, churchId, conductorId);
     }
+
     @Override
-    public List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId){
-        return userModelInterface.getIdListSuitableConductorForSlot(newStartTime,newEndTime,slotDate,churchId);
+    public List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
+        return userModelInterface.getIdListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId);
     }
+
+    @Override
+    public List<String> getListOfChurchFollower(int churchId) {
+        return userModelInterface.getListOfChurchFollower(churchId);
+    }
+
+    @Override
+    public String getChurchManagerAccount(int churchId) {
+        return userModelInterface.getChurchManagerAccount(churchId);
+    }
+
     @Override
     public List<UserEntity> getAllPriest(int churchId) {
         return userModelInterface.getAllPriest(churchId);
+    }
+
+    @Override
+    public List<String> getEventRegisteredUserAccount(int eventId) {
+        return userModelInterface.getEventRegisteredUserAccount(eventId);
+
     }
 }

@@ -91,14 +91,16 @@ public class DateUtils {
             }
         }
 
+        int sizeOfPlus=recent;
         int dif =(arrayOfDate.get(recent%arrayOfDate.size())-cal.get(Calendar.DAY_OF_WEEK));
         if(dif==0){
             Date item = new Date(cal.getTimeInMillis());
             result.add(item);
+            recent++;
         }
 
 
-        for (int i = recent; i < numberOfSlot + recent; i++) {
+        for (int i = recent; i < numberOfSlot + sizeOfPlus; i++) {
             int k = i % arrayOfDate.size();
             Date item = nextDayOfWeek(arrayOfDate.get(k), cal);
             result.add(item);

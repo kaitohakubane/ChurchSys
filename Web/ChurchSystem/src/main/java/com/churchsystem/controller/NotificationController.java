@@ -3,11 +3,8 @@ package com.churchsystem.controller;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
-import com.churchsystem.entity.Notification;
-import com.churchsystem.service.common.NotificationService;
+import com.churchsystem.service.common.NotificationRealTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class NotificationController {
     @Autowired
-    private NotificationService notificationService;
+    private NotificationRealTimeService notificationRealTimeService;
 
     @ResponseBody
     @RequestMapping(value = PageConstant.STREAM_NOTIFICATION_URL, method = RequestMethod.GET)

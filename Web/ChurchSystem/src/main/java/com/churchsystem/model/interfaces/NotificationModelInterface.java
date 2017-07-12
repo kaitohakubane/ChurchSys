@@ -1,17 +1,16 @@
-package com.churchsystem.service.interfaces;
+package com.churchsystem.model.interfaces;
 
 import com.churchsystem.entity.NotificationEntity;
 
 import java.util.List;
 
 /**
- * Created by hungmcse61561-admin on 7/9/2017.
+ * Created by hungmcse61561-admin on 7/11/2017.
  */
-public interface NotificationServiceInterface {
-
-    public void addNotification(NotificationEntity notificationEntity);
-
+public interface NotificationModelInterface {
     void updateNotification(NotificationEntity notificationEntity);
+
+    void addNotification(NotificationEntity notificationEntity);
 
     List<NotificationEntity> getUserNotification(int userId);
 }

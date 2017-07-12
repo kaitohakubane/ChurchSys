@@ -27,4 +27,5 @@ public class UtilsConstant {
     public static final String TIME_DELIMETER=":";
     public static final int TEN=10;
     public static final String EVENT_NAME_PRE="Sự kiện ";
+    public static final int NOTIFICATION_NUMBER_DEFAULT=50;
 }

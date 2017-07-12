@@ -158,10 +158,21 @@ public class SQLParamConstant {
             "where s.slotId = s1.slotId) s2 " +
             "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId";
 
+
     public static final String GET_LIST_DISPLAYED_CHURCH = "SELECT s1.*,u.accountId FROM (SELECT c.*, i.userId FROM church c " +
             "LEFT JOIN interaction i ON c.churchId = i.churchId GROUP BY c.churchId) s1 " +
             "LEFT JOIN user u ON s1.userId = u.userId AND u.role ='ROLE_MANAGER' ORDER BY s1.churchId";
 
     public static final String GET_ALL_PRIEST ="SELECT u.* FROM user u, interaction i WHERE u.userId = i.userId AND u.role='ROLE_PRIEST' AND i.churchId =:churchId";
+
+    public static final String GET_LIST_OF_CHURCH_FOLLOWER_ACCOUNT="select u.accountId from church c, interaction i, user u " +
+            "where c.churchId = i.churchId AND u.userId = i.userId AND u.role ='ROLE_USER' AND c.churchId =:churchId AND i.enabled=true";
+
+    public static final String GET_EVENT_REGISTERED_USER_ACCOUNT="select u.accountId from registration r , user u" +
+            " where r.eventId =:eventId AND u.userId = r.userId";
+
+    public static final String GET_CHURCH_MANAGER_ACCOUNT="select u.accountId from church c , interaction i , user u " +
+            "where i.churchId = c.churchId AND i.userId = u.userId and u.role ='ROLE_MANAGER' And c.churchId =:churchId AND i.enabled=true";
+
 
 }

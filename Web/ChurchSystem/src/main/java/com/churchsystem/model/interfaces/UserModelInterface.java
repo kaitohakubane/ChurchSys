@@ -25,4 +25,11 @@ public interface UserModelInterface {
     List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
 
     List<UserEntity> getAllPriest(int churchId);
+
+    List<String> getListOfChurchFollower(int churchId);
+
+    String getChurchManagerAccount(int churchId);
+
+    List<String> getEventRegisteredUserAccount(int eventId);
+
 }
