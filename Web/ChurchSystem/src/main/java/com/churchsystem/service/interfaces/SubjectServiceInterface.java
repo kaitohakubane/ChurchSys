@@ -1,6 +1,7 @@
 package com.churchsystem.service.interfaces;
 
 import com.churchsystem.entity.DisplayedSubjectEntity;
+import com.churchsystem.entity.SubjectEntity;
 
 import java.util.List;
 
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface SubjectServiceInterface {
     List<DisplayedSubjectEntity> getDisplayedSubject();
+
+    SubjectEntity getSubjectById(int subId);
 }

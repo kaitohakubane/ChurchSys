@@ -1,13 +1,17 @@
 package com.churchsystem.model;
 
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.DisplayedSubjectEntity;
+import com.churchsystem.entity.SubjectEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.SubjectModelInterface;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import javax.security.auth.Subject;
 import java.util.List;
 
 /**
@@ -23,4 +27,12 @@ public class SubjectModel extends CommonDAO implements SubjectModelInterface {
         List<DisplayedSubjectEntity> result = query.list();
         return result;
     }
+
+    @Override
+    public SubjectEntity getSubjectById(int subId){
+        Criteria criteria=getSession().createCriteria(SubjectEntity.class).add(Restrictions.eq(ParamConstant.SUBJECT_ID,subId));
+        SubjectEntity result=(SubjectEntity) criteria.uniqueResult();
+        return result;
+    }
+
 }

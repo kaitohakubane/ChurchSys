@@ -91,8 +91,12 @@ public class ParamConstant {
      */
     public static final String NOTIFICATION_LINK = "notificationLink";
     public static final String NOTIFICATION_INFORMATION = "notificationInformation";
+    public static final String EVENT_NAME_PRE="Sự kiện ";
     public static final String STREAM_MESSAGE = " đang được trực tuyến";
+    public static final String REGISTRATION_MESSAGE=" mới vừa được đăng ký ở nhà thờ của bạn";
     public static final String NOTIFICATION_TIME="time";
+    public static final int YOUTUBE_TYPE=1;
+    public static final int DEFAULT_TYPE=0;
 
 
     /**
@@ -136,11 +140,11 @@ public class ParamConstant {
     public static final String STREAM_TITLE = "streamTitle";
 
 
-
-
     /**
      * User
      */
     public static final String PRIEST_LIST = "priestList";
     public static final String USER_ID = "userId";
+
+
 }

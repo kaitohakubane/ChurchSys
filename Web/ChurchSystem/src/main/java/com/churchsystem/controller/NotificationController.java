@@ -3,7 +3,10 @@ package com.churchsystem.controller;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
-import com.churchsystem.service.common.NotificationRealTimeService;
+import com.churchsystem.entity.NotificationEntity;
+import com.churchsystem.entity.UserEntity;
+import com.churchsystem.service.interfaces.NotificationServiceInterface;
+import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,28 +16,46 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by hungmcse61561-admin on 7/9/2017.
  */
 @Controller
 public class NotificationController {
+
     @Autowired
-    private NotificationRealTimeService notificationRealTimeService;
+    UserServiceInterface userServiceInterface;
+
+    @Autowired
+    NotificationServiceInterface notificationServiceInterface;
 
     @ResponseBody
     @RequestMapping(value = PageConstant.STREAM_NOTIFICATION_URL, method = RequestMethod.GET)
     public void someAction(@RequestParam(value = ParamConstant.NOTIFICATION_LINK) String link,
-                           @RequestParam(value=ParamConstant.STREAM_TITLE) String title, HttpServletRequest request) {
+                           @RequestParam(value = ParamConstant.STREAM_TITLE) String title, HttpServletRequest request) {
 
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-        String information= UtilsConstant.EVENT_NAME_PRE +title+ParamConstant.STREAM_MESSAGE;
+        String information = ParamConstant.EVENT_NAME_PRE + title + ParamConstant.STREAM_MESSAGE;
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        List<String> listAccount = userServiceInterface.getListOfChurchFollower(churchId);
+        for (String accountId : listAccount) {
+            NotificationEntity temp = new NotificationEntity();
+            UserEntity user = userServiceInterface.getUserByAccountId(accountId);
+            temp.setUserId(user.getUserId());
+            temp.setInformation(information);
+            temp.setLink(link);
+            temp.setTime(time);
+            temp.setType(ParamConstant.YOUTUBE_TYPE);
+            notificationServiceInterface.addNotification(temp);
+            notificationServiceInterface.notify(
+                    temp, // notification object
+                    accountId                    // username
+            );
+        }
 
 
-//        notificationService.notify(
-//                new Notification("SS", 1, "https://www.youtube.com/watch?v=nqUpqUJ3ZNo"), // notification object
-//                loginUser                    // username
-//        );
     }
 
     @RequestMapping(value = "/test/websocket", method = RequestMethod.GET)

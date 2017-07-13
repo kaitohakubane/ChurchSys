@@ -8,6 +8,11 @@ var image = {
     url: icon,
     scaledSize: new google.maps.Size(50, 50),
 }
+
+var choosingIcon={
+    url:choosing_icon,
+    scaledSize: new google.maps.Size(50, 50)
+}
 var map;
 var markers = [];
 var churchList = [];
@@ -31,6 +36,8 @@ $(document).ready(function () {
         $("#youtubeVideo").attr('src', "");
 
     });
+
+
 
     //Hover Menu in Header
     $('ul.nav li.dropdown').hover(function () {
@@ -98,7 +105,6 @@ function initAutocomplete() {
             title: place.name,
             position: place.geometry.location,
         }));
-
 
 
         // Church Position
@@ -179,17 +185,21 @@ function getCurrentPosition(map, isGetChurch) {
 }
 
 
-function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName) {
+function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName,varStatus) {
     var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>";
+    var markerIcon = image;
     if (!(streamLink == null || streamLink == "")) {
         var stream = streamLink.split(",")
         var name = streamName.split(",")
         for (var i = 0; i < stream.length; i++) {
             html = html + "<button class='churchStreamBtn' id=" + stream[i] + " onclick='watchStream(this)' >" +
-                "Streaming </button> <p class='stream-title'>"+ name[i] +"</p></br>"
+                "Streaming </button> <p class='stream-title'>" + name[i] + "</p></br>"
         }
-
+        markerIcon = {
+            url: streaming_icon,
+            scaledSize: new google.maps.Size(50, 50),
+        }
     }
     html = html + "<button class='churchFollowBtn' id=" + churchId + ">Follow </button>"
     html = html + "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
@@ -200,18 +210,23 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
         position: latlng,
         churchId: churchId,
         streamLink: streamLink,
-        icon: image
+        icon: markerIcon
     });
+
     google.maps.event.addListener(marker, 'click', function () {
         infoWindow.setContent(html);
         infoWindow.open(map, marker);
     });
+
+    var sidebarHTML = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div>"
+    $("#sidebar").append("<li id="+churchId+">" + sidebarHTML + "<li>")
     markers.push(marker);
 
 }
 
 
 function searchNearLocationAjaxCall(center) {
+    $("#sidebar").empty();
     var requestURL = contextPath + CHURCH_SEARCH_URL;
     var requestMethod = "POST";
     var requestData = {
@@ -228,17 +243,19 @@ function searchNearLocationAjaxCall(center) {
             infoWindow.close();
             listOfLocation = res;
             var bounds = new google.maps.LatLngBounds();
-            listOfLocation.forEach(function (e) {
+            listOfLocation.forEach(function (e,i) {
                 console.log(e.latitude + " - " + e.longitude)
                 console.log(e);
                 var latlng = new google.maps.LatLng(
                     parseFloat(e.latitude),
                     parseFloat(e.longitude));
-                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName)
+                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName,i)
                 bounds.extend(latlng);
 
             })
             map.fitBounds(bounds);
+            eventChoosing();
+            $("#wrapper").toggleClass("active");
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
@@ -255,5 +272,21 @@ function watchStream(e) {
 function gotoChurchPage(e) {
     window.location.href = contextPath + "/church" + "?churchId=" + e.getAttribute("id");
     console.log("RUN RUN")
+}
 
+
+function eventChoosing(){
+    $("#sidebar li").hover(function(){
+        var choose=$(this).attr("id");
+        console.log(choose);
+        if (choose != "none"){
+            markers[choose].setAnimation(google.maps.Animation.BOUNCE);
+        }
+    },function(){
+        var choose=$(this).attr("id");
+        console.log(choose);
+        if (choose != "none"){
+            markers[choose].setAnimation(null);
+        }
+    })
 }

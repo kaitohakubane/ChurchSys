@@ -14,4 +14,6 @@ public interface NotificationServiceInterface {
     void updateNotification(NotificationEntity notificationEntity);
 
     List<NotificationEntity> getUserNotification(int userId);
+
+    void notify(NotificationEntity notification, String username);
 }

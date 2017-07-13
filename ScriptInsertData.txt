@@ -16,6 +16,74 @@ insert into User(accountId, password, userName, role, tel, certificate, accountN
 values ('vongnlh', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Nguyen Le Hoai Vong', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'vongnlh@gmail.com');
 
 
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Thanhnld', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Nguyen Le Duc Thanh', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'thanhnld@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Sangvt', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Vo The Sang', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'sangvt@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Anhvt', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Vu Tuan Anh', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'anhvt@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Khoink', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Nguyen Kim Khoi', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'khoink@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Tungmq', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Mai Que Tung', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'tungmq@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Namnn', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Nguyen Nhat Nam', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'namnn@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Minhda', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Duong Anh Minh', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'minhda@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Hungvt', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Tran Viet Hung', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'hungvt@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Hiephc', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Ho Chan Hiep', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'hiephc@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Thongnc', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Nguyen Cao Thong', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'thongnc@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Thientd', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Tran Doan Thien', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'thientd@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Sonnht', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Nguyen Hoang Thao Son', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'sonnht@gmail.com');
+
+
+insert into User(accountId, password, userName, role, tel, certificate, accountNum, enabled, email)
+
+values ('Phuongta', '$2a$06$C7aBJubxIU7VsZ4iu4THmeoWyAyyubcxSn1uS7P.M/p70NfR11fC2', 'Truong Anh Phuong', 'ROLE_USER', '01234567890', 'Cha xu', '0123 456 789 0', 1, 'phuongta@gmail.com');
+
+
+
+
+
 
 /*Church*/
 insert into Church(churchName,longitude,latitude,address,tel,mail,startTime,endTime,description,streamName,streamLink)
@@ -212,6 +280,38 @@ values ('103',1,1);
 insert into interaction(userId,churchId,enabled) values(2,1,1);
 
 insert into interaction(userId,churchId,enabled) values(1,1,1);
+
+/*Interaction*/
+insert into interaction(userId,churchId,enabled) 
+values(3,2,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(4,3,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(5,1,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(6,1,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(7,2,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(8,3,1);
+insert into interaction(userId,churchId,enabled) 
+values(9,1,1);
+insert into interaction(userId,churchId,enabled) 
+values(10,1,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(11,2,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(12,3,1);
+
+insert into interaction(userId,churchId,enabled) 
+values(13,1,1);
 
 /*Slot*/
 insert into slot(eventId, roomId, conductorId,slotDate,slotStatus) values(1,1,1,'2017-06-19',1);

@@ -1,6 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.entity.DisplayedSubjectEntity;
+import com.churchsystem.entity.SubjectEntity;
 import com.churchsystem.model.interfaces.SubjectModelInterface;
 import com.churchsystem.service.interfaces.SubjectServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,14 @@ public class SubjectService implements SubjectServiceInterface {
     @Autowired
     SubjectModelInterface subjectModelInterface;
 
+    @Override
     public List<DisplayedSubjectEntity> getDisplayedSubject() {
         List<DisplayedSubjectEntity> result = subjectModelInterface.getDisplayedSubject();
         return result;
+    }
+
+    @Override
+    public SubjectEntity getSubjectById(int subId){
+        return subjectModelInterface.getSubjectById(subId);
     }
 }
