@@ -142,7 +142,7 @@ html, body {
 }
 
 #sidebar_menu li a, .sidebar-nav li a {
-    color: #000;
+    color: #fff;
     display: block;
     float: left;
     text-decoration: none;
@@ -172,6 +172,7 @@ html, body {
 li.sidebar-brand a {
     background-color: #7ab33e;
     border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 #main_icon
 {
@@ -186,12 +187,11 @@ li.sidebar-brand a {
     transition: all .4s ease 0s;
     background: #fff;
 }
-#wrapper.active .sidebar-nav li a{
+#wrapper.active .sidebar-nav li{
     border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     background-color: #7ab33e;
-    color: #fff;
 }
-
 /*=======*/
 /*nav*/
 a:hover {
@@ -355,4 +355,20 @@ button.churchFollowBtn:hover {
 }
 span.input-group-addon i {
     color: #7ab33e;
+}
+/*============*/
+/*noti*/
+#noti li {
+    background: #7ab33e;
+    padding: 5px;
+    margin: 5px 5px 0 5px;
+}
+#noti li a:hover{
+    background: #64992d;
+}
+#noti li a{
+    color: #fff;
+}
+#noti li:first-child {
+    margin-top: 0;
 }

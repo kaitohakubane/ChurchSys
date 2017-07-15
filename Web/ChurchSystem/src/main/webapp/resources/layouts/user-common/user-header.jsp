@@ -46,7 +46,16 @@
 
                     <c:when test="${principal ne 'anonymousUser'}">
                         <ul class="nav navbar-nav menu-list">
-                            <li style="font-size: 20px"><a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                            <li style="font-size: 20px"><a href="#" class="dropdown-toggle" id="noti-user"
+                                                           data-toggle="dropdown"><i class="fa fa-bell"
+                                                                                     aria-hidden="true"></i></a>
+                                <ul class="dropdown-menu" aria-labelledby="noti-user" style="width: 300px" id="noti">
+                                    <li><a href="#">HTML</a></li>
+                                    <li><a href="#">HTML</a></li>
+                                    <li><a href="#">HTML</a></li>
+                                    <li><a href="#">HTML</a></li>
+                                    <li><a href="#" class="text-center"><strong>Xem tất cả </strong><i class="fa fa-angle-double-right"></i></a></li>
+                                </ul>
                             </li>
                             <li class="dropdown list-category" style="border-left: none">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"

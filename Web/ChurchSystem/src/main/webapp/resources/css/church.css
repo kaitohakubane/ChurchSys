@@ -378,3 +378,20 @@ span.input-group-addon i {
     background-color: #64992d;
     transition: all 0.5s;
 }
+
+/*============*/
+/*noti*/
+#noti li {
+    background: #7ab33e;
+    padding: 5px;
+    margin: 5px 5px 0 5px;
+}
+#noti li a:hover{
+    background: #64992d;
+}
+#noti li a{
+    color: #fff;
+}
+#noti li:first-child {
+    margin-top: 0;
+}
