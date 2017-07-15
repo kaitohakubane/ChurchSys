@@ -11,6 +11,7 @@ import com.churchsystem.model.interfaces.SlotModelInterface;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Time;
@@ -93,4 +94,13 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
         List<SlothourEntity> result=criteria.list();
         return result;
     }
+
+    @Override
+    public List<SlotEntity> getListSlotOfClass (int slotId){
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SLOT_OF_CLASS)
+                .setParameter(ParamConstant.SLOT_ID,slotId).setResultTransformer(Transformers.aliasToBean(SlotEntity.class));
+        List<SlotEntity> slotEntities = query.list();
+        return slotEntities;
+    }
+
 }

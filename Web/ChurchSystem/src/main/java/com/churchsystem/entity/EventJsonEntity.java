@@ -16,6 +16,8 @@ public class EventJsonEntity {
     private String slotId;
     private String conductorId;
     private String roomId;
+
+
     public EventJsonEntity() {
     }
 

@@ -18,4 +18,6 @@ public interface EventModelInterface {
     List<EventDataEntity> getCreatedEvent(int eventId);
     void updateEvent(EventEntity eventEntity);
     EventDataEntity getEventBySlotId(int slotId, int churchId);
+    Integer getCategoryIdFromSlotId(int slotId);
+
 }

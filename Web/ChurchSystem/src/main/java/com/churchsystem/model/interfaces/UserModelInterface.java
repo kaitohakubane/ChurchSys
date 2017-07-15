@@ -1,5 +1,7 @@
 package com.churchsystem.model.interfaces;
 
+import com.churchsystem.entity.AbilityEntity;
+import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 
 import java.sql.Date;
@@ -32,4 +34,11 @@ public interface UserModelInterface {
 
     List<String> getEventRegisteredUserAccount(int eventId);
 
+    void insertPriest (UserEntity userEntity);
+
+    UserEntity getPriestByAccountId(String accountId);
+
+    void mapUserToChurch(InteractionEntity InteractionEntity);
+
+    void mapPriestWithSubject(AbilityEntity abilityEntity);
 }

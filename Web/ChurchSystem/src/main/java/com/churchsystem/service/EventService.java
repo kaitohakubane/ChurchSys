@@ -180,5 +180,9 @@ public class EventService implements EventServiceInterface {
         return eventModelInterface.getEventBySlotId(slotId, churchId);
     }
 
-    ;
+    @Override
+    public Integer getCategoryIdFromSlotId(int slotId){
+        return eventModelInterface.getCategoryIdFromSlotId(slotId);
+    }
+
 }

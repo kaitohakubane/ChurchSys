@@ -5,10 +5,13 @@
 var UPDATE_EVENT_URL = "/manager/event/Update";
 var LOAD_CONDUCTOR = "/manager/event/load-conductor";
 var LOAD_ROOM = "/manager/event/load-room";
-var UPDATED_EVENT = "/manager/event/Updated";
+var UPDATED_SINGLE_EVENT = "/manager/event/update-single-event";
+var UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
 var SCHEDULE_URL = "/manager/schedule";
+var CHECK_IS_CLASS = "/manager/event/check-is-class";
 //Global variable
 var event;
+var currentEventIsClass;
 $(document).ready(function () {
     Initial();
     $("#slotDate").datepicker();
@@ -20,38 +23,36 @@ $("#startTime").on('focus', function () {
     console.log("Saving value " + $(this).val());
     $(this).data('val', $(this).val());
 }).on('change', function () {
-        console.log("startTime change")
-        if ($("#startTime").val() >= $("#endTime").val()) {
-            alert("Invalid Start Time")
-            var prev = $(this).data('val');
-            console.log("Prev value " + prev);
-            $("#startTime").val(prev);
-        } else {
-            console.log("run")
-            loadEventConductor($("#startTime").val(), $("#endTime").val());
-            loadEventRoom($("#startTime").val(), $("#endTime").val());
-        }
+    console.log("startTime change")
+    if ($("#startTime").val() >= $("#endTime").val()) {
+        alert("Invalid Start Time")
+        var prev = $(this).data('val');
+        console.log("Prev value " + prev);
+        $("#startTime").val(prev);
+    } else {
+        console.log("run")
+        loadEventConductor($("#startTime").val(), $("#endTime").val());
+        loadEventRoom($("#startTime").val(), $("#endTime").val());
     }
-)
+})
 
 $("#endTime").on('focus', function () {
     console.log("Saving value " + $(this).val());
     $(this).data('val', $(this).val());
 }).on('change', function () {
-        console.log("endTime change")
-        if ($("#endTime").val() <= $("#startTime").val()) {
-            alert("Invalid End Time");
-            var prev = $(this).data('val');
-            console.log("Prev value " + prev);
-            $("#endTime").val(prev);
-        } else {
-            console.log("run")
+    console.log("endTime change")
+    if ($("#endTime").val() <= $("#startTime").val()) {
+        alert("Invalid End Time");
+        var prev = $(this).data('val');
+        console.log("Prev value " + prev);
+        $("#endTime").val(prev);
+    } else {
+        console.log("run")
 
-            loadEventConductor($("#startTime").val(), $("#endTime").val());
-            loadEventRoom($("#startTime").val(), $("#endTime").val());
-        }
+        loadEventConductor($("#startTime").val(), $("#endTime").val());
+        loadEventRoom($("#startTime").val(), $("#endTime").val());
     }
-)
+})
 
 $("#slotDate").on('focus', function () {
     console.log("Saving value " + $(this).val());
@@ -87,50 +88,9 @@ $("#btnBack").on("click", function () {
 
 $("#btnSave").on("click", function updateEvent(e) {
     e.preventDefault();
-    var requestURL = contextPath + UPDATED_EVENT;
-    var requestMethod = "POST";
-    var isPublic = $("#editEventIsChecked").prop('checked');
-    console.log(isPublic);
-    var privacy;
-    if (isPublic) {
-        privacy = 1
-    }
-    else {
-        privacy = 0
-    }
-    console.log()
-
-    var requestData = {
-        slotId: $("#txtTitle").data("id"),
-        slotHour: $("#startTime").children(":selected").attr("id") + ',' + $("#endTime").children(":selected").attr("id"),
-        slotDate: $("#slotDate").val(),
-        conductorId: $("#assigned").val(),
-        roomId: $("#room").val(),
-        privacy: privacy,
-    }
-
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: JSON.stringify(requestData),
-        async: false,
-        contentType: 'application/json',
-        processData: false,
-        success: function () {
-            var slotId = $("#txtTitle").data("id");
-            var parameter = {
-                slotId: slotId
-            }
-            post(contextPath + UPDATE_EVENT_URL, parameter);
-            alert("Update success!");
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
-            console.error(textStatus);
-        }
-    })
+    // updateSingleEvent();
+    updateRepeatEvent();
 })
-
 
 function inputEditEventInformation() {
     console.log(slotDate)
@@ -153,6 +113,8 @@ function inputEditEventInformation() {
     }
     loadEventConductor($("#startTime").val(), $("#endTime").val());
     loadEventRoom($("#startTime").val(), $("#endTime").val());
+    checkIsClass();
+    console.log("Current event is class: " + currentEventIsClass + " Outside function")
 }
 
 function loadEventConductor(startTime, endTime) {
@@ -226,7 +188,6 @@ function loadEventRoom(startTime, endTime) {
     })
 }
 
-
 function Initial() {
     $("#hiding-form").hide();
 
@@ -276,3 +237,119 @@ function Initial() {
 
 }
 
+function checkIsClass() {
+    var requestURL = contextPath + CHECK_IS_CLASS;
+    var requestMethod = "POST";
+    var requestData = {
+        slotId: $("#txtTitle").data("id")
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        success: function (res) {
+            console.log("Checking slot with ID = " + $("#txtTitle").data("id") + " is class or not!");
+            currentEventIsClass = res;
+            console.log("Current event is class: " + currentEventIsClass)
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+}
+
+function updateSingleEvent() {
+    var requestURL = contextPath + UPDATED_SINGLE_EVENT;
+    var requestMethod = "POST";
+    var isPublic = $("#editEventIsChecked").prop('checked');
+    console.log(isPublic);
+    var privacy;
+    if (isPublic) {
+        privacy = 1
+    }
+    else {
+        privacy = 0
+    }
+    console.log()
+
+    var requestData = {
+        slotId: $("#txtTitle").data("id"),
+        slotHour: $("#startTime").children(":selected").attr("id") + ',' + $("#endTime").children(":selected").attr("id"),
+        slotDate: $("#slotDate").val(),
+        conductorId: $("#assigned").val(),
+        roomId: $("#room").val(),
+        privacy: privacy,
+    }
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        success: function () {
+            var slotId = $("#txtTitle").data("id");
+            var parameter = {
+                slotId: slotId
+            }
+            post(contextPath + UPDATE_EVENT_URL, parameter);
+            alert("Update success!");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+
+}
+
+function updateRepeatEvent() {
+    var requestURL = contextPath + UPDATED_REPEAT_EVENT;
+    var requestMethod = "POST";
+    var isPublic = $("#editEventIsChecked").prop('checked');
+    console.log(isPublic);
+    var privacy;
+    if (isPublic) {
+        privacy = 1
+    }
+    else {
+        privacy = 0
+    }
+    console.log()
+
+    var requestData = {
+        slotId: $("#txtTitle").data("id"),
+        slotHour: $("#startTime").children(":selected").attr("id") + ',' + $("#endTime").children(":selected").attr("id"),
+        // slotHourDate: $("#slotDate").val(),
+        conductorId: $("#assigned").val(),
+        roomId: $("#room").val(),
+        privacy: privacy,
+    }
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        success: function () {
+            var slotId = $("#txtTitle").data("id");
+            var parameter = {
+                slotId: slotId
+            }
+            post(contextPath + UPDATE_EVENT_URL, parameter);
+            alert("Update success!");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+
+}

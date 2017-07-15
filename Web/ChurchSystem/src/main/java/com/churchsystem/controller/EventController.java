@@ -278,9 +278,9 @@ public class EventController {
 
 
     @ResponseBody
-    @RequestMapping(value = PageConstant.UPDATED_EVENT, method = RequestMethod.POST)
-    public void updateSingleEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
-        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+    @RequestMapping(value = PageConstant.UPDATED_SINGLE_EVENT, method = RequestMethod.POST)
+    public void updateSingleEvent(@RequestBody EventJsonEntity eventJsonEntity) {
+        //int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
@@ -306,22 +306,50 @@ public class EventController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-//            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId);
-//            List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
-//            for (int i = 0; i < slotEntities.size(); i++) {
-//                eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
-//            }
-//
-//
-//            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATED_REPEAT_EVENT, method = RequestMethod.POST)
+    public void updateRepeatEvent(@RequestBody EventJsonEntity eventJsonEntity) {
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
+//            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
+            int roomId = Integer.parseInt(eventJsonEntity.getRoomId());
+            int privacy = Integer.parseInt(eventJsonEntity.getPrivacy());
 
+            List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
+
+            for (SlotEntity slotEntity : slotEntities) {
+                slotEntity.setConductorId(conductorId);
+                slotEntity.setRoomId(roomId);
+                slotEntity.setSlotStatus(privacy);
+                slotServiceInterface.updateSlot(slotEntity);
+
+                slotServiceInterface.deleteSlotHourBySlotId(slotEntity.getSlotId());
+
+                for (int i = 0; i < slotHour.size(); i++) {
+                    eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour.get(i));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_IS_CLASS, method = RequestMethod.POST)
+    public Integer checkIsClass(@RequestBody EventJsonEntity eventJsonEntity) {
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            int categoryId = eventServiceInterface.getCategoryIdFromSlotId(slotId);
+            if (categoryId == UtilsConstant.CLASS_CATEGORY_ID) {
+                return UtilsConstant.IS_CLASS;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return UtilsConstant.IS_NOT_CLASS;
+    }
 }

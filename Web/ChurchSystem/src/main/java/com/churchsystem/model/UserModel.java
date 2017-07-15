@@ -2,6 +2,7 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
+import com.churchsystem.entity.AbilityEntity;
 import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.model.common.CommonDAO;
@@ -118,5 +119,27 @@ public class UserModel extends CommonDAO implements UserModelInterface {
                 .setParameter(ParamConstant.EVENT_ID, eventId);
         List<String> result = query.list();
         return result;
+    }
+
+    @Override
+    public void insertPriest (UserEntity userEntity){
+        getSession().persist(userEntity);
+    }
+
+    @Override
+    public UserEntity getPriestByAccountId(String accountId){
+        Criteria criteria = getSession().createCriteria(UserEntity.class).add(Restrictions.eq("accountId",accountId));
+        UserEntity userEntity = (UserEntity) criteria.uniqueResult();
+        return userEntity;
+    }
+
+    @Override
+    public void mapUserToChurch(InteractionEntity interactionEntity){
+        getSession().persist(interactionEntity);
+    }
+
+    @Override
+    public void mapPriestWithSubject(AbilityEntity abilityEntity){
+        getSession().persist(abilityEntity);
     }
 }

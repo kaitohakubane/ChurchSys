@@ -33,4 +33,12 @@ public interface UserServiceInterface {
 
     List<String> getEventRegisteredUserAccount(int eventId);
 
+    void insertPriest (UserEntity userEntity);
+
+    UserEntity getPriestByAccountId(String accountId);
+
+    void mapUserToChurch(int userId, int churchId);
+
+    void mapPriestWithSubject (int userId, int subId);
+
 }

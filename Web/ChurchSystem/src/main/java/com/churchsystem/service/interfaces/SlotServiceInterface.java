@@ -27,4 +27,6 @@ public interface SlotServiceInterface {
     void updateSlot(SlotEntity SlotEntity);
 
     List<SlothourEntity> getSlotHourByTimeRange(String startTime, int estTime ) throws ParseException;
+
+    List<SlotEntity> getListSlotOfClass (int slotId);
 }

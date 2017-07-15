@@ -1,6 +1,7 @@
 package com.churchsystem.model.interfaces;
 
 import com.churchsystem.entity.RoomEntity;
+import com.churchsystem.entity.RoomcapableEntity;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -21,4 +22,12 @@ public interface RoomModelInterface {
     Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId);
 
     List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
+
+    List<RoomEntity> getAllRoom(int churchId);
+
+    void insertRoom(RoomEntity roomEntity);
+
+    public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId);
+
+    void mapRoomWithSubject(RoomcapableEntity roomcapableEntity);
 }

@@ -1,6 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.entity.RoomEntity;
+import com.churchsystem.entity.RoomcapableEntity;
 import com.churchsystem.model.interfaces.RoomModelInterface;
 import com.churchsystem.service.interfaces.RoomServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,37 +17,61 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class RoomService implements RoomServiceInterface{
+public class RoomService implements RoomServiceInterface {
     @Autowired
     RoomModelInterface roomModelInterface;
 
     @Override
-    public List<RoomEntity> getRoomBySub(Integer subId){
-        List<RoomEntity> results=roomModelInterface.getRoomBySub(subId);
+    public List<RoomEntity> getRoomBySub(Integer subId) {
+        List<RoomEntity> results = roomModelInterface.getRoomBySub(subId);
         return results;
     }
 
     @Override
-    public RoomEntity getRoomById(Integer roomId){
+    public RoomEntity getRoomById(Integer roomId) {
         return roomModelInterface.getRoomById(roomId);
     }
 
     @Override
-    public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId){
-        return roomModelInterface.getSuitableRoomForSlot(slotHourId,slotDate,churchId);
-    }
-    @Override
-    public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId){
-        return roomModelInterface.getListSuitableRoomForSlot(newStartTime,newEndTime,slotDate,churchId);
+    public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId) {
+        return roomModelInterface.getSuitableRoomForSlot(slotHourId, slotDate, churchId);
     }
 
     @Override
-    public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId,int roomId){
-        return roomModelInterface.checkRoomForSlot(slotHourId,slotDate,churchId,roomId);
+    public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
+        return roomModelInterface.getListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId);
     }
 
-@Override
-    public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId){
-        return roomModelInterface.getIdListSuitableRoomForSlot(newStartTime,newEndTime,slotDate,churchId);
-}
+    @Override
+    public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId) {
+        return roomModelInterface.checkRoomForSlot(slotHourId, slotDate, churchId, roomId);
+    }
+
+    @Override
+    public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
+        return roomModelInterface.getIdListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId);
+    }
+
+    @Override
+    public List<RoomEntity> getAllRoom(int churchId) {
+        return roomModelInterface.getAllRoom(churchId);
+    }
+
+    @Override
+    public void insertRoom(RoomEntity roomEntity) {
+        roomModelInterface.insertRoom(roomEntity);
+    }
+
+    @Override
+    public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId) {
+        return roomModelInterface.getRoomByNameAndChurchId(roomName, churchId);
+    }
+
+    @Override
+    public void mapRoomWithSubject(int roomId, int subId) {
+        RoomcapableEntity roomcapableEntity = new RoomcapableEntity();
+        roomcapableEntity.setRoomId(roomId);
+        roomcapableEntity.setSubId(subId);
+        roomModelInterface.mapRoomWithSubject(roomcapableEntity);
+    }
 }

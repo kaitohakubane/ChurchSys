@@ -63,4 +63,9 @@ public class SlotService implements SlotServiceInterface {
         Time endTime=DateUtils.getEndTimeFromRange(startTime,estTime);
         return slotModelInterface.getSlotHourByTimeRange(startTime,endTime);
     }
+
+    @Override
+    public List<SlotEntity> getListSlotOfClass (int slotId){
+        return slotModelInterface.getListSlotOfClass(slotId);
+    }
 }

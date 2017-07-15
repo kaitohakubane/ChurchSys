@@ -13,14 +13,26 @@ import java.util.List;
  */
 public interface SlotModelInterface {
     List<SlothourEntity> getListOfSlotHour();
+
     void mappingSlotHour(InclusionEntity inclusionEntity);
+
     void addNewSlot(SlotEntity slotEntity);
+
     SlotEntity getUnassignedEventSlot(int conductorId);
+
     void updateSlot(SlotEntity slotEntity);
+
     List<SlotEntity> getSlotByEventId(int eventId);
+
     TypeEntity getTypeByDescription(String type);
+
     SlotEntity getSlotById(int slotId);
+
     void addNewType(TypeEntity typeEntity);
-    void deleteSlotHourBySlotId (int slotId);
-    List<SlothourEntity> getSlotHourByTimeRange(Time startTime, Time endTime );
+
+    void deleteSlotHourBySlotId(int slotId);
+
+    List<SlothourEntity> getSlotHourByTimeRange(Time startTime, Time endTime);
+
+    List<SlotEntity> getListSlotOfClass(int slotId);
 }

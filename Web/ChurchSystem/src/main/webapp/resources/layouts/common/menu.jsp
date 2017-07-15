@@ -40,7 +40,8 @@
                     </li>
                     <li><a href="${pageContext.request.contextPath}/manager/schedule">Event Schedule</a></li>
                     <li><a href="${pageContext.request.contextPath}/manager/stream">Stream</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/priest-manager">Quản lí thành viên nhà thờ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/priest-management">Quản lí thành viên nhà thờ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/room-management">Quản lí phòng</a></li>
                 </ul>
             </div>
         </div>

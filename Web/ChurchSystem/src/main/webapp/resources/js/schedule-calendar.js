@@ -6,7 +6,8 @@
 var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 var CREATE_EVENT_URL = "/manager/event/Add";
 var CREATE_CLASS_URL = "/manager/class/Add";
-
+var REMOVE_SINGLE_SLOT = '';
+var REMOVE_MULTI_SLOT = '';
 //local variable
 var creatingEvent;
 var calEventStatus = [];
@@ -424,7 +425,25 @@ function createClass(event, slotId, isPublic) {
     });
 }
 
+function removeSingleSlot() {
+    var requestURL = contextPath + REMOVE_SINGLE_SLOT;
+    var requestMethod = "POST";
 
+    var requestData = {
+        slotId: $("#eventPopupTime").data("id")
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        success: function (){
+
+        }
+    })
+}
 
 
 

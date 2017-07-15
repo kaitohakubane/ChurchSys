@@ -34,7 +34,7 @@ public class SQLParamConstant {
     public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +
             " s.categoryId as categoryId " +
             "FROM subject s, category c " +
-            "WHERE s.categoryId = c.categoryId AND c.categoryId != 3";
+            "WHERE s.categoryId = c.categoryId AND c.categoryId != 3 AND c.categoryId != 12";
 
     public static final String GET_EVENT_DISPLAY_SLOT = "SELECT sru.slotId as slotId, e.eventId as eventId, " +
             "sru.conductorId as conductorId, sru.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
@@ -131,14 +131,14 @@ public class SQLParamConstant {
 
     public static final String DELETE_SLOT_HOUR_BY_SLOT_ID = "DELETE FROM inclusion where slotId =:slotId";
 
-    public static final String GET_NEARBY_LOCATION="SELECT churchId as churchId, ( 6371 * acos( cos( radians(:inputLatitude) ) * " +
+    public static final String GET_NEARBY_LOCATION = "SELECT churchId as churchId, ( 6371 * acos( cos( radians(:inputLatitude) ) * " +
             "cos( radians( latitude ) ) * cos( radians( longitude ) - radians(:inputLongitude) ) + sin( radians(:inputLatitude) )" +
             " * sin( radians( latitude ) ) ) ) AS distance, churchName as churchName, tel as tel, startTime as startTime, endTime as endTime," +
             " description as description, streamLink as streamLink, longitude as longitude, latitude as latitude,streamName as streamName, " +
             "address as address FROM " +
             "church HAVING distance <:distance ORDER BY distance";
 
-    public static final String GET_ON_PLAN_CLASS="SELECT distinct e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
+    public static final String GET_ON_PLAN_CLASS = "SELECT distinct e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
             " su.subName as subName,t.description as typeName, " +
             "sh.startTime as startTime, sh.endTime as endTime FROM event e,slot s,inclusion i,slothour sh,subject su, type t " +
             "WHERE e.eventStatus =:status AND e.startDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
@@ -163,16 +163,25 @@ public class SQLParamConstant {
             "LEFT JOIN interaction i ON c.churchId = i.churchId GROUP BY c.churchId) s1 " +
             "LEFT JOIN user u ON s1.userId = u.userId AND u.role ='ROLE_MANAGER' ORDER BY s1.churchId";
 
-    public static final String GET_ALL_PRIEST ="SELECT u.* FROM user u, interaction i WHERE u.userId = i.userId AND u.role='ROLE_PRIEST' AND i.churchId =:churchId";
+    public static final String GET_ALL_PRIEST = "SELECT u.* FROM user u, interaction i WHERE u.userId = i.userId " +
+            "AND u.role='ROLE_PRIEST' AND i.churchId =:churchId";
 
-    public static final String GET_LIST_OF_CHURCH_FOLLOWER_ACCOUNT="select u.accountId from church c, interaction i, user u " +
+
+    public static final String GET_LIST_OF_CHURCH_FOLLOWER_ACCOUNT = "select u.accountId from church c, interaction i, user u " +
             "where c.churchId = i.churchId AND u.userId = i.userId AND u.role ='ROLE_USER' AND c.churchId =:churchId AND i.enabled=true";
 
-    public static final String GET_EVENT_REGISTERED_USER_ACCOUNT="select u.accountId from registration r , user u" +
+    public static final String GET_EVENT_REGISTERED_USER_ACCOUNT = "select u.accountId from registration r , user u" +
             " where r.eventId =:eventId AND u.userId = r.userId";
 
-    public static final String GET_CHURCH_MANAGER_ACCOUNT="select u.accountId from church c , interaction i , user u " +
+    public static final String GET_CHURCH_MANAGER_ACCOUNT = "select u.accountId from church c , interaction i , user u " +
             "where i.churchId = c.churchId AND i.userId = u.userId and u.role ='ROLE_MANAGER' And c.churchId =:churchId AND i.enabled=true";
 
 
+    public static final String GET_CATEGORY_ID_FROM_SLOT_ID = "SELECT c.categoryId from slot sl, event e, category c ,subject s " +
+            "where sl.eventId = e.eventId AND e.subId = s.subId and s.categoryId = c.categoryId AND sl.slotId =:slotId";
+
+    public static final String GET_LIST_SLOT_OF_CLASS = "SELECT s.* FROM slot s,(SELECT eventId FROM slot WHERE slotId =:slotId) s1 " +
+            "WHERE s1.eventId = s.eventId";
+
+    public static final String GET_ALL_ROOM = "SELECT * FROM room r WHERE r.churchId=:churchId";
 }

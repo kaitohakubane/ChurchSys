@@ -8,6 +8,10 @@ public class ParamConstant {
     public static final String FROM_DATE = "fromDate";
     public static final String TO_DATE = "toDate";
 
+    public static final int SUCCESS=1;
+    public static final int FAILURE=0;
+
+
     /**
      * Homepage
      */
@@ -37,7 +41,8 @@ public class ParamConstant {
     public static final String CHURCH_LIST = "churchList";
 
     public static final String CATEGORY_LIST = "categoryList";
-    public static final int NOT_EVENT_CATEGORY_ID = 3;
+    public static final int NOT_FIRST_EVENT_CATEGORY_ID = 3;
+    public static final int NOT_SECOND_EVENT_CATEGORY_ID = 12;
     public static final String CHURCH_OBJECT = "churchObj";
     public static final String INPUT_LONGITUDE = "inputLongitude";
     public static final String INPUT_LATITUDE = "inputLatitude";
@@ -51,14 +56,13 @@ public class ParamConstant {
      */
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
     public static final String LIST_REGISTERED_CLASS_ATTR = "registeredClass";
-    public static final String ON_PLAN_CLASS_LIST="onPlanClassList";
-    public static final int REGISTRATION_WAITING_STATUS=1;
-    public static final int REGISTRATION_DENY_STATUS=2;
-    public static final int REGISTRATION_FINISH_STATUS=3;
-    public static final String REGISTRATION_STATUS="regisStatus";
-    public static final String REGISTRATION_START_TIME="regisStartTime";
-    public static final String REGISTRATION_EST_TIME="estTime";
-
+    public static final String ON_PLAN_CLASS_LIST = "onPlanClassList";
+    public static final int REGISTRATION_WAITING_STATUS = 1;
+    public static final int REGISTRATION_DENY_STATUS = 2;
+    public static final int REGISTRATION_FINISH_STATUS = 3;
+    public static final String REGISTRATION_STATUS = "regisStatus";
+    public static final String REGISTRATION_START_TIME = "regisStartTime";
+    public static final String REGISTRATION_EST_TIME = "estTime";
 
 
     /**
@@ -91,13 +95,13 @@ public class ParamConstant {
      */
     public static final String NOTIFICATION_LINK = "notificationLink";
     public static final String NOTIFICATION_INFORMATION = "notificationInformation";
-    public static final String EVENT_NAME_PRE="Sự kiện ";
+    public static final String EVENT_NAME_PRE = "Sự kiện ";
     public static final String STREAM_MESSAGE = " đang được trực tuyến";
-    public static final String REGISTRATION_MESSAGE=" mới vừa được đăng ký ở nhà thờ của bạn";
-    public static final String NOTIFICATION_TIME="time";
-    public static final int YOUTUBE_TYPE=1;
-    public static final int DEFAULT_TYPE=0;
-    public static final String NOTIFICATION_LIST="notificationList";
+    public static final String REGISTRATION_MESSAGE = " mới vừa được đăng ký ở nhà thờ của bạn";
+    public static final String NOTIFICATION_TIME = "time";
+    public static final int YOUTUBE_TYPE = 1;
+    public static final int DEFAULT_TYPE = 0;
+    public static final String NOTIFICATION_LIST = "notificationList";
 
 
     /**
@@ -124,6 +128,7 @@ public class ParamConstant {
 
     public static final String ROOM_ID = "roomId";
     public static final String ROOM_LIST = "roomList";
+    public static final int DEFAULT_STATUS = 1;
 
     /**
      * Type
@@ -146,6 +151,8 @@ public class ParamConstant {
      */
     public static final String PRIEST_LIST = "priestList";
     public static final String USER_ID = "userId";
-
+    public static final String DEFAULT_PASSWORD = "1234";
+    public static final String PRIEST_ROLE = "ROLE_PRIEST";
+    public static final boolean DEFAULT_ENABLE = true;
 
 }

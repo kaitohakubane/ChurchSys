@@ -1,5 +1,7 @@
 package com.churchsystem.service;
 
+import com.churchsystem.common.constants.ParamConstant;
+import com.churchsystem.entity.AbilityEntity;
 import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.model.interfaces.UserModelInterface;
@@ -80,5 +82,32 @@ public class UserService implements UserServiceInterface {
     public List<String> getEventRegisteredUserAccount(int eventId) {
         return userModelInterface.getEventRegisteredUserAccount(eventId);
 
+    }
+
+    @Override
+    public void insertPriest(UserEntity userEntity) {
+        userModelInterface.insertPriest(userEntity);
+    }
+
+    @Override
+    public UserEntity getPriestByAccountId(String accountId){
+        return userModelInterface.getPriestByAccountId(accountId);
+    }
+
+    @Override
+    public void mapUserToChurch(int userId, int churchId){
+        InteractionEntity interactionEntity= new InteractionEntity();
+        interactionEntity.setUserId(userId);
+        interactionEntity.setChurchId(churchId);
+        interactionEntity.setEnabled(ParamConstant.DEFAULT_ENABLE);
+        userModelInterface.mapUserToChurch(interactionEntity);
+    }
+
+    @Override
+    public  void mapPriestWithSubject (int userId, int subId){
+        AbilityEntity abilityEntity = new AbilityEntity();
+        abilityEntity.setConductorId(userId);
+        abilityEntity.setSubId(subId);
+        userModelInterface.mapPriestWithSubject(abilityEntity);
     }
 }

@@ -190,7 +190,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Slot:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
-                            <input type="text" id="eventPopupTime" class="form-control" disabled="readonly">
+                            <input type="text" id="eventPopupTime" class="form-control" disabled="readonly" data-id = ${slotEntity.slotId}>
                         </div>
                     </div>
 
@@ -218,8 +218,8 @@
                     <div class="clearfix"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-default">OK</button>
-                            <button type="submit" id="editSlotButton" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-default" id="btnRemove">Remove</button>
+                            <button type="button" id="editSlotButton" class="btn btn-primary">Edit</button>
                         </div>
                     </div>
 

@@ -36,10 +36,15 @@ public class PageConstant {
 
     public static final String SCHEDULE_URL = "/manager/schedule";
     public static final String UPDATED_EVENT = "/manager/event/Updated";
+    public static final String UPDATED_SINGLE_EVENT = "/manager/event/update-single-event";
+    public static final String UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
+
     public static final String CREATE_EVENT_URL = "/manager/event/Add";
     public static final String UPDATE_EVENT_URL = "/manager/event/Update";
     public static final String LOAD_CONDUCTOR = "/manager/event/load-conductor";
     public static final String LOAD_ROOM = "/manager/event/load-room";
+
+    public static final String CHECK_IS_CLASS = "/manager/event/check-is-class";
 
 
     //Stream
@@ -80,7 +85,8 @@ public class PageConstant {
 
     // User
     public static final String USER_NOTIFICATION_URL = "/user/notification";
-    public static final String PRIEST_MANAGEMENT_URL = "/manager/priest-manager";
+    public static final String PRIEST_MANAGEMENT_URL = "/manager/priest-management";
+    public static final String ADD_NEW_PRIEST_URL = "/manager/priest-management/add-new-priest";
 
     // Slot
 
@@ -109,7 +115,9 @@ public class PageConstant {
 
     // Room
     public static final String SALE_PAGE = "sale-management-page";
-
+    public static final String ROOM_MANAGEMENT_PAGE = "room-management-page";
+    public static final String ROOM_MANAGEMENT_URL = "/manager/room-management";
+    public static final String ADD_NEW_ROOM_URL = "/manager/room-management/add-new-room";
     // Church
     public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
