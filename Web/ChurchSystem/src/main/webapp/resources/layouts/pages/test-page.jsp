@@ -12,6 +12,7 @@
 <head>
     <title>Home page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
+    <link href="<c:url value="/resources/lib/sematicDist/semantic.min.css"/>" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -19,14 +20,16 @@
         <c:import url="/resources/layouts/common/menu.jsp"/>
         <%--Content    --%>
         <div class="right_col" role="main">
-            <textarea id="notifications-area" cols="1200" rows="10" readonly="readonly"></textarea>
+            <button data-toggle="modal" data-target="#roomPopup"></button>
         </div>
         <%--Content end--%>
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
+
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/js/test.js"/>"></script>
+<script src="<c:url value="/resources/lib/sematicDist/semantic.min.js"/>"></script>
 
 </body>
 </html>

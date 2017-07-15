@@ -34,10 +34,10 @@ public class PageConstant {
     public static final String LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
     public static final String LOAD_PUBLIC_EVENT_REGISTER_URL = "/church/{id}/schedule/load-event/";
 
-    public static final String SCHEDULE_URL="/manager/schedule";
+    public static final String SCHEDULE_URL = "/manager/schedule";
     public static final String UPDATED_EVENT = "/manager/event/Updated";
-    public static final String CREATE_EVENT_URL="/manager/event/Add";
-    public static final String UPDATE_EVENT_URL="/manager/event/Update";
+    public static final String CREATE_EVENT_URL = "/manager/event/Add";
+    public static final String UPDATE_EVENT_URL = "/manager/event/Update";
     public static final String LOAD_CONDUCTOR = "/manager/event/load-conductor";
     public static final String LOAD_ROOM = "/manager/event/load-room";
 
@@ -51,8 +51,9 @@ public class PageConstant {
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
 
     //Notification
-    public static final String STREAM_NOTIFICATION_URL="/manager/stream/notification";
-
+    public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";
+    public static final String GET_NOTIFICATION_URL = "/notification/getNotification";
+    public static final String GET_NOTIFICATION_LIST_URL = "/notification/notificationList";
 
 
     //Class
@@ -61,7 +62,7 @@ public class PageConstant {
     // Registration
     public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";
     public static final String ADD_REGISTRATION = "/user/registration/Add";
-    public static final String GET_ON_PLAN_CLASS_URL="/church/class";
+    public static final String GET_ON_PLAN_CLASS_URL = "/church/class";
 
     // Room
 
@@ -71,7 +72,7 @@ public class PageConstant {
     public static final String CHURCH_HOME_URL = "/church";
     public static final String CHURCH_SCHEDULE_URL = "/church/schedule";
     public static final String CHURCH_SEARCH_URL = "/church/Search";
-    public static final String CLASS_URL="/church/class";
+    public static final String CLASS_URL = "/church/class";
 
     public static final String CHURCH_MANAGEMENT_URL = "/admin/church-management";
     // Contribution
@@ -79,7 +80,7 @@ public class PageConstant {
 
     // User
     public static final String USER_NOTIFICATION_URL = "/user/notification";
-    public static final String PRIEST_MANAGEMENT_URL ="/manager/priest-manager";
+    public static final String PRIEST_MANAGEMENT_URL = "/manager/priest-manager";
 
     // Slot
 
@@ -112,7 +113,7 @@ public class PageConstant {
     // Church
     public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
-    public static final String CHURCH_CLASS_PAGE="/user-pages/class-registration-page";
+    public static final String CHURCH_CLASS_PAGE = "/user-pages/class-registration-page";
 
     public static final String CHURCH_MANAGEMENT_PAGE = "church-management-page";
 

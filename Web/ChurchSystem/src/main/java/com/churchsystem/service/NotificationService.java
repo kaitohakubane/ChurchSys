@@ -33,8 +33,8 @@ public class NotificationService implements NotificationServiceInterface {
     }
 
     @Override
-    public List<NotificationEntity> getUserNotification(int userId){
-        return notificationModelInterface.getUserNotification(userId);
+    public List<NotificationEntity> getUserNotification(int userId,int numberOfNoti){
+        return notificationModelInterface.getUserNotification(userId,numberOfNoti);
     }
 
     @Override
@@ -44,6 +44,6 @@ public class NotificationService implements NotificationServiceInterface {
                 "/queue/notify",
                 notification
         );
-        return;
+
     }
 }

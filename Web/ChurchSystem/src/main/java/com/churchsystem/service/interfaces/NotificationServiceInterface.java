@@ -13,7 +13,7 @@ public interface NotificationServiceInterface {
 
     void updateNotification(NotificationEntity notificationEntity);
 
-    List<NotificationEntity> getUserNotification(int userId);
+    List<NotificationEntity> getUserNotification(int userId,int numberOfNoti);
 
     void notify(NotificationEntity notification, String username);
 }

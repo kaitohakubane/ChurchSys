@@ -97,6 +97,7 @@ public class ParamConstant {
     public static final String NOTIFICATION_TIME="time";
     public static final int YOUTUBE_TYPE=1;
     public static final int DEFAULT_TYPE=0;
+    public static final String NOTIFICATION_LIST="notificationList";
 
 
     /**

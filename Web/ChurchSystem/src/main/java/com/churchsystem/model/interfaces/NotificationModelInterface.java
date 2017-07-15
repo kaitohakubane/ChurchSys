@@ -12,5 +12,5 @@ public interface NotificationModelInterface {
 
     void addNotification(NotificationEntity notificationEntity);
 
-    List<NotificationEntity> getUserNotification(int userId);
+    List<NotificationEntity> getUserNotification(int userId,int numberOfNoti);
 }
