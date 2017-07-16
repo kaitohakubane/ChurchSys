@@ -4,6 +4,7 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
+import com.churchsystem.entity.SlotEntity;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.EventModelInterface;
 import org.hibernate.Criteria;
@@ -92,4 +93,10 @@ public class EventModel extends CommonDAO implements EventModelInterface {
         return result;
     }
 
+    @Override
+    public void deleteEvent(int eventId){
+        Query query = getSession().createSQLQuery(SQLParamConstant.DELETE_EVENT_BY_EVENT_ID)
+                .setParameter(ParamConstant.EVENT_ID, eventId);
+        query.executeUpdate();
+    }
 }

@@ -69,15 +69,16 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     }
 
     @Override
-    public SlotEntity getSlotById(int slotId){
-        Criteria criteria = getSession().createCriteria(SlotEntity.class).add(Restrictions.eq(ParamConstant.SLOT_ID,slotId));
-        SlotEntity slotEntity = (SlotEntity)criteria.uniqueResult();
+    public SlotEntity getSlotById(int slotId) {
+        Criteria criteria = getSession().createCriteria(SlotEntity.class).add(Restrictions.eq(ParamConstant.SLOT_ID, slotId));
+        SlotEntity slotEntity = (SlotEntity) criteria.uniqueResult();
         return slotEntity;
     }
 
     @Override
     public void deleteSlotHourBySlotId(int slotId) {
-        Query query = getSession().createSQLQuery(SQLParamConstant.DELETE_SLOT_HOUR_BY_SLOT_ID).setParameter(ParamConstant.SLOT_ID,slotId);
+        Query query = getSession().createSQLQuery(SQLParamConstant.DELETE_SLOT_HOUR_BY_SLOT_ID)
+                .setParameter(ParamConstant.SLOT_ID, slotId);
         query.executeUpdate();
     }
 
@@ -87,20 +88,26 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     }
 
     @Override
-    public List<SlothourEntity> getSlotHourByTimeRange(Time startTime,Time endTime ){
-        Criteria criteria=getSession().createCriteria(SlothourEntity.class)
-                .add(Restrictions.le(ParamConstant.START_TIME,endTime))
-                .add(Restrictions.ge(ParamConstant.END_TIME,startTime));
-        List<SlothourEntity> result=criteria.list();
+    public List<SlothourEntity> getSlotHourByTimeRange(Time startTime, Time endTime) {
+        Criteria criteria = getSession().createCriteria(SlothourEntity.class)
+                .add(Restrictions.le(ParamConstant.START_TIME, endTime))
+                .add(Restrictions.ge(ParamConstant.END_TIME, startTime));
+        List<SlothourEntity> result = criteria.list();
         return result;
     }
 
     @Override
-    public List<SlotEntity> getListSlotOfClass (int slotId){
+    public List<SlotEntity> getListSlotOfClass(int slotId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SLOT_OF_CLASS)
-                .setParameter(ParamConstant.SLOT_ID,slotId).setResultTransformer(Transformers.aliasToBean(SlotEntity.class));
+                .setParameter(ParamConstant.SLOT_ID, slotId).setResultTransformer(Transformers.aliasToBean(SlotEntity.class));
         List<SlotEntity> slotEntities = query.list();
         return slotEntities;
     }
 
+    @Override
+    public void deleteSlot(int slotId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.DELETE_SLOT_BY_SLOT_ID)
+                .setParameter(ParamConstant.SLOT_ID, slotId);
+        query.executeUpdate();
+    }
 }

@@ -119,6 +119,7 @@ function addNewPriest() {
         async: false,
         contentType: 'application/json',
         // processData: false,
+        dataType: 'json',
         success: function () {
             alert("Add success!");
             window.location.href = contextPath + PRIEST_MANAGEMENT;

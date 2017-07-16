@@ -56,11 +56,19 @@ public class RegistrationModel extends CommonDAO implements RegistrationModelInt
     public List<ClassDisplayEntity> getOnPlanClass(int churchId){
         Query query=getSession().createSQLQuery(SQLParamConstant.GET_ON_PLAN_CLASS).setParameter(ParamConstant.CHURCH_ID,churchId)
                 .setParameter(ParamConstant.EVENT_STATUS,ParamConstant.EVENT_APPROVE_STATUS)
-                .setParameter(ParamConstant.CATEGORY_ID,ParamConstant.CLASS_CATEGORY).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<ClassDisplayEntity> classDisplayEntities=query.list();
         return classDisplayEntities;
     }
 
+    @Override
+    public List<ClassDisplayEntity> getOnGoingPlanClass(int churchId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.GET_ON_GOING_PLAN_CLASS).setParameter(ParamConstant.CHURCH_ID,churchId)
+                .setParameter(ParamConstant.EVENT_STATUS,ParamConstant.EVENT_APPROVE_STATUS)
+                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<ClassDisplayEntity> classDisplayEntities=query.list();
+        return classDisplayEntities;
+    }
 
     @Override
     public void updateRegistration(RegistrationEntity registrationEntity){

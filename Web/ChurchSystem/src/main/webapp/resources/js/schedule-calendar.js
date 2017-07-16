@@ -6,8 +6,6 @@
 var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 var CREATE_EVENT_URL = "/manager/event/Add";
 var CREATE_CLASS_URL = "/manager/class/Add";
-var REMOVE_SINGLE_SLOT = '';
-var REMOVE_MULTI_SLOT = '';
 //local variable
 var creatingEvent;
 var calEventStatus = [];
@@ -17,8 +15,9 @@ var lastEventColor = null;
 var eventList = [];
 var defaultMovePlus = 2;
 var listOfCreatingEvent = []
-var ClassCategoryNum = 4;
-var defaultTimeSlot = "04:30:00 - 06:00:00"
+var ClassCategoryNum = ['6', '7', '8', '9', '10', '11'];
+var defaultTimeSlot = "04:30:00 - 06:00:00";
+
 // Initial call -------------------------------------------------------
 generalInitial();
 calendarInitialize();
@@ -36,8 +35,7 @@ $(document).ready(function () {
         if (isPublic) {
             policy = 1;
         }
-
-        if ($("#category").children(":selected").val() == ClassCategoryNum) {
+        if (ClassCategoryNum.includes($("#category").children(":selected").val())) {
             $("#createClass").modal("show");
         } else {
             createEvent(creatingEvent, startTime, policy);
@@ -53,10 +51,7 @@ $(document).ready(function () {
 
             $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
         }
-
-
     })
-
     $('#createClassbtn').on('click', function () {
         var startTime = $("#slotNum").children(":selected").attr("id");
         var isPublic = $("#createEventPopupIsPublic").prop('checked');
@@ -187,6 +182,7 @@ function calendarInitialize() {
             var popup = $('#eventDetailPopup');
             inputEventPopupInformation(event);
             eventRegisterPopup(jsEvent, popup);
+
         },
 
         eventRender: function (event, element) {
@@ -205,8 +201,6 @@ function calendarInitialize() {
             } else {
                 appendClassToList(event.subId)
             }
-
-
         },
 
         eventDragStart: function (event, jsEvent, ui, view) {
@@ -334,8 +328,8 @@ function loadEvent() {
                     e.color = '#ef0909'
                 }
 
-                if(e.eventStatus==1){
-                    e.color="#ff4fc1"
+                if (e.eventStatus == 1) {
+                    e.color = "#ff4fc1"
                 }
 
             })
@@ -429,28 +423,5 @@ function createClass(event, slotId, isPublic) {
         }
     });
 }
-
-function removeSingleSlot() {
-    var requestURL = contextPath + REMOVE_SINGLE_SLOT;
-    var requestMethod = "POST";
-
-    var requestData = {
-        slotId: $("#eventPopupTime").data("id")
-    }
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: JSON.stringify(requestData),
-        async: false,
-        contentType: 'application/json',
-        processData: false,
-        success: function (){
-
-        }
-    })
-}
-
-
-
 
 

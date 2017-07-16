@@ -18,4 +18,5 @@ public interface RegistrationModelInterface {
     void addRegistration(RegistrationEntity registrationEntity);
     List<RegistrationEntity> getWaitingRegistrationBySubId(int subId);
     List<ClassDisplayEntity> getOnPlanClass(int churchId);
+    List<ClassDisplayEntity> getOnGoingPlanClass(int churchId);
 }

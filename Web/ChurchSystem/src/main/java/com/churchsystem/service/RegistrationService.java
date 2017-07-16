@@ -56,4 +56,9 @@ public class RegistrationService implements RegistrationServiceInterface {
     public List<ClassDisplayEntity> getOnPlanClass(int churchId){
         return registrationModelInterface.getOnPlanClass(churchId);
     }
+
+    @Override
+    public List<ClassDisplayEntity> getOnGoingPlanClass(int churchId){
+        return registrationModelInterface.getOnGoingPlanClass(churchId);
+    }
 }

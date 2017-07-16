@@ -68,4 +68,10 @@ public class SlotService implements SlotServiceInterface {
     public List<SlotEntity> getListSlotOfClass (int slotId){
         return slotModelInterface.getListSlotOfClass(slotId);
     }
+
+
+    @Override
+    public void deleteSlot(int slotId) {
+        slotModelInterface.deleteSlot(slotId);
+    }
 }

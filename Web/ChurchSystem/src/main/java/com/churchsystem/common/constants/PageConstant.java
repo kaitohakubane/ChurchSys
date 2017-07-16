@@ -44,8 +44,10 @@ public class PageConstant {
     public static final String LOAD_CONDUCTOR = "/manager/event/load-conductor";
     public static final String LOAD_ROOM = "/manager/event/load-room";
 
-    public static final String CHECK_IS_CLASS = "/manager/event/check-is-class";
-
+    public static final String CHECK_IS_MANY_SLOT = "/manager/event/check-is-many-slot";
+    public static final String REMOVE_SINGLE_SLOT = "/manager/schedule/remove-single-slot";
+    public static final String REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
+    public static final String REMOVE_EVENT = "/manager/schedule/remove-event";
 
     //Stream
     public static final String STREAM_URL = "/manager/stream";

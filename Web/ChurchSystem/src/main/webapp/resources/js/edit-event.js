@@ -8,10 +8,11 @@ var LOAD_ROOM = "/manager/event/load-room";
 var UPDATED_SINGLE_EVENT = "/manager/event/update-single-event";
 var UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
 var SCHEDULE_URL = "/manager/schedule";
-var CHECK_IS_CLASS = "/manager/event/check-is-class";
+var CHECK_IS_MANY_SLOT = "/manager/event/check-is-many-slot";
 //Global variable
 var event;
-var currentEventIsClass;
+var currentEventIsMultiSlot;
+
 $(document).ready(function () {
     Initial();
     $("#slotDate").datepicker();
@@ -19,79 +20,96 @@ $(document).ready(function () {
     inputEditEventInformation();
 })
 
-$("#startTime").on('focus', function () {
-    console.log("Saving value " + $(this).val());
-    $(this).data('val', $(this).val());
-}).on('change', function () {
-    console.log("startTime change")
-    if ($("#startTime").val() >= $("#endTime").val()) {
-        alert("Invalid Start Time")
-        var prev = $(this).data('val');
-        console.log("Prev value " + prev);
-        $("#startTime").val(prev);
-    } else {
-        console.log("run")
-        loadEventConductor($("#startTime").val(), $("#endTime").val());
-        loadEventRoom($("#startTime").val(), $("#endTime").val());
-    }
-})
+$("#startTime")
+    .on('focus', function () {
+        console.log("Saving value " + $(this).val());
+        $(this).data('val', $(this).val());
+    })
+    .on('change', function () {
+        console.log("startTime change")
+        if ($("#startTime").val() >= $("#endTime").val()) {
+            alert("Invalid Start Time")
+            var prev = $(this).data('val');
+            console.log("Prev value " + prev);
+            $("#startTime").val(prev);
+        } else {
+            console.log("run")
+            loadEventConductor($("#startTime").val(), $("#endTime").val(), slotDate);
+            loadEventRoom($("#startTime").val(), $("#endTime").val(), slotDate);
+        }
+    })
 
-$("#endTime").on('focus', function () {
-    console.log("Saving value " + $(this).val());
-    $(this).data('val', $(this).val());
-}).on('change', function () {
-    console.log("endTime change")
-    if ($("#endTime").val() <= $("#startTime").val()) {
-        alert("Invalid End Time");
-        var prev = $(this).data('val');
-        console.log("Prev value " + prev);
-        $("#endTime").val(prev);
-    } else {
-        console.log("run")
+$("#endTime")
+    .on('focus', function () {
+        console.log("Saving value " + $(this).val());
+        $(this).data('val', $(this).val());
+    })
+    .on('change', function () {
+        console.log("endTime change")
+        if ($("#endTime").val() <= $("#startTime").val()) {
+            alert("Invalid End Time");
+            var prev = $(this).data('val');
+            console.log("Prev value " + prev);
+            $("#endTime").val(prev);
+        } else {
+            console.log("run")
 
-        loadEventConductor($("#startTime").val(), $("#endTime").val());
-        loadEventRoom($("#startTime").val(), $("#endTime").val());
-    }
-})
+            loadEventConductor($("#startTime").val(), $("#endTime").val(), slotDate);
+            loadEventRoom($("#startTime").val(), $("#endTime").val(), slotDate);
+        }
+    })
 
-$("#slotDate").on('focus', function () {
-    console.log("Saving value " + $(this).val());
-    $(this).data('val', $(this).val());
-}).on('change', function () {
-    console.log("Date is changed!")
-    var currentDate = new Date();
-    var year = currentDate.getFullYear();
-    var month = currentDate.getMonth() + 1;
-    var day = currentDate.getDate();
+$("#slotDate")
+    .on('focus', function () {
+        console.log("Saving value " + $(this).val());
+        $(this).data('val', $(this).val());
+    })
+    .on('change', function () {
+        console.log("Date is changed!")
+        var currentDate = new Date();
+        var year = currentDate.getFullYear();
+        var month = currentDate.getMonth() + 1;
+        var day = currentDate.getDate();
 
-    var selectedDate = new Date($("#slotDate").val());
-    console.log(selectedDate);
-    console.log(currentDate)
-    if (selectedDate < currentDate) {
-        alert("Invalid Date");
-        var prev = $(this).data('val');
-        console.log("Prev value " + prev);
-        $("#slotDate").val(prev);
-    }
-    else {
-        console.log("Not lỗi");
-        loadEventConductor($("#startTime").val(), $("#endTime").val());
-        loadEventRoom($("#startTime").val(), $("#endTime").val());
-    }
-})
+        var selectedDate = new Date($("#slotDate").val());
+        console.log(selectedDate);
+        console.log(currentDate)
+        if (selectedDate < currentDate) {
+            alert("Invalid Date");
+            var prev = $(this).data('val');
+            console.log("Prev value " + prev);
+            $("#slotDate").val(prev);
+        }
+        else {
+            console.log("Ngày hợp lệ");
+            console.log("Ngày mới: " + $("#slotDate").val());
+            loadEventConductor($("#startTime").val(), $("#endTime").val(), $("#slotDate").val());
+            loadEventRoom($("#startTime").val(), $("#endTime").val(), $("#slotDate").val());
+        }
+    })
 
 
 $("#btnBack").on("click", function () {
     window.location.href = contextPath + SCHEDULE_URL;
-
 })
 
 $("#btnSave").on("click", function updateEvent(e) {
     e.preventDefault();
-    // updateSingleEvent();
-    updateRepeatEvent();
+    console.log(currentEventIsMultiSlot);
+    if (currentEventIsMultiSlot == 1) {
+        $('#confirmModal').modal('show');
+    }
+    else if (currentEventIsMultiSlot == 0) {
+        updateSingleEvent();
+    }
 })
 
+$("#oneSlot").on("click", function () {
+    updateSingleEvent();
+})
+$("#manySlot").on("click", function () {
+    updateRepeatEvent();
+})
 function inputEditEventInformation() {
     console.log(slotDate)
     $("#startTime").val(startTime);
@@ -111,20 +129,20 @@ function inputEditEventInformation() {
             console.log('Click')
         }
     }
-    loadEventConductor($("#startTime").val(), $("#endTime").val());
-    loadEventRoom($("#startTime").val(), $("#endTime").val());
-    checkIsClass();
-    console.log("Current event is class: " + currentEventIsClass + " Outside function")
+    loadEventConductor($("#startTime").val(), $("#endTime").val(),slotDate);
+    loadEventRoom($("#startTime").val(), $("#endTime").val(),slotDate);
+    checkIsManySlot();
 }
 
-function loadEventConductor(startTime, endTime) {
+function loadEventConductor(startTime, endTime, slotDate) {
 
     var requestURL = contextPath + LOAD_CONDUCTOR;
     var requestMethod = "POST";
     var requestData = {
         "slotId": $("#txtTitle").data("id"),
         "startTime": startTime,
-        "endTime": endTime
+        "endTime": endTime,
+        "slotDate": slotDate,
     }
     $.ajax({
         url: requestURL,
@@ -135,8 +153,6 @@ function loadEventConductor(startTime, endTime) {
         success: function (res) {
             console.log("Ajax get conductor list run")
             conductorList = res;
-
-
             $("#assigned option").remove();
             $.each(conductorList, function (e, item) {
 
@@ -155,13 +171,14 @@ function loadEventConductor(startTime, endTime) {
     })
 }
 
-function loadEventRoom(startTime, endTime) {
+function loadEventRoom(startTime, endTime, slotDate) {
     var requestURL = contextPath + LOAD_ROOM;
     var requestMethod = "POST";
     var requestData = {
         "slotId": $("#txtTitle").data("id"),
         "startTime": startTime,
-        "endTime": endTime
+        "endTime": endTime,
+        "slotDate": slotDate,
     }
     $.ajax({
         url: requestURL,
@@ -237,8 +254,8 @@ function Initial() {
 
 }
 
-function checkIsClass() {
-    var requestURL = contextPath + CHECK_IS_CLASS;
+function checkIsManySlot() {
+    var requestURL = contextPath + CHECK_IS_MANY_SLOT;
     var requestMethod = "POST";
     var requestData = {
         slotId: $("#txtTitle").data("id")
@@ -250,10 +267,18 @@ function checkIsClass() {
         async: false,
         contentType: 'application/json',
         processData: false,
+        dataType: 'json',
         success: function (res) {
-            console.log("Checking slot with ID = " + $("#txtTitle").data("id") + " is class or not!");
-            currentEventIsClass = res;
-            console.log("Current event is class: " + currentEventIsClass)
+            console.log("Checking slot with ID = " + $("#txtTitle").data("id") + " is one or many slot!");
+            currentEventIsMultiSlot = res;
+            if (currentEventIsMultiSlot == 1) {
+                console.log("Current event is many slot");
+            } else if (currentEventIsMultiSlot == 0) {
+                console.log("Current event is one slot");
+            } else {
+                console.log("Error happen!");
+            }
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

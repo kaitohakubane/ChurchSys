@@ -45,21 +45,87 @@
                     <div id="home" class="tab-pane fade in active">
                         <div class="col-md-12">
                             <div class="row" style="margin-top: 10px;">
-                            <div class="nav-class">
-                                <ul class="ul-class">
-                                    <li><a href="#">Tất cả</a></li>
-                                    <li><a href="#">Dự tòng</a></li>
-                                    <li><a href="#">Hôn nhân</a></li>
-                                    <li><a href="#">Dự ấu</a></li>
-                                    <li><a href="#">Ấu nhi</a></li>
-                                    <li><a href="#">Thiếu nhi</a></li>
-                                    <li><a href="#">Nghĩa sĩ</a></li>
-                                    <li><a href="#">Dự trưởng</a></li>
-                                </ul>
+                                <div class="nav-class">
+                                    <ul class="ul-class">
+                                        <li><a href="#">Tất cả</a></li>
+                                        <li><a href="#">Dự tòng</a></li>
+                                        <li><a href="#">Hôn nhân</a></li>
+                                        <li><a href="#">Dự ấu</a></li>
+                                        <li><a href="#">Ấu nhi</a></li>
+                                        <li><a href="#">Thiếu nhi</a></li>
+                                        <li><a href="#">Nghĩa sĩ</a></li>
+                                        <li><a href="#">Dự trưởng</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <h3>Sắp diễn ra</h3>
-                            <p>Lớp đang cập nhật.</p>
                         </div>
+                        <div class="row">
+                            <c:forEach var="item" items="${onPlanClassList}">
+                                <div class="col-md-4">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            <h4 class="text-center">Lớp</h4>
+                                        </div>
+                                        <div class="panel-body" style="padding: 15px 0">
+                                            <div class="form-horizontal">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên lớp</label>
+                                            </div>
+                                            <div class="col-md-8 form-group has-success">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" disabled="disabled"
+                                                           value="${item.eventName}"><br/>
+                                                    <span class="input-group-addon"><i class="fa fa-id-card fa-fw"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-horizontal">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Lớp</label>
+                                            </div>
+                                            <div class="col-md-8 form-group has-success">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" disabled="disabled" value="${item.subName}"><br/>
+                                                    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-horizontal">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày bắt đầu</label>
+                                            </div>
+                                            <div class="col-md-8 form-group has-success">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" disabled="disabled"
+                                                           value="${item.startDate}"><br/>
+                                                    <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-horizontal">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Các ngày</label>
+                                            </div>
+                                            <div class="col-md-8 form-group has-success">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control dayOfWeek" value="${item.typeName}"
+                                                           disabled="disabled"><br/>
+                                                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-horizontal">
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
+                                            </div>
+                                            <div class="col-md-8 form-group has-success">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" disabled="disabled" value="${item.startTime}
+                                    - ${item.endTime}"> <br/>
+                                                    <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
+                                                    <button type="button" class="btn btn-success">Đăng kí</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
@@ -78,91 +144,74 @@
                                             <li><a href="#">Dự trưởng</a></li>
                                         </ul>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="panel panel-success">
-                                                <div class="panel-heading">
-                                                    <h4 class="text-center">Lớp</h4>
-                                                </div>
-                                                <div class="panel-body" style="padding: 15px 0">
-                                                    <div class="form-horizontal">
-                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên
-                                                            lớp</label>
-                                                    </div>
-                                                    <div class="col-md-8 form-group has-success">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" disabled="disabled"
-                                                                   value="${item.eventName}"><br/>
-                                                            <span class="input-group-addon"><i
-                                                                    class="fa fa-server fa-fw"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-horizontal">
-                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Lớp</label>
-                                                    </div>
-                                                    <div class="col-md-8 form-group has-success">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" disabled="disabled"
-                                                                   value="${item.subName}"><br/>
-                                                            <span class="input-group-addon"><i
-                                                                    class="fa fa-book fa-fw"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-horizontal">
-                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày
-                                                            bắt đầu</label>
-                                                    </div>
-                                                    <div class="col-md-8 form-group has-success">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" disabled="disabled"
-                                                                   value="${item.startDate}"><br/>
-                                                            <span class="input-group-addon"><i
-                                                                    class="fa fa-calendar-check-o fa-fw"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-horizontal">
-                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Các
-                                                            ngày</label>
-                                                    </div>
-                                                    <div class="col-md-8 form-group has-success">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control dayOfWeek"
-                                                                   value="${item.typeName}"
-                                                                   disabled="disabled"><br/>
-                                                            <span class="input-group-addon"><i
-                                                                    class="fa fa-calendar fa-fw"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-horizontal">
-                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời
-                                                            gian</label>
-                                                    </div>
-                                                    <div class="col-md-8 form-group has-success">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" disabled="disabled"
-                                                                   value="${item.startTime}
-                                    - ${item.endTime}"> <br/>
-                                                            <span class="input-group-addon"><i
-                                                                    class="fa fa-clock-o fa-fw"></i></span>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
-                                                            <button type="button" class="btn btn-success">Đăng kí
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+        <div class="row">
+            <c:forEach var="item" items="${onGoingClassList}">
+                <div class="col-md-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="text-center">Lớp</h4>
+                        </div>
+                        <div class="panel-body" style="padding: 15px 0">
+                            <div class="form-horizontal">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên lớp</label>
+                            </div>
+                            <div class="col-md-8 form-group has-success">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" disabled="disabled"
+                                           value="${item.eventName}"><br/>
+                                    <span class="input-group-addon"><i class="fa fa-id-card fa-fw"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Lớp</label>
+                            </div>
+                            <div class="col-md-8 form-group has-success">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" disabled="disabled" value="${item.subName}"><br/>
+                                    <span class="input-group-addon"><i class="fa fa-book fa-fw"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày bắt đầu</label>
+                            </div>
+                            <div class="col-md-8 form-group has-success">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" disabled="disabled"
+                                           value="${item.startDate}"><br/>
+                                    <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Các ngày</label>
+                            </div>
+                            <div class="col-md-8 form-group has-success">
+                                <div class="input-group">
+                                    <input type="text" class="form-control dayOfWeek" value="${item.typeName}"
+                                           disabled="disabled"><br/>
+                                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
+                            </div>
+                            <div class="col-md-8 form-group has-success">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" disabled="disabled" value="${item.startTime}
+                                    - ${item.endTime}"> <br/>
+                                    <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
+                                    <button type="button" class="btn btn-success">Đăng kí</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </div>

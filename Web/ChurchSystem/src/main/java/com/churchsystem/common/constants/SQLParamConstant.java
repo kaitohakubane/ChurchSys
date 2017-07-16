@@ -132,6 +132,10 @@ public class SQLParamConstant {
 
     public static final String DELETE_SLOT_HOUR_BY_SLOT_ID = "DELETE FROM inclusion where slotId =:slotId";
 
+    public static final String DELETE_SLOT_BY_SLOT_ID = "DELETE FROM slot WHERE slotId =:slotId";
+
+    public static final String DELETE_EVENT_BY_EVENT_ID = "DELETE FROM event WHERE eventId =:eventId";
+
     public static final String GET_NEARBY_LOCATION = "SELECT churchId as churchId, ( 6371 * acos( cos( radians(:inputLatitude) ) * " +
             "cos( radians( latitude ) ) * cos( radians( longitude ) - radians(:inputLongitude) ) + sin( radians(:inputLatitude) )" +
             " * sin( radians( latitude ) ) ) ) AS distance, churchName as churchName, tel as tel, startTime as startTime, endTime as endTime," +
@@ -143,9 +147,14 @@ public class SQLParamConstant {
             " su.subName as subName,t.description as typeName, " +
             "sh.startTime as startTime, sh.endTime as endTime FROM event e,slot s,inclusion i,slothour sh,subject su, type t " +
             "WHERE e.eventStatus =:status AND e.startDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
-            "su.categoryId =:categoryId AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
+            "su.categoryId < 12 AND su.categoryId > 5 AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
             "e.typeId =t.typeId AND e.churchId =:churchId";
-
+    public static final String GET_ON_GOING_PLAN_CLASS = "SELECT distinct e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
+            " su.subName as subName,t.description as typeName, " +
+            "sh.startTime as startTime, sh.endTime as endTime FROM event e,slot s,inclusion i,slothour sh,subject su, type t " +
+            "WHERE e.eventStatus =:status AND e.startDate < CURDATE() AND e.examDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
+            "su.categoryId < 12 AND su.categoryId > 5 AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
+            "e.typeId =t.typeId AND e.churchId =:churchId";
     public static final String GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT = "select distinct u.userId from user u, church c," +
             " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId NOT IN (select s2.conductorId " +
             "From (Select s.slotId, s.conductorId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, " +

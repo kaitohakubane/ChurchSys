@@ -35,4 +35,6 @@ public interface SlotModelInterface {
     List<SlothourEntity> getSlotHourByTimeRange(Time startTime, Time endTime);
 
     List<SlotEntity> getListSlotOfClass(int slotId);
+
+    void deleteSlot(int slotId);
 }

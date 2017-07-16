@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.rmi.CORBA.Util;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.sql.Time;
@@ -339,18 +340,67 @@ public class EventController {
     }
 
     @ResponseBody
-    @RequestMapping(value = PageConstant.CHECK_IS_CLASS, method = RequestMethod.POST)
+    @RequestMapping(value = PageConstant.CHECK_IS_MANY_SLOT, method = RequestMethod.POST)
     public Integer checkIsClass(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
-            int categoryId = eventServiceInterface.getCategoryIdFromSlotId(slotId);
-            if (categoryId == UtilsConstant.CLASS_CATEGORY_ID) {
-                return UtilsConstant.IS_CLASS;
+            List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
+            if (slotEntities.size() == UtilsConstant.ONE) {
+                return UtilsConstant.IS_ONE_SLOT;
+            } else if (slotEntities.size() > UtilsConstant.ONE) {
+                return UtilsConstant.IS_MANY_SLOT;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return UtilsConstant.IS_NOT_CLASS;
+        return UtilsConstant.ERROR;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.REMOVE_SINGLE_SLOT, method = RequestMethod.POST)
+    public int removeSingleSlot(@RequestBody EventJsonEntity eventJsonEntity) {
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            slotServiceInterface.deleteSlotHourBySlotId(slotId);
+            slotServiceInterface.deleteSlot(slotId);
+
+            return slotEntity.getEventId();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return UtilsConstant.ERROR;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.REMOVE_MULTI_SLOT, method = RequestMethod.POST)
+    public void removeMultiSlot(@RequestBody EventJsonEntity eventJsonEntity) {
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
+            for (int i = 0; i < slotEntities.size(); i++) {
+                slotServiceInterface.deleteSlotHourBySlotId(slotEntities.get(i).getSlotId());
+                slotServiceInterface.deleteSlot(slotEntities.get(i).getSlotId());
+            }
+
+            int eventId = slotServiceInterface.getSlotById(slotId).getEventId();
+            eventServiceInterface.deleteEvent(eventId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.REMOVE_EVENT, method = RequestMethod.POST)
+    public void removeEvent(@RequestParam(value = ParamConstant.EVENT_ID) String eventId) {
+        try {
+            Integer curEventId = Integer.parseInt(eventId);
+            eventServiceInterface.deleteEvent(curEventId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -358,6 +408,7 @@ public class EventController {
     @RequestMapping(value = PageConstant.REGISTER_STREAM_URL, method = RequestMethod.POST)
     public void registerStreamEvent(@RequestParam(value = ParamConstant.SLOT_ID) String slotIdStr,
                                     @RequestParam(value = ParamConstant.STREAM_RESOLUTION) String resolution) {
+
         try {
             int slotId = Integer.parseInt(slotIdStr);
             SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);

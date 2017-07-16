@@ -115,11 +115,12 @@ public class RegistrationController {
         try {
             int churchIdInt = Integer.parseInt(churchId);
             List<ClassDisplayEntity> classList = registrationServiceInterface.getOnPlanClass(churchIdInt);
-            modelAndView.addObject(ParamConstant.ON_PLAN_CLASS_LIST, classList);
+            List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
+            modelAndView.addObject(ParamConstant.ON_PLAN_CLASS_LIST, classList)
+                    .addObject(ParamConstant.ON_GOING_CLASS_LIST, classOnGoingList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return modelAndView;
     }
 

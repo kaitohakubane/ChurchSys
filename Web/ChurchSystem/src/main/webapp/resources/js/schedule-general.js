@@ -6,10 +6,17 @@ var UPDATE_EVENT_URL = "/manager/event/Update";
 var DELETE_EVENT_URL = "/manager/event/Delete";
 var REGISTER_STREAM_URL = "/manager/stream/Register"
 var STREAM_URL = "/manager/stream";
-var REGISTER_STREAM_URL = "/manager/stream/Register";
+var CHECK_IS_MANY_SLOT = "/manager/event/check-is-many-slot";
+var SCHEDULE_URL = "/manager/schedule";
+var REMOVE_EVENT = "/manager/schedule/remove-event";
+var REMOVE_SINGLE_SLOT = "/manager/schedule/remove-single-slot";
+var REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
 var dayArray = [];
 var streamResolutionDefault = "240p"
 var workingEvent;
+var currentEventIsMultiSlot;
+var curSlotId;
+var curEventId;
 //
 classListInitial();
 registerClassList();
@@ -93,6 +100,7 @@ function inputEventPopupInformation(event) {
         console.log("stream Null")
         streamBtn.removeClass("btn-primary")
         streamBtn.addClass("btn-dark")
+        streamBtn.unbind("click");
         streamBtn.on("click", function (e) {
             e.preventDefault();
             var parameter = {
@@ -113,6 +121,7 @@ function inputEventPopupInformation(event) {
             $("#createStreambtn").data('id', event.slotId);
         })
     }
+    checkIsManySlot(event);
 
     if (event.privacy == 0) {
         if ($("#eventDetailIsPublic").prop('checked')) {
@@ -133,7 +142,36 @@ function inputEventPopupInformation(event) {
         }
         post(contextPath + UPDATE_EVENT_URL, parameter);
     })
+
+    $("#btnRemove").on('click', function () {
+        curSlotId = event.slotId;
+        console.log("Selected slot ID is: " + curSlotId);
+        console.log("Removing slot with ID = " + event.slotId);
+
+        if (currentEventIsMultiSlot == 1) {
+            console.log("Selected slot has multi slot");
+            $('#confirmModal').modal('show');
+        }
+        else if (currentEventIsMultiSlot == 0) {
+            console.log("Selected slot has one slot");
+            removeSingleSlot(curSlotId);
+            removeEvent(curEventId);
+            alert('Delete success!');
+            window.location.href = contextPath + SCHEDULE_URL;
+        }
+    })
 }
+
+$("#oneSlot").on("click", function () {
+    console.log("Option remove one slot is selected");
+    removeSingleSlot(curSlotId);
+    alert('Delete success!');
+    window.location.href = contextPath + SCHEDULE_URL;
+})
+$("#manySlot").on("click", function () {
+    console.log("Option remove many slot is selected");
+    removeMultiSlot(curSlotId);
+})
 
 function terminateEventCreateMenu() {
 
@@ -187,17 +225,19 @@ function datePickerLoad() {
     $("#datepicker").datepicker('option', 'dateFormat', 'yy-mm-dd');
 }
 
+
 function streamRegister(slotId, resolution) {
     var requestURL = contextPath + REGISTER_STREAM_URL;
     var requestMethod = "POST";
     var requestData = {
+
         "slotId": slotId,
         "resolution": resolution
     }
-
     $.ajax({
         url: requestURL,
         type: requestMethod,
+
         data: requestData,
         async: false,
         success: function () {
@@ -215,5 +255,102 @@ function streamRegister(slotId, resolution) {
     })
 }
 
+function removeMultiSlot(slotId) {
+    var requestURL = contextPath + REMOVE_MULTI_SLOT;
+    var requestMethod = "POST";
+    var requestData = {
+        slotId: slotId,
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        success: function () {
+            alert('Delete Success!');
+            window.location.href = contextPath + SCHEDULE_URL;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+}
+function removeEvent(eventId) {
+    var requestURL = contextPath + REMOVE_EVENT;
+    var requestMethod = "POST";
 
-
+    var requestData = {
+        "eventId": eventId
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function () {
+            console.log("Current slot is belong to event with ID = " + eventId);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Cannot call method Remove Event!")
+            console.error(textStatus);
+        }
+    })
+}
+function checkIsManySlot(event) {
+    var requestURL = contextPath + CHECK_IS_MANY_SLOT;
+    var requestMethod = "POST";
+    var requestData = {
+        slotId: event.slotId,
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        dataType: 'json',
+        success: function (res) {
+            console.log("Checking slot with ID = " + event.slotId + " is one or many slot!");
+            currentEventIsMultiSlot = res;
+            if (currentEventIsMultiSlot == 1) {
+                console.log("Current event is many slot");
+            } else if (currentEventIsMultiSlot == 0) {
+                console.log("Current event is one slot");
+            } else {
+                console.log("Error happen!");
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+}
+function removeSingleSlot(slotId) {
+    var requestURL = contextPath + REMOVE_SINGLE_SLOT;
+    var requestMethod = "POST";
+    var requestData = {
+        slotId: slotId
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        success: function (e) {
+            console.log("Removed single slot with ID = " + slotId);
+            curEventId = e;
+            console.log("Gotten EventId from deleted slot: " + curEventId);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+}

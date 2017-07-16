@@ -39,4 +39,6 @@ public interface EventServiceInterface {
     SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate);
 
     Integer getCategoryIdFromSlotId(int slotId);
+
+    void deleteEvent(int eventId);
 }

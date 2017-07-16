@@ -352,6 +352,24 @@
 </div>
 <!-- /popup -->
 
+<%--Confirm Modal--%>
+<div class="modal fade confirm-modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"
+     data-keyboard="false" style="margin-top: 220px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body ">
+                <label>Bạn muốn áp dụng cho:</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này</button>
+                <button type="button" class="btn btn-primary col-md-6" id="manySlot">Các giờ liên quan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <%--====================================================--%>
 <%--====================================================--%>
 

@@ -57,6 +57,7 @@ public class ParamConstant {
     public static final String LIST_REGISTRATION_ATTR = "registrationList";
     public static final String LIST_REGISTERED_CLASS_ATTR = "registeredClass";
     public static final String ON_PLAN_CLASS_LIST = "onPlanClassList";
+    public static final String ON_GOING_CLASS_LIST = "onGoingClassList";
     public static final int REGISTRATION_WAITING_STATUS = 1;
     public static final int REGISTRATION_DENY_STATUS = 2;
     public static final int REGISTRATION_FINISH_STATUS = 3;

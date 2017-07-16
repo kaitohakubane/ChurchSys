@@ -19,5 +19,6 @@ public interface EventModelInterface {
     void updateEvent(EventEntity eventEntity);
     EventDataEntity getEventBySlotId(int slotId, int churchId);
     Integer getCategoryIdFromSlotId(int slotId);
+    void deleteEvent(int eventId);
 
 }

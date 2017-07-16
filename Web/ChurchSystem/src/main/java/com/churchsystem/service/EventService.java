@@ -184,8 +184,12 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public Integer getCategoryIdFromSlotId(int slotId){
+    public Integer getCategoryIdFromSlotId(int slotId) {
         return eventModelInterface.getCategoryIdFromSlotId(slotId);
     }
 
+    @Override
+    public void deleteEvent(int eventId) {
+        eventModelInterface.deleteEvent(eventId);
+    }
 }
