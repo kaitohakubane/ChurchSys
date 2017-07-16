@@ -37,20 +37,6 @@ public class UserController {
     @Autowired
     SubjectServiceInterface subjectServiceInterface;
 
-    @RequestMapping(value = PageConstant.USER_NOTIFICATION_URL, method = RequestMethod.GET)
-    public ModelAndView loadUserNotificationPage() {
-        ModelAndView modelAndView = new ModelAndView(PageConstant.NOTIFICATION_PAGE);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
-        UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
-        if (authorities.contains(new SimpleGrantedAuthority(UtilsConstant.MANAGER_USER))) {
-            modelAndView = new ModelAndView(PageConstant.HOME_PAGE);
-        } else if (authorities.contains(new SimpleGrantedAuthority(UtilsConstant.NORMAL_USER))) {
-            modelAndView = new ModelAndView(PageConstant.MAP_PAGE);
-        }
-        return modelAndView;
-    }
-
     @RequestMapping(value = PageConstant.PRIEST_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllChurch(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.PRIEST_MANAGEMENT_PAGE);

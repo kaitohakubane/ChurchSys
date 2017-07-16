@@ -13,7 +13,7 @@
 <div class="col-md-12">
     <div class="nav-private">
         <ul class="ul-private">
-            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="${pageContext.request.contextPath}/church/info?churchId=${param.churchId}">Giới thiệu</a></li>
             <li><a href="${pageContext.request.contextPath}/church?churchId=${param.churchId}">Tin tức</a></li>
             <li><a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}">Sự kiện</a></li>
             <li class="dropdown list-category">

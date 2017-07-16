@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.entity.Notification;
 import com.churchsystem.entity.NotificationEntity;
 import com.churchsystem.model.interfaces.NotificationModelInterface;
 import com.churchsystem.service.interfaces.NotificationServiceInterface;
@@ -38,7 +39,7 @@ public class NotificationService implements NotificationServiceInterface {
     }
 
     @Override
-    public void notify(NotificationEntity notification, String username) {
+    public void notify(Notification notification, String username) {
         messagingTemplate.convertAndSendToUser(
                 username,
                 "/queue/notify",

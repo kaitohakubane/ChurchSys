@@ -1,228 +1,106 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hungmcse61561-admin
-  Date: 7/1/2017
-  Time: 12:50 AM
-  To change this template use File | Settings | File Templates.
---%>
-<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Notification</title>
-    <c:import url="/resources/layouts/user-common/header.jsp"/>
+
+    <c:import url="/resources/layouts/common/header.jsp"/>
     <link href="<c:url value="/resources/css/notification.css"/>" rel="stylesheet">
+
+
 </head>
-<body>
-<!-- navbar -->
-<nav class="navbar navbar-default mega-nav">
-    <div class="container">
-        <div class="collapse navbar-collapse" id="MainMenu">
-            <div class="navbar-right">
-                <ul class="nav-right">
-                    <!-- <li><i class="fa fa-bell-o" aria-hidden="true" style="font-size: 25px; margin-right: 20px;"></i></li> -->
-                    <li class="profile">
-                        <div>
-                            <img src="icon.png" class="img-circle user-img">
-                            <strong>Trung Trần</strong>
-                        </div>
-                    </li>
-                    <li><a href="#" class="button">Đăng xuất</a></li>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <c:import url="/resources/layouts/common/menu.jsp"/>
 
-                </ul>
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Thông báo của bạn</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="list-unstyled noti">
+                                <div class="block col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <div class="img-size"><img src="<c:url value="/resources/img/ava.jpg"/>"
+                                                                       class="full-size"/></div>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div>
+                                                <div class="col-md-9 name">Nhà thờ Chánh Tòa</div>
+                                                <div class="col-md-3 time">4 tháng 7 lúc 22:20</div>
+                                            </div>
+                                            <div class="col-md-12 message">
+                                                Nhà thờ đang có sự kiện cho lễ phục sinh. Bạn có muốn xem live
+                                                stream sự kiện ?
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="col-md-12 btn btn-primary">Go</button>
+                                            <button class="col-md-12 btn btn-default">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <c:forEach items="${notificationList}" var="item">
+                                    <div class="block col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="img-size">
+                                                    <c:choose>
+                                                        <c:when test="${item.avatar eq null}">
+                                                            <img src="<c:url value="/resources/img/noimagefound.jpg"/>"
+                                                                 class="full-size"/>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <img src="${pageContext.request.contextPath}/product-images/${item.avatar}"
+                                                                 class="full-size"/>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div>
+                                                    <div class="col-md-9 name">${item.sender}</div>
+                                                    <div class="col-md-3 time">${item.time}</div>
+                                                </div>
+                                                <div class="col-md-12 message">
+                                                        ${item.information}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="col-md-12 btn btn-primary">Go</button>
+                                                <button class="col-md-12 btn btn-default">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
-    </div>
-</nav>
-<!-- end navbar -->
+        <!-- /page content -->
 
-<!-- page-content -->
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Thông báo của bạn</h3>
-                    <hr>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="col-md-12">
-                        <div class="col-md-1">
-                            <div class="img-size"><img src="ava.jpg" class="img-full"></div>
-                        </div>
-                        <div class="col-md-10">
-                            <p style="font-size: 95%;"><strong>Nhà thờ Chánh tòa </strong>đang có sự kiện rửa tội cho
-                                các giáo đồ có tội với thiên chúa. Hãy than gia ngay</p>
-                            <p style="font-size: 80%;color: #b8b8b8">29 tháng 6 lúc 11:45</p>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-default">Go</button>
-                        </div>
-                        <div class="col-md-12 divice"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- footer -->
-<div class="container">
-    <div class="row">
-        <footer class="col-md-12">
-            <p>© 2017<a style="color: #fff" href="#"> Team Capstone </a>, All rights reserved 2017.</p>
-        </footer>
+        <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
 
-<c:import url="/resources/layouts/user-common/user-footer.jsp"/>
-<c:import url="/resources/layouts/user-common/footer.jsp"/>
-<script src="<c:url value="/resources/js/notification.js"/>"></script>
+<c:import url="/resources/layouts/common/footer.jsp"/>
+
 </body>
 </html>

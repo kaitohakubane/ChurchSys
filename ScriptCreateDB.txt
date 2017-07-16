@@ -22,6 +22,7 @@ CREATE TABLE Church (
 	startTime time ,
     
 	endTime time,
+	image nvarchar(255),
     
 	description nvarchar (255),
 	streamName nvarchar(255),
@@ -291,6 +292,7 @@ create table Notification (
 	notificationId int NOT NULL AUTO_INCREMENT,
     
 	userId int,
+	avatar nvarchar(255),
     
 	type int,
 	

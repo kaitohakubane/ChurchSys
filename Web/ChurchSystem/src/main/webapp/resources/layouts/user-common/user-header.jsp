@@ -48,13 +48,18 @@
                         <ul class="nav navbar-nav menu-list">
                             <li style="font-size: 20px"><a href="#" class="dropdown-toggle" id="noti-user"
                                                            data-toggle="dropdown"><i class="fa fa-bell"
-                                                                                     aria-hidden="true"></i></a>
-                                <ul class="dropdown-menu" aria-labelledby="noti-user" style="width: 300px" id="noti">
-                                    <li><a href="#">HTML</a></li>
-                                    <li><a href="#">HTML</a></li>
-                                    <li><a href="#">HTML</a></li>
-                                    <li><a href="#">HTML</a></li>
-                                    <li><a href="#" class="text-center"><strong>Xem tất cả </strong><i class="fa fa-angle-double-right"></i></a></li>
+                                                                                     aria-hidden="true"></i>
+                                <span id="numberOfNoti">1</span></a>
+                                <ul class="dropdown-menu" aria-labelledby="noti-user" style="width: 300px" id="notification">
+                                    <li>
+                                        <a>
+                                            <span>Chính tòa Đà Nẵng</span><br/>
+                                            <span>Film festivals used to be do-or-die moments for movie makers. They were where...</span>
+                                        </a>
+                                    </li>
+
+                                    <li><a href="${pageContext.request.contextPath}/user/notifications" class="text-center"><strong>Xem tất cả </strong><i
+                                            class="fa fa-angle-double-right"></i></a></li>
                                 </ul>
                             </li>
                             <li class="dropdown list-category" style="border-left: none">
@@ -74,7 +79,7 @@
                                         đóng góp</a></li>
                                     <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> Lịch sử câu
                                         hỏi</a></li>
-                                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>

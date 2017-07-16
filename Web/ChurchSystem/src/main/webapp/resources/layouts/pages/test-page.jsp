@@ -26,6 +26,154 @@
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
+<!-- popup -->
+<div id="userPopup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Form 1</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_content form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Username:</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Account ID:<span
+                                        class="required">*</span></label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Email<span
+                                        class="required">*</span></label>
+                                <div class="col-md-9 col-sm-6 col-xs-12">
+                                    <input required="required" class="form-control col-md-7 col-xs-12" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone:</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Cert:</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Subject:</label>
+                                <div class="col-md-9 col-sm-3 col-xs-12">
+                                    <select class="form-control">
+                                        <option>Choose option</option>
+                                        <option>Option one</option>
+                                        <option>Option two</option>
+                                        <option>Option three</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-3 col-xs-12 col-md-offset-3">
+                                    <select multiple="" class="ui fluid dropdown" id="test2">
+                                        <option value="">Skills</option>
+                                        <option value="angular">Angular</option>
+                                        <option value="css">CSS</option>
+                                        <option value="design">Graphic Design</option>
+                                        <option value="ember">Ember</option>
+                                        <option value="html">HTML</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+        <!-- /Modal content -->
+    </div>
+</div>
+<!-- /popup -->
+
+<!-- popup -->
+<div id="roomPopup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Form 2</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_content form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Room:</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Subject:</label>
+                                <div class="col-md-9 col-sm-3 col-xs-12">
+                                    <select class="form-control">
+                                        <option>Choose option</option>
+                                        <option>Option one</option>
+                                        <option>Option two</option>
+                                        <option>Option three</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-3 col-xs-12 col-md-offset-3">
+                                    <select multiple="" class="ui fluid dropdown" id="roomDropdown">
+                                        <option value="">Skills</option>
+                                        <option value="angular">Angular</option>
+                                        <option value="css">CSS</option>
+                                        <option value="design">Graphic Design</option>
+                                        <option value="ember">Ember</option>
+                                        <option value="html">HTML</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+        <!-- /Modal content -->
+    </div>
+</div>
+<!-- /popup -->
+
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/js/test.js"/>"></script>

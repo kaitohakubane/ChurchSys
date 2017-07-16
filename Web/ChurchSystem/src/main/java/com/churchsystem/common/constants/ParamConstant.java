@@ -113,8 +113,9 @@ public class ParamConstant {
     public static final String CONDUCTOR_LIST = "conductorList";
     public static final String SLOT_ID = "slotId";
     public static final String SLOT_DATE = "slotDate";
-    public static final int SLOT_CONFLICT_STATUS = 0;
+    public static final int SLOT_CONFLICT_STATUS = 2;
     public static final int SLOT_OK_STATUS = 1;
+    public static final int SLOT_FINISH_STATUS = 3;
     public static final String SLOT_ENTITY = "slotEntity";
     public static final String NEW_START_TIME = "newStartTime";
     public static final String NEW_END_TIME = "newEndTime";
@@ -144,7 +145,6 @@ public class ParamConstant {
     public static final String STREAM_LINK = "streamLink";
     public static final String STREAM_CODE = "streamCode";
     public static final String STREAM_TITLE = "streamTitle";
-
 
     /**
      * User

@@ -333,6 +333,10 @@ function loadEvent() {
                 if (e.status == 0) {
                     e.color = '#ef0909'
                 }
+
+                if(e.eventStatus==1){
+                    e.color="#ff4fc1"
+                }
             })
 
         },

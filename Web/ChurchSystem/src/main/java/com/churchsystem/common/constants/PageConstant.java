@@ -58,7 +58,8 @@ public class PageConstant {
     //Notification
     public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";
     public static final String GET_NOTIFICATION_URL = "/notification/getNotification";
-    public static final String GET_NOTIFICATION_LIST_URL = "/notification/notificationList";
+    public static final String MANAGER_NOTIFICATION_URL = "/manager/notifications";
+    public static final String USER_NOTIFICATION_URL = "/user/notifications";
 
 
     //Class
@@ -77,14 +78,13 @@ public class PageConstant {
     public static final String CHURCH_HOME_URL = "/church";
     public static final String CHURCH_SCHEDULE_URL = "/church/schedule";
     public static final String CHURCH_SEARCH_URL = "/church/Search";
-    public static final String CLASS_URL = "/church/class";
+    public static final String CHURCH_INFO_URL = "/church/info";
 
     public static final String CHURCH_MANAGEMENT_URL = "/admin/church-management";
     // Contribution
 
 
     // User
-    public static final String USER_NOTIFICATION_URL = "/user/notification";
     public static final String PRIEST_MANAGEMENT_URL = "/manager/priest-management";
     public static final String ADD_NEW_PRIEST_URL = "/manager/priest-management/add-new-priest";
 
@@ -128,6 +128,7 @@ public class PageConstant {
 
     // User
     public static final String NOTIFICATION_PAGE = "notification-page";
+    public static final String USER_NOTIFICATION_PAGE="/user-pages/user-notification-page";
     public static final String PRIEST_MANAGEMENT_PAGE = "priest-management-page";
 
     // Slot

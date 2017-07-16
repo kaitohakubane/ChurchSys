@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Time;
 
 /**
- * Created by hungmcse61561-admin on 7/7/2017.
+ * Created by hungmcse61561-admin on 7/16/2017.
  */
 @Entity
 @Table(name = "church", schema = "churchsys", catalog = "")
@@ -18,6 +18,7 @@ public class ChurchEntity {
     private String mail;
     private Time startTime;
     private Time endTime;
+    private String image;
     private String description;
     private String streamName;
     private String streamLink;
@@ -113,6 +114,16 @@ public class ChurchEntity {
     }
 
     @Basic
+    @Column(name = "image")
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Basic
     @Column(name = "description")
     public String getDescription() {
         return description;
@@ -158,6 +169,7 @@ public class ChurchEntity {
         if (mail != null ? !mail.equals(that.mail) : that.mail != null) return false;
         if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
         if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
+        if (image != null ? !image.equals(that.image) : that.image != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (streamName != null ? !streamName.equals(that.streamName) : that.streamName != null) return false;
         if (streamLink != null ? !streamLink.equals(that.streamLink) : that.streamLink != null) return false;
@@ -176,6 +188,7 @@ public class ChurchEntity {
         result = 31 * result + (mail != null ? mail.hashCode() : 0);
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
         result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (streamName != null ? streamName.hashCode() : 0);
         result = 31 * result + (streamLink != null ? streamLink.hashCode() : 0);

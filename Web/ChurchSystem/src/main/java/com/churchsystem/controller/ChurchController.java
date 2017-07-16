@@ -84,4 +84,13 @@ public class ChurchController {
         modelAndView.addObject(ParamConstant.CHURCH_LIST, churchDisplayEntities);
         return modelAndView;
     }
+
+    @RequestMapping(value = PageConstant.CHURCH_INFO_URL, method = RequestMethod.GET)
+    public ModelAndView inChurchInfoPage() {
+        ModelAndView modelAndView = new ModelAndView();
+
+
+        return modelAndView;
+    }
+
 }

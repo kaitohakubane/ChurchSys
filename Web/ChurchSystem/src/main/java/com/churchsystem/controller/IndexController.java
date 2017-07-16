@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,8 +50,11 @@ public class IndexController {
     }
 
     @RequestMapping(value = {PageConstant.ROOT_PATH_URL}, method = RequestMethod.GET)
-    public ModelAndView initHomePage() {
+    public ModelAndView initHomePage(@RequestParam(value=ParamConstant.STREAM_LINK,required = false) String streamLink) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.MAP_PAGE);
+        if(streamLink!=null){
+            modelAndView.addObject(ParamConstant.STREAM_LINK,streamLink);
+        }
         return modelAndView;
     }
 
@@ -82,4 +86,5 @@ public class IndexController {
         }
         return "redirect:/";
     }
+
 }

@@ -21,6 +21,9 @@ public class EventDisplayEntity {
     private int privacy;
     private String description;
     private Integer status;
+    private String streamLink;
+    private String streamCode;
+    private int eventStatus;
 
     public EventDisplayEntity() {
     }
@@ -41,6 +44,33 @@ public class EventDisplayEntity {
         }
         this.description=dataEntity.getDescription();
         this.status=dataEntity.getStatus();
+        this.streamLink=dataEntity.getStreamLink();
+        this.streamCode=dataEntity.getStreamCode();
+        this.eventStatus=dataEntity.getEventStatus();
+    }
+
+    public int getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(int eventStatus) {
+        this.eventStatus = eventStatus;
+    }
+
+    public String getStreamLink() {
+        return streamLink;
+    }
+
+    public void setStreamLink(String streamLink) {
+        this.streamLink = streamLink;
+    }
+
+    public String getStreamCode() {
+        return streamCode;
+    }
+
+    public void setStreamCode(String streamCode) {
+        this.streamCode = streamCode;
     }
 
     public Integer getStatus() {

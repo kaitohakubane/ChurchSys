@@ -2,16 +2,21 @@
  * Created by hungmcse61561-admin on 6/29/2017.
  */
 
-
+var STREAM_URL = "/manager/stream";
 /**
  * Display the notification message.
  */
-function notify(message,type,link) {
-    $("#menu1").append("<li> <a> <span>Chính tòa Đà Nẵng</span> <span class='message'> " +
-        "Film festivals used to be do-or-die moments for movie makers. They were where... </span> </a> </li>")
+$(document).ready(function () {
+    $("#streamOption").on("click", function () {
+        post(contextPath + STREAM_URL)
+    })
+})
+function notify(information, link, time, sender) {
+    $("#notification").append("<li> <a href='"+contextPath+link+"'> <span> " + sender + " </span> <span class='message'> " + information +
+        " </span> <span>" + time + " </span></span></span> </a> </li>")
 
-    var count=parseInt($("#numberOfNoti").html());
-    $("#numberOfNoti").html(count+1);
+    var count = parseInt($("#numberOfNoti").html());
+    $("#numberOfNoti").html(count + 1);
 
 }
 

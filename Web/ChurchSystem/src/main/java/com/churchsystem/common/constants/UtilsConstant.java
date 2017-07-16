@@ -26,8 +26,7 @@ public class UtilsConstant {
     public static final int STREAM_ON_STATUS=1;
     public static final String TIME_DELIMETER=":";
     public static final int TEN=10;
-
-
+    public static final String SYSTEM_NAME="Hệ thống";
     public static final int NOTIFICATION_LIST_NUMBER_DEFAULT=50;
     public static final int NOTIFICATION_NUMBER_DEFAULT=20;
 

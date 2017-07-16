@@ -93,10 +93,13 @@ public class RegistrationController {
             notificationEntity.setType(ParamConstant.DEFAULT_TYPE);
             notificationEntity.setUserId(user.getUserId());
             notificationEntity.setInformation(information);
+            notificationEntity.setSender(UtilsConstant.SYSTEM_NAME);
             ////////////////////////////////////
             notificationEntity.setLink("");
             notificationServiceInterface.addNotification(notificationEntity);
-            notificationServiceInterface.notify(notificationEntity, managerAccount);
+            Notification msgEntity=new Notification(notificationEntity);
+
+            notificationServiceInterface.notify(msgEntity, managerAccount);
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

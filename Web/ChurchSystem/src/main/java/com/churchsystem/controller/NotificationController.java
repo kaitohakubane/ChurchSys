@@ -3,8 +3,11 @@ package com.churchsystem.controller;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
+import com.churchsystem.entity.ChurchEntity;
+import com.churchsystem.entity.Notification;
 import com.churchsystem.entity.NotificationEntity;
 import com.churchsystem.entity.UserEntity;
+import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.NotificationServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,9 @@ public class NotificationController {
     @Autowired
     NotificationServiceInterface notificationServiceInterface;
 
+    @Autowired
+    ChurchServiceInterface churchServiceInterface;
+
     @ResponseBody
     @RequestMapping(value = PageConstant.STREAM_NOTIFICATION_URL, method = RequestMethod.GET)
     public void pushNotification(@RequestParam(value = ParamConstant.NOTIFICATION_LINK) String link,
@@ -40,6 +46,7 @@ public class NotificationController {
 
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         String information = ParamConstant.EVENT_NAME_PRE + title + ParamConstant.STREAM_MESSAGE;
+        ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
         Timestamp time = new Timestamp(System.currentTimeMillis());
         List<String> listAccount = userServiceInterface.getListOfChurchFollower(churchId);
         for (String accountId : listAccount) {
@@ -47,12 +54,14 @@ public class NotificationController {
             UserEntity user = userServiceInterface.getUserByAccountId(accountId);
             temp.setUserId(user.getUserId());
             temp.setInformation(information);
+            temp.setSender(churchEntity.getChurchName());
             temp.setLink(link);
             temp.setTime(time);
             temp.setType(ParamConstant.YOUTUBE_TYPE);
             notificationServiceInterface.addNotification(temp);
+            Notification msgEntity = new Notification(temp);
             notificationServiceInterface.notify(
-                    temp, // notification object
+                    msgEntity, // notification object
                     accountId                    // username
             );
         }
@@ -63,24 +72,71 @@ public class NotificationController {
     @RequestMapping(value = PageConstant.GET_NOTIFICATION_URL, method = RequestMethod.POST)
     public List<NotificationEntity> getNotification() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String accountId=auth.getName();
-        UserEntity user=userServiceInterface.getUserByAccountId(accountId);
-        List<NotificationEntity> notifications=notificationServiceInterface
-                .getUserNotification(user.getUserId(),UtilsConstant.NOTIFICATION_NUMBER_DEFAULT);
+        String accountId = auth.getName();
+        UserEntity user = userServiceInterface.getUserByAccountId(accountId);
+        List<NotificationEntity> notifications = notificationServiceInterface
+                .getUserNotification(user.getUserId(), UtilsConstant.NOTIFICATION_NUMBER_DEFAULT);
         return notifications;
     }
 
 
-
-    @RequestMapping(value = PageConstant.GET_NOTIFICATION_LIST_URL, method = RequestMethod.GET)
+    @RequestMapping(value = PageConstant.MANAGER_NOTIFICATION_URL, method = RequestMethod.GET)
     public ModelAndView getListNotification() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String accountId=auth.getName();
-        UserEntity user=userServiceInterface.getUserByAccountId(accountId);
-        List<NotificationEntity> notifications=notificationServiceInterface
-                .getUserNotification(user.getUserId(),UtilsConstant.NOTIFICATION_LIST_NUMBER_DEFAULT);
-        ModelAndView modelAndView=new ModelAndView(PageConstant.NOTIFICATION_PAGE);
-        modelAndView.addObject(ParamConstant.NOTIFICATION_LIST,notifications);
+        String accountId = auth.getName();
+        UserEntity user = userServiceInterface.getUserByAccountId(accountId);
+        List<NotificationEntity> notifications = notificationServiceInterface
+                .getUserNotification(user.getUserId(), UtilsConstant.NOTIFICATION_LIST_NUMBER_DEFAULT);
+        ModelAndView modelAndView = new ModelAndView(PageConstant.NOTIFICATION_PAGE);
+        modelAndView.addObject(ParamConstant.NOTIFICATION_LIST, notifications);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = PageConstant.USER_NOTIFICATION_URL, method = RequestMethod.GET)
+    public ModelAndView loadUserNotificationPage() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String accountId = auth.getName();
+        UserEntity user = userServiceInterface.getUserByAccountId(accountId);
+        List<NotificationEntity> notifications = notificationServiceInterface
+                .getUserNotification(user.getUserId(), UtilsConstant.NOTIFICATION_LIST_NUMBER_DEFAULT);
+        ModelAndView modelAndView = new ModelAndView(PageConstant.USER_NOTIFICATION_PAGE);
+        modelAndView.addObject(ParamConstant.NOTIFICATION_LIST, notifications);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView testNotification() {
+        ModelAndView modelAndView=new ModelAndView("test-page");
+        NotificationEntity temp = new NotificationEntity();
+        UserEntity user = userServiceInterface.getUserByAccountId("hungmc");
+        temp.setUserId(user.getUserId());
+        temp.setInformation("Bạn Hưng quá giỏi giỏi quá de i luv you pặc pặc");
+        temp.setSender("Hệ thống");
+        temp.setLink("/manager/notifications");
+        temp.setTime(new Timestamp(System.currentTimeMillis()));
+        temp.setType(ParamConstant.DEFAULT_TYPE);
+        notificationServiceInterface.addNotification(temp);
+        Notification msgEntity = new Notification(temp);
+        notificationServiceInterface.notify(
+                msgEntity, // notification object
+                "hungmc"                    // username
+        );
+
+
+        user = userServiceInterface.getUserByAccountId("vongnlh");
+        temp.setUserId(user.getUserId());
+        temp.setInformation("Bạn Hưng User quá giỏi giỏi quá de i luv you pặc pặc");
+        temp.setSender("Hệ thống");
+        temp.setLink("/user/notifications");
+        temp.setTime(new Timestamp(System.currentTimeMillis()));
+        temp.setType(ParamConstant.DEFAULT_TYPE);
+        notificationServiceInterface.addNotification(temp);
+        msgEntity = new Notification(temp);
+        notificationServiceInterface.notify(
+                msgEntity, // notification object
+                "vongnlh"                    // username
+        );
         return modelAndView;
     }
 }

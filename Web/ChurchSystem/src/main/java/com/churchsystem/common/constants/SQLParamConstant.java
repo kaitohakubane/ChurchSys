@@ -40,7 +40,8 @@ public class SQLParamConstant {
             "sru.conductorId as conductorId, sru.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
             "st.endTime as endTime, sru.userName as conductorName, sru.slotDate as slotDate, sru.roomName as roomName, " +
             "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
-            "e.eventName as eventName, sru.slotStatus as status FROM (SELECT sr.*,u.userName " +
+            "e.eventName as eventName, sru.slotStatus as status, sru.streamLink as streamLink, sru.streamCode as streamCode" +
+            " FROM (SELECT sr.*,u.userName " +
             "FROM (SELECT s.*,r.roomName FROM slot s LEFT JOIN room r ON s.roomId = r.roomId) " +
             "sr LEFT JOIN user u ON sr.conductorId = u.userId)sru, subject su,event e, " +
             "(SELECT i.slotId, MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime FROM slothour sh, inclusion i, slot s " +

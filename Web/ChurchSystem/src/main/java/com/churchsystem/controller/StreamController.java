@@ -24,7 +24,7 @@ public class StreamController {
     @Autowired
     ChurchServiceInterface churchServiceInterface;
 
-    @RequestMapping(value = PageConstant.STREAM_URL, method = RequestMethod.GET)
+    @RequestMapping(value = PageConstant.STREAM_URL, method = RequestMethod.POST)
     public ModelAndView loadStreamPage(@RequestParam(value = ParamConstant.STREAM_LINK, required = false) String streamLink,
                                        @RequestParam(value = ParamConstant.STREAM_CODE, required = false) String streamCode) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.STREAM_PAGE);

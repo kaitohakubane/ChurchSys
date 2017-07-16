@@ -33,15 +33,15 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/admin/church-management">Quản lí nhà thờ</a>
-                    </li>
+                    <li><a href="${pageContext.request.contextPath}/index"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/church-management">Quản lí nhà thờ</a></li>
                     <li><a href="${pageContext.request.contextPath}/manager/schedule">Event Schedule</a></li>
                     <li><a href="${pageContext.request.contextPath}/manager/stream">Stream</a></li>
                     <li><a href="${pageContext.request.contextPath}/manager/priest-management">Quản lí thành viên nhà thờ</a></li>
                     <li><a href="${pageContext.request.contextPath}/manager/room-management">Quản lí phòng</a></li>
+                    <li><a id="streamOption">Stream</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/priest-manager">Quản lí thành viên nhà thờ</a></li>
+
                 </ul>
             </div>
         </div>
@@ -100,7 +100,7 @@
                         <i class="fa fa-envelope-o"></i>
                         <span id="numberOfNoti" class="badge bg-green">6</span>
                     </a>
-                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <ul id="notification" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
                             <a>
 

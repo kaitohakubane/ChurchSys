@@ -24,13 +24,16 @@ public class EventDataEntity {
     private Integer eventStatus;
     private String eventName;
     private Integer status;
+    private String streamLink;
+    private String streamCode;
 
     public EventDataEntity() {
     }
 
     public EventDataEntity(int slotId, int eventId, Integer conductorId, Integer roomId, Integer subId, Date slotDate,
                            Time startTime, Time endTime, String conductorName, String roomName, Boolean privacy,
-                           String description, String subName, Integer eventStatus, String eventName, Integer status) {
+                           String description, String subName, Integer eventStatus, String eventName, Integer status,
+                           String streamLink, String streamCode) {
         this.slotId = slotId;
         this.eventId = eventId;
         this.conductorId = conductorId;
@@ -47,6 +50,24 @@ public class EventDataEntity {
         this.eventStatus = eventStatus;
         this.eventName = eventName;
         this.status = status;
+        this.streamLink = streamLink;
+        this.streamCode = streamCode;
+    }
+
+    public String getStreamLink() {
+        return streamLink;
+    }
+
+    public void setStreamLink(String streamLink) {
+        this.streamLink = streamLink;
+    }
+
+    public String getStreamCode() {
+        return streamCode;
+    }
+
+    public void setStreamCode(String streamCode) {
+        this.streamCode = streamCode;
     }
 
     public int getSlotId() {
