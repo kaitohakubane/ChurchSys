@@ -122,6 +122,11 @@ html, body {
 
 /*vertical-navbar*/
 
+.church-name {
+    font-weight: bold;
+    text-align: center;
+}
+
 #sidebar-wrapper {
     margin-left: -230px;
     left: 40px;
@@ -130,6 +135,7 @@ html, body {
     height: 100%;
     z-index: 10000;
     transition: all .4s ease 0s;
+
 }
 
 .sidebar-nav {
@@ -155,8 +161,7 @@ html, body {
 }
 
 .sidebar-nav li {
-    line-height: 40px;
-    text-indent: 44px;
+    line-height: 25px;
 }
 
 #wrapper.active .sidebar-nav li a:hover {
@@ -168,6 +173,7 @@ html, body {
 .sidebar-nav > .sidebar-brand {
     font-size: 18px;
     line-height: 50px;
+    text-align: center;
 }
 li.sidebar-brand a {
     background-color: #7ab33e;
@@ -186,11 +192,12 @@ li.sidebar-brand a {
     width: 230px;
     transition: all .4s ease 0s;
     background: #fff;
+    overflow: auto;
 }
 #wrapper.active .sidebar-nav li{
     border-right: 1px solid rgba(255, 255, 255, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: #7ab33e;
+    border-bottom: 1px solid #7ab33e;
+    background-color: #fff;
 }
 /*=======*/
 /*nav*/

@@ -218,7 +218,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
         infoWindow.open(map, marker);
     });
 
-    var sidebarHTML = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div>"
+    var sidebarHTML = "<div class='church-name'>" + churchName + "</div> <div class='address'>" + address + "</div>"
     $("#sidebar").append("<li id="+churchId+">" + sidebarHTML + "</li>")
     markers.push(marker);
 
