@@ -33,15 +33,12 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a href="${pageContext.request.contextPath}/index"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/church-management">Quản lí nhà thờ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/schedule">Event Schedule</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/stream">Stream</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/priest-management">Quản lí thành viên nhà thờ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/room-management">Quản lí phòng</a></li>
-                    <li><a id="streamOption">Stream</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/priest-manager">Quản lí thành viên nhà thờ</a></li>
-
+                    <li><a href="${pageContext.request.contextPath}/index"><i class="fa fa-university"></i> Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/church-management"><i class="fa fa-home"></i> Quản lí nhà thờ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/schedule"><i class="fa fa-calendar"></i> Lịch sự kiện</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/priest-management"><i class="fa fa-users"></i> Quản lí thành viên nhà thờ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/manager/room-management"><i class="fa fa-server"></i> Quản lí phòng</a></li>
+                    <li><a id="streamOption"><i class="fa fa-video-camera"></i> Stream</a></li>
                 </ul>
             </div>
         </div>

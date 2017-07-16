@@ -71,7 +71,7 @@
                                                     </c:choose>
                                                 </div>
                                             </div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-11">
                                                 <div>
                                                     <div class="col-md-9 name">${item.sender}</div>
                                                     <div class="col-md-3 time">${item.time}</div>
@@ -79,10 +79,6 @@
                                                 <div class="col-md-12 message">
                                                         ${item.information}
                                                 </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button class="col-md-12 btn btn-primary">Go</button>
-                                                <button class="col-md-12 btn btn-default">Cancel</button>
                                             </div>
                                         </div>
                                     </div>

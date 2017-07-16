@@ -381,17 +381,83 @@ span.input-group-addon i {
 
 /*============*/
 /*noti*/
-#noti li {
-    background: #7ab33e;
+.dropdown-menu.space li {
+    background: #f9f9f9;
     padding: 5px;
     margin: 5px 5px 0 5px;
 }
-#noti li a:hover{
-    background: #64992d;
+.dropdown-menu.space li a:hover{
+    background: #eee;
 }
-#noti li a{
+.dropdown-menu.space li a{
+    color: #000;
+}
+.dropdown-menu.space li:first-child {
+    margin-top: 0;
+}
+.dropdown-menu.space span {
+    white-space: normal;
+}
+.dropdown-menu.space a .message {
+    display: block !important;
+}
+
+/*=============*/
+/*class*/
+.class-list {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    line-height: 35px;
+    font-size: 15px;
+}
+.class-list-title {
+    border-bottom: 1px solid #ddd;
+    background-color: #7ab33e;
+}
+ul.class-list-title{
+    padding-left: 0px;
+    text-align: center;
+}
+.class-list-title li a{
+    font-size: 18px;
     color: #fff;
 }
-#noti li:first-child {
-    margin-top: 0;
+.class-element li a{
+    color: #000;
+}
+.class-element li a:hover{
+    text-decoration: underline;
+}
+
+/*===============*/
+/*intro*/
+.title-home-page h2{
+    margin-top: 0px;
+}
+
+/*================*/
+/*nav-class*/
+.nav-class {
+    background-color: #dff0d8;
+}
+.nav-class > ul {
+    padding: 5px 0 28px 0;
+}
+.nav-class > ul > li {
+    float: left;
+    width: 12.5%;
+}
+.nav-class > ul > li > a {
+    font-size: 17px;
+    color: #3c763d;
+    border-left: 2px solid white;
+    display: block;
+    text-align: center;
+}
+.nav-class > ul > li:first-child > a{
+    border: none;
+}
+.nav-class > ul > li a:hover {
+    background-color: #cfe2c7;
+    transition: all 0.5s;
 }

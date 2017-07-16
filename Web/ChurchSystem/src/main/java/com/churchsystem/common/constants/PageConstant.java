@@ -123,7 +123,7 @@ public class PageConstant {
     public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
     public static final String CHURCH_CLASS_PAGE = "/user-pages/class-registration-page";
-
+    public static final String INTRODUCTION_PAGE="/user-pages/introduce-page";
     public static final String CHURCH_MANAGEMENT_PAGE = "church-management-page";
 
 

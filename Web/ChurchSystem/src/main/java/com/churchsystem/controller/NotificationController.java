@@ -112,7 +112,7 @@ public class NotificationController {
         UserEntity user = userServiceInterface.getUserByAccountId("hungmc");
         temp.setUserId(user.getUserId());
         temp.setInformation("Bạn Hưng quá giỏi giỏi quá de i luv you pặc pặc");
-        temp.setSender("Hệ thống");
+        temp.setSender("Hệ thống: ");
         temp.setLink("/manager/notifications");
         temp.setTime(new Timestamp(System.currentTimeMillis()));
         temp.setType(ParamConstant.DEFAULT_TYPE);
@@ -127,7 +127,7 @@ public class NotificationController {
         user = userServiceInterface.getUserByAccountId("vongnlh");
         temp.setUserId(user.getUserId());
         temp.setInformation("Bạn Hưng User quá giỏi giỏi quá de i luv you pặc pặc");
-        temp.setSender("Hệ thống");
+        temp.setSender("Hệ thống: ");
         temp.setLink("/user/notifications");
         temp.setTime(new Timestamp(System.currentTimeMillis()));
         temp.setType(ParamConstant.DEFAULT_TYPE);

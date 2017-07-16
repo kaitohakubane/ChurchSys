@@ -86,10 +86,18 @@ public class ChurchController {
     }
 
     @RequestMapping(value = PageConstant.CHURCH_INFO_URL, method = RequestMethod.GET)
-    public ModelAndView inChurchInfoPage() {
+    public ModelAndView getIntroducePage(@RequestParam(value = ParamConstant.CHURCH_ID) String id) {
         ModelAndView modelAndView = new ModelAndView();
+        try {
+            int churchId = Integer.parseInt(id);
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            if (churchEntity != null) {
+                modelAndView = new ModelAndView(PageConstant.INTRODUCTION_PAGE);
+            }
 
-
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         return modelAndView;
     }
 

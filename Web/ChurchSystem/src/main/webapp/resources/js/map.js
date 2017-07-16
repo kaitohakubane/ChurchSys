@@ -220,8 +220,8 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
     var sidebarHTML = "<div class='church-name'>" + churchName + "</div> <div class='address'>" + address + "</div>" +
         "<div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>" +
-        "<button class='churchFollowBtn' id=" + churchId + ">Follow </button>" +
-        "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
+        "<div class='btnDiv'><button class='churchFollowBtn' id=" + churchId + ">Follow </button>" +
+        "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button></div>"
     $("#sidebar").append("<li id=" + churchId + ">" + sidebarHTML + "</li>")
     markers.push(marker);
 

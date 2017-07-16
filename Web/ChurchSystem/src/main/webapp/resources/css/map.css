@@ -293,8 +293,7 @@ button.churchStreamBtn {
     color: #fff;
     padding: 5px;
     margin-bottom: 5px;
-    background: #26B99A;
-    border: 1px solid #169F85;
+    background: #7ab33e;
     border-radius: 3px;
 }
 button.churchStreamBtn:hover {
@@ -306,8 +305,7 @@ button.churchBtn {
     color: #fff;
     padding: 5px;
     margin-left: 5px;
-    background: #26B99A;
-    border: 1px solid #169F85;
+    background: #7ab33e;
     border-radius: 3px;
 }
 button.churchBtn:hover {
@@ -318,8 +316,7 @@ button.churchBtn:hover {
 button.churchFollowBtn {
     color: #fff;
     padding: 5px;
-    background: #26B99A;
-    border: 1px solid #169F85;
+    background: #7ab33e;
     border-radius: 3px;
 }
 button.churchFollowBtn:hover {
@@ -332,6 +329,10 @@ button.churchFollowBtn:hover {
 }
 .info-txt {
     font-size: 14px;
+}
+.btnDiv {
+    margin-bottom: 5px;
+    margin-left: 45px;
 }
 /*=============================*/
 /*=======================*/
@@ -365,17 +366,23 @@ span.input-group-addon i {
 }
 /*============*/
 /*noti*/
-#noti li {
-    background: #7ab33e;
+.dropdown-menu.space li {
+    background: #f9f9f9;
     padding: 5px;
     margin: 5px 5px 0 5px;
 }
-#noti li a:hover{
-    background: #64992d;
+.dropdown-menu.space li a:hover{
+    background: #eee;
 }
-#noti li a{
-    color: #fff;
+.dropdown-menu.space li a{
+    color: #000;
 }
-#noti li:first-child {
+.dropdown-menu.space li:first-child {
     margin-top: 0;
+}
+.dropdown-menu.space span {
+    white-space: normal;
+}
+.dropdown-menu.space a .message {
+    display: block !important;
 }
