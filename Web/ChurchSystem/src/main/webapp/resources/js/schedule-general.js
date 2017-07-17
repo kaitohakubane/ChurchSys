@@ -4,10 +4,12 @@
 
 var UPDATE_EVENT_URL = "/manager/event/Update";
 var DELETE_EVENT_URL = "/manager/event/Delete";
-var REGISTER_STREAM_URL="/manager/stream/Register"
+var REGISTER_STREAM_URL = "/manager/stream/Register"
 var STREAM_URL = "/manager/stream";
 var REGISTER_STREAM_URL = "/manager/stream/Register";
 var dayArray = [];
+var streamResolutionDefault = "240p"
+var workingEvent;
 //
 classListInitial();
 registerClassList();
@@ -31,6 +33,12 @@ $(document).ready(function () {
     });
 
 
+    $("#createStreambtn").on("click", function () {
+        console.log($(this).data("id"))
+        streamRegister($(this).data("id"), $("#resolution").val())
+        $("#resolution").val(streamResolutionDefault);
+        $("#registration").modal('hide');
+    })
 })
 
 
@@ -80,26 +88,29 @@ function inputEventPopupInformation(event) {
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
-    var streamBtn=$("#streamBtn");
-    if(e.streamLink!=null||e.streamLink!=""){
+    var streamBtn = $("#streamBtn");
+    if (event.streamLink != null) {
+        console.log("stream Null")
         streamBtn.removeClass("btn-primary")
         streamBtn.addClass("btn-dark")
-        streamBtn.on("click",function(){
-            var parameter={
-                streamLink:e.streamLink,
-                streamCode:e.streamCode
+        streamBtn.on("click", function (e) {
+            e.preventDefault();
+            var parameter = {
+                streamLink: event.streamLink,
+                streamCode: event.streamCode
             }
-            post(contextPath+STREAM_URL,parameter)
+            post(contextPath + STREAM_URL, parameter)
         })
-    }else{
-        if(streamBtn.attr("class").includes("btn-dark")){
+    } else {
+        if (streamBtn.attr("class").includes("btn-dark")) {
+
             streamBtn.removeClass("btn-dark");
             streamBtn.addClass("btn-primary")
         }
-
-        streamBtn.on("click",function(){
+        streamBtn.unbind("click");
+        streamBtn.on("click", function (e) {
             $("#registration").modal('show');
-            $("#createStreambtn").data('')
+            $("#createStreambtn").data('id', event.slotId);
         })
     }
 
@@ -114,7 +125,6 @@ function inputEventPopupInformation(event) {
             $("#eventDetailIsPublic").click();
         }
     }
-
 
 
     $("#editSlotButton").on("click", function () {
@@ -173,24 +183,30 @@ function appendClassToList(subId) {
 }
 
 function datePickerLoad() {
-    $( "#datepicker" ).datepicker();
-    $( "#datepicker" ).datepicker('option', 'dateFormat' , 'yy-mm-dd');
+    $("#datepicker").datepicker();
+    $("#datepicker").datepicker('option', 'dateFormat', 'yy-mm-dd');
 }
 
-function streamRegister(slotId,resolution){
+function streamRegister(slotId, resolution) {
     var requestURL = contextPath + REGISTER_STREAM_URL;
     var requestMethod = "POST";
     var requestData = {
-        "slotId":slotId,
-        "resolution":resolution
+        "slotId": slotId,
+        "resolution": resolution
     }
 
     $.ajax({
-        url:requestURL,
-        type:requestmethod,
-        data:requestData,
-        success: function(){
-
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function () {
+            $("#calendar").fullCalendar('removeEventSources');
+            loadEvent();
+            $("#calendar").fullCalendar('addEventSource', {
+                events: eventList,
+                color: '#43abc9'
+            })
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

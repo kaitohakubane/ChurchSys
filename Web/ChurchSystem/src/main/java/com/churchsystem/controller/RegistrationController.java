@@ -98,8 +98,10 @@ public class RegistrationController {
             notificationEntity.setLink("");
             notificationServiceInterface.addNotification(notificationEntity);
             Notification msgEntity=new Notification(notificationEntity);
-
             notificationServiceInterface.notify(msgEntity, managerAccount);
+
+            notificationEntity.setType(ParamConstant.DEFAULT_TYPE);
+
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

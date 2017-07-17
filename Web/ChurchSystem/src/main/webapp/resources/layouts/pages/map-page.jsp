@@ -71,8 +71,8 @@
 
 <script>
     var icon = "<c:url value="/resources/img/icons8-Church-48.png"/>"
-    <%--var streaming_icon = "<c:url value="/resources/img/streamming-icon.png"/>"--%>
-    var streaming_icon = "<c:url value="/resources/img/choosing-icon.png"/>"
+    var streaming_icon = "<c:url value="/resources/img/streamming-icon.png"/>"
+    var choosing_icon = "<c:url value="/resources/img/choosing-icon.png"/>"
 </script>
 <script src="<c:url value="/resources/js/map.js"/>"></script>
 </body>

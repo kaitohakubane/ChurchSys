@@ -83,6 +83,7 @@ public class ParamConstant {
     public static final String USER_DEFAULT_EVENT_NAME = "Registered Event";
     public static final String CATEGORY_ID = "categoryId";
     public static final int CLASS_CATEGORY = 4;
+    public static final String NO_NAME_EVENT_TITLE="No name";
 
     /**
      * Subject

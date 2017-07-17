@@ -6,7 +6,7 @@ var CREATE_STREAM_URL = "/manager/stream/Add";
 var START_STREAM_URL="/manager/stream/Start";
 var FINISH_STREAM_URL="/manager/stream/Finish";
 var MANAGER_MAIN_PAGE_URL="/manager/"
-var streamEntity;
+var streamEntity=null;
 $(document).ready(function () {
     Initial();
 })
@@ -17,22 +17,24 @@ function Initial() {
     $("#next").on('click', function () {
         $("#step-1").hide();
         $("#step-2").show();
-        $("#youtubeVideo").attr('src',"https://www.youtube.com/embed/"+streamEntity.streamLink+"?autoplay=1")
-        streamOnAir(streamEntity.streamLink);
-
+        $("#youtubeVideo").attr('src',"https://www.youtube.com/embed/"+streamLink+"?autoplay=1")
+        streamOnAir(streamLink);
     });
 
 
     if (streamLink == "" || streamCode == "") {
         $("#registration").modal("show");
+    }else{
+        $("#streamCode").val(streamCode);
     }
+
 
     $("#createStreambtn").on("click",function(){
         var streamTitle=$("#streamTitle").val();
         var resolution=$("#resolution").val();
         createStream(streamTitle,resolution);
         $("#registration").modal("hide");
-        $("#streamCode").val(streamEntity.streamCode)
+        $("#streamCode").val(streamCode)
     })
 
     $("#end").on("click",function(){
@@ -57,7 +59,8 @@ function createStream(title,resolution) {
         async: false,
         success: function (res) {
             streamEntity=res;
-            console.log(streamEntity);
+            streamLink=streamEntity.streamLink;
+            streamCode=streamEntity.streamCode;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -91,7 +94,7 @@ function completeStream(){
     var requestURL=contextPath+FINISH_STREAM_URL;
     var requestType="POST"
     var requestData={
-        "streamLink":streamEntity.streamLink
+        "streamLink":streamLink
     }
     $.ajax({
         url: requestURL,

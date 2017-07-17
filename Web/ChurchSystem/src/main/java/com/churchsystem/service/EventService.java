@@ -81,6 +81,9 @@ public class EventService implements EventServiceInterface {
         inputEvent.setChurchId(churchId);
         inputEvent.setEventStatus(ParamConstant.WAITING_FOR_APPROVE_STATUS);
         inputEvent.setStartDate(eventDate);
+        if(eventName.equals("")){
+            eventName=ParamConstant.NO_NAME_EVENT_TITLE;
+        }
         inputEvent.setEventName(eventName);
         inputEvent.setSubId(subId);
         inputEvent.setPrivacy(privacy);

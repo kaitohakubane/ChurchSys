@@ -328,7 +328,6 @@ function loadEvent() {
         dataType: 'json',
         success: function (res) {
             eventList = res;
-            console.log(eventList);
             eventList.forEach(function (e) {
 
                 if (e.status == 0) {
