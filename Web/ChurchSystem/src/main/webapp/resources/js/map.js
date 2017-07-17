@@ -9,8 +9,8 @@ var image = {
     scaledSize: new google.maps.Size(50, 50),
 }
 
-var choosingIcon={
-    url:choosing_icon,
+var choosingIcon = {
+    url: choosing_icon,
     scaledSize: new google.maps.Size(50, 50)
 }
 var map;
@@ -36,7 +36,6 @@ $(document).ready(function () {
         $("#youtubeVideo").attr('src', "");
 
     });
-
 
 
     //Hover Menu in Header
@@ -185,7 +184,7 @@ function getCurrentPosition(map, isGetChurch) {
 }
 
 
-function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName,varStatus) {
+function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName, varStatus) {
     var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>";
     var markerIcon = image;
@@ -218,8 +217,12 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
         infoWindow.open(map, marker);
     });
 
-    var sidebarHTML = "<div class='church-name'>" + churchName + "</div> <div class='address'>" + address + "</div>"
-    $("#sidebar").append("<li id="+churchId+">" + sidebarHTML + "</li>")
+    var sidebarHTML = "<div class='church-name'>" + churchName + "</div> <div class='address'>" + address + "</div>" +
+        "<div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
+        startTime + " - " + endTime + "</div>" +
+        "<button class='churchFollowBtn' id=" + churchId + ">Follow </button>" +
+        "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
+    $("#sidebar").append("<li id=" + churchId + ">" + sidebarHTML + "</li>")
     markers.push(marker);
 
 }
@@ -243,13 +246,13 @@ function searchNearLocationAjaxCall(center) {
             infoWindow.close();
             listOfLocation = res;
             var bounds = new google.maps.LatLngBounds();
-            listOfLocation.forEach(function (e,i) {
+            listOfLocation.forEach(function (e, i) {
                 console.log(e.latitude + " - " + e.longitude)
                 console.log(e);
                 var latlng = new google.maps.LatLng(
                     parseFloat(e.latitude),
                     parseFloat(e.longitude));
-                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName,i)
+                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName, i)
                 bounds.extend(latlng);
 
             })
@@ -275,17 +278,17 @@ function gotoChurchPage(e) {
 }
 
 
-function eventChoosing(){
-    $("#sidebar li").hover(function(){
-        var choose=$(this).attr("id");
+function eventChoosing() {
+    $("#sidebar li").hover(function () {
+        var choose = $(this).attr("id");
         console.log(choose);
-        if (choose != "none"){
+        if (choose != "none") {
             markers[choose].setAnimation(google.maps.Animation.BOUNCE);
         }
-    },function(){
-        var choose=$(this).attr("id");
+    }, function () {
+        var choose = $(this).attr("id");
         console.log(choose);
-        if (choose != "none"){
+        if (choose != "none") {
             markers[choose].setAnimation(null);
         }
     })

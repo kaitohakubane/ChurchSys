@@ -4,10 +4,14 @@
 
 var UPDATE_EVENT_URL = "/manager/event/Update";
 var DELETE_EVENT_URL = "/manager/event/Delete";
+var REGISTER_STREAM_URL="/manager/stream/Register"
+var STREAM_URL = "/manager/stream";
+var REGISTER_STREAM_URL = "/manager/stream/Register";
 var dayArray = [];
 //
 classListInitial();
 registerClassList();
+datePickerLoad();
 $(document).ready(function () {
     terminateEventCreateMenu();
     $('.day-checkbox').on('ifChecked', function (event) {
@@ -76,18 +80,42 @@ function inputEventPopupInformation(event) {
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
+    var streamBtn=$("#streamBtn");
+    if(e.streamLink!=null||e.streamLink!=""){
+        streamBtn.removeClass("btn-primary")
+        streamBtn.addClass("btn-dark")
+        streamBtn.on("click",function(){
+            var parameter={
+                streamLink:e.streamLink,
+                streamCode:e.streamCode
+            }
+            post(contextPath+STREAM_URL,parameter)
+        })
+    }else{
+        if(streamBtn.attr("class").includes("btn-dark")){
+            streamBtn.removeClass("btn-dark");
+            streamBtn.addClass("btn-primary")
+        }
+
+        streamBtn.on("click",function(){
+            $("#registration").modal('show');
+            $("#createStreambtn").data('')
+        })
+    }
 
     if (event.privacy == 0) {
         if ($("#eventDetailIsPublic").prop('checked')) {
             console.log($("#eventDetailIsPublic").prop('checked'));
             $("#eventDetailIsPublic").click();
-            console.log('CLick')
+            console.log('Click')
         }
     } else {
         if (!$("#eventDetailIsPublic").prop('checked')) {
             $("#eventDetailIsPublic").click();
         }
     }
+
+
 
     $("#editSlotButton").on("click", function () {
         var parameter = {
@@ -130,9 +158,6 @@ function terminateEventCreateMenu() {
     })
 }
 
-
-
-
 function appendClassToList(subId) {
     var classTab = document.createElement('div');
     classList.forEach(function (item) {
@@ -146,10 +171,33 @@ function appendClassToList(subId) {
     })
     registerClassList();
 }
-$( function() {
+
+function datePickerLoad() {
     $( "#datepicker" ).datepicker();
     $( "#datepicker" ).datepicker('option', 'dateFormat' , 'yy-mm-dd');
-} );
+}
+
+function streamRegister(slotId,resolution){
+    var requestURL = contextPath + REGISTER_STREAM_URL;
+    var requestMethod = "POST";
+    var requestData = {
+        "slotId":slotId,
+        "resolution":resolution
+    }
+
+    $.ajax({
+        url:requestURL,
+        type:requestmethod,
+        data:requestData,
+        success: function(){
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+}
 
 
 

@@ -352,4 +352,29 @@ public class EventController {
         }
         return UtilsConstant.IS_NOT_CLASS;
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.REGISTER_STREAM_URL, method = RequestMethod.POST)
+    public Integer registerStreamEvent(@RequestParam(value = ParamConstant.SLOT_ID) String slotIdStr,
+                                       @RequestParam(value = ParamConstant.STREAM_RESOLUTION) String resolution) {
+        try {
+            int slotId = Integer.parseInt(slotIdStr);
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+
+            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+
+
+            String streamLink = YoutubeAPI.createBroadcast(eventEntity.getEventName(),
+                    new java.util.Date(slotEntity.getSlotDate().getTime())
+                    , UtilsConstant.DEFAULT_VALIDATE_PORT);
+            String streamCode = YoutubeAPI.createStream(streamLink, resolution, streamLink);
+            slotEntity.setStreamLink(streamLink);
+            slotEntity.setStreamCode(streamCode);
+            slotServiceInterface.updateSlot(slotEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return UtilsConstant.IS_NOT_CLASS;
+    }
 }

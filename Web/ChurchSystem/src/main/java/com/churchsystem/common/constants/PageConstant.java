@@ -54,6 +54,7 @@ public class PageConstant {
     public static final String REMOVE_STREAM_URL = "/manager/stream/Delete";
     public static final String START_STREAM_URL = "/manager/stream/Start";
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
+    public static final String REGISTER_STREAM_URL = "/manager/stream/Register";
 
     //Notification
     public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";

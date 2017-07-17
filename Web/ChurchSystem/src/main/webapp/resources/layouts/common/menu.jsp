@@ -120,7 +120,14 @@
                         </span>
                             </a>
                         </li>
-
+                        <li>
+                            <div class="text-center">
+                                <a href="${pageContext.request.contextPath}/manager/notifications">
+                                    <strong>Xem tất cả</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </li>
             </ul>

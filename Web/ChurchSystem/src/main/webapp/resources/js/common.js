@@ -12,7 +12,7 @@ $(document).ready(function () {
     })
 })
 function notify(information, link, time, sender) {
-    $("#notification").append("<li> <a href='"+contextPath+link+"'> <span> " + sender + " </span> <span class='message'> " + information +
+    $("#notification").prepend("<li> <a href='"+contextPath+link+"'> <span> " + sender + " </span> <span class='message'> " + information +
         " </span> <span>" + time + " </span></span></span> </a> </li>")
 
     var count = parseInt($("#numberOfNoti").html());

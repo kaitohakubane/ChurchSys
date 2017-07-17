@@ -51,7 +51,7 @@ $(document).ready(function () {
                 }
             })
 
-            $('#calendar').fullCalendar('renderEvents', listOfCreatingEvent);
+            $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
         }
 
 
@@ -83,7 +83,7 @@ $(document).ready(function () {
                 }
             })
 
-            $('#calendar').fullCalendar('renderEvents', listOfCreatingEvent);
+            $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
         } else {
 
         }
@@ -297,6 +297,7 @@ function generalInitial() {
         })
         $('#eventType').val(firstVal);
     })
+
 }
 
 function clearCreatingEventPopup(timeSlot) {
@@ -337,6 +338,7 @@ function loadEvent() {
                 if(e.eventStatus==1){
                     e.color="#ff4fc1"
                 }
+
             })
 
         },

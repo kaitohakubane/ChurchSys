@@ -61,7 +61,7 @@
                                     <li><a href="${pageContext.request.contextPath}/user/notifications" class="text-center"><strong>Xem tất cả </strong><i
                                             class="fa fa-angle-double-right"></i></a></li>
                                 </ul>
-                            </li>
+                            <s=i>
                             <li class="dropdown list-category" style="border-left: none">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">

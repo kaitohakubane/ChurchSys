@@ -169,7 +169,7 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Event Detail</h2>
-                <button type="button" class="btn btn-primary pull-right">Stream</button>
+                <button type="button" id="streamBtn" class="btn btn-primary pull-right">Stream</button>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -311,6 +311,46 @@
 </div>
 <!-- /popup -->
 
+<!-- popup -->
+<div id="registration" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Chọn phân giải cho stream</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Độ phân giải :</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="resolution">
+                                            <option>240p</option>
+                                            <option>360p</option>
+                                            <option>480p</option>
+                                            <option>720p</option>
+                                            <option>1080p</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" id="createStreambtn" class="btn btn-primary" >OK</button>
+            </div>
+        </div>
+        <!-- /Modal content-->
+    </div>
+</div>
+<!-- /popup -->
 
 <%--====================================================--%>
 <%--====================================================--%>
