@@ -51,18 +51,21 @@ public class RoomController {
             RoomEntity roomEntity = new RoomEntity();
             roomEntity.setChurchId(churchId);
             roomEntity.setRoomName(roomName);
-            roomEntity.setRoomStatus(ParamConstant.DEFAULT_STATUS);
+            roomEntity.setRoomStatus(ParamConstant.NO_SUBJECT_STATUS);
 
             //insert new room
             roomServiceInterface.insertRoom(roomEntity);
 
             //get inserted room
-            RoomEntity newRoom = roomServiceInterface.getRoomByNameAndChurchId(roomName, churchId);
+            RoomEntity newRoom = roomServiceInterface.getRoomByNameAndChurchId(roomName, churchId,ParamConstant.NO_SUBJECT_STATUS);
 
             //map inserted room with subjects
             for (int i = 0; i < selectedSubject.length; i++) {
                 roomServiceInterface.mapRoomWithSubject(newRoom.getRoomId(), selectedSubject[i]);
             }
+
+            newRoom.setRoomStatus(ParamConstant.ENABLE_STATUS);
+            roomServiceInterface.updateRoom(newRoom);
             return ParamConstant.SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();

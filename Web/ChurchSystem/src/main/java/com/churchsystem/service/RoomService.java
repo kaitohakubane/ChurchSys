@@ -38,8 +38,8 @@ public class RoomService implements RoomServiceInterface {
     }
 
     @Override
-    public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
-        return roomModelInterface.getListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId);
+    public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
+        return roomModelInterface.getListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId,subId);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class RoomService implements RoomServiceInterface {
     }
 
     @Override
-    public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
-        return roomModelInterface.getIdListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId);
+    public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
+        return roomModelInterface.getIdListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId,subId);
     }
 
     @Override
@@ -63,8 +63,8 @@ public class RoomService implements RoomServiceInterface {
     }
 
     @Override
-    public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId) {
-        return roomModelInterface.getRoomByNameAndChurchId(roomName, churchId);
+    public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId, int status) {
+        return roomModelInterface.getRoomByNameAndChurchId(roomName, churchId,status);
     }
 
     @Override
@@ -73,5 +73,10 @@ public class RoomService implements RoomServiceInterface {
         roomcapableEntity.setRoomId(roomId);
         roomcapableEntity.setSubId(subId);
         roomModelInterface.mapRoomWithSubject(roomcapableEntity);
+    }
+
+    @Override
+    public void updateRoom(RoomEntity roomEntity){
+        roomModelInterface.updateRoom(roomEntity);
     }
 }

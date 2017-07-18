@@ -36,7 +36,7 @@ $(document).ready(function () {
 function generalInitial() {
     subjectDropdownEvent($('#category'));
     $('#category').change(function () {
-            var firstVal = null;
+
             var categoryValue = $(this).val();
 
             $('#subject option').each(function () {
@@ -49,23 +49,18 @@ function generalInitial() {
                             $(this).hide()
                     })
                 } else {
-                    if (firstVal == null) {
-                        firstVal = item.val();
-                    }
                     $('.menu div').each(function () {
                         if ($(this).data('value') == item.val())
                             $(this).show()
                     })
                 }
             })
-            $('#subject').val(firstVal);
         }
     )
 }
 
 
 function subjectDropdownEvent(category) {
-    var firstVal = null;
 
     var categoryValue = category.val();
     $('#subject option').each(function () {
@@ -76,17 +71,12 @@ function subjectDropdownEvent(category) {
                     $(this).hide()
             })
         } else {
-            if (firstVal == null) {
-                firstVal = item.val();
-            }
-
             $('.menu div').each(function () {
                 if ($(this).data('value') == item.val())
                     $(this).show()
             })
         }
     })
-    $('#subject').val(firstVal);
 }
 
 $("#btnOk").on('click', function (e) {
@@ -119,7 +109,7 @@ function addNewPriest() {
         async: false,
         contentType: 'application/json',
         // processData: false,
-        dataType: 'json',
+        // dataType: 'json',
         success: function () {
             alert("Add success!");
             window.location.href = contextPath + PRIEST_MANAGEMENT;

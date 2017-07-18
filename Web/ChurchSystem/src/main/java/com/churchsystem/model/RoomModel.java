@@ -46,12 +46,13 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
         return result;
     }
 
-    public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
+    public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_ROOM_FOR_SLOT)
                 .setParameter(ParamConstant.NEW_START_TIME, newStartTime)
                 .setParameter(ParamConstant.NEW_END_TIME, newEndTime)
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
                 .setParameter(ParamConstant.SLOT_DATE, slotDate)
+                .setParameter(ParamConstant.SUBJECT_ID,subId)
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<RoomEntity> result = query.list();
         return result;
@@ -67,12 +68,12 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
     }
 
     @Override
-    public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
+    public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_ROOM_ID_FOR_SLOT)
                 .setParameter(ParamConstant.NEW_START_TIME, newStartTime)
                 .setParameter(ParamConstant.NEW_END_TIME, newEndTime)
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
-                .setParameter(ParamConstant.SLOT_DATE, slotDate);
+                .setParameter(ParamConstant.SLOT_DATE, slotDate).setParameter(ParamConstant.SUBJECT_ID,subId);
         List<Integer> result = query.list();
         return result;
     }
@@ -91,13 +92,17 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
         getSession().persist(roomEntity);
     }
     @Override
-    public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId){
+    public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId, int status){
         Criteria criteria = getSession().createCriteria(RoomEntity.class).add(Restrictions.eq("roomName",roomName))
-                .add(Restrictions.eq("churchId",churchId));
+                .add(Restrictions.eq("churchId",churchId))
+                .add(Restrictions.eq("roomStatus",status));
         RoomEntity roomEntity = (RoomEntity) criteria.uniqueResult();
         return roomEntity;
     }
-
+    @Override
+    public void updateRoom(RoomEntity roomEntity) {
+        getSession().saveOrUpdate(roomEntity);
+    }
 
     @Override
     public void mapRoomWithSubject(RoomcapableEntity roomcapableEntity){

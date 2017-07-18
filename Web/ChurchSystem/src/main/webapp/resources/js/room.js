@@ -9,7 +9,7 @@ $(document).ready(function () {
         allowAdditions: true,
         onChange: function () {
             var abc = $('#subject').dropdown('get value');
-
+            console.log(abc);
             listOfSub = [];
             var list = abc[abc.length - 1];
             if (list == null) {
@@ -33,7 +33,7 @@ $(document).ready(function () {
 function generalInitial() {
     subjectDropdownEvent($('#category'));
     $('#category').change(function () {
-            var firstVal = null;
+
             var categoryValue = $(this).val();
 
             $('#subject option').each(function () {
@@ -46,22 +46,17 @@ function generalInitial() {
                             $(this).hide()
                     })
                 } else {
-                    if (firstVal == null) {
-                        firstVal = item.val();
-                    }
                     $('.menu div').each(function () {
                         if ($(this).data('value') == item.val())
                             $(this).show()
                     })
                 }
             })
-            $('#subject').val(firstVal);
         }
     )
 }
 
 function subjectDropdownEvent(category) {
-    var firstVal = null;
 
     var categoryValue = category.val();
     $('#subject option').each(function () {
@@ -72,17 +67,12 @@ function subjectDropdownEvent(category) {
                     $(this).hide()
             })
         } else {
-            if (firstVal == null) {
-                firstVal = item.val();
-            }
-
             $('.menu div').each(function () {
                 if ($(this).data('value') == item.val())
                     $(this).show()
             })
         }
     })
-    $('#subject').val(firstVal);
 }
 
 $("#btnOk").on('click', function (e) {

@@ -17,17 +17,18 @@ public interface RoomModelInterface {
 
     Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId);
 
-    List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
+    List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
     Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId);
 
-    List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
+    List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
     List<RoomEntity> getAllRoom(int churchId);
 
     void insertRoom(RoomEntity roomEntity);
 
-    public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId);
+    RoomEntity getRoomByNameAndChurchId(String roomName, int churchId, int status);
 
     void mapRoomWithSubject(RoomcapableEntity roomcapableEntity);
+    void updateRoom(RoomEntity roomEntity);
 }
