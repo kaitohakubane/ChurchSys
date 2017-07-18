@@ -80,14 +80,17 @@
                     </div>
                     <div class="clearfix"></div>
                     <br>
-                    <div class="col-md-4 col-md-offset-2" style="margin-top: 10px">
+                    <div class="col-md-2 col-md-offset-1">
+                        <button class="col-md-12 btn btn-default" id="guide"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Hướng dẫn cài đặt OBS</button>
+                    </div>
+                    <div class="col-md-4 col-md-offset-1" style="margin-top: 10px">
                         <label class="col-md-3 col-sm-3 col-xs-12">Mã xác nhận :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="text" disabled="disabled" id="streamCode" style="border: 2px solid red;">
                         </div>
                     </div>
-                    <div class="col-md-2 col-md-offset-3">
-                        <button class="col-md-12 btn btn-default" id="next">Tiếp tục</button>
+                    <div class="col-md-2 col-md-offset-1">
+                        <button class="col-md-12 btn btn-default" id="next">Tiếp tục <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
                     </div>
                 </div>
 

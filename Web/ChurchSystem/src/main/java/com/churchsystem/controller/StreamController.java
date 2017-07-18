@@ -54,7 +54,7 @@ public class StreamController {
                 churchEntity.setStreamLink(streamLink);
             }
 
-            if(churchEntity.getStreamName()==null||churchEntity.getStreamName()==""){
+            if (churchEntity.getStreamName() == null || churchEntity.getStreamName() == "") {
                 churchEntity.setStreamName(churchEntity.getStreamName() + UtilsConstant.DEFAULT_DELIMETER + streamTitle);
             } else {
                 churchEntity.setStreamName(streamTitle);
@@ -87,7 +87,7 @@ public class StreamController {
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             churchEntity.setStreamLink(churchEntity.getStreamLink().replace(broadcastId, ""));
 
-            String title=YoutubeAPI.completeStream(broadcastId);
+            String title = YoutubeAPI.completeStream(broadcastId);
 
             churchEntity.setStreamName(churchEntity.getStreamLink().replace(title, ""));
             churchServiceInterface.updateChurch(churchEntity);
@@ -96,4 +96,12 @@ public class StreamController {
         }
     }
 
+    @RequestMapping(value = PageConstant.STREAM_INSTRUCTION_URL, method = RequestMethod.POST)
+    public ModelAndView loadStreamInstruction(@RequestParam(value = ParamConstant.STREAM_LINK, required = false) String streamLink,
+                                              @RequestParam(value = ParamConstant.STREAM_CODE, required = false) String streamCode) {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.STREAM_INSTRUCTION_PAGE);
+        modelAndView.addObject(ParamConstant.STREAM_CODE, streamCode);
+        modelAndView.addObject(ParamConstant.STREAM_LINK, streamLink);
+        return modelAndView;
+    }
 }

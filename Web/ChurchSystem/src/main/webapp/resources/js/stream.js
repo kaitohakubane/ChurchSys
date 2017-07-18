@@ -5,10 +5,12 @@
 var CREATE_STREAM_URL = "/manager/stream/Add";
 var START_STREAM_URL="/manager/stream/Start";
 var FINISH_STREAM_URL="/manager/stream/Finish";
-var MANAGER_MAIN_PAGE_URL="/manager/"
+var MANAGER_MAIN_PAGE_URL="/manager/";
+var STREAM_INSTRUCTION_URL="/manager/stream/instruction";
 var streamEntity=null;
 $(document).ready(function () {
     Initial();
+
 })
 
 function Initial() {
@@ -42,6 +44,14 @@ function Initial() {
         window.location.href=contextPath+MANAGER_MAIN_PAGE_URL;
     })
 
+    var parameter={
+        streamLink: streamLink,
+        streamCode: streamCode
+    }
+
+    $("#guide").on("click",function(){
+        post(contextPath+STREAM_INSTRUCTION_URL,parameter)
+    })
 }
 
 

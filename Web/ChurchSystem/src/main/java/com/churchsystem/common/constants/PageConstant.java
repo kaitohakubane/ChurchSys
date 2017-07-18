@@ -57,6 +57,7 @@ public class PageConstant {
     public static final String START_STREAM_URL = "/manager/stream/Start";
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
     public static final String REGISTER_STREAM_URL = "/manager/stream/Register";
+    public static final String STREAM_INSTRUCTION_URL="/manager/stream/instruction";
 
     //Notification
     public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";
@@ -112,6 +113,7 @@ public class PageConstant {
     public static final String SCHEDULE_PAGE = "schedule-page";
     public static final String EDIT_EVENT_PAGE = "edit-event-page";
     public static final String STREAM_PAGE = "stream-page";
+    public static final String STREAM_INSTRUCTION_PAGE="instruction-page";
 
     // Registration
     public static final String REGISTRATION_PAGE = "registration-page";

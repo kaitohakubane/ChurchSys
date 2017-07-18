@@ -64,6 +64,9 @@
                     </div>
                     <div id="step8" class="tab-pane fade">
                         <div class="text-center"><img src="<c:url value="/resources/img/last.PNG"/>"></div>
+                        <div class="clearfix"></div>
+                        <br>
+                        <button class="btn btn-info col-md-4 col-md-offset-4" id="back">Quay lại trang stream</button>
                     </div>
                 </div>
             </div>
@@ -75,6 +78,11 @@
 </div>
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
+<script>
+    var streamLink="<c:out value="${streamLink}"></c:out>"
+    var streamCode="<c:out value="${streamCode}"></c:out>"
+</script>
 
+<script src="<c:url value="/resources/js/instruction.js"/>"></script>
 </body>
 </html>
