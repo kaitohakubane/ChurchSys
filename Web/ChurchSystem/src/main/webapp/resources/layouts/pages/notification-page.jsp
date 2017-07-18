@@ -32,28 +32,6 @@
                         </div>
                         <div class="x_content">
                             <div class="list-unstyled noti">
-                                <div class="block col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <div class="img-size"><img src="<c:url value="/resources/img/ava.jpg"/>"
-                                                                       class="full-size"/></div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div>
-                                                <div class="col-md-9 name">Nhà thờ Chánh Tòa</div>
-                                                <div class="col-md-3 time">4 tháng 7 lúc 22:20</div>
-                                            </div>
-                                            <div class="col-md-12 message">
-                                                Nhà thờ đang có sự kiện cho lễ phục sinh. Bạn có muốn xem live
-                                                stream sự kiện ?
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button class="col-md-12 btn btn-primary">Go</button>
-                                            <button class="col-md-12 btn btn-default">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
                                 <c:forEach items="${notificationList}" var="item">
                                     <div class="block col-md-12">
                                         <div class="row">

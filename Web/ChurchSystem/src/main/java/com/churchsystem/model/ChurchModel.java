@@ -43,7 +43,8 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
 
     @Override
     public List<ChurchDisplayEntity> getAllChurch(){
-        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_DISPLAYED_CHURCH).setResultTransformer(Transformers.aliasToBean(ChurchDisplayEntity.class));
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_DISPLAYED_CHURCH).setResultTransformer
+                (Transformers.aliasToBean(ChurchDisplayEntity.class));
         List<ChurchDisplayEntity> churchDisplayEntities = query.list();
         return  churchDisplayEntities;
     }

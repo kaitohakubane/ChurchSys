@@ -148,9 +148,9 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate) {
+    public SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate, int subId) {
         Integer conductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId).get(UtilsConstant.ZERO);
-        Integer roomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId).get(UtilsConstant.ZERO);
+        Integer roomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId,subId).get(UtilsConstant.ZERO);
         SlotEntity slotEntity = new SlotEntity();
 
         if (conductorId == null || roomId == null) {
@@ -192,4 +192,21 @@ public class EventService implements EventServiceInterface {
     public void deleteEvent(int eventId) {
         eventModelInterface.deleteEvent(eventId);
     }
+
+    @Override
+    public Integer checkIsManySlot(int slotId) {
+        try {
+            List<SlotEntity> slotEntities = slotModelInterface.getListSlotOfClass(slotId);
+            if (slotEntities.size() == UtilsConstant.ONE) {
+                return UtilsConstant.IS_ONE_SLOT;
+            } else if (slotEntities.size() > UtilsConstant.ONE) {
+                return UtilsConstant.IS_MANY_SLOT;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return UtilsConstant.ERROR;
+    }
+
+
 }

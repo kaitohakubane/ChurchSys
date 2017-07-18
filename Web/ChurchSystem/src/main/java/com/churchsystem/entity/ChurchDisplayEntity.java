@@ -20,11 +20,22 @@ public class ChurchDisplayEntity {
     private String streamLink;
     private Integer userId;
     private String accountId;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public ChurchDisplayEntity() {
     }
 
-    public ChurchDisplayEntity(int churchId, String churchName, Double longitude, Double latitude, String tel, String address, String mail, Time startTime, Time endTime, String description, String streamName, String streamLink, Integer userId, String accountId) {
+    public ChurchDisplayEntity(int churchId, String churchName, Double longitude, Double latitude, String tel,
+                               String address, String mail, Time startTime, Time endTime, String description, String streamName,
+                               String streamLink, Integer userId, String accountId, String image) {
         this.churchId = churchId;
         this.churchName = churchName;
         this.longitude = longitude;
@@ -39,6 +50,7 @@ public class ChurchDisplayEntity {
         this.streamLink = streamLink;
         this.userId = userId;
         this.accountId = accountId;
+        this.image = image;
     }
 
     public int getChurchId() {

@@ -78,7 +78,7 @@
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <select id="subjectId" class="form-control">
                             <option>Choose option</option>
-                            <option value="27">Đám ma</option>
+                            <option value="29">Đám ma</option>
                             <option value="28">Đám cưới</option>
                         </select>
                     </div>

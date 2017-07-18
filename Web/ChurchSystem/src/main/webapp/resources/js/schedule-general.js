@@ -155,9 +155,6 @@ function inputEventPopupInformation(event) {
         else if (currentEventIsMultiSlot == 0) {
             console.log("Selected slot has one slot");
             removeSingleSlot(curSlotId);
-            removeEvent(curEventId);
-            alert('Delete success!');
-            window.location.href = contextPath + SCHEDULE_URL;
         }
     })
 }
@@ -165,8 +162,7 @@ function inputEventPopupInformation(event) {
 $("#oneSlot").on("click", function () {
     console.log("Option remove one slot is selected");
     removeSingleSlot(curSlotId);
-    alert('Delete success!');
-    window.location.href = contextPath + SCHEDULE_URL;
+
 })
 $("#manySlot").on("click", function () {
     console.log("Option remove many slot is selected");
@@ -269,6 +265,7 @@ function removeMultiSlot(slotId) {
         contentType: 'application/json',
         processData: false,
         success: function () {
+            console.log("Removed many slot success!")
             alert('Delete Success!');
             window.location.href = contextPath + SCHEDULE_URL;
         },
@@ -278,27 +275,7 @@ function removeMultiSlot(slotId) {
         }
     })
 }
-function removeEvent(eventId) {
-    var requestURL = contextPath + REMOVE_EVENT;
-    var requestMethod = "POST";
 
-    var requestData = {
-        "eventId": eventId
-    }
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: requestData,
-        async: false,
-        success: function () {
-            console.log("Current slot is belong to event with ID = " + eventId);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Cannot call method Remove Event!")
-            console.error(textStatus);
-        }
-    })
-}
 function checkIsManySlot(event) {
     var requestURL = contextPath + CHECK_IS_MANY_SLOT;
     var requestMethod = "POST";
@@ -345,8 +322,8 @@ function removeSingleSlot(slotId) {
         processData: false,
         success: function (e) {
             console.log("Removed single slot with ID = " + slotId);
-            curEventId = e;
-            console.log("Gotten EventId from deleted slot: " + curEventId);
+            alert('Delete success!');
+            window.location.href = contextPath + SCHEDULE_URL;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

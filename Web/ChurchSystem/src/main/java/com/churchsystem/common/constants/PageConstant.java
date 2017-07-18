@@ -49,6 +49,8 @@ public class PageConstant {
     public static final String REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
     public static final String REMOVE_EVENT = "/manager/schedule/remove-event";
 
+    public static final String UPDATE_DRAG_DROP_EVENT ="/manager/schedule/update-drag-drop-event";
+
     //Stream
     public static final String STREAM_URL = "/manager/stream";
     public static final String SCHEDULE_STREAM_URL = "/manager/stream/Schedule";
@@ -73,6 +75,7 @@ public class PageConstant {
     public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";
     public static final String ADD_REGISTRATION = "/user/registration/Add";
     public static final String GET_ON_PLAN_CLASS_URL = "/church/class";
+    public static final String CLASS_REGISTRATION="/user/registration/Class";
 
     // Room
 

@@ -203,7 +203,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
     html = html + "<button class='churchFollowBtn' id=" + churchId + ">Follow </button>"
     html = html + "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
 
-
+    console.log(churchId);
     var marker = new google.maps.Marker({
         map: map,
         position: latlng,
@@ -221,8 +221,9 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
         "<div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>" +
         "<div class='btnDiv'><button class='churchFollowBtn' id=" + churchId + ">Follow </button>" +
-        "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button></div>"
-    $("#sidebar").append("<li id=" + churchId + ">" + sidebarHTML + "</li>")
+        "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button></div>";
+    console.log(churchId)
+    $("#sidebar").append("<li id=" + varStatus + ">" + sidebarHTML + "</li>")
     markers.push(marker);
 
 }
@@ -246,13 +247,16 @@ function searchNearLocationAjaxCall(center) {
             infoWindow.close();
             listOfLocation = res;
             var bounds = new google.maps.LatLngBounds();
+            if(listOfLocation==null){
+                return;
+            }
             listOfLocation.forEach(function (e, i) {
                 console.log(e.latitude + " - " + e.longitude)
                 console.log(e);
                 var latlng = new google.maps.LatLng(
                     parseFloat(e.latitude),
                     parseFloat(e.longitude));
-                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName, i)
+                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName, i+1)
                 bounds.extend(latlng);
 
             })
@@ -281,13 +285,12 @@ function gotoChurchPage(e) {
 function eventChoosing() {
     $("#sidebar li").hover(function () {
         var choose = $(this).attr("id");
-        console.log(choose);
         if (choose != "none") {
             markers[choose].setAnimation(google.maps.Animation.BOUNCE);
         }
     }, function () {
         var choose = $(this).attr("id");
-        console.log(choose);
+
         if (choose != "none") {
             markers[choose].setAnimation(null);
         }

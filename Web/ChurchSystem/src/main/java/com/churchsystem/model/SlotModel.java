@@ -90,8 +90,8 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     @Override
     public List<SlothourEntity> getSlotHourByTimeRange(Time startTime, Time endTime) {
         Criteria criteria = getSession().createCriteria(SlothourEntity.class)
-                .add(Restrictions.le(ParamConstant.START_TIME, endTime))
-                .add(Restrictions.ge(ParamConstant.END_TIME, startTime));
+                .add(Restrictions.lt(ParamConstant.START_TIME, endTime))
+                .add(Restrictions.gt(ParamConstant.END_TIME, startTime));
         List<SlothourEntity> result = criteria.list();
         return result;
     }

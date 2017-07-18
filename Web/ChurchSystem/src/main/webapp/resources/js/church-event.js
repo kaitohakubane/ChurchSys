@@ -137,14 +137,8 @@ function registerEvent(event, churchId, startTime, estTime, subId) {
         type: requestMethod,
         data: requestData,
         async: false,
-
         success: function (res) {
-            if(res==1){
-                alert("SUCCESS")
-            }else{
-                alert("FAIL")
-            }
-            window.location.reload();
+            $("#eventCreator").fadeOut();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

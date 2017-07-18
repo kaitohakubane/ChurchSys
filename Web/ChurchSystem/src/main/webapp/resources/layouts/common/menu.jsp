@@ -95,28 +95,19 @@
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                        aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
-                        <span id="numberOfNoti" class="badge bg-green">6</span>
+                        <span id="numberOfNoti" class="badge bg-green">1</span>
                     </a>
                     <ul id="notification" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
                             <a>
 
-                                <span>Chính tòa Đà Nẵng</span>
+                                <span>Hệ thống</span>
                                 <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Test message
                         </span>
                             </a>
                         </li>
-                        <li>
-                            <a>
 
-                                <span>Nhà thờ Hòa Khánh</span>
-
-                                <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                            </a>
-                        </li>
                         <li>
                             <div class="text-center">
                                 <a href="${pageContext.request.contextPath}/manager/notifications">

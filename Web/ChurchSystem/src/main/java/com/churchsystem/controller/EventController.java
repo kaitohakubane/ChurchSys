@@ -182,8 +182,8 @@ public class EventController {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
         RoomEntity currentRoom = roomServiceInterface.getRoomById(eventDataEntity.getRoomId());
-        List<RoomEntity> roomEntities = roomServiceInterface.getListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
-        List<Integer> roomIdList = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
+        List<RoomEntity> roomEntities = roomServiceInterface.getListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId, eventDataEntity.getSubId());
+        List<Integer> roomIdList = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId, eventDataEntity.getSubId());
 
         if (!roomIdList.contains(currentRoom.getRoomId())) {
             roomEntities.add(currentRoom);
@@ -217,13 +217,13 @@ public class EventController {
                 typeEntity = slotServiceInterface.getTypeByDescription(eventJsonEntity.getType());
             }
 
+            List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
             //Create Class
-            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId
+            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), datesOfClass.get(0), subId
                     , privacy, churchId, examDate, typeEntity.getTypeId(), false, numberOfSlot);
 
-            List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
 
-            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
+            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS,
                     subId, churchId, false);
 
 
@@ -310,6 +310,30 @@ public class EventController {
     }
 
     @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATE_DRAG_DROP_EVENT, method = RequestMethod.POST)
+    public void updateDragDropEvent(@RequestBody EventJsonEntity eventJsonEntity) {
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
+            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            slotEntity.setSlotDate(slotDate);
+
+            slotServiceInterface.updateSlot(slotEntity);
+
+            slotServiceInterface.deleteSlotHourBySlotId(slotId);
+
+            for (int i = 0; i < slotHour.size(); i++) {
+                eventServiceInterface.mappingResource(slotId, slotHour.get(i));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @ResponseBody
     @RequestMapping(value = PageConstant.UPDATED_REPEAT_EVENT, method = RequestMethod.POST)
     public void updateRepeatEvent(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
@@ -344,12 +368,7 @@ public class EventController {
     public Integer checkIsClass(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
-            List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
-            if (slotEntities.size() == UtilsConstant.ONE) {
-                return UtilsConstant.IS_ONE_SLOT;
-            } else if (slotEntities.size() > UtilsConstant.ONE) {
-                return UtilsConstant.IS_MANY_SLOT;
-            }
+            return eventServiceInterface.checkIsManySlot(slotId);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -358,19 +377,22 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.REMOVE_SINGLE_SLOT, method = RequestMethod.POST)
-    public int removeSingleSlot(@RequestBody EventJsonEntity eventJsonEntity) {
+    public void removeSingleSlot(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            int isManySlot = eventServiceInterface.checkIsManySlot(slotId);
+            int eventId = slotEntity.getEventId();
             slotServiceInterface.deleteSlotHourBySlotId(slotId);
             slotServiceInterface.deleteSlot(slotId);
-
-            return slotEntity.getEventId();
+            if (isManySlot == UtilsConstant.IS_ONE_SLOT) {
+                eventServiceInterface.deleteEvent(eventId);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return UtilsConstant.ERROR;
+
     }
 
     @ResponseBody
@@ -378,30 +400,29 @@ public class EventController {
     public void removeMultiSlot(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            int eventId = slotServiceInterface.getSlotById(slotId).getEventId();
             List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
             for (int i = 0; i < slotEntities.size(); i++) {
                 slotServiceInterface.deleteSlotHourBySlotId(slotEntities.get(i).getSlotId());
                 slotServiceInterface.deleteSlot(slotEntities.get(i).getSlotId());
             }
-
-            int eventId = slotServiceInterface.getSlotById(slotId).getEventId();
             eventServiceInterface.deleteEvent(eventId);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @ResponseBody
-    @RequestMapping(value = PageConstant.REMOVE_EVENT, method = RequestMethod.POST)
-    public void removeEvent(@RequestParam(value = ParamConstant.EVENT_ID) String eventId) {
-        try {
-            Integer curEventId = Integer.parseInt(eventId);
-            eventServiceInterface.deleteEvent(curEventId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    @ResponseBody
+//    @RequestMapping(value = PageConstant.REMOVE_EVENT, method = RequestMethod.POST)
+//    public void removeEvent(@RequestParam(value = ParamConstant.EVENT_ID) String eventId) {
+//        try {
+//            Integer curEventId = Integer.parseInt(eventId);
+//            eventServiceInterface.deleteEvent(curEventId);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
 
     @ResponseBody
