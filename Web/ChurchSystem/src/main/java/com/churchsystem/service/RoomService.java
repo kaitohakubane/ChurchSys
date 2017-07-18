@@ -33,23 +33,23 @@ public class RoomService implements RoomServiceInterface {
     }
 
     @Override
-    public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId) {
-        return roomModelInterface.getSuitableRoomForSlot(slotHourId, slotDate, churchId);
+    public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId, int subId) {
+        return roomModelInterface.getSuitableRoomForSlot(slotHourId, slotDate, churchId, subId);
     }
 
     @Override
     public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
-        return roomModelInterface.getListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId,subId);
+        return roomModelInterface.getListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId, subId);
     }
 
     @Override
-    public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId) {
-        return roomModelInterface.checkRoomForSlot(slotHourId, slotDate, churchId, roomId);
+    public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId, int subId) {
+        return roomModelInterface.checkRoomForSlot(slotHourId, slotDate, churchId, roomId, subId);
     }
 
     @Override
     public List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
-        return roomModelInterface.getIdListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId,subId);
+        return roomModelInterface.getIdListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId, subId);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class RoomService implements RoomServiceInterface {
 
     @Override
     public RoomEntity getRoomByNameAndChurchId(String roomName, int churchId, int status) {
-        return roomModelInterface.getRoomByNameAndChurchId(roomName, churchId,status);
+        return roomModelInterface.getRoomByNameAndChurchId(roomName, churchId, status);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class RoomService implements RoomServiceInterface {
     }
 
     @Override
-    public void updateRoom(RoomEntity roomEntity){
+    public void updateRoom(RoomEntity roomEntity) {
         roomModelInterface.updateRoom(roomEntity);
     }
 }

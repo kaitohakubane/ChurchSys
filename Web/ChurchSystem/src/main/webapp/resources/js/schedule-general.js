@@ -8,7 +8,7 @@ var REGISTER_STREAM_URL = "/manager/stream/Register"
 var STREAM_URL = "/manager/stream";
 var CHECK_IS_MANY_SLOT = "/manager/event/check-is-many-slot";
 var SCHEDULE_URL = "/manager/schedule";
-var REMOVE_EVENT = "/manager/schedule/remove-event";
+// var REMOVE_EVENT = "/manager/schedule/remove-event";
 var REMOVE_SINGLE_SLOT = "/manager/schedule/remove-single-slot";
 var REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
 var dayArray = [];
@@ -16,7 +16,7 @@ var streamResolutionDefault = "240p"
 var workingEvent;
 var currentEventIsMultiSlot;
 var curSlotId;
-var curEventId;
+
 //
 classListInitial();
 registerClassList();
@@ -121,8 +121,6 @@ function inputEventPopupInformation(event) {
             $("#createStreambtn").data('id', event.slotId);
         })
     }
-    checkIsManySlot(event);
-
     if (event.privacy == 0) {
         if ($("#eventDetailIsPublic").prop('checked')) {
             console.log($("#eventDetailIsPublic").prop('checked'));
@@ -135,6 +133,8 @@ function inputEventPopupInformation(event) {
         }
     }
 
+    checkIsManySlot(event);
+    curSlotId = event.slotId;
 
     $("#editSlotButton").on("click", function () {
         var parameter = {
@@ -144,9 +144,9 @@ function inputEventPopupInformation(event) {
     })
 
     $("#btnRemove").on('click', function () {
-        curSlotId = event.slotId;
+
         console.log("Selected slot ID is: " + curSlotId);
-        console.log("Removing slot with ID = " + event.slotId);
+        console.log("Removing slot with ID = " + curSlotId);
 
         if (currentEventIsMultiSlot == 1) {
             console.log("Selected slot has multi slot");
@@ -319,8 +319,8 @@ function removeSingleSlot(slotId) {
         data: JSON.stringify(requestData),
         async: false,
         contentType: 'application/json',
-        processData: false,
-        success: function (e) {
+        // processData: false,
+        success: function () {
             console.log("Removed single slot with ID = " + slotId);
             alert('Delete success!');
             window.location.href = contextPath + SCHEDULE_URL;

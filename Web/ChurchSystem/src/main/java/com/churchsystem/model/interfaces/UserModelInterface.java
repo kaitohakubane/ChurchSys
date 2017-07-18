@@ -18,13 +18,13 @@ public interface UserModelInterface {
 
     int getChurchIdByUserId(int userId);
 
-    Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId);
+    Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId);
 
-    List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
+    List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
-    Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId);
+    Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId, int subId);
 
-    List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId);
+    List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
     List<UserEntity> getAllPriest(int churchId);
 
@@ -34,7 +34,7 @@ public interface UserModelInterface {
 
     List<String> getEventRegisteredUserAccount(int eventId);
 
-    void insertPriest (UserEntity userEntity);
+    void insertPriest(UserEntity userEntity);
 
     UserEntity getPriestByAccountId(String accountId);
 

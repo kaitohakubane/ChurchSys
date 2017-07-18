@@ -15,13 +15,13 @@ public interface RoomServiceInterface {
 
     RoomEntity getRoomById(Integer roomId);
 
-    Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId);
+    Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId, int subId);
 
     List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
     List<Integer> getIdListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
-    Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId);
+    Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId, int subId);
 
     List<RoomEntity> getAllRoom(int churchId);
 
@@ -30,5 +30,6 @@ public interface RoomServiceInterface {
     RoomEntity getRoomByNameAndChurchId(String roomName, int churchId, int status);
 
     void mapRoomWithSubject(int roomId, int subId);
+
     void updateRoom(RoomEntity roomEntity);
 }

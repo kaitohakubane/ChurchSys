@@ -28,7 +28,7 @@ public interface EventServiceInterface {
 
     SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId);
 
-    SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate);
+    SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate, int subId);
 
     EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered);
 

@@ -42,25 +42,25 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId) {
-        return userModelInterface.getSuitableConductorForSlot(slotHourId, slotDate, churchId);
+    public Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId) {
+        return userModelInterface.getSuitableConductorForSlot(slotHourId, slotDate, churchId, subId);
     }
 
     @Override
-    public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
+    public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         List<UserEntity> userEntities = (List<UserEntity>) userModelInterface
-                .getListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId);
+                .getListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId, subId);
         return userEntities;
     }
 
     @Override
-    public Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId) {
-        return userModelInterface.checkConductorForSlot(slotHourId, slotDate, churchId, conductorId);
+    public Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId, int subId) {
+        return userModelInterface.checkConductorForSlot(slotHourId, slotDate, churchId, conductorId, subId);
     }
 
     @Override
-    public List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId) {
-        return userModelInterface.getIdListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId);
+    public List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
+        return userModelInterface.getIdListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId, subId);
     }
 
     @Override
@@ -90,13 +90,13 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public UserEntity getPriestByAccountId(String accountId){
+    public UserEntity getPriestByAccountId(String accountId) {
         return userModelInterface.getPriestByAccountId(accountId);
     }
 
     @Override
-    public void mapUserToChurch(int userId, int churchId){
-        InteractionEntity interactionEntity= new InteractionEntity();
+    public void mapUserToChurch(int userId, int churchId) {
+        InteractionEntity interactionEntity = new InteractionEntity();
         interactionEntity.setUserId(userId);
         interactionEntity.setChurchId(churchId);
         interactionEntity.setEnabled(ParamConstant.DEFAULT_ENABLE);
@@ -104,7 +104,7 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public  void mapPriestWithSubject (int userId, int subId){
+    public void mapPriestWithSubject(int userId, int subId) {
         AbilityEntity abilityEntity = new AbilityEntity();
         abilityEntity.setConductorId(userId);
         abilityEntity.setSubId(subId);

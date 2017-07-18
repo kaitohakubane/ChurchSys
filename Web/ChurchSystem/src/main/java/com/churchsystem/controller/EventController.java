@@ -160,11 +160,14 @@ public class EventController {
 
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
-        UserEntity currentConductor = userServiceInterface.getUserByUserId(eventDataEntity.getConductorId());
-        List<UserEntity> userEntities = userServiceInterface.getListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
-        List<Integer> conductorIdList = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId);
-        if (!conductorIdList.contains(currentConductor.getUserId())) {
-            userEntities.add(currentConductor);
+        List<UserEntity> userEntities = userServiceInterface.getListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId, eventDataEntity.getSubId());
+        List<Integer> conductorIdList = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId, eventDataEntity.getSubId());
+
+        if (eventDataEntity.getConductorId() != null) {
+            UserEntity currentConductor = userServiceInterface.getUserByUserId(eventDataEntity.getConductorId());
+            if (!conductorIdList.contains(currentConductor.getUserId())) {
+                userEntities.add(currentConductor);
+            }
         }
         return userEntities;
     }
@@ -181,12 +184,13 @@ public class EventController {
 
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
-        RoomEntity currentRoom = roomServiceInterface.getRoomById(eventDataEntity.getRoomId());
         List<RoomEntity> roomEntities = roomServiceInterface.getListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId, eventDataEntity.getSubId());
         List<Integer> roomIdList = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId, eventDataEntity.getSubId());
-
-        if (!roomIdList.contains(currentRoom.getRoomId())) {
-            roomEntities.add(currentRoom);
+        if (eventDataEntity.getRoomId() != null) {
+            RoomEntity currentRoom = roomServiceInterface.getRoomById(eventDataEntity.getRoomId());
+            if (!roomIdList.contains(currentRoom.getRoomId())) {
+                roomEntities.add(currentRoom);
+            }
         }
         return roomEntities;
     }
@@ -232,8 +236,8 @@ public class EventController {
             Date safeDate = null;
             for (int i = 0; i < datesOfClass.size(); i++) {
                 Date item = datesOfClass.get(i);
-                conductorId = userServiceInterface.getSuitableConductorForSlot(slotHour, item, churchId);
-                roomId = roomServiceInterface.getSuitableRoomForSlot(slotHour, item, churchId);
+                conductorId = userServiceInterface.getSuitableConductorForSlot(slotHour, item, churchId, subId);
+                roomId = roomServiceInterface.getSuitableRoomForSlot(slotHour, item, churchId, subId);
                 if (conductorId != null && roomId != null) {
                     safeDate = item;
                     break;
@@ -244,7 +248,7 @@ public class EventController {
                 for (int i = 0; i < datesOfClass.size(); i++) {
                     Date itemDate = datesOfClass.get(i);
                     eventServiceInterface.createSlotForClass(eventEntity.getEventId(), slotHour, churchId,
-                            roomId, conductorId, itemDate);
+                            roomId, conductorId, itemDate, subId);
                 }
 
                 List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(eventEntity.getEventId());
@@ -388,11 +392,9 @@ public class EventController {
             if (isManySlot == UtilsConstant.IS_ONE_SLOT) {
                 eventServiceInterface.deleteEvent(eventId);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @ResponseBody

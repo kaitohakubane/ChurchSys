@@ -38,10 +38,11 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
     }
 
     @Override
-    public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId) {
+    public Integer getSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId, int subId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_SUITABLE_ROOM_FOR_SLOT)
                 .setParameter(ParamConstant.SLOT_HOUR, slotHourId).setParameter(ParamConstant.CHURCH_ID, churchId)
-                .setParameter(ParamConstant.SLOT_DATE, slotDate);
+                .setParameter(ParamConstant.SLOT_DATE, slotDate)
+                .setParameter(ParamConstant.SUBJECT_ID,subId);
         Integer result = (Integer) query.uniqueResult();
         return result;
     }
@@ -59,10 +60,11 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
     }
 
     @Override
-    public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId) {
+    public Integer checkRoomForSlot(int slotHourId, Date slotDate, int churchId, int roomId, int subId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.CHECK_ROOM_FOR_SLOT)
                 .setParameter(ParamConstant.SLOT_HOUR, slotHourId).setParameter(ParamConstant.CHURCH_ID, churchId)
-                .setParameter(ParamConstant.SLOT_DATE, slotDate).setParameter(ParamConstant.ROOM_ID, roomId);
+                .setParameter(ParamConstant.SLOT_DATE, slotDate).setParameter(ParamConstant.ROOM_ID, roomId)
+                .setParameter(ParamConstant.SUBJECT_ID,subId);
         Integer result = (Integer) query.uniqueResult();
         return result;
     }
@@ -73,7 +75,8 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
                 .setParameter(ParamConstant.NEW_START_TIME, newStartTime)
                 .setParameter(ParamConstant.NEW_END_TIME, newEndTime)
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
-                .setParameter(ParamConstant.SLOT_DATE, slotDate).setParameter(ParamConstant.SUBJECT_ID,subId);
+                .setParameter(ParamConstant.SLOT_DATE, slotDate)
+                .setParameter(ParamConstant.SUBJECT_ID,subId);
         List<Integer> result = query.list();
         return result;
     }

@@ -97,8 +97,8 @@ public class EventService implements EventServiceInterface {
     @Override
     public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId) {
         //Need to fix
-        Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId);
-        Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId);
+        Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId,subId);
+        Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId,subId);
         SlotEntity slotEntity = new SlotEntity();
         if (conductorId == null || roomId == null) {
             slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
@@ -120,11 +120,11 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate) {
+    public SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate, int subId) {
         //Need to fix
         SlotEntity slotEntity = new SlotEntity();
-        if (userModelInterface.checkConductorForSlot(slotHour, itemDate, churchId, conductorId) == null ||
-                roomModelInterface.checkRoomForSlot(slotHour, itemDate, churchId, roomId) == null) {
+        if (userModelInterface.checkConductorForSlot(slotHour, itemDate, churchId, conductorId,subId) == null ||
+                roomModelInterface.checkRoomForSlot(slotHour, itemDate, churchId, roomId,subId) == null) {
             slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
         } else {
             slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
@@ -149,7 +149,7 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate, int subId) {
-        Integer conductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId).get(UtilsConstant.ZERO);
+        Integer conductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId,subId).get(UtilsConstant.ZERO);
         Integer roomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId,subId).get(UtilsConstant.ZERO);
         SlotEntity slotEntity = new SlotEntity();
 

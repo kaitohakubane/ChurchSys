@@ -16,13 +16,14 @@ public class SQLParamConstant {
     public static final String GET_MANAGER_FOR_SUBJECT = "SELECT managerId,managerName FROM manager " +
             "WHERE managerId IN (SELECT managerId FROM ability WHERE subId =: requireSubId)";
 
-    public static final String GET_SUITABLE_ROOM_FOR_SLOT = "select roomId from room where churchId =:churchId " +
+    public static final String GET_SUITABLE_ROOM_FOR_SLOT = "select r.* from roomCapable rc, " +
+            "(select roomId from room where churchId =:churchId " +
             "AND roomId NOT IN (select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime," +
             " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY roomId LIMIT 1";
-
+            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY roomId) r "
+            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId LIMIT 1";
 
     //KietTA
     public static final String GET_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName," +
@@ -64,12 +65,14 @@ public class SQLParamConstant {
             " NOT IN ( SELECT eventId FROM Slot WHERE eventId IS NOT NULL)";
     ;
 
-    public static final String GET_SUITABLE_CONDUCTOR_FOR_SLOT = "select distinct u.userId from user u, church c," +
+    public static final String GET_SUITABLE_CONDUCTOR_FOR_SLOT = "select con.* from ability a, " +
+            "(select distinct u.userId from user u, church c," +
             " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId NOT IN (select s2.conductorId " +
             "From (Select s.slotId, s.conductorId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, " +
             "max(sh.endTime) as endTime from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId " +
             "group by s.slotid) s1 where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY userId LIMIT 1";
+            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY userId) con " +
+            "WHERE con.userId = a.conductorId AND a.subId=:subId LIMIT 1";
 
     public static final String GET_DISPLAY_EVENT_BY_EVENT_ID = "SELECT sru.slotId as slotId, e.eventId as eventId, " +
             "sru.conductorId as conductorId, sru.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
@@ -83,20 +86,23 @@ public class SQLParamConstant {
             "AND st.slotId = sru.slotId AND sru.eventId = e.eventId";
 
 
-    public static final String CHECK_CONDUCTOR_FOR_SLOT = "select distinct u.userId from user u, church c," +
+    public static final String CHECK_CONDUCTOR_FOR_SLOT = "select con.* from ability a, " +
+            "(select distinct u.userId from user u, church c," +
             " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId =:conductorId AND  u.userId NOT IN (select s2.conductorId " +
             "From (Select s.slotId, s.conductorId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, " +
             "max(sh.endTime) as endTime from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId " +
             "group by s.slotid) s1 where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)";
+            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)) con " +
+            "WHERE con.userId = a.conductorId AND a.subId=:subId";
 
-    public static final String CHECK_ROOM_FOR_SLOT = "select roomId from room where churchId =:churchId AND roomId =:roomId " +
+    public static final String CHECK_ROOM_FOR_SLOT = "select r.* from roomCapable rc, " +
+            "(select roomId from room where churchId =:churchId AND roomId =:roomId " +
             "AND roomId NOT IN (select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime," +
             " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)";
-
+            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)) r "
+            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
 
     public static final String GET_STREAMING_EVENT_IN_DATE = "SELECT e.eventName as eventName,ssh.slotId as slotId, " +
             "ssh.slotDate as slotDate, ssh.streamCode as streamCode, ssh.streamLink as streamLink, ssh.startTime as startTime," +
@@ -117,25 +123,23 @@ public class SQLParamConstant {
             "sh.slotHourId = i.slotHourId GROUP BY s.slotid) st WHERE su.subId = e.subId AND st.slotId = sru.slotId AND " +
             "sru.eventId = e.eventId AND e.churchId =:churchId AND sru.slotId =:slotId";
 
-    public static final String GET_LIST_SUITABLE_CONDUCTOR_FOR_SLOT = "select distinct u.* from user u, church c," +
+    public static final String GET_LIST_SUITABLE_CONDUCTOR_FOR_SLOT = "select con.* from ability a, " +
+            "(select distinct u.* from user u, church c," +
             " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId NOT IN (select s2.conductorId " +
             "From (Select s.slotId, s.conductorId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, " +
             "max(sh.endTime) as endTime from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId " +
             "group by s.slotid) s1 where s.slotId = s1.slotId) s2 " +
-            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.conductorId IS NOT NULL) ORDER BY userId";
-    public static final String GET_LIST_SUITABLE_ROOM_FOR_SLOT = "select r.* from roomcapable rc, (select * from room where churchId =:churchId AND roomId NOT IN " +
-            "(select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime, s1.endTime from slot s, " +
-            "(select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, inclusion i, slot s " +
-            "where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 where s.slotId = s1.slotId) s2 " +
-            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId) r " +
-            "where r.roomId = rc.roomId AND rc.subId =:subId;";
+            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.conductorId IS NOT NULL) ORDER BY userId) con " +
+            "WHERE con.userId = a.conductorId AND a.subId=:subId";
 
-//            "select * from room where churchId =:churchId " +
-//            "AND roomId NOT IN (select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime," +
-//            " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
-//            "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
-//            "where s.slotId = s1.slotId) s2 " +
-//            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId";
+    public static final String GET_LIST_SUITABLE_ROOM_FOR_SLOT = "select r.* from roomCapable rc, " +
+            "(select * from room where churchId =:churchId " +
+            "AND roomId NOT IN (select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime," +
+            " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
+            "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
+            "where s.slotId = s1.slotId) s2 " +
+            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId) r "
+            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
 
     public static final String DELETE_SLOT_HOUR_BY_SLOT_ID = "DELETE FROM inclusion where slotId =:slotId";
 
@@ -162,26 +166,23 @@ public class SQLParamConstant {
             "WHERE e.eventStatus =:status AND e.startDate < CURDATE() AND e.examDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
             "su.categoryId < 12 AND su.categoryId > 5 AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
             "e.typeId =t.typeId AND e.churchId =:churchId AND s.conductorId = u.userId AND s.roomId = r.roomId";
-    public static final String GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT = "select distinct u.userId from user u, church c," +
+    public static final String GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT = "select con.* from ability a, " +
+            "(select distinct u.userId from user u, church c," +
             " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId NOT IN (select s2.conductorId " +
             "From (Select s.slotId, s.conductorId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, " +
             "max(sh.endTime) as endTime from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId " +
             "group by s.slotid) s1 where s.slotId = s1.slotId) s2 " +
-            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.conductorId IS NOT NULL) ORDER BY userId";
-    public static final String GET_LIST_SUITABLE_ROOM_ID_FOR_SLOT = "select r.roomId from roomcapable rc, (select * from room where churchId =:churchId AND roomId NOT IN " +
+            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.conductorId IS NOT NULL) ORDER BY userId) con " +
+            "WHERE con.userId = a.conductorId AND a.subId=:subId";
+
+    public static final String GET_LIST_SUITABLE_ROOM_ID_FOR_SLOT = "select r.* from roomCapable rc, " +
+            "(select r.roomId from roomcapable rc, (select * from room where churchId =:churchId AND roomId NOT IN " +
             "(select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime, s1.endTime from slot s, " +
             "(select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, inclusion i, slot s " +
             "where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 where s.slotId = s1.slotId) s2 " +
             "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId) r " +
-            "where r.roomId = rc.roomId AND rc.subId =:subId";
-
-
-//            "select roomId from room where churchId =:churchId " +
-//            "AND roomId NOT IN (select s2.roomId From (Select s.slotId, s.roomId, s.slotDate, s1.startTime," +
-//            " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
-//            "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
-//            "where s.slotId = s1.slotId) s2 " +
-//            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId";
+            "where r.roomId = rc.roomId AND rc.subId =:subId) r "
+            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
 
 
     public static final String GET_LIST_DISPLAYED_CHURCH = "SELECT s1.*,u.accountId FROM (SELECT c.*, i.userId FROM church c " +

@@ -8,8 +8,8 @@ public class ParamConstant {
     public static final String FROM_DATE = "fromDate";
     public static final String TO_DATE = "toDate";
 
-    public static final int SUCCESS=1;
-    public static final int FAILURE=0;
+    public static final int SUCCESS = 1;
+    public static final int FAILURE = 0;
 
 
     /**
@@ -84,8 +84,7 @@ public class ParamConstant {
     public static final String USER_DEFAULT_EVENT_NAME = "Registered Event";
     public static final String CATEGORY_ID = "categoryId";
     public static final int CLASS_CATEGORY = 4;
-    public static final String NO_NAME_EVENT_TITLE="No name";
-
+    public static final String NO_NAME_EVENT_TITLE = "No name";
 
 
     /**
@@ -106,9 +105,9 @@ public class ParamConstant {
     public static final int YOUTUBE_TYPE = 1;
     public static final int DEFAULT_TYPE = 0;
     public static final String NOTIFICATION_LIST = "notificationList";
-    public static final String USER_EVENT_REGISTRATION_NOTIFICATION="Bạn đã đăng ký sự kiện ";
-    public static final String USER_CLASS_REGISTRATION_NOTIFICATION="Bạn đã đăng ký lớp ";
-    public static final String TIME_MESSAGE_NOTIFICATION=" diễn ra vào lúc ";
+    public static final String USER_EVENT_REGISTRATION_NOTIFICATION = "Bạn đã đăng ký sự kiện ";
+    public static final String USER_CLASS_REGISTRATION_NOTIFICATION = "Bạn đã đăng ký lớp ";
+    public static final String TIME_MESSAGE_NOTIFICATION = " diễn ra vào lúc ";
 
 
     /**
@@ -162,5 +161,23 @@ public class ParamConstant {
     public static final String DEFAULT_PASSWORD = "1234";
     public static final String PRIEST_ROLE = "ROLE_PRIEST";
     public static final boolean DEFAULT_ENABLE = true;
+
+    /**
+     * Status
+     */
+
+    /*Event*/
+    public static final int EVENT_STATUS_WAITING_FOR_APPROVE = 1;
+    public static final int EVENT_STATUS_DENY = 2;
+    public static final int EVENT_STATUS_APPROVED = 3;
+    public static final int EVENT_STATUS_FINISH = 4;
+    /*Slot*/
+    public static final int SLOT_STATUS_OK = 1;
+    public static final int SLOT_STATUS_CONFLICT = 2;
+    public static final int SLOT_STATUS_FINISH = 3;
+    /*Registration*/
+    public static final int REGISTRATION_STATUS_WAITING = 1;
+    public static final int REGISTRATION_STATUS_DENY = 2;
+    public static final int REGISTRATION_STATUS_FINISH = 3;
 
 }
