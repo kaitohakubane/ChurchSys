@@ -22,8 +22,8 @@ public class SQLParamConstant {
             " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY roomId) r "
-            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId LIMIT 1";
+            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY roomId) r " +
+            "WHERE r.roomId = rc.roomId AND rc.subId=:subId LIMIT 1";
 
     //KietTA
     public static final String GET_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName," +
@@ -101,8 +101,8 @@ public class SQLParamConstant {
             " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)) r "
-            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
+            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate)) r " +
+            "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
 
     public static final String GET_STREAMING_EVENT_IN_DATE = "SELECT e.eventName as eventName,ssh.slotId as slotId, " +
             "ssh.slotDate as slotDate, ssh.streamCode as streamCode, ssh.streamLink as streamLink, ssh.startTime as startTime," +
@@ -138,8 +138,8 @@ public class SQLParamConstant {
             " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId) s2 " +
-            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId) r "
-            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
+            "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId) r " +
+            "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
 
     public static final String DELETE_SLOT_HOUR_BY_SLOT_ID = "DELETE FROM inclusion where slotId =:slotId";
 
@@ -181,8 +181,8 @@ public class SQLParamConstant {
             "(select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, inclusion i, slot s " +
             "where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 where s.slotId = s1.slotId) s2 " +
             "Where (s2.startTime <:newEndTime AND s2.endTime >:newStartTime) AND s2.slotDate =:slotDate AND s2.roomId IS NOT NULL) ORDER BY roomId) r " +
-            "where r.roomId = rc.roomId AND rc.subId =:subId) r "
-            + "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
+            "where r.roomId = rc.roomId AND rc.subId =:subId) r " +
+            "WHERE r.roomId = rc.roomId AND rc.subId=:subId";
 
 
     public static final String GET_LIST_DISPLAYED_CHURCH = "SELECT s1.*,u.accountId FROM (SELECT c.*, i.userId FROM church c " +

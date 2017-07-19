@@ -133,9 +133,6 @@ function inputEventPopupInformation(event) {
         }
     }
 
-    checkIsManySlot(event);
-    curSlotId = event.slotId;
-
     $("#editSlotButton").on("click", function () {
         var parameter = {
             slotId: event.slotId
@@ -144,7 +141,8 @@ function inputEventPopupInformation(event) {
     })
 
     $("#btnRemove").on('click', function () {
-
+        checkIsManySlot(event);
+        curSlotId = event.slotId;
         console.log("Selected slot ID is: " + curSlotId);
         console.log("Removing slot with ID = " + curSlotId);
 

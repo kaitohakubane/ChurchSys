@@ -42,7 +42,7 @@ $(document).ready(function () {
             $("#calendarPopup").fadeOut();
             listOfCreatingEvent.forEach(function (e) {
                 console.log(e.status)
-                if (e.status == 0) {
+                if (e.status == 2) {
                     e.color = '#ef0909'
                 } else {
                     e.color = '#24ea12'
@@ -71,7 +71,7 @@ $(document).ready(function () {
             })
 
             listOfCreatingEvent.forEach(function (e) {
-                if (e.status == 0) {
+                if (e.status == 2) {
                     e.color = '#ef0909'
                 } else {
                     e.color = '#24ea12'
@@ -324,7 +324,7 @@ function loadEvent() {
             eventList = res;
             eventList.forEach(function (e) {
 
-                if (e.status == 0) {
+                if (e.status == 2) {
                     e.color = '#ef0909'
                 }
 
