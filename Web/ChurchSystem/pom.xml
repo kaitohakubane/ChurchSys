@@ -264,6 +264,15 @@
             <version>v3-rev179-1.22.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-calendar -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-calendar</artifactId>
+            <version>v3-rev249-1.22.0</version>
+        </dependency>
+
+
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
