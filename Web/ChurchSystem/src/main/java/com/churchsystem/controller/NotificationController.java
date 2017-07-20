@@ -1,8 +1,11 @@
 package com.churchsystem.controller;
 
+import com.churchsystem.common.api.CalendarAPI;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
+import com.churchsystem.common.utils.DateUtils;
+import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.Notification;
 import com.churchsystem.entity.NotificationEntity;
@@ -10,6 +13,7 @@ import com.churchsystem.entity.UserEntity;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.NotificationServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
+import com.google.api.client.util.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,8 +25,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by hungmcse61561-admin on 7/9/2017.
@@ -107,36 +114,55 @@ public class NotificationController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ModelAndView testNotification() {
-        ModelAndView modelAndView=new ModelAndView("test-page");
-        NotificationEntity temp = new NotificationEntity();
-        UserEntity user = userServiceInterface.getUserByAccountId("hungmc");
-        temp.setUserId(user.getUserId());
-        temp.setInformation("Bạn Hưng quá giỏi giỏi quá de i luv you pặc pặc");
-        temp.setSender("Hệ thống: ");
-        temp.setLink("/manager/notifications");
-        temp.setTime(new Timestamp(System.currentTimeMillis()));
-        temp.setType(ParamConstant.DEFAULT_TYPE);
-        notificationServiceInterface.addNotification(temp);
-        Notification msgEntity = new Notification(temp);
-        notificationServiceInterface.notify(
-                msgEntity, // notification object
-                "hungmc"                    // username
-        );
+        ModelAndView modelAndView = new ModelAndView("test-page");
+//        NotificationEntity temp = new NotificationEntity();
+//        UserEntity user = userServiceInterface.getUserByAccountId("hungmc");
+//        temp.setUserId(user.getUserId());
+//        temp.setInformation("Bạn Hưng quá giỏi giỏi quá de i luv you pặc pặc");
+//        temp.setSender("Hệ thống: ");
+//        temp.setLink("/manager/notifications");
+//        temp.setTime(new Timestamp(System.currentTimeMillis()));
+//        temp.setType(ParamConstant.DEFAULT_TYPE);
+//        notificationServiceInterface.addNotification(temp);
+//        Notification msgEntity = new Notification(temp);
+//        notificationServiceInterface.notify(
+//                msgEntity, // notification object
+//                "hungmc"                    // username
+//        );
+//
+//
+//        user = userServiceInterface.getUserByAccountId("vongnlh");
+//        temp.setUserId(user.getUserId());
+//        temp.setInformation("Bạn Hưng User quá giỏi giỏi quá de i luv you pặc pặc");
+//        temp.setSender("Hệ thống: ");
+//        temp.setLink("/user/notifications");
+//        temp.setTime(new Timestamp(System.currentTimeMillis()));
+//        temp.setType(ParamConstant.DEFAULT_TYPE);
+//        notificationServiceInterface.addNotification(temp);
+//        msgEntity = new Notification(temp);
+//        notificationServiceInterface.notify(
+//                msgEntity, // notification object
+//                "vongnlh"                    // username
+//        );
 
-
-        user = userServiceInterface.getUserByAccountId("vongnlh");
-        temp.setUserId(user.getUserId());
-        temp.setInformation("Bạn Hưng User quá giỏi giỏi quá de i luv you pặc pặc");
-        temp.setSender("Hệ thống: ");
-        temp.setLink("/user/notifications");
-        temp.setTime(new Timestamp(System.currentTimeMillis()));
-        temp.setType(ParamConstant.DEFAULT_TYPE);
-        notificationServiceInterface.addNotification(temp);
-        msgEntity = new Notification(temp);
-        notificationServiceInterface.notify(
-                msgEntity, // notification object
-                "vongnlh"                    // username
-        );
         return modelAndView;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/test/post", method = RequestMethod.GET)
+    public String tesCalendar() {
+        Time startTime = new Time(System.currentTimeMillis() + 3600*1000*24);
+        Time endTime = new Time(startTime.getTime() + 3600*1000*3);
+        DateTime startDate = new DateTime(StringUtils.convertDateAndTimeToDateTime(new Date(System.currentTimeMillis()), startTime));
+        DateTime endDate = new DateTime(StringUtils.convertDateAndTimeToDateTime(new Date(System.currentTimeMillis()), endTime));
+        String result="Sida vkl";
+        try{
+            result=CalendarAPI.createGoogleEvent("DM SS", "Room 516 KTX Sinh viên", "Hưng quá gê",  startDate,
+                    endDate, null, "kiettaSE61469@fpt.edu.vn", UtilsConstant.DEFAULT_VALIDATE_PORT);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }

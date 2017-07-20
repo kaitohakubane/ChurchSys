@@ -16,7 +16,7 @@ public interface RegistrationServiceInterface {
     List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId);
     List<RegistrationEntity> getRegistrationBySubId(int subId);
     void updateRegistration(RegistrationEntity registrationEntity);
-    void addRegistration(RegistrationEntity registrationEntity);
+    void addRegistration(int userId,int churchId,int subId,int eventId,String message);
     List<RegistrationEntity> getWaitingRegistrationBySubId(int subId);
     List<ClassDisplayEntity> getOnPlanClass(int churchId);
     List<ClassDisplayEntity> getOnGoingPlanClass(int churchId);

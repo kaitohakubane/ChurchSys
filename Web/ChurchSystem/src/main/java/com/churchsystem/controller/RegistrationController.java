@@ -75,6 +75,8 @@ public class RegistrationController {
             Time startTime = DateUtils.parseStringToTime(startTimeStr);
             Time endTime = DateUtils.getEndTimeFromRange(startTime, estTime);
 
+           ;
+
 
             eventServiceInterface.createEvent(ParamConstant.USER_DEFAULT_EVENT_NAME, slotDate, subId, false, churchId
                     , null, ParamConstant.NON_REPEAT_TYPE, true, UtilsConstant.ONE);
@@ -82,6 +84,7 @@ public class RegistrationController {
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
                     subId, churchId, true);
 
+            registrationServiceInterface.addRegistration(userEntity.getUserId(),churchId,subId,eventEntity.getEventId(),null);
 
             eventServiceInterface.createSlotForUserEvent(eventEntity.getEventId(), startTime, endTime, churchId, slotDate, subId);
 
@@ -111,7 +114,7 @@ public class RegistrationController {
             Notification msgEntity = new Notification(notificationEntity);
             notificationServiceInterface.notify(msgEntity, managerAccount);
 
-
+            //Notify user
             notificationEntity.setUserId(userEntity.getUserId());
             information = ParamConstant.USER_EVENT_REGISTRATION_NOTIFICATION + subjectName +
                     ParamConstant.TIME_MESSAGE_NOTIFICATION + startTimeStr + " " + slotDateStr;
@@ -144,6 +147,7 @@ public class RegistrationController {
         return modelAndView;
     }
 
+    //KietTA
     @ResponseBody
     @RequestMapping(value = PageConstant.CLASS_REGISTRATION, method = RequestMethod.POST)
     public int classRegister(@RequestParam(value = ParamConstant.EVENT_ID) String eventIdStr,
@@ -159,7 +163,8 @@ public class RegistrationController {
             //Notify manager
             String managerAccount = userServiceInterface.getChurchManagerAccount(churchId);
             UserEntity user = userServiceInterface.getUserByAccountId(managerAccount);
-            String subjectName = subjectServiceInterface.getSubjectById(eventServiceInterface.getEventById(eventId).getSubId()).getSubName();
+            String subjectName = subjectServiceInterface.getSubjectById(eventServiceInterface.getEventById(eventId)
+                    .getSubId()).getSubName();
             String information = ParamConstant.EVENT_NAME_PRE + subjectName;
             Timestamp time = new Timestamp(System.currentTimeMillis());
             NotificationEntity notificationEntity = new NotificationEntity();
@@ -190,5 +195,37 @@ public class RegistrationController {
         }
         return 1;
     }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.FOLLOW_CHURCH, method = RequestMethod.POST)
+    public int followChurch(@RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr) {
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
+            int churchId = Integer.parseInt(churchIdStr);
+            userServiceInterface.mapUserToChurch(userEntity.getUserId(), churchId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return 1;
+    }
+
+    //KietTA
+    @ResponseBody
+    @RequestMapping(value = PageConstant.PREDEFINED_CLASS_REGISTRATION, method = RequestMethod.POST)
+    public int registerPredefinedClass(@RequestParam(value = ParamConstant.EVENT_ID) String eventIdStr) {
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
+            int eventId = Integer.parseInt(eventIdStr);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return 1;
+    }
+
 
 }

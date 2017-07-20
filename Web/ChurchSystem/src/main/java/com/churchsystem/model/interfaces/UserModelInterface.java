@@ -41,4 +41,6 @@ public interface UserModelInterface {
     void mapUserToChurch(InteractionEntity InteractionEntity);
 
     void mapPriestWithSubject(AbilityEntity abilityEntity);
+
+    List<InteractionEntity> getFollowingChurch(int userId);
 }

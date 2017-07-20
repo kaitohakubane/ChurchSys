@@ -369,6 +369,65 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="" style="width: 400px;">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Context</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Username</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Slot</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Subject</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Phone</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Mail</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Description</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
+                            <button type="button" class="btn btn-default">Cancel</button>
+                            <button type="button" class="btn btn-primary">Create</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%--====================================================--%>
 <%--====================================================--%>

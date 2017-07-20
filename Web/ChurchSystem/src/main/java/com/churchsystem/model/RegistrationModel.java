@@ -80,4 +80,5 @@ public class RegistrationModel extends CommonDAO implements RegistrationModelInt
         getSession().persist(registrationEntity);
     }
 
+
 }

@@ -110,4 +110,9 @@ public class UserService implements UserServiceInterface {
         abilityEntity.setSubId(subId);
         userModelInterface.mapPriestWithSubject(abilityEntity);
     }
+
+    @Override
+    public List<InteractionEntity> getFollowingChurch(int userId){
+        return userModelInterface.getFollowingChurch(userId);
+    }
 }

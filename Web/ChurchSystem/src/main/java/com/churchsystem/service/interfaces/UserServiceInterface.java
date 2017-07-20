@@ -1,5 +1,6 @@
 package com.churchsystem.service.interfaces;
 
+import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 
 import java.sql.Date;
@@ -40,5 +41,6 @@ public interface UserServiceInterface {
     void mapUserToChurch(int userId, int churchId);
 
     void mapPriestWithSubject (int userId, int subId);
+    List<InteractionEntity> getFollowingChurch(int userId);
 
 }

@@ -2,11 +2,12 @@ package com.churchsystem.controller;
 
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
-import com.churchsystem.entity.ChurchDisplayEntity;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.ChurchMapEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
+import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,9 @@ import java.util.List;
 public class ChurchController {
     @Autowired
     ChurchServiceInterface churchServiceInterface;
+
+    @Autowired
+    UserServiceInterface userServiceInterface;
 
     @RequestMapping(value = PageConstant.CHURCH_HOME_URL, method = RequestMethod.GET)
     public ModelAndView loadPublicEventRegister(@RequestParam(value = ParamConstant.CHURCH_ID) String id) {
@@ -59,6 +63,8 @@ public class ChurchController {
     public List<ChurchMapEntity> getNearbyChurch(@RequestParam(value = ParamConstant.INPUT_LATITUDE) String strLatitude,
                                                  @RequestParam(value = ParamConstant.INPUT_LONGITUDE) String strLongitude) {
         List<ChurchMapEntity> result = null;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
         try {
             Double Latitude = Double.parseDouble(strLatitude);
             Double Longitude = Double.parseDouble(strLongitude);
@@ -68,8 +74,18 @@ public class ChurchController {
                 result = churchServiceInterface.getNearbyChurch(Latitude, Longitude, radius);
                 if (result == null) {
                     radius = radius + ParamConstant.ADDITIONAL_DISTANCE;
+                }else{
+                    List<InteractionEntity> followChurch=userServiceInterface.getFollowingChurch(userEntity.getUserId());
+                    for(int i=0;i<result.size();i++){
+                        for (int k=0;k<followChurch.size();k++){
+                            if(result.get(i).getChurchId()==followChurch.get(k).getChurchId()){
+                                result.get(i).setIsFollowed(ParamConstant.IS_FOLLOWING);
+                            }
+                        }
+                    }
                 }
             }
+
         } catch (NumberFormatException e) {
             e.printStackTrace();
 
@@ -94,7 +110,6 @@ public class ChurchController {
             if (churchEntity != null) {
                 modelAndView = new ModelAndView(PageConstant.INTRODUCTION_PAGE);
             }
-
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }

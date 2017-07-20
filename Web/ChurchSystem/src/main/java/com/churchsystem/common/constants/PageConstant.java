@@ -76,6 +76,9 @@ public class PageConstant {
     public static final String ADD_REGISTRATION = "/user/registration/Add";
     public static final String GET_ON_PLAN_CLASS_URL = "/church/class";
     public static final String CLASS_REGISTRATION="/user/registration/Class";
+    public static final String PREDEFINED_CLASS_REGISTRATION="/user/registration/PredefinedClass";
+    public static final String FOLLOW_CHURCH="/user/church/Follow";
+
 
     // Room
 

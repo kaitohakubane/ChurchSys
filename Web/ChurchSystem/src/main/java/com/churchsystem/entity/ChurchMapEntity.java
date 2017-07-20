@@ -18,20 +18,12 @@ public class ChurchMapEntity {
     private String streamLink;
     private String streamName;
     private String address;
+    private Integer isFollowed;
 
-    public String getStreamName() {
-        return streamName;
-    }
-
-    public void setStreamName(String streamName) {
-        this.streamName = streamName;
-    }
-
-    public ChurchMapEntity() {
-    }
 
     public ChurchMapEntity(Integer churchId, String churchName, Double longitude, Double latitude, double distance,
-                           String tel, Time startTime, Time endTime, String description, String streamLink, String streamName, String address) {
+                           String tel, Time startTime, Time endTime, String description, String streamLink, String streamName,
+                           String address, Integer isFollowed) {
         this.churchId = churchId;
         this.churchName = churchName;
         this.longitude = longitude;
@@ -44,6 +36,26 @@ public class ChurchMapEntity {
         this.streamLink = streamLink;
         this.streamName = streamName;
         this.address = address;
+        this.isFollowed = isFollowed;
+    }
+
+    public String getStreamName() {
+        return streamName;
+    }
+
+    public void setStreamName(String streamName) {
+        this.streamName = streamName;
+    }
+
+    public ChurchMapEntity() {
+    }
+
+    public Integer getIsFollowed() {
+        return isFollowed;
+    }
+
+    public void setIsFollowed(Integer isFollowed) {
+        this.isFollowed = isFollowed;
     }
 
     public String getAddress() {

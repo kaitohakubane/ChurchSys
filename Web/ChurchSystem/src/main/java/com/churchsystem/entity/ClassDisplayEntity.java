@@ -21,12 +21,22 @@ public class ClassDisplayEntity {
     public ClassDisplayEntity() {
     }
 
-    public ClassDisplayEntity(int eventId, String eventName, Date startDate, String typeName, String subName, Time startTime, Time endTime, String conductorName, String roomName) {
+    public String getCateId() {
+        return cateId;
+    }
+
+    public void setCateId(String cateId) {
+        this.cateId = cateId;
+    }
+
+    public ClassDisplayEntity(int eventId, String eventName, Date startDate, String typeName, String subName,
+                              String cateId, Time startTime, Time endTime, String conductorName, String roomName) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.startDate = startDate;
         this.typeName = typeName;
         this.subName = subName;
+        this.cateId = cateId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.conductorName = conductorName;
