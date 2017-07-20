@@ -81,8 +81,8 @@ public class EventService implements EventServiceInterface {
         inputEvent.setChurchId(churchId);
         inputEvent.setEventStatus(ParamConstant.WAITING_FOR_APPROVE_STATUS);
         inputEvent.setStartDate(eventDate);
-        if(eventName.equals("")){
-            eventName=ParamConstant.NO_NAME_EVENT_TITLE;
+        if (eventName.equals("")) {
+            eventName = ParamConstant.NO_NAME_EVENT_TITLE;
         }
         inputEvent.setEventName(eventName);
         inputEvent.setSubId(subId);
@@ -97,8 +97,8 @@ public class EventService implements EventServiceInterface {
     @Override
     public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId) {
         //Need to fix
-        Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId,subId);
-        Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId,subId);
+        Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId, subId);
+        Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId, subId);
         SlotEntity slotEntity = new SlotEntity();
         if (conductorId == null || roomId == null) {
             slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
@@ -123,8 +123,8 @@ public class EventService implements EventServiceInterface {
     public SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate, int subId) {
         //Need to fix
         SlotEntity slotEntity = new SlotEntity();
-        if (userModelInterface.checkConductorForSlot(slotHour, itemDate, churchId, conductorId,subId) == null ||
-                roomModelInterface.checkRoomForSlot(slotHour, itemDate, churchId, roomId,subId) == null) {
+        if (userModelInterface.checkConductorForSlot(slotHour, itemDate, churchId, conductorId, subId) == null ||
+                roomModelInterface.checkRoomForSlot(slotHour, itemDate, churchId, roomId, subId) == null) {
             slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
         } else {
             slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
@@ -149,8 +149,19 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate, int subId) {
-        Integer conductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId,subId).get(UtilsConstant.ZERO);
-        Integer roomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId,subId).get(UtilsConstant.ZERO);
+        Integer conductorId=null;
+        Integer roomId=null;
+
+        List<Integer> listConductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId, subId);
+        List<Integer> listRoomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId, subId);
+        if(listConductorId.size()>0){
+            conductorId=listConductorId.get(UtilsConstant.ZERO);
+        }
+
+        if(listRoomId.size()>0){
+            roomId=listRoomId.get(UtilsConstant.ZERO);
+        }
+
         SlotEntity slotEntity = new SlotEntity();
 
         if (conductorId == null || roomId == null) {

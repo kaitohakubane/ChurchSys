@@ -75,8 +75,6 @@ public class RegistrationController {
             Time startTime = DateUtils.parseStringToTime(startTimeStr);
             Time endTime = DateUtils.getEndTimeFromRange(startTime, estTime);
 
-           ;
-
 
             eventServiceInterface.createEvent(ParamConstant.USER_DEFAULT_EVENT_NAME, slotDate, subId, false, churchId
                     , null, ParamConstant.NON_REPEAT_TYPE, true, UtilsConstant.ONE);
