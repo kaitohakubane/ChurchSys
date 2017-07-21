@@ -50,6 +50,7 @@ public class PageConstant {
     public static final String REMOVE_EVENT = "/manager/schedule/remove-event";
 
     public static final String UPDATE_DRAG_DROP_EVENT ="/manager/schedule/update-drag-drop-event";
+    public static final String FINISH_EVENT="/automation/finishEvent";
 
     //Stream
     public static final String STREAM_URL = "/manager/stream";

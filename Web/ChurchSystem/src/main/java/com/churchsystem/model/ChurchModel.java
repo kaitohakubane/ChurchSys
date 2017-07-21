@@ -21,31 +21,31 @@ import java.util.List;
 @Repository
 public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     @Override
-    public ChurchEntity getChurchById(int churchId){
-        Criteria criteria=getSession().createCriteria(ChurchEntity.class).add(Restrictions.eq(ParamConstant.CHURCH_ID,churchId));
-        ChurchEntity result=(ChurchEntity) criteria.uniqueResult();
+    public ChurchEntity getChurchById(int churchId) {
+        Criteria criteria = getSession().createCriteria(ChurchEntity.class).add(Restrictions.eq(ParamConstant.CHURCH_ID, churchId));
+        ChurchEntity result = (ChurchEntity) criteria.uniqueResult();
         return result;
     }
 
     @Override
-    public void updateChurch(ChurchEntity churchEntity){
+    public void updateChurch(ChurchEntity churchEntity) {
         getSession().saveOrUpdate(churchEntity);
     }
 
     @Override
-    public List<ChurchMapEntity> getNearbyChurch(Double latitude,Double longitude,int radius ){
-        Query query=getSession().createSQLQuery(SQLParamConstant.GET_NEARBY_LOCATION)
-                .setParameter(ParamConstant.INPUT_LATITUDE,latitude).setParameter(ParamConstant.INPUT_LONGITUDE,longitude)
-                .setParameter(ParamConstant.DISTANCE,radius).setResultTransformer(Transformers.aliasToBean(ChurchMapEntity.class));
-        List<ChurchMapEntity> churchMapEntities= query.list();
+    public List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_NEARBY_LOCATION)
+                .setParameter(ParamConstant.INPUT_LATITUDE, latitude).setParameter(ParamConstant.INPUT_LONGITUDE, longitude)
+                .setParameter(ParamConstant.DISTANCE, radius).setResultTransformer(Transformers.aliasToBean(ChurchMapEntity.class));
+        List<ChurchMapEntity> churchMapEntities = query.list();
         return churchMapEntities;
     }
 
     @Override
-    public List<ChurchDisplayEntity> getAllChurch(){
+    public List<ChurchDisplayEntity> getAllChurch() {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_DISPLAYED_CHURCH).setResultTransformer
                 (Transformers.aliasToBean(ChurchDisplayEntity.class));
         List<ChurchDisplayEntity> churchDisplayEntities = query.list();
-        return  churchDisplayEntities;
+        return churchDisplayEntities;
     }
 }

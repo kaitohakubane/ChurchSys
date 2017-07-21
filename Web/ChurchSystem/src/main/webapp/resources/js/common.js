@@ -3,6 +3,7 @@
  */
 
 var STREAM_URL = "/manager/stream";
+var FINISH_EVENT = "/automation/finishEvent";
 /**
  * Display the notification message.
  */
@@ -74,4 +75,25 @@ function post(path, parameters) {
     // order for us to be able to submit it.
     $(document.body).append(form);
     form.submit();
+}
+
+function finishEvent(churchId) {
+    var requestData = {
+        "churchId": churchId
+    }
+    var requestMethod = "POST";
+    var requestURL = contextPath+FINISH_EVENT;
+    $.ajax({
+            url: requestURL,
+            data: requestData,
+            type: requestMethod,
+            success: function () {
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error happen')
+                console.error(textStatus);
+            }
+        }
+    )
 }

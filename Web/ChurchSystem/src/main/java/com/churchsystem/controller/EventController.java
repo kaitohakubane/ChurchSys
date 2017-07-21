@@ -112,7 +112,6 @@ public class EventController {
     public List<EventDisplayEntity> loadEventRegister(HttpServletRequest request) {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         List<EventDisplayEntity> data = eventServiceInterface.getListOfEvent(churchId);
-        eventServiceInterface.changeStatusToFinish(churchId);
         return data;
     }
 
@@ -451,4 +450,16 @@ public class EventController {
             e.printStackTrace();
         }
     }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.FINISH_EVENT, method = RequestMethod.POST)
+    public void registerStreamEvent(@RequestParam(value=ParamConstant.CHURCH_ID) String churchIdStr) {
+        try {
+            int churchId=Integer.parseInt(churchIdStr);
+            eventServiceInterface.changeStatusToFinish(churchId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

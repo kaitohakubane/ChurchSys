@@ -22,14 +22,14 @@ public class SQLParamConstant {
             " s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, " +
             "inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY roomId) r " +
+            "Where (s2.startTime < s3.endTime AND s2.endTime > s3.startTime) AND s2.slotDate =:slotDate) ORDER BY roomId) r " +
             "WHERE r.roomId = rc.roomId AND rc.subId=:subId LIMIT 1";
 
     //KietTA
     public static final String GET_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName," +
             " count(s.subId) as numOfRegistration " +
             "FROM registration r, subject s " +
-            "WHERE r.churchId =:churchId and r.subId = s.subId AND regisStatus = 1 " +
+            "WHERE r.churchId =:churchId and r.subId = s.subId AND r.regisStatus = 1 AND s.categoryId > 5 AND s.categoryId < 12 " +
             "GROUP BY (s.subId)";
 
     public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +
@@ -71,7 +71,7 @@ public class SQLParamConstant {
             "From (Select s.slotId, s.conductorId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, " +
             "max(sh.endTime) as endTime from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId " +
             "group by s.slotid) s1 where s.slotId = s1.slotId) s2, (select startTime, endTime from slothour where slotHourId =:slotHour) s3 " +
-            "Where (s2.startTime <= s3.endTime AND s2.endTime >= s3.startTime) AND s2.slotDate =:slotDate) ORDER BY userId) con " +
+            "Where (s2.startTime < s3.endTime AND s2.endTime > s3.startTime) AND s2.slotDate =:slotDate) ORDER BY userId) con " +
             "WHERE con.userId = a.conductorId AND a.subId=:subId LIMIT 1";
 
     public static final String GET_DISPLAY_EVENT_BY_EVENT_ID = "SELECT sru.slotId as slotId, e.eventId as eventId, " +

@@ -35,5 +35,6 @@
     </div>
 </div>
 <c:import url="/resources/layouts/common/footer.jsp"/>
+<script src="<c:url value="/resources/js/home-page.js"/>"></script>
 </body>
 </html>

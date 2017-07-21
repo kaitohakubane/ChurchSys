@@ -373,6 +373,9 @@
 <c:import url="/resources/layouts/user-common/user-footer.jsp"/>
 
 <c:import url="/resources/layouts/user-common/footer.jsp"/>
+<script>
+    var churchId=${param.churchId};
+</script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 </body>
 </html>
