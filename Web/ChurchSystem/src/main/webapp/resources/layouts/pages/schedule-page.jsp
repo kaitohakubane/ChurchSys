@@ -169,7 +169,7 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Event Detail</h2>
-                <button type="button" id="streamBtn" class="btn btn-primary pull-right">Stream</button>
+                <button type="button" id="streamBtn" class="btn btn-success pull-right">Stream</button>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -218,8 +218,8 @@
                     <div class="clearfix"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-default" id="btnRemove">Remove</button>
-                            <button type="button" id="editSlotButton" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-danger" id="btnRemove">Remove</button>
+                            <button type="button" id="editSlotButton" class="btn btn-success">Edit</button>
                         </div>
                     </div>
 

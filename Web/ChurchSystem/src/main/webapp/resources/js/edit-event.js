@@ -116,7 +116,7 @@ function inputEditEventInformation() {
     $("#endTime").val(endTime);
     $("#slotDate").val(slotDate);
     if (privacy == "false") {
-        console.log('CLick')
+        console.log('Click')
         if ($("#editEventIsChecked").prop('checked')) {
             console.log($("#editEventIsChecked").prop('checked'));
             $("#editEventIsChecked").click();

@@ -2,6 +2,7 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
+import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
 import com.churchsystem.entity.SlotEntity;
@@ -51,11 +52,11 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     }
 
     @Override
-    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId,boolean isRegistered) {
+    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_CREATING_EVENT)
                 .setParameter(ParamConstant.EVENT_DATE, date).setParameter(ParamConstant.EVENT_STATUS, status)
                 .setParameter(ParamConstant.EVENT_SUBJECT_ID, subId)
-                .setParameter(ParamConstant.CHURCH_ID, churchId).setParameter(ParamConstant.IS_EVENT_REGISTERED,isRegistered)
+                .setParameter(ParamConstant.CHURCH_ID, churchId).setParameter(ParamConstant.IS_EVENT_REGISTERED, isRegistered)
                 .setResultTransformer(Transformers.aliasToBean(EventEntity.class));
         EventEntity result = (EventEntity) query.uniqueResult();
         return result;
@@ -87,16 +88,24 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     }
 
     @Override
-    public Integer getCategoryIdFromSlotId(int slotId){
-        Query query = getSession().createSQLQuery(SQLParamConstant.GET_CATEGORY_ID_FROM_SLOT_ID).setParameter(ParamConstant.SLOT_ID,slotId);
-        Integer result = (Integer)query.uniqueResult();
+    public Integer getCategoryIdFromSlotId(int slotId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_CATEGORY_ID_FROM_SLOT_ID).setParameter(ParamConstant.SLOT_ID, slotId);
+        Integer result = (Integer) query.uniqueResult();
         return result;
     }
 
     @Override
-    public void deleteEvent(int eventId){
+    public void deleteEvent(int eventId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.DELETE_EVENT_BY_EVENT_ID)
                 .setParameter(ParamConstant.EVENT_ID, eventId);
         query.executeUpdate();
+    }
+
+    @Override
+    public List<EventEntity> getListEventOfChurch(int churchId) {
+        Criteria criteria = getSession().createCriteria(EventEntity.class).add(Restrictions.eq("churchId", churchId))
+                .add(Restrictions.eq("eventStatus", ParamConstant.EVENT_APPROVE_STATUS));
+        List<EventEntity> result = criteria.list();
+        return result;
     }
 }

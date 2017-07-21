@@ -41,5 +41,9 @@ public interface EventServiceInterface {
     Integer getCategoryIdFromSlotId(int slotId);
 
     void deleteEvent(int eventId);
+
     Integer checkIsManySlot(int slotId);
+
+    void changeEventStatus(EventEntity eventEntity, int status);
+    void changeStatusToFinish(int churchId);
 }

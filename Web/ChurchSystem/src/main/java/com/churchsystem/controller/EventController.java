@@ -112,6 +112,7 @@ public class EventController {
     public List<EventDisplayEntity> loadEventRegister(HttpServletRequest request) {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         List<EventDisplayEntity> data = eventServiceInterface.getListOfEvent(churchId);
+        eventServiceInterface.changeStatusToFinish(churchId);
         return data;
     }
 

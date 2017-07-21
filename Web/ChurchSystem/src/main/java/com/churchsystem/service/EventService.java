@@ -2,6 +2,7 @@ package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
+import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.EventModelInterface;
 import com.churchsystem.model.interfaces.RoomModelInterface;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.tags.Param;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -149,8 +151,8 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate, int subId) {
-        Integer conductorId=null;
-        Integer roomId=null;
+        Integer conductorId = null;
+        Integer roomId = null;
 
         List<Integer> listConductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId, subId);
         List<Integer> listRoomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId, subId);
@@ -219,5 +221,33 @@ public class EventService implements EventServiceInterface {
         return UtilsConstant.ERROR;
     }
 
+    @Override
+    public void changeStatusToFinish(int churchId) {
+        try {
+            Date curDate = DateUtils.getCurrentDate();
+            //new Date(Calendar.getInstance().getTime().getTime());
+            List<EventEntity> eventEntities = eventModelInterface.getListEventOfChurch(churchId);
+            for (int i = 0; i < eventEntities.size(); i++) {
+                List<SlotEntity> slotEntities = slotModelInterface.getSlotByEventId(eventEntities.get(i).getEventId());
+                for (int j = 0; j < slotEntities.size(); j++) {
+                    if (slotEntities.get(j).getSlotDate().compareTo(curDate) < 0) {
+                        slotEntities.get(j).setSlotStatus(ParamConstant.SLOT_FINISH_STATUS);
+                        slotModelInterface.updateSlot(slotEntities.get(j));
+                    }
+                }
+                if(slotEntities.get(slotEntities.size()-1).getSlotStatus()== ParamConstant.SLOT_FINISH_STATUS){
+                    changeEventStatus(eventEntities.get(i),ParamConstant.EVENT_FINISH_STATUS);
+                }
 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void changeEventStatus(EventEntity eventEntity, int status) {
+        eventEntity.setEventStatus(status);
+        eventModelInterface.updateEvent(eventEntity);
+    }
 }
