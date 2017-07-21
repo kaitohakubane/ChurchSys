@@ -1,0 +1,20 @@
+.timeline .tags.dbclass {
+    width: 110px;
+}
+.timeline .block.dbclass-block {
+    margin: 0 0 0 140px;
+}
+
+.timeline .tags.dbevent {
+    width: 150px;
+}
+.timeline .block.dbevent-block {
+    margin: 0 0 0 180px;
+}
+.img-circle.profile_img.dbimg {
+    width: 180%;
+    margin-left: 50%;
+}
+.nav.side-menu>li {
+    line-height: 50px;
+}
