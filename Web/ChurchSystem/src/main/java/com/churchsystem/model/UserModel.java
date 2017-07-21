@@ -3,6 +3,7 @@ package com.churchsystem.model;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.entity.AbilityEntity;
+import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.model.common.CommonDAO;
@@ -10,6 +11,7 @@ import com.churchsystem.model.interfaces.UserModelInterface;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
@@ -150,10 +152,18 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
-    public List<InteractionEntity> getFollowingChurch(int userId){
+    public List<InteractionEntity> getUserInteraction(int userId){
         Criteria criteria=getSession().createCriteria(InteractionEntity.class).add(Restrictions.eq(ParamConstant.USER_ID,userId))
                 .add(Restrictions.eq(ParamConstant.INTERACTION_IS_ENABLE,true));
         List<InteractionEntity> result=criteria.list();
+        return result;
+    }
+
+    @Override
+    public List<ChurchEntity> getFollowingChurch(int userId){
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_FOLLOWING_CHURCH)
+                .setParameter(ParamConstant.USER_ID, userId).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+        List<ChurchEntity> result = query.list();
         return result;
     }
 }

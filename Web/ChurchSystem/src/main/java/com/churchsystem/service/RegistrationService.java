@@ -46,7 +46,7 @@ public class RegistrationService implements RegistrationServiceInterface {
     }
 
     @Override
-    public void addRegistration(int userId, int churchId, int subId, int eventId, String message) {
+    public void addNewRegistration(int userId, int churchId, int subId, int eventId, String message) {
         RegistrationEntity entity = new RegistrationEntity();
         entity.setUserId(userId);
         entity.setChurchId(churchId);

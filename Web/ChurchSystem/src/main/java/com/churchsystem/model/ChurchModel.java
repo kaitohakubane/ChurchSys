@@ -22,7 +22,7 @@ import java.util.List;
 public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     @Override
     public ChurchEntity getChurchById(int churchId){
-        Criteria criteria=getSession().createCriteria(ChurchEntity.class).add(Restrictions.eq("churchId",churchId));
+        Criteria criteria=getSession().createCriteria(ChurchEntity.class).add(Restrictions.eq(ParamConstant.CHURCH_ID,churchId));
         ChurchEntity result=(ChurchEntity) criteria.uniqueResult();
         return result;
     }

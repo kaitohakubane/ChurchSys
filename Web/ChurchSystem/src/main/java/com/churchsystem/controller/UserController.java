@@ -4,6 +4,8 @@ import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.StringUtils;
+import com.churchsystem.entity.ChurchEntity;
+import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.entity.ManagementJsonEntity;
 import com.churchsystem.service.interfaces.CategoryServiceInterface;
@@ -90,4 +92,16 @@ public class UserController {
         }
 
     }
+
+    @RequestMapping(value = PageConstant.USER_DASHBOARD_URL, method = RequestMethod.GET)
+    public ModelAndView userDashBoard(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.USER_DASHBOARD_PAGE);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity userEntity=userServiceInterface.getUserByAccountId(auth.getName());
+        List<ChurchEntity> followChurch = userServiceInterface.getFollowingChurch(userEntity.getUserId());
+        modelAndView.addObject(ParamConstant.CHURCH_LIST, followChurch)
+                .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList());
+        return modelAndView;
+    }
+
 }

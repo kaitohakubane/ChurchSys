@@ -225,7 +225,6 @@ public class EventService implements EventServiceInterface {
     public void changeStatusToFinish(int churchId) {
         try {
             Date curDate = DateUtils.getCurrentDate();
-            //new Date(Calendar.getInstance().getTime().getTime());
             List<EventEntity> eventEntities = eventModelInterface.getListEventOfChurch(churchId);
             for (int i = 0; i < eventEntities.size(); i++) {
                 List<SlotEntity> slotEntities = slotModelInterface.getSlotByEventId(eventEntities.get(i).getEventId());

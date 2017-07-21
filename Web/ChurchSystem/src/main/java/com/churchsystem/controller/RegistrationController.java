@@ -82,7 +82,7 @@ public class RegistrationController {
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
                     subId, churchId, true);
 
-            registrationServiceInterface.addRegistration(userEntity.getUserId(),churchId,subId,eventEntity.getEventId(),null);
+            registrationServiceInterface.addNewRegistration(userEntity.getUserId(), churchId, subId, eventEntity.getEventId(), null);
 
             eventServiceInterface.createSlotForUserEvent(eventEntity.getEventId(), startTime, endTime, churchId, slotDate, subId);
 
@@ -113,15 +113,15 @@ public class RegistrationController {
             notificationServiceInterface.notify(msgEntity, managerAccount);
 
             //Notify user
-            notificationEntity.setUserId(userEntity.getUserId());
-            information = ParamConstant.USER_EVENT_REGISTRATION_NOTIFICATION + subjectName +
-                    ParamConstant.TIME_MESSAGE_NOTIFICATION + startTimeStr + " " + slotDateStr;
-            notificationEntity.setInformation(information);
-            notificationEntity.setSender(churchServiceInterface.getChurchById(churchId).getChurchName());
-            notificationServiceInterface.addNotification(notificationEntity);
-
-            msgEntity = new Notification(notificationEntity);
-            notificationServiceInterface.notify(msgEntity, userEntity.getAccountId());
+//            notificationEntity.setUserId(userEntity.getUserId());
+//            information = ParamConstant.USER_EVENT_REGISTRATION_NOTIFICATION + subjectName +
+//                    ParamConstant.TIME_MESSAGE_NOTIFICATION + startTimeStr + " " + slotDateStr;
+//            notificationEntity.setInformation(information);
+//            notificationEntity.setSender(churchServiceInterface.getChurchById(churchId).getChurchName());
+//            notificationServiceInterface.addNotification(notificationEntity);
+//
+//            msgEntity = new Notification(notificationEntity);
+//            notificationServiceInterface.notify(msgEntity, userEntity.getAccountId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,44 +148,37 @@ public class RegistrationController {
     //KietTA
     @ResponseBody
     @RequestMapping(value = PageConstant.CLASS_REGISTRATION, method = RequestMethod.POST)
-    public int classRegister(@RequestParam(value = ParamConstant.EVENT_ID) String eventIdStr,
-                             @RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr) {
+    public int classRegister(
+            @RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr,
+            @RequestParam(value = ParamConstant.SUBJECT_ID) String subIdStr,
+            @RequestParam(value = ParamConstant.REGISTRATION_MESSAGE) String message,
+            @RequestParam(value=ParamConstant.REGISTRATION_EST_TIME) String estTime) {
         try {
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
 
-            int eventId = Integer.parseInt(eventIdStr);
+
             int churchId = Integer.parseInt(churchIdStr);
 
             //Notify manager
             String managerAccount = userServiceInterface.getChurchManagerAccount(churchId);
             UserEntity user = userServiceInterface.getUserByAccountId(managerAccount);
-            String subjectName = subjectServiceInterface.getSubjectById(eventServiceInterface.getEventById(eventId)
-                    .getSubId()).getSubName();
-            String information = ParamConstant.EVENT_NAME_PRE + subjectName;
+
+
+//            String information = ParamConstant.EVENT_NAME_PRE + subjectName;
             Timestamp time = new Timestamp(System.currentTimeMillis());
             NotificationEntity notificationEntity = new NotificationEntity();
             notificationEntity.setTime(time);
             notificationEntity.setType(ParamConstant.DEFAULT_TYPE);
             notificationEntity.setUserId(user.getUserId());
-            notificationEntity.setInformation(information);
+//            notificationEntity.setInformation(information);
             notificationEntity.setSender(UtilsConstant.SYSTEM_NAME);
             ////////////////////////////////////
             notificationEntity.setLink("");
             notificationServiceInterface.addNotification(notificationEntity);
             Notification msgEntity = new Notification(notificationEntity);
             notificationServiceInterface.notify(msgEntity, managerAccount);
-
-
-            notificationEntity.setUserId(userEntity.getUserId());
-            information = ParamConstant.USER_EVENT_REGISTRATION_NOTIFICATION + subjectName;
-            notificationEntity.setInformation(information);
-            notificationEntity.setSender(churchServiceInterface.getChurchById(churchId).getChurchName());
-            notificationServiceInterface.addNotification(notificationEntity);
-
-            msgEntity = new Notification(notificationEntity);
-            notificationServiceInterface.notify(msgEntity, userEntity.getAccountId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -209,7 +202,7 @@ public class RegistrationController {
         return 1;
     }
 
-    //KietTA
+
     @ResponseBody
     @RequestMapping(value = PageConstant.PREDEFINED_CLASS_REGISTRATION, method = RequestMethod.POST)
     public int registerPredefinedClass(@RequestParam(value = ParamConstant.EVENT_ID) String eventIdStr) {
@@ -217,7 +210,8 @@ public class RegistrationController {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
             int eventId = Integer.parseInt(eventIdStr);
-
+            EventEntity eventEntity = eventServiceInterface.getEventById(eventId);
+            registrationServiceInterface.addNewRegistration(userEntity.getUserId(), eventEntity.getChurchId(), eventEntity.getSubId(), eventId, null);
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

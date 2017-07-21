@@ -1,5 +1,6 @@
 package com.churchsystem.service.interfaces;
 
+import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 
@@ -34,13 +35,16 @@ public interface UserServiceInterface {
 
     List<String> getEventRegisteredUserAccount(int eventId);
 
-    void insertPriest (UserEntity userEntity);
+    void insertPriest(UserEntity userEntity);
 
     UserEntity getPriestByAccountId(String accountId);
 
     void mapUserToChurch(int userId, int churchId);
 
-    void mapPriestWithSubject (int userId, int subId);
-    List<InteractionEntity> getFollowingChurch(int userId);
+    void mapPriestWithSubject(int userId, int subId);
+
+    List<InteractionEntity> getUserInteraction(int userId);
+
+    List<ChurchEntity> getFollowingChurch(int userId);
 
 }

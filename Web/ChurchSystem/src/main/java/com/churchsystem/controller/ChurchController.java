@@ -74,18 +74,17 @@ public class ChurchController {
                 result = churchServiceInterface.getNearbyChurch(Latitude, Longitude, radius);
                 if (result == null) {
                     radius = radius + ParamConstant.ADDITIONAL_DISTANCE;
-                }else if(userEntity!=null){
-                    List<InteractionEntity> followChurch=userServiceInterface.getFollowingChurch(userEntity.getUserId());
-                    if(followChurch.size()>0){
-                        for(int i=0;i<result.size();i++){
-                            for (int k=0;k<followChurch.size();k++){
-                                if(result.get(i).getChurchId()==followChurch.get(k).getChurchId()){
+                } else if (userEntity != null) {
+                    List<InteractionEntity> followChurch = userServiceInterface.getUserInteraction(userEntity.getUserId());
+                    if (followChurch.size() > 0) {
+                        for (int i = 0; i < result.size(); i++) {
+                            for (int k = 0; k < followChurch.size(); k++) {
+                                if (result.get(i).getChurchId() == followChurch.get(k).getChurchId()) {
                                     result.get(i).setIsFollowed(ParamConstant.IS_FOLLOWING);
                                 }
                             }
                         }
                     }
-
                 }
             }
 

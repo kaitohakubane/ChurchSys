@@ -97,6 +97,7 @@ public class PageConstant {
     // User
     public static final String PRIEST_MANAGEMENT_URL = "/manager/priest-management";
     public static final String ADD_NEW_PRIEST_URL = "/manager/priest-management/add-new-priest";
+    public static final String USER_DASHBOARD_URL="/user/dashboard";
 
     // Slot
 
@@ -141,6 +142,7 @@ public class PageConstant {
     public static final String NOTIFICATION_PAGE = "notification-page";
     public static final String USER_NOTIFICATION_PAGE="/user-pages/user-notification-page";
     public static final String PRIEST_MANAGEMENT_PAGE = "priest-management-page";
+    public static final String USER_DASHBOARD_PAGE="/user-pages/dashboard-page";
 
     // Slot
     public static final String DAILY_REPORT_PAGE = "daily-report-page";

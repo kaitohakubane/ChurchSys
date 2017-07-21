@@ -53,7 +53,7 @@ public class ParamConstant {
     public static final String REGISTRATION_STATUS = "regisStatus";
     public static final String REGISTRATION_START_TIME = "regisStartTime";
     public static final String REGISTRATION_EST_TIME = "estTime";
-
+    public static final String REGISTRATION_MESSAGE="message";
 
     /**
      * Event

@@ -2,6 +2,7 @@ package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.AbilityEntity;
+import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 import com.churchsystem.model.interfaces.UserModelInterface;
@@ -112,7 +113,12 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public List<InteractionEntity> getFollowingChurch(int userId){
+    public List<InteractionEntity> getUserInteraction(int userId){
+        return userModelInterface.getUserInteraction(userId);
+    }
+
+    @Override
+    public List<ChurchEntity> getFollowingChurch(int userId){
         return userModelInterface.getFollowingChurch(userId);
     }
 }

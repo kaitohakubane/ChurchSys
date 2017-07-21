@@ -73,7 +73,7 @@ public class EventModel extends CommonDAO implements EventModelInterface {
 
     @Override
     public EventEntity getEventById(int eventId) {
-        Criteria criteria = getSession().createCriteria(EventEntity.class).add(Restrictions.eq("eventId", eventId));
+        Criteria criteria = getSession().createCriteria(EventEntity.class).add(Restrictions.eq(ParamConstant.EVENT_ID, eventId));
         EventEntity eventEntity = (EventEntity) criteria.uniqueResult();
         return eventEntity;
     }
@@ -103,8 +103,8 @@ public class EventModel extends CommonDAO implements EventModelInterface {
 
     @Override
     public List<EventEntity> getListEventOfChurch(int churchId) {
-        Criteria criteria = getSession().createCriteria(EventEntity.class).add(Restrictions.eq("churchId", churchId))
-                .add(Restrictions.eq("eventStatus", ParamConstant.EVENT_APPROVE_STATUS));
+        Criteria criteria = getSession().createCriteria(EventEntity.class).add(Restrictions.eq(ParamConstant.CHURCH_ID, churchId))
+                .add(Restrictions.eq(ParamConstant.EVENT_STATUS, ParamConstant.EVENT_APPROVE_STATUS));
         List<EventEntity> result = criteria.list();
         return result;
     }

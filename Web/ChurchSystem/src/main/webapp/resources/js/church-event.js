@@ -113,6 +113,11 @@ function loadEvent() {
         dataType: 'json',
         success: function (res) {
             eventList = res;
+            eventList.forEach(function (e) {
+                if (e.status == 3) {
+                    e.color = "#777"
+                }
+            })
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

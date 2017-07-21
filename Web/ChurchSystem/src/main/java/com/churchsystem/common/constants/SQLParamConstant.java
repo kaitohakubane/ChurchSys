@@ -210,4 +210,6 @@ public class SQLParamConstant {
             "WHERE s1.eventId = s.eventId";
 
     public static final String GET_ALL_ROOM = "SELECT * FROM room r WHERE r.churchId=:churchId";
+
+    public static final String GET_FOLLOWING_CHURCH = "SELECT s.churchId as churchId, s.churchName as churchName ,s.address as address FROM church s, interaction i WHERE s.churchId=i.churchId AND i.userId =:userId ";
 }

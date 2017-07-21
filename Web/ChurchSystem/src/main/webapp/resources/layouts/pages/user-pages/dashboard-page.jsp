@@ -1,4 +1,4 @@
-<%--
+u<%--
   Created by IntelliJ IDEA.
   User: Trung
   Date: 7/20/2017
@@ -19,30 +19,8 @@
     <title>Dashboard Page</title>
 
     <c:import url="/resources/layouts/common/header.jsp"/>
-    <link href="<c:url value="/resources/css/stream.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/user-dashboard.css"/>" rel="stylesheet">
 
-    <style>
-        .timeline .tags.dbclass {
-            width: 110px;
-        }
-        .timeline .block.dbclass-block {
-            margin: 0 0 0 140px;
-        }
-
-        .timeline .tags.dbevent {
-            width: 150px;
-        }
-        .timeline .block.dbevent-block {
-            margin: 0 0 0 180px;
-        }
-        .img-circle.profile_img.dbimg {
-            width: 180%;
-            margin-left: 50%;
-        }
-        .nav.side-menu>li {
-            line-height: 50px;
-        }
-    </style>
 
 </head>
 <body class="nav-md">
@@ -67,27 +45,20 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content bs-example-popovers">
-
-                                    <div class="alert alert-success alert-dismissible fade in" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                                        </button>
-                                        <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                                    </div>
-                                    <div class="alert alert-info alert-dismissible fade in" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                                        </button>
-                                        <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                                    </div>
-                                    <div class="alert alert-warning alert-dismissible fade in" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                                        </button>
-                                        <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                                    </div>
-                                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                                        </button>
-                                        <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                                    </div>
+                                    <c:forEach items="${churchList}" var="item" varStatus="status">
+                                        <div class="alert alert-dismissible fade in" id="${status.count}" role="alert">
+                                            <a style="color: #fff"
+                                               href="${pageContext.request.contextPath}/church?churchId=${item.churchId}">
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                        id="${item.churchId}"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <strong>${item.churchName}</strong>
+                                                <p>${item.address}</p>
+                                            </a>
+                                        </div>
+                                    </c:forEach>
 
                                 </div>
                             </div>
@@ -146,15 +117,20 @@
                 </div>
 
 
-
                 <div class="col-md-5 col-sm-5 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>Sự kiện sắp diễn ra</h2>
                             <ul class="nav navbar-right panel_toolbox">
-                                <li><button type="button" class="btn btn-round btn-success">Ngày</button></li>
-                                <li><button type="button" class="btn btn-round btn-success">Tuần</button></li>
-                                <li><button type="button" class="btn btn-round btn-success">Tháng</button></li>
+                                <li>
+                                    <button type="button" class="btn btn-round btn-success">Ngày</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn btn-round btn-success">Tuần</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn btn-round btn-success">Tháng</button>
+                                </li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -164,17 +140,17 @@
                                     <div class="block dbevent-block">
                                         <div class="tags dbevent">
                                             <a href="" class="tag">
-                                                <span>Hiến máu nhân đạo</span>
+                                                <span>Hiến máu (Subject)</span>
                                             </a>
                                         </div>
                                         <div class="block_content">
                                             <h2 class="title">
-                                                <a>Nhà thờ hòa khánh</a>
+                                                <a>Hiến máu t7 (eventName)</a>
                                             </h2>
                                             <div class="byline">
-                                                <span>10 phút nữa</span>
+                                                <span>4:30 - 7:30 (slothour )</span>
                                             </div>
-                                            <p class="excerpt">Hãy tham gia ngay đi các con giời.</p>
+                                            <p class="excerpt">Nhà thờ Hòa Khánh</p>
                                         </div>
                                     </div>
                                 </li>
@@ -230,11 +206,11 @@
 <!-- jQuery -->
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script>
-    var streamLink="<c:out value="${streamLink}"></c:out>"
-    var streamCode="<c:out value="${streamCode}"></c:out>"
+    var streamLink = "<c:out value="${streamLink}"></c:out>"
+    var streamCode = "<c:out value="${streamCode}"></c:out>"
 </script>
 
-<script src="<c:url value="/resources/js/stream.js"/>"></script>
+<script src="<c:url value="/resources/js/user-dashboard.js"/>"></script>
 </body>
 </html>
 

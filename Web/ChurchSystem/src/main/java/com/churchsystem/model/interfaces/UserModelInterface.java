@@ -1,6 +1,7 @@
 package com.churchsystem.model.interfaces;
 
 import com.churchsystem.entity.AbilityEntity;
+import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.InteractionEntity;
 import com.churchsystem.entity.UserEntity;
 
@@ -42,5 +43,7 @@ public interface UserModelInterface {
 
     void mapPriestWithSubject(AbilityEntity abilityEntity);
 
-    List<InteractionEntity> getFollowingChurch(int userId);
+    List<InteractionEntity> getUserInteraction(int userId);
+
+    List<ChurchEntity> getFollowingChurch(int userId);
 }
