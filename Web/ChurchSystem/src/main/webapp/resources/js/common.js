@@ -13,7 +13,7 @@ $(document).ready(function () {
     })
 })
 function notify(information, link, time, sender) {
-    $("#notification").prepend("<li> <a href='"+contextPath+link+"'> <span> " + sender + " </span> <span class='message'> " + information +
+    $("#notification").prepend("<li> <a href='" + contextPath + link + "'> <span> " + sender + " </span> <span class='message'> " + information +
         " </span> <span>" + time + " </span></span></span> </a> </li>")
 
     var count = parseInt($("#numberOfNoti").html());
@@ -82,7 +82,7 @@ function finishEvent(churchId) {
         "churchId": churchId
     }
     var requestMethod = "POST";
-    var requestURL = contextPath+FINISH_EVENT;
+    var requestURL = contextPath + FINISH_EVENT;
     $.ajax({
             url: requestURL,
             data: requestData,

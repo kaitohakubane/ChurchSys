@@ -369,7 +369,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" id="userRegister">
     <div class="" style="width: 400px;">
         <div class="x_panel">
             <div class="x_title">
@@ -438,6 +438,7 @@
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/lang/vi.js"/>"></script>
 
 <!-- iCheck -->
 <script src="<c:url value="/resources/lib/vendors/iCheck/icheck.min.js"/>"></script>

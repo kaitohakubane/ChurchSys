@@ -52,6 +52,7 @@ $(document).ready(function () {
             $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
         }
     })
+
     $('#createClassbtn').on('click', function () {
         var startTime = $("#slotNum").children(":selected").attr("id");
         var isPublic = $("#createEventPopupIsPublic").prop('checked');
@@ -111,11 +112,13 @@ var isEventOverDiv = function (x, y) {
 function calendarInitialize() {
 
     $('#calendar').fullCalendar({
+        locale: 'vi',
         header: {
-            right: 'today,agendaDay,month,testTimeLine',
+            right: 'today,agendaDay,month',
             left: 'prev,next',
             center: 'title'
         },
+
         views: {
             agendaDay: {
                 minTime: '04:30:00',
@@ -190,17 +193,11 @@ function calendarInitialize() {
         },
 
 
-        drop: function (date) {
-            $(this).remove();
-            console.log($(this).attr("subId"))
-        },
-
-        eventReceive: function (event) {
-            if (false) {
-                $('#calendar').fullCalendar('updateEvent', event);
-            } else {
-                appendClassToList(event.subId)
-            }
+        drop: function (date, jsEvent, ui, resourceId) {
+            // $(this).remove();
+            console.log($(this).attr("subId"));
+            console.log(date.format("HH:mm:ss"));
+            console.log(date.format("DD-MM-YYYY"));
         },
 
         eventDragStart: function (event, jsEvent, ui, view) {
@@ -208,23 +205,23 @@ function calendarInitialize() {
             calEventStatus['calendar'] = '#calendar';
             calEventStatus['event_id'] = event._id;
         },
+
         eventDragStop: function (event, jsEvent, ui, view, revertFunc) {
-            console.log('calendar 1 eventDragStop');
-            if (isEventOverDiv(jsEvent.clientX, jsEvent.clientY)) {
-                $('#calendar').fullCalendar('removeEvents', event._id);
-                var el = $("<div class='fc-event'>").appendTo('#external-events-listing').text(event.title);
-                el.draggable({
-                    zIndex: 999,
-                    revert: true,
-                    revertDuration: 0
-                });
-                el.data('event', {title: event.title, id: event.id, stick: true});
-                registerClassList();
-            }
-
-            calEventStatus = []; // Empty
-            // makeEventsDraggable();
-
+            // console.log('calendar 1 eventDragStop');
+            // if (isEventOverDiv(jsEvent.clientX, jsEvent.clientY)) {
+            //     $('#calendar').fullCalendar('removeEvents', event._id);
+            //     var el = $("<div class='fc-event'>").appendTo('#external-events-listing').text(event.title);
+            //     el.draggable({
+            //         zIndex: 999,
+            //         revert: true,
+            //         revertDuration: 0
+            //     });
+            //     el.data('event', {title: event.title, id: event.id, stick: true});
+            //     registerClassList();
+            // }
+            //
+            // calEventStatus = []; // Empty
+            // // makeEventsDraggable();
 
         },
 
@@ -236,6 +233,8 @@ function calendarInitialize() {
             if (start < '04:30' || end > '21:00' || start > end) {
                 revertFunc();
                 console.log('revert');
+            } else {
+                updateEventOnSchedule(event);
             }
 
         },
@@ -250,6 +249,8 @@ function calendarInitialize() {
             if (start < '04:30' || end > '21:00' || start > end) {
                 revertFunc();
                 console.log('revert');
+            } else {
+                updateEventOnSchedule(event)
             }
         },
 
@@ -262,7 +263,6 @@ function calendarInitialize() {
         slotLabelFormat: 'HH:mm',
         timeFormat: 'HH:mm'
     })
-
 
     $("#calendar").fullCalendar('addEventSource', {
         events: eventList,
@@ -313,7 +313,6 @@ function loadEvent() {
 
     var requestURL = contextPath + LOAD_EVENT_REGISTER_URL;
     var requestMethod = "POST";
-
     $.ajax({
         url: requestURL,
         type: requestMethod,
@@ -322,6 +321,7 @@ function loadEvent() {
         dataType: 'json',
         success: function (res) {
             eventList = res;
+            console.log(res);
             eventList.forEach(function (e) {
 
                 if (e.status == 2) {
@@ -342,6 +342,7 @@ function loadEvent() {
             console.error(textStatus);
         }
     });
+
 }
 
 function subjectDropdownEvent(category) {
@@ -427,3 +428,8 @@ function createClass(event, slotId, isPublic) {
 }
 
 
+function updateEventOnSchedule(event) {
+    console.log(event.start.format("HH:mm:ss"))
+    console.log(event.end.format("HH:mm:ss"))
+    console.log(event.start.format("YYYY-MM-DD"))
+}

@@ -52,17 +52,7 @@ $(document).ready(function () {
 //--------------------------------Function-------------------------------
 
 
-/* initialize the external events*/
-function classListInitial() {
-    classList.forEach(function (item) {
-        var classTab = document.createElement('div');
-        classTab.className = "fc-event";
-        classTab.setAttribute('subId', item[0]);
-        classTab.textContent = item[1] + ": " + item[2];
-        $('#external-events-listing').append(classTab);
 
-    })
-}
 
 /* set attribute for event on drag table */
 function registerClassList() {
@@ -212,6 +202,18 @@ function appendClassToList(subId) {
 
     })
     registerClassList();
+}
+
+/* initialize the external events*/
+function classListInitial() {
+    classList.forEach(function (item) {
+        var classTab = document.createElement('div');
+        classTab.className = "fc-event";
+        classTab.setAttribute('subId', item[0]);
+        classTab.textContent = item[1] + ": " + item[2];
+        $('#external-events-listing').append(classTab);
+
+    })
 }
 
 function datePickerLoad() {
