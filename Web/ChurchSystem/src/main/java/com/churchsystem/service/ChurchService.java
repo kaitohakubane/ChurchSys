@@ -1,8 +1,6 @@
 package com.churchsystem.service;
 
-import com.churchsystem.entity.ChurchDisplayEntity;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.ChurchMapEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,28 +14,38 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class ChurchService implements ChurchServiceInterface{
+public class ChurchService implements ChurchServiceInterface {
     @Autowired
     ChurchModelInterface churchModelInterface;
 
     @Override
-    public ChurchEntity getChurchById(int churchId){
+    public ChurchEntity getChurchById(int churchId) {
         return churchModelInterface.getChurchById(churchId);
     }
 
 
     @Override
-    public  void updateChurch(ChurchEntity churchEntity){
+    public void updateChurch(ChurchEntity churchEntity) {
         churchModelInterface.updateChurch(churchEntity);
     }
 
     @Override
-    public List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius ){
-        return churchModelInterface.getNearbyChurch(latitude,longitude,radius);
+    public List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius) {
+        return churchModelInterface.getNearbyChurch(latitude, longitude, radius);
     }
 
     @Override
-    public List<ChurchDisplayEntity> getAllChurch(){
-        return  churchModelInterface.getAllChurch();
+    public List<ChurchDisplayEntity> getAllChurch() {
+        return churchModelInterface.getAllChurch();
+    }
+
+    @Override
+    public ChurchInfoEntity getChurchInfo(int churchId) {
+        return churchModelInterface.getChurchInfo(churchId);
+    }
+
+    @Override
+    public List<IncomingEventEntity> getIncomingEvent(int userId){
+        return churchModelInterface.getIncomingEvent(userId);
     }
 }

@@ -68,8 +68,7 @@
                                         </div>
                                         <div class="panel-body" style="padding: 15px 0">
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Người
-                                                    dạy</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Người dạy</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -102,8 +101,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày bắt
-                                                    đầu</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày khai giảng</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -114,8 +112,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Các
-                                                    ngày</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Các ngày</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -126,8 +123,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời
-                                                    gian</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -173,8 +169,7 @@
                                                     </div>
                                                     <div class="panel-body" style="padding: 15px 0">
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Người
-                                                                dạy</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Người dạy</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">
@@ -209,8 +204,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày
-                                                                bắt đầu</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày khai giảng</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">
@@ -222,8 +216,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Các
-                                                                ngày</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Các ngày</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">
@@ -235,8 +228,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời
-                                                                gian</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">

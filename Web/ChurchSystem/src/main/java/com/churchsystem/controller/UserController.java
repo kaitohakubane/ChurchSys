@@ -4,11 +4,9 @@ import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.StringUtils;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.InteractionEntity;
-import com.churchsystem.entity.UserEntity;
-import com.churchsystem.entity.ManagementJsonEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.service.interfaces.CategoryServiceInterface;
+import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.SubjectServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,6 +37,8 @@ public class UserController {
     CategoryServiceInterface categoryServiceInterface;
     @Autowired
     SubjectServiceInterface subjectServiceInterface;
+    @Autowired
+    ChurchServiceInterface churchServiceInterface;
 
     @RequestMapping(value = PageConstant.PRIEST_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllChurch(HttpServletRequest request) {
@@ -97,10 +98,12 @@ public class UserController {
     public ModelAndView userDashBoard(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.USER_DASHBOARD_PAGE);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserEntity userEntity=userServiceInterface.getUserByAccountId(auth.getName());
+        UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
         List<ChurchEntity> followChurch = userServiceInterface.getFollowingChurch(userEntity.getUserId());
+        List<IncomingEventEntity> list = churchServiceInterface.getIncomingEvent(userEntity.getUserId());
         modelAndView.addObject(ParamConstant.CHURCH_LIST, followChurch)
-                .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList());
+                .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
+                .addObject(ParamConstant.INCOMING_EVENT, list);
         return modelAndView;
     }
 

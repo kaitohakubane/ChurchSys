@@ -7,6 +7,7 @@ import com.churchsystem.entity.SlotEntity;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,5 +46,10 @@ public interface EventServiceInterface {
     Integer checkIsManySlot(int slotId);
 
     void changeEventStatus(EventEntity eventEntity, int status);
+
     void changeStatusToFinish(int churchId);
+
+    void updateEventNameAndPrivacy(SlotEntity slotEntity ,String eventName, boolean privacy);
+
+    void updateRepeatSlot(SlotEntity slotEntity,ArrayList<Integer> slotHour );
 }

@@ -31,4 +31,5 @@ public interface SlotServiceInterface {
     List<SlotEntity> getListSlotOfClass (int slotId);
 
     void deleteSlot(int slotId);
+
 }

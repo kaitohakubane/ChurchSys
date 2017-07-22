@@ -39,6 +39,8 @@ public class ParamConstant {
     public static final int DEFAULT_RADIUS = 10;
     public static final int ADDITIONAL_DISTANCE = 20;
     public static final int MAXIMUM_DISTANCE = 50;
+    public static final String CHURCH_INFORMATION = "churchInformationEntity";
+    public static final String INCOMING_EVENT = "listIncomingEvent";
 
     /**
      * Registration

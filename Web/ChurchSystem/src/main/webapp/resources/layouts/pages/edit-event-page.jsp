@@ -35,7 +35,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Edit Event Page</h3>
+                        <h3>Chỉnh sửa thông tin sự kiện</h3>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@
                     <div class="col-md-6 col-xs-12 col-md-offset-3">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Event Detail</h2>
+                                <h2>Chi tiết sự kiện</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -54,7 +54,7 @@
 
                                     <div class="col-md-6 form-group">
                                         <input id="txtTitle" type="text" class="form-control" data-id = "${slotEntity.slotId}"
-                                               value="${slotEntity.eventName}" placeholder="Event title" readonly >
+                                               value="${slotEntity.eventName}" placeholder="Event title" >
                                     </div>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -89,7 +89,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Assigned:</label>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Người phụ trách:</label>
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <select class="form-control" id="assigned">
 
@@ -97,7 +97,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Room:</label>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phòng:</label>
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <select class="form-control" id="room">
                                             </select>
@@ -105,14 +105,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Date:</label>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Ngày:</label>
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <input type="text"  class="form-control" id="slotDate">
                                     </div>
                                     </div>
 
                                     <div class="col-md-12 form-group">
-                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Public</label>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Công khai</label>
                                         <label class="control-label">
                                             <input type="checkbox" id="editEventIsChecked" class="js-switch"
                                                    checked/>
@@ -122,9 +122,9 @@
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
-                                            <button type="button" id="btnBack" class="btn btn-default btn-lg">Back
+                                            <button type="button" id="btnBack" class="btn btn-default btn-lg">Quay lại
                                             </button>
-                                            <button type="button" id="btnSave" class="btn btn-success btn-lg">Save
+                                            <button type="button" id="btnSave" class="btn btn-success btn-lg">Lưu
                                             </button>
                                         </div>
                                     </div>

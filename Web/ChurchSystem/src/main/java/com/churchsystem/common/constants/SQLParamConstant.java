@@ -57,6 +57,7 @@ public class SQLParamConstant {
             "(SELECT i.slotId, MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime " +
             "FROM slothour sh, inclusion i, slot s WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) st " +
             "WHERE s.eventId = e.eventId AND s.roomId = r.roomId AND su.subId = e.subId AND s.conductorId = u.userId " +
+            "AND s.slotStatus != 2 AND e.eventStatus = 3 " +
             "AND e.churchId =:churchId AND st.slotId=s.slotId AND e.privacy = true";
 
     public static final String GET_CREATING_EVENT = "SELECT * FROM event " +
@@ -211,5 +212,23 @@ public class SQLParamConstant {
 
     public static final String GET_ALL_ROOM = "SELECT * FROM room r WHERE r.churchId=:churchId";
 
-    public static final String GET_FOLLOWING_CHURCH = "SELECT s.churchId as churchId, s.churchName as churchName ,s.address as address FROM church s, interaction i WHERE s.churchId=i.churchId AND i.userId =:userId ";
+    public static final String GET_FOLLOWING_CHURCH = "SELECT s.churchId as churchId, s.churchName as churchName ," +
+            "s.address as address FROM church s, interaction i WHERE s.churchId=i.churchId AND i.userId =:userId ";
+
+    public static final String GET_CHURCH_INFORMATION = "select c.churchId as churchId,c.churchName as churchName, c.tel as tel, " +
+            "c.address as address, c.mail as mail, c.startTime as startTime, c.endTime as endTime, c.image as image, " +
+            "c.description as description, m.userId as userId,m.userName as userName, m.certificate as certificate " +
+            "from church c, user m, interaction i where m.role='ROLE_MANAGER' AND i.churchId=:churchId AND m.userId = i.userId " +
+            "AND c.churchId = i.churchId";
+
+    public static final String GET_INCOMING_EVENT_INFO = "SELECT m1.eventId as eventId,m1.eventName as eventName," +
+            "m1.churchId as churchId,m1.churchName as churchName,m1.subId as subId ,m1.subName as subName, " +
+            "m2.slotDate as slotDate , m2.startTime as startTime, m2.endTime as endTime " +
+            "FROM (select e.eventId, e.eventName, e.churchId, ch.churchName,e.subId, s.subName " +
+            "from event e , subject s, category c , church ch where e.eventStatus = 3 AND e.churchId = ch.churchId " +
+            "AND e.privacy = 1 AND e.subId = s.subId AND s.categoryId = c.categoryId AND c.categoryId <6 AND c.categoryId != 3) m1," +
+            "(Select s.slotId, s.eventId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime " +
+            "from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
+            "where s.slotId = s1.slotId and s.slotStatus = 1 group by(s.eventId)) m2, user u, church ch, interaction i " +
+            "WHERE m1.eventId = m2.eventId AND m1.churchId= ch.churchId AND ch.churchId = i.churchId AND i.userId = u.userId AND u.userId=:userId";
 }

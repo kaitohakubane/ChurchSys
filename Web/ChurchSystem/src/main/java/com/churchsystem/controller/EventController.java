@@ -288,18 +288,26 @@ public class EventController {
         //int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            int isManySlot = eventServiceInterface.checkIsManySlot(slotId);
             ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
             int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
             int roomId = Integer.parseInt(eventJsonEntity.getRoomId());
-            int privacy = Integer.parseInt(eventJsonEntity.getPrivacy());
-
+            int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+            String eventName = eventJsonEntity.getEventName();
             SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
             slotEntity.setSlotDate(slotDate);
             slotEntity.setConductorId(conductorId);
             slotEntity.setRoomId(roomId);
-            slotEntity.setSlotStatus(privacy);
 
+
+            boolean privacy = true;
+            if (intPrivacy == UtilsConstant.ZERO) {
+                privacy = false;
+            }
+            if (isManySlot == UtilsConstant.IS_ONE_SLOT) {
+                eventServiceInterface.updateEventNameAndPrivacy(slotEntity, eventName, privacy);
+            }
             slotServiceInterface.updateSlot(slotEntity);
 
             slotServiceInterface.deleteSlotHourBySlotId(slotId);
@@ -344,24 +352,25 @@ public class EventController {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
 //            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            String eventName = eventJsonEntity.getEventName();
             int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
             int roomId = Integer.parseInt(eventJsonEntity.getRoomId());
-            int privacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+            int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
 
             List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
 
             for (SlotEntity slotEntity : slotEntities) {
                 slotEntity.setConductorId(conductorId);
                 slotEntity.setRoomId(roomId);
-                slotEntity.setSlotStatus(privacy);
-                slotServiceInterface.updateSlot(slotEntity);
 
-                slotServiceInterface.deleteSlotHourBySlotId(slotEntity.getSlotId());
+                eventServiceInterface.updateRepeatSlot(slotEntity, slotHour);
 
-                for (int i = 0; i < slotHour.size(); i++) {
-                    eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour.get(i));
-                }
             }
+            boolean privacy = true;
+            if (intPrivacy == UtilsConstant.ZERO) {
+                privacy = false;
+            }
+            eventServiceInterface.updateEventNameAndPrivacy(slotEntities.get(UtilsConstant.ZERO), eventName, privacy);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -453,9 +462,9 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.FINISH_EVENT, method = RequestMethod.POST)
-    public void registerStreamEvent(@RequestParam(value=ParamConstant.CHURCH_ID) String churchIdStr) {
+    public void registerStreamEvent(@RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr) {
         try {
-            int churchId=Integer.parseInt(churchIdStr);
+            int churchId = Integer.parseInt(churchIdStr);
             eventServiceInterface.changeStatusToFinish(churchId);
         } catch (Exception e) {
             e.printStackTrace();

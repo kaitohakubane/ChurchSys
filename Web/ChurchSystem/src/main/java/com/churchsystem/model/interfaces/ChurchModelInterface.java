@@ -1,8 +1,6 @@
 package com.churchsystem.model.interfaces;
 
-import com.churchsystem.entity.ChurchDisplayEntity;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.ChurchMapEntity;
+import com.churchsystem.entity.*;
 
 import java.util.List;
 
@@ -11,7 +9,14 @@ import java.util.List;
  */
 public interface ChurchModelInterface {
     ChurchEntity getChurchById(int churchId);
+
     void updateChurch(ChurchEntity churchEntity);
-    List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius );
+
+    List<ChurchMapEntity> getNearbyChurch(Double latitude, Double longitude, int radius);
+
     List<ChurchDisplayEntity> getAllChurch();
+
+    ChurchInfoEntity getChurchInfo(int churchId);
+
+    List<IncomingEventEntity> getIncomingEvent(int userId);
 }

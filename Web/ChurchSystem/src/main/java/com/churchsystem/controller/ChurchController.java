@@ -110,7 +110,8 @@ public class ChurchController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.INTRODUCTION_PAGE);
+                modelAndView = new ModelAndView(PageConstant.INTRODUCTION_PAGE)
+                .addObject(ParamConstant.CHURCH_INFORMATION,churchServiceInterface.getChurchInfo(churchId));
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();

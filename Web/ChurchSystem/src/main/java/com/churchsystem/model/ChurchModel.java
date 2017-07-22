@@ -2,9 +2,7 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
-import com.churchsystem.entity.ChurchDisplayEntity;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.ChurchMapEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import org.hibernate.Criteria;
@@ -47,5 +45,23 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
                 (Transformers.aliasToBean(ChurchDisplayEntity.class));
         List<ChurchDisplayEntity> churchDisplayEntities = query.list();
         return churchDisplayEntities;
+    }
+
+    @Override
+    public ChurchInfoEntity getChurchInfo(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_CHURCH_INFORMATION)
+                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setResultTransformer(Transformers.aliasToBean(ChurchInfoEntity.class));
+        ChurchInfoEntity churchInfoEntities = (ChurchInfoEntity) query.uniqueResult();
+        return churchInfoEntities;
+    }
+
+    @Override
+    public List<IncomingEventEntity> getIncomingEvent(int userId){
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_INCOMING_EVENT_INFO)
+                .setParameter(ParamConstant.USER_ID, userId)
+                .setResultTransformer(Transformers.aliasToBean(IncomingEventEntity.class));
+        List<IncomingEventEntity> incomingEventEntities = query.list();
+        return incomingEventEntities;
     }
 }

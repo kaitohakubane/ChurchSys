@@ -70,7 +70,7 @@ u<%--
                                 <div class="x_title">
                                     <h2>Lớp học</h2>
                                     <ul class="nav navbar-right panel_toolbox">
-                                        <li style="font-size: 21px;margin-left: 40px;"><i class="fa fa-book"></i></a>
+                                        <li style="font-size: 21px;margin-left: 40px;"><i class="fa fa-book"></i></li>
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
@@ -136,60 +136,81 @@ u<%--
                         </div>
                         <div class="x_content">
                             <ul class="list-unstyled timeline">
-                                <li>
-                                    <div class="block dbevent-block">
-                                        <div class="tags dbevent">
-                                            <a href="" class="tag">
-                                                <span>Hiến máu (Subject)</span>
-                                            </a>
-                                        </div>
-                                        <div class="block_content">
-                                            <h2 class="title">
-                                                <a>Hiến máu t7 (eventName)</a>
-                                            </h2>
-                                            <div class="byline">
-                                                <span>4:30 - 7:30 (slothour )</span>
+                                <c:forEach items="${listIncomingEvent}" var="item">
+                                    <li>
+                                        <div class="block dbevent-block">
+                                            <div class="tags dbevent">
+                                                <a href="" class="tag">
+                                                    <span>${item.subName}</span>
+                                                </a>
                                             </div>
-                                            <p class="excerpt">Nhà thờ Hòa Khánh</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block dbevent-block">
-                                        <div class="tags dbevent">
-                                            <a href="" class="tag">
-                                                <span>Tiếp sức mùa thi</span>
-                                            </a>
-                                        </div>
-                                        <div class="block_content">
-                                            <h2 class="title">
-                                                <a>Nhà thờ hòa khánh</a>
-                                            </h2>
-                                            <div class="byline">
-                                                <span>10 phút nữa</span>
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <a>${item.eventName}</a>
+                                                </h2>
+                                                <div class="byline">
+                                                    <span>${item.startTime} - ${item.endTime}</span>
+                                                </div>
+                                                <p class="excerpt">${item.churchName}</p>
                                             </div>
-                                            <p class="excerpt">Hãy tham gia ngay đi các con giời.</p>
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="block dbevent-block">
-                                        <div class="tags dbevent">
-                                            <a href="" class="tag">
-                                                <span>Khám chữa bệnh</span>
-                                            </a>
-                                        </div>
-                                        <div class="block_content">
-                                            <h2 class="title">
-                                                <a>Nhà thờ hòa khánh</a>
-                                            </h2>
-                                            <div class="byline">
-                                                <span>10 phút nữa</span>
-                                            </div>
-                                            <p class="excerpt">Hãy tham gia ngay đi các con giời.</p>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                </c:forEach>
+
+                                <%--<li>--%>
+                                    <%--<div class="block dbevent-block">--%>
+                                        <%--<div class="tags dbevent">--%>
+                                            <%--<a href="" class="tag">--%>
+                                                <%--<span>Hiến máu (Subject)</span>--%>
+                                            <%--</a>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="block_content">--%>
+                                            <%--<h2 class="title">--%>
+                                                <%--<a>Hiến máu t7 (eventName)</a>--%>
+                                            <%--</h2>--%>
+                                            <%--<div class="byline">--%>
+                                                <%--<span>4:30 - 7:30 (slothour )</span>--%>
+                                            <%--</div>--%>
+                                            <%--<p class="excerpt">Nhà thờ Hòa Khánh</p>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<div class="block dbevent-block">--%>
+                                        <%--<div class="tags dbevent">--%>
+                                            <%--<a href="" class="tag">--%>
+                                                <%--<span>Tiếp sức mùa thi</span>--%>
+                                            <%--</a>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="block_content">--%>
+                                            <%--<h2 class="title">--%>
+                                                <%--<a>Nhà thờ hòa khánh</a>--%>
+                                            <%--</h2>--%>
+                                            <%--<div class="byline">--%>
+                                                <%--<span>10 phút nữa</span>--%>
+                                            <%--</div>--%>
+                                            <%--<p class="excerpt">Hãy tham gia ngay đi các con giời.</p>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
+                                <%--<li>--%>
+                                    <%--<div class="block dbevent-block">--%>
+                                        <%--<div class="tags dbevent">--%>
+                                            <%--<a href="" class="tag">--%>
+                                                <%--<span>Khám chữa bệnh</span>--%>
+                                            <%--</a>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="block_content">--%>
+                                            <%--<h2 class="title">--%>
+                                                <%--<a>Nhà thờ hòa khánh</a>--%>
+                                            <%--</h2>--%>
+                                            <%--<div class="byline">--%>
+                                                <%--<span>10 phút nữa</span>--%>
+                                            <%--</div>--%>
+                                            <%--<p class="excerpt">Hãy tham gia ngay đi các con giời.</p>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</li>--%>
                             </ul>
 
                         </div>

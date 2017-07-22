@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,4 +75,6 @@ public class SlotService implements SlotServiceInterface {
     public void deleteSlot(int slotId) {
         slotModelInterface.deleteSlot(slotId);
     }
+
+
 }

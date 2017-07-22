@@ -305,6 +305,7 @@ function updateSingleEvent() {
         slotId: $("#txtTitle").data("id"),
         slotHour: $("#startTime").children(":selected").attr("id") + ',' + $("#endTime").children(":selected").attr("id"),
         slotDate: $("#slotDate").val(),
+        eventName: $("#txtTitle").val(),
         conductorId: $("#assigned").val(),
         roomId: $("#room").val(),
         privacy: privacy,
@@ -350,7 +351,7 @@ function updateRepeatEvent() {
     var requestData = {
         slotId: $("#txtTitle").data("id"),
         slotHour: $("#startTime").children(":selected").attr("id") + ',' + $("#endTime").children(":selected").attr("id"),
-        // slotHourDate: $("#slotDate").val(),
+        eventName: $("#txtTitle").val(),
         conductorId: $("#assigned").val(),
         roomId: $("#room").val(),
         privacy: privacy,

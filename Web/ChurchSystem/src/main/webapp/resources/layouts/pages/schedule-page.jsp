@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="color-description">
-                            <h4>Color Description</h4>
+                            <h4>Chú thích:</h4>
                             <ul>
                                 <li style="color: #01ff70">
                                     <i class="fa fa-square"></i>
@@ -71,7 +71,7 @@
                     <div class="col-md-10">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Calendar Events
+                                <h2>Lịch sự kiện
                                 </h2>
                                 <div class="clearfix"></div>
                             </div>
@@ -98,7 +98,7 @@
             <%--<div action="#" method="#">--%>
             <div class="panel panel-success">
                 <div class="panel-heading" id="panel-heading">
-                    <h2 class="titre text-center">Event</h2>
+                    <h2 class="titre text-center">Sự kiện</h2>
                 </div>
                 <div class="panel-body">
                     <div class="form">
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 form-group">
-                            <label class="control-label">Public</label>
+                            <label class="control-label">Công khai</label>
                             <label class="">
                                 <input type="checkbox" id="createEventPopupIsPublic" class="js-switch" checked/>
                             </label>
@@ -151,10 +151,10 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <button id="cancelEventbtn" class="btn btn-success col-sm-12">Cancel</button>
+                            <button id="cancelEventbtn" class="btn btn-success col-sm-12">Hủy</button>
                         </div>
                         <div class="col-sm-6">
-                            <button id="createEventbtn" class="btn btn-primary col-sm-12">Create</button>
+                            <button id="createEventbtn" class="btn btn-primary col-sm-12">Tạo</button>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
     <div class="" style="width: 400px;">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Event Detail</h2>
+                <h2>Chi tiết</h2>
                 <button type="button" id="streamBtn" class="btn btn-success pull-right">Stream</button>
                 <div class="clearfix"></div>
             </div>
@@ -177,39 +177,39 @@
 
                     <div class="form-group">
                         <div class="col-md-8">
-                            <input type="text" id="eventPopupTitle" class="form-control" placeholder="Event title">
+                                <input type="text" id="eventPopupTitle" class="form-control" placeholder="Event title" readonly>
                         </div>
                         <div class="col-md-4 form-group pull-right">
-                            <label class="control-label">Public</label>
+                            <label class="control-label">Công khai</label>
                             <label class="">
-                                <input type="checkbox" id="eventDetailIsPublic" class="js-switch" checked/>
+                                <input type="checkbox" id="eventDetailIsPublic" class="js-switch" readonly/>
                             </label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Slot:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Buổi:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupTime" class="form-control" disabled="readonly" data-id = ${slotEntity.slotId}>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Subject:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Chủ đề:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupSubject" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Assigned:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Người phụ trách:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupConductor" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Room:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phòng:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupRoom" class="form-control" disabled="readonly">
                         </div>
@@ -218,8 +218,8 @@
                     <div class="clearfix"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-danger" id="btnRemove">Remove</button>
-                            <button type="button" id="editSlotButton" class="btn btn-success">Edit</button>
+                            <button type="button" class="btn btn-danger" id="btnRemove">Xóa</button>
+                            <button type="button" id="editSlotButton" class="btn btn-success">Sửa</button>
                         </div>
                     </div>
 
@@ -237,26 +237,26 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Create new class</h4>
+                <h4 class="modal-title">Tạo lớp mới</h4>
             </div>
             <div class="modal-body">
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Class information</h2>
+                            <h2>Thông tin lớp</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <br/>
                             <form class="form-horizontal form-label-left">
                                 <div class="form-group">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Number of student:</label>
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Số học sinh:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Number of slot:</label>
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Số buổi học:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <div>
                                             <input type="number" id="numberOfSlot" class="form-control"/>
@@ -264,7 +264,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Exam date:</label>
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày thi:</label>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
                                         <div>
                                             <input type="text" class="form-control" id="datepicker"/>
@@ -272,27 +272,27 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Schedule:</label>
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Lịch:</label>
                                     <label class="control-label">
-                                        <input type="checkbox" id="2" class="flat day-checkbox"> Mon
+                                        <input type="checkbox" id="2" class="flat day-checkbox"> Hai
                                     </label>
                                     <label>
-                                        <input type="checkbox" id="3" class="flat day-checkbox"> Tue
+                                        <input type="checkbox" id="3" class="flat day-checkbox"> Ba
                                     </label>
                                     <label>
-                                        <input type="checkbox" id="4" class="flat day-checkbox"> Wed
+                                        <input type="checkbox" id="4" class="flat day-checkbox"> Tư
                                     </label>
                                     <label>
-                                        <input type="checkbox" id="5" class="flat day-checkbox"> Thus
+                                        <input type="checkbox" id="5" class="flat day-checkbox"> Năm
                                     </label>
                                     <label>
-                                        <input type="checkbox" id="6" class="flat day-checkbox"> Fri
+                                        <input type="checkbox" id="6" class="flat day-checkbox"> Sáu
                                     </label>
                                     <label>
-                                        <input type="checkbox" id="7" class="flat day-checkbox"> Sat
+                                        <input type="checkbox" id="7" class="flat day-checkbox"> Bảy
                                     </label>
                                     <label>
-                                        <input type="checkbox" id="8" class="flat day-checkbox"> Sun
+                                        <input type="checkbox" id="8" class="flat day-checkbox"> CN
                                     </label>
                                 </div>
                             </form>
@@ -302,8 +302,8 @@
             </div>
             <div class="clearfix"></div>
             <div class="modal-footer">
-                <button type="button" id="createClassbtn" class="btn btn-primary">Create</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" id="createClassbtn" class="btn btn-primary">Tạo</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
             </div>
         </div>
         <!-- /Modal content-->
@@ -343,7 +343,7 @@
             </div>
             <div class="clearfix"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
                 <button type="button" id="createStreambtn" class="btn btn-primary" >OK</button>
             </div>
         </div>
@@ -362,8 +362,8 @@
                 <label>Bạn muốn áp dụng cho:</label>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này</button>
-                <button type="button" class="btn btn-primary col-md-6" id="manySlot">Các giờ liên quan</button>
+                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Buổi này</button>
+                <button type="button" class="btn btn-primary col-md-6" id="manySlot">Các buổi liên quan</button>
             </div>
         </div>
     </div>
@@ -385,13 +385,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Slot</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Buổi</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input type="text" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Subject</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Môn</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input type="text" class="form-control">
                         </div>

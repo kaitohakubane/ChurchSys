@@ -249,4 +249,23 @@ public class EventService implements EventServiceInterface {
         eventEntity.setEventStatus(status);
         eventModelInterface.updateEvent(eventEntity);
     }
+
+    @Override
+    public void updateEventNameAndPrivacy(SlotEntity slotEntity ,String eventName, boolean privacy){
+        EventEntity eventEntity = eventModelInterface.getEventById(slotEntity.getEventId());
+        eventEntity.setEventName(eventName);
+        eventEntity.setPrivacy(privacy);
+        eventModelInterface.updateEvent(eventEntity);
+    }
+
+    @Override
+    public void updateRepeatSlot(SlotEntity slotEntity,ArrayList<Integer> slotHour ){
+        slotModelInterface.updateSlot(slotEntity);
+
+        slotModelInterface.deleteSlotHourBySlotId(slotEntity.getSlotId());
+
+        for (int i = 0; i < slotHour.size(); i++) {
+            mappingResource(slotEntity.getSlotId(), slotHour.get(i));
+        }
+    }
 }
