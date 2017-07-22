@@ -6,6 +6,7 @@
 var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 var CREATE_EVENT_URL = "/manager/event/Add";
 var CREATE_CLASS_URL = "/manager/class/Add";
+var UPDATE_DRAG_DROP_EVENT = "/manager/schedule/update-drag-drop-event"
 //local variable
 var creatingEvent;
 var calEventStatus = [];
@@ -429,7 +430,33 @@ function createClass(event, slotId, isPublic) {
 
 
 function updateEventOnSchedule(event) {
+    console.log(event.slotId);
     console.log(event.start.format("HH:mm:ss"))
     console.log(event.end.format("HH:mm:ss"))
     console.log(event.start.format("YYYY-MM-DD"))
+
+    var requestURL = contextPath + UPDATE_DRAG_DROP_EVENT;
+    var requestMethod = "POST";
+    var requestData = {
+        slotId: event.slotId,
+        startTime: event.start.format("HH:mm:ss"),
+        endTime: event.end.format("HH:mm:ss"),
+        slotDate: event.start.format("YYYY-MM-DD")
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+
+        success: function () {
+            console.log("Update event on schedule success");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Update event on schedule fail!");
+            console.error(textStatus);
+        }
+    });
 }

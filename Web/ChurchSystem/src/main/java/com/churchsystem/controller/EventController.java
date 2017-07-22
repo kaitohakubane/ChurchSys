@@ -326,18 +326,60 @@ public class EventController {
     public void updateDragDropEvent(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
-            ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
-            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
-
             SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
-            slotEntity.setSlotDate(slotDate);
+            Time startTime = eventJsonEntity.getStartTime();
+            Time endTime = eventJsonEntity.getEndTime();
+            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            List<SlothourEntity> slotHour = slotServiceInterface.getListSlotHourByTime(startTime, endTime);
+            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+            if (slotEntity.getConductorId() != null && slotEntity.getRoomId() != null) {
+                int curRoomId = slotEntity.getRoomId();
+                int curConductorId = slotEntity.getConductorId();
 
-            slotServiceInterface.updateSlot(slotEntity);
+                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
+                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
 
-            slotServiceInterface.deleteSlotHourBySlotId(slotId);
+                if (!listRoomId.contains(curRoomId)) {
+                    slotEntity.setRoomId(null);
+                    slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                }
+                if (!listConductorId.contains(curConductorId)) {
+                    slotEntity.setConductorId(null);
+                    slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                }
+                slotEntity.setSlotDate(slotDate);
 
-            for (int i = 0; i < slotHour.size(); i++) {
-                eventServiceInterface.mappingResource(slotId, slotHour.get(i));
+                slotServiceInterface.updateSlot(slotEntity);
+
+                slotServiceInterface.deleteSlotHourBySlotId(slotId);
+
+                for (int i = 0; i < slotHour.size(); i++) {
+                    eventServiceInterface.mappingResource(slotId, slotHour.get(i).getSlotHourId());
+                }
+            } else {
+                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
+                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
+                if (listRoomId == null) {
+                    slotEntity.setRoomId(null);
+                    slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                }
+                if (listConductorId == null) {
+                    slotEntity.setConductorId(null);
+                    slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                }
+                if (listRoomId != null && listConductorId != null) {
+                    slotEntity.setRoomId(listRoomId.get(UtilsConstant.ZERO));
+                    slotEntity.setConductorId(listConductorId.get(UtilsConstant.ZERO));
+                    slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
+                    slotEntity.setSlotDate(slotDate);
+                }
+                slotServiceInterface.updateSlot(slotEntity);
+
+                slotServiceInterface.deleteSlotHourBySlotId(slotId);
+
+                for (int i = 0; i < slotHour.size(); i++) {
+                    eventServiceInterface.mappingResource(slotId, slotHour.get(i).getSlotHourId());
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,7 @@
 package com.churchsystem.entity;
 
+import java.sql.Time;
+
 /**
  * Created by hungmcse61561-admin on 6/20/2017.
  */
@@ -16,12 +18,14 @@ public class EventJsonEntity {
     private String slotId;
     private String conductorId;
     private String roomId;
-
+    private Time startTime;
+    private Time endTime;
 
     public EventJsonEntity() {
     }
 
-    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy, String typeString, String numOfSlot, String examDate, String type, String slotId, String conductorId, String roomId) {
+    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy, String typeString,
+                           String numOfSlot, String examDate, String type, String slotId, String conductorId, String roomId, Time startTime, Time endTime) {
         this.eventName = eventName;
         this.slotDate = slotDate;
         this.subId = subId;
@@ -34,6 +38,24 @@ public class EventJsonEntity {
         this.slotId = slotId;
         this.conductorId = conductorId;
         this.roomId = roomId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
+    }
+
+    public Time getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
     }
 
     public String getEventName() {

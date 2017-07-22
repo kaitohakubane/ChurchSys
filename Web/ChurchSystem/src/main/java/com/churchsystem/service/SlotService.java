@@ -44,7 +44,7 @@ public class SlotService implements SlotServiceInterface {
     }
 
     @Override
-    public void updateSlot(SlotEntity SlotEntity){
+    public void updateSlot(SlotEntity SlotEntity) {
         slotModelInterface.updateSlot(SlotEntity);
     }
 
@@ -59,14 +59,14 @@ public class SlotService implements SlotServiceInterface {
     }
 
     @Override
-    public List<SlothourEntity> getSlotHourByTimeRange(String startTimeStr, int estTime ) throws ParseException{
-        Time startTime= DateUtils.parseStringToTime(startTimeStr);
-        Time endTime=DateUtils.getEndTimeFromRange(startTime,estTime);
-        return slotModelInterface.getSlotHourByTimeRange(startTime,endTime);
+    public List<SlothourEntity> getSlotHourByTimeRange(String startTimeStr, int estTime) throws ParseException {
+        Time startTime = DateUtils.parseStringToTime(startTimeStr);
+        Time endTime = DateUtils.getEndTimeFromRange(startTime, estTime);
+        return slotModelInterface.getSlotHourByTimeRange(startTime, endTime);
     }
 
     @Override
-    public List<SlotEntity> getListSlotOfClass (int slotId){
+    public List<SlotEntity> getListSlotOfClass(int slotId) {
         return slotModelInterface.getListSlotOfClass(slotId);
     }
 
@@ -76,5 +76,8 @@ public class SlotService implements SlotServiceInterface {
         slotModelInterface.deleteSlot(slotId);
     }
 
-
+    @Override
+    public List<SlothourEntity> getListSlotHourByTime(Time startTime, Time endTime) {
+        return slotModelInterface.getListSlotHourByTime(startTime, endTime);
+    }
 }

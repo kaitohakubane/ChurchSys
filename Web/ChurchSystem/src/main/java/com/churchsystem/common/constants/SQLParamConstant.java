@@ -231,4 +231,7 @@ public class SQLParamConstant {
             "from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId and s.slotStatus = 1 group by(s.eventId)) m2, user u, church ch, interaction i " +
             "WHERE m1.eventId = m2.eventId AND m1.churchId= ch.churchId AND ch.churchId = i.churchId AND i.userId = u.userId AND u.userId=:userId";
+
+    public static final String GET_LIST_SLOT_HOUR_BY_TIME = "Select * from slothour Where startTime >=:startTime AND endTime <=:endTime";
+
 }

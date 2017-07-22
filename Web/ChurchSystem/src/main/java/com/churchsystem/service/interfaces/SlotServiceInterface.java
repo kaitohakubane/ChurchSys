@@ -26,10 +26,11 @@ public interface SlotServiceInterface {
 
     void updateSlot(SlotEntity SlotEntity);
 
-    List<SlothourEntity> getSlotHourByTimeRange(String startTime, int estTime ) throws ParseException;
+    List<SlothourEntity> getSlotHourByTimeRange(String startTime, int estTime) throws ParseException;
 
-    List<SlotEntity> getListSlotOfClass (int slotId);
+    List<SlotEntity> getListSlotOfClass(int slotId);
 
     void deleteSlot(int slotId);
 
+    List<SlothourEntity> getListSlotHourByTime(Time startTime, Time endTime);
 }

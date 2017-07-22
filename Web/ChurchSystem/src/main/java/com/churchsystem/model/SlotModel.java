@@ -110,4 +110,14 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
                 .setParameter(ParamConstant.SLOT_ID, slotId);
         query.executeUpdate();
     }
+
+    @Override
+    public List<SlothourEntity> getListSlotHourByTime(Time startTime, Time endTime) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SLOT_HOUR_BY_TIME)
+                .setParameter(ParamConstant.START_TIME, startTime)
+                .setParameter(ParamConstant.END_TIME, endTime)
+                .setResultTransformer(Transformers.aliasToBean(SlothourEntity.class));
+        List<SlothourEntity> slothourEntities = query.list();
+        return slothourEntities;
+    }
 }
