@@ -111,6 +111,7 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
         query.executeUpdate();
     }
 
+
     @Override
     public List<SlothourEntity> getListSlotHourByTime(Time startTime, Time endTime) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SLOT_HOUR_BY_TIME)
@@ -120,4 +121,5 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
         List<SlothourEntity> slothourEntities = query.list();
         return slothourEntities;
     }
+
 }

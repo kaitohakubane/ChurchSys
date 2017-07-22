@@ -1,4 +1,4 @@
-u<%--
+<%--
   Created by IntelliJ IDEA.
   User: Trung
   Date: 7/20/2017

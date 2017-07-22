@@ -5,6 +5,7 @@ import com.churchsystem.entity.EventDisplayEntity;
 import com.churchsystem.entity.EventEntity;
 import com.churchsystem.entity.SlotEntity;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public interface EventServiceInterface {
 
     EventEntity getEventById(int eventId);
 
-    List<EventDisplayEntity> getCreatedEvent(int slotId);
+    List<EventDisplayEntity> getCreatedEvent(int eventId) throws IOException;
 
     SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId);
 

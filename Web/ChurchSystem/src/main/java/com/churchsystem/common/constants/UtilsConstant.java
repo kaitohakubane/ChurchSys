@@ -38,5 +38,6 @@ public class UtilsConstant {
     public static final int IS_ONE_SLOT = 0;
     public static final int ERROR = -1;
     public static final String GOOGLE_CALENDAR_EVENT_CORLOR_ID="11";
+    public static final int GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID=5;
 
 }

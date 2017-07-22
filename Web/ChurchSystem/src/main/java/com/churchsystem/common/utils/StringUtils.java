@@ -58,4 +58,8 @@ public class StringUtils {
         return result;
     }
 
+    public static String formatForLeadingZero(int num,int paddingSize){
+        String result=String.format("%0" + paddingSize + "d", num);
+        return result;
+    }
 }

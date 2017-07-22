@@ -12,172 +12,92 @@
 <head>
     <title>Home page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
-    <link href="<c:url value="/resources/lib/sematicDist/semantic.min.css"/>" rel="stylesheet">
+
+    <link href="<c:url value="/resources/lib/gridDist/gridstack.css"/>" rel="stylesheet">
+    <style type="text/css">
+        .grid-stack {
+            background: lightgoldenrodyellow;
+        }
+
+        .sonic {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+        }
+
+        .grid-stack-item-content {
+            color: #2c3e50;
+            text-align: center;
+            background-color: #18bc9c;
+        }
+
+        .grid-stack .grid-stack {
+            /*margin: 0 -10px;*/
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .grid-stack .grid-stack .grid-stack-item-content {
+            background: lightpink;
+        }
+    </style>
 </head>
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        <c:import url="/resources/layouts/common/menu.jsp"/>
         <%--Content    --%>
-        <div class="right_col" role="main">
-            <button data-toggle="modal" data-target="#roomPopup"></button>
-        </div>
+
+        <%--<div>--%>
+            <%--<a class="btn btn-default" id="save-grid" href="#">Save Grid</a>--%>
+            <%--<a class="btn btn-default" id="clear-grid" href="#">Clear Grid</a>--%>
+            <%--<a class="btn btn-default" id="add-room" href="#">Add Room</a>--%>
+            <%--<a class="btn btn-default" id="add-cabinet" href="#">Add Cabinet</a>--%>
+        <%--</div>--%>
+        <%--<div class="grid-stack room">--%>
+            <%--<div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4">--%>
+                <%--<div class="grid-stack-item-content">--%>
+
+                    <%--<div class="grid-stack cabinet">--%>
+                        <%--<div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
+                            <%--<div class="grid-stack-item-content">1</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="grid-stack-item" data-gs-x="3" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
+                            <%--<div class="grid-stack-item-content">2</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="grid-stack-item" data-gs-x="6" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
+                            <%--<div class="grid-stack-item-content">3</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="grid-stack-item" data-gs-x="9" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
+                            <%--<div class="grid-stack-item-content">4</div>--%>
+                        <%--</div>--%>
+
+                        <%--<div class="grid-stack-item" data-gs-x="0" data-gs-y="1" data-gs-width="3" data-gs-height="1">--%>
+                            <%--<div class="grid-stack-item-content">5</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="grid-stack-item" data-gs-x="3" data-gs-y="1" data-gs-width="3" data-gs-height="1">--%>
+                            <%--<div class="grid-stack-item-content">6</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<textarea id="saved-data" cols="100" rows="20" readonly="readonly"></textarea>--%>
+
         <%--Content end--%>
-        <c:import url="/resources/layouts/common/page-footer.jsp"/>
+        <button id="dm"> DMM SSSSSSSSSSSSSSSSSS</button>
     </div>
 </div>
-<!-- popup -->
-<div id="userPopup" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Form 1</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-md-12">
-                    <div class="x_panel">
-                        <div class="x_content form-horizontal form-label-left">
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Username:</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Account ID:<span
-                                        class="required">*</span></label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Email<span
-                                        class="required">*</span></label>
-                                <div class="col-md-9 col-sm-6 col-xs-12">
-                                    <input required="required" class="form-control col-md-7 col-xs-12" type="text">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone:</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Cert:</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Subject:</label>
-                                <div class="col-md-9 col-sm-3 col-xs-12">
-                                    <select class="form-control">
-                                        <option>Choose option</option>
-                                        <option>Option one</option>
-                                        <option>Option two</option>
-                                        <option>Option three</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-9 col-sm-3 col-xs-12 col-md-offset-3">
-                                    <select multiple="" class="ui fluid dropdown" id="test2">
-                                        <option value="">Skills</option>
-                                        <option value="angular">Angular</option>
-                                        <option value="css">CSS</option>
-                                        <option value="design">Graphic Design</option>
-                                        <option value="ember">Ember</option>
-                                        <option value="html">HTML</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">OK</button>
-            </div>
-        </div>
-        <!-- /Modal content -->
-    </div>
-</div>
-<!-- /popup -->
-
-<!-- popup -->
-<div id="roomPopup" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Form 2</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-md-12">
-                    <div class="x_panel">
-                        <div class="x_content form-horizontal form-label-left">
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Room:</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Subject:</label>
-                                <div class="col-md-9 col-sm-3 col-xs-12">
-                                    <select class="form-control">
-                                        <option>Choose option</option>
-                                        <option>Option one</option>
-                                        <option>Option two</option>
-                                        <option>Option three</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-9 col-sm-3 col-xs-12 col-md-offset-3">
-                                    <select multiple="" class="ui fluid dropdown" id="roomDropdown">
-                                        <option value="">Skills</option>
-                                        <option value="angular">Angular</option>
-                                        <option value="css">CSS</option>
-                                        <option value="design">Graphic Design</option>
-                                        <option value="ember">Ember</option>
-                                        <option value="html">HTML</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">OK</button>
-            </div>
-        </div>
-        <!-- /Modal content -->
-    </div>
-</div>
-<!-- /popup -->
 
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
+<script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/gridDist/lodash.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/gridDist/gridstack.js"/>"></script>
+<script src="<c:url value="/resources/lib/gridDist/gridstack.jQueryUI.js"/>"></script>
 <script src="<c:url value="/resources/js/test.js"/>"></script>
-<script src="<c:url value="/resources/lib/sematicDist/semantic.min.js"/>"></script>
+
 
 </body>
 </html>

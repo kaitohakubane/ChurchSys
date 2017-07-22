@@ -1,24 +1,29 @@
 package com.churchsystem.service;
 
+import com.churchsystem.common.api.CalendarAPI;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
+import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.EventModelInterface;
 import com.churchsystem.model.interfaces.RoomModelInterface;
 import com.churchsystem.model.interfaces.SlotModelInterface;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.EventServiceInterface;
+import com.google.api.client.util.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.tags.Param;
 
+import java.io.IOException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Created by hungmcse61561-admin on 6/18/2017.
@@ -65,12 +70,17 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public List<EventDisplayEntity> getCreatedEvent(int eventId) {
+    public List<EventDisplayEntity> getCreatedEvent(int eventId) throws IOException {
         List<EventDataEntity> eventDataEntities = eventModelInterface.getCreatedEvent(eventId);
         List<EventDisplayEntity> result = new ArrayList<EventDisplayEntity>();
         for (int i = 0; i < eventDataEntities.size(); i++) {
             EventDisplayEntity item = new EventDisplayEntity(eventDataEntities.get(i));
             result.add(item);
+            Date dateStart = new Date(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime());
+            DateTime startDate = new DateTime(dateStart);
+            Date dateEnd = new Date(eventDataEntities.get(i).getEndTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime());
+            DateTime endDate = new DateTime(dateEnd);
+            CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getDescription(), startDate, endDate, null, "shengshin7@gmail.com", UtilsConstant.DEFAULT_VALIDATE_PORT);
         }
         return result;
     }
@@ -156,12 +166,12 @@ public class EventService implements EventServiceInterface {
 
         List<Integer> listConductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId, subId);
         List<Integer> listRoomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId, subId);
-        if(listConductorId.size()>0){
-            conductorId=listConductorId.get(UtilsConstant.ZERO);
+        if (listConductorId.size() > 0) {
+            conductorId = listConductorId.get(UtilsConstant.ZERO);
         }
 
-        if(listRoomId.size()>0){
-            roomId=listRoomId.get(UtilsConstant.ZERO);
+        if (listRoomId.size() > 0) {
+            roomId = listRoomId.get(UtilsConstant.ZERO);
         }
 
         SlotEntity slotEntity = new SlotEntity();
@@ -234,8 +244,8 @@ public class EventService implements EventServiceInterface {
                         slotModelInterface.updateSlot(slotEntities.get(j));
                     }
                 }
-                if(slotEntities.get(slotEntities.size()-1).getSlotStatus()== ParamConstant.SLOT_FINISH_STATUS){
-                    changeEventStatus(eventEntities.get(i),ParamConstant.EVENT_FINISH_STATUS);
+                if (slotEntities.get(slotEntities.size() - 1).getSlotStatus() == ParamConstant.SLOT_FINISH_STATUS) {
+                    changeEventStatus(eventEntities.get(i), ParamConstant.EVENT_FINISH_STATUS);
                 }
 
             }
@@ -251,7 +261,7 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public void updateEventNameAndPrivacy(SlotEntity slotEntity ,String eventName, boolean privacy){
+    public void updateEventNameAndPrivacy(SlotEntity slotEntity, String eventName, boolean privacy) {
         EventEntity eventEntity = eventModelInterface.getEventById(slotEntity.getEventId());
         eventEntity.setEventName(eventName);
         eventEntity.setPrivacy(privacy);
@@ -259,7 +269,7 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public void updateRepeatSlot(SlotEntity slotEntity,ArrayList<Integer> slotHour ){
+    public void updateRepeatSlot(SlotEntity slotEntity, ArrayList<Integer> slotHour) {
         slotModelInterface.updateSlot(slotEntity);
 
         slotModelInterface.deleteSlotHourBySlotId(slotEntity.getSlotId());

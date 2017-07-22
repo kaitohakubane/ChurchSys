@@ -14,6 +14,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.DataStore;
 import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -43,6 +44,8 @@ public class Auth {
      */
     private static final String CREDENTIALS_DIRECTORY = ".oauth-credentials";
 
+//    private static List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube"
+//            , "https://www.googleapis.com/auth/youtube.force-ssl","https://www.googleapis.com/auth/calendar");
     /**
      * Authorizes the installed application to access user's protected data.
      *

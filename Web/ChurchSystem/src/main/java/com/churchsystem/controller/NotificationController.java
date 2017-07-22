@@ -153,12 +153,12 @@ public class NotificationController {
     public String tesCalendar() {
         Time startTime = new Time(System.currentTimeMillis() + 3600*1000*24);
         Time endTime = new Time(startTime.getTime() + 3600*1000*3);
-        DateTime startDate = new DateTime(StringUtils.convertDateAndTimeToDateTime(new Date(System.currentTimeMillis()), startTime));
-        DateTime endDate = new DateTime(StringUtils.convertDateAndTimeToDateTime(new Date(System.currentTimeMillis()), endTime));
+        DateTime startDate = new DateTime( System.currentTimeMillis()+startTime.getTime());
+        DateTime endDate = new DateTime(System.currentTimeMillis()+endTime.getTime());
         String result="Sida vkl";
         try{
-            result=CalendarAPI.createGoogleEvent("DM SS", "Room 516 KTX Sinh viên", "Hưng quá gê",  startDate,
-                    endDate, null, "kiettaSE61469@fpt.edu.vn", UtilsConstant.DEFAULT_VALIDATE_PORT);
+            result=CalendarAPI.createGoogleEvent(5,"DM SS", "Room 516 KTX Sinh viên", "Hưng quá gê",  startDate,
+                    endDate, null, "shengshin7@gmail.com", UtilsConstant.DEFAULT_VALIDATE_PORT);
         }catch(Exception e){
             e.printStackTrace();
         }
