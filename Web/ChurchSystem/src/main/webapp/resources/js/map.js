@@ -44,6 +44,8 @@ $(document).ready(function () {
     }, function () {
         $(this).find('.drop-hover').stop(true, true).delay(200).fadeOut(200);
     });
+
+
 })
 
 
@@ -184,7 +186,7 @@ function getCurrentPosition(map, isGetChurch) {
 }
 
 
-function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName, varStatus) {
+function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName, varStatus, isFollowed) {
     var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>";
     var markerIcon = image;
@@ -200,7 +202,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
             scaledSize: new google.maps.Size(50, 50),
         }
     }
-    html = html + "<a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' id=" + churchId + "></i></a>"
+    html = html + "<a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' data-id=" + churchId + " data-follow=" + isFollowed + "></i></a>"
     html = html + "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
 
     console.log(churchId);
@@ -220,7 +222,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
     var sidebarHTML = "<div class='church-name'>" + churchName + "</div> <div class='address'>" + address + "</div>" +
         "<div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>" +
-        "<div class='btnDiv'><a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' id=" + churchId + "></i></a>" +
+        "<div class='btnDiv'><a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' data-id=" + churchId + " data-follow=" + isFollowed + "></i></a>" +
         "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button></div>";
     console.log(churchId)
     $("#sidebar").append("<li id=" + varStatus + ">" + sidebarHTML + "</li>")
@@ -247,7 +249,7 @@ function searchNearLocationAjaxCall(center) {
             infoWindow.close();
             listOfLocation = res;
             var bounds = new google.maps.LatLngBounds();
-            if(listOfLocation==null){
+            if (listOfLocation == null) {
                 return;
             }
             listOfLocation.forEach(function (e, i) {
@@ -256,13 +258,19 @@ function searchNearLocationAjaxCall(center) {
                 var latlng = new google.maps.LatLng(
                     parseFloat(e.latitude),
                     parseFloat(e.longitude));
-                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName, i+1)
+                createMarker(latlng, e.churchId, e.churchName, e.address, e.tel, e.startTime, e.endTime, e.streamLink, e.streamName, i + 1, e.isFollowed)
                 bounds.extend(latlng);
 
             })
             map.fitBounds(bounds);
             eventChoosing();
             $("#wrapper").toggleClass("active");
+            $(".fa-star").each(function(){
+                if($(this).data("follow")!=null){
+                    $(this).click();
+                }
+            })
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
@@ -281,9 +289,9 @@ function gotoChurchPage(e) {
     console.log("RUN RUN")
 }
 
-function changeColor(e){
+function changeColor(e) {
+    $(e).toggleClass("color1");
 
-        $(e).toggleClass("color1");
 }
 
 

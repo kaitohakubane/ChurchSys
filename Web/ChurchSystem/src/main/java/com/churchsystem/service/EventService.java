@@ -6,10 +6,7 @@ import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
-import com.churchsystem.model.interfaces.EventModelInterface;
-import com.churchsystem.model.interfaces.RoomModelInterface;
-import com.churchsystem.model.interfaces.SlotModelInterface;
-import com.churchsystem.model.interfaces.UserModelInterface;
+import com.churchsystem.model.interfaces.*;
 import com.churchsystem.service.interfaces.EventServiceInterface;
 import com.google.api.client.util.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +42,9 @@ public class EventService implements EventServiceInterface {
     @Autowired
     SlotModelInterface slotModelInterface;
 
+    @Autowired
+    SubjectModelInterface subjectModelInterface;
+
 
     @Override
     public List<EventDisplayEntity> getListOfEvent(int churchId) {
@@ -79,13 +79,13 @@ public class EventService implements EventServiceInterface {
             EventDisplayEntity item = new EventDisplayEntity(eventDataEntities.get(i));
             result.add(item);
 
-            Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime()+
-            UtilsConstant.GMT_PLUSING);
+            Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime() +
+                    UtilsConstant.GMT_PLUSING);
             DateTime startDate = new DateTime(dateStart);
             Timestamp dateEnd = new Timestamp(eventDataEntities.get(i).getEndTime().getTime() +
-                    eventDataEntities.get(i).getSlotDate().getTime()+UtilsConstant.GMT_PLUSING);
-            DateTime endDate = new DateTime(dateEnd) ;
-            CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getDescription(), startDate, endDate, null, "shengshin7@gmail.com", UtilsConstant.DEFAULT_VALIDATE_PORT);
+                    eventDataEntities.get(i).getSlotDate().getTime() + UtilsConstant.GMT_PLUSING);
+            DateTime endDate = new DateTime(dateEnd);
+            CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getConductorName(), startDate, endDate, null, UtilsConstant.SHARE_CALENDAR_GOOGLE_ACCOUNT, UtilsConstant.DEFAULT_VALIDATE_PORT);
         }
         return result;
     }
@@ -282,5 +282,30 @@ public class EventService implements EventServiceInterface {
         for (int i = 0; i < slotHour.size(); i++) {
             mappingResource(slotEntity.getSlotId(), slotHour.get(i));
         }
+    }
+
+    @Override
+    public String updateGoogleCalendarEvent(SlotEntity slotEntity, Time startTime, Time endTime, String eventName) throws IOException {
+        //Calendar update
+        Timestamp dateStart = new Timestamp(startTime.getTime() + slotEntity.getSlotDate().getTime() +
+                UtilsConstant.GMT_PLUSING);
+        DateTime startDate = new DateTime(dateStart);
+        Timestamp dateEnd = new Timestamp(endTime.getTime() + slotEntity.getSlotDate().getTime() +
+                UtilsConstant.GMT_PLUSING);
+        DateTime endDate = new DateTime(dateEnd);
+        String roomName = null;
+        String conductorName = null;
+        if (slotEntity.getRoomId() != null) {
+            roomName = roomModelInterface.getRoomById(slotEntity.getRoomId()).getRoomName();
+        }
+
+        if (slotEntity.getConductorId() != null) {
+            conductorName = userModelInterface.getUserByUserId(slotEntity.getConductorId()).getUserName();
+        }
+
+        String result = CalendarAPI.updateGoogleEvent(slotEntity.getSlotId(), eventName, roomName, conductorName, startDate, endDate, UtilsConstant.DEFAULT_VALIDATE_PORT);
+
+
+        return result;
     }
 }

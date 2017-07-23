@@ -1,5 +1,6 @@
 package com.churchsystem.controller;
 
+import com.churchsystem.common.api.CalendarAPI;
 import com.churchsystem.common.api.YoutubeAPI;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
@@ -9,6 +10,7 @@ import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.*;
+import com.google.api.client.util.DateTime;
 import com.google.api.services.youtube.model.LiveBroadcast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +22,7 @@ import javax.rmi.CORBA.Util;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -381,6 +384,9 @@ public class EventController {
                     eventServiceInterface.mappingResource(slotId, slotHour.get(i).getSlotHourId());
                 }
             }
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }

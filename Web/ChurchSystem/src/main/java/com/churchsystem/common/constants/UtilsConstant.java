@@ -40,5 +40,8 @@ public class UtilsConstant {
     public static final String GOOGLE_CALENDAR_EVENT_CORLOR_ID="11";
     public static final int GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID=5;
     public static final long GMT_PLUSING=7*3600*1000;
-
+    public static final String SHARE_CALENDAR_GOOGLE_ACCOUNT="churchsys.manager@gmail.com";
+    public static final String GOOGLE_CALENDAR_DESCRIPTION_PRE="Chịu trách nhiệm ";
+    public static final String GOOGLE_CALENDAR_NO_AVAILABLE_ROOM="Chưa tìm được phòng trống";
+    public static final String GOOGLE_CALENDAR_NO_AVAIABLE_CONDUCTOR="Chưa tìm được phòng trống";
 }

@@ -23,16 +23,16 @@ public class CalendarAPI {
     private static Calendar calendar;
     private static List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/calendar");
 
-    public static String createGoogleEvent(int id,String summary, String location, String description, DateTime startDate,
+    public static String createGoogleEvent(int id, String summary, String roomName, String conductorName, DateTime startDate,
                                            DateTime endDate, String[] rule, String attendeeMail, int port) throws IOException {
         Credential credential = Auth.authorize(scopes, "createCalendar", port);
-        calendar=new Calendar.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
+        calendar = new Calendar.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
                 .setApplicationName("Church-System").build();
 
         Event event = new Event()
                 .setSummary(summary)
-                .setLocation(location)
-                .setDescription(description);
+                .setLocation(roomName)
+                .setDescription(UtilsConstant.GOOGLE_CALENDAR_DESCRIPTION_PRE + conductorName);
         EventDateTime startTime = new EventDateTime().setDateTime(startDate).setTimeZone("Asia/Ho_Chi_Minh");
         EventDateTime endTime = new EventDateTime().setDateTime(endDate).setTimeZone("Asia/Ho_Chi_Minh");
 
@@ -61,9 +61,43 @@ public class CalendarAPI {
 
         event.setColorId(UtilsConstant.GOOGLE_CALENDAR_EVENT_CORLOR_ID);
         String calendarId = "primary";
-        String eventId= StringUtils.formatForLeadingZero(id,UtilsConstant.GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID);
+        String eventId = StringUtils.formatForLeadingZero(id, UtilsConstant.GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID);
         event.setId(eventId);
         event = calendar.events().insert(calendarId, event).execute();
+        return event.getId();
+    }
+
+
+    public static String updateGoogleEvent(int id, String summary, String location, String description, DateTime startDate,
+                                           DateTime endDate, int port) throws IOException {
+        Credential credential = Auth.authorize(scopes, "createCalendar", port);
+        calendar = new Calendar.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
+                .setApplicationName("Church-System").build();
+
+        Event event = calendar.events().get("primary", StringUtils.formatForLeadingZero(id, UtilsConstant.GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID)).execute();
+        if (location == null) {
+            location = UtilsConstant.GOOGLE_CALENDAR_NO_AVAILABLE_ROOM;
+        }
+
+        if (description == null) {
+            description = UtilsConstant.GOOGLE_CALENDAR_NO_AVAIABLE_CONDUCTOR;
+        }
+
+        if (summary != null) {
+            event.setSummary(summary);
+        }
+
+
+        event.setLocation(location)
+                .setDescription(description);
+        EventDateTime startTime = new EventDateTime().setDateTime(startDate).setTimeZone("Asia/Ho_Chi_Minh");
+        EventDateTime endTime = new EventDateTime().setDateTime(endDate).setTimeZone("Asia/Ho_Chi_Minh");
+
+        event.setStart(startTime);
+        event.setEnd(endTime);
+
+        String calendarId = "primary";
+        event = calendar.events().update(calendarId, StringUtils.formatForLeadingZero(id, UtilsConstant.GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID), event).execute();
         return event.getId();
     }
 }

@@ -34,7 +34,7 @@
                 </li>
 
                 <li class="">
-                    <a>Bảng thông tin</a>
+                    <a href="${pageContext.request.contextPath}/user/dashboard">Bảng thông tin</a>
                 </li>
 
                 <li class="">

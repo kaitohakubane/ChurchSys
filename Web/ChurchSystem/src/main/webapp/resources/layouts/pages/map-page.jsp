@@ -26,7 +26,7 @@
                 <li><a href="${pageContext.request.contextPath}/" class="icon-top"><img alt="Church Icon"
                                                                                         src="<c:url value="/resources/img/icon.png"/>"
                                                                                         class="icon-img"></a></li>
-                <li><a href="#">Danh sách nhà thờ</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/dashboard">Bảng điều khiển</a></li>
                 <li><a href="#">Tin giáo hội</a></li>
                 <li><a href="#">Lịch công giáo</a></li>
                 <li class="dropdown list-category">

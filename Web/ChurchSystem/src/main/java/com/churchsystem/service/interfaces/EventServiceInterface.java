@@ -50,7 +50,10 @@ public interface EventServiceInterface {
 
     void changeStatusToFinish(int churchId);
 
-    void updateEventNameAndPrivacy(SlotEntity slotEntity ,String eventName, boolean privacy);
+    void updateEventNameAndPrivacy(SlotEntity slotEntity, String eventName, boolean privacy);
 
-    void updateRepeatSlot(SlotEntity slotEntity,ArrayList<Integer> slotHour );
+    void updateRepeatSlot(SlotEntity slotEntity, ArrayList<Integer> slotHour);
+
+    String updateGoogleCalendarEvent(SlotEntity slotEntity,Time startTime,Time endTime,String eventName) throws IOException;
+
 }
