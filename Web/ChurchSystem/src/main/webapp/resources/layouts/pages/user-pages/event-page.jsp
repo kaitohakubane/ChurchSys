@@ -68,7 +68,7 @@
 <div class="" style="width: 350px;" id="eventCreator">
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h4>Đăng kí sự kiện</h4>
+            <h4 class="text-center">Đăng kí sự kiện</h4>
             <div class="clearfix"></div>
         </div>
         <div class="panel-body">
@@ -80,6 +80,7 @@
                             <option>Choose option</option>
                             <option value="29">Đám ma</option>
                             <option value="28">Đám cưới</option>
+                            <option value="27">Rửa tội</option>
                         </select>
                     </div>
                 </div>
@@ -91,17 +92,30 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Dự kiến khoảng</label>
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Dự kiến</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <input type="text" id="estTime" class="form-control" placeholder="Số giờ">
+                        <select id="estTime" class="form-control">
+                            <option>1 giờ</option>
+                            <option>2 giờ</option>
+                            <option>3 giờ</option>
+                            <option>4 giờ</option>
+                            <option>5 giờ</option>
+                        </select>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <hr>
+
                 <div class="form-group">
-                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                        <button type="button" class="btn btn-default">Cancel</button>
-                        <button type="button" id="eventRegisteredBtn" class="btn btn-primary">Create</button>
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Mô tả</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
+                        <button type="button" class="col-md-5 btn btn-default">Hủy</button>
+                        <button type="button" id="eventRegisteredBtn" class="col-md-5 col-md-offset-2 btn btn-primary">Đăng kí</button>
                     </div>
                 </div>
 

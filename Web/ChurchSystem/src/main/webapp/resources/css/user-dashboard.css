@@ -1,6 +1,11 @@
+body {
+    background-color: #fff;
+}
+
 .timeline .tags.dbclass {
     width: 110px;
 }
+
 .timeline .block.dbclass-block {
     margin: 0 0 0 140px;
 }
@@ -8,13 +13,90 @@
 .timeline .tags.dbevent {
     width: 150px;
 }
+
 .timeline .block.dbevent-block {
     margin: 0 0 0 180px;
 }
+
 .img-circle.profile_img.dbimg {
     width: 180%;
     margin-left: 50%;
 }
-.nav.side-menu>li {
+
+.nav.side-menu > li {
     line-height: 50px;
+}
+
+.nav_title {
+    background-color: #7ab33e;
+}
+
+.left_col {
+    background-color: #7ab33e;
+    color: #fff;
+}
+
+.nav_menu {
+    background-color: #7ab33e;
+    color: #fff;
+    border-bottom: none;
+}
+
+.nav.navbar-nav > li > a {
+    color: #fff !important;
+    font-size: 14px;
+}
+
+.top_nav .nav > li > a:hover {
+    background-color: #64992d;
+}
+
+.icon-top {
+    width: 50px;
+    height: 57px;
+}
+
+.icon-img {
+    width: 100%;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+}
+
+.top_nav .navbar-right {
+    width: 15%;
+    margin: 0;
+}
+
+body .container.body .right_col {
+    background-color: #fff;
+}
+/*===================*/
+.main_container .top_nav {
+    margin-left: 0px;
+}
+
+footer {
+    margin-left: 0px;
+    background-color: #7ab33e;
+    color: #fff;
+    margin-top: 10px
+}
+.nav-md .container.body .right_col {
+    margin-left: 0px;
+    padding: 0px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+/*====================*/
+
+.dropdown-menu.space span {
+    white-space: normal;
+}
+.dropdown-menu.space a .message {
+    display: block !important;
 }

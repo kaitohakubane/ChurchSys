@@ -200,7 +200,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
             scaledSize: new google.maps.Size(50, 50),
         }
     }
-    html = html + "<button class='churchFollowBtn' id=" + churchId + ">Follow </button>"
+    html = html + "<a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' id=" + churchId + "></i></a>"
     html = html + "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
 
     console.log(churchId);
@@ -220,7 +220,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
     var sidebarHTML = "<div class='church-name'>" + churchName + "</div> <div class='address'>" + address + "</div>" +
         "<div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
         startTime + " - " + endTime + "</div>" +
-        "<div class='btnDiv'><button class='churchFollowBtn' id=" + churchId + ">Follow </button>" +
+        "<div class='btnDiv'><a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' id=" + churchId + "></i></a>" +
         "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button></div>";
     console.log(churchId)
     $("#sidebar").append("<li id=" + varStatus + ">" + sidebarHTML + "</li>")
@@ -279,6 +279,11 @@ function watchStream(e) {
 function gotoChurchPage(e) {
     window.location.href = contextPath + "/church" + "?churchId=" + e.getAttribute("id");
     console.log("RUN RUN")
+}
+
+function changeColor(e){
+
+        $(e).toggleClass("color1");
 }
 
 

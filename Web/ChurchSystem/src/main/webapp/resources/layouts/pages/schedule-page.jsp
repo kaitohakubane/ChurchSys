@@ -102,14 +102,14 @@
                 </div>
                 <div class="panel-body">
                     <div class="form">
-                        <div class="col-md-8 form-group has-success">
+                        <div class="col-md-7 form-group has-success">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                                <input type="text" class="form-control" id="creatingEventName"
+                                <input tv c="text" class="form-control" id="creatingEventName"
                                        placeholder="Please Input Name" required/><br/>
                             </div>
                         </div>
-                        <div class="col-md-4 form-group">
+                        <div class="col-md-5 form-group">
                             <label class="control-label">Công khai</label>
                             <label class="">
                                 <input type="checkbox" id="createEventPopupIsPublic" class="js-switch" checked/>
@@ -166,20 +166,17 @@
 
 <div class="row eventDetailPopup" id="eventDetailPopup">
     <div class="" style="width: 400px;">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Chi tiết</h2>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <span style="font-size: 25px;">Chi tiết</span>
                 <button type="button" id="streamBtn" class="btn btn-success pull-right">Stream</button>
                 <div class="clearfix"></div>
             </div>
-            <div class="x_content">
+            <div class="panel-body">
                 <div class="form-horizontal form-label-left input_mask">
 
                     <div class="form-group">
-                        <div class="col-md-8">
-                                <input type="text" id="eventPopupTitle" class="form-control" placeholder="Event title" readonly>
-                        </div>
-                        <div class="col-md-4 form-group pull-right">
+                        <div class="col-md-5 form-group pull-right">
                             <label class="control-label">Công khai</label>
                             <label class="">
                                 <input type="checkbox" id="eventDetailIsPublic" class="js-switch" readonly/>
@@ -188,36 +185,40 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Buổi:</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Buổi:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
                             <input type="text" id="eventPopupTime" class="form-control" disabled="readonly" data-id = ${slotEntity.slotId}>
+                            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Chủ đề:</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Chủ đề:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
                             <input type="text" id="eventPopupSubject" class="form-control" disabled="readonly">
+                            <span class="input-group-addon"><i class="fa fa-book"></i></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Người phụ trách:</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Phụ trách:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
                             <input type="text" id="eventPopupConductor" class="form-control" disabled="readonly">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phòng:</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Phòng:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
                             <input type="text" id="eventPopupRoom" class="form-control" disabled="readonly">
+                            <span class="input-group-addon"><i class="fa fa-home"></i></span>
                         </div>
                     </div>
 
                     <div class="clearfix"></div>
                     <div class="form-group">
-                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
+                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
                             <button type="button" class="btn btn-danger" id="btnRemove">Xóa</button>
                             <button type="button" id="editSlotButton" class="btn btn-success">Sửa</button>
                         </div>
@@ -235,44 +236,59 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Tạo lớp mới</h4>
-            </div>
+            <%--<div class="modal-header">--%>
+                <%--<button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+                <%--<h4 class="modal-title">Tạo lớp mới</h4>--%>
+            <%--</div>--%>
             <div class="modal-body">
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Thông tin lớp</h2>
+                            <h2>Tạo lớp mới</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <br/>
                             <form class="form-horizontal form-label-left">
                                 <div class="form-group">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Số học sinh:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên lớp:</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" disabled="readonly">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Môn học:</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" disabled="readonly">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Thời gian:</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Số tiết:</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Số buổi học:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
-                                        <div>
-                                            <input type="number" id="numberOfSlot" class="form-control"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày thi:</label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày thi:</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <div>
                                             <input type="text" class="form-control" id="datepicker"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Lịch:</label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Buổi học:</label>
                                     <label class="control-label">
                                         <input type="checkbox" id="2" class="flat day-checkbox"> Hai
                                     </label>

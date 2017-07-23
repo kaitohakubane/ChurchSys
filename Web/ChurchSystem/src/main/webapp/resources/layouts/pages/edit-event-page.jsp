@@ -64,7 +64,7 @@
                                               aria-hidden="true"></span>
                                     </div>
 
-                                    <div class="col-md-6slotHour col-sm-6 col-xs-12 form-group has-feedback">
+                                    <div class="col-md-6 slotHour col-sm-6 col-xs-12 form-group has-feedback">
                                         <select id="startTime" class="form-control has-feedback-left">
                                             <c:forEach items="${slotHourList}" var="item">
                                                 <option id="${item.slotHourId}" data-id="${item.startTime}">
@@ -76,7 +76,7 @@
                                               aria-hidden="true"></span>
                                     </div>
 
-                                    <div class="col-md-6slotHour col-sm-6 col-xs-12 form-group has-feedback">
+                                    <div class="col-md-6 slotHour col-sm-6 col-xs-12 form-group has-feedback">
                                         <select id="endTime" class="form-control has-feedback-left">
                                             <c:forEach items="${slotHourList}" var="item">
                                                 <option id="${item.slotHourId}" data-id="${item.endTime}">
