@@ -61,7 +61,7 @@ public class SQLParamConstant {
             "AND e.churchId =:churchId AND st.slotId=s.slotId AND e.privacy = true";
 
     public static final String GET_CREATING_EVENT = "SELECT * FROM event " +
-            "WHERE startDate =:eventDate AND eventStatus =:status AND churchId =:churchId AND subId =:eventSubId AND " +
+            "WHERE startDate =:eventDate AND eventStatus =:eventStatus AND churchId =:churchId AND subId =:eventSubId AND " +
             "isRegistered =:isRegistered AND eventId" +
             " NOT IN ( SELECT eventId FROM Slot WHERE eventId IS NOT NULL)";
     ;
@@ -158,13 +158,13 @@ public class SQLParamConstant {
     public static final String GET_ON_PLAN_CLASS = "SELECT distinct e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
             " su.subName as subName, su.categoryId as cateId, t.description as typeName, u.userName as conductorName, r.roomName as roomName, " +
             "sh.startTime as startTime, sh.endTime as endTime FROM event e, slot s, inclusion i, slothour sh,subject su, type t, user u, room r " +
-            "WHERE e.eventStatus =:status AND e.startDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
+            "WHERE e.eventStatus =:eventStatus AND e.startDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
             "su.categoryId < 12 AND su.categoryId > 5 AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
             "e.typeId =t.typeId AND e.churchId =:churchId AND s.conductorId = u.userId AND s.roomId = r.roomId";
     public static final String GET_ON_GOING_PLAN_CLASS = "SELECT distinct e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
             " su.subName as subName, su.categoryId as cateId, t.description as typeName, u.userName as conductorName, r.roomName as roomName, " +
             "sh.startTime as startTime, sh.endTime as endTime FROM event e, slot s, inclusion i, slothour sh,subject su, type t, user u, room r " +
-            "WHERE e.eventStatus =:status AND e.startDate < CURDATE() AND e.examDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
+            "WHERE e.eventStatus =:eventStatus AND e.startDate < CURDATE() AND e.examDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
             "su.categoryId < 12 AND su.categoryId > 5 AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
             "e.typeId =t.typeId AND e.churchId =:churchId AND s.conductorId = u.userId AND s.roomId = r.roomId";
     public static final String GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT = "select con.* from ability a, " +

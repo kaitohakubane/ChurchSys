@@ -135,7 +135,7 @@
 
                                             <div class="form-group">
                                                 <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
-                                                    <button type="button" class="btn btn-success">Đăng kí</button>
+                                                    <button type="button" class="btn btn-success class-registration" data-id="${item.eventId}">Đăng kí</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -243,8 +243,8 @@
 
                                                         <div class="form-group">
                                                             <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
-                                                                <button type="button"  id="${item.eventId}"
-                                                                        class="btn btn-success class-registration">Đăng kí
+                                                                <button type="button"
+                                                                        class="btn btn-success class-registration" data-id="${item.eventId}">Đăng kí
                                                                 </button>
                                                             </div>
                                                         </div>

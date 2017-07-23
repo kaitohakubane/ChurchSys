@@ -33,8 +33,8 @@ public class CalendarAPI {
                 .setSummary(summary)
                 .setLocation(location)
                 .setDescription(description);
-        EventDateTime startTime = new EventDateTime().setDateTime(startDate);
-        EventDateTime endTime = new EventDateTime().setDateTime(endDate);
+        EventDateTime startTime = new EventDateTime().setDateTime(startDate).setTimeZone("Asia/Ho_Chi_Minh");
+        EventDateTime endTime = new EventDateTime().setDateTime(endDate).setTimeZone("Asia/Ho_Chi_Minh");
 
         event.setStart(startTime);
         event.setEnd(endTime);

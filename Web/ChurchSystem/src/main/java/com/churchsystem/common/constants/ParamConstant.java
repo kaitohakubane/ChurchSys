@@ -64,7 +64,7 @@ public class ParamConstant {
     public static final String EVENT_TITLE = "eventTitle";
     public static final String EVENT_DATE = "eventDate";
     public static final String IS_PUBLIC = "isPublic";
-    public static final String EVENT_STATUS = "status";
+    public static final String EVENT_STATUS = "eventStatus";
     public static final String IS_EVENT_REGISTERED = "isRegistered";
     public static final String EVENT_SUBJECT_ID = "eventSubId";
     public static final int WAITING_FOR_APPROVE_STATUS = 1;

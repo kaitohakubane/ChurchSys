@@ -19,6 +19,8 @@ import org.springframework.web.servlet.tags.Param;
 
 import java.io.IOException;
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Calendar;
@@ -76,10 +78,13 @@ public class EventService implements EventServiceInterface {
         for (int i = 0; i < eventDataEntities.size(); i++) {
             EventDisplayEntity item = new EventDisplayEntity(eventDataEntities.get(i));
             result.add(item);
-            Date dateStart = new Date(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime());
+
+            Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime()+
+            UtilsConstant.GMT_PLUSING);
             DateTime startDate = new DateTime(dateStart);
-            Date dateEnd = new Date(eventDataEntities.get(i).getEndTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime());
-            DateTime endDate = new DateTime(dateEnd);
+            Timestamp dateEnd = new Timestamp(eventDataEntities.get(i).getEndTime().getTime() +
+                    eventDataEntities.get(i).getSlotDate().getTime()+UtilsConstant.GMT_PLUSING);
+            DateTime endDate = new DateTime(dateEnd) ;
             CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getDescription(), startDate, endDate, null, "shengshin7@gmail.com", UtilsConstant.DEFAULT_VALIDATE_PORT);
         }
         return result;
