@@ -396,12 +396,12 @@
      data-keyboard="false" style="margin-top: 220px;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <div class="modal-body ">
-                <label>Bạn muốn áp dụng cho:</label>
+            <div class="modal-body " id="confirmInfor">
+                <label>Không tìm được phòng hoặc người chịu trách nhiệm cho sự kiện (lớp) này. Bạn có muốn tiếp tục ?</label>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Buổi này</button>
-                <button type="button" class="btn btn-primary col-md-6" id="manySlot">Các buổi liên quan</button>
+                <button type="button" class="btn btn-info col-md-5" id="cancel" style="margin-left: 6px">Hủy</button>
+                <button type="button" class="btn btn-primary col-md-6" id="process">Tiếp tục</button>
             </div>
         </div>
     </div>
@@ -466,7 +466,6 @@
         </div>
     </div>
 </div>
-
 <%--====================================================--%>
 <%--====================================================--%>
 

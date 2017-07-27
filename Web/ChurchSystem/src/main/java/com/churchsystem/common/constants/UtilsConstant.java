@@ -44,4 +44,7 @@ public class UtilsConstant {
     public static final String GOOGLE_CALENDAR_DESCRIPTION_PRE="Chịu trách nhiệm ";
     public static final String GOOGLE_CALENDAR_NO_AVAILABLE_ROOM="Chưa tìm được phòng trống";
     public static final String GOOGLE_CALENDAR_NO_AVAIABLE_CONDUCTOR="Chưa tìm được phòng trống";
+    public static final int TOKEN_TIMEOUT_SECONDS=20;
+    public static final String GOOGLE_API_INVALID_EMAIL="-1";
+    public static final int DEFAULT_GOOGLE_DIVIDER_FOR_TOKEN_NAME=1000000;
 }

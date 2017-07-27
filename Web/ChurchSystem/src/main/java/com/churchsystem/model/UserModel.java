@@ -66,6 +66,15 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
+    public List getListSuitableConductorForSlotHour(int slotHourId, Date slotDate, int churchId, int subId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_CONDUCTOR_FOR_SLOT_HOUR)
+                .setParameter(ParamConstant.SLOT_HOUR, slotHourId).setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.SLOT_DATE, slotDate).setParameter(ParamConstant.SUBJECT_ID, subId);
+        List<Integer> result = query.list();
+        return result;
+    }
+
+    @Override
     public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_CONDUCTOR_FOR_SLOT)
                 .setParameter(ParamConstant.NEW_START_TIME, newStartTime)

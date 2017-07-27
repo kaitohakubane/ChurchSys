@@ -2,11 +2,13 @@
  * Created by hungmcse61561-admin on 6/9/2017.
  */
 //URL
-
+var CHECK_EVENT_URL = "/manager/event/Check";
+var CHECK_CLASS_URL = "/manager/class/Check";
 var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 var CREATE_EVENT_URL = "/manager/event/Add";
 var CREATE_CLASS_URL = "/manager/class/Add";
 var UPDATE_DRAG_DROP_EVENT = "/manager/schedule/update-drag-drop-event"
+
 //local variable
 var creatingEvent;
 var calEventStatus = [];
@@ -39,18 +41,8 @@ $(document).ready(function () {
         if (ClassCategoryNum.includes($("#category").children(":selected").val())) {
             $("#createClass").modal("show");
         } else {
-            createEvent(creatingEvent, startTime, policy);
-            $("#calendarPopup").fadeOut();
-            listOfCreatingEvent.forEach(function (e) {
-                console.log(e.status)
-                if (e.status == 2) {
-                    e.color = '#ef0909'
-                } else {
-                    e.color = '#24ea12'
-                }
-            })
-
-            $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
+            console.log("OK");
+            checkEvent(creatingEvent,startTime, policy);
         }
     })
 
@@ -363,9 +355,48 @@ function subjectDropdownEvent(category) {
     $('#eventType').val(firstVal);
 }
 
+function checkEvent(event,slotId, policy) {
+    var requestURL = contextPath + CHECK_EVENT_URL;
+    var requestMethod = "POST";
+    var requestData = {
+        slotDate: event.start.split("T")[0],
+        subId: $('#eventType').children(":selected").attr("id"),
+        slotHour: slotId,
+    }
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        dataType: 'json',
+        success: function (res) {
+            console.log(res);
+            console.log(res==0);
+            if (res != 0) {
+                $("#confirmModal").modal("show");
+                $("#process").unbind("click")
+                $("#process").bind("click",function(){
+                    $("#confirmModal").modal("hide");
+                    createEvent(creatingEvent, slotId, policy);
+                })
+            }else{
+                createEvent(creatingEvent, slotId, policy);
+            }
+            $("#calendarPopup").fadeOut();
+            $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    });
+}
+
 
 function createEvent(event, slotId, isPublic) {
-
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
     console.log()
@@ -387,6 +418,16 @@ function createEvent(event, slotId, isPublic) {
         dataType: 'json',
         success: function (res) {
             listOfCreatingEvent = res;
+
+            listOfCreatingEvent.forEach(function (e) {
+                console.log(e.status)
+                if (e.status == 2) {
+                    e.color = '#ef0909'
+                } else {
+                    e.color = '#24ea12'
+                }
+            })
+            $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

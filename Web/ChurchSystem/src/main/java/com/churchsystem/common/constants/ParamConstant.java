@@ -55,7 +55,7 @@ public class ParamConstant {
     public static final String REGISTRATION_STATUS = "regisStatus";
     public static final String REGISTRATION_START_TIME = "regisStartTime";
     public static final String REGISTRATION_EST_TIME = "estTime";
-    public static final String REGISTRATION_MESSAGE="message";
+    public static final String REGISTRATION_MESSAGE = "message";
 
     /**
      * Event
@@ -153,9 +153,9 @@ public class ParamConstant {
     public static final String DEFAULT_PASSWORD = "1234";
     public static final String PRIEST_ROLE = "ROLE_PRIEST";
     public static final boolean DEFAULT_ENABLE = true;
-    public static final String INTERACTION_IS_ENABLE="enabled";
-    public static final int IS_FOLLOWING=1;
-public static final String CURRENT_USER ="currentUser";
+    public static final String INTERACTION_IS_ENABLE = "enabled";
+    public static final int IS_FOLLOWING = 1;
+    public static final String CURRENT_USER = "currentUser";
     /**
      * Status
      */
@@ -165,10 +165,20 @@ public static final String CURRENT_USER ="currentUser";
     public static final int EVENT_STATUS_DENY = 2;
     public static final int EVENT_STATUS_APPROVED = 3;
     public static final int EVENT_STATUS_FINISH = 4;
+    public static final int EVENT_CONDUCTOR_POSITION=0;
+    public static final int EVENT_ROOM_POSITION=1;
+    public static final int EVENT_NO_ROOM_VALUE=-1;
+    public static final int EVENT_NO_CONDUCTOR_VALUE=-1;
     /*Slot*/
     public static final int SLOT_STATUS_OK = 1;
     public static final int SLOT_STATUS_CONFLICT = 2;
     public static final int SLOT_STATUS_FINISH = 3;
+    public static final int SLOT_CONDUCTOR_UNAVAILABLE = 1;
+    public static final int SLOT_ROOM_UNAVAILABLE = 2;
+    public static final int SLOT_CONDUCTOR_AND_ROOM_UNAVAILABLE = 3;
+    public static final int SLOT_CONDUCTOR_OR_ROOM_UNAVAILABLE = 4;
+    public static final int SLOT_AVAILABLE = 0;
+
     /*Registration*/
     public static final int REGISTRATION_STATUS_WAITING = 1;
     public static final int REGISTRATION_STATUS_DENY = 2;

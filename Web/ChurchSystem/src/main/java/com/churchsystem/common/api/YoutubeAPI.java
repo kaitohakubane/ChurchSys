@@ -89,6 +89,9 @@ public class YoutubeAPI {
 
 
     public static String liveStream(String broadcastId) throws IOException, InterruptedException {
+        Credential credential = Auth.authorize(scopes, "createbroadcast", UtilsConstant.DEFAULT_VALIDATE_PORT);
+        youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
+                .setApplicationName("youtube-cmdline-createbroadcast-sample").build();
         LiveBroadcast workingBroadcast = null;
         YouTube.LiveBroadcasts.List liveBroadcastRequest =
                 youtube.liveBroadcasts().list("id,snippet,status,contentDetails");
@@ -118,6 +121,9 @@ public class YoutubeAPI {
 
 
     public static String completeStream(String broadcastId) throws IOException {
+        Credential credential = Auth.authorize(scopes, "createbroadcast", UtilsConstant.DEFAULT_VALIDATE_PORT);
+        youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
+                .setApplicationName("youtube-cmdline-createbroadcast-sample").build();
         LiveBroadcast workingBroadcast = null;
         YouTube.LiveBroadcasts.List liveBroadcastRequest =
                 youtube.liveBroadcasts().list("id,snippet,status,contentDetails");

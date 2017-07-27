@@ -57,6 +57,16 @@ public class RoomModel extends CommonDAO implements RoomModelInterface {
         return result;
     }
 
+    @Override
+    public List getListSuitableRoomForSlotHour(int slotHourId, Date slotDate, int churchId, int subId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LAST_SUITABLE_ROOM_FOR_SLOT)
+                .setParameter(ParamConstant.SLOT_HOUR, slotHourId).setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.SLOT_DATE, slotDate)
+                .setParameter(ParamConstant.SUBJECT_ID,subId);
+        List<Integer> result = query.list();
+        return result;
+    }
+
     public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_ROOM_FOR_SLOT)
                 .setParameter(ParamConstant.NEW_START_TIME, newStartTime)

@@ -32,5 +32,8 @@ public interface RoomModelInterface {
     RoomEntity getRoomByNameAndChurchId(String roomName, int churchId, int status);
 
     void mapRoomWithSubject(RoomcapableEntity roomcapableEntity);
+
     void updateRoom(RoomEntity roomEntity);
+
+    List getListSuitableRoomForSlotHour(int slotHourId, Date slotDate, int churchId, int subId);
 }

@@ -23,6 +23,9 @@ registerClassList();
 datePickerLoad();
 $(document).ready(function () {
     terminateEventCreateMenu();
+    $("#cancel").on("click",function(){
+        $("#confirmModal").modal("hide");
+    })
     $('.day-checkbox').on('ifChecked', function (event) {
         dayArray.push(event.target.id)
         dayArray.sort(function (a, b) {

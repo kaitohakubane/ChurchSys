@@ -85,7 +85,7 @@ public class EventService implements EventServiceInterface {
             Timestamp dateEnd = new Timestamp(eventDataEntities.get(i).getEndTime().getTime() +
                     eventDataEntities.get(i).getSlotDate().getTime() + UtilsConstant.GMT_PLUSING);
             DateTime endDate = new DateTime(dateEnd);
-            CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getConductorName(), startDate, endDate, null, UtilsConstant.SHARE_CALENDAR_GOOGLE_ACCOUNT, UtilsConstant.DEFAULT_VALIDATE_PORT);
+//            CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getConductorName(), startDate, endDate, null, UtilsConstant.SHARE_CALENDAR_GOOGLE_ACCOUNT, );
         }
         return result;
     }
@@ -132,6 +132,22 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
+    public int checkEventSlot(Date eventDate, int slotHour, int churchId, int subId) {
+        //Need to fix
+        Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId, subId);
+        Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId, subId);
+        if (conductorId == null && roomId == null) {
+            return ParamConstant.SLOT_CONDUCTOR_AND_ROOM_UNAVAILABLE;
+        } else if (conductorId == null) {
+            return ParamConstant.SLOT_CONDUCTOR_UNAVAILABLE;
+        } else if (roomId == null) {
+            return ParamConstant.SLOT_ROOM_UNAVAILABLE;
+        }
+        return ParamConstant.SLOT_AVAILABLE;
+    }
+
+
+    @Override
     public EventEntity getEventById(int eventId) {
         return eventModelInterface.getEventById(eventId);
     }
@@ -154,6 +170,47 @@ public class EventService implements EventServiceInterface {
         return slotEntity;
     }
 
+    @Override
+    public List<Integer> checkEventClass(List<Date> eventDate, int slotHour, int churchId, int subId) {
+        //Need to fix
+        List<Integer> result = new ArrayList<Integer>();
+        result.add(ParamConstant.EVENT_NO_CONDUCTOR_VALUE);
+        result.add(ParamConstant.EVENT_NO_ROOM_VALUE);
+        List<Integer> conductorId = userModelInterface.getListSuitableConductorForSlotHour(slotHour, eventDate.get(0), churchId, subId);
+        List<Integer> roomId = roomModelInterface.getListSuitableRoomForSlotHour(slotHour, eventDate.get(0), churchId, subId);
+
+        List<Integer> validConductor = conductorId;
+        List<Integer> validRoom = roomId;
+        if (conductorId != null) {
+            for (Date item : eventDate) {
+                List<Integer> conductorItem = userModelInterface.getListSuitableConductorForSlotHour(slotHour, item, churchId, subId);
+                List<Integer> tempConductor = new ArrayList<Integer>();
+                for (int i = 0; i < conductorItem.size(); i++) {
+                    if (validConductor.contains(conductorItem.get(i))) {
+                        tempConductor.add(i);
+                    }
+                }
+
+                validConductor = tempConductor;
+            }
+            result.set(ParamConstant.EVENT_CONDUCTOR_POSITION,validRoom.get(0));
+        }
+
+        if (roomId != null) {
+            for (Date item : eventDate) {
+                List<Integer> roomItem = roomModelInterface.getListSuitableRoomForSlotHour(slotHour, item, churchId, subId);
+                List<Integer> tempRoom = new ArrayList<Integer>();
+                for (int i = 0; i < roomItem.size(); i++) {
+                    if (validRoom.contains(roomItem.get(i))) {
+                        tempRoom.add(i);
+                    }
+                }
+                validRoom = tempRoom;
+            }
+            result.set(ParamConstant.EVENT_ROOM_POSITION,validRoom.get(0));
+        }
+        return result;
+    }
 
     @Override
     public void mappingResource(int slotId, int slotHour) {
@@ -286,26 +343,26 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public String updateGoogleCalendarEvent(SlotEntity slotEntity, Time startTime, Time endTime, String eventName) throws IOException {
-        //Calendar update
-        Timestamp dateStart = new Timestamp(startTime.getTime() + slotEntity.getSlotDate().getTime() +
-                UtilsConstant.GMT_PLUSING);
-        DateTime startDate = new DateTime(dateStart);
-        Timestamp dateEnd = new Timestamp(endTime.getTime() + slotEntity.getSlotDate().getTime() +
-                UtilsConstant.GMT_PLUSING);
-        DateTime endDate = new DateTime(dateEnd);
-        String roomName = null;
-        String conductorName = null;
-        if (slotEntity.getRoomId() != null) {
-            roomName = roomModelInterface.getRoomById(slotEntity.getRoomId()).getRoomName();
-        }
+//        //Calendar update
+//        Timestamp dateStart = new Timestamp(startTime.getTime() + slotEntity.getSlotDate().getTime() +
+//                UtilsConstant.GMT_PLUSING);
+//        DateTime startDate = new DateTime(dateStart);
+//        Timestamp dateEnd = new Timestamp(endTime.getTime() + slotEntity.getSlotDate().getTime() +
+//                UtilsConstant.GMT_PLUSING);
+//        DateTime endDate = new DateTime(dateEnd);
+//        String roomName = null;
+//        String conductorName = null;
+//        if (slotEntity.getRoomId() != null) {
+//            roomName = roomModelInterface.getRoomById(slotEntity.getRoomId()).getRoomName();
+//        }
+//
+//        if (slotEntity.getConductorId() != null) {
+//            conductorName = userModelInterface.getUserByUserId(slotEntity.getConductorId()).getUserName();
+//        }
+//
+//        String result = CalendarAPI.updateGoogleEvent(slotEntity.getSlotId(), eventName, roomName, conductorName, startDate, endDate, UtilsConstant.DEFAULT_VALIDATE_PORT);
 
-        if (slotEntity.getConductorId() != null) {
-            conductorName = userModelInterface.getUserByUserId(slotEntity.getConductorId()).getUserName();
-        }
 
-        String result = CalendarAPI.updateGoogleEvent(slotEntity.getSlotId(), eventName, roomName, conductorName, startDate, endDate, UtilsConstant.DEFAULT_VALIDATE_PORT);
-
-
-        return result;
+        return null;
     }
 }

@@ -54,6 +54,10 @@ public interface EventServiceInterface {
 
     void updateRepeatSlot(SlotEntity slotEntity, ArrayList<Integer> slotHour);
 
-    String updateGoogleCalendarEvent(SlotEntity slotEntity,Time startTime,Time endTime,String eventName) throws IOException;
+    String updateGoogleCalendarEvent(SlotEntity slotEntity, Time startTime, Time endTime, String eventName) throws IOException;
+
+    int checkEventSlot(Date eventDate, int slotHour, int churchId, int subId);
+
+    List<Integer> checkEventClass(List<Date> eventDate, int slotHour, int churchId, int subId);
 
 }

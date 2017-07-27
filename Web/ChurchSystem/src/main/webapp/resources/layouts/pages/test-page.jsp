@@ -19,13 +19,7 @@
             background: lightgoldenrodyellow;
         }
 
-        .sonic {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -webkit-transform: translate(-50%, -50%);
-        }
+
 
         .grid-stack-item-content {
             color: #2c3e50;

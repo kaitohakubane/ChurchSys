@@ -1,6 +1,7 @@
 /**
  * Created by hungmcse61561-admin on 7/9/2017.
  */
+var token=null;
 $(document).ready(function () {
     // var options = {
     //     float: true
@@ -11,70 +12,59 @@ $(document).ready(function () {
     // })
 
 
-    var loaders =
-
-
-    {
-
-        width: 100,
-        height: 100,
-
-        stepsPerFrame: 1,
-        trailLength: 1,
-        pointDistance: .025,
-
-        strokeColor: '#05E2FF',
-
-        fps: 20,
-
-        setup: function () {
-            this._.lineWidth = 2;
-        },
-        step: function (point, index) {
-
-            var cx = this.padding + 50,
-                cy = this.padding + 50,
-                _ = this._,
-                angle = (Math.PI / 180) * (point.progress * 360);
-
-            this._.globalAlpha = Math.max(.5, this.alpha);
-
-            _.beginPath();
-            _.moveTo(point.x, point.y);
-            _.lineTo(
-                (Math.cos(angle) * 35) + cx,
-                (Math.sin(angle) * 35) + cy
-            );
-            _.closePath();
-            _.stroke();
-
-            _.beginPath();
-            _.moveTo(
-                (Math.cos(-angle) * 32) + cx,
-                (Math.sin(-angle) * 32) + cy
-            );
-            _.lineTo(
-                (Math.cos(-angle) * 27) + cx,
-                (Math.sin(-angle) * 27) + cy
-            );
-            _.closePath();
-            _.stroke();
-
-        },
-        path: [
-            ['arc', 50, 50, 40, 0, 360]
-        ]
-    };
-    $("body").append("<div id='loadingSymbol'></div>")
-    var d = $("#loadingSymbol");
-    var a = new Sonic(loaders);
-
-    d.append(a.canvas);
-    a.play();
+    $("#dm").on("click", function () {
+        testFunction();
+    })
 })
 
+function testFunction() {
+    var requestData = {
+        "token": token
+    }
+    var requestMethod = "POST"
+    var requestURL = contextPath + "/test/post"
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function (res) {
+            token = res;
+            if (token == "-1"||token=="") {
+                alert("DM SS")
+            } else {
+                testCalendarFunction();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    });
 
+}
 
+function testCalendarFunction() {
+    var requestData = {
+        "token": token
+    }
+    var requestMethod = "POST"
+    var requestURL = contextPath + "/test/get"
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function (res) {
+            alert("NGON")
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    });
+
+}
 
 //
 //

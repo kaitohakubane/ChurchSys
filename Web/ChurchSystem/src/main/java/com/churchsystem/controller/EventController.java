@@ -386,7 +386,6 @@ public class EventController {
             }
 
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -517,6 +516,43 @@ public class EventController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_EVENT_URL, method = RequestMethod.POST)
+    public int checkEventConstraint(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        int result = ParamConstant.SLOT_AVAILABLE;
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            int slotHour = Integer.parseInt(eventJsonEntity.getSlotHour());
+            result = eventServiceInterface.checkEventSlot(slotDate, slotHour, churchId, subId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_CLASS_URL, method = RequestMethod.POST)
+    public List<Integer> checkClass(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        List<Integer> result = new ArrayList<Integer>();
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            int slotHour = Integer.parseInt(eventJsonEntity.getSlotHour());
+            int numberOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
+
+            List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
+
+            result=eventServiceInterface.checkEventClass(datesOfClass,slotHour,churchId,subId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }
