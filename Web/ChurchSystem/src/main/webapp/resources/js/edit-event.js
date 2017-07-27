@@ -9,100 +9,39 @@ var UPDATED_SINGLE_EVENT = "/manager/event/update-single-event";
 var UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
 var SCHEDULE_URL = "/manager/schedule";
 var CHECK_IS_MANY_SLOT = "/manager/event/check-is-many-slot";
+
+var SUCCESS_STATUS = "Cập nhật thành công!";
+var FAILURE_STATUS = "Cập nhật thất bại";
+var TYPE_DANGER = "danger";
+var TYPE_SUCCESS = "success";
 //Global variable
 var event;
 var currentEventIsMultiSlot;
-
+var selectedDate;
 $(document).ready(function () {
     Initial();
     $("#slotDate").datepicker();
     $("#slotDate").datepicker('option', 'dateFormat', 'yy-mm-dd');
     inputEditEventInformation();
+
 })
-
-$("#startTime")
-    .on('focus', function () {
-        console.log("Saving value " + $(this).val());
-        $(this).data('val', $(this).val());
-    })
-    .on('change', function () {
-        console.log("startTime change")
-        if ($("#startTime").val() >= $("#endTime").val()) {
-            alert("Invalid Start Time")
-            var prev = $(this).data('val');
-            console.log("Prev value " + prev);
-            $("#startTime").val(prev);
-        } else {
-            console.log("run")
-            loadEventConductor($("#startTime").val(), $("#endTime").val(), slotDate);
-            loadEventRoom($("#startTime").val(), $("#endTime").val(), slotDate);
-        }
-    })
-
-$("#endTime")
-    .on('focus', function () {
-        console.log("Saving value " + $(this).val());
-        $(this).data('val', $(this).val());
-    })
-    .on('change', function () {
-        console.log("endTime change")
-        if ($("#endTime").val() <= $("#startTime").val()) {
-            alert("Invalid End Time");
-            var prev = $(this).data('val');
-            console.log("Prev value " + prev);
-            $("#endTime").val(prev);
-        } else {
-            console.log("run")
-
-            loadEventConductor($("#startTime").val(), $("#endTime").val(), slotDate);
-            loadEventRoom($("#startTime").val(), $("#endTime").val(), slotDate);
-        }
-    })
-
-$("#slotDate")
-    .on('focus', function () {
-        console.log("Saving value " + $(this).val());
-        $(this).data('val', $(this).val());
-    })
-    .on('change', function () {
-        console.log("Date is changed!")
-        var currentDate = new Date();
-        var year = currentDate.getFullYear();
-        var month = currentDate.getMonth() + 1;
-        var day = currentDate.getDate();
-
-        var selectedDate = new Date($("#slotDate").val());
-        console.log(selectedDate);
-        console.log(currentDate)
-        if (selectedDate < currentDate) {
-            alert("Invalid Date");
-            var prev = $(this).data('val');
-            console.log("Prev value " + prev);
-            $("#slotDate").val(prev);
-        }
-        else {
-            console.log("Ngày hợp lệ");
-            console.log("Ngày mới: " + $("#slotDate").val());
-            loadEventConductor($("#startTime").val(), $("#endTime").val(), $("#slotDate").val());
-            loadEventRoom($("#startTime").val(), $("#endTime").val(), $("#slotDate").val());
-        }
-    })
 
 
 $("#btnBack").on("click", function () {
-    window.location.href = contextPath + SCHEDULE_URL;
+    // window.location.href = contextPath + SCHEDULE_URL;
+    onClickShowPopup(FAILURE_STATUS, TYPE_DANGER);
 })
 
-$("#btnSave").on("click", function updateEvent(e) {
-    e.preventDefault();
-    console.log(currentEventIsMultiSlot);
-    if (currentEventIsMultiSlot == 1) {
-        $('#confirmModal').modal('show');
-    }
-    else if (currentEventIsMultiSlot == 0) {
-        updateSingleEvent();
-    }
-})
+// $("#btnSave").on("click", function updateEvent(e) {
+//     e.preventDefault();
+//     console.log(currentEventIsMultiSlot);
+//     if (currentEventIsMultiSlot == 1) {
+//         $('#confirmModal').modal('show');
+//     }
+//     else if (currentEventIsMultiSlot == 0) {
+//         updateSingleEvent();
+//     }
+// })
 
 $("#oneSlot").on("click", function () {
     updateSingleEvent();
@@ -110,11 +49,13 @@ $("#oneSlot").on("click", function () {
 $("#manySlot").on("click", function () {
     updateRepeatEvent();
 })
+
 function inputEditEventInformation() {
     console.log(slotDate)
     $("#startTime").val(startTime);
     $("#endTime").val(endTime);
     $("#slotDate").val(slotDate);
+    $("#manySlotCheck").hide();
     if (privacy == "false") {
         console.log('Click')
         if ($("#editEventIsChecked").prop('checked')) {
@@ -129,8 +70,8 @@ function inputEditEventInformation() {
             console.log('Click')
         }
     }
-    loadEventConductor($("#startTime").val(), $("#endTime").val(),slotDate);
-    loadEventRoom($("#startTime").val(), $("#endTime").val(),slotDate);
+    loadEventConductor($("#startTime").val(), $("#endTime").val(), slotDate);
+    loadEventRoom($("#startTime").val(), $("#endTime").val(), slotDate);
     checkIsManySlot();
 }
 
@@ -319,15 +260,18 @@ function updateSingleEvent() {
         contentType: 'application/json',
         processData: false,
         success: function () {
-            var slotId = $("#txtTitle").data("id");
-            var parameter = {
-                slotId: slotId
-            }
-            post(contextPath + UPDATE_EVENT_URL, parameter);
-            alert("Update success!");
+            $('#confirmModal').modal('hide');
+            onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
+
+            // var slotId = $("#txtTitle").data("id");
+            // var parameter = {
+            //     slotId: slotId
+            // }
+            // post(contextPath + UPDATE_EVENT_URL, parameter);
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
+            onClickShowPopup(FAILURE_STATUS, TYPE_DANGER);
             console.error(textStatus);
         }
     })
@@ -379,3 +323,95 @@ function updateRepeatEvent() {
     })
 
 }
+
+function onClickShowPopup(mes, type) {
+
+    $.notify({
+        // options
+        message: mes
+    }, {
+        // settings
+        element: 'body',
+        position: null,
+        type: type,
+        allow_dismiss: false,
+        newest_on_top: false,
+        showProgressbar: false,
+        placement: {
+            from: "bottom",
+            align: "center"
+        },
+        offset: 50,
+        spacing: 10,
+        z_index: 1031,
+        delay: 1000,
+        mouse_over: null,
+        animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+        },
+        template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+        '<img data-notify="icon" class="img-circle pull-left">' +
+        '<span data-notify="title">{1}</span>' +
+        '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
+}
+
+$("#startTime").on("change", function () {
+    $("#editForm").validate()
+})
+
+$("#endTime").on("change", function () {
+    $("#editForm").validate()
+})
+$("#slotDate").validate();
+
+var checkTime = function (startTime, endTime) {
+    var sTime = new Date(startTime);
+    var eTime = new Date(endTime);
+
+    if (eTime < sTime) {
+        return true
+    }
+}
+
+
+jQuery.validator.addMethod("checkTime", function (value, element) {
+
+    return checkTime($('#startTime').val(), $("#endTime").val());
+}, "Thời gian bắt đầu phải sớm hơn thời gian kết thúc");
+
+
+$("#slotDate").validate({
+    rules: {
+        // startTime: {
+        //     checkTime: true
+        // },
+        // endTime: {
+        //     checkTime: true
+        // },
+        slotDate: {isAfterCurrentDate: true}
+    },
+    messages: {
+        // startTime: "Thời gian bắt đầu phải sớm hơn thời gian kết thúc",
+        // endTime: "Thời gian kết thúc phải sau thời gian bắt đầu",
+        slotDate: "Phải sau ngày hiện tại"
+    }
+})
+
+$
+
+var isAfterCurrentDate = function () {
+    var curDate = new Date();
+    console.log(curDate)
+    selectedDate = new Date($("#slotDate").val());
+    console.log(selectedDate)
+    console.log(selectedDate > curDate)
+    return selectedDate > curDate
+
+};
+jQuery.validator.addMethod("isAfterCurrentDate", function () {
+    return isAfterCurrentDate();
+});
+

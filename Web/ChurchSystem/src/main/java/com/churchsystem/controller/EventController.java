@@ -239,8 +239,8 @@ public class EventController {
             Date safeDate = null;
             for (int i = 0; i < datesOfClass.size(); i++) {
                 Date item = datesOfClass.get(i);
-                conductorId = userServiceInterface.getSuitableConductorForSlot(slotHour, item, churchId, subId);
-                roomId = roomServiceInterface.getSuitableRoomForSlot(slotHour, item, churchId, subId);
+                conductorId = userServiceInterface.getLastSuitableConductorForSlot(slotHour, item, churchId, subId);
+                roomId = roomServiceInterface.getLastSuitableRoomForSlot(slotHour, item, churchId, subId);
                 if (conductorId != null && roomId != null) {
                     safeDate = item;
                     break;

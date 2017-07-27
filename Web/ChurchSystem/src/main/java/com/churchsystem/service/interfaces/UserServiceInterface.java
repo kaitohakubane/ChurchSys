@@ -20,6 +20,8 @@ public interface UserServiceInterface {
 
     Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId);
 
+    Integer getLastSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId);
+
     List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
     List<Integer> getIdListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);

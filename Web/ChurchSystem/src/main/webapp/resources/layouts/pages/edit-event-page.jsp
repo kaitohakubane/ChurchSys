@@ -18,11 +18,22 @@
     <title>Edit Event</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
 
+    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
+
     <link href="<c:url value="/resources/lib/src/js/jquery-ui.min.css"/>" rel="stylesheet">
     <!-- iCheck -->
     <link href="<c:url value="/resources/lib/vendors/iCheck/skins/flat/green.css"/>" rel="stylesheet">
     <!-- Switchery -->
     <link href="<c:url value="/resources/lib/vendors/switchery/dist/switchery.min.css"/>" rel="stylesheet">
+    <style>
+        #editForm label.error {
+            margin-left: 10px;
+            width: auto;
+            display: inline;
+        }
+      </style>
+    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
+
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -43,7 +54,7 @@
 
                 <div class="row">
                     <div class="col-md-6 col-xs-12 col-md-offset-3">
-                        <div class="x_panel">
+                        <form class="x_panel" id="editForm">
                             <div class="x_title">
                                 <h2>Chi tiết sự kiện</h2>
                                 <div class="clearfix"></div>
@@ -53,8 +64,9 @@
                                 <div class="form-horizontal form-label-left input_mask">
 
                                     <div class="col-md-6 form-group">
-                                        <input id="txtTitle" type="text" class="form-control" data-id = "${slotEntity.slotId}"
-                                               value="${slotEntity.eventName}" placeholder="Event title" >
+                                        <input id="txtTitle" type="text" class="form-control"
+                                               data-id="${slotEntity.slotId}"
+                                               value="${slotEntity.eventName}" placeholder="Event title">
                                     </div>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -65,7 +77,8 @@
                                     </div>
 
                                     <div class="col-md-6 slotHour col-sm-6 col-xs-12 form-group has-feedback">
-                                        <select id="startTime" class="form-control has-feedback-left">
+                                        <%--<label for="startTime"></label>--%>
+                                        <select id="startTime" class="form-control has-feedback-left" name="startTime">
                                             <c:forEach items="${slotHourList}" var="item">
                                                 <option id="${item.slotHourId}" data-id="${item.startTime}">
                                                         ${item.startTime}
@@ -77,7 +90,8 @@
                                     </div>
 
                                     <div class="col-md-6 slotHour col-sm-6 col-xs-12 form-group has-feedback">
-                                        <select id="endTime" class="form-control has-feedback-left">
+                                        <%--<label for="endTime"></label>--%>
+                                        <select id="endTime" class="form-control has-feedback-left" name="endTime">
                                             <c:forEach items="${slotHourList}" var="item">
                                                 <option id="${item.slotHourId}" data-id="${item.endTime}">
                                                         ${item.endTime}
@@ -89,7 +103,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Người phụ trách:</label>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Người phụ
+                                            trách:</label>
                                         <div class="col-md-10 col-sm-10 col-xs-12">
                                             <select class="form-control" id="assigned">
 
@@ -107,15 +122,20 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Ngày:</label>
                                         <div class="col-md-10 col-sm-10 col-xs-12">
-                                            <input type="text"  class="form-control" id="slotDate">
-                                    </div>
+                                            <input type="text" class="form-control" id="slotDate" name="slotDate">
+                                            <%--<label for="slotDate">Ngày không được trước ngày hiện tại</label>--%>
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-12 form-group">
-                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Công khai</label>
+                                    <div class="col-md-6 form-group">
+                                        <label class="control-label col-md-4 col-sm-2 col-xs-12">Công khai</label>
                                         <label class="control-label">
-                                            <input type="checkbox" id="editEventIsChecked" class="js-switch"
-                                                   checked/>
+                                            <input type="checkbox" id="editEventIsChecked" class="js-switch" checked/>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 checkbox">
+                                        <label>
+                                            <input type="checkbox" class="flat" id="manySlotCheck">Áp dụng tất cả các giờ liên quan
                                         </label>
                                     </div>
                                     <div class="clearfix"></div>
@@ -124,13 +144,13 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
                                             <button type="button" id="btnBack" class="btn btn-default btn-lg">Quay lại
                                             </button>
-                                            <button type="button" id="btnSave" class="btn btn-success btn-lg">Lưu
+                                            <button type="submit" id="btnSave" class="btn btn-success btn-lg" value="Validate!">Lưu
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -150,15 +170,19 @@
                 <label>Bạn muốn áp dụng cho:</label>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này</button>
+                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này
+                </button>
                 <button type="button" class="btn btn-primary col-md-6" id="manySlot">Các giờ liên quan</button>
             </div>
         </div>
     </div>
 </div>
 <c:import url="/resources/layouts/common/footer.jsp"/>
-
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/validateDist/jquery.validate.js"/>"></script>
+<script src="<c:url value="/resources/lib/validateDist/additional-methods.min.js"/>"></script>
+
 <!-- iCheck -->
 <script src="<c:url value="/resources/lib/vendors/iCheck/icheck.min.js"/>"></script>
 <!-- Switchery -->
@@ -167,7 +191,8 @@
     var startTime = "<c:out value="${slotEntity.startTime}" />"
     var endTime = "<c:out value="${slotEntity.endTime}" />"
     var slotDate = "<c:out value="${slotEntity.slotDate}"/>"
-    var privacy= "<c:out value="${slotEntity.privacy}" />"
+    var privacy = "<c:out value="${slotEntity.privacy}" />"
+
 </script>
 <script src="<c:url value="/resources/js/edit-event.js"/>"></script>
 

@@ -38,6 +38,11 @@ public class RoomService implements RoomServiceInterface {
     }
 
     @Override
+    public Integer getLastSuitableRoomForSlot(int slotHourId, Date slotDate, int churchId, int subId) {
+        return roomModelInterface.getLastSuitableRoomForSlot(slotHourId, slotDate, churchId, subId);
+    }
+
+    @Override
     public List<RoomEntity> getListSuitableRoomForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         return roomModelInterface.getListSuitableRoomForSlot(newStartTime, newEndTime, slotDate, churchId, subId);
     }

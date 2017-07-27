@@ -80,7 +80,7 @@ function registerClassList() {
 
 
 function inputEventPopupInformation(event) {
-    $('#eventPopupTitle').val(event.title);
+    $('#eventName').html(event.title);
     $('#eventPopupTime').val(event.start.format('HH:mm') + " - " + event.end.format('HH:mm'));
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
@@ -115,14 +115,16 @@ function inputEventPopupInformation(event) {
         if ($("#eventDetailIsPublic").prop('checked')) {
             console.log($("#eventDetailIsPublic").prop('checked'));
             $("#eventDetailIsPublic").click();
+
             console.log('Click')
         }
     } else {
         if (!$("#eventDetailIsPublic").prop('checked')) {
             $("#eventDetailIsPublic").click();
-        }
     }
-
+    }
+    $("#eventDetailIsPublic").prop('readonly',true);
+    console.log("dmm");
     $("#editSlotButton").on("click", function () {
         var parameter = {
             slotId: event.slotId

@@ -103,7 +103,8 @@ public class UserController {
         List<IncomingEventEntity> list = churchServiceInterface.getIncomingEvent(userEntity.getUserId());
         modelAndView.addObject(ParamConstant.CHURCH_LIST, followChurch)
                 .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
-                .addObject(ParamConstant.INCOMING_EVENT, list);
+                .addObject(ParamConstant.INCOMING_EVENT, list)
+                .addObject(ParamConstant.CURRENT_USER, userEntity);
         return modelAndView;
     }
 

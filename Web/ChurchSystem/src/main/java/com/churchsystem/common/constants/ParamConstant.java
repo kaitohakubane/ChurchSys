@@ -155,7 +155,7 @@ public class ParamConstant {
     public static final boolean DEFAULT_ENABLE = true;
     public static final String INTERACTION_IS_ENABLE="enabled";
     public static final int IS_FOLLOWING=1;
-
+public static final String CURRENT_USER ="currentUser";
     /**
      * Status
      */

@@ -57,13 +57,22 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
+    public Integer getLastSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LAST_SUITABLE_CONDUCTOR_FOR_SLOT)
+                .setParameter(ParamConstant.SLOT_HOUR, slotHourId).setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setParameter(ParamConstant.SLOT_DATE, slotDate).setParameter(ParamConstant.SUBJECT_ID, subId);
+        Integer result = (Integer) query.uniqueResult();
+        return result;
+    }
+
+    @Override
     public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_SUITABLE_CONDUCTOR_FOR_SLOT)
                 .setParameter(ParamConstant.NEW_START_TIME, newStartTime)
                 .setParameter(ParamConstant.NEW_END_TIME, newEndTime)
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
                 .setParameter(ParamConstant.SLOT_DATE, slotDate)
-                .setParameter(ParamConstant.SUBJECT_ID,subId)
+                .setParameter(ParamConstant.SUBJECT_ID, subId)
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List<UserEntity> result = query.list();
         return result;
@@ -76,7 +85,7 @@ public class UserModel extends CommonDAO implements UserModelInterface {
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
                 .setParameter(ParamConstant.SLOT_DATE, slotDate)
                 .setParameter(ParamConstant.CONDUCTOR_ID, conductorId)
-                .setParameter(ParamConstant.SUBJECT_ID,subId);
+                .setParameter(ParamConstant.SUBJECT_ID, subId);
         Integer result = (Integer) query.uniqueResult();
         return result;
     }
@@ -89,7 +98,7 @@ public class UserModel extends CommonDAO implements UserModelInterface {
                 .setParameter(ParamConstant.NEW_END_TIME, newEndTime)
                 .setParameter(ParamConstant.CHURCH_ID, churchId)
                 .setParameter(ParamConstant.SLOT_DATE, slotDate)
-                .setParameter(ParamConstant.SUBJECT_ID,subId);
+                .setParameter(ParamConstant.SUBJECT_ID, subId);
         List<Integer> result = query.list();
         return result;
     }
@@ -152,15 +161,15 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
-    public List<InteractionEntity> getUserInteraction(int userId){
-        Criteria criteria=getSession().createCriteria(InteractionEntity.class).add(Restrictions.eq(ParamConstant.USER_ID,userId))
-                .add(Restrictions.eq(ParamConstant.INTERACTION_IS_ENABLE,true));
-        List<InteractionEntity> result=criteria.list();
+    public List<InteractionEntity> getUserInteraction(int userId) {
+        Criteria criteria = getSession().createCriteria(InteractionEntity.class).add(Restrictions.eq(ParamConstant.USER_ID, userId))
+                .add(Restrictions.eq(ParamConstant.INTERACTION_IS_ENABLE, true));
+        List<InteractionEntity> result = criteria.list();
         return result;
     }
 
     @Override
-    public List<ChurchEntity> getFollowingChurch(int userId){
+    public List<ChurchEntity> getFollowingChurch(int userId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_FOLLOWING_CHURCH)
                 .setParameter(ParamConstant.USER_ID, userId).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List<ChurchEntity> result = query.list();

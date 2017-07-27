@@ -101,7 +101,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày khai giảng</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Khai giảng</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -204,7 +204,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày khai giảng</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Khai giảng</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">

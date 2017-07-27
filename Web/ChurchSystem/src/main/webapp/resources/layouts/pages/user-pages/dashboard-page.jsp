@@ -132,12 +132,12 @@
 
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <ul class="nav side-menu">
+                        <ul class="nav side-menu" ${currentUser}>
 
                             <li class="col-md-12">
                                 <div class="row">
                                     <p class="col-md-5"><b>Tên:</b></p>
-                                    <p class="col-md-7">Trần Quang Trung</p>
+                                    <p class="col-md-7">${currentUser.userName}</p>
                                 </div>
                             </li>
 
@@ -150,22 +150,15 @@
 
                             <li class="col-md-12">
                                 <div class="row">
-                                    <p class="col-md-5"><b>Giới tính:</b></p>
-                                    <p class="col-md-7">Nam</p>
-                                </div>
-                            </li>
-
-                            <li class="col-md-12">
-                                <div class="row">
                                     <p class="col-md-5"><b>Điện thoại:</b></p>
-                                    <p class="col-md-7">01286104818</p>
+                                    <p class="col-md-7">${currentUser.tel}</p>
                                 </div>
                             </li>
 
                             <li class="col-md-12">
                                 <div class="row">
                                     <p class="col-md-5"><b>Email:</b></p>
-                                    <p class="col-md-7">trungtq@gmail.com</p>
+                                    <p class="col-md-7">${currentUser.email}</p>
                                 </div>
                             </li>
                         </ul>

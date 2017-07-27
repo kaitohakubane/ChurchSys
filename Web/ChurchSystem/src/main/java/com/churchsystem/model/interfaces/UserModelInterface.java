@@ -21,6 +21,8 @@ public interface UserModelInterface {
 
     Integer getSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId);
 
+    Integer getLastSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId);
+
     List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId);
 
     Integer checkConductorForSlot(int slotHourId, Date slotDate, int churchId, int conductorId, int subId);

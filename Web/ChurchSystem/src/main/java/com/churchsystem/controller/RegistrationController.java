@@ -75,8 +75,9 @@ public class RegistrationController {
             Time startTime = DateUtils.parseStringToTime(startTimeStr);
             Time endTime = DateUtils.getEndTimeFromRange(startTime, estTime);
 
+            String eventName = subjectServiceInterface.getSubjectById(subId).getSubName() + "-" + userEntity.getUserName();
 
-            eventServiceInterface.createEvent(ParamConstant.USER_DEFAULT_EVENT_NAME, slotDate, subId, false, churchId
+            eventServiceInterface.createEvent(eventName, slotDate, subId, false, churchId
                     , null, ParamConstant.NON_REPEAT_TYPE, true, UtilsConstant.ONE);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
@@ -152,7 +153,7 @@ public class RegistrationController {
             @RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr,
             @RequestParam(value = ParamConstant.SUBJECT_ID) String subIdStr,
             @RequestParam(value = ParamConstant.REGISTRATION_MESSAGE) String message,
-            @RequestParam(value=ParamConstant.REGISTRATION_EST_TIME) String estTime) {
+            @RequestParam(value = ParamConstant.REGISTRATION_EST_TIME) String estTime) {
         try {
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();

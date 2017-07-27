@@ -65,6 +65,10 @@
                                     <i class="fa fa-square"></i>
                                     <span>Đã qua</span>
                                 </li>
+                                <li style="color: #ff4fc1">
+                                    <i class="fa fa-square"></i>
+                                    <span>Được đăng ký</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -150,6 +154,12 @@
                             </div>
                         </div>
 
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="flat"> Đồng bộ với Google Calendar
+                                </label>
+                            </div>
+
                         <div class="col-sm-6">
                             <button id="cancelEventbtn" class="btn btn-success col-sm-12">Hủy</button>
                         </div>
@@ -168,7 +178,7 @@
     <div class="" style="width: 400px;">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <span style="font-size: 25px;">Chi tiết</span>
+                <span style="font-size: 25px" id="eventName"></span>
                 <button type="button" id="streamBtn" class="btn btn-success pull-right">Stream</button>
                 <div class="clearfix"></div>
             </div>
@@ -179,7 +189,7 @@
                         <div class="col-md-5 form-group pull-right">
                             <label class="control-label">Công khai</label>
                             <label class="">
-                                <input type="checkbox" id="eventDetailIsPublic" class="js-switch" readonly/>
+                                <input type="checkbox" id="eventDetailIsPublic" class="js-switch"/>
                             </label>
                         </div>
                     </div>
@@ -217,10 +227,22 @@
                     </div>
 
                     <div class="clearfix"></div>
+                    <%--<div class="form-group">--%>
+                        <%--<div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">--%>
+                            <%--<button type="button" class="btn btn-danger" id="btnRemove">Xóa</button>--%>
+                            <%--<button type="button" id="editSlotButton" class="btn btn-success">Sửa</button>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+
                     <div class="form-group">
-                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
-                            <button type="button" class="btn btn-danger" id="btnRemove">Xóa</button>
-                            <button type="button" id="editSlotButton" class="btn btn-success">Sửa</button>
+                        <div class="col-md-7 col-sm-8 col-xs-12 col-md-offset-4">
+                            <ul class="mul-btn">
+                                <li class="middle">
+                                    <button type="button" class="edit" id="editSlotButton" >Sửa</button>
+                                    <button type="button" class="del">Xóa</button>
+                                    <button type="button" class="save">Lưu</button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -275,7 +297,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Số tiết:</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="numberOfSlot">
                                     </div>
                                 </div>
 

@@ -91,3 +91,53 @@
 /*For double click event*/
 .fc-content-skeleton { pointer-events: none; }
 .fc-event { pointer-events: all; }
+
+/*==============*/
+/*mutiple-btn*/
+
+.mul-btn {
+    list-style: none;
+    margin-bottom: 30px;
+    margin-top: -10px;
+}
+
+.mul-btn li {
+    text-align: center;
+    position: relative;
+}
+
+li.middle button {
+    left: 0;
+    height: 35px;
+    width: 60px;
+    position: absolute;
+    transition: all .4s ease-in-out 0s;
+    font-weight: bold;
+}
+
+.edit {
+    background: #ffad0f;
+    border: 2px solid #ffad0f;
+    z-index: 1;
+}
+
+button.del {
+    background-color: #d9534f;
+    border: 2px solid #d9534f;
+}
+
+button.save {
+    background-color: #26b99a;
+    border: 2px solid #26b99a;
+}
+
+.mul-btn li button {
+    color: #fff;
+}
+.mul-btn li:hover .del {
+    left: -60px;
+}
+
+.mul-btn li:hover .save {
+    left: 60px;
+}

@@ -48,6 +48,11 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    public Integer getLastSuitableConductorForSlot(int slotHourId, Date slotDate, int churchId, int subId) {
+        return userModelInterface.getLastSuitableConductorForSlot(slotHourId, slotDate, churchId, subId);
+    }
+
+    @Override
     public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
         List<UserEntity> userEntities = (List<UserEntity>) userModelInterface
                 .getListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId, subId);
