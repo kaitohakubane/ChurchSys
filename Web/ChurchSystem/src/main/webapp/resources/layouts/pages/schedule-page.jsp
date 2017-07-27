@@ -496,6 +496,7 @@
     classList.push(arr);
     </c:forEach>
 
+    var setting="<c:out value="${setting.isSync}"/>";
 
 </script>
 <script src="<c:url value="/resources/js/schedule-calendar.js"/>"></script>

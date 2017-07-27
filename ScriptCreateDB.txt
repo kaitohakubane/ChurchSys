@@ -308,6 +308,18 @@ create table Notification (
 
 );
 
+create table setting(
+settingId int NOT NULL auto_increment,
+
+churchId int,
+
+isSync int,
+
+primary key (settingId)
+);
+
+alter table setting add foreign key (churchId) references church(churchId);
+
 
 alter table Subject add foreign key (categoryId) references Category(categoryId);
 

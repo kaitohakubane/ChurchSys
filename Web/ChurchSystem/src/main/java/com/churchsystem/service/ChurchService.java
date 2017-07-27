@@ -48,4 +48,9 @@ public class ChurchService implements ChurchServiceInterface {
     public List<IncomingEventEntity> getIncomingEvent(int userId){
         return churchModelInterface.getIncomingEvent(userId);
     }
+
+    @Override
+    public SettingEntity getSettingOfChurch(int churchId){
+        return churchModelInterface.getSettingOfChurch(churchId);
+    }
 }

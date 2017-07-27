@@ -26,7 +26,7 @@ public interface EventServiceInterface {
 
     EventEntity getEventById(int eventId);
 
-    List<EventDisplayEntity> getCreatedEvent(int eventId) throws IOException;
+    List<EventDisplayEntity> getCreatedEvent(int eventId,String token) throws IOException;
 
     SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId);
 

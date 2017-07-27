@@ -20,8 +20,8 @@ import java.util.Random;
  * Created by hungmcse61561-admin on 7/26/2017.
  */
 public class PlusAPI {
-    public static String checkLoginAccount(String tokenName,String checkAccount,int port) {
-        try {
+    public static String checkLoginAccount(String tokenName,String checkAccount,int port) throws IOException {
+
             if(tokenName.equals("-1")||tokenName.equals("")){
                 Long randomNumber = System.currentTimeMillis()% UtilsConstant.DEFAULT_GOOGLE_DIVIDER_FOR_TOKEN_NAME;
                 tokenName=randomNumber.toString();
@@ -35,9 +35,6 @@ public class PlusAPI {
                 return null;
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+
     }
 }

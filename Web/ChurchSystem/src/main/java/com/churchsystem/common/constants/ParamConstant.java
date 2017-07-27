@@ -41,6 +41,7 @@ public class ParamConstant {
     public static final int MAXIMUM_DISTANCE = 50;
     public static final String CHURCH_INFORMATION = "churchInformationEntity";
     public static final String INCOMING_EVENT = "listIncomingEvent";
+    public static final String CHURCH_SETTING="setting";
 
     /**
      * Registration
@@ -76,7 +77,8 @@ public class ParamConstant {
     public static final String CATEGORY_ID = "categoryId";
     public static final int CLASS_CATEGORY = 4;
     public static final String NO_NAME_EVENT_TITLE = "No name";
-
+    public static final int IS_SYNC=1;
+    public static final int IS_NOT_SYNC=0;
 
     /**
      * Subject
@@ -165,18 +167,16 @@ public class ParamConstant {
     public static final int EVENT_STATUS_DENY = 2;
     public static final int EVENT_STATUS_APPROVED = 3;
     public static final int EVENT_STATUS_FINISH = 4;
-    public static final int EVENT_CONDUCTOR_POSITION=0;
-    public static final int EVENT_ROOM_POSITION=1;
-    public static final int EVENT_NO_ROOM_VALUE=-1;
-    public static final int EVENT_NO_CONDUCTOR_VALUE=-1;
+    public static final int EVENT_CONDUCTOR_POSITION = 0;
+    public static final int EVENT_ROOM_POSITION = 1;
+    public static final int EVENT_NO_ROOM_VALUE = -1;
+    public static final int EVENT_NO_CONDUCTOR_VALUE = -1;
+
     /*Slot*/
     public static final int SLOT_STATUS_OK = 1;
     public static final int SLOT_STATUS_CONFLICT = 2;
     public static final int SLOT_STATUS_FINISH = 3;
-    public static final int SLOT_CONDUCTOR_UNAVAILABLE = 1;
-    public static final int SLOT_ROOM_UNAVAILABLE = 2;
-    public static final int SLOT_CONDUCTOR_AND_ROOM_UNAVAILABLE = 3;
-    public static final int SLOT_CONDUCTOR_OR_ROOM_UNAVAILABLE = 4;
+    public static final int SLOT_UNAVAILABLE = 1;
     public static final int SLOT_AVAILABLE = 0;
 
     /*Registration*/

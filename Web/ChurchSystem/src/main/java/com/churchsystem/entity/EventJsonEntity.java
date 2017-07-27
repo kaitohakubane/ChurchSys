@@ -20,13 +20,23 @@ public class EventJsonEntity {
     private String roomId;
     private Time startTime;
     private Time endTime;
+    private String token;
 
     public EventJsonEntity() {
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy, String typeString,
-                           String numOfSlot, String examDate, String type, String slotId, String conductorId, String roomId, Time startTime, Time endTime) {
+                           String numOfSlot, String examDate, String type, String slotId, String conductorId, String roomId, Time startTime, Time endTime, String token) {
         this.eventName = eventName;
+        this.token = token;
         this.slotDate = slotDate;
         this.subId = subId;
         this.slotHour = slotHour;

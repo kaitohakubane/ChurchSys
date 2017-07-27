@@ -19,4 +19,6 @@ public interface ChurchServiceInterface {
     ChurchInfoEntity getChurchInfo(int churchId);
 
     List<IncomingEventEntity> getIncomingEvent(int userId);
+
+    SettingEntity getSettingOfChurch(int churchId);
 }

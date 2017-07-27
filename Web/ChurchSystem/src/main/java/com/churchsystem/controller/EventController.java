@@ -1,6 +1,7 @@
 package com.churchsystem.controller;
 
 import com.churchsystem.common.api.CalendarAPI;
+import com.churchsystem.common.api.PlusAPI;
 import com.churchsystem.common.api.YoutubeAPI;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
@@ -58,6 +59,9 @@ public class EventController {
     @Autowired
     UserServiceInterface userServiceInterface;
 
+    @Autowired
+    ChurchServiceInterface churchServiceInterface;
+
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CREATE_EVENT_URL, method = RequestMethod.POST)
@@ -89,7 +93,7 @@ public class EventController {
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
 
-            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId());
+            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId(),eventJsonEntity.getToken());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,12 +104,12 @@ public class EventController {
     public ModelAndView loadSchedule(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.SCHEDULE_PAGE);
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-
         modelAndView.addObject(ParamConstant.LIST_REGISTERED_CLASS_ATTR,
                 registrationServiceInterface.getNumberOfRegisteredClassByChurchId(churchId))
                 .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
                 .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
-                .addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour());
+                .addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour())
+                .addObject(ParamConstant.CHURCH_SETTING, churchServiceInterface.getSettingOfChurch(churchId));
         return modelAndView;
     }
 
@@ -267,7 +271,7 @@ public class EventController {
                     registrationServiceInterface.updateRegistration(entity);
                 }
 
-                result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId());
+                result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(),eventJsonEntity.getToken());
 
 
                 eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
@@ -528,7 +532,6 @@ public class EventController {
             int subId = Integer.parseInt(eventJsonEntity.getSubId());
             int slotHour = Integer.parseInt(eventJsonEntity.getSlotHour());
             result = eventServiceInterface.checkEventSlot(slotDate, slotHour, churchId, subId);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -547,7 +550,7 @@ public class EventController {
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
 
-            result=eventServiceInterface.checkEventClass(datesOfClass,slotHour,churchId,subId);
+            result = eventServiceInterface.checkEventClass(datesOfClass, slotHour, churchId, subId);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -555,4 +558,21 @@ public class EventController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value = PageConstant.GOOGLE_VALIDATE_URL, method = RequestMethod.POST)
+    public String tesCalendar(@RequestParam(value="token") String token,HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+        try {
+            String abc = PlusAPI.checkLoginAccount(token,churchEntity.getMail(),UtilsConstant.DEFAULT_VALIDATE_PORT);
+            if(abc==null){
+                return UtilsConstant.GOOGLE_API_INVALID_EMAIL;
+            }else{
+                return abc;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "-1";
+        }
+    }
 }

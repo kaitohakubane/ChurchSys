@@ -72,20 +72,22 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public List<EventDisplayEntity> getCreatedEvent(int eventId) throws IOException {
+    public List<EventDisplayEntity> getCreatedEvent(int eventId, String token) throws IOException {
         List<EventDataEntity> eventDataEntities = eventModelInterface.getCreatedEvent(eventId);
         List<EventDisplayEntity> result = new ArrayList<EventDisplayEntity>();
         for (int i = 0; i < eventDataEntities.size(); i++) {
             EventDisplayEntity item = new EventDisplayEntity(eventDataEntities.get(i));
             result.add(item);
+            if (token != "") {
+                Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime() +
+                        UtilsConstant.GMT_PLUSING);
+                DateTime startDate = new DateTime(dateStart);
+                Timestamp dateEnd = new Timestamp(eventDataEntities.get(i).getEndTime().getTime() +
+                        eventDataEntities.get(i).getSlotDate().getTime() + UtilsConstant.GMT_PLUSING);
+                DateTime endDate = new DateTime(dateEnd);
+                CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getConductorName(), startDate, endDate, null, UtilsConstant.SHARE_CALENDAR_GOOGLE_ACCOUNT, token);
+            }
 
-            Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime() +
-                    UtilsConstant.GMT_PLUSING);
-            DateTime startDate = new DateTime(dateStart);
-            Timestamp dateEnd = new Timestamp(eventDataEntities.get(i).getEndTime().getTime() +
-                    eventDataEntities.get(i).getSlotDate().getTime() + UtilsConstant.GMT_PLUSING);
-            DateTime endDate = new DateTime(dateEnd);
-//            CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getConductorName(), startDate, endDate, null, UtilsConstant.SHARE_CALENDAR_GOOGLE_ACCOUNT, );
         }
         return result;
     }
@@ -136,12 +138,8 @@ public class EventService implements EventServiceInterface {
         //Need to fix
         Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId, subId);
         Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId, subId);
-        if (conductorId == null && roomId == null) {
-            return ParamConstant.SLOT_CONDUCTOR_AND_ROOM_UNAVAILABLE;
-        } else if (conductorId == null) {
-            return ParamConstant.SLOT_CONDUCTOR_UNAVAILABLE;
-        } else if (roomId == null) {
-            return ParamConstant.SLOT_ROOM_UNAVAILABLE;
+        if (conductorId == null || roomId == null) {
+            return ParamConstant.SLOT_UNAVAILABLE;
         }
         return ParamConstant.SLOT_AVAILABLE;
     }
@@ -193,7 +191,7 @@ public class EventService implements EventServiceInterface {
 
                 validConductor = tempConductor;
             }
-            result.set(ParamConstant.EVENT_CONDUCTOR_POSITION,validRoom.get(0));
+            result.set(ParamConstant.EVENT_CONDUCTOR_POSITION, validRoom.get(0));
         }
 
         if (roomId != null) {
@@ -207,7 +205,7 @@ public class EventService implements EventServiceInterface {
                 }
                 validRoom = tempRoom;
             }
-            result.set(ParamConstant.EVENT_ROOM_POSITION,validRoom.get(0));
+            result.set(ParamConstant.EVENT_ROOM_POSITION, validRoom.get(0));
         }
         return result;
     }

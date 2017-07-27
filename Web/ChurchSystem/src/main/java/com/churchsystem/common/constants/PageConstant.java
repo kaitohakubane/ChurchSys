@@ -53,6 +53,7 @@ public class PageConstant {
     public static final String UPDATE_DRAG_DROP_EVENT ="/manager/schedule/update-drag-drop-event";
     public static final String FINISH_EVENT="/automation/finishEvent";
 
+
     //Stream
     public static final String STREAM_URL = "/manager/stream";
     public static final String SCHEDULE_STREAM_URL = "/manager/stream/Schedule";
@@ -102,8 +103,8 @@ public class PageConstant {
     public static final String ADD_NEW_PRIEST_URL = "/manager/priest-management/add-new-priest";
     public static final String USER_DASHBOARD_URL="/user/dashboard";
 
-    // Slot
-
+    // Validate
+    public static final String GOOGLE_VALIDATE_URL="/manager/google/Validate";
 
     //Subject
 

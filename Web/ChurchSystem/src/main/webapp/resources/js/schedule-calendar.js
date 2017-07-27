@@ -8,9 +8,11 @@ var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 var CREATE_EVENT_URL = "/manager/event/Add";
 var CREATE_CLASS_URL = "/manager/class/Add";
 var UPDATE_DRAG_DROP_EVENT = "/manager/schedule/update-drag-drop-event"
+var GOOGLE_VALIDATE_URL = "/manager/google/Validate"
 
 //local variable
 var creatingEvent;
+var token = null;
 var calEventStatus = [];
 var lastClickedDay = null;
 var lastClickedEvent = null;
@@ -41,8 +43,13 @@ $(document).ready(function () {
         if (ClassCategoryNum.includes($("#category").children(":selected").val())) {
             $("#createClass").modal("show");
         } else {
-            console.log("OK");
-            checkEvent(creatingEvent,startTime, policy);
+            if (setting == "1") {
+                validateGoogleAccount(creatingEvent, startTime, policy);
+            } else {
+                checkEvent(creatingEvent, startTime, policy);
+            }
+
+
         }
     })
 
@@ -314,7 +321,6 @@ function loadEvent() {
         dataType: 'json',
         success: function (res) {
             eventList = res;
-            console.log(res);
             eventList.forEach(function (e) {
 
                 if (e.status == 2) {
@@ -355,7 +361,7 @@ function subjectDropdownEvent(category) {
     $('#eventType').val(firstVal);
 }
 
-function checkEvent(event,slotId, policy) {
+function checkEvent(event, slotId, policy) {
     var requestURL = contextPath + CHECK_EVENT_URL;
     var requestMethod = "POST";
     var requestData = {
@@ -374,19 +380,18 @@ function checkEvent(event,slotId, policy) {
         dataType: 'json',
         success: function (res) {
             console.log(res);
-            console.log(res==0);
+            console.log(res == 0);
             if (res != 0) {
                 $("#confirmModal").modal("show");
                 $("#process").unbind("click")
-                $("#process").bind("click",function(){
+                $("#process").bind("click", function () {
                     $("#confirmModal").modal("hide");
                     createEvent(creatingEvent, slotId, policy);
                 })
-            }else{
+            } else {
                 createEvent(creatingEvent, slotId, policy);
             }
             $("#calendarPopup").fadeOut();
-            $('#calendar').fullCalendar('addEventSource', listOfCreatingEvent);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -405,7 +410,8 @@ function createEvent(event, slotId, isPublic) {
         slotDate: event.start.split("T")[0],
         subId: $('#eventType').children(":selected").attr("id"),
         slotHour: slotId,
-        privacy: isPublic
+        privacy: isPublic,
+        token:token
     }
 
     $.ajax({
@@ -497,6 +503,32 @@ function updateEventOnSchedule(event) {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("Update event on schedule fail!");
+            console.error(textStatus);
+        }
+    });
+}
+
+function validateGoogleAccount(creatingEvent, startTime, policy) {
+    var requestData = {
+        "token": token
+    }
+    var requestMethod = "POST"
+    var requestURL = contextPath + GOOGLE_VALIDATE_URL;
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function (res) {
+            token = res;
+            if (token == "-1" || token == "") {
+                alert("Tài khoản google của bạn không phù hợp với setting. Vui lòng thử lại !!!");
+            } else {
+                checkEvent(creatingEvent, startTime, policy);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
             console.error(textStatus);
         }
     });

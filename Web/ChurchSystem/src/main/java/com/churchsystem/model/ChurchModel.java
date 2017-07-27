@@ -64,4 +64,11 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
         List<IncomingEventEntity> incomingEventEntities = query.list();
         return incomingEventEntities;
     }
+
+    @Override
+    public SettingEntity getSettingOfChurch(int churchId){
+        Criteria criteria=getSession().createCriteria(SettingEntity.class).add(Restrictions.eq(ParamConstant.CHURCH_ID,churchId));
+        SettingEntity result=(SettingEntity) criteria.uniqueResult();
+        return result;
+    }
 }
