@@ -38,6 +38,38 @@ public class GraveController {
     }
 
     @ResponseBody
+    @RequestMapping(value = PageConstant.GENERATE_GRAVE_YARD, method = RequestMethod.POST)
+    public List<GraveyardEntity> generate(HttpServletRequest request) {
+
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        int height = 5;
+        int width = 12;
+        GraveyardEntity graveyardEntity = new GraveyardEntity();
+        graveyardEntity.setChurchId(churchId);
+        for (int j = 0; j < height; j++) {
+            if (j == 0 || j == (height - 1)) {
+                for (int i = 0; i < width; i++) {
+
+                    graveyardEntity.setX(i);
+                    graveyardEntity.setY(j);
+                    graveServiceInterface.addGraveYard(graveyardEntity);
+                }
+            } else {
+                graveyardEntity = new GraveyardEntity();
+                graveyardEntity.setX(0);
+                graveyardEntity.setY(j);
+                graveServiceInterface.addGraveYard(graveyardEntity);
+                graveyardEntity.setX(width - 1);
+                graveyardEntity.setY(j);
+                graveServiceInterface.addGraveYard(graveyardEntity);
+            }
+        }
+
+        List<GraveyardEntity> result = graveServiceInterface.getGraveYardOfChurch(churchId);
+        return result;
+    }
+
+    @ResponseBody
     @RequestMapping(value = PageConstant.GET_GRAVE, method = RequestMethod.POST)
     public List<GraveEntity> getGrave(@RequestParam(value = ParamConstant.GRAVE_YARD_ID) int graveYardId) {
         List<GraveEntity> result = graveServiceInterface.getGraveOfGraveYard(graveYardId);

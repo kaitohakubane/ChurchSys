@@ -12,11 +12,20 @@ import java.util.List;
  */
 public interface RegistrationModelInterface {
     List<RegisterDisplayEntity> getRegistration();
+
     List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId);
+
     List<RegistrationEntity> getRegistrationBySubId(int subId);
+
     void updateRegistration(RegistrationEntity registrationEntity);
+
     void addRegistration(RegistrationEntity registrationEntity);
+
     List<RegistrationEntity> getWaitingRegistrationBySubId(int subId);
+
     List<ClassDisplayEntity> getOnPlanClass(int churchId);
+
     List<ClassDisplayEntity> getOnGoingPlanClass(int churchId);
+
+    RegistrationEntity getRegistrationByEventId(int eventId);
 }

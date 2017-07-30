@@ -447,45 +447,45 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Username</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control">
+                            <input type="text" disabled="disabled" id="userName" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Buổi</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control">
+                            <input type="text" id="userSlotHour" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Môn</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Sự kiện</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control">
+                            <input type="text" id="userSubject" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Phone</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control">
+                            <input type="text" id="userPhone" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Mail</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control">
+                            <input type="text" id="userMail" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Description</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" class="form-control">
+                            <input type="text" id="userMessage" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-default">Cancel</button>
-                            <button type="button" class="btn btn-primary">Create</button>
+                            <button type="button" class="btn btn-default" id="rejectBtn">Reject</button>
+                            <button type="button" class="btn btn-primary" id="acceptBtn">Accept</button>
                         </div>
                     </div>
 

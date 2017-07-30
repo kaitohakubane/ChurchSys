@@ -89,6 +89,9 @@ public class PageConstant {
     public static final String CLASS_REGISTRATION = "/user/registration/Class";
     public static final String PREDEFINED_CLASS_REGISTRATION = "/user/registration/PredefinedClass";
     public static final String FOLLOW_CHURCH = "/user/church/Follow";
+    public static final String GET_USER_REGISTRATION="/manager/registration/GetInformation";
+    public static final String ACCEPT_REGISTRATION_URL="/manager/registration/Accept";
+    public static final String REJECT_REGISTRATION_URL="/manager/registration/Accept";
 
 
     // Room
@@ -120,6 +123,7 @@ public class PageConstant {
     public static final String GRAVE_MANAGEMENT_URL="/manager/grave";
     public static final String GET_GRAVE_YARD="/manager/grave/graveYard/Get";
     public static final String GET_GRAVE="/manager/grave/Get";
+    public static final String GENERATE_GRAVE_YARD="/manager/graveYard/Generate";
 
     /**
      * For jsp page constant
@@ -141,6 +145,7 @@ public class PageConstant {
 
     // Registration
     public static final String REGISTRATION_PAGE = "registration-page";
+
 
     // Room
     public static final String SALE_PAGE = "sale-management-page";

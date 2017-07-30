@@ -177,7 +177,7 @@ function terminateEventMenu() {
 
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
             $('div#eventCreator').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                .indexOf('fc-widget-content')))) {
+                .indexOf('fc-widget-content'))||$('div#w2ui-overlay').has(e.target).length > 0)) {
             $("#eventCreator").fadeOut();
             console.log('close');
         }

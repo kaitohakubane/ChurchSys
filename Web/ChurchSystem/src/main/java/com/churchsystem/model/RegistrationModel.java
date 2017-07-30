@@ -80,5 +80,11 @@ public class RegistrationModel extends CommonDAO implements RegistrationModelInt
         getSession().persist(registrationEntity);
     }
 
+    @Override
+    public RegistrationEntity getRegistrationByEventId(int eventId){
+        Criteria criteria=getSession().createCriteria(RegistrationEntity.class).add(Restrictions.eq(ParamConstant.EVENT_ID,eventId));
+        RegistrationEntity result=(RegistrationEntity) criteria.list().get(0);
+        return result;
+    }
 
 }

@@ -171,9 +171,8 @@ function calendarInitialize() {
             }
 
             if(event.eventStatus==1){
-                var popup = $('#eventDetailPopup');
+                var popup = $('#userRegister');
                 inputUserEventPopup(event);
-
                 eventRegisterPopup(jsEvent, popup);
             }else{
                 var popup = $('#eventDetailPopup');

@@ -80,6 +80,7 @@ public class EventService implements EventServiceInterface {
             result.add(item);
 
             if (token != "" && token != null) {
+
                 Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime() +
                         UtilsConstant.GMT_PLUSING);
                 DateTime startDate = new DateTime(dateStart);
@@ -191,7 +192,7 @@ public class EventService implements EventServiceInterface {
                 validConductor = tempConductor;
             }
             if (validConductor.size() != 0) {
-                result.set(ParamConstant.EVENT_CONDUCTOR_POSITION, validConductor.get(0));
+                result.add(ParamConstant.EVENT_CONDUCTOR_POSITION, validConductor.get(0));
             }
 
         }
@@ -208,7 +209,7 @@ public class EventService implements EventServiceInterface {
                 validRoom = tempRoom;
             }
             if (validRoom.size() != 0) {
-                result.set(ParamConstant.EVENT_ROOM_POSITION, validRoom.get(0));
+                result.add(ParamConstant.EVENT_ROOM_POSITION, validRoom.get(0));
             }
 
         }

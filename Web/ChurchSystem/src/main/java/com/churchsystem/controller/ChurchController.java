@@ -80,7 +80,8 @@ public class ChurchController {
                     if (followChurch.size() > 0) {
                         for (int i = 0; i < result.size(); i++) {
                             for (int k = 0; k < followChurch.size(); k++) {
-                                if (result.get(i).getChurchId() == followChurch.get(k).getChurchId()) {
+                                if (result.get(i).getChurchId() == followChurch.get(k).getChurchId() &&
+                                        followChurch.get(k).getEnabled()) {
                                     result.get(i).setIsFollowed(ParamConstant.IS_FOLLOWING);
                                 }
                             }
@@ -121,7 +122,7 @@ public class ChurchController {
     }
 
     @RequestMapping(value = PageConstant.CHURCH_SETTING_PAGE_URL, method = RequestMethod.GET)
-    public ModelAndView getSettingPage( HttpServletRequest request) {
+    public ModelAndView getSettingPage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
@@ -144,9 +145,9 @@ public class ChurchController {
                              @RequestParam(value = ParamConstant.CHURCH_TEL) String tel,
                              @RequestParam(value = ParamConstant.CHURCH_MAIL) String mail,
                              @RequestParam(value = ParamConstant.CHURCH_DESCRIPTION) String des
-            ,HttpServletRequest request){
+            , HttpServletRequest request) {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-        try{
+        try {
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             churchEntity.setChurchName(name);
             churchEntity.setAddress(address);
@@ -155,7 +156,7 @@ public class ChurchController {
             churchEntity.setMail(mail);
             churchServiceInterface.updateChurch(churchEntity);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -56,7 +56,7 @@ public class SQLParamConstant {
             "sr LEFT JOIN user u ON sr.conductorId = u.userId)sru, subject su,event e, " +
             "(SELECT i.slotId, MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime FROM slothour sh, inclusion i, slot s " +
             "WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) st WHERE su.subId = e.subId " +
-            "AND st.slotId = sru.slotId AND sru.eventId = e.eventId AND e.churchId =:churchId";
+            "AND st.slotId = sru.slotId AND sru.eventId = e.eventId AND e.churchId =:churchId AND eventStatus != 2";
 
     public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT = "SELECT s.slotId as slotId, s.eventId as eventId, " +
             "s.conductorId as conductorId, s.roomId as roomId, su.subId as subId, st.startTime as startTime, " +

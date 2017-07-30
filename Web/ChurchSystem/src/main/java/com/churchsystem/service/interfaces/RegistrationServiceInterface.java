@@ -13,11 +13,20 @@ import java.util.List;
 
 public interface RegistrationServiceInterface {
     List<RegisterDisplayEntity> getRegistration();
+
     List<RegisteredClassEntity> getNumberOfRegisteredClassByChurchId(int churchId);
+
     List<RegistrationEntity> getRegistrationBySubId(int subId);
+
     void updateRegistration(RegistrationEntity registrationEntity);
-    void addNewRegistration(int userId,int churchId,int subId,int eventId,String message);
+
+    void addNewRegistration(int userId, int churchId, int subId, int eventId, String message);
+
     List<RegistrationEntity> getWaitingRegistrationBySubId(int subId);
+
     List<ClassDisplayEntity> getOnPlanClass(int churchId);
+
     List<ClassDisplayEntity> getOnGoingPlanClass(int churchId);
+
+    RegistrationEntity getRegistrationByEventId(int eventId);
 }

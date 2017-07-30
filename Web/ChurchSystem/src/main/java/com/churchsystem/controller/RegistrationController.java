@@ -221,4 +221,49 @@ public class RegistrationController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = PageConstant.GET_USER_REGISTRATION, method = RequestMethod.POST)
+    public UserRegistrationInformation getUserInformation(@RequestParam(value = ParamConstant.SLOT_ID) String slotIdStr) {
+        UserRegistrationInformation result = new UserRegistrationInformation();
+        try {
+            int slotId = Integer.parseInt(slotIdStr);
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            RegistrationEntity entity = registrationServiceInterface.getRegistrationByEventId(slotEntity.getEventId());
+            result.setDescription(entity.getMessage());
+            UserEntity userEntity = userServiceInterface.getUserByUserId(entity.getUserId());
+            result.setMail(userEntity.getEmail());
+            result.setPhone(userEntity.getTel());
+            result.setUserName(userEntity.getUserName());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.ACCEPT_REGISTRATION_URL, method = RequestMethod.POST)
+    public EventDisplayEntity acceptRegistration(@RequestParam(value = ParamConstant.SLOT_ID) String slotIdStr) {
+        EventDisplayEntity result = new EventDisplayEntity();
+        try {
+            int slotId = Integer.parseInt(slotIdStr);
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+
+            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationByEventId(slotEntity.getEventId());
+            registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
+            registrationServiceInterface.updateRegistration(registrationEntity);
+
+            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
+            eventServiceInterface.updateEvent(eventEntity);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return result;
+    }
+
 }

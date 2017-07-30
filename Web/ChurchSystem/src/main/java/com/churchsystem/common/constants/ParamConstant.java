@@ -190,9 +190,5 @@ public class ParamConstant {
     public static final int SLOT_UNAVAILABLE = 1;
     public static final int SLOT_AVAILABLE = 0;
 
-    /*Registration*/
-    public static final int REGISTRATION_STATUS_WAITING = 1;
-    public static final int REGISTRATION_STATUS_DENY = 2;
-    public static final int REGISTRATION_STATUS_FINISH = 3;
 
 }

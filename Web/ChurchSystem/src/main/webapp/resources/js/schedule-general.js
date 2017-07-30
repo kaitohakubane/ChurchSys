@@ -5,11 +5,13 @@
 var UPDATE_EVENT_URL = "/manager/event/Update";
 var DELETE_EVENT_URL = "/manager/event/Delete";
 var REGISTER_STREAM_URL = "/manager/stream/Register"
+var GET_USER_REGISTRATION = "/manager/registration/GetInformation";
 var STREAM_URL = "/manager/stream";
 var CHECK_IS_MANY_SLOT = "/manager/event/check-is-many-slot";
 var SCHEDULE_URL = "/manager/schedule";
 // var REMOVE_EVENT = "/manager/schedule/remove-event";
 var REMOVE_SINGLE_SLOT = "/manager/schedule/remove-single-slot";
+var ACCEPT_REGISTRATION_URL = "/manager/registration/Accept"
 var REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
 var UPDATE_NAME_AND_PRIVACY = "/manager/schedule/update-name-privacy";
 var dayArray = [];
@@ -89,7 +91,13 @@ function registerClassList() {
 }
 
 function inputUserEventPopup(event) {
-
+    $('#userSlotHour').val(event.start.format('HH:mm') + " - " + event.end.format('HH:mm'));
+    $('#userSubject').val(event.subName);
+    getRegistrationInfo(event.slotId);
+    $('#acceptBtn').on("click", function () {
+        acceptRegistration(event);
+        $("#userRegister").fadeOut();
+    })
 }
 
 function inputEventPopupInformation(event) {
@@ -187,12 +195,10 @@ function terminateEventCreateMenu() {
             )) {
             $("#calendarPopup").fadeOut();
             $("#eventDetailPopup").fadeOut();
+            $("#userRegister").fadeOut();
             return;
         }
 
-        console.log($(e.target).attr('class').toString());
-        console.log($(e.target).attr('class').toString().indexOf('fc-day'));
-        console.log($(e.target).attr('class').toString().indexOf('fc-widget-content'))
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
             $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
                 .indexOf('fc-widget-content')))) {
@@ -206,7 +212,14 @@ function terminateEventCreateMenu() {
                 .attr('class').toString()
                 .indexOf('fc-bg') >= 0))) {
             $("#eventDetailPopup").fadeOut();
+        }
 
+        if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
+            ($('div#userRegister').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
+                .attr('class').toString()
+                .indexOf('fc-bg') >= 0))) {
+            $("#userRegister").fadeOut();
         }
     })
 }
@@ -425,4 +438,52 @@ function onClickShowPopup(mes, type) {
         '<span data-notify="message">{2}</span>' +
         '</div>'
     });
+}
+
+function getRegistrationInfo(slotId) {
+    var requestURL = contextPath + GET_USER_REGISTRATION;
+    var requestMethod = "POST";
+    var requestData = {
+        "slotId": slotId,
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function (res) {
+            $("#userPhone").val(res.phone);
+            $("#userMail").val(res.mail);
+            $("#userMessage").val(res.description);
+            $("#userName").val(res.userName);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+}
+
+function acceptRegistration(event) {
+    var requestURL = contextPath + ACCEPT_REGISTRATION_URL;
+    var requestMethod = "POST";
+    var requestData = {
+        "slotId": event.slotId,
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function (res) {
+            event.eventStatus = 3;
+            event.color = "#01ff70";
+            $('#calendar').fullCalendar('updateEvent', event);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
 }
