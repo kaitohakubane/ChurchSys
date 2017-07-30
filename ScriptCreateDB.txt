@@ -318,6 +318,59 @@ isSync int,
 primary key (settingId)
 );
 
+
+create table GraveYard(
+
+ Id int not null auto_increment,
+ 
+ churchId int,
+ 
+ status nvarchar(10),
+ 
+ name nvarchar(20),
+ 
+ x int,
+ 
+ y int, 
+ 
+primary key (id)
+);
+
+create table Grave(
+
+graveId int,
+
+graveYardId int,
+
+userId int,
+
+name nvarchar(50),
+
+birthDay date,
+image nvarchar(255),
+
+deathDay date,
+
+homeTown nvarchar(255),
+
+parish nvarchar(255),
+
+x int,
+ 
+y int, 
+ 
+status int,
+ 
+primary key (graveId)
+
+);
+
+alter table graveYard add foreign key (churchId) references church(churchId);
+
+alter table grave add foreign key (graveYardId) references graveYard(id);
+
+alter table grave add foreign key (userId) references user(userid);
+
 alter table setting add foreign key (churchId) references church(churchId);
 
 

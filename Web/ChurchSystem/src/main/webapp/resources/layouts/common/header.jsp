@@ -20,5 +20,5 @@
 
 <script language="javascript">
     var contextPath = "${pageContext.request.contextPath}"
-    var churchId="${sessionScope.churchId}"
+    var churchId = "${sessionScope.churchId}"
 </script>

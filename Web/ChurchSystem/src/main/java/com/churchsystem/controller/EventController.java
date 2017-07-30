@@ -615,12 +615,13 @@ public class EventController {
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
 
-            result = eventServiceInterface.checkEventClass(datesOfClass, slotHour, churchId, subId);
+            return result = eventServiceInterface.checkEventClass(datesOfClass, slotHour, churchId, subId);
 
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return result;
+
     }
 
     @ResponseBody

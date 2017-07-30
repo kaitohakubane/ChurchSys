@@ -1,79 +1,37 @@
 /**
  * Created by hungmcse61561-admin on 7/9/2017.
  */
-var token=null;
+
 $(document).ready(function () {
-    // var options = {
-    //     float: true
-    // }
-    // $('.grid-stack').gridstack(options);
-    // $("#add-room").on("click", function () {
-    //     addNewCabinet($(".room"));
-    // })
-
-
-    $("#dm").on("click", function () {
-        testFunction();
+    var options = {
+        float: true
+    }
+    $('.grid-stack').gridstack(options);
+    $("#add-room").on("click", function () {
+        addNewCabinet($(".room"));
     })
+
+
 })
 
-function testFunction() {
-    var requestData = {
-        "token": token
+function addNewCabinet(e) {
+    var grid = e.data('gridstack');
+    var list=[];
+    var node;
+    for(var i=0;i<5;i++){
+        var node =  {x: i, y: 0, width: 1, height: 1}
+        list.push(node);
+        node =  {x: i, y: 5, width: 1, height: 1}
+        list.push(node)
     }
-    var requestMethod = "POST"
-    var requestURL = contextPath + "/test/post"
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: requestData,
-        async: false,
-        success: function (res) {
-            token = res;
-            if (token == "-1"||token=="") {
-                alert("DM SS")
-            } else {
-                testCalendarFunction();
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
-            console.error(textStatus);
-        }
-    });
+    for(var i=0;i<5;i++){
+        node =  {x: 0, y: i, width: 1, height: 1}
+        list.push(node);
+        node =  {x: 5, y: i, width: 1, height: 1}
+        list.push(node);
+    }
+
+    grid.addWidget($('<div><div class="grid-stack-item-content" >Mo thang Kiet<br/> Sinh năm 1995 mất năm 2080</div><div/>'),
+        node.x, node.y, node.width, node.height);
 
 }
-
-function testCalendarFunction() {
-    var requestData = {
-        "token": token
-    }
-    var requestMethod = "POST"
-    var requestURL = contextPath + "/test/get"
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: requestData,
-        async: false,
-        success: function (res) {
-            alert("NGON")
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
-            console.error(textStatus);
-        }
-    });
-
-}
-
-//
-//
-// function addNewCabinet(e) {
-//     var grid = e.data('gridstack');
-//
-//     var node =  {x: 0, y: 0, width: 2, height: 2}
-//
-//     grid.addWidget($('<div><div class="grid-stack-item-content" ><div class="grid-stack cabinet"></div></div><div/>'),
-//         node.x, node.y, node.width, node.height);
-//
-// }

@@ -7,7 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div id="loading" class="modal fade loading" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
 
+        <div class="modal-body">
+            <div class="col-md-12">
+                <img src="<c:url value="/resources/img/loading-icon.gif"/>"/>
+            </div>
+        </div>
+
+    </div>
+</div>
 <!-- jQuery -->
 <script src="<c:url value="/resources/lib/vendors/jquery/dist/jquery.min.js"/>"></script>
 <!-- Bootstrap -->

@@ -3,11 +3,11 @@
  */
 
 var CREATE_STREAM_URL = "/manager/stream/Add";
-var START_STREAM_URL="/manager/stream/Start";
-var FINISH_STREAM_URL="/manager/stream/Finish";
-var MANAGER_MAIN_PAGE_URL="/manager/";
-var STREAM_INSTRUCTION_URL="/manager/stream/instruction";
-var streamEntity=null;
+var START_STREAM_URL = "/manager/stream/Start";
+var FINISH_STREAM_URL = "/manager/stream/Finish";
+var MANAGER_MAIN_PAGE_URL = "/manager/";
+var STREAM_INSTRUCTION_URL = "/manager/stream/instruction";
+var streamEntity = null;
 $(document).ready(function () {
     Initial();
 
@@ -19,48 +19,48 @@ function Initial() {
     $("#next").on('click', function () {
         $("#step-1").hide();
         $("#step-2").show();
-        $("#youtubeVideo").attr('src',"https://www.youtube.com/embed/"+streamLink+"?autoplay=1")
+        $("#youtubeVideo").attr('src', "https://www.youtube.com/embed/" + streamLink + "?autoplay=1")
         streamOnAir(streamLink);
     });
 
 
     if (streamLink == "" || streamCode == "") {
         $("#registration").modal("show");
-    }else{
+    } else {
         $("#streamCode").val(streamCode);
     }
 
 
-    $("#createStreambtn").on("click",function(){
-        var streamTitle=$("#streamTitle").val();
-        var resolution=$("#resolution").val();
-        createStream(streamTitle,resolution);
+    $("#createStreambtn").on("click", function () {
+        var streamTitle = $("#streamTitle").val();
+        var resolution = $("#resolution").val();
+        createStream(streamTitle, resolution);
         $("#registration").modal("hide");
         $("#streamCode").val(streamCode)
     })
 
-    $("#end").on("click",function(){
+    $("#end").on("click", function () {
         completeStream();
-        window.location.href=contextPath+MANAGER_MAIN_PAGE_URL;
+        window.location.href = contextPath + MANAGER_MAIN_PAGE_URL;
     })
 
-    var parameter={
+    var parameter = {
         streamLink: streamLink,
         streamCode: streamCode
     }
 
-    $("#guide").on("click",function(){
-        post(contextPath+STREAM_INSTRUCTION_URL,parameter)
+    $("#guide").on("click", function () {
+        post(contextPath + STREAM_INSTRUCTION_URL, parameter)
     })
 }
 
 
-function createStream(title,resolution) {
+function createStream(title, resolution) {
     var requestURL = contextPath + CREATE_STREAM_URL;
     var requestMethod = "POST";
     var requestData = {
-        "streamTitle":title,
-        "resolution":resolution
+        "streamTitle": title,
+        "resolution": resolution
     }
     $.ajax({
         url: requestURL,
@@ -68,9 +68,9 @@ function createStream(title,resolution) {
         data: requestData,
         async: false,
         success: function (res) {
-            streamEntity=res;
-            streamLink=streamEntity.streamLink;
-            streamCode=streamEntity.streamCode;
+            streamEntity = res;
+            streamLink = streamEntity.streamLink;
+            streamCode = streamEntity.streamCode;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -79,41 +79,41 @@ function createStream(title,resolution) {
     })
 }
 
-function streamOnAir(link){
+function streamOnAir(link) {
 
-    var requestData={
-        "streamLink":link
+    var requestData = {
+        "streamLink": link
     };
-    var requestURL=contextPath+START_STREAM_URL;
-    var requestMethod="POST"
+    $("#loading").modal("show");
+    var requestURL = contextPath + START_STREAM_URL;
+    var requestMethod = "POST"
     $.ajax({
         url: requestURL,
-        type:requestMethod,
-        data:requestData,
-        async: false,
-        success: function(){
-
+        type: requestMethod,
+        data: requestData,
+        success: function () {
+            $("#loading").modal("hide");
         },
-        error:function(jqXHR, textStatus, errorThrown){
+        error: function (jqXHR, textStatus, errorThrown) {
 
         }
     })
 }
 
-function completeStream(){
-    var requestURL=contextPath+FINISH_STREAM_URL;
-    var requestType="POST"
-    var requestData={
-        "streamLink":streamLink
+function completeStream() {
+    var requestURL = contextPath + FINISH_STREAM_URL;
+    var requestType = "POST"
+    var requestData = {
+        "streamLink": streamLink
     }
     $.ajax({
         url: requestURL,
-        type:requestType,
-        data:requestData,
-        success: function(){
+        type: requestType,
+        data: requestData,
+        success: function () {
 
         },
-        error:function(jqXHR, textStatus, errorThrown){
+        error: function (jqXHR, textStatus, errorThrown) {
 
         }
     })

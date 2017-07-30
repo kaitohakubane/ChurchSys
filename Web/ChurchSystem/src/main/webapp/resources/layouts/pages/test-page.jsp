@@ -40,47 +40,19 @@
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        <%--Content    --%>
 
-        <%--<div>--%>
-            <%--<a class="btn btn-default" id="save-grid" href="#">Save Grid</a>--%>
-            <%--<a class="btn btn-default" id="clear-grid" href="#">Clear Grid</a>--%>
-            <%--<a class="btn btn-default" id="add-room" href="#">Add Room</a>--%>
-            <%--<a class="btn btn-default" id="add-cabinet" href="#">Add Cabinet</a>--%>
-        <%--</div>--%>
-        <%--<div class="grid-stack room">--%>
-            <%--<div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4">--%>
-                <%--<div class="grid-stack-item-content">--%>
+        <div>
+            <a class="btn btn-default" id="save-grid" href="#">Save Grid</a>
+            <a class="btn btn-default" id="clear-grid" href="#">Clear Grid</a>
+            <a class="btn btn-default" id="add-room" href="#">Add Room</a>
+            <a class="btn btn-default" id="add-cabinet" href="#">Add Cabinet</a>
+        </div>
+        <div class="grid-stack room">
 
-                    <%--<div class="grid-stack cabinet">--%>
-                        <%--<div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
-                            <%--<div class="grid-stack-item-content">1</div>--%>
-                        <%--</div>--%>
-                        <%--<div class="grid-stack-item" data-gs-x="3" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
-                            <%--<div class="grid-stack-item-content">2</div>--%>
-                        <%--</div>--%>
-                        <%--<div class="grid-stack-item" data-gs-x="6" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
-                            <%--<div class="grid-stack-item-content">3</div>--%>
-                        <%--</div>--%>
-                        <%--<div class="grid-stack-item" data-gs-x="9" data-gs-y="0" data-gs-width="3" data-gs-height="1">--%>
-                            <%--<div class="grid-stack-item-content">4</div>--%>
-                        <%--</div>--%>
-
-                        <%--<div class="grid-stack-item" data-gs-x="0" data-gs-y="1" data-gs-width="3" data-gs-height="1">--%>
-                            <%--<div class="grid-stack-item-content">5</div>--%>
-                        <%--</div>--%>
-                        <%--<div class="grid-stack-item" data-gs-x="3" data-gs-y="1" data-gs-width="3" data-gs-height="1">--%>
-                            <%--<div class="grid-stack-item-content">6</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
+        </div>
         <%--<textarea id="saved-data" cols="100" rows="20" readonly="readonly"></textarea>--%>
 
-        <%--Content end--%>
-        <button id="dm"> DMM SSSSSSSSSSSSSSSSSS</button>
+        <%--<button id="dm"> DMM SSSSSSSSSSSSSSSSSS</button>--%>
     </div>
 </div>
 

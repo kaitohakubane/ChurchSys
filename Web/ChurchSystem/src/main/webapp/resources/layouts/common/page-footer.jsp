@@ -12,5 +12,6 @@
     </div>
     <div class="clearfix"></div>
 </footer>
+
 <!-- /footer content -->
 

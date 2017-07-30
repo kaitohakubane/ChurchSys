@@ -78,6 +78,7 @@ public class EventService implements EventServiceInterface {
         for (int i = 0; i < eventDataEntities.size(); i++) {
             EventDisplayEntity item = new EventDisplayEntity(eventDataEntities.get(i));
             result.add(item);
+
             if (token != "" && token != null) {
                 Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime() +
                         UtilsConstant.GMT_PLUSING);
@@ -184,13 +185,15 @@ public class EventService implements EventServiceInterface {
                 List<Integer> tempConductor = new ArrayList<Integer>();
                 for (int i = 0; i < conductorItem.size(); i++) {
                     if (validConductor.contains(conductorItem.get(i))) {
-                        tempConductor.add(i);
+                        tempConductor.add(conductorItem.get(i));
                     }
                 }
-
                 validConductor = tempConductor;
             }
-            result.set(ParamConstant.EVENT_CONDUCTOR_POSITION, validRoom.get(0));
+            if (validConductor.size() != 0) {
+                result.set(ParamConstant.EVENT_CONDUCTOR_POSITION, validConductor.get(0));
+            }
+
         }
 
         if (roomId != null) {
@@ -199,12 +202,15 @@ public class EventService implements EventServiceInterface {
                 List<Integer> tempRoom = new ArrayList<Integer>();
                 for (int i = 0; i < roomItem.size(); i++) {
                     if (validRoom.contains(roomItem.get(i))) {
-                        tempRoom.add(i);
+                        tempRoom.add(roomItem.get(i));
                     }
                 }
                 validRoom = tempRoom;
             }
-            result.set(ParamConstant.EVENT_ROOM_POSITION, validRoom.get(0));
+            if (validRoom.size() != 0) {
+                result.set(ParamConstant.EVENT_ROOM_POSITION, validRoom.get(0));
+            }
+
         }
         return result;
     }

@@ -116,7 +116,10 @@ public class PageConstant {
     // Validate
     public static final String GOOGLE_VALIDATE_URL="/manager/google/Validate";
 
-    //Subject
+    //Grave
+    public static final String GRAVE_MANAGEMENT_URL="/manager/grave";
+    public static final String GET_GRAVE_YARD="/manager/grave/graveYard/Get";
+    public static final String GET_GRAVE="/manager/grave/Get";
 
     /**
      * For jsp page constant
@@ -166,4 +169,6 @@ public class PageConstant {
     //Error
     public static final String NOT_FOUND_PAGE = "error-pages/404-page";
 
+    //Grave
+    public static final String GRAVE_PAGE="grave-page";
 }

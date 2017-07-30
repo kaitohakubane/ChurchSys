@@ -86,6 +86,12 @@ public class ParamConstant {
     public static final int IS_NOT_SYNC=0;
 
     /**
+     * Grave
+     */
+    public static final String GRAVE_YARD_ID="graveYardId";
+
+
+    /**
      * Subject
      */
     public static final String SUBJECT_LIST = "subjectList";

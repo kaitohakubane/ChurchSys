@@ -157,12 +157,6 @@
                             </div>
                         </div>
 
-                            <%--<div class="checkbox">--%>
-                                <%--<label>--%>
-                                    <%--<input type="checkbox" class="flat"> Đồng bộ với Google Calendar--%>
-                                <%--</label>--%>
-                            <%--</div>--%>
-
                         <div class="col-sm-6">
                             <button id="cancelEventbtn" class="btn btn-success col-sm-12">Hủy</button>
                         </div>
@@ -204,7 +198,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Buổi:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                            <input type="text" id="eventPopupTime" class="form-control" disabled="readonly" data-id = ${slotEntity.slotId}>
+                            <input type="text" id="eventPopupTime" class="form-control" disabled="readonly"
+                                   data-id= ${slotEntity.slotId}>
                             <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
                         </div>
                     </div>
@@ -235,17 +230,17 @@
 
                     <div class="clearfix"></div>
                     <%--<div class="form-group">--%>
-                        <%--<div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">--%>
-                            <%--<button type="button" class="btn btn-danger" id="btnRemove">Xóa</button>--%>
-                            <%--<button type="button" id="editSlotButton" class="btn btn-success">Sửa</button>--%>
-                        <%--</div>--%>
+                    <%--<div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">--%>
+                    <%--<button type="button" class="btn btn-danger" id="btnRemove">Xóa</button>--%>
+                    <%--<button type="button" id="editSlotButton" class="btn btn-success">Sửa</button>--%>
+                    <%--</div>--%>
                     <%--</div>--%>
 
                     <div class="form-group">
                         <div class="col-md-7 col-sm-8 col-xs-12 col-md-offset-4">
                             <ul class="mul-btn">
                                 <li class="middle">
-                                    <button type="button" class="edit" id="editSlotButton" >Sửa</button>
+                                    <button type="button" class="edit" id="editSlotButton">Sửa</button>
                                     <button type="button" class="del" id="btnRemove">Xóa</button>
                                     <button type="button" class="save" id="btnSave">Lưu</button>
                                 </li>
@@ -266,8 +261,8 @@
         <!-- Modal content-->
         <div class="modal-content">
             <%--<div class="modal-header">--%>
-                <%--<button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-                <%--<h4 class="modal-title">Tạo lớp mới</h4>--%>
+            <%--<button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+            <%--<h4 class="modal-title">Tạo lớp mới</h4>--%>
             <%--</div>--%>
             <div class="modal-body">
                 <div class="col-md-12">
@@ -298,7 +293,8 @@
                                     <div class="col-md-9 col-sm-9 col-xs-12">
                                         <select class="form-control" id="slotNumPopup">
                                             <c:forEach items="${slotHourList}" var="item">
-                                                <option id="${item.slotHourId}" value="${item.startTime} - ${item.endTime}">
+                                                <option id="${item.slotHourId}"
+                                                        value="${item.startTime} - ${item.endTime}">
                                                         ${item.startTime} - ${item.endTime}
                                                 </option>
                                             </c:forEach>
@@ -309,7 +305,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Số buổi học:</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" id="numberOfSlot" value="10">
+                                        <input type="text" class="form-control" id="numberOfSlot" value="30">
                                     </div>
                                 </div>
 
@@ -317,7 +313,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày thi:</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
                                         <div>
-                                            <input type="text" class="form-control" id="datepicker"/>
+                                            <input type="text" class="form-control" id="examDate"/>
                                         </div>
                                     </div>
                                 </div>
@@ -394,7 +390,7 @@
             <div class="clearfix"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                <button type="button" id="createStreambtn" class="btn btn-primary" >OK</button>
+                <button type="button" id="createStreambtn" class="btn btn-primary">OK</button>
             </div>
         </div>
         <!-- /Modal content-->
@@ -409,7 +405,8 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body " id="confirmInfor">
-                <label>Không tìm được phòng hoặc người chịu trách nhiệm cho sự kiện (lớp) này. Bạn có muốn tiếp tục ?</label>
+                <label>Không tìm được phòng hoặc người chịu trách nhiệm cho sự kiện (lớp) này. Bạn có muốn tiếp tục
+                    ?</label>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info col-md-5" id="cancel" style="margin-left: 6px">Hủy</button>
@@ -430,7 +427,8 @@
                 <label>Bạn muốn xóa giờ hay hay tất cả các giờ liên quan?</label>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này</button>
+                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này
+                </button>
                 <button type="button" class="btn btn-primary col-md-6" id="allSlot">Tất cả</button>
             </div>
         </div>
@@ -441,7 +439,7 @@
     <div class="" style="width: 400px;">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Context</h2>
+                <h2>Sự kiện đăng ký bởi user</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -497,8 +495,6 @@
     </div>
 </div>
 <%--====================================================--%>
-<%--====================================================--%>
-
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
@@ -527,11 +523,14 @@
     classList.push(arr);
     </c:forEach>
 
-    var setting="<c:out value="${setting.isSync}"/>";
+    var setting = "<c:out value="${setting.isSync}"/>";
 
 </script>
 <script src="<c:url value="/resources/js/schedule-calendar.js"/>"></script>
 <script src="<c:url value="/resources/js/schedule-general.js"/>"></script>
 
 </body>
+<%--====================================================--%>
+
+
 </html>

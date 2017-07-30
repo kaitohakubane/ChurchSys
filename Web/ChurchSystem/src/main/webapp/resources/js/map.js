@@ -265,8 +265,8 @@ function searchNearLocationAjaxCall(center) {
             map.fitBounds(bounds);
             eventChoosing();
             $("#wrapper").toggleClass("active");
-            $(".fa-star").each(function(){
-                if($(this).data("follow")!=null){
+            $(".fa-star").each(function () {
+                if ($(this).data("follow") != null) {
                     $(this).click();
                 }
             })
@@ -291,7 +291,7 @@ function gotoChurchPage(e) {
 
 function changeColor(e) {
     $(e).toggleClass("color1");
-
+    var id = $(e).data("id");
 }
 
 
@@ -309,3 +309,4 @@ function eventChoosing() {
         }
     })
 }
+

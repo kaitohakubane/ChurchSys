@@ -97,3 +97,4 @@ function finishEvent(churchId) {
         }
     )
 }
+

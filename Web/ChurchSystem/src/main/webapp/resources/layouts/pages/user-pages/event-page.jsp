@@ -95,11 +95,11 @@
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Dự kiến</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <select id="estTime" class="form-control">
-                            <option>1 giờ</option>
-                            <option>2 giờ</option>
-                            <option>3 giờ</option>
-                            <option>4 giờ</option>
-                            <option>5 giờ</option>
+                            <option value="1">1 giờ</option>
+                            <option value="2">2 giờ</option>
+                            <option value="3">3 giờ</option>
+                            <option value="4">4 giờ</option>
+                            <option value="5">5 giờ</option>
                         </select>
                     </div>
                 </div>

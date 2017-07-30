@@ -88,6 +88,9 @@ function registerClassList() {
     })
 }
 
+function inputUserEventPopup(event) {
+
+}
 
 function inputEventPopupInformation(event) {
     $('#eventPopupTitle').val(event.title);
@@ -187,19 +190,21 @@ function terminateEventCreateMenu() {
             return;
         }
 
-
+        console.log($(e.target).attr('class').toString());
+        console.log($(e.target).attr('class').toString().indexOf('fc-day'));
+        console.log($(e.target).attr('class').toString().indexOf('fc-widget-content'))
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-                $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                    .indexOf('fc-widget-content')))) {
+            $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
+                .indexOf('fc-widget-content')))) {
             $("#calendarPopup").fadeOut();
-            console.log('close');
+            console.log('close Popup');
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-                ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
-                    .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
-                    .attr('class').toString()
-                    .indexOf('fc-bg') >= 0))) {
+            ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
+                .attr('class').toString()
+                .indexOf('fc-bg') >= 0))) {
             $("#eventDetailPopup").fadeOut();
 
         }
@@ -373,6 +378,12 @@ function editEventNameAndPrivacy(event) {
         contentType: 'application/json',
         success: function () {
             onClickShowPopup(EDIT_SUCCESS_STATUS, TYPE_SUCCESS);
+            $("#calendar").fullCalendar('removeEventSources');
+            loadEvent();
+            $("#calendar").fullCalendar('addEventSource', {
+                events: eventList,
+                color: '#43abc9'
+            })
         },
         error: function (jqXHR, textStatus, errorThrown) {
             onClickShowPopup(EDIT_FAILURE_STATUS, TYPE_DANGER);
@@ -380,6 +391,7 @@ function editEventNameAndPrivacy(event) {
         }
     })
 }
+
 
 function onClickShowPopup(mes, type) {
 
