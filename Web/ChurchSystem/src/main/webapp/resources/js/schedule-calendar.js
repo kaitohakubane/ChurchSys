@@ -7,6 +7,7 @@ var CHECK_CLASS_URL = "/manager/class/Check";
 var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 var CREATE_EVENT_URL = "/manager/event/Add";
 var CREATE_CLASS_URL = "/manager/class/Add";
+var GET_EXAM_DATE ="/manager/event/Add/get-exam-date";
 var UPDATE_DRAG_DROP_EVENT = "/manager/schedule/update-drag-drop-event"
 var GOOGLE_VALIDATE_URL = "/manager/google/Validate"
 
@@ -41,7 +42,11 @@ $(document).ready(function () {
             policy = 1;
         }
         if (ClassCategoryNum.includes($("#category").children(":selected").val())) {
+            $("#className").val($("#creatingEventName").val());
+            $("#classSubject").val($("#eventType").val());
+            $("#slotNumPopup").val($("#slotNum").val());
             $("#createClass").modal("show");
+
         } else {
             if (setting == "1") {
                 validateGoogleAccount(creatingEvent, startTime, policy);
@@ -442,18 +447,18 @@ function createEvent(event, slotId, isPublic) {
     });
 }
 
-function createClass(event, slotId, isPublic) {
+function createClass(event, slotHourId, isPublic) {
 
     var requestURL = contextPath + CREATE_CLASS_URL;
     var requestMethod = "POST";
     var requestData = {
-        eventName: $('#creatingEventName').val(),
+        eventName: $('#className').val(),
         slotDate: event.start.split("T")[0],
         subId: $('#eventType').children(":selected").attr("id"),
-        slotHour: slotId,
+        slotHour: slotHourId,
         privacy: isPublic,
         numOfSlot: $("#numberOfSlot").val(),
-        examDate: "2017-08-30",
+        examDate: $("#datepicker").val(),
         type: dayArray.toString()
     }
 

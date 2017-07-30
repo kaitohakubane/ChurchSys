@@ -26,7 +26,7 @@ public interface EventServiceInterface {
 
     EventEntity getEventById(int eventId);
 
-    List<EventDisplayEntity> getCreatedEvent(int eventId,String token) throws IOException;
+    List<EventDisplayEntity> getCreatedEvent(int eventId, String token) throws IOException;
 
     SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId);
 
@@ -59,5 +59,9 @@ public interface EventServiceInterface {
     int checkEventSlot(Date eventDate, int slotHour, int churchId, int subId);
 
     List<Integer> checkEventClass(List<Date> eventDate, int slotHour, int churchId, int subId);
+
+    int checkConductorForClass(SlotEntity slotEntity, Time startTime, Time endTime, int newConductorId, int churchId, int subId, Integer currentConductorId);
+
+    int checkRoomForClass(SlotEntity slotEntity, Time startTime, Time endTime, int newRoomId, int churchId, int subId, Integer currentRoomId);
 
 }

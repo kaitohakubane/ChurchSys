@@ -31,7 +31,7 @@
             width: auto;
             display: inline;
         }
-      </style>
+    </style>
     <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
 
 </head>
@@ -70,7 +70,8 @@
                                     </div>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                        <input type="text" id="subject" value="${slotEntity.subName}"
+                                        <input type="text" id="subject" data-id="${slotEntity.subId}"
+                                               value="${slotEntity.subName}"
                                                class="form-control has-feedback-left" disabled="readonly">
                                         <span class="fa fa-calendar form-control-feedback left"
                                               aria-hidden="true"></span>
@@ -133,9 +134,10 @@
                                             <input type="checkbox" id="editEventIsChecked" class="js-switch" checked/>
                                         </label>
                                     </div>
-                                    <div class="col-md-6 checkbox">
+                                    <div class="col-md-6 checkbox" style="display: none" id="divCheckbox">
                                         <label>
-                                            <input type="checkbox" class="flat" id="manySlotCheck">Áp dụng tất cả các giờ liên quan
+                                            <input type="checkbox" class="flat" id="manySlotCheck">Áp dụng tất cả các
+                                            giờ liên quan
                                         </label>
                                     </div>
                                     <div class="clearfix"></div>
@@ -144,7 +146,8 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
                                             <button type="button" id="btnBack" class="btn btn-default btn-lg">Quay lại
                                             </button>
-                                            <button type="submit" id="btnSave" class="btn btn-success btn-lg" value="Validate!">Lưu
+                                            <button type="button" id="btnSave" class="btn btn-success btn-lg"
+                                                    value="Validate!">Lưu
                                             </button>
                                         </div>
                                     </div>
@@ -167,12 +170,14 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body ">
-                <label>Bạn muốn áp dụng cho:</label>
+                <label>Không tìm được phòng hoặc người chịu trách nhiệm cho tất cả các buổi. Bạn có muốn tiếp tục
+                    ?</label>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này
+                <button type="button" class="btn btn-primary col-md-5" id="btnContinous" style="margin-left: 6px">Tiếp
+                    tục
                 </button>
-                <button type="button" class="btn btn-primary col-md-6" id="manySlot">Các giờ liên quan</button>
+                <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">Hủy</button>
             </div>
         </div>
     </div>

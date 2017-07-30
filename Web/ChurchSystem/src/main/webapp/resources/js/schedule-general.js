@@ -11,11 +11,20 @@ var SCHEDULE_URL = "/manager/schedule";
 // var REMOVE_EVENT = "/manager/schedule/remove-event";
 var REMOVE_SINGLE_SLOT = "/manager/schedule/remove-single-slot";
 var REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
+var UPDATE_NAME_AND_PRIVACY = "/manager/schedule/update-name-privacy";
 var dayArray = [];
 var streamResolutionDefault = "240p"
 var workingEvent;
 var currentEventIsMultiSlot;
 var curSlotId;
+
+var EDIT_SUCCESS_STATUS = "Cập nhật thành công!";
+var EDIT_FAILURE_STATUS = "Cập nhật thất bại";
+var REMOVE_SUCCESS_STATUS = "Xóa thành công!";
+var REMOVE_FAILURE_STATUS = "Xóa thất bại";
+var TYPE_DANGER = "danger";
+var TYPE_SUCCESS = "success";
+
 
 //
 classListInitial();
@@ -23,7 +32,7 @@ registerClassList();
 datePickerLoad();
 $(document).ready(function () {
     terminateEventCreateMenu();
-    $("#cancel").on("click",function(){
+    $("#cancel").on("click", function () {
         $("#confirmModal").modal("hide");
     })
     $('.day-checkbox').on('ifChecked', function (event) {
@@ -55,8 +64,6 @@ $(document).ready(function () {
 //--------------------------------Function-------------------------------
 
 
-
-
 /* set attribute for event on drag table */
 function registerClassList() {
     $('#external-events .fc-event').each(function () {
@@ -83,7 +90,7 @@ function registerClassList() {
 
 
 function inputEventPopupInformation(event) {
-    $('#eventName').html(event.title);
+    $('#eventPopupTitle').val(event.title);
     $('#eventPopupTime').val(event.start.format('HH:mm') + " - " + event.end.format('HH:mm'));
     $('#eventPopupSubject').val(event.subName);
     $('#eventPopupConductor').val(event.conductorName);
@@ -124,10 +131,9 @@ function inputEventPopupInformation(event) {
     } else {
         if (!$("#eventDetailIsPublic").prop('checked')) {
             $("#eventDetailIsPublic").click();
+        }
     }
-    }
-    $("#eventDetailIsPublic").prop('readonly',true);
-    console.log("dmm");
+
     $("#editSlotButton").on("click", function () {
         var parameter = {
             slotId: event.slotId
@@ -143,13 +149,18 @@ function inputEventPopupInformation(event) {
 
         if (currentEventIsMultiSlot == 1) {
             console.log("Selected slot has multi slot");
-            $('#confirmModal').modal('show');
+            $('#confirmDelete').modal('show');
         }
         else if (currentEventIsMultiSlot == 0) {
             console.log("Selected slot has one slot");
             removeSingleSlot(curSlotId);
         }
     })
+
+    $("#btnSave").on('click', function () {
+        editEventNameAndPrivacy(event);
+    })
+
 }
 
 $("#oneSlot").on("click", function () {
@@ -157,7 +168,7 @@ $("#oneSlot").on("click", function () {
     removeSingleSlot(curSlotId);
 
 })
-$("#manySlot").on("click", function () {
+$("#allSlot").on("click", function () {
     console.log("Option remove many slot is selected");
     removeMultiSlot(curSlotId);
 })
@@ -178,17 +189,17 @@ function terminateEventCreateMenu() {
 
 
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-            $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                .indexOf('fc-widget-content')))) {
+                $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
+                    .indexOf('fc-widget-content')))) {
             $("#calendarPopup").fadeOut();
             console.log('close');
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-            ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
-                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
-                .attr('class').toString()
-                .indexOf('fc-bg') >= 0))) {
+                ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                    .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
+                    .attr('class').toString()
+                    .indexOf('fc-bg') >= 0))) {
             $("#eventDetailPopup").fadeOut();
 
         }
@@ -271,11 +282,11 @@ function removeMultiSlot(slotId) {
         processData: false,
         success: function () {
             console.log("Removed many slot success!")
-            alert('Delete Success!');
-            window.location.href = contextPath + SCHEDULE_URL;
+            onClickShowPopup(REMOVE_SUCCESS_STATUS, TYPE_SUCCESS);
+            // window.location.href = contextPath + SCHEDULE_URL;
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
+            onClickShowPopup(REMOVE_FAILURE_STATUS, TYPE_DANGER);
             console.error(textStatus);
         }
     })
@@ -294,7 +305,6 @@ function checkIsManySlot(event) {
         async: false,
         contentType: 'application/json',
         processData: false,
-        dataType: 'json',
         success: function (res) {
             console.log("Checking slot with ID = " + event.slotId + " is one or many slot!");
             currentEventIsMultiSlot = res;
@@ -307,11 +317,12 @@ function checkIsManySlot(event) {
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
+            console.log("Error happen!");
             console.error(textStatus);
         }
     })
 }
+
 function removeSingleSlot(slotId) {
     var requestURL = contextPath + REMOVE_SINGLE_SLOT;
     var requestMethod = "POST";
@@ -327,12 +338,79 @@ function removeSingleSlot(slotId) {
         // processData: false,
         success: function () {
             console.log("Removed single slot with ID = " + slotId);
-            alert('Delete success!');
-            window.location.href = contextPath + SCHEDULE_URL;
+            onClickShowPopup(REMOVE_SUCCESS_STATUS, TYPE_SUCCESS);
+            // window.location.href = contextPath + SCHEDULE_URL;
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
+            onClickShowPopup(REMOVE_FAILURE_STATUS, TYPE_DANGER);
             console.error(textStatus);
         }
     })
+}
+
+function editEventNameAndPrivacy(event) {
+    var requestURL = contextPath + UPDATE_NAME_AND_PRIVACY;
+    var requestMethod = "POST";
+    var isPublic = $("#eventDetailIsPublic").prop('checked')
+    var privacy;
+    if (isPublic) {
+        privacy = 1
+    }
+    else {
+        privacy = 0
+    }
+
+    var requestData = {
+        slotId: event.slotId,
+        eventName: $('#eventPopupTitle').val(),
+        privacy: privacy,
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        success: function () {
+            onClickShowPopup(EDIT_SUCCESS_STATUS, TYPE_SUCCESS);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            onClickShowPopup(EDIT_FAILURE_STATUS, TYPE_DANGER);
+            console.error(textStatus);
+        }
+    })
+}
+
+function onClickShowPopup(mes, type) {
+
+    $.notify({
+        // options
+        message: mes
+    }, {
+        // settings
+        element: 'body',
+        position: null,
+        type: type,
+        allow_dismiss: false,
+        newest_on_top: false,
+        showProgressbar: false,
+        placement: {
+            from: "bottom",
+            align: "center"
+        },
+        offset: 50,
+        spacing: 10,
+        z_index: 1031,
+        delay: 1000,
+        mouse_over: null,
+        animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+        },
+        template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+        '<img data-notify="icon" class="img-circle pull-left">' +
+        '<span data-notify="title">{1}</span>' +
+        '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
 }

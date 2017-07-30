@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -111,7 +112,7 @@ public class ChurchController {
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
                 modelAndView = new ModelAndView(PageConstant.INTRODUCTION_PAGE)
-                .addObject(ParamConstant.CHURCH_INFORMATION,churchServiceInterface.getChurchInfo(churchId));
+                        .addObject(ParamConstant.CHURCH_INFORMATION, churchServiceInterface.getChurchInfo(churchId));
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -119,4 +120,43 @@ public class ChurchController {
         return modelAndView;
     }
 
+    @RequestMapping(value = PageConstant.CHURCH_SETTING_PAGE_URL, method = RequestMethod.GET)
+    public ModelAndView getSettingPage( HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        try {
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            if (churchEntity != null) {
+                modelAndView = new ModelAndView(PageConstant.CHURCH_SETTING_PAGE)
+                        .addObject(ParamConstant.CHURCH_OBJECT, churchServiceInterface.getChurchById(churchId));
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return modelAndView;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATE_CHURCH_URL, method = RequestMethod.POST)
+    public void updateChurch(@RequestParam(value = ParamConstant.CHURCH_NAME) String name,
+                             @RequestParam(value = ParamConstant.CHURCH_ADDRESS) String address,
+                             @RequestParam(value = ParamConstant.CHURCH_TEL) String tel,
+                             @RequestParam(value = ParamConstant.CHURCH_MAIL) String mail,
+                             @RequestParam(value = ParamConstant.CHURCH_DESCRIPTION) String des
+            ,HttpServletRequest request){
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try{
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            churchEntity.setChurchName(name);
+            churchEntity.setAddress(address);
+            churchEntity.setTel(tel);
+            churchEntity.setDescription(des);
+            churchEntity.setMail(mail);
+            churchServiceInterface.updateChurch(churchEntity);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -78,7 +78,7 @@ public class EventService implements EventServiceInterface {
         for (int i = 0; i < eventDataEntities.size(); i++) {
             EventDisplayEntity item = new EventDisplayEntity(eventDataEntities.get(i));
             result.add(item);
-            if (token != "") {
+            if (token != "" && token != null) {
                 Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime() +
                         UtilsConstant.GMT_PLUSING);
                 DateTime startDate = new DateTime(dateStart);
@@ -87,7 +87,6 @@ public class EventService implements EventServiceInterface {
                 DateTime endDate = new DateTime(dateEnd);
                 CalendarAPI.createGoogleEvent(eventDataEntities.get(i).getSlotId(), eventDataEntities.get(i).getEventName() + " - " + eventDataEntities.get(i).getSubName(), eventDataEntities.get(i).getRoomName(), eventDataEntities.get(i).getConductorName(), startDate, endDate, null, UtilsConstant.SHARE_CALENDAR_GOOGLE_ACCOUNT, token);
             }
-
         }
         return result;
     }
@@ -293,24 +292,19 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public void changeStatusToFinish(int churchId) {
-        try {
-            Date curDate = DateUtils.getCurrentDate();
-            List<EventEntity> eventEntities = eventModelInterface.getListEventOfChurch(churchId);
-            for (int i = 0; i < eventEntities.size(); i++) {
-                List<SlotEntity> slotEntities = slotModelInterface.getSlotByEventId(eventEntities.get(i).getEventId());
-                for (int j = 0; j < slotEntities.size(); j++) {
-                    if (slotEntities.get(j).getSlotDate().compareTo(curDate) < 0) {
-                        slotEntities.get(j).setSlotStatus(ParamConstant.SLOT_FINISH_STATUS);
-                        slotModelInterface.updateSlot(slotEntities.get(j));
-                    }
+        Date curDate = DateUtils.getCurrentDate();
+        List<EventEntity> eventEntities = eventModelInterface.getListEventOfChurch(churchId);
+        for (int i = 0; i < eventEntities.size(); i++) {
+            List<SlotEntity> slotEntities = slotModelInterface.getSlotByEventId(eventEntities.get(i).getEventId());
+            for (int j = 0; j < slotEntities.size(); j++) {
+                if (slotEntities.get(j).getSlotDate().before(curDate)) {
+                    slotEntities.get(j).setSlotStatus(ParamConstant.SLOT_FINISH_STATUS);
+                    slotModelInterface.updateSlot(slotEntities.get(j));
                 }
-                if (slotEntities.get(slotEntities.size() - 1).getSlotStatus() == ParamConstant.SLOT_FINISH_STATUS) {
-                    changeEventStatus(eventEntities.get(i), ParamConstant.EVENT_FINISH_STATUS);
-                }
-
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (slotEntities.get(slotEntities.size() - 1).getSlotStatus() == ParamConstant.SLOT_FINISH_STATUS) {
+                changeEventStatus(eventEntities.get(i), ParamConstant.EVENT_FINISH_STATUS);
+            }
         }
     }
 
@@ -362,5 +356,26 @@ public class EventService implements EventServiceInterface {
 
 
         return null;
+    }
+
+
+    @Override
+    public int checkConductorForClass(SlotEntity slotEntity, Time startTime, Time endTime, int newConductorId, int churchId, int subId, Integer currentConductorId) {
+        List<Integer> listConductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotEntity.getSlotDate(), churchId, subId);
+        listConductorId.add(currentConductorId);
+        if (!listConductorId.contains(newConductorId)) {
+            return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+        }
+        return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+    }
+
+    @Override
+    public int checkRoomForClass(SlotEntity slotEntity, Time startTime, Time endTime, int newRoomId, int churchId, int subId, Integer currentRoomId) {
+        List<Integer> listRoomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotEntity.getSlotDate(), churchId, subId);
+        listRoomId.add(currentRoomId);
+        if (!listRoomId.contains(newRoomId)) {
+            return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+        }
+        return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
     }
 }

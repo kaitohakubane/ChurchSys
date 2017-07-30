@@ -26,6 +26,11 @@ public class ParamConstant {
      * Church
      */
     public static final String CHURCH_ID = "churchId";
+    public static final String CHURCH_NAME = "churchName";
+    public static final String CHURCH_TEL = "tel";
+    public static final String CHURCH_ADDRESS= "address";
+    public static final String CHURCH_MAIL = "mail";
+    public static final String CHURCH_DESCRIPTION = "description";
 
     public static final String CHURCH_LIST = "churchList";
 

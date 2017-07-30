@@ -93,7 +93,7 @@ public class EventController {
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
 
-            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId(),eventJsonEntity.getToken());
+            result = eventServiceInterface.getCreatedEvent(slotEntity.getEventId(), eventJsonEntity.getToken());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -271,7 +271,7 @@ public class EventController {
                     registrationServiceInterface.updateRegistration(entity);
                 }
 
-                result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(),eventJsonEntity.getToken());
+                result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(), eventJsonEntity.getToken());
 
 
                 eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
@@ -290,33 +290,110 @@ public class EventController {
 
 
     @ResponseBody
-    @RequestMapping(value = PageConstant.UPDATED_SINGLE_EVENT, method = RequestMethod.POST)
-    public void updateSingleEvent(@RequestBody EventJsonEntity eventJsonEntity) {
-        //int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+    @RequestMapping(value = PageConstant.CHECK_CONDUCTOR_FOR_CLASS, method = RequestMethod.POST)
+    public int checkConductorForClass(@RequestBody EventJsonEntity eventJsonEntity,
+                                      HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
-            int isManySlot = eventServiceInterface.checkIsManySlot(slotId);
+            Integer currentConductorId = slotServiceInterface.getSlotById(slotId).getConductorId();
+            List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
+
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            Time startTime = eventJsonEntity.getStartTime();
+            Time endTime = eventJsonEntity.getEndTime();
+            int newConductorId = Integer.parseInt(eventJsonEntity.getConductorId());
+            for (int i = 0; i < slotEntities.size(); i++) {
+                int result = eventServiceInterface.checkConductorForClass(slotEntities.get(i), startTime, endTime, newConductorId, churchId, subId, currentConductorId);
+                if (result == UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
+                    return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                }
+            }
+            return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return UtilsConstant.ERROR;
+        }
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_ROOM_FOR_CLASS, method = RequestMethod.POST)
+    public int checkRoomForClass(@RequestBody EventJsonEntity eventJsonEntity,
+                                 HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            Integer currentRoomId = slotServiceInterface.getSlotById(slotId).getRoomId();
+            List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            Time startTime = eventJsonEntity.getStartTime();
+            Time endTime = eventJsonEntity.getEndTime();
+            int newRoomId = Integer.parseInt(eventJsonEntity.getRoomId());
+            for (int i = 0; i < slotEntities.size(); i++) {
+                int result = eventServiceInterface.checkRoomForClass(slotEntities.get(i), startTime, endTime, newRoomId, churchId, subId, currentRoomId);
+                if (result == UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
+                    return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                }
+            }
+            return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return UtilsConstant.ERROR;
+        }
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATED_SINGLE_EVENT, method = RequestMethod.POST)
+    public void updateSingleEvent(@RequestBody EventJsonEntity eventJsonEntity) {
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
-            int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
-            int roomId = Integer.parseInt(eventJsonEntity.getRoomId());
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+
+            //Check null Conductor
+            Integer conductorId;
+            if (eventJsonEntity.getConductorId() != null) {
+                conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
+            } else {
+                conductorId = null;
+            }
+
+            //Check null Room
+            Integer roomId;
+            if (eventJsonEntity.getRoomId() != null) {
+                roomId = Integer.parseInt(eventJsonEntity.getRoomId());
+            } else {
+                roomId = null;
+            }
+
+            //Check status
+            Integer status;
+            if (roomId != null && conductorId != null) {
+                status = ParamConstant.SLOT_OK_STATUS;
+            } else {
+                status = ParamConstant.SLOT_CONFLICT_STATUS;
+            }
+
+            //Update slot information
+            slotEntity.setRoomId(roomId);
+            slotEntity.setConductorId(conductorId);
+            slotEntity.setSlotDate(slotDate);
+            slotEntity.setSlotStatus(status);
+            slotServiceInterface.updateSlot(slotEntity);
+
+            //Update event information
             int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
             String eventName = eventJsonEntity.getEventName();
-            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
-            slotEntity.setSlotDate(slotDate);
-            slotEntity.setConductorId(conductorId);
-            slotEntity.setRoomId(roomId);
-
-
             boolean privacy = true;
             if (intPrivacy == UtilsConstant.ZERO) {
                 privacy = false;
             }
-            if (isManySlot == UtilsConstant.IS_ONE_SLOT) {
-                eventServiceInterface.updateEventNameAndPrivacy(slotEntity, eventName, privacy);
-            }
-            slotServiceInterface.updateSlot(slotEntity);
+            eventServiceInterface.updateEventNameAndPrivacy(slotEntity, eventName, privacy);
 
+            //Insert new row to Inclusion
             slotServiceInterface.deleteSlotHourBySlotId(slotId);
 
             for (int i = 0; i < slotHour.size(); i++) {
@@ -402,7 +479,6 @@ public class EventController {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
-//            Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
             String eventName = eventJsonEntity.getEventName();
             int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
             int roomId = Integer.parseInt(eventJsonEntity.getRoomId());
@@ -413,6 +489,7 @@ public class EventController {
             for (SlotEntity slotEntity : slotEntities) {
                 slotEntity.setConductorId(conductorId);
                 slotEntity.setRoomId(roomId);
+                slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
 
                 eventServiceInterface.updateRepeatSlot(slotEntity, slotHour);
 
@@ -421,6 +498,7 @@ public class EventController {
             if (intPrivacy == UtilsConstant.ZERO) {
                 privacy = false;
             }
+
             eventServiceInterface.updateEventNameAndPrivacy(slotEntities.get(UtilsConstant.ZERO), eventName, privacy);
         } catch (Exception e) {
             e.printStackTrace();
@@ -474,19 +552,6 @@ public class EventController {
         }
     }
 
-//    @ResponseBody
-//    @RequestMapping(value = PageConstant.REMOVE_EVENT, method = RequestMethod.POST)
-//    public void removeEvent(@RequestParam(value = ParamConstant.EVENT_ID) String eventId) {
-//        try {
-//            Integer curEventId = Integer.parseInt(eventId);
-//            eventServiceInterface.deleteEvent(curEventId);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-
-
     @ResponseBody
     @RequestMapping(value = PageConstant.REGISTER_STREAM_URL, method = RequestMethod.POST)
     public void registerStreamEvent(@RequestParam(value = ParamConstant.SLOT_ID) String slotIdStr,
@@ -513,7 +578,7 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.FINISH_EVENT, method = RequestMethod.POST)
-    public void registerStreamEvent(@RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr) {
+    public void changeStatusToFinish(@RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr) {
         try {
             int churchId = Integer.parseInt(churchIdStr);
             eventServiceInterface.changeStatusToFinish(churchId);
@@ -560,19 +625,107 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.GOOGLE_VALIDATE_URL, method = RequestMethod.POST)
-    public String tesCalendar(@RequestParam(value="token") String token,HttpServletRequest request) {
+    public String tesCalendar(@RequestParam(value = "token") String token, HttpServletRequest request) {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
         try {
-            String abc = PlusAPI.checkLoginAccount(token,churchEntity.getMail(),UtilsConstant.DEFAULT_VALIDATE_PORT);
-            if(abc==null){
+            String abc = PlusAPI.checkLoginAccount(token, churchEntity.getMail(), UtilsConstant.DEFAULT_VALIDATE_PORT);
+            if (abc == null) {
                 return UtilsConstant.GOOGLE_API_INVALID_EMAIL;
-            }else{
+            } else {
                 return abc;
             }
         } catch (Exception e) {
             e.printStackTrace();
             return "-1";
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATE_NAME_AND_PRIVACY, method = RequestMethod.POST)
+    public void updateNameAndPrivacy(@RequestBody EventJsonEntity eventJsonEntity) {
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+
+            String eventName = eventJsonEntity.getEventName();
+            int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+
+            boolean privacy = true;
+            if (intPrivacy == UtilsConstant.ZERO) {
+                privacy = false;
+            }
+            eventServiceInterface.updateEventNameAndPrivacy(slotEntity, eventName, privacy);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATED_ERROR_REPEAT_EVENT, method = RequestMethod.POST)
+    public void updateErrorRepeatEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
+            String eventName = eventJsonEntity.getEventName();
+            int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+
+            Integer currentRoomId = slotServiceInterface.getSlotById(slotId).getRoomId();
+            Integer currentConductorId = slotServiceInterface.getSlotById(slotId).getRoomId();
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            Time startTime = eventJsonEntity.getStartTime();
+            Time endTime = eventJsonEntity.getEndTime();
+            int newConductorId = Integer.parseInt(eventJsonEntity.getConductorId());
+            int newRoomId = Integer.parseInt(eventJsonEntity.getRoomId());
+
+
+            List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
+
+            for (int i = 0; i < slotEntities.size(); i++) {
+                int isRoomAvailable = eventServiceInterface.checkRoomForClass(slotEntities.get(i), startTime, endTime, newRoomId, churchId, subId, currentRoomId);
+                int isConductorAvailable = eventServiceInterface.checkConductorForClass(slotEntities.get(i), startTime, endTime, newConductorId, churchId, subId, currentConductorId);
+
+                if (isRoomAvailable == UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
+                    slotEntities.get(i).setRoomId(null);
+                    slotEntities.get(i).setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                }
+
+                if (isConductorAvailable == UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
+                    slotEntities.get(i).setConductorId(null);
+                    slotEntities.get(i).setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                } else if (isRoomAvailable == UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS && isConductorAvailable == UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
+                    slotEntities.get(i).setRoomId(newRoomId);
+                    slotEntities.get(i).setConductorId(newConductorId);
+                    slotEntities.get(i).setSlotStatus(ParamConstant.SLOT_OK_STATUS);
+                }
+
+                eventServiceInterface.updateRepeatSlot(slotEntities.get(i), slotHour);
+            }
+
+            boolean privacy = true;
+            if (intPrivacy == UtilsConstant.ZERO) {
+                privacy = false;
+            }
+            eventServiceInterface.updateEventNameAndPrivacy(slotEntities.get(UtilsConstant.ZERO), eventName, privacy);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.GET_EXAM_DATE, method = RequestMethod.POST)
+    public Date getExamDate(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        try {
+            int numberOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
+            List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
+            return datesOfClass.get(datesOfClass.size() - 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

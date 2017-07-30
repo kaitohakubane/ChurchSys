@@ -38,6 +38,7 @@ public class PageConstant {
     public static final String UPDATED_EVENT = "/manager/event/Updated";
     public static final String UPDATED_SINGLE_EVENT = "/manager/event/update-single-event";
     public static final String UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
+    public static final String UPDATED_ERROR_REPEAT_EVENT = "/manager/event/update-error-repeat-event";
 
     public static final String CREATE_EVENT_URL = "/manager/event/Add";
     public static final String CHECK_EVENT_URL = "/manager/event/Check";
@@ -50,9 +51,11 @@ public class PageConstant {
     public static final String REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
     public static final String REMOVE_EVENT = "/manager/schedule/remove-event";
 
-    public static final String UPDATE_DRAG_DROP_EVENT ="/manager/schedule/update-drag-drop-event";
-    public static final String FINISH_EVENT="/automation/finishEvent";
+    public static final String UPDATE_DRAG_DROP_EVENT = "/manager/schedule/update-drag-drop-event";
+    public static final String FINISH_EVENT = "/automation/finishEvent";
 
+    public static final String UPDATE_NAME_AND_PRIVACY = "/manager/schedule/update-name-privacy";
+    public static final String GET_EXAM_DATE ="/manager/event/Add/get-exam-date";
 
     //Stream
     public static final String STREAM_URL = "/manager/stream";
@@ -62,7 +65,7 @@ public class PageConstant {
     public static final String START_STREAM_URL = "/manager/stream/Start";
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
     public static final String REGISTER_STREAM_URL = "/manager/stream/Register";
-    public static final String STREAM_INSTRUCTION_URL="/manager/stream/instruction";
+    public static final String STREAM_INSTRUCTION_URL = "/manager/stream/instruction";
 
     //Notification
     public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";
@@ -75,13 +78,17 @@ public class PageConstant {
     public static final String CREATE_CLASS_URL = "/manager/class/Add";
     public static final String CHECK_CLASS_URL = "/manager/class/Check";
 
+    public static final String CHECK_CONDUCTOR_FOR_CLASS = "/manager/class/check-conductor";
+    public static final String CHECK_ROOM_FOR_CLASS = "/manager/class/check-room";
+
+
     // Registration
     public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";
     public static final String ADD_REGISTRATION = "/user/registration/Add";
     public static final String GET_ON_PLAN_CLASS_URL = "/church/class";
-    public static final String CLASS_REGISTRATION="/user/registration/Class";
-    public static final String PREDEFINED_CLASS_REGISTRATION="/user/registration/PredefinedClass";
-    public static final String FOLLOW_CHURCH="/user/church/Follow";
+    public static final String CLASS_REGISTRATION = "/user/registration/Class";
+    public static final String PREDEFINED_CLASS_REGISTRATION = "/user/registration/PredefinedClass";
+    public static final String FOLLOW_CHURCH = "/user/church/Follow";
 
 
     // Room
@@ -93,15 +100,18 @@ public class PageConstant {
     public static final String CHURCH_SCHEDULE_URL = "/church/schedule";
     public static final String CHURCH_SEARCH_URL = "/church/Search";
     public static final String CHURCH_INFO_URL = "/church/info";
-
+    public static final String CHURCH_SETTING_PAGE_URL = "/church/setting";
     public static final String CHURCH_MANAGEMENT_URL = "/admin/church-management";
+
+    public static final String UPDATE_CHURCH_URL = "/admin/setting/update-church";
+
     // Contribution
 
 
     // User
     public static final String PRIEST_MANAGEMENT_URL = "/manager/priest-management";
     public static final String ADD_NEW_PRIEST_URL = "/manager/priest-management/add-new-priest";
-    public static final String USER_DASHBOARD_URL="/user/dashboard";
+    public static final String USER_DASHBOARD_URL = "/user/dashboard";
 
     // Validate
     public static final String GOOGLE_VALIDATE_URL="/manager/google/Validate";
@@ -124,7 +134,7 @@ public class PageConstant {
     public static final String SCHEDULE_PAGE = "schedule-page";
     public static final String EDIT_EVENT_PAGE = "edit-event-page";
     public static final String STREAM_PAGE = "stream-page";
-    public static final String STREAM_INSTRUCTION_PAGE="instruction-page";
+    public static final String STREAM_INSTRUCTION_PAGE = "instruction-page";
 
     // Registration
     public static final String REGISTRATION_PAGE = "registration-page";
@@ -138,15 +148,16 @@ public class PageConstant {
     public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
     public static final String CHURCH_CLASS_PAGE = "/user-pages/class-registration-page";
-    public static final String INTRODUCTION_PAGE="/user-pages/introduce-page";
+    public static final String INTRODUCTION_PAGE = "/user-pages/introduce-page";
     public static final String CHURCH_MANAGEMENT_PAGE = "church-management-page";
+    public static final String CHURCH_SETTING_PAGE="setting-page";
 
 
     // User
     public static final String NOTIFICATION_PAGE = "notification-page";
-    public static final String USER_NOTIFICATION_PAGE="/user-pages/user-notification-page";
+    public static final String USER_NOTIFICATION_PAGE = "/user-pages/user-notification-page";
     public static final String PRIEST_MANAGEMENT_PAGE = "priest-management-page";
-    public static final String USER_DASHBOARD_PAGE="/user-pages/dashboard-page";
+    public static final String USER_DASHBOARD_PAGE = "/user-pages/dashboard-page";
 
     // Slot
     public static final String DAILY_REPORT_PAGE = "daily-report-page";

@@ -1,0 +1,11 @@
+[data-notify="container"] > [data-notify="message"] {
+    margin-left: 110px;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+[data-notify="warning-container"] > [data-notify="message"] {
+    margin-left: 11px;
+    font-size: 110%;
+    font-weight: bold;
+}

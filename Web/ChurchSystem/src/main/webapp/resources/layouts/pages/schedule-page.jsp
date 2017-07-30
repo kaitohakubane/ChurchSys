@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calendar Page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
+    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
 
     <link href="<c:url value="/resources/lib/src/js/jquery-ui.min.css"/>" rel="stylesheet">
     <!-- FullCalendar -->
@@ -28,6 +29,8 @@
     <link href="<c:url value="/resources/css/schedule.css"/>" rel="stylesheet">
     <!-- iCheck -->
     <link href="<c:url value="/resources/lib/vendors/iCheck/skins/flat/green.css"/>" rel="stylesheet">
+
+    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -154,11 +157,11 @@
                             </div>
                         </div>
 
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" class="flat"> Đồng bộ với Google Calendar
-                                </label>
-                            </div>
+                            <%--<div class="checkbox">--%>
+                                <%--<label>--%>
+                                    <%--<input type="checkbox" class="flat"> Đồng bộ với Google Calendar--%>
+                                <%--</label>--%>
+                            <%--</div>--%>
 
                         <div class="col-sm-6">
                             <button id="cancelEventbtn" class="btn btn-success col-sm-12">Hủy</button>
@@ -178,7 +181,7 @@
     <div class="" style="width: 400px;">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <span style="font-size: 25px" id="eventName"></span>
+                <span style="font-size: 25px">Chi tiết</span>
                 <button type="button" id="streamBtn" class="btn btn-success pull-right">Stream</button>
                 <div class="clearfix"></div>
             </div>
@@ -186,6 +189,10 @@
                 <div class="form-horizontal form-label-left input_mask">
 
                     <div class="form-group">
+                        <div class="col-md-7">
+                            <input type="text" id="eventPopupTitle" class="form-control" placeholder="Event title">
+                        </div>
+
                         <div class="col-md-5 form-group pull-right">
                             <label class="control-label">Công khai</label>
                             <label class="">
@@ -239,8 +246,8 @@
                             <ul class="mul-btn">
                                 <li class="middle">
                                     <button type="button" class="edit" id="editSlotButton" >Sửa</button>
-                                    <button type="button" class="del">Xóa</button>
-                                    <button type="button" class="save">Lưu</button>
+                                    <button type="button" class="del" id="btnRemove">Xóa</button>
+                                    <button type="button" class="save" id="btnSave">Lưu</button>
                                 </li>
                             </ul>
                         </div>
@@ -275,29 +282,34 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên lớp:</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" disabled="readonly">
+                                        <input type="text" class="form-control" id="className">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Môn học:</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" disabled="readonly">
+                                        <input type="text" class="form-control" disabled="readonly" id="classSubject">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Thời gian:</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control">
+                                        <select class="form-control" id="slotNumPopup">
+                                            <c:forEach items="${slotHourList}" var="item">
+                                                <option id="${item.slotHourId}" value="${item.startTime} - ${item.endTime}">
+                                                        ${item.startTime} - ${item.endTime}
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Số tiết:</label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Số buổi học:</label>
                                     <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control" id="numberOfSlot">
+                                        <input type="text" class="form-control" id="numberOfSlot" value="10">
                                     </div>
                                 </div>
 
@@ -407,6 +419,24 @@
     </div>
 </div>
 
+
+<%--Confirm Modal--%>
+<div class="modal fade confirm-modal" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"
+     data-keyboard="false" style="margin-top: 220px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body ">
+                <label>Bạn muốn xóa giờ hay hay tất cả các giờ liên quan?</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info col-md-5" id="oneSlot" style="margin-left: 6px">Giờ này</button>
+                <button type="button" class="btn btn-primary col-md-6" id="allSlot">Tất cả</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row" id="userRegister">
     <div class="" style="width: 400px;">
         <div class="x_panel">
@@ -471,6 +501,7 @@
 
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <!-- FullCalendar -->
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
