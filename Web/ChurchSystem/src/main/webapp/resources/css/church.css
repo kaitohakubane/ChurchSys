@@ -461,3 +461,11 @@ ul.class-list-title{
     background-color: #cfe2c7;
     transition: all 0.5s;
 }
+/*=============*/
+/*church-info*/
+.church-info-cover {
+    background-image: url(../img/slider3.jpg);
+    width: 100%;
+    height: 150px;
+    background-size: 100% 100%;
+}

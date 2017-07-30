@@ -11,7 +11,7 @@
     <div class="modal-dialog">
 
         <div class="modal-body">
-            <div class="col-md-12">
+            <div class="col-md-12" style=" margin: 200px 0 0 220px;">
                 <img src="<c:url value="/resources/img/loading-icon.gif"/>"/>
             </div>
         </div>

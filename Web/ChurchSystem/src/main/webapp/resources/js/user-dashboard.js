@@ -16,3 +16,31 @@ $(document).ready(function(){
         }
     })
 })
+
+$(function () {
+    $(".fl-church").slice(0, 3).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".fl-church:hidden").slice(0, 1).slideDown();
+        if ($(".fl-church:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 500);
+    });
+});
+
+$(function () {
+    $(".ev-church").slice(0, 3).show();
+    $("#loadMore1").on('click', function (e) {
+        e.preventDefault();
+        $(".ev-church:hidden").slice(0, 1).slideDown();
+        if ($(".ev-church:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 500);
+    });
+});

@@ -100,3 +100,11 @@ footer {
 .dropdown-menu.space a .message {
     display: block !important;
 }
+
+.fl-church {
+    display: none;
+}
+
+.ev-church {
+    display: none;
+}

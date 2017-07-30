@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="x_content bs-example-popovers">
                                     <c:forEach items="${churchList}" var="item" varStatus="status">
-                                        <div class="alert alert-dismissible fade in" id="${status.count}" role="alert">
+                                        <div class="fl-church alert alert-dismissible fade in" id="${status.count}" role="alert">
                                             <a style="color: #fff"
                                                href="${pageContext.request.contextPath}/church?churchId=${item.churchId}">
                                                 <button type="button" class="close" data-dismiss="alert"
@@ -194,7 +194,7 @@
                                             </a>
                                         </div>
                                     </c:forEach>
-
+                                    <button class="col-md-12 btn btn-default" id="loadMore">Xem thêm</button>
                                 </div>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
                             <div class="x_content">
                                 <ul class="list-unstyled timeline">
                                     <c:forEach items="${listIncomingEvent}" var="item">
-                                        <li>
+                                        <li class="ev-church">
                                             <div class="block dbevent-block">
                                                 <div class="tags dbevent">
                                                     <a href="" class="tag">
@@ -292,63 +292,8 @@
                                             </div>
                                         </li>
                                     </c:forEach>
-
-                                    <%--<li>--%>
-                                    <%--<div class="block dbevent-block">--%>
-                                    <%--<div class="tags dbevent">--%>
-                                    <%--<a href="" class="tag">--%>
-                                    <%--<span>Hiến máu (Subject)</span>--%>
-                                    <%--</a>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="block_content">--%>
-                                    <%--<h2 class="title">--%>
-                                    <%--<a>Hiến máu t7 (eventName)</a>--%>
-                                    <%--</h2>--%>
-                                    <%--<div class="byline">--%>
-                                    <%--<span>4:30 - 7:30 (slothour )</span>--%>
-                                    <%--</div>--%>
-                                    <%--<p class="excerpt">Nhà thờ Hòa Khánh</p>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                    <%--<div class="block dbevent-block">--%>
-                                    <%--<div class="tags dbevent">--%>
-                                    <%--<a href="" class="tag">--%>
-                                    <%--<span>Tiếp sức mùa thi</span>--%>
-                                    <%--</a>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="block_content">--%>
-                                    <%--<h2 class="title">--%>
-                                    <%--<a>Nhà thờ hòa khánh</a>--%>
-                                    <%--</h2>--%>
-                                    <%--<div class="byline">--%>
-                                    <%--<span>10 phút nữa</span>--%>
-                                    <%--</div>--%>
-                                    <%--<p class="excerpt">Hãy tham gia ngay đi các con giời.</p>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--</li>--%>
-                                    <%--<li>--%>
-                                    <%--<div class="block dbevent-block">--%>
-                                    <%--<div class="tags dbevent">--%>
-                                    <%--<a href="" class="tag">--%>
-                                    <%--<span>Khám chữa bệnh</span>--%>
-                                    <%--</a>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="block_content">--%>
-                                    <%--<h2 class="title">--%>
-                                    <%--<a>Nhà thờ hòa khánh</a>--%>
-                                    <%--</h2>--%>
-                                    <%--<div class="byline">--%>
-                                    <%--<span>10 phút nữa</span>--%>
-                                    <%--</div>--%>
-                                    <%--<p class="excerpt">Hãy tham gia ngay đi các con giời.</p>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--</li>--%>
                                 </ul>
-
+                                <button class="col-md-12 btn btn-default" id="loadMore1">Load More</button>
                             </div>
                         </div>
                     </div>
