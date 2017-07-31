@@ -3,6 +3,7 @@
  */
 
 var listOfCabinet=[];
+var listOfGrave=[]
 $(document).ready(function () {
     var options = {
         float: true
@@ -14,6 +15,7 @@ $(document).ready(function () {
 
     $("#load-grid").on("click", function () {
         loadCabinet($(".room"));
+        loadGrave(12,5,$(".cabinet"))
     })
 
 })
@@ -60,9 +62,33 @@ function loadCabinet(e) {
             e.x, e.y, e.width, e.height);
     })
 
+
     $('.grid-stack-item-content').each(function (e) {
         $(this).html("Tủ " + e)
         $(this).data("id", e)
+    })
+    grid.addWidget($('<div><div class="grid-stack-item-content" style="background-color:#d442f4">Tượng chúa</div><div/>'),
+        5, 1, 2, 1);
+
+
+}
+
+function loadGrave(width,height,target){
+    var node;
+    var grid = target.data('gridstack');
+    for (var j = 0; j < height; j+=2) {
+            for (var i = 0; i < width; i+=2) {
+                node = {x: i, y: j, width: 2, height: 2}
+                listOfGrave.push(node);
+            }
+    }
+    listOfGrave.forEach(function (e) {
+        grid.addWidget($('<div><div class="grid-stack-item-content grave" ></div><div/>'),
+            e.x, e.y, e.width, e.height);
+    })
+    $('.grave').each(function (e) {
+        $(this).html("Tây Môn Xuy Tuyết</br>20-7-1985 - 19-5-2017")
+
     })
 }
 

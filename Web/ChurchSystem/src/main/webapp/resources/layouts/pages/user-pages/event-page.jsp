@@ -18,7 +18,7 @@
     <title>Information Page</title>
     <c:import url="/resources/layouts/user-common/header.jsp"/>
 
-    <link href="<c:url value="/resources/lib/src/js/w2ui-1.5.rc1.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/lib/gridDist/jquery.timepicker.css"/>" rel="stylesheet">
     <!-- FullCalendar -->
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.css"/>" rel="stylesheet">
 
@@ -88,7 +88,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Bắt đầu lúc</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <input type="eu-time" id="startTime" value="18:00" class="form-control">
+                        <input name="startTime" id="startTime" value="18:00" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -107,7 +107,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Mô tả</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" id="messageTxt" rows="3"></textarea>
                     </div>
                 </div>
 
@@ -183,17 +183,62 @@
     </div>
 </div>
 
+<!-- popup -->
+<div id="notifyPopup" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 350px;">
+        <div class="row">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <span style="font-size: 18px;" id="eventNameSpn">Tên Sự kiện</span>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" class="form-control" disabled="readonly" id="dateTxt">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Thời gian</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" class="form-control" disabled="readonly" id="timeTxt">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <textarea class="form-control" id="messageField" disabled="readonly" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <button type="button" data-dismiss="modal" class="col-md-2 col-md-offset-5  btn btn-primary">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /popup -->
+
 <c:import url="/resources/layouts/user-common/user-footer.jsp"/>
 
 <c:import url="/resources/layouts/user-common/footer.jsp"/>
 
-<script src="<c:url value="/resources/lib/src/js/w2ui-1.5.rc1.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/gridDist/jquery.timepicker.js"/>"></script>
 <!-- FullCalendar -->
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
 <script>
     var churchId =${param.churchId}
-        $('input[type=eu-time]').w2field('time', { format: 'h24', start: '4:30 am', end: '9:00 pm' });
+        $('#startTime').timepicker({'timeFormat': 'H:i',
+            'minTime': '4:30',
+            'maxTime': '19:00',});
 </script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/church-event.js"/>"></script>

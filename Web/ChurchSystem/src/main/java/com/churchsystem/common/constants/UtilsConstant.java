@@ -48,6 +48,8 @@ public class UtilsConstant {
     public static final String GOOGLE_API_INVALID_EMAIL = "-1";
     public static final int DEFAULT_GOOGLE_DIVIDER_FOR_TOKEN_NAME = 1000000;
 
+    public static final boolean TRUE = true;
+    public static final boolean FALSE = false;
 
     public static final int NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 0;
     public static final int AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 1;

@@ -126,4 +126,14 @@ public class UserService implements UserServiceInterface {
     public List<ChurchEntity> getFollowingChurch(int userId){
         return userModelInterface.getFollowingChurch(userId);
     }
+
+    @Override
+    public InteractionEntity getInteraction(int userId, int churchId){
+        return userModelInterface.getInteraction(userId,churchId);
+    }
+
+    @Override
+    public void updateInteraction(InteractionEntity interactionEntity){
+        userModelInterface.updateInteraction(interactionEntity);
+    }
 }

@@ -17,12 +17,9 @@
             <li><a href="${pageContext.request.contextPath}/church?churchId=${param.churchId}">Tin tức</a></li>
             <li><a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}">Sự kiện</a></li>
             <li><a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}">Lớp giáo lý</a></li>
-            <li><a href="#">Live Stream</a></li>
-            <li><a href="#">Hỏi - Đáp</a></li>
-            <li><a href="#">Cầu nguyện</a></li>
-            <li><a href="#">Liên hệ</a></li>
-            <li><a href="#">Đóng góp</a></li>
-            <li><a href="#">Phản hồi</a></li>
+            <li><a href="${pageContext.request.contextPath}/church/pray?churchId=${param.churchId}">Cầu nguyện</a></li>
+            <li><a href="${pageContext.request.contextPath}/church/contact?churchId=${param.churchId}">Liên hệ</a></li>
+            <li><a href="${pageContext.request.contextPath}/church/donation?churchId=${param.churchId}">Đóng góp</a></li>
         </ul>
     </div>
 </div>

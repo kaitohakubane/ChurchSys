@@ -165,6 +165,11 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
+    public void updateInteraction(InteractionEntity interactionEntity) {
+        getSession().saveOrUpdate(interactionEntity);
+    }
+
+    @Override
     public void mapPriestWithSubject(AbilityEntity abilityEntity) {
         getSession().persist(abilityEntity);
     }
@@ -174,6 +179,14 @@ public class UserModel extends CommonDAO implements UserModelInterface {
         Criteria criteria = getSession().createCriteria(InteractionEntity.class).add(Restrictions.eq(ParamConstant.USER_ID, userId))
                 .add(Restrictions.eq(ParamConstant.INTERACTION_IS_ENABLE, true));
         List<InteractionEntity> result = criteria.list();
+        return result;
+    }
+
+    @Override
+    public InteractionEntity getInteraction(int userId, int churchId) {
+        Criteria criteria = getSession().createCriteria(InteractionEntity.class).add(Restrictions.eq(ParamConstant.USER_ID, userId))
+                .add(Restrictions.eq(ParamConstant.CHURCH_ID, churchId));
+        InteractionEntity result = (InteractionEntity) criteria.uniqueResult();
         return result;
     }
 

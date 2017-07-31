@@ -83,7 +83,6 @@
                         <li><a href="javascript:;"> Profile</a></li>
                         <li>
                             <a href="${pageContext.request.contextPath}/church/setting">
-                                <span class="badge bg-red pull-right">50%</span>
                                 <span>Settings</span>
                             </a>
                         </li>

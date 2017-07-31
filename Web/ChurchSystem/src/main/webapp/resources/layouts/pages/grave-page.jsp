@@ -39,9 +39,7 @@
                 <div class="tab-content">
                     <div id="step1" class="tab-pane fade in active">
                         <div>
-                            <a class="btn btn-default" id="save-grid" href="#">Save Grid</a>
                             <a class="btn btn-default" id="load-grid" href="#">Load Grid</a>
-                            <a class="btn btn-default" id="add-room" href="#">Add Room</a>
                             <a class="btn btn-default" id="add-cabinet" href="#">Add Cabinet</a>
                         </div>
                         <div class="grid-stack room">
@@ -49,7 +47,9 @@
                         </div>
                     </div>
                     <div id="step2" class="tab-pane fade">
-                        <div class="text-center"><img src="<c:url value="/resources/img/step2.PNG"/>"></div>
+                        <div class="grid-stack cabinet">
+
+                        </div>
                     </div>
 
                 </div>

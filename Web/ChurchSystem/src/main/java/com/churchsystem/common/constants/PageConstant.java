@@ -81,6 +81,9 @@ public class PageConstant {
     public static final String CHECK_CONDUCTOR_FOR_CLASS = "/manager/class/check-conductor";
     public static final String CHECK_ROOM_FOR_CLASS = "/manager/class/check-room";
 
+    public static final String CHECK_CONFLICT_FOR_DRAG_DROP_EVENT = "/manager/event/check-drag-drop-valid";
+    public static final String CHECK_CONFLICT_FOR_RESIZE_EVENT = "/manager/event/check-resize-valid";
+
 
     // Registration
     public static final String REGISTRATION_MANAGEMENT_URL = "/manager/registration-management";
@@ -115,6 +118,7 @@ public class PageConstant {
     public static final String PRIEST_MANAGEMENT_URL = "/manager/priest-management";
     public static final String ADD_NEW_PRIEST_URL = "/manager/priest-management/add-new-priest";
     public static final String USER_DASHBOARD_URL = "/user/dashboard";
+    public static final String FOLLOW_ACTION = "/follow-action";
 
     // Validate
     public static final String GOOGLE_VALIDATE_URL="/manager/google/Validate";
@@ -124,6 +128,16 @@ public class PageConstant {
     public static final String GET_GRAVE_YARD="/manager/grave/graveYard/Get";
     public static final String GET_GRAVE="/manager/grave/Get";
     public static final String GENERATE_GRAVE_YARD="/manager/graveYard/Generate";
+
+    /**
+     * Common
+     */
+    public static final String DONATION_URL="/church/donation";
+    public static final String PRAY_URL="/church/pray";
+    public static final String CONTACT_URL="/church/contact";
+    public static final String BIBLE_URL="/bible";
+    public static final String AUGUST_URL="/calendar/august";
+
 
     /**
      * For jsp page constant
@@ -167,6 +181,7 @@ public class PageConstant {
     public static final String PRIEST_MANAGEMENT_PAGE = "priest-management-page";
     public static final String USER_DASHBOARD_PAGE = "/user-pages/dashboard-page";
 
+
     // Slot
     public static final String DAILY_REPORT_PAGE = "daily-report-page";
     public static final String CHART_PAGE = "chart-page";
@@ -176,4 +191,11 @@ public class PageConstant {
 
     //Grave
     public static final String GRAVE_PAGE="grave-page";
+
+    //Common
+    public static final String DONATION_PAGE="/info-page/donation-page";
+    public static final String PRAY_PAGE="/info-page/pray-page";
+    public static final String CONTACT_PAGE="/info-page/contact-page";
+    public static final String BIBLE_PAGE="/info-page/bible-page";
+    public static final String AUGUST_PAGE="/info-page/august-page";
 }

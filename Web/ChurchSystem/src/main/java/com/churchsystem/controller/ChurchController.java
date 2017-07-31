@@ -33,7 +33,7 @@ public class ChurchController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.CHURCH_HOME_PAGE);
+                modelAndView = new ModelAndView(PageConstant.CHURCH_HOME_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
             }
 
         } catch (NumberFormatException e) {
@@ -49,7 +49,7 @@ public class ChurchController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.CHURCH_SCHEDULE_PAGE);
+                modelAndView = new ModelAndView(PageConstant.CHURCH_SCHEDULE_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
             }
 
         } catch (NumberFormatException e) {
@@ -113,7 +113,8 @@ public class ChurchController {
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
                 modelAndView = new ModelAndView(PageConstant.INTRODUCTION_PAGE)
-                        .addObject(ParamConstant.CHURCH_INFORMATION, churchServiceInterface.getChurchInfo(churchId));
+                        .addObject(ParamConstant.CHURCH_INFORMATION, churchServiceInterface.getChurchInfo(churchId))
+                        .addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -160,4 +161,6 @@ public class ChurchController {
             e.printStackTrace();
         }
     }
+
+
 }

@@ -4,6 +4,7 @@
 
 var contextPath = "/ChurchSystem";
 var CHURCH_SEARCH_URL = "/church/Search";
+var FOLLOW_ACTION = "/follow-action"
 var image = {
     url: icon,
     scaledSize: new google.maps.Size(50, 50),
@@ -267,7 +268,7 @@ function searchNearLocationAjaxCall(center) {
             $("#wrapper").toggleClass("active");
             $(".fa-star").each(function () {
                 if ($(this).data("follow") != null) {
-                    $(this).click();
+                    $(this).toggleClass('color1');
                 }
             })
 
@@ -292,6 +293,7 @@ function gotoChurchPage(e) {
 function changeColor(e) {
     $(e).toggleClass("color1");
     var id = $(e).data("id");
+    followChurch(id);
 }
 
 
@@ -306,6 +308,28 @@ function eventChoosing() {
 
         if (choose != "none") {
             markers[choose].setAnimation(null);
+        }
+    })
+}
+
+function followChurch(churchId) {
+    var requestURL = contextPath + FOLLOW_ACTION;
+    var requestMethod = "POST";
+    var requestData = {
+        "churchId": churchId
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function () {
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
         }
     })
 }

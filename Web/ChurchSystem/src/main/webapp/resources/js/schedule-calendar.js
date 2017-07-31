@@ -7,10 +7,15 @@ var CHECK_CLASS_URL = "/manager/class/Check";
 var LOAD_EVENT_REGISTER_URL = "/manager/event/load-event";
 var CREATE_EVENT_URL = "/manager/event/Add";
 var CREATE_CLASS_URL = "/manager/class/Add";
-var GET_EXAM_DATE ="/manager/event/Add/get-exam-date";
+var GET_EXAM_DATE = "/manager/event/Add/get-exam-date";
 var UPDATE_DRAG_DROP_EVENT = "/manager/schedule/update-drag-drop-event"
+var CHECK_CONFLICT_FOR_DRAG_DROP_EVENT = "/manager/event/check-drag-drop-valid";
+var CHECK_CONFLICT_FOR_RESIZE_EVENT = "/manager/event/check-resize-valid";
 var GOOGLE_VALIDATE_URL = "/manager/google/Validate";
 var CHECK_CLASS_URL = "/manager/class/Check";
+
+
+var IS_AVAILABLE;
 
 //local variable
 var creatingEvent;
@@ -147,7 +152,6 @@ function calendarInitialize() {
             }
 
 
-
         },
 
         dayRender: function (date, element, view) {
@@ -174,7 +178,7 @@ function calendarInitialize() {
                 var popup = $('#userRegister');
                 inputUserEventPopup(event);
                 eventRegisterPopup(jsEvent, popup);
-            }else{
+            } else {
                 var popup = $('#eventDetailPopup');
                 inputEventPopupInformation(event);
 
@@ -230,13 +234,15 @@ function calendarInitialize() {
                 revertFunc();
                 console.log('revert');
             } else {
-                updateEventOnSchedule(event);
+                checkValidResizeEvent(event)
+                $('#calendar').fullCalendar('updateEvent', event);
             }
 
         },
 
         eventDrop: function (event, delta, revertFunc, jsEvent, ui, view) {
             console.log('eventDrop')
+
             if (typeof event.end === 'undefined' || !event.end) {
                 return;
             }
@@ -246,7 +252,8 @@ function calendarInitialize() {
                 revertFunc();
                 console.log('revert');
             } else {
-                updateEventOnSchedule(event)
+                checkValidDragDropEvent(event);
+                $('#calendar').fullCalendar('updateEvent', event);
             }
         },
 
@@ -559,9 +566,19 @@ function updateEventOnSchedule(event) {
         async: false,
         contentType: 'application/json',
         processData: false,
-
-        success: function () {
+        dataType: 'json',
+        success: function (res) {
             console.log("Update event on schedule success");
+            var result = res
+            if(res.status == 2){
+                event.color="#f44242"
+                event.conductorName=result.conductorName;
+                event.roomName=result.roomName;
+            }if(res.status == 1){
+                event.color="#43abc9";
+                event.conductorName=result.conductorName;
+                event.roomName=result.roomName;
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("Update event on schedule fail!");
@@ -594,4 +611,87 @@ function validateGoogleAccount(creatingEvent, startTime, policy) {
             console.error(textStatus);
         }
     });
+}
+
+
+function checkValidDragDropEvent(event) {
+    var requestMethod = "POST"
+    var requestURL = contextPath + CHECK_CONFLICT_FOR_DRAG_DROP_EVENT;
+
+    var requestData = {
+        slotId: event.slotId,
+        startTime: event.start.format("HH:mm:ss"),
+        endTime: event.end.format("HH:mm:ss"),
+        slotDate: event.start.format("YYYY-MM-DD")
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        dataType: 'json',
+        success: function (res) {
+            IS_AVAILABLE = res;
+            console.log("Checked valid for whole class success!")
+            if (IS_AVAILABLE == 1) {
+                console.log("New time is available for whole class!")
+                updateEventOnSchedule(event)
+            }
+            if (IS_AVAILABLE == 0) {
+                console.log("New time is not available for whole class!")
+                $("#confirmModal").modal("show");
+                $("#process").unbind("click")
+                $("#process").bind("click", function () {
+                    $("#confirmModal").modal("hide");
+                    updateEventOnSchedule(event);
+                })
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(textStatus);
+        }
+    })
+}
+
+function checkValidResizeEvent(event) {
+    var requestMethod = "POST"
+    var requestURL = contextPath + CHECK_CONFLICT_FOR_RESIZE_EVENT;
+
+    var requestData = {
+        slotId: event.slotId,
+        startTime: event.start.format("HH:mm:ss"),
+        endTime: event.end.format("HH:mm:ss"),
+        slotDate: event.start.format("YYYY-MM-DD")
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        async: false,
+        contentType: 'application/json',
+        processData: false,
+        dataType: 'json',
+        success: function (res) {
+            IS_AVAILABLE = res;
+            console.log("Checked valid for whole class success!")
+            if (IS_AVAILABLE == 1) {
+                console.log("New time is available for whole class!")
+                updateEventOnSchedule(event)
+            }
+            else if (IS_AVAILABLE == 0) {
+                console.log("New time is not available for whole class!")
+                $("#confirmModal").modal("show");
+                $("#process").unbind("click")
+                $("#process").bind("click", function () {
+                    $("#confirmModal").modal("hide");
+                    updateEventOnSchedule(event);
+                })
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(textStatus);
+        }
+    })
 }

@@ -240,7 +240,7 @@ public class SQLParamConstant {
     public static final String GET_ALL_ROOM = "SELECT * FROM room r WHERE r.churchId=:churchId";
 
     public static final String GET_FOLLOWING_CHURCH = "SELECT s.churchId as churchId, s.churchName as churchName ," +
-            "s.address as address FROM church s, interaction i WHERE s.churchId=i.churchId AND i.userId =:userId ";
+            "s.address as address FROM church s, interaction i WHERE s.churchId=i.churchId AND i.userId =:userId AND i.enabled = true ";
 
     public static final String GET_CHURCH_INFORMATION = "select c.churchId as churchId,c.churchName as churchName, c.tel as tel, " +
             "c.address as address, c.mail as mail, c.startTime as startTime, c.endTime as endTime, c.image as image, " +
@@ -257,7 +257,7 @@ public class SQLParamConstant {
             "(Select s.slotId, s.eventId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime " +
             "from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId and s.slotStatus = 1 group by(s.eventId)) m2, user u, church ch, interaction i " +
-            "WHERE m1.eventId = m2.eventId AND m1.churchId= ch.churchId AND ch.churchId = i.churchId AND i.userId = u.userId AND u.userId=:userId";
+            "WHERE m1.eventId = m2.eventId AND m1.churchId= ch.churchId AND ch.churchId = i.churchId AND i.userId = u.userId AND u.userId=:userId AND i.enabled=true";
 
     public static final String GET_LIST_SLOT_HOUR_BY_TIME = "Select * from slothour Where startTime >=:startTime AND endTime <=:endTime";
 

@@ -15,10 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -108,4 +105,34 @@ public class UserController {
         return modelAndView;
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.FOLLOW_ACTION, method = RequestMethod.POST)
+    public void followAction(@RequestParam(value = ParamConstant.CHURCH_ID) String id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String accountId = auth.getName();
+        if(accountId.equals(UtilsConstant.ANONYMOUS_USER)){
+            return;
+        }
+        try {
+            int churchId = Integer.parseInt(id);
+
+            UserEntity user = userServiceInterface.getUserByAccountId(accountId);
+
+            InteractionEntity interactionEntity = userServiceInterface.getInteraction(user.getUserId(), churchId);
+            if (interactionEntity == null) {
+                userServiceInterface.mapUserToChurch(user.getUserId(), churchId);
+
+            } else if (interactionEntity.getEnabled()) {
+                interactionEntity.setEnabled(UtilsConstant.FALSE);
+                userServiceInterface.updateInteraction(interactionEntity);
+
+            } else {
+                interactionEntity.setEnabled(UtilsConstant.TRUE);
+                userServiceInterface.updateInteraction(interactionEntity);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

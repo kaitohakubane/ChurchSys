@@ -20,14 +20,14 @@
                                                                                         class="icon-img"></a></li>
                 <li><a href="${pageContext.request.contextPath}/user/dashboard">Bảng thông tin</a></li>
                 <li><a href="#">Tin giáo hội</a></li>
-                <li><a href="#">Lịch công giáo</a></li>
+                <li><a href="${pageContext.request.contextPath}/calendar/august">Lịch công giáo</a></li>
                 <li class="dropdown list-category">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
                         <i class="fa fa-navicon"></i> Thư viện <i class="fa fa-caret-down" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu mega-dropdown-menu drop-hover">
-                        <li><a href="#">Kinh thánh</a></li>
+                        <li><a href="${pageContext.request.contextPath}/bible">Kinh thánh</a></li>
                         <li><a href="#">Sách kinh</a></li>
                         <li><a href="#">Truyện các thánh</a></li>
                         <li><a href="#">Bài giảng</a></li>

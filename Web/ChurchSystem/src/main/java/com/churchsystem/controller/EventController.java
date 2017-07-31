@@ -407,29 +407,33 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.UPDATE_DRAG_DROP_EVENT, method = RequestMethod.POST)
-    public void updateDragDropEvent(@RequestBody EventJsonEntity eventJsonEntity) {
+    public EventDataEntity updateDragDropEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
         try {
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
             Time startTime = eventJsonEntity.getStartTime();
             Time endTime = eventJsonEntity.getEndTime();
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
             List<SlothourEntity> slotHour = slotServiceInterface.getListSlotHourByTime(startTime, endTime);
-            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+
             if (slotEntity.getConductorId() != null && slotEntity.getRoomId() != null) {
                 int curRoomId = slotEntity.getRoomId();
                 int curConductorId = slotEntity.getConductorId();
 
-                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
-                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
+                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
+                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
 
                 if (!listRoomId.contains(curRoomId)) {
                     slotEntity.setRoomId(null);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                    eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 }
                 if (!listConductorId.contains(curConductorId)) {
                     slotEntity.setConductorId(null);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                    eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 }
                 slotEntity.setSlotDate(slotDate);
 
@@ -441,20 +445,23 @@ public class EventController {
                     eventServiceInterface.mappingResource(slotId, slotHour.get(i).getSlotHourId());
                 }
             } else {
-                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
-                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, eventEntity.getChurchId(), eventEntity.getSubId());
+                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
+                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
                 if (listRoomId == null) {
                     slotEntity.setRoomId(null);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                    eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 }
                 if (listConductorId == null) {
                     slotEntity.setConductorId(null);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+                    eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 }
                 if (listRoomId != null && listConductorId != null) {
                     slotEntity.setRoomId(listRoomId.get(UtilsConstant.ZERO));
                     slotEntity.setConductorId(listConductorId.get(UtilsConstant.ZERO));
                     slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
+                    eventDataEntity.setStatus(ParamConstant.SLOT_OK_STATUS);
                     slotEntity.setSlotDate(slotDate);
                 }
                 slotServiceInterface.updateSlot(slotEntity);
@@ -465,10 +472,10 @@ public class EventController {
                     eventServiceInterface.mappingResource(slotId, slotHour.get(i).getSlotHourId());
                 }
             }
-
-
+            return eventDataEntity;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -729,4 +736,117 @@ public class EventController {
             return null;
         }
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_CONFLICT_FOR_DRAG_DROP_EVENT, method = RequestMethod.POST)
+    public int checkConductorForDragDropEvent(@RequestBody EventJsonEntity eventJsonEntity,
+                                              HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+
+            Integer currentConductorId = slotEntity.getConductorId();
+            Integer currentRoomId = slotEntity.getRoomId();
+
+            int subId = eventServiceInterface.getEventById(slotEntity.getEventId()).getSubId();
+            Time newStartTime = eventJsonEntity.getStartTime();
+            Time newEndTime = eventJsonEntity.getEndTime();
+            Date newDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+
+
+            List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(newStartTime, newEndTime, newDate, churchId, subId);
+            List<Integer> listRoomID = roomServiceInterface.getIdListSuitableRoomForSlot(newStartTime, newEndTime, newDate, churchId, subId);
+
+            if (currentConductorId != null && currentRoomId != null) {
+                if (!listConductorId.contains(currentConductorId)) {
+                    return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                }
+
+                if (!listRoomID.contains(currentRoomId)) {
+                    return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                }
+            } else {
+                int roomCheck = UtilsConstant.ZERO;
+                int conductorCheck = UtilsConstant.ZERO;
+                if (currentConductorId == null) {
+                    if (listConductorId != null) {
+                        conductorCheck = UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                    }
+                }else {
+                    conductorCheck = UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                }
+                if (currentRoomId == null) {
+                    if (listRoomID != null) {
+                        roomCheck = UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                    }
+                }else {
+                    roomCheck = UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                }
+                if (conductorCheck == UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS && roomCheck == UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
+                    return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                } else {
+                    return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+                }
+            }
+            return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return UtilsConstant.ERROR;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_CONFLICT_FOR_RESIZE_EVENT, method = RequestMethod.POST)
+    public int checkConductorForResizeEvent(@RequestBody EventJsonEntity eventJsonEntity,
+                                            HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+
+            Integer currentConductorId = slotEntity.getConductorId();
+            Integer currentRoomId = slotEntity.getRoomId();
+            Date newDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
+            EventDataEntity eventDataEntity = eventServiceInterface.getEventBySlotId(slotId, churchId);
+            Time currentStartTime = eventDataEntity.getStartTime();
+            Time currentEndTime = eventDataEntity.getEndTime();
+            List<SlothourEntity> curSlothourEntities = slotServiceInterface.getListSlotHourByTime(currentStartTime, currentEndTime);
+
+            int subId = eventServiceInterface.getEventById(slotEntity.getEventId()).getSubId();
+
+            Time newStartTime = eventJsonEntity.getStartTime();
+            Time newEndTime = eventJsonEntity.getEndTime();
+            List<SlothourEntity> newSlothourEntities = slotServiceInterface.getListSlotHourByTime(newStartTime, newEndTime);
+
+            if (curSlothourEntities.containsAll(newSlothourEntities)) {
+                return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+            } else {
+                for (int i = 0; i < newSlothourEntities.size(); i++) {
+                    for (int j = 0; j < curSlothourEntities.size(); j++) {
+                        if (newSlothourEntities.get(i).getSlotHourId() == curSlothourEntities.get(j).getSlotHourId()) {
+                            newSlothourEntities.remove(i);
+                        }
+                    }
+                }
+            }
+
+
+            List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(newSlothourEntities.get(UtilsConstant.ZERO).getStartTime(), newSlothourEntities.get(newSlothourEntities.size() - 1).getEndTime(), newDate, churchId, subId);
+            if (!listConductorId.contains(currentConductorId)) {
+                return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+            }
+
+            List<Integer> listRoomID = roomServiceInterface.getIdListSuitableRoomForSlot(newSlothourEntities.get(UtilsConstant.ZERO).getStartTime(), newSlothourEntities.get(newSlothourEntities.size() - 1).getEndTime(), newDate, churchId, subId);
+            if (!listRoomID.contains(currentRoomId)) {
+                return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+            }
+            return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return UtilsConstant.ERROR;
+        }
+    }
+
 }

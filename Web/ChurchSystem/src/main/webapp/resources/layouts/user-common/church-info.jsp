@@ -15,7 +15,8 @@
         <div class="row">
                 <div class="col-md-12">
                     <div class="church-info-cover">
-                        <p style="text-align: center; color: #fff; font-weight: bold; font-size: 234%; padding-top: 20px;" >Nhà thờ Chánh Tòa Đà Nẵng</p>
+                        <p id="churchName" style="text-align: center; color: #fff; font-weight: bold;
+                         font-size: 234%; padding-top: 20px;" >${churchObj.churchName}</p>
                     </div>
                 </div>
         </div>

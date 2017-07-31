@@ -50,4 +50,8 @@ public interface UserModelInterface {
     List<ChurchEntity> getFollowingChurch(int userId);
 
     List getListSuitableConductorForSlotHour(int slotHourId, Date slotDate, int churchId, int subId);
+
+    InteractionEntity getInteraction(int userId, int churchId);
+
+    void updateInteraction(InteractionEntity interactionEntity);
 }

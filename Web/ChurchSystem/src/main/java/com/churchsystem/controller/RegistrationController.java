@@ -49,19 +49,20 @@ public class RegistrationController {
     @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllRegistration() {
         ModelAndView modelAndView = new ModelAndView(PageConstant.REGISTRATION_PAGE);
-//        List<RegisterDisplayEntity> registerList = registrationServiceInterface.getRegistration();
-//        modelAndView.addObject(ParamConstant.LIST_REGISTRATION_ATTR, registerList);
+        List<RegisterDisplayEntity> registerList = registrationServiceInterface.getRegistration();
+        modelAndView.addObject(ParamConstant.LIST_REGISTRATION_ATTR, registerList);
         return modelAndView;
     }
 
 
     @ResponseBody
     @RequestMapping(value = PageConstant.ADD_REGISTRATION, method = RequestMethod.POST)
-    public int createRegistration(@RequestParam(value = ParamConstant.SUBJECT_ID) String subIdStr,
-                                  @RequestParam(value = ParamConstant.REGISTRATION_START_TIME) String startTimeStr,
-                                  @RequestParam(value = ParamConstant.REGISTRATION_EST_TIME) String estTimeStr,
-                                  @RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr,
-                                  @RequestParam(value = ParamConstant.SLOT_DATE) String slotDateStr) {
+    public EventDisplayEntity createRegistration(@RequestParam(value = ParamConstant.SUBJECT_ID) String subIdStr,
+                                                 @RequestParam(value = ParamConstant.REGISTRATION_START_TIME) String startTimeStr,
+                                                 @RequestParam(value = ParamConstant.REGISTRATION_EST_TIME) String estTimeStr,
+                                                 @RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr,
+                                                 @RequestParam(value = ParamConstant.SLOT_DATE) String slotDateStr,
+                                                 @RequestParam(value = ParamConstant.REGISTRATION_MESSAGE) String message) {
         try {
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -94,6 +95,8 @@ public class RegistrationController {
                 eventServiceInterface.mappingResource(slotEntities.get(0).getSlotId(), slothourEntities.get(i).getSlotHourId());
             }
 
+            EventDisplayEntity eventDisplayEntity = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(), null).get(0);
+            eventDisplayEntity.setDescription(message);
             //Notify manager
             String managerAccount = userServiceInterface.getChurchManagerAccount(churchId);
             UserEntity user = userServiceInterface.getUserByAccountId(managerAccount);
@@ -123,12 +126,12 @@ public class RegistrationController {
 //
 //            msgEntity = new Notification(notificationEntity);
 //            notificationServiceInterface.notify(msgEntity, userEntity.getAccountId());
-
+            return eventDisplayEntity;
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
+            return null;
         }
-        return 1;
+
     }
 
     @RequestMapping(value = PageConstant.GET_ON_PLAN_CLASS_URL, method = RequestMethod.GET)
@@ -136,10 +139,12 @@ public class RegistrationController {
         ModelAndView modelAndView = new ModelAndView(PageConstant.CHURCH_CLASS_PAGE);
         try {
             int churchIdInt = Integer.parseInt(churchId);
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchIdInt);
             List<ClassDisplayEntity> classList = registrationServiceInterface.getOnPlanClass(churchIdInt);
             List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
             modelAndView.addObject(ParamConstant.ON_PLAN_CLASS_LIST, classList)
-                    .addObject(ParamConstant.ON_GOING_CLASS_LIST, classOnGoingList);
+                    .addObject(ParamConstant.ON_GOING_CLASS_LIST, classOnGoingList)
+                    .addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }

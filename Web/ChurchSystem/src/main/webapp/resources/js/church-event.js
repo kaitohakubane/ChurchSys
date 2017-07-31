@@ -94,9 +94,10 @@ function generalIntial() {
     $("#estTime").val("1");
     $("#eventRegisteredBtn").on("click", function () {
         var estTime = $("#estTime").val();
-        var startTime = "18:00:00"
+        var startTime = $('#startTime').val();
         var subId = $("#subjectId").val();
-        registerEvent(creatingEvent, churchId, startTime, estTime, subId)
+        var message=$("#messageTxt").val();
+        registerEvent(creatingEvent, churchId, startTime, estTime, subId,message)
     })
 }
 
@@ -126,7 +127,7 @@ function loadEvent() {
     });
 }
 
-function registerEvent(event, churchId, startTime, estTime, subId) {
+function registerEvent(event, churchId, startTime, estTime, subId,message) {
     var requestURL = contextPath + ADD_REGISTRATION;
     var requestMethod = "POST";
     var requestData = {
@@ -134,7 +135,8 @@ function registerEvent(event, churchId, startTime, estTime, subId) {
         "regisStartTime": startTime,
         "estTime": estTime,
         "slotDate": event.start.split("T")[0],
-        "subId": subId
+        "subId": subId,
+        "message":message
     }
 
     $.ajax({
@@ -142,8 +144,18 @@ function registerEvent(event, churchId, startTime, estTime, subId) {
         type: requestMethod,
         data: requestData,
         async: false,
+        dataType: 'json',
         success: function (res) {
             $("#eventCreator").fadeOut();
+            $("#notifyPopup").modal('show');
+            $("#eventNameSpn").html(res.title);
+            var startTime=res.start.split("T")[1];
+            var endTime=res.end.split("T")[1];
+            var date=res.start.split("T")[0];
+            $("#timeTxt").val(startTime+ " - " +endTime);
+            $("#dateTxt").val(date);
+            $("#messageField").val(res.description);
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -177,7 +189,7 @@ function terminateEventMenu() {
 
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
             $('div#eventCreator').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                .indexOf('fc-widget-content'))||$('div#w2ui-overlay').has(e.target).length > 0)) {
+                .indexOf('fc-widget-content'))||$('ul.ui-timepicker-list').has(e.target).length > 0)) {
             $("#eventCreator").fadeOut();
             console.log('close');
         }
