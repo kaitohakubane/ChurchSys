@@ -41,8 +41,7 @@
                         <div class="x_title">
                             <h2>Quản lí nhà thờ</h2>
                             <div class="pull-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#createEvent">
+                                <button type="button" class="btn btn-primary" id="addChurch">
                                     Thêm nhà thờ
                                 </button>
                                 <button type="button" class="btn btn-primary">Reject</button>

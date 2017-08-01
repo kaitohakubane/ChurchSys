@@ -55,7 +55,7 @@ public class PageConstant {
     public static final String FINISH_EVENT = "/automation/finishEvent";
 
     public static final String UPDATE_NAME_AND_PRIVACY = "/manager/schedule/update-name-privacy";
-    public static final String GET_EXAM_DATE ="/manager/event/Add/get-exam-date";
+    public static final String GET_EXAM_DATE = "/manager/event/Add/get-exam-date";
 
     //Stream
     public static final String STREAM_URL = "/manager/stream";
@@ -92,9 +92,9 @@ public class PageConstant {
     public static final String CLASS_REGISTRATION = "/user/registration/Class";
     public static final String PREDEFINED_CLASS_REGISTRATION = "/user/registration/PredefinedClass";
     public static final String FOLLOW_CHURCH = "/user/church/Follow";
-    public static final String GET_USER_REGISTRATION="/manager/registration/GetInformation";
-    public static final String ACCEPT_REGISTRATION_URL="/manager/registration/Accept";
-    public static final String REJECT_REGISTRATION_URL="/manager/registration/Accept";
+    public static final String GET_USER_REGISTRATION = "/manager/registration/GetInformation";
+    public static final String ACCEPT_REGISTRATION_URL = "/manager/registration/Accept";
+    public static final String REJECT_REGISTRATION_URL = "/manager/registration/Reject";
 
 
     // Room
@@ -108,7 +108,7 @@ public class PageConstant {
     public static final String CHURCH_INFO_URL = "/church/info";
     public static final String CHURCH_SETTING_PAGE_URL = "/church/setting";
     public static final String CHURCH_MANAGEMENT_URL = "/admin/church-management";
-
+    public static final String ADD_CHURCH_URL = "/admin/new-church";
     public static final String UPDATE_CHURCH_URL = "/admin/setting/update-church";
 
     // Contribution
@@ -121,22 +121,26 @@ public class PageConstant {
     public static final String FOLLOW_ACTION = "/follow-action";
 
     // Validate
-    public static final String GOOGLE_VALIDATE_URL="/manager/google/Validate";
+    public static final String GOOGLE_VALIDATE_URL = "/manager/google/Validate";
 
     //Grave
-    public static final String GRAVE_MANAGEMENT_URL="/manager/grave";
-    public static final String GET_GRAVE_YARD="/manager/grave/graveYard/Get";
-    public static final String GET_GRAVE="/manager/grave/Get";
-    public static final String GENERATE_GRAVE_YARD="/manager/graveYard/Generate";
+    public static final String GRAVE_MANAGEMENT_URL = "/manager/grave";
+    public static final String GET_GRAVE_YARD = "/manager/grave/graveYard/Get";
+    public static final String GET_GRAVE = "/manager/grave/Get";
+    public static final String GENERATE_GRAVE_YARD = "/manager/graveYard/Generate";
+
+    //Mobile
+    public static final String MOBILE_GET_NOTIFICATION_URL = "/mobile/notification/Get";
+    public static final String MOBILE_LOGIN_URL = "/mobile/user/login";
 
     /**
      * Common
      */
-    public static final String DONATION_URL="/church/donation";
-    public static final String PRAY_URL="/church/pray";
-    public static final String CONTACT_URL="/church/contact";
-    public static final String BIBLE_URL="/bible";
-    public static final String AUGUST_URL="/calendar/august";
+    public static final String DONATION_URL = "/church/donation";
+    public static final String PRAY_URL = "/church/pray";
+    public static final String CONTACT_URL = "/church/contact";
+    public static final String BIBLE_URL = "/bible";
+    public static final String AUGUST_URL = "/calendar/august";
 
 
     /**
@@ -172,7 +176,8 @@ public class PageConstant {
     public static final String CHURCH_CLASS_PAGE = "/user-pages/class-registration-page";
     public static final String INTRODUCTION_PAGE = "/user-pages/introduce-page";
     public static final String CHURCH_MANAGEMENT_PAGE = "church-management-page";
-    public static final String CHURCH_SETTING_PAGE="setting-page";
+    public static final String CHURCH_SETTING_PAGE = "setting-page";
+    public static final String ADD_CHURCH_PAGE="add-church-page";
 
 
     // User
@@ -190,12 +195,14 @@ public class PageConstant {
     public static final String NOT_FOUND_PAGE = "error-pages/404-page";
 
     //Grave
-    public static final String GRAVE_PAGE="grave-page";
+    public static final String GRAVE_PAGE = "grave-page";
 
     //Common
-    public static final String DONATION_PAGE="/info-page/donation-page";
-    public static final String PRAY_PAGE="/info-page/pray-page";
-    public static final String CONTACT_PAGE="/info-page/contact-page";
-    public static final String BIBLE_PAGE="/info-page/bible-page";
-    public static final String AUGUST_PAGE="/info-page/august-page";
+    public static final String DONATION_PAGE = "/info-page/donation-page";
+    public static final String PRAY_PAGE = "/info-page/pray-page";
+    public static final String CONTACT_PAGE = "/info-page/contact-page";
+    public static final String BIBLE_PAGE = "/info-page/bible-page";
+    public static final String AUGUST_PAGE = "/info-page/august-page";
+
+
 }

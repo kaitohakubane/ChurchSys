@@ -3,7 +3,7 @@
  */
 
 var listOfCabinet=[];
-var listOfGrave=[]
+var listOfGrave=[];
 $(document).ready(function () {
     var options = {
         float: true
@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     $("#load-grid").on("click", function () {
         loadCabinet($(".room"));
-        loadGrave(12,5,$(".cabinet"))
+        loadGrave(12,5,$(".grid-stack.cabinet"))
     })
 
 })
@@ -35,30 +35,10 @@ function loadCabinet(e) {
     var list = [];
     var node;
 
-    // for (var i = 0; i < 11; i++) {
-    //      node = {x: i, y: 0, width: 1, height: 1}
-    //     list.push(node);
-    // }
-    //
-    // for (i = 1; i < 8; i++) {
-    //     node = {x: 0, y: i, width: 1, height: 1}
-    //     list.push(node);
-    //
-    // }
-    //
-    // for (i = 0; i <9; i++) {
-    //     node = {x: 11, y: i, width: 1, height: 1}
-    //     list.push(node);
-    // }
-    //
-    // for (i = 0; i < 11; i++) {
-    //     node = {x: i, y: 8, width: 1, height: 1}
-    //     list.push(node)
-    // }
     initalCabinet(12,6);
 
     listOfCabinet.forEach(function (e) {
-        grid.addWidget($('<div><div class="grid-stack-item-content" ></div><div/>'),
+        grid.addWidget($('<div><div class="grid-stack-item-content cabinet" ></div><div/>'),
             e.x, e.y, e.width, e.height);
     })
 
@@ -67,8 +47,7 @@ function loadCabinet(e) {
         $(this).html("Tủ " + e)
         $(this).data("id", e)
     })
-    grid.addWidget($('<div><div class="grid-stack-item-content" style="background-color:#d442f4">Tượng chúa</div><div/>'),
-        5, 1, 2, 1);
+
 
 
 }
@@ -107,7 +86,7 @@ function initalCabinet(width,height){
             listOfCabinet.push(node);
         }
     }
-
+    listOfCabinet.push({x:(width-1)/2,y:1,width:2,height:1})
 }
 
 

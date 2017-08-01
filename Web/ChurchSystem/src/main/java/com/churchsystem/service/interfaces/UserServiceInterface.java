@@ -49,7 +49,10 @@ public interface UserServiceInterface {
 
     List<ChurchEntity> getFollowingChurch(int userId);
 
+
     InteractionEntity getInteraction(int userId, int churchId);
 
     void updateInteraction(InteractionEntity interactionEntity);
+
+    UserEntity getUserByAccountIdAndPassword(String accountId,String password);
 }

@@ -1,5 +1,6 @@
 
-SCHEDULE_URL="/admin/schedule";
+var SCHEDULE_URL="/admin/schedule";
+var ADD_CHURCH_URL = "/admin/new-church";
 $(document).ready(function () {
     $('#datatable').DataTable(
     );
@@ -20,6 +21,9 @@ function popupInitial() {
         window.location.href=contextPath+SCHEDULE_URL;
     })
 
+    $("#addChurch").on("click",function(){
+        window.location.href=contextPath+ADD_CHURCH_URL;
+    })
 }
 
 

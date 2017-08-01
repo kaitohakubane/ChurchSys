@@ -108,6 +108,23 @@ public class NotificationController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = PageConstant.MOBILE_GET_NOTIFICATION_URL, method = RequestMethod.POST)
+    public List<NotificationEntity> getMobileNotification(@RequestParam(value=ParamConstant.USER_ID)String userId) {
+        try{
+            int userIdInt=Integer.parseInt(userId);
+            List<NotificationEntity> notifications = notificationServiceInterface
+                    .getUserNotification((userIdInt), UtilsConstant.NOTIFICATION_NUMBER_DEFAULT);
+            return notifications;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+
     @RequestMapping(value = PageConstant.MANAGER_NOTIFICATION_URL, method = RequestMethod.GET)
     public ModelAndView getListNotification() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -136,35 +153,6 @@ public class NotificationController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ModelAndView testNotification() {
         ModelAndView modelAndView = new ModelAndView("test-page");
-//        NotificationEntity temp = new NotificationEntity();
-//        UserEntity user = userServiceInterface.getUserByAccountId("hungmc");
-//        temp.setUserId(user.getUserId());
-//        temp.setInformation("Bạn Hưng quá giỏi giỏi quá de i luv you pặc pặc");
-//        temp.setSender("Hệ thống: ");
-//        temp.setLink("/manager/notifications");
-//        temp.setTime(new Timestamp(System.currentTimeMillis()));
-//        temp.setType(ParamConstant.DEFAULT_TYPE);
-//        notificationServiceInterface.addNotification(temp);
-//        Notification msgEntity = new Notification(temp);
-//        notificationServiceInterface.notify(
-//                msgEntity, // notification object
-//                "hungmc"                    // username
-//        );
-//
-//
-//        user = userServiceInterface.getUserByAccountId("vongnlh");
-//        temp.setUserId(user.getUserId());
-//        temp.setInformation("Bạn Hưng User quá giỏi giỏi quá de i luv you pặc pặc");
-//        temp.setSender("Hệ thống: ");
-//        temp.setLink("/user/notifications");
-//        temp.setTime(new Timestamp(System.currentTimeMillis()));
-//        temp.setType(ParamConstant.DEFAULT_TYPE);
-//        notificationServiceInterface.addNotification(temp);
-//        msgEntity = new Notification(temp);
-//        notificationServiceInterface.notify(
-//                msgEntity, // notification object
-//                "vongnlh"                    // username
-//        );
 
         return modelAndView;
     }
@@ -184,17 +172,6 @@ public class NotificationController {
     @ResponseBody
     @RequestMapping(value = "/test/post", method = RequestMethod.POST)
     public String tesCalendar(@RequestParam(value="token") String token) {
-//        Time startTime = new Time(System.currentTimeMillis() + 3600*1000*24);
-//        Time endTime = new Time(startTime.getTime() + 3600*1000*3);
-//        DateTime startDate = new DateTime( System.currentTimeMillis()+startTime.getTime());
-//        DateTime endDate = new DateTime(System.currentTimeMillis()+endTime.getTime());
-//        String result="Sida vkl";
-//        try{
-//            result=CalendarAPI.createGoogleEvent(5,"DM SS", "Room 516 KTX Sinh viên", "Hưng quá gê",  startDate,
-//                    endDate, null, "shengshin7@gmail.com", UtilsConstant.DEFAULT_VALIDATE_PORT);
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
         try {
             String abc = PlusAPI.checkLoginAccount(token,"kaitohakubane@gmail.com",UtilsConstant.DEFAULT_VALIDATE_PORT);
             if(abc==null){

@@ -37,6 +37,11 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    public UserEntity getUserByAccountIdAndPassword(String accountId, String password) {
+        return userModelInterface.getUserByAccountIdAndPassword(accountId, password);
+    }
+
+    @Override
     public int getChurchIdByUserId(int userId) {
         int result = userModelInterface.getChurchIdByUserId(userId);
         return result;
@@ -118,12 +123,12 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public List<InteractionEntity> getUserInteraction(int userId){
+    public List<InteractionEntity> getUserInteraction(int userId) {
         return userModelInterface.getUserInteraction(userId);
     }
 
     @Override
-    public List<ChurchEntity> getFollowingChurch(int userId){
+    public List<ChurchEntity> getFollowingChurch(int userId) {
         return userModelInterface.getFollowingChurch(userId);
     }
 

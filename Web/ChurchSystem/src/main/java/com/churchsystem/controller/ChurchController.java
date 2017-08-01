@@ -163,4 +163,10 @@ public class ChurchController {
     }
 
 
+    @RequestMapping(value = PageConstant.ADD_CHURCH_URL, method = RequestMethod.GET)
+    public ModelAndView addChurch() {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.ADD_CHURCH_PAGE);
+        return modelAndView;
+    }
+
 }

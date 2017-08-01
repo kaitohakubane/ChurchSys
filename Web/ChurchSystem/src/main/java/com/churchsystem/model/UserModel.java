@@ -26,7 +26,7 @@ public class UserModel extends CommonDAO implements UserModelInterface {
 
     @Override
     public UserEntity getUserByAccountId(String accountId) {
-        Criteria criteria = getSession().createCriteria(UserEntity.class).add(Restrictions.eq("accountId", accountId));
+        Criteria criteria = getSession().createCriteria(UserEntity.class).add(Restrictions.eq(ParamConstant.ACCOUNT_ID, accountId));
         UserEntity result = (UserEntity) criteria.uniqueResult();
         return result;
     }
@@ -34,6 +34,14 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     @Override
     public UserEntity getUserByUserId(int userId) {
         Criteria criteria = getSession().createCriteria(UserEntity.class).add(Restrictions.eq("userId", userId));
+        UserEntity result = (UserEntity) criteria.uniqueResult();
+        return result;
+    }
+
+    @Override
+    public UserEntity getUserByAccountIdAndPassword(String accountId,String password) {
+        Criteria criteria = getSession().createCriteria(UserEntity.class)
+                .add(Restrictions.eq(ParamConstant.ACCOUNT_ID, accountId)).add(Restrictions.eq(ParamConstant.PASSWORD,password));
         UserEntity result = (UserEntity) criteria.uniqueResult();
         return result;
     }
