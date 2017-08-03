@@ -24,8 +24,10 @@ public class GraveController {
 
     @RequestMapping(value = PageConstant.GRAVE_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllChurch(HttpServletRequest request) {
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         ModelAndView modelAndView = new ModelAndView(PageConstant.GRAVE_PAGE);
-
+        List<GraveyardEntity> result = graveServiceInterface.getGraveYardOfChurch(churchId);
+        modelAndView.addObject(ParamConstant.GRAVE_YARD_LIST,result);
         return modelAndView;
     }
 
@@ -39,34 +41,18 @@ public class GraveController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.GENERATE_GRAVE_YARD, method = RequestMethod.POST)
-    public List<GraveyardEntity> generate(HttpServletRequest request) {
-
-        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-        int height = 5;
-        int width = 12;
-        GraveyardEntity graveyardEntity = new GraveyardEntity();
-        graveyardEntity.setChurchId(churchId);
-        for (int j = 0; j < height; j++) {
-            if (j == 0 || j == (height - 1)) {
-                for (int i = 0; i < width; i++) {
-
-                    graveyardEntity.setX(i);
-                    graveyardEntity.setY(j);
-                    graveServiceInterface.addGraveYard(graveyardEntity);
-                }
-            } else {
-                graveyardEntity = new GraveyardEntity();
-                graveyardEntity.setX(0);
-                graveyardEntity.setY(j);
-                graveServiceInterface.addGraveYard(graveyardEntity);
-                graveyardEntity.setX(width - 1);
-                graveyardEntity.setY(j);
-                graveServiceInterface.addGraveYard(graveyardEntity);
-            }
+    public List<GraveyardEntity> generate(HttpServletRequest request, @RequestParam(value = ParamConstant.WIDTH) String width,
+                                          @RequestParam(value = ParamConstant.HEIGHT) String height) {
+        try {
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            int widthInt = Integer.parseInt(width);
+            int heightInt = Integer.parseInt(height);
+            List<GraveyardEntity> result = graveServiceInterface.generateType1Prototype(widthInt, heightInt, churchId);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        List<GraveyardEntity> result = graveServiceInterface.getGraveYardOfChurch(churchId);
-        return result;
+        return null;
     }
 
     @ResponseBody
@@ -76,10 +62,5 @@ public class GraveController {
         return result;
     }
 
-//    @ResponseBody
-//    @RequestMapping(value = PageConstant.CHECK_EVENT_URL, method = RequestMethod.POST)
-//    public int newGraveYard(HttpServletRequest request, @RequestBody List<GraveYardJsonEntity> listOfGraveYard) {
-//        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-//        return 0;
-//    }
+
 }

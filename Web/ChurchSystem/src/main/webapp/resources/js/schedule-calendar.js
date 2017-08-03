@@ -262,7 +262,7 @@ function calendarInitialize() {
         droppable: true,
         dragRevertDuration: 0,
         eventLimit: true,
-        eventOrder: "status",
+        eventOrder: "-slotId,-status",
         slotLabelFormat: 'HH:mm',
         timeFormat: 'HH:mm'
     })
@@ -468,14 +468,14 @@ function checkClass(event, slotHourId, isPublic) {
             if (result[0] != -1 && result[1] != -1) {
                 $("#createClass").modal("hide");
                 $("#calendarPopup").fadeOut();
-                createClass(event, slotHourId, isPublic);
+                createClass(event, slotHourId, isPublic,result[0],result[1]);
             } else {
                 $("#confirmModal").modal("show");
                 $("#process").unbind("click")
                 $("#process").bind("click", function () {
                     $("#confirmModal").modal("hide");
                     $("#createClass").modal("hide");
-                    createClass(event, slotHourId, isPublic);
+                    createClass(event, slotHourId, isPublic,result[0],result[1]);
                 })
 
                 $("#calendarPopup").fadeOut();
@@ -488,7 +488,7 @@ function checkClass(event, slotHourId, isPublic) {
     });
 }
 
-function createClass(event, slotHourId, isPublic) {
+function createClass(event, slotHourId, isPublic,conductorId,roomId) {
     $("#loading").modal('show');
     var examDate = $("#examDate").val();
     if (examDate == null || examDate == "") {
@@ -505,7 +505,9 @@ function createClass(event, slotHourId, isPublic) {
         privacy: isPublic,
         numOfSlot: $("#numberOfSlot").val(),
         examDate: examDate,
-        type: dayArray.toString()
+        type: dayArray.toString(),
+        conductorId:conductorId,
+        roomId:roomId
     }
 
     $.ajax({

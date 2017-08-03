@@ -84,11 +84,20 @@ public class ParamConstant {
     public static final String NO_NAME_EVENT_TITLE = "No name";
     public static final int IS_SYNC=1;
     public static final int IS_NOT_SYNC=0;
-
+    public static final int NO_ROOM_AVAILABLE=-1;
+    public static final int NO_CONDUCTOR_AVAILABLE=-1;
     /**
      * Grave
      */
     public static final String GRAVE_YARD_ID="graveYardId";
+    public static final int GRAVE_YARD_NOT_INITIAL=0;
+    public static final int GRAVE_YARD_INITIAL=1;
+    public static final int GRAVE_YARD_FULL=2;
+    public static final int GRAVE_YARD_GATE=3;
+    public static final int GRAVE_YARD_STATUE=4;
+    public static final String WIDTH="width";
+    public static final String HEIGHT="height";
+    public static final String GRAVE_YARD_LIST="graveYardList";
 
 
     /**

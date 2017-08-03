@@ -152,16 +152,22 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, int roomId, int conductorId, Date itemDate, int subId) {
+    public SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, Integer roomId, Integer conductorId, Date itemDate, int subId) {
         //Need to fix
         SlotEntity slotEntity = new SlotEntity();
-        if (userModelInterface.checkConductorForSlot(slotHour, itemDate, churchId, conductorId, subId) == null ||
-                roomModelInterface.checkRoomForSlot(slotHour, itemDate, churchId, roomId, subId) == null) {
+
+        if (conductorId == ParamConstant.NO_CONDUCTOR_AVAILABLE || roomId == ParamConstant.NO_ROOM_AVAILABLE) {
             slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
         } else {
             slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
         }
         slotEntity.setEventId(eventId);
+        if (conductorId == ParamConstant.NO_CONDUCTOR_AVAILABLE) {
+            conductorId = null;
+        }
+        if (roomId == ParamConstant.NO_CONDUCTOR_AVAILABLE) {
+            roomId = null;
+        }
         slotEntity.setConductorId(conductorId);
         slotEntity.setRoomId(roomId);
         slotEntity.setSlotDate(itemDate);

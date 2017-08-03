@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.GraveEntity;
 import com.churchsystem.entity.GraveyardEntity;
 import com.churchsystem.model.interfaces.GraveModelInterface;
@@ -32,6 +33,44 @@ public class GraveService implements GraveServiceInterface {
     @Override
     public void addGrave(GraveEntity graveEntity) {
         graveModelInterface.addGrave(graveEntity);
+    }
+
+    @Override
+    public List<GraveyardEntity> generateType1Prototype(int width, int height, int churchId) {
+        GraveyardEntity graveyardEntity = new GraveyardEntity();
+        graveyardEntity.setChurchId(churchId);
+        for (int j = 0; j < height; j++) {
+            if (j == 0 || j == (height - 1)) {
+                for (int i = 0; i < width; i++) {
+                    //Gate position
+                    if (j == height - 1 && i == width - 2) {
+                        graveyardEntity.setX(i);
+                        graveyardEntity.setY(j);
+                        graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_GATE);
+                        graveModelInterface.addGraveYard(graveyardEntity);
+                    }
+                    graveyardEntity.setX(i);
+                    graveyardEntity.setY(j);
+                    graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
+                    graveModelInterface.addGraveYard(graveyardEntity);
+                }
+            } else {
+                graveyardEntity = new GraveyardEntity();
+                graveyardEntity.setX(0);
+                graveyardEntity.setY(j);
+                graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
+                graveModelInterface.addGraveYard(graveyardEntity);
+                graveyardEntity.setX(width - 1);
+                graveyardEntity.setY(j);
+                graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
+                graveModelInterface.addGraveYard(graveyardEntity);
+            }
+        }
+        graveyardEntity.setX((width - 1) / 2);
+        graveyardEntity.setY(1);
+        graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_STATUE);
+        graveModelInterface.addGraveYard(graveyardEntity);
+        return graveModelInterface.getGraveYardOfChurch(churchId);
     }
 
     @Override

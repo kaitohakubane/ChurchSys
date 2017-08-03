@@ -15,4 +15,5 @@ public interface GraveServiceInterface {
     void updateGrave(GraveEntity graveEntity);
     void addGraveYard(GraveyardEntity graveYardEntity);
     void updateGraveYard(GraveyardEntity graveYardEntity);
+    List<GraveyardEntity> generateType1Prototype(int width, int height, int churchId);
 }
