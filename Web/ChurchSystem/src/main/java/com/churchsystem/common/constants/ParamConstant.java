@@ -95,9 +95,28 @@ public class ParamConstant {
     public static final int GRAVE_YARD_FULL=2;
     public static final int GRAVE_YARD_GATE=3;
     public static final int GRAVE_YARD_STATUE=4;
+    public static final int GRAVE_WAITING_FOR_APPROVE=0;
+    public static final int GRAVE_APPROVED=1;
+    public static final int GRAVE_PROCESSING=0;
     public static final String WIDTH="width";
     public static final String HEIGHT="height";
     public static final String GRAVE_YARD_LIST="graveYardList";
+    public static final String GRAVE_YARD_PROTOTYPE="prototype";
+    public static final String GRAVE_YARD_DEFAULT_NAME="Tủ ";
+    public static final String GATE_DEFAULT_NAME="Cửa vào ";
+    public static final String STATUE_DEFAULT_NAME="Tủ ";
+    public static final int GRAVE_YARD_DEFAULT_START_NUMBER=1;
+    public static final String GRAVE_ID="graveId";
+    public static final String GRAVE_STATUS="status";
+    public static final String GRAVE_NAME="graveName";
+    public static final String GRAVE_BIRTH="graveBirth";
+    public static final String GRAVE_HOME_TOWN="graveHomeTown";
+    public static final String GRAVE_DEATH_DAY="graveDeathDay";
+    public static final String GRAVE_PARISH="graveParish";
+    public static final String GRAVE_IMAGE="graveImage";
+    public static final String GRAVE_STATUS_TYPE="statusType";
+    public static final int  ACCEPT_TYPE=1;
+    public static final int  REJECT_TYPE=0;
 
 
     /**

@@ -325,13 +325,16 @@ create table GraveYard(
  
  churchId int,
  
- status nvarchar(10),
+ status int,
  
  name nvarchar(20),
  
  x int,
  
- y int, 
+ y int,
+ width int,
+ height int,
+ graveAvailable int, 
  
 primary key (id)
 );

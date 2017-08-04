@@ -20,3 +20,21 @@
 .statue{
     background-color:#ef0b0b;
 }
+
+.graveContextMenu{
+    position: fixed;
+    display: none;
+    z-index: 100;
+}
+
+.graveYardNotInitial{
+    background-color:#777;
+}
+
+.graveYardInitial{
+    background-color:#01ff70;
+}
+
+.graveYardFull{
+    background-color:#3c8dbc;
+}

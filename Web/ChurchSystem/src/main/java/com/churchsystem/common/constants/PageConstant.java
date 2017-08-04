@@ -125,9 +125,12 @@ public class PageConstant {
 
     //Grave
     public static final String GRAVE_MANAGEMENT_URL = "/manager/grave";
-    public static final String GET_GRAVE_YARD = "/manager/grave/graveYard/Get";
+    public static final String GET_GRAVE_YARD = "/manager/graveYard/Get";
     public static final String GET_GRAVE = "/manager/grave/Get";
     public static final String GENERATE_GRAVE_YARD = "/manager/graveYard/Generate";
+    public static final String GENERATE_GRAVE = "/manager/grave/Generate";
+    public static final String REGISTER_GRAVE="/grave/Register";
+    public static final String APPROVE_GRAVE_STATUS="/manager/grave/Approve";
 
     //Mobile
     public static final String MOBILE_GET_NOTIFICATION_URL = "/mobile/notification/Get";
@@ -177,7 +180,7 @@ public class PageConstant {
     public static final String INTRODUCTION_PAGE = "/user-pages/introduce-page";
     public static final String CHURCH_MANAGEMENT_PAGE = "church-management-page";
     public static final String CHURCH_SETTING_PAGE = "setting-page";
-    public static final String ADD_CHURCH_PAGE="add-church-page";
+    public static final String ADD_CHURCH_PAGE = "add-church-page";
 
 
     // User

@@ -1,6 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
+import com.churchsystem.entity.GraveDisplayEntity;
 import com.churchsystem.entity.GraveEntity;
 import com.churchsystem.entity.GraveyardEntity;
 import com.churchsystem.model.interfaces.GraveModelInterface;
@@ -26,8 +27,8 @@ public class GraveService implements GraveServiceInterface {
     }
 
     @Override
-    public List<GraveEntity> getGraveOfGraveYard(int graveYardId) {
-        return graveModelInterface.getGraveOfGraveYard(graveYardId);
+    public List<GraveDisplayEntity> getGraveOfGraveYard(int graveId) {
+        return graveModelInterface.getGraveOfGraveYard(graveId);
     }
 
     @Override
@@ -39,38 +40,65 @@ public class GraveService implements GraveServiceInterface {
     public List<GraveyardEntity> generateType1Prototype(int width, int height, int churchId) {
         GraveyardEntity graveyardEntity = new GraveyardEntity();
         graveyardEntity.setChurchId(churchId);
+        int count=ParamConstant.GRAVE_YARD_DEFAULT_START_NUMBER;
         for (int j = 0; j < height; j++) {
             if (j == 0 || j == (height - 1)) {
                 for (int i = 0; i < width; i++) {
                     //Gate position
-                    if (j == height - 1 && i == width - 2) {
+                    if (j == (height - 1) && i == (width - 2)) {
+                        graveyardEntity = new GraveyardEntity();
+                        graveyardEntity.setChurchId(churchId);
+                        graveyardEntity.setName(ParamConstant.GATE_DEFAULT_NAME);
                         graveyardEntity.setX(i);
                         graveyardEntity.setY(j);
                         graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_GATE);
                         graveModelInterface.addGraveYard(graveyardEntity);
+                    }else{
+                        graveyardEntity = new GraveyardEntity();
+                        graveyardEntity.setChurchId(churchId);
+                        graveyardEntity.setName(ParamConstant.GRAVE_YARD_DEFAULT_NAME+count);
+                        count++;
+                        graveyardEntity.setX(i);
+                        graveyardEntity.setY(j);
+                        graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
+                        graveModelInterface.addGraveYard(graveyardEntity);
                     }
-                    graveyardEntity.setX(i);
-                    graveyardEntity.setY(j);
-                    graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
-                    graveModelInterface.addGraveYard(graveyardEntity);
+
                 }
             } else {
                 graveyardEntity = new GraveyardEntity();
+                graveyardEntity.setChurchId(churchId);
+                graveyardEntity.setName(ParamConstant.GRAVE_YARD_DEFAULT_NAME+count);
+                count++;
                 graveyardEntity.setX(0);
                 graveyardEntity.setY(j);
                 graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
                 graveModelInterface.addGraveYard(graveyardEntity);
+
+                graveyardEntity = new GraveyardEntity();
+                graveyardEntity.setChurchId(churchId);
+                graveyardEntity.setName(ParamConstant.GRAVE_YARD_DEFAULT_NAME+count);
+                count++;
                 graveyardEntity.setX(width - 1);
                 graveyardEntity.setY(j);
                 graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
                 graveModelInterface.addGraveYard(graveyardEntity);
             }
         }
+
+        graveyardEntity = new GraveyardEntity();
+        graveyardEntity.setChurchId(churchId);
+        graveyardEntity.setName(ParamConstant.STATUE_DEFAULT_NAME);
         graveyardEntity.setX((width - 1) / 2);
         graveyardEntity.setY(1);
         graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_STATUE);
         graveModelInterface.addGraveYard(graveyardEntity);
         return graveModelInterface.getGraveYardOfChurch(churchId);
+    }
+
+    @Override
+    public GraveyardEntity getGraveYardById(int graveYardId){
+        return graveModelInterface.getGraveYardById(graveYardId);
     }
 
     @Override
@@ -86,5 +114,15 @@ public class GraveService implements GraveServiceInterface {
     @Override
     public void updateGraveYard(GraveyardEntity graveYardEntity) {
         graveModelInterface.updateGraveYard(graveYardEntity);
+    }
+
+    @Override
+    public GraveDisplayEntity getGravebyId(int graveYardId){
+        return graveModelInterface.getGravebyId(graveYardId);
+    }
+
+    @Override
+    public GraveEntity getCreatingGrave(int graveYardId,int status){
+        return graveModelInterface.getCreatingGrave(graveYardId,status);
     }
 }
