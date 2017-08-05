@@ -321,7 +321,7 @@ primary key (settingId)
 
 create table GraveYard(
 
- Id int not null auto_increment,
+ graveYardId int not null auto_increment,
  
  churchId int,
  
@@ -336,12 +336,12 @@ create table GraveYard(
  height int,
  graveAvailable int, 
  
-primary key (id)
+primary key (graveYardId)
 );
 
 create table Grave(
 
-graveId int,
+graveId int not null auto_increment,
 
 graveYardId int,
 
@@ -370,7 +370,7 @@ primary key (graveId)
 
 alter table graveYard add foreign key (churchId) references church(churchId);
 
-alter table grave add foreign key (graveYardId) references graveYard(id);
+alter table grave add foreign key (graveYardId) references graveYard(graveYardId);
 
 alter table grave add foreign key (userId) references user(userid);
 
