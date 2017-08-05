@@ -21,6 +21,7 @@
     <c:import url="/resources/layouts/common/header.jsp"/>
     <link href="<c:url value="/resources/lib/gridDist/gridstack.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/grave.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/lib/src/js/jquery-ui.min.css"/>" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -213,47 +214,49 @@
                 <div class="clearfix"></div>
             </div>
             <div class="panel-body">
-                <form id="grave-form" role="form" class="form-horizontal form-label-left input_mask">
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ tên</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                            <input type="text" name="graveName" class="form-control">
+                <div class="form-horizontal form-label-left input_mask">
+                    <form id="grave-form" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ tên</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" name="graveName" class="form-control">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày sinh</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                            <input type="text" name="graveBirth" class="form-control">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày sinh</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" name="graveBirth" class="form-control" id="graveBirthDay">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Noi sinh</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                            <input type="text" name="graveHomeTown" class="form-control">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nơi sinh</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" name="graveHomeTown" class="form-control">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày mất</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                            <input type="text" name="graveDeathDay" class="form-control">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày mất</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" name="graveDeathDay" class="form-control" id="graveDeathDay">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Giáo xứ</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                            <input type="text" name="graveParish" class="form-control">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Giáo xứ</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" name="graveParish" class="form-control">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3 input-group has-success">
-                            <input type="file" name="graveImage" class="form-control-file">
+                        <div class="form-group">
+                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3 input-group has-success">
+                                <input type="file" name="graveImage" class="form-control-file">
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="clearfix"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
@@ -261,7 +264,7 @@
                         </div>
                     </div>
 
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -273,7 +276,6 @@
     <div class="" style="width: 300px;">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 style="text-align: center;">Thông tin chi tiết</h3>
                 <div class="clearfix"></div>
             </div>
             <div class="panel-body">
@@ -281,7 +283,7 @@
 
                     <div class="img-mo"
                          style="width: 100px; height: 100px; border: 3px double #e8e8e8; margin-left:87px; margin-bottom: 10px">
-                        <img src="<c:url value="/resources/img/noimagefound.jpg"/>" style="width: 100%">
+                        <img id="image" src="<c:url value="/resources/img/noimagefound.jpg"/>" style="width: 100%">
                     </div>
 
                     <div class="col-md-4 col-md-offset-1">
@@ -290,6 +292,9 @@
                         <p><b>Noi sinh</b></p>
                         <p><b>Ngày mất</b></p>
                         <p><b>Giáo xứ</b></p>
+                        <p><b>Người đặt</b></p>
+                        <p><b>Số điện thoại</b></p>
+                        <p><b>E-mail</b></p>
                     </div>
 
                     <div class="col-md-7">

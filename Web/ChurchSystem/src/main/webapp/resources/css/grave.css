@@ -26,6 +26,9 @@
     display: none;
     z-index: 100;
 }
+.ui-datepicker{
+    z-index:101!important;
+}
 
 .graveYardNotInitial{
     background-color:#777;

@@ -3,12 +3,12 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 8/4/2017.
+ * Created by hungmcse61561-admin on 8/6/2017.
  */
 @Entity
 @Table(name = "graveyard", schema = "churchsys", catalog = "")
 public class GraveyardEntity {
-    private int id;
+    private int graveYardId;
     private Integer churchId;
     private Integer status;
     private String name;
@@ -19,13 +19,13 @@ public class GraveyardEntity {
     private Integer graveAvailable;
 
     @Id
-    @Column(name = "Id")
-    public int getId() {
-        return id;
+    @Column(name = "graveYardId")
+    public int getGraveYardId() {
+        return graveYardId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setGraveYardId(int graveYardId) {
+        this.graveYardId = graveYardId;
     }
 
     @Basic
@@ -115,7 +115,7 @@ public class GraveyardEntity {
 
         GraveyardEntity that = (GraveyardEntity) o;
 
-        if (id != that.id) return false;
+        if (graveYardId != that.graveYardId) return false;
         if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (status != null ? !status.equals(that.status) : that.status != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
@@ -131,7 +131,7 @@ public class GraveyardEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = graveYardId;
         result = 31 * result + (churchId != null ? churchId.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);

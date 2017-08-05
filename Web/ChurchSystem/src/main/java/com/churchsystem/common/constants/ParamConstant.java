@@ -118,10 +118,11 @@ public class ParamConstant {
     public static final String GRAVE_DEATH_DAY="graveDeathDay";
     public static final String GRAVE_PARISH="graveParish";
     public static final String GRAVE_IMAGE="graveImage";
+    public static final String GRAVE_POSITION_X="positionX";
+    public static final String GRAVE_POSITION_Y="positionY";
     public static final String GRAVE_STATUS_TYPE="statusType";
     public static final int  ACCEPT_TYPE=1;
     public static final int  REJECT_TYPE=0;
-
 
 
     public static final int IS_SYNC = 1;

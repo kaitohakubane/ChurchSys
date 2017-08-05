@@ -24,6 +24,7 @@ var defaultMovePlus = 2;
 $(document).ready(function () {
     generalInitial();
     getGraveYard();
+    terminateEventCreateMenu();
 })
 
 function addNewCabinet(e) {
@@ -116,11 +117,11 @@ function generateGraveYard(target) {
     var grid = target.data('gridstack');
     listOfGraveYard.forEach(function (e) {
         if (e.status < 3) {
-            grid.addWidget($('<div><div class="grid-stack-item-content graveYardItem " data-id=' + e.id + ' data-free=' + e.graveAvailable + ' data-status=' + e.status + ' data-graveWi=' + e.width + ' data-graveHe=' + e.height + '  >' + e.name + '</div><div/>'), e.x, e.y, 1, 1);
+            grid.addWidget($('<div><div class="grid-stack-item-content graveYardItem " data-id=' + e.graveYardId + ' data-free=' + e.graveAvailable + ' data-status=' + e.status + ' data-gravewi=' + e.width + ' data-gravehe=' + e.height + '  >' + e.name + '</div><div/>'), e.x, e.y, 1, 1);
         } else if (e.status == 3) {
-            grid.addWidget($('<div><div class="grid-stack-item-content gate" data-id=' + e.id + ' data-status=' + e.status + '>' + e.name + '</div><div/>'), e.x, e.y, 1, 1);
+            grid.addWidget($('<div><div class="grid-stack-item-content gate" data-id=' + e.graveYardId + ' data-status=' + e.status + '>' + e.name + '</div><div/>'), e.x, e.y, 1, 1);
         } else {
-            grid.addWidget($('<div><div class="grid-stack-item-content statue" data-id=' + e.id + ' data-status=' + e.status + '>' + e.name + '</div><div/>'), e.x, e.y, 2, 1);
+            grid.addWidget($('<div><div class="grid-stack-item-content statue" data-id=' + e.graveYardId + ' data-status=' + e.status + '>' + e.name + '</div><div/>'), e.x, e.y, 2, 1);
         }
     })
 
@@ -143,8 +144,10 @@ function generateGraveYard(target) {
 function contextMenuInitial(e) {
     $("#contextName").val(e.html());
 
-    var width = e.data("graveWi");
-    var height = e.data("graveHe");
+    var width = e.data("gravewi");
+    var height = e.data("gravehe");
+    console.log(width);
+    console.log(height);
     var free = e.data("free");
     var data;
     if (width != null && height != null && $.isNumeric(width) && $.isNumeric(height)) {
@@ -164,7 +167,10 @@ function contextMenuInitial(e) {
         btn.unbind("click");
         btn.bind("click", function () {
             $("#graveYardPopup").modal('show');
+
             $("#intialGraveYard").on("click", function () {
+                width = $("#graveYardWidth").val();
+                height = $("#graveYardHeight").val()
                 setupGraveYard(e, width, height)
             })
             e.removeClass("graveYardNotInitial");
@@ -174,19 +180,25 @@ function contextMenuInitial(e) {
         btn.html("Xem")
         btn.unbind("click");
         btn.bind("click", function () {
-            getGrave(e.data("id", width, height))
-            currentGraveYard=e.data("id");
+            getGrave(e.data("id"), width, height)
+            currentGraveYard = e.data("id");
+            $("#graveYardInformation").fadeOut();
+            $('.nav-tabs a[href="#step2"]').tab('show');
+            $('.nav-tabs a[href="#step2"]').html('Sơ đồ ' + e.html());
         })
-        $('.nav-tabs a[href="#step2"]').tab('show');
-        $('.nav-tabs a[href="#step2"]').html('Sơ đồ ' + e.html());
+
     }
 }
 function prototypePopupInitial() {
-    $("#prototypeWidth").val("12");
-    $("#prototypeHeight").val("6");
+    $("#prototypeWidth").val("6");
+    $("#prototypeHeight").val("4");
 }
 
 function generalInitial() {
+    $("#graveBirthDay").datepicker();
+    $("#graveDeathDay").datepicker();
+    $("#graveBirthDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
+    $("#graveDeathDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
     var $box = null;
     $('.style-grave')
         .click(function () {
@@ -250,6 +262,7 @@ function generatePrototype(prototype, width, height) {
         dataType: 'json',
         success: function (res) {
             listOfGraveYard = res;
+            console.log(listOfGraveYard)
             generateGraveYard($("#graveYard"));
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -288,6 +301,9 @@ function setupGraveYard(e, width, height) {
     var requestURL = contextPath + GENERATE_GRAVE;
     var requestMethod = "POST";
     var graveYardId = e.data("id");
+    console.log(e.data("id"));
+    console.log(width);
+    console.log(height);
     var requestData = {
         "graveYardId": graveYardId,
         "width": width,
@@ -297,10 +313,11 @@ function setupGraveYard(e, width, height) {
         url: requestURL,
         type: requestMethod,
         data: requestData,
+        dataType: 'json',
         success: function (res) {
             $("#graveYardPopup").modal('hide');
-            e.data("graveHe", res.height);
-            e.data("graveWi", res.width);
+            e.data("gravehe", res.height);
+            e.data("gravewi", res.width);
             e.data("status", res.status);
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -324,7 +341,8 @@ function getGrave(graveYardId, width, height) {
         dataType: 'json',
         success: function (res) {
             listOfGrave = res;
-            generateGrave($("#grave"), width, height)
+            generateGrave($("#grave"), width, height, graveYardId);
+            updateColor();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -333,19 +351,20 @@ function getGrave(graveYardId, width, height) {
     });
 }
 
-function generateGrave(target, width, height) {
+function generateGrave(target, width, height, graveYard) {
+    console.log("OK")
     var grid = target.data('gridstack');
     var isAdd = true;
     for (var i = 0; i < width; i++) {
         for (var k = 0; k < height; k++) {
             for (var count = 0; count < listOfGrave.length; count++) {
-                if (listOfGrave[count].x == i && listOfGrave[count] == k) {
-                    grid.addWidget($('<div><div class="grid-stack-item-content graveItem  " data-id=' + listOfGrave[count].graveId + ' data-grave=' + count + ' data-status=' + listOfGrave[count].status + ' </div> <div/>'), listOfGrave[count].x, listOfGrave[count].y, 1, 1);
+                if (listOfGrave[count].x == i && listOfGrave[count].y == k) {
+                    grid.addWidget($('<div><div class="grid-stack-item-content graveItem  " data-id=' + listOfGrave[count].graveId + ' data-grave=' + count + ' data-status=' + listOfGrave[count].status + ' data-yard=' + graveYard + ' data-x' + listOfGrave[count].x + ' data-y=' + listOfGrave[count].y + '  </div> <div/>'), listOfGrave[count].x, listOfGrave[count].y, 1, 1);
                     isAdd = false;
                 }
             }
             if (isAdd == true) {
-                grid.addWidget($('<div><div class="grid-stack-item-content graveItem " data-status="0" </div> <div/>'), i, k, 1, 1);
+                grid.addWidget($('<div><div class="grid-stack-item-content graveItem" data-yard=' + graveYard + ' data-x=' + i + ' data-y=' + k + '  data-status="0" </div> <div/>'), i, k, 1, 1);
             } else {
                 isAdd = true;
             }
@@ -355,13 +374,14 @@ function generateGrave(target, width, height) {
 
     $(".graveItem").on("click", function (x) {
         if ($(this).data("status") == 0) {
-            eventRegisterPopup(x, $("#regisContext"));
             $("#detailContext").fadeOut();
             initialRegisContext($(this));
+            eventRegisterPopup(x, $("#regisContext"));
+
         } else {
+            $("#regisContext").fadeOut();
             initialDetailContext($(this));
             eventRegisterPopup(x, $("#detailContext"))
-            $("#regisContext").fadeOut();
         }
 
 
@@ -370,14 +390,20 @@ function generateGrave(target, width, height) {
 
 function initialDetailContext(e) {
     var index = e.data("grave");
+    if(listOfGrave[index].image!=null){
+        $("#image").attr("src",contextPath+"/product-images/"+listOfGrave[index].image);
+    }else{
+        $("#image").attr("src",contextPath+"/product-images/noimagefound.jpg");
+    }
+
     $("#detailName").html(listOfGrave[index].name);
     $("#detailBirthday").html(listOfGrave[index].birthDay);
     $("#detailParish").html(listOfGrave[index].parish);
     $("#detailDeathDay").html(listOfGrave[index].deathDay);
     $("#detailHomeTown").html(listOfGrave[index].homeTown);
-    $("#detailRegisName").html(listOfGrave[index].homeTown);
-    $("#detailRegisPhone").html(listOfGrave[index].homeTown);
-    $("#detailRegisMail").html(listOfGrave[index].homeTown);
+    $("#detailRegisName").html(listOfGrave[index].userName);
+    $("#detailRegisPhone").html(listOfGrave[index].tel);
+    $("#detailRegisMail").html(listOfGrave[index].email);
     var processBtn;
     var rejectBtn;
     if (listOfGrave[index].status == 2) {
@@ -421,17 +447,23 @@ function regisGrave(e) {
     var requestURL = contextPath + REGISTER_GRAVE;
     var requestMethod = "POST";
     var formData = new FormData($("#grave-form")[0]);
-    formData.append("graveYardId", e.data("id"))
+    formData.append("graveYardId", e.data("yard"));
+    formData.append("positionX", e.data("x"));
+    formData.append("positionY", e.data("y"));
     var requestData = formData;
     $.ajax({
         url: requestURL,
         type: requestMethod,
         data: requestData,
+        processData: false,
+        contentType: false,
+        async: false,
         dataType: 'json',
         success: function (res) {
             listOfGrave.push(res);
             e.data("status", res.status);
             e.data("id", res.graveId);
+            $("#regisContext").fadeOut();
             updateColor();
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -467,11 +499,42 @@ function approveGraveStatus(e, type) {
 function updateColor() {
     $(".graveItem").each(function () {
         if ($(this).data("status") == 1) {
-            $(this).css("background-color", GRAVE_APPROVED_COLOR)
+            $(this).css({"background-color": GRAVE_APPROVED_COLOR})
         } else if ($(this).data("status") == 2) {
-            $(this).css("background-color", GRAVE_WAITING_COLOR)
+            $(this).css({"background-color": GRAVE_WAITING_COLOR})
         } else {
-            $(this).css("background-color", GRAVE_NOT_INITIAL_COLOR)
+            $(this).css({"background-color": GRAVE_NOT_INITIAL_COLOR})
         }
+    })
+}
+
+function terminateEventCreateMenu() {
+
+    $(document).bind('click', function (e) {
+        if ($(e.target).prop("tagName").toUpperCase() == "SMALL") {
+            return;
+        }
+
+        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String
+            )) {
+            $(".graveContextMenu").fadeOut();
+            return;
+        }
+
+        if (!($('div#graveYardInformation').has(e.target).length > 0 || ($(e.target).attr('class').toString()
+                .indexOf('graveYardItem')>=0))) {
+            $("#graveYardInformation").fadeOut();
+        }
+
+        if (!($('div#regisContext').has(e.target).length > 0 || ($(e.target).attr('class').toString()
+                .indexOf('graveItem')>=0))) {
+            $("#regisContext").fadeOut();
+        }
+
+        if (!($('div#detailContext').has(e.target).length > 0 || ($(e.target).attr('class').toString()
+                .indexOf('graveItem')>=0))) {
+            $("#detailContext").fadeOut();
+        }
+
     })
 }
