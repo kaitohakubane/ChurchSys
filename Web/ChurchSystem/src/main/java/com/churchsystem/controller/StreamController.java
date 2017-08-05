@@ -8,11 +8,13 @@ import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.StreamEntity;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.Date;
 
 /**
@@ -40,7 +42,11 @@ public class StreamController {
                                                 @RequestParam(value = ParamConstant.STREAM_RESOLUTION) String resolution, HttpServletRequest request) {
         StreamEntity streamEntity = new StreamEntity();
         try {
+//            Runtime.getRuntime().exec("cmd /c start startObs.bat");
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource(UtilsConstant.SCRIPT_AUTO_START_OBS).getFile());
 
+            Runtime.getRuntime().exec( file.getAbsolutePath());
             String streamLink = YoutubeAPI.createBroadcast(streamTitle,
                     new Date(System.currentTimeMillis() + UtilsConstant.DEFAULT_DELAY_STREAM_CREATING)
                     , UtilsConstant.DEFAULT_VALIDATE_PORT);
@@ -62,6 +68,8 @@ public class StreamController {
             churchServiceInterface.updateChurch(churchEntity);
             streamEntity.setStreamLink(streamLink);
             streamEntity.setStreamCode(streamCode);
+            // Command to create an external process
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,6 +81,7 @@ public class StreamController {
     public void startStream(@RequestParam(value = ParamConstant.STREAM_LINK) String broadcastId) {
         try {
             YoutubeAPI.liveStream(broadcastId);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

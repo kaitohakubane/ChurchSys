@@ -53,5 +53,6 @@ public class UtilsConstant {
 
     public static final int NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 0;
     public static final int AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 1;
+    public static final String SCRIPT_AUTO_START_OBS="startObs.bat";
 
 }
