@@ -16,6 +16,7 @@ public class UtilsConstant {
     public static final String ANONYMOUS_USER = "anonymousUser";
     public static final String MANAGER_USER = "ROLE_MANAGER";
     public static final String NORMAL_USER = "ROLE_USER";
+    public static final String ADMIN_USER = "ROLE_ADMIN";
     public static final String ZERO_STRING = "0";
 
     public static final String REDIRECT_STRING = "redirect:";

@@ -70,6 +70,8 @@ public class IndexController {
             request.getSession().setAttribute(ParamConstant.CHURCH_ID,churchId);
         } else if(authorities.contains(new SimpleGrantedAuthority(UtilsConstant.NORMAL_USER))) {
             modelAndView=new ModelAndView(PageConstant.MAP_PAGE);
+        }else if(authorities.contains(new SimpleGrantedAuthority(UtilsConstant.ADMIN_USER))){
+            modelAndView=new ModelAndView(PageConstant.HOME_PAGE);
         }else{
             modelAndView = new ModelAndView(PageConstant.LOGIN_PAGE);
         }
@@ -85,6 +87,12 @@ public class IndexController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/";
+    }
+
+    @RequestMapping(value = {PageConstant.ADMIN_ROOT_PATH_URL}, method = RequestMethod.GET)
+    public ModelAndView initAdminPage() {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.HOME_PAGE);
+        return modelAndView;
     }
 
 }

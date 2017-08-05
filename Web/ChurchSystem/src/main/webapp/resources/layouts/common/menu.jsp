@@ -7,6 +7,9 @@
 --%>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
@@ -33,14 +36,28 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a href="${pageContext.request.contextPath}/index"><i class="fa fa-university"></i> Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/church-management"><i class="fa fa-home"></i> Quản lí nhà thờ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/schedule"><i class="fa fa-calendar"></i> Lịch sự kiện</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/priest-management"><i class="fa fa-users"></i> Quản lí thành viên nhà thờ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/room-management"><i class="fa fa-cube"></i> Quản lí phòng</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/grave"><i class="fa fa-braille"></i>Quản lý mộ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/manager/registration-management"><i class="fa fa-newspaper-o"></i>Quản lý đơn đăng ký</a></li>
-                    <li><a id="streamOption"><i class="fa fa-video-camera"></i> Stream</a></li>
+                    <sec:authentication property="principal.authorities" var="authorities"/>
+                    <c:if test="${fn:contains(authorities, 'ROLE_MANAGER')}">
+                        <li><a href="${pageContext.request.contextPath}/index"><i class="fa fa-university"></i> Home</a>
+                        </li>
+
+                        <li><a href="${pageContext.request.contextPath}/manager/schedule"><i class="fa fa-calendar"></i>
+                            Lịch sự kiện</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manager/priest-management"><i
+                                class="fa fa-users"></i> Quản lí thành viên nhà thờ</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manager/room-management"><i
+                                class="fa fa-cube"></i> Quản lí phòng</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manager/grave"><i class="fa fa-braille"></i>Quản
+                            lý mộ</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manager/registration-management"><i
+                                class="fa fa-newspaper-o"></i>Quản lý đơn đăng ký</a></li>
+                        <li><a id="streamOption"><i class="fa fa-video-camera"></i> Stream</a></li>
+                    </c:if>
+                    <c:if test="${!fn:contains(authorities, 'ROLE_MANAGER')}">
+                        <li><a href="${pageContext.request.contextPath}/admin/church-management"><i
+                                class="fa fa-home"></i>
+                            Quản lí nhà thờ</a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>
@@ -57,7 +74,8 @@
             <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="${pageContext.request.contextPath}/logout">
+            <a data-toggle="tooltip" data-placement="top" title="Logout"
+               href="${pageContext.request.contextPath}/logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
         </div>
@@ -88,7 +106,8 @@
                             </a>
                         </li>
                         <li><a href="javascript:;">Help</a></li>
-                        <li><a href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logout"><i
+                                class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                     </ul>
                 </li>
 

@@ -1,5 +1,4 @@
 var SCHEDULE_URL = "/admin/schedule";
-var ADD_CHURCH_URL = "/admin/new-church";
 var ACCEPT_EVENT_REGISTRATION_URL = "/manager/registration-management/event-accept";
 var REJECT_EVENT_REGISTRATION_URL = "/manager/registration-management/event-reject";
 var ACCEPT_CLASS_REGISTRATION_URL = "/manager/registration-management/class-accept";
@@ -29,9 +28,7 @@ function popupInitial() {
         window.location.href = contextPath + SCHEDULE_URL;
     })
 
-    $("#addChurch").on("click", function () {
-        window.location.href = contextPath + ADD_CHURCH_URL;
-    })
+
 }
 
 $(".event-approve").on("click", function () {
