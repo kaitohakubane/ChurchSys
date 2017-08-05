@@ -188,12 +188,14 @@ public class SQLParamConstant {
             "WHERE e.eventStatus =:eventStatus AND e.startDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
             "su.categoryId < 12 AND su.categoryId > 5 AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
             "e.typeId =t.typeId AND e.churchId =:churchId AND s.conductorId = u.userId AND s.roomId = r.roomId";
+
     public static final String GET_ON_GOING_PLAN_CLASS = "SELECT distinct e.eventId as eventId, e.eventName as eventName, e.startDate as startDate," +
             " su.subName as subName, su.categoryId as cateId, t.description as typeName, u.userName as conductorName, r.roomName as roomName, " +
             "sh.startTime as startTime, sh.endTime as endTime FROM event e, slot s, inclusion i, slothour sh,subject su, type t, user u, room r " +
-            "WHERE e.eventStatus =:eventStatus AND e.startDate < CURDATE() AND e.examDate > CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
+            "WHERE e.eventStatus =:eventStatus AND e.startDate < CURDATE() AND e.privacy=1 AND e.subId=su.subId AND " +
             "su.categoryId < 12 AND su.categoryId > 5 AND s.eventId=e.eventId AND s.slotId = i.slotId AND sh.slotHourId = i.slotHourId AND " +
             "e.typeId =t.typeId AND e.churchId =:churchId AND s.conductorId = u.userId AND s.roomId = r.roomId";
+
     public static final String GET_LIST_SUITABLE_CONDUCTOR_ID_FOR_SLOT = "select con.* from ability a, " +
             "(select distinct u.userId from user u, church c," +
             " interaction i where i.churchid =:churchId AND i.userId = u.userId AND u.userId NOT IN (select s2.conductorId " +
@@ -261,7 +263,27 @@ public class SQLParamConstant {
 
     public static final String GET_LIST_SLOT_HOUR_BY_TIME = "Select * from slothour Where startTime >=:startTime AND endTime <=:endTime";
 
-    public static final String GET_LIST_GRAVE="SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveYardId =:graveYardId ";
+    public static final String GET_LIST_GRAVE = "SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveYardId =:graveYardId ";
 
-    public static final String GET_GRAVE_BY_ID="SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveId =:graveId ";
+    public static final String GET_GRAVE_BY_ID = "SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveId =:graveId ";
+
+    public static final String GET_LIST_REGISTRATION_EVENT_BY_CHURCH_ID = "SELECT r.regisId as regisId, r.regisDate as regisDate, r.message as message, " +
+            "s2.slotDate as slotDate, s2.startTime as startTime, s2.endTime as endTime, e.eventId as eventId, e.eventName as eventName, " +
+            "e.subId as subId, sb.subName as subName, u.userId as userId, u.accountId as accountId, u.tel as tel, u.email as email " +
+            "FROM registration r, event e, user u, subject sb, (SELECT s.slotId, s.eventId, s.slotDate, s1.startTime, s1.endTime FROM slot s, " +
+            "(SELECT s.slotId, MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime FROM slothour sh, inclusion i, slot s " +
+            "WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) s1 WHERE s.slotId = s1.slotId) s2 " +
+            "WHERE e.isRegistered = 1  AND r.regisStatus = 1 AND r.eventId = e.eventId AND r.userId = u.userId AND r.eventId = s2.eventId " +
+            "AND e.subId = sb.subId AND r.churchId =:churchId";
+
+    public static final String GET_LIST_REGISTRATION_CLASS_BY_CHURCH_ID = "SELECT r.regisId as regisId, r.regisDate as regisDate, r.message as message, " +
+            "s2.slotDate as slotDate, s2.startTime as startTime, s2.endTime as endTime, e.eventId as eventId, e.eventName as eventName, " +
+            "e.subId as subId, sb.subName as subName, u.userId as userId, u.accountId as accountId, u.tel as tel, u.email as email " +
+            "FROM registration r, event e, user u, subject sb, (SELECT s.slotId, s.eventId, s.slotDate, s1.startTime, s1.endTime FROM slot s, " +
+            "(SELECT s.slotId, MIN(sh.startTime) as startTime, MAX(sh.endTime) as endTime FROM slothour sh, inclusion i, slot s " +
+            "WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) s1 WHERE s.slotId = s1.slotId) s2 " +
+            "WHERE e.isRegistered = 0  AND r.regisStatus = 1 AND r.eventId = e.eventId AND r.userId = u.userId AND r.eventId = s2.eventId " +
+            "AND e.subId = sb.subId AND r.churchId =:churchId group by (r.regisId)";
+
+
 }

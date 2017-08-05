@@ -1,10 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
-import com.churchsystem.entity.ClassDisplayEntity;
-import com.churchsystem.entity.RegisterDisplayEntity;
-import com.churchsystem.entity.RegisteredClassEntity;
-import com.churchsystem.entity.RegistrationEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.RegistrationModelInterface;
 import com.churchsystem.service.interfaces.RegistrationServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +71,18 @@ public class RegistrationService implements RegistrationServiceInterface {
     }
 
     @Override
-    public RegistrationEntity getRegistrationByEventId(int eventId){
+    public RegistrationEntity getRegistrationByEventId(int eventId) {
         return registrationModelInterface.getRegistrationByEventId(eventId);
     }
+
+    @Override
+    public List<RegisDisplayEntity> getAllRegisEvent(int churchId){
+        return registrationModelInterface.getAllRegisEvent(churchId);
+    }
+
+    @Override
+    public List<RegisDisplayEntity> getAllRegisClass(int churchId){
+        return registrationModelInterface.getAllRegisClass(churchId);
+    }
+
 }

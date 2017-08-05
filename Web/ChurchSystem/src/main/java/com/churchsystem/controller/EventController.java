@@ -212,8 +212,8 @@ public class EventController {
             int subId = Integer.parseInt(eventJsonEntity.getSubId());
             int slotHour = Integer.parseInt(eventJsonEntity.getSlotHour());
             int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
-            Integer roomId=Integer.parseInt(eventJsonEntity.getRoomId());
-            Integer conductorId=Integer.parseInt(eventJsonEntity.getConductorId());
+            Integer roomId = Integer.parseInt(eventJsonEntity.getRoomId());
+            Integer conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
             boolean privacy = true;
             if (intPrivacy == UtilsConstant.ZERO) {
                 privacy = false;
@@ -222,18 +222,18 @@ public class EventController {
             Date examDate = DateUtils.getDate(eventJsonEntity.getExamDate());
 
 
-//            TypeEntity typeEntity = slotServiceInterface.getTypeByDescription(eventJsonEntity.getType());
-//            if (typeEntity == null) {
-//                typeEntity = new TypeEntity();
-//                typeEntity.setDescription(eventJsonEntity.getType());
-//                slotServiceInterface.addNewType(typeEntity);
-//                typeEntity = slotServiceInterface.getTypeByDescription(eventJsonEntity.getType());
-//            }
+            TypeEntity typeEntity = slotServiceInterface.getTypeByDescription(eventJsonEntity.getType());
+            if (typeEntity == null) {
+                typeEntity = new TypeEntity();
+                typeEntity.setDescription(eventJsonEntity.getType());
+                slotServiceInterface.addNewType(typeEntity);
+                typeEntity = slotServiceInterface.getTypeByDescription(eventJsonEntity.getType());
+            }
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
             //Create Class
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), datesOfClass.get(0), subId
-                    , privacy, churchId, examDate, null, false, numberOfSlot);
+                    , privacy, churchId, examDate, typeEntity.getTypeId(), false, numberOfSlot);
 
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS,

@@ -12,25 +12,25 @@ public class ClassDisplayEntity {
     private Date startDate;
     private String typeName;
     private String subName;
-    private String cateId;
+    private int cateId;
     private Time startTime;
     private Time endTime;
     private String conductorName;
     private String roomName;
+    private int userStatus;
 
     public ClassDisplayEntity() {
     }
 
-    public String getCateId() {
+    public int getCateId() {
         return cateId;
     }
 
-    public void setCateId(String cateId) {
+    public void setCateId(int cateId) {
         this.cateId = cateId;
     }
 
-    public ClassDisplayEntity(int eventId, String eventName, Date startDate, String typeName, String subName,
-                              String cateId, Time startTime, Time endTime, String conductorName, String roomName) {
+    public ClassDisplayEntity(int eventId, String eventName, Date startDate, String typeName, String subName, int cateId, Time startTime, Time endTime, String conductorName, String roomName, int userStatus) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.startDate = startDate;
@@ -41,6 +41,15 @@ public class ClassDisplayEntity {
         this.endTime = endTime;
         this.conductorName = conductorName;
         this.roomName = roomName;
+        this.userStatus = userStatus;
+    }
+
+    public int getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
     }
 
     public String getConductorName() {

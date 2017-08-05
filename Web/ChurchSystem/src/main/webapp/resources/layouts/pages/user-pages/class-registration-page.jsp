@@ -68,7 +68,8 @@
                                         </div>
                                         <div class="panel-body" style="padding: 15px 0">
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Người dạy</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Người
+                                                    dạy</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -101,7 +102,8 @@
                                                 </div>
                                             </div>
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Khai giảng</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Khai
+                                                    giảng</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -112,7 +114,8 @@
                                                 </div>
                                             </div>
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Các ngày</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Các
+                                                    ngày</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -123,7 +126,8 @@
                                                 </div>
                                             </div>
                                             <div class="form-horizontal">
-                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
+                                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời
+                                                    gian</label>
                                             </div>
                                             <div class="col-md-8 form-group has-success">
                                                 <div class="input-group">
@@ -135,7 +139,16 @@
 
                                             <div class="form-group">
                                                 <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
-                                                    <button type="button" class="btn btn-success class-registration" data-id="${item.eventId}">Đăng kí</button>
+                                                    <c:if test="${item.userStatus == 1}">
+                                                        <button type="button" class="btn btn-success class-registration"
+                                                                data-id="${item.eventId}" disabled>Đã đăng kí
+                                                        </button>
+                                                    </c:if>
+                                                    <c:if test="${item.userStatus == 0}">
+                                                        <button type="button" class="btn btn-success class-registration"
+                                                                data-id="${item.eventId}">Đăng kí
+                                                        </button>
+                                                    </c:if>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,7 +182,8 @@
                                                     </div>
                                                     <div class="panel-body" style="padding: 15px 0">
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Người dạy</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Người
+                                                                dạy</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">
@@ -204,7 +218,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Khai giảng</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Khai
+                                                                giảng</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">
@@ -216,7 +231,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Các ngày</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Các
+                                                                ngày</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">
@@ -228,7 +244,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-horizontal">
-                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời gian</label>
+                                                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Thời
+                                                                gian</label>
                                                         </div>
                                                         <div class="col-md-8 form-group has-success">
                                                             <div class="input-group">
@@ -243,9 +260,18 @@
 
                                                         <div class="form-group">
                                                             <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
-                                                                <button type="button"
-                                                                        class="btn btn-success class-registration" data-id="${item.eventId}">Đăng kí
-                                                                </button>
+                                                                <c:if test="${item.userStatus == 1}">
+                                                                    <button type="button"
+                                                                            class="btn btn-success class-registration"
+                                                                            data-id="${item.eventId}" disabled>Đã đăng kí
+                                                                    </button>
+                                                                </c:if>
+                                                                <c:if test="${item.userStatus == 0}">
+                                                                    <button type="button"
+                                                                            class="btn btn-success class-registration"
+                                                                            data-id="${item.eventId}">Đăng kí
+                                                                    </button>
+                                                                </c:if>
                                                             </div>
                                                         </div>
                                                     </div>

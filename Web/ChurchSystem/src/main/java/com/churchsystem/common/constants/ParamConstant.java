@@ -28,7 +28,7 @@ public class ParamConstant {
     public static final String CHURCH_ID = "churchId";
     public static final String CHURCH_NAME = "churchName";
     public static final String CHURCH_TEL = "tel";
-    public static final String CHURCH_ADDRESS= "address";
+    public static final String CHURCH_ADDRESS = "address";
     public static final String CHURCH_MAIL = "mail";
     public static final String CHURCH_DESCRIPTION = "description";
 
@@ -46,7 +46,8 @@ public class ParamConstant {
     public static final int MAXIMUM_DISTANCE = 50;
     public static final String CHURCH_INFORMATION = "churchInformationEntity";
     public static final String INCOMING_EVENT = "listIncomingEvent";
-    public static final String CHURCH_SETTING="setting";
+    public static final String CHURCH_SETTING = "setting";
+    public static final String CHURCH_IS_SYNC = "isSync";
 
     /**
      * Registration
@@ -62,6 +63,8 @@ public class ParamConstant {
     public static final String REGISTRATION_START_TIME = "regisStartTime";
     public static final String REGISTRATION_EST_TIME = "estTime";
     public static final String REGISTRATION_MESSAGE = "message";
+    public static final String REGISTRATION_EVENT_DISPLAY = "registrationEventDisplayList";
+    public static final String REGISTRATION_CLASS_DISPLAY = "registrationClassDisplayList";
 
     /**
      * Event
@@ -82,13 +85,12 @@ public class ParamConstant {
     public static final String CATEGORY_ID = "categoryId";
     public static final int CLASS_CATEGORY = 4;
     public static final String NO_NAME_EVENT_TITLE = "No name";
-    public static final int IS_SYNC=1;
-    public static final int IS_NOT_SYNC=0;
-    public static final int NO_ROOM_AVAILABLE=-1;
-    public static final int NO_CONDUCTOR_AVAILABLE=-1;
+    public static final int NO_ROOM_AVAILABLE = -1;
+    public static final int NO_CONDUCTOR_AVAILABLE = -1;
     /**
      * Grave
      */
+
     public static final String GRAVE_YARD_ID="graveYardId";
     public static final int GRAVE_YARD_NOT_INITIAL=0;
     public static final int GRAVE_YARD_INITIAL=1;
@@ -117,6 +119,12 @@ public class ParamConstant {
     public static final String GRAVE_STATUS_TYPE="statusType";
     public static final int  ACCEPT_TYPE=1;
     public static final int  REJECT_TYPE=0;
+
+
+
+    public static final int IS_SYNC = 1;
+    public static final int IS_NOT_SYNC = 0;
+
 
 
     /**
@@ -220,4 +228,7 @@ public class ParamConstant {
     public static final int SLOT_AVAILABLE = 0;
 
 
+
+    public static final int REGISTERED = 1;
+    public static final int UNREGISTERED = 0;
 }

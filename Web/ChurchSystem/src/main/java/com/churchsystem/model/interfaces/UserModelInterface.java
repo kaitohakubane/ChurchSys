@@ -1,9 +1,6 @@
 package com.churchsystem.model.interfaces;
 
-import com.churchsystem.entity.AbilityEntity;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.InteractionEntity;
-import com.churchsystem.entity.UserEntity;
+import com.churchsystem.entity.*;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -58,4 +55,5 @@ public interface UserModelInterface {
 
     UserEntity getUserByAccountIdAndPassword(String accountId, String password);
 
+    List<RegistrationEntity> getAllRegistrationByUserId(int userId);
 }

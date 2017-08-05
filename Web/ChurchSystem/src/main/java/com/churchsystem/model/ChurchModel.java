@@ -57,7 +57,7 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     }
 
     @Override
-    public List<IncomingEventEntity> getIncomingEvent(int userId){
+    public List<IncomingEventEntity> getIncomingEvent(int userId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_INCOMING_EVENT_INFO)
                 .setParameter(ParamConstant.USER_ID, userId)
                 .setResultTransformer(Transformers.aliasToBean(IncomingEventEntity.class));
@@ -66,9 +66,19 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     }
 
     @Override
-    public SettingEntity getSettingOfChurch(int churchId){
-        Criteria criteria=getSession().createCriteria(SettingEntity.class).add(Restrictions.eq(ParamConstant.CHURCH_ID,churchId));
-        SettingEntity result=(SettingEntity) criteria.uniqueResult();
+    public SettingEntity getSettingOfChurch(int churchId) {
+        Criteria criteria = getSession().createCriteria(SettingEntity.class).add(Restrictions.eq(ParamConstant.CHURCH_ID, churchId));
+        SettingEntity result = (SettingEntity) criteria.uniqueResult();
         return result;
+    }
+
+    @Override
+    public void addSetting(SettingEntity settingEntity) {
+        getSession().persist(settingEntity);
+    }
+
+    @Override
+    public void updateSetting(SettingEntity settingEntity) {
+        getSession().saveOrUpdate(settingEntity);
     }
 }

@@ -56,28 +56,32 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên nhà thờ:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <input type="text" id="churchName" class="form-control" value="${churchObj.churchName}" data-id=""${churchObj.churchId}">
+                                            <input type="text" id="churchName" class="form-control"
+                                                   value="${churchObj.churchName}" data-id=""${churchObj.churchId}">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Ðịa chỉ:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <input type="text" class="form-control" value="${churchObj.address}" id="churchAddress">
+                                            <input type="text" class="form-control" value="${churchObj.address}"
+                                                   id="churchAddress">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Số điện thoại:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <input type="text" class="form-control" value="${churchObj.tel}" id="churchTel">
+                                            <input type="text" class="form-control" value="${churchObj.tel}"
+                                                   id="churchTel">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Email:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <input type="text" class="form-control" value="${churchObj.mail}" id="churchEmail">
+                                            <input type="text" class="form-control" value="${churchObj.mail}"
+                                                   id="churchEmail">
                                         </div>
                                     </div>
 
@@ -112,7 +116,16 @@
                                     <div class="form-group">
                                         <div class="col-md-offset-3 checkbox">
                                             <label>
-                                                <input type="checkbox" class="flat"> Đồng bộ với Google Calendar
+                                                <c:if test="${setting.isSync == 0}">
+                                                    <input type="checkbox" class="flat" id="isSync"
+                                                           selected="false"> Đồng bộ với Google
+                                                    Calendar
+                                                </c:if>
+                                                <c:if test="${setting.isSync == 1}">
+                                                    <input type="checkbox" class="flat" id="isSync"
+                                                           checked> Đồng bộ với Google
+                                                    Calendar
+                                                </c:if>
                                             </label>
                                         </div>
                                     </div>

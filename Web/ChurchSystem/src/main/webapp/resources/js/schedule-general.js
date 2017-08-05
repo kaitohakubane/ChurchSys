@@ -177,11 +177,13 @@ function inputEventPopupInformation(event) {
 $("#oneSlot").on("click", function () {
     console.log("Option remove one slot is selected");
     removeSingleSlot(curSlotId);
+    $('#confirmDelete').modal('hide');
 
 })
 $("#allSlot").on("click", function () {
     console.log("Option remove many slot is selected");
     removeMultiSlot(curSlotId);
+    $('#confirmDelete').modal('hide');
 })
 
 function terminateEventCreateMenu() {

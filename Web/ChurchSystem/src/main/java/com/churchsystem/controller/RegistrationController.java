@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -46,13 +47,13 @@ public class RegistrationController {
     private NotificationServiceInterface notificationServiceInterface;
 
 
-    @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
-    public ModelAndView getAllRegistration() {
-        ModelAndView modelAndView = new ModelAndView(PageConstant.REGISTRATION_PAGE);
-        List<RegisterDisplayEntity> registerList = registrationServiceInterface.getRegistration();
-        modelAndView.addObject(ParamConstant.LIST_REGISTRATION_ATTR, registerList);
-        return modelAndView;
-    }
+//    @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
+//    public ModelAndView getAllRegistration() {
+//        ModelAndView modelAndView = new ModelAndView(PageConstant.REGISTRATION_PAGE);
+////        List<RegisterDisplayEntity> registerList = registrationServiceInterface.getRegistration();
+////        modelAndView.addObject(ParamConstant.LIST_REGISTRATION_ATTR, registerList);
+//        return modelAndView;
+//    }
 
 
     @ResponseBody
@@ -139,16 +140,36 @@ public class RegistrationController {
         ModelAndView modelAndView = new ModelAndView(PageConstant.CHURCH_CLASS_PAGE);
         try {
             int churchIdInt = Integer.parseInt(churchId);
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
+            List<RegistrationEntity> registrationEntities = userServiceInterface.getAllRegistrationByUserId(userEntity.getUserId());
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchIdInt);
+
             List<ClassDisplayEntity> classList = registrationServiceInterface.getOnPlanClass(churchIdInt);
+            for (int i = 0; i < classList.size(); i++) {
+                for (int j = 0; j < registrationEntities.size(); j++) {
+                    if(classList.get(i).getEventId() == registrationEntities.get(j).getEventId()){
+                        classList.get(i).setUserStatus(ParamConstant.REGISTERED);
+                        break;
+                    }
+                }
+            }
             List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
+            for (int i = 0; i < classOnGoingList.size(); i++) {
+                for (int j = 0; j < registrationEntities.size(); j++) {
+                    if(classOnGoingList.get(i).getEventId() == registrationEntities.get(j).getEventId()){
+                        classOnGoingList.get(i).setUserStatus(ParamConstant.REGISTERED);
+                        break;
+                    }
+                }
+            }
             modelAndView.addObject(ParamConstant.ON_PLAN_CLASS_LIST, classList)
                     .addObject(ParamConstant.ON_GOING_CLASS_LIST, classOnGoingList)
                     .addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return modelAndView;
+            return modelAndView;
     }
 
     //KietTA
@@ -271,4 +292,14 @@ public class RegistrationController {
         return result;
     }
 
+    @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
+    public ModelAndView getAllChurch(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.REGISTRATION_MANAGEMENT_PAGE);
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        List<RegisDisplayEntity> regisEventDisplayEntities = registrationServiceInterface.getAllRegisEvent(churchId);
+        List<RegisDisplayEntity> regisClassDisplayEntities = registrationServiceInterface.getAllRegisClass(churchId);
+        modelAndView.addObject(ParamConstant.REGISTRATION_EVENT_DISPLAY, regisEventDisplayEntities)
+                .addObject(ParamConstant.REGISTRATION_CLASS_DISPLAY, regisClassDisplayEntities);
+        return modelAndView;
+    }
 }

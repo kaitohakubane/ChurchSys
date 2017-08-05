@@ -21,4 +21,8 @@ public interface ChurchModelInterface {
     List<IncomingEventEntity> getIncomingEvent(int userId);
 
     SettingEntity getSettingOfChurch(int churchId);
+
+    void addSetting(SettingEntity settingEntity);
+
+    void updateSetting(SettingEntity settingEntity);
 }

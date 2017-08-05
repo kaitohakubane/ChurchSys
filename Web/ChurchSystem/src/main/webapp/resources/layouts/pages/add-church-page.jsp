@@ -51,9 +51,11 @@
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Ðịa chỉ:</label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <div class="col-md-7 col-sm-7 col-xs-10">
                                             <input type="text"  class="form-control">
                                         </div>
+                                        <button type="button" id="btnGetLocation" class="btn btn-success btn-lg">Chọn
+                                        </button>
                                     </div>
 
                                     <div class="form-group">
@@ -64,19 +66,21 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Phân công:</label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Quản lí:</label>
+                                        <div class="col-md-7 col-sm-7 col-xs-10">
                                             <input type="text"  class="form-control">
                                         </div>
+                                        <button type="button" id="btnAssign" class="btn btn-success btn-lg">Tạo
+                                        </button>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gi? ho?t d?ng:</label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Giờ hoạt động:</label>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <input type="eu-time" id="startTime" value="06:00" class="form-control">
                                         </div>
 
-                                        <label class="control-label col-sm-1">d?n</label>
+                                        <label class="control-label col-sm-1">Đến</label>
 
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <input type="eu-time" id="endTime" value="22:00" class="form-control">
@@ -84,7 +88,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô t?:</label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
                                             <textarea class="form-control" rows="5"></textarea>
                                         </div>
@@ -94,7 +98,7 @@
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
-                                            <button type="button" id="btnBack" class="btn btn-default btn-lg">H?y
+                                            <button type="button" id="btnBack" class="btn btn-default btn-lg">Quay lại
                                             </button>
                                             <button type="button" id="btnSave" class="btn btn-success btn-lg">Thêm
                                             </button>

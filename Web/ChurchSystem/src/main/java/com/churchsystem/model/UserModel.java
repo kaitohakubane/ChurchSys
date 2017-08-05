@@ -2,10 +2,7 @@ package com.churchsystem.model;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
-import com.churchsystem.entity.AbilityEntity;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.InteractionEntity;
-import com.churchsystem.entity.UserEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.model.common.CommonDAO;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import org.hibernate.Criteria;
@@ -39,9 +36,9 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
-    public UserEntity getUserByAccountIdAndPassword(String accountId,String password) {
+    public UserEntity getUserByAccountIdAndPassword(String accountId, String password) {
         Criteria criteria = getSession().createCriteria(UserEntity.class)
-                .add(Restrictions.eq(ParamConstant.ACCOUNT_ID, accountId)).add(Restrictions.eq(ParamConstant.PASSWORD,password));
+                .add(Restrictions.eq(ParamConstant.ACCOUNT_ID, accountId)).add(Restrictions.eq(ParamConstant.PASSWORD, password));
         UserEntity result = (UserEntity) criteria.uniqueResult();
         return result;
     }
@@ -203,6 +200,14 @@ public class UserModel extends CommonDAO implements UserModelInterface {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_FOLLOWING_CHURCH)
                 .setParameter(ParamConstant.USER_ID, userId).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
         List<ChurchEntity> result = query.list();
+        return result;
+    }
+
+
+    @Override
+    public List<RegistrationEntity> getAllRegistrationByUserId(int userId) {
+        Criteria criteria = getSession().createCriteria(RegistrationEntity.class).add(Restrictions.eq(ParamConstant.USER_ID, userId));
+        List<RegistrationEntity> result = criteria.list();
         return result;
     }
 }

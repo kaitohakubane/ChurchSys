@@ -13,9 +13,18 @@ $("#btnSave").on("click", function () {
 })
 
 function updateChurch() {
+    var isClick = $("#isSync").prop('checked');
+    console.log(isClick);
+    var isSync;
+    if (isClick) {
+        isSync = 1
+    }
+    else {
+        isSync = 0
+    }
+
     var requestURL = contextPath + UPDATE_CHURCH_URL;
     var requestMethod = "POST";
-
 
     var requestData = {
         'churchName': $("#churchName").val(),
@@ -23,8 +32,9 @@ function updateChurch() {
         'address': $("#churchAddress").val(),
         'mail': $("#churchEmail").val(),
         'description': $("#churchDescription").val(),
+        'isSync': isSync,
     }
-
+    console.log(requestData);
     $.ajax({
         url: requestURL,
         type: requestMethod,

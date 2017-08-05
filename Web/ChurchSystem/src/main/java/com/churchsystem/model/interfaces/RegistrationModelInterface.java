@@ -1,9 +1,6 @@
 package com.churchsystem.model.interfaces;
 
-import com.churchsystem.entity.ClassDisplayEntity;
-import com.churchsystem.entity.RegisterDisplayEntity;
-import com.churchsystem.entity.RegisteredClassEntity;
-import com.churchsystem.entity.RegistrationEntity;
+import com.churchsystem.entity.*;
 
 import java.util.List;
 
@@ -28,4 +25,8 @@ public interface RegistrationModelInterface {
     List<ClassDisplayEntity> getOnGoingPlanClass(int churchId);
 
     RegistrationEntity getRegistrationByEventId(int eventId);
+
+    List<RegisDisplayEntity> getAllRegisEvent(int churchId);
+
+    List<RegisDisplayEntity> getAllRegisClass(int churchId);
 }

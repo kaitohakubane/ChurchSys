@@ -1,5 +1,6 @@
 package com.churchsystem.service;
 
+import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
@@ -45,12 +46,29 @@ public class ChurchService implements ChurchServiceInterface {
     }
 
     @Override
-    public List<IncomingEventEntity> getIncomingEvent(int userId){
+    public List<IncomingEventEntity> getIncomingEvent(int userId) {
         return churchModelInterface.getIncomingEvent(userId);
     }
 
     @Override
-    public SettingEntity getSettingOfChurch(int churchId){
+    public SettingEntity getSettingOfChurch(int churchId) {
         return churchModelInterface.getSettingOfChurch(churchId);
     }
+
+    @Override
+    public void editSetting(int churchId, int isSync) {
+        SettingEntity settingEntity = churchModelInterface.getSettingOfChurch(churchId);
+        if (settingEntity == null) {
+            if (isSync == 1) {
+                SettingEntity newSetting = new SettingEntity();
+                newSetting.setChurchId(churchId);
+                newSetting.setIsSync(isSync);
+                churchModelInterface.addSetting(newSetting);
+            }
+        } else {
+            settingEntity.setIsSync(isSync);
+            churchModelInterface.updateSetting(settingEntity);
+        }
+    }
 }
+

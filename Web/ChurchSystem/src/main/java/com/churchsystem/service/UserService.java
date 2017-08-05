@@ -1,10 +1,7 @@
 package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
-import com.churchsystem.entity.AbilityEntity;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.InteractionEntity;
-import com.churchsystem.entity.UserEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,12 +130,17 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public InteractionEntity getInteraction(int userId, int churchId){
-        return userModelInterface.getInteraction(userId,churchId);
+    public InteractionEntity getInteraction(int userId, int churchId) {
+        return userModelInterface.getInteraction(userId, churchId);
     }
 
     @Override
-    public void updateInteraction(InteractionEntity interactionEntity){
+    public void updateInteraction(InteractionEntity interactionEntity) {
         userModelInterface.updateInteraction(interactionEntity);
+    }
+
+    @Override
+    public List<RegistrationEntity> getAllRegistrationByUserId(int userId) {
+        return userModelInterface.getAllRegistrationByUserId(userId);
     }
 }

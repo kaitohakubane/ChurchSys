@@ -2,6 +2,7 @@ package com.churchsystem.service.interfaces;
 
 import com.churchsystem.entity.ChurchEntity;
 import com.churchsystem.entity.InteractionEntity;
+import com.churchsystem.entity.RegistrationEntity;
 import com.churchsystem.entity.UserEntity;
 
 import java.sql.Date;
@@ -55,4 +56,6 @@ public interface UserServiceInterface {
     void updateInteraction(InteractionEntity interactionEntity);
 
     UserEntity getUserByAccountIdAndPassword(String accountId,String password);
+
+    List<RegistrationEntity> getAllRegistrationByUserId(int userId);
 }

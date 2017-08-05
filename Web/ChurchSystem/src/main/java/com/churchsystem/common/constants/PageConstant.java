@@ -166,6 +166,7 @@ public class PageConstant {
 
     // Registration
     public static final String REGISTRATION_PAGE = "registration-page";
+    public static final String REGISTRATION_MANAGEMENT_PAGE = "registration-management-page";
 
 
     // Room

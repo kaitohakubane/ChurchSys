@@ -2,6 +2,7 @@ package com.churchsystem.controller;
 
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
+import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.entity.*;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
@@ -122,15 +123,20 @@ public class ChurchController {
         return modelAndView;
     }
 
+
     @RequestMapping(value = PageConstant.CHURCH_SETTING_PAGE_URL, method = RequestMethod.GET)
     public ModelAndView getSettingPage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
             if (churchEntity != null) {
                 modelAndView = new ModelAndView(PageConstant.CHURCH_SETTING_PAGE)
-                        .addObject(ParamConstant.CHURCH_OBJECT, churchServiceInterface.getChurchById(churchId));
+                        .addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+            }
+            if (settingEntity != null) {
+                modelAndView.addObject(ParamConstant.CHURCH_SETTING, settingEntity);
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -145,7 +151,8 @@ public class ChurchController {
                              @RequestParam(value = ParamConstant.CHURCH_ADDRESS) String address,
                              @RequestParam(value = ParamConstant.CHURCH_TEL) String tel,
                              @RequestParam(value = ParamConstant.CHURCH_MAIL) String mail,
-                             @RequestParam(value = ParamConstant.CHURCH_DESCRIPTION) String des
+                             @RequestParam(value = ParamConstant.CHURCH_DESCRIPTION) String des,
+                             @RequestParam(value = ParamConstant.CHURCH_IS_SYNC) String sync
             , HttpServletRequest request) {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
@@ -156,6 +163,11 @@ public class ChurchController {
             churchEntity.setDescription(des);
             churchEntity.setMail(mail);
             churchServiceInterface.updateChurch(churchEntity);
+
+            int isSync = Integer.parseInt(sync);
+
+            churchServiceInterface.editSetting(churchId, isSync);
+
 
         } catch (Exception e) {
             e.printStackTrace();

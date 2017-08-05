@@ -21,4 +21,6 @@ public interface ChurchServiceInterface {
     List<IncomingEventEntity> getIncomingEvent(int userId);
 
     SettingEntity getSettingOfChurch(int churchId);
+
+    void editSetting(int churchId, int isSync);
 }
