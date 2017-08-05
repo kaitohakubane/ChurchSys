@@ -21,6 +21,10 @@
     <link href="<c:url value="/resources/lib/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"/>"
           rel="stylesheet">
     <link href="<c:url value="/resources/lib/sematicDist/semantic.min.css"/>" rel="stylesheet">
+
+    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
+
 </head>
 
 <body class="nav-md">
@@ -74,10 +78,12 @@
                                                     <td>${item.getContact()}</td>
                                                     <td>
                                                         <button type="button" id="btnApprove${item.regisId}"
-                                                                class="btn btn-success btn-lg">Xác nhận
+                                                                data-id="${item.regisId}"
+                                                                class="btn btn-success event-approve">Xác nhận
                                                         </button>
                                                         <button type="button" id="btnReject${item.regisId}"
-                                                                class="btn btn-danger btn-lg">Từ chối
+                                                                data-id="${item.regisId}"
+                                                                class="btn btn-danger event-reject">Từ chối
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -108,10 +114,12 @@
                                                     <td>${item.getContact()}</td>
                                                     <td>
                                                         <button type="button" id="btnApprove${item.regisId}"
-                                                                class="btn btn-success btn-lg">Xác nhận
+                                                                data-id="${item.regisId}"
+                                                                class="btn btn-success class-approve">Xác nhận
                                                         </button>
                                                         <button type="button" id="btnReject${item.regisId}"
-                                                                class="btn btn-danger btn-lg">Từ chối
+                                                                data-id="${item.regisId}"
+                                                                class="btn btn-danger class-reject">Từ chối
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -138,6 +146,7 @@
 <script src="<c:url value="/resources/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"/>"></script>
 <script src="<c:url value="/resources/js/registration.js"/>"></script>
 
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 
 </body>
 </html>

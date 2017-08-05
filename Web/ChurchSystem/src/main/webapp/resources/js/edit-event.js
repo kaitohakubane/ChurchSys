@@ -20,6 +20,7 @@ var WARNING_STATUS = "Thay đổi này sẽ áp dụng cho các buổi liên qua
 var TYPE_DANGER = "danger";
 var TYPE_SUCCESS = "success";
 var TYPE_WARNING = "warning";
+
 var ROOM_IS_AVAILABLE;
 var CONDUCTOR_IS_AVAILABLE;
 //Global variable

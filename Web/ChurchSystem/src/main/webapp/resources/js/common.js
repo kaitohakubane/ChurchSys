@@ -98,3 +98,70 @@ function finishEvent(churchId) {
     )
 }
 
+function onClickShowPopup(mes, type) {
+
+    $.notify({
+        // options
+        message: mes
+    }, {
+        // settings
+        element: 'body',
+        position: null,
+        type: type,
+        allow_dismiss: false,
+        newest_on_top: false,
+        showProgressbar: false,
+        placement: {
+            from: "bottom",
+            align: "center"
+        },
+        offset: 50,
+        spacing: 10,
+        z_index: 1031,
+        delay: 1000,
+        mouse_over: null,
+        animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+        },
+        template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+        '<img data-notify="icon" class="img-circle pull-left">' +
+        '<span data-notify="title">{1}</span>' +
+        '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
+}
+
+function onClickShowWarningPopup(mes, type) {
+
+    $.notify({
+        // options
+        message: mes
+    }, {
+        // settings
+        element: 'body',
+        position: null,
+        type: type,
+        allow_dismiss: false,
+        newest_on_top: false,
+        showProgressbar: false,
+        placement: {
+            from: "bottom",
+            align: "center"
+        },
+        offset: 50,
+        spacing: 10,
+        z_index: 1031,
+        delay: 1000,
+        mouse_over: null,
+        animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+        },
+        template: '<div data-notify="warning-container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+        '<img data-notify="icon" class="img-circle pull-left">' +
+        '<span data-notify="title">{1}</span>' +
+        '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
+}

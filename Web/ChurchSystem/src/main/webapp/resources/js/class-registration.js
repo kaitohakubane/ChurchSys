@@ -4,6 +4,13 @@
 var PREDEFINED_CLASS_REGISTRATION = "/user/registration/PredefinedClass";
 
 
+//notify
+var REGISTER_SUCCESS_STATUS = "Đăng ký thành công!";
+var REGISTER_FAILURE_STATUS = "Đăng ký thất bại";
+var TYPE_DANGER = "danger";
+var TYPE_SUCCESS = "success";
+
+
 $(document).ready(function () {
     $(".dayOfWeek").each(function () {
         console.log($(this).val())
@@ -42,11 +49,12 @@ function registerForClass(eventId) {
         dataType: 'json',
         success: function (res) {
             console.log("Đăng ký thành công!");
-            alert("Đăng ký thành công!")
+            // alert("Đăng ký thành công!")
+            onClickShowPopup(REGISTER_SUCCESS_STATUS, TYPE_SUCCESS);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("Đăng ký thất bại!");
-            alert("Đăng ký thất bại!")
+            onClickShowPopup(REGISTER_FAILURE_STATUS, TYPE_DANGER);
             console.error(textStatus);
         }
     });

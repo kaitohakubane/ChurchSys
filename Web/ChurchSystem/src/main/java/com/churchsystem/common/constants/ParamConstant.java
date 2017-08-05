@@ -66,6 +66,8 @@ public class ParamConstant {
     public static final String REGISTRATION_EVENT_DISPLAY = "registrationEventDisplayList";
     public static final String REGISTRATION_CLASS_DISPLAY = "registrationClassDisplayList";
 
+    public static final String REGISTRATION_ID = "regisId";
+
     /**
      * Event
      */

@@ -148,7 +148,7 @@ public class RegistrationController {
             List<ClassDisplayEntity> classList = registrationServiceInterface.getOnPlanClass(churchIdInt);
             for (int i = 0; i < classList.size(); i++) {
                 for (int j = 0; j < registrationEntities.size(); j++) {
-                    if(classList.get(i).getEventId() == registrationEntities.get(j).getEventId()){
+                    if (classList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus()== ParamConstant.REGISTRATION_WAITING_STATUS) {
                         classList.get(i).setUserStatus(ParamConstant.REGISTERED);
                         break;
                     }
@@ -157,7 +157,7 @@ public class RegistrationController {
             List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
             for (int i = 0; i < classOnGoingList.size(); i++) {
                 for (int j = 0; j < registrationEntities.size(); j++) {
-                    if(classOnGoingList.get(i).getEventId() == registrationEntities.get(j).getEventId()){
+                    if (classOnGoingList.get(i).getEventId() == registrationEntities.get(j).getEventId()&& registrationEntities.get(j).getRegisStatus()== ParamConstant.REGISTRATION_WAITING_STATUS) {
                         classOnGoingList.get(i).setUserStatus(ParamConstant.REGISTERED);
                         break;
                     }
@@ -169,7 +169,7 @@ public class RegistrationController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-            return modelAndView;
+        return modelAndView;
     }
 
     //KietTA
@@ -301,5 +301,88 @@ public class RegistrationController {
         modelAndView.addObject(ParamConstant.REGISTRATION_EVENT_DISPLAY, regisEventDisplayEntities)
                 .addObject(ParamConstant.REGISTRATION_CLASS_DISPLAY, regisClassDisplayEntities);
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.ACCEPT_EVENT_REGISTRATION_URL, method = RequestMethod.POST)
+    public EventDisplayEntity acceptEventRegistration(@RequestParam(value = ParamConstant.REGISTRATION_ID) String regisIdStr) {
+        EventDisplayEntity result = new EventDisplayEntity();
+        try {
+            int regisId = Integer.parseInt(regisIdStr);
+
+            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationById(regisId);
+            registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
+            registrationServiceInterface.updateRegistration(registrationEntity);
+
+            EventEntity eventEntity = eventServiceInterface.getEventById(registrationEntity.getEventId());
+            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
+            eventServiceInterface.updateEvent(eventEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.REJECT_EVENT_REGISTRATION_URL, method = RequestMethod.POST)
+    public EventDisplayEntity rejectEventRegistration(@RequestParam(value = ParamConstant.REGISTRATION_ID) String regisIdStr) {
+        EventDisplayEntity result = new EventDisplayEntity();
+        try {
+            int regisId = Integer.parseInt(regisIdStr);
+
+            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationById(regisId);
+            registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_DENY_STATUS);
+            registrationServiceInterface.updateRegistration(registrationEntity);
+
+            List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(registrationEntity.getEventId());
+            for (int i = 0; i < slotEntities.size(); i++) {
+                slotServiceInterface.deleteSlotHourBySlotId(slotEntities.get(i).getSlotId());
+                slotServiceInterface.deleteSlot(slotEntities.get(i).getSlotId());
+            }
+
+            EventEntity eventEntity = eventServiceInterface.getEventById(registrationEntity.getEventId());
+            eventEntity.setEventStatus(ParamConstant.EVENT_DENY_STATUS);
+            eventServiceInterface.updateEvent(eventEntity);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.REJECT_CLASS_REGISTRATION_URL, method = RequestMethod.POST)
+    public EventDisplayEntity rejectClassRegistration(@RequestParam(value = ParamConstant.REGISTRATION_ID) String regisIdStr) {
+        EventDisplayEntity result = new EventDisplayEntity();
+        try {
+            int regisId = Integer.parseInt(regisIdStr);
+
+            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationById(regisId);
+            registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_DENY_STATUS);
+            registrationServiceInterface.updateRegistration(registrationEntity);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.ACCEPT_CLASS_REGISTRATION_URL, method = RequestMethod.POST)
+    public EventDisplayEntity acceptClassRegistration(@RequestParam(value = ParamConstant.REGISTRATION_ID) String regisIdStr) {
+        EventDisplayEntity result = new EventDisplayEntity();
+        try {
+            int regisId = Integer.parseInt(regisIdStr);
+
+            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationById(regisId);
+            registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
+            registrationServiceInterface.updateRegistration(registrationEntity);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

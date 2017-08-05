@@ -19,6 +19,8 @@
     <c:import url="/resources/layouts/user-common/header.jsp"/>
     <!-- CSS -->
     <link href="<c:url value="/resources/css/church.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
 </head>
 <body>
 <c:import url="/resources/layouts/user-common/user-header.jsp"/>
@@ -294,7 +296,8 @@
 <script>
     var churchId =${param.churchId}</script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
+<script src="<c:url value="/resources/js/common.js"/>"></script>
 <script src="<c:url value="/resources/js/class-registration.js"/>"></script>
-
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 </body>
 </html>

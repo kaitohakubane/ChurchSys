@@ -85,4 +85,8 @@ public class RegistrationService implements RegistrationServiceInterface {
         return registrationModelInterface.getAllRegisClass(churchId);
     }
 
+    @Override
+    public RegistrationEntity getRegistrationById(int regisId){
+        return registrationModelInterface.getRegistrationById(regisId);
+    }
 }

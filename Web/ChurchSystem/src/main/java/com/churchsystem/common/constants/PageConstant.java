@@ -96,6 +96,11 @@ public class PageConstant {
     public static final String ACCEPT_REGISTRATION_URL = "/manager/registration/Accept";
     public static final String REJECT_REGISTRATION_URL = "/manager/registration/Reject";
 
+    public static final String ACCEPT_EVENT_REGISTRATION_URL = "/manager/registration-management/event-accept";
+    public static final String REJECT_EVENT_REGISTRATION_URL = "/manager/registration-management/event-reject";
+    public static final String ACCEPT_CLASS_REGISTRATION_URL = "/manager/registration-management/class-accept";
+    public static final String REJECT_CLASS_REGISTRATION_URL = "/manager/registration-management/class-reject";
+
 
     // Room
 

@@ -20,8 +20,9 @@ var workingEvent;
 var currentEventIsMultiSlot;
 var curSlotId;
 
-var EDIT_SUCCESS_STATUS = "Cập nhật thành công!";
-var EDIT_FAILURE_STATUS = "Cập nhật thất bại";
+var REGISTER_SUCCESS_STATUS = "Đăng ký thành công!";
+var REGISTER_FAILURE_STATUS = "Đăng ký thất bại";
+var ERROR_STATUS = "Có lỗi xảy ra!"
 var REMOVE_SUCCESS_STATUS = "Xóa thành công!";
 var REMOVE_FAILURE_STATUS = "Xóa thất bại";
 var TYPE_DANGER = "danger";
@@ -202,25 +203,25 @@ function terminateEventCreateMenu() {
         }
 
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-            $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                .indexOf('fc-widget-content')))) {
+                $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
+                    .indexOf('fc-widget-content')))) {
             $("#calendarPopup").fadeOut();
             console.log('close Popup');
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-            ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
-                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
-                .attr('class').toString()
-                .indexOf('fc-bg') >= 0))) {
+                ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                    .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
+                    .attr('class').toString()
+                    .indexOf('fc-bg') >= 0))) {
             $("#eventDetailPopup").fadeOut();
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-            ($('div#userRegister').has(e.target).length > 0) || ($(e.target).attr('class').toString()
-                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
-                .attr('class').toString()
-                .indexOf('fc-bg') >= 0))) {
+                ($('div#userRegister').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                    .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
+                    .attr('class').toString()
+                    .indexOf('fc-bg') >= 0))) {
             $("#userRegister").fadeOut();
         }
     })
@@ -460,7 +461,7 @@ function getRegistrationInfo(slotId) {
             $("#userName").val(res.userName);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
+            onClickShowPopup(ERROR_STATUS, TYPE_DANGER);
             console.error(textStatus);
         }
     })
@@ -481,10 +482,10 @@ function acceptRegistration(event) {
             event.eventStatus = 3;
             event.color = "#01ff70";
             $('#calendar').fullCalendar('updateEvent', event);
-
+            onClickShowPopup(REGISTER_SUCCESS_STATUS, TYPE_SUCCESS);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
+            onClickShowPopup(ERROR_STATUS, TYPE_DANGER);
             console.error(textStatus);
         }
     })

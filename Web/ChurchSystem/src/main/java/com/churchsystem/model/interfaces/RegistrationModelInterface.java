@@ -29,4 +29,6 @@ public interface RegistrationModelInterface {
     List<RegisDisplayEntity> getAllRegisEvent(int churchId);
 
     List<RegisDisplayEntity> getAllRegisClass(int churchId);
+
+    RegistrationEntity getRegistrationById(int regisId);
 }
