@@ -207,7 +207,7 @@ public class ParamConstant {
     public static final String USER_ID = "userId";
     public static final String ACCOUNT_ID = "accountId";
     public static final String PASSWORD = "password";
-    public static final String DEFAULT_PASSWORD = "1234";
+    public static final String DEFAULT_PASSWORD = "Abcd1234";
     public static final String PRIEST_ROLE = "ROLE_PRIEST";
     public static final String MANAGER_ROLE = "ROLE_MANAGER";
     public static final boolean DEFAULT_ENABLE = true;

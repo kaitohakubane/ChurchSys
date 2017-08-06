@@ -5,6 +5,7 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
+import com.churchsystem.service.common.ChurchMailSender;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -226,7 +227,7 @@ public class ChurchController {
                               @RequestParam(value = ParamConstant.MANAGER_CERT) String cert) {
         try {
             Integer churchId = Integer.parseInt(churchIdStr);
-
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             UserEntity userEntity = new UserEntity();
             userEntity.setAccountId(accountId);
             userEntity.setPassword(StringUtils.generateEncodePassword(ParamConstant.DEFAULT_PASSWORD));
@@ -244,7 +245,8 @@ public class ChurchController {
             //get inserted user
             UserEntity newPriest = userServiceInterface.getPriestByAccountId(accountId);
 
-
+            ChurchMailSender mailSender = new ChurchMailSender();
+            mailSender.sendMail(UtilsConstant.DEFAULT_ADMIN_MAIL, UtilsConstant.DEFAULT_CC_MAIL, mail, UtilsConstant.ASSIGN_CHURCH_SUBJECT + churchEntity.getChurchName(), UtilsConstant.MAIL_HEADER + userName + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_ACCOUNT + accountId + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_PASSWORD + ParamConstant.DEFAULT_PASSWORD +"\n"+UtilsConstant.MAIL_FOOTER);
             //map inserted user to church
             userServiceInterface.mapUserToChurch(newPriest.getUserId(), churchId);
 
