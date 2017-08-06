@@ -265,7 +265,8 @@
                                                                 <c:if test="${item.userStatus == 1}">
                                                                     <button type="button"
                                                                             class="btn btn-success class-registration"
-                                                                            data-id="${item.eventId}" disabled>Đã đăng kí
+                                                                            data-id="${item.eventId}" disabled>Đã đăng
+                                                                        kí
                                                                     </button>
                                                                 </c:if>
                                                                 <c:if test="${item.userStatus == 0}">
@@ -297,7 +298,8 @@
     var churchId =${param.churchId}</script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/common.js"/>"></script>
-<script src="<c:url value="/resources/js/class-registration.js"/>"></script>
 <script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
+<script src="<c:url value="/resources/js/class-registration.js"/>"></script>
+
 </body>
 </html>

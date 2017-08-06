@@ -134,7 +134,7 @@
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-5 col-sm-5 col-xs-12 col-md-offset-5">
-                                            <button type="button" id="btnSave" class="btn btn-success btn-lg">Thêm
+                                            <button type="button" id="btnSave" class="btn btn-success btn-lg">Cập nhật
                                             </button>
                                         </div>
                                     </div>

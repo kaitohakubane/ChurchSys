@@ -276,7 +276,7 @@
                                         <li class="ev-church">
                                             <div class="block dbevent-block">
                                                 <div class="tags dbevent">
-                                                    <a href="" class="tag">
+                                                    <a class="tag">
                                                         <span>${item.subName}</span>
                                                     </a>
                                                 </div>
@@ -285,7 +285,7 @@
                                                         <a>${item.eventName}</a>
                                                     </h2>
                                                     <div class="byline">
-                                                        <span>${item.startTime} - ${item.endTime}</span>
+                                                        <span>${item.getTime()}</span>
                                                     </div>
                                                     <p class="excerpt">${item.churchName}</p>
                                                 </div>

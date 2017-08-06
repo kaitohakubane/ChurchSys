@@ -30,7 +30,7 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Users</h3>
+                    <h3><strong>Administration</strong></h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -41,10 +41,9 @@
                         <div class="x_title">
                             <h2>Quản lí nhà thờ</h2>
                             <div class="pull-right">
-                                <button type="button" class="btn btn-primary" id="addChurch">
+                                <button type="button" class="btn btn-success btn-lg" id="addChurch">
                                     Thêm nhà thờ
                                 </button>
-                                <button type="button" class="btn btn-primary">Reject</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>

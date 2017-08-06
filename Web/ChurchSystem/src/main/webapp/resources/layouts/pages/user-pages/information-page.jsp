@@ -323,20 +323,40 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="block-right">
-                    <h2 class="topic-title"><a href="#" class="title-color">Chia sẻ lời chúa</a></h2>
-                    <div class="videoWrapper">
-                        <iframe width="480" height="360" src="https://www.youtube.com/embed/t9qNS6aHMw8" frameborder="0"
-                                allowfullscreen></iframe>
+                <h2 class="topic-title"><a
+                        href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}"
+                        class="title-color">Sự kiện sắp diễn ra</a></h2>
+                <div class="col-md-12"
+                     style="min-height: 200px; max-height: 500px;border: 5px solid #eee; margin-bottom: 20px; overflow: auto;">
+                    <div class="row">
+                        <ul class="col-md-12 event-block">
+                            <c:forEach items="${listIncomingEvent}" var="item">
+                                <li>
+                                    <div><strong>${item.eventName}</strong></div>
+                                    <div><span>${item.getTimeInfoPage()}</span></div>
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
-                <div class="block-right">
-                    <h2 class="topic-title"><a href="#" class="title-color">Bài giảng - Thánh lễ</a></h2>
-                    <div class="videoWrapper">
-                        <iframe width="480" height="360" src="https://www.youtube.com/embed/WYOocqjRM_Y" frameborder="0"
-                                allowfullscreen></iframe>
+
+                <h2 class="topic-title"><a
+                        href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}"
+                        class="title-color">Lớp giáo lí hiện có:</a></h2>
+                <div class="col-md-12"
+                     style="min-height: 200px; max-height: 500px;border: 5px solid #eee; margin-bottom: 20px; overflow: auto;">
+                    <div class="row">
+                        <ul class="col-md-12 event-block">
+                            <c:forEach items="${listIncomingClass}" var="item">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}"><strong>${item.eventName}</strong></a>
+                                    <div><span>${item.getInfo()}</span></div>
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
+
                 <div class="block-right">
                     <h2 class="topic-title"><a href="#" class="title-color">Chia sẻ lời chúa</a></h2>
                     <div class="videoWrapper">
@@ -374,7 +394,7 @@
 
 <c:import url="/resources/layouts/user-common/footer.jsp"/>
 <script>
-    var churchId=${param.churchId};
+    var churchId =${param.churchId};
 </script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 </body>

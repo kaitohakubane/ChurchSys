@@ -2,6 +2,7 @@ package com.churchsystem.entity;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 
 public class IncomingEventEntity {
     private int eventId;
@@ -100,5 +101,19 @@ public class IncomingEventEntity {
 
     public void setEndTime(Time endTime) {
         this.endTime = endTime;
+    }
+
+    public String getTime() {
+        SimpleDateFormat time = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        String result = time.format(startTime) + " - " + time.format(endTime) + "</br>" + "Ngày: " + date.format(slotDate);
+        return result;
+    }
+
+    public String getTimeInfoPage() {
+        SimpleDateFormat time = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        String result = "Ngày: " + date.format(slotDate) +" - Từ: " + time.format(startTime) + " đến " + time.format(endTime);
+        return result;
     }
 }

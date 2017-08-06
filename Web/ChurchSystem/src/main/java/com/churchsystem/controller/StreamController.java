@@ -43,10 +43,7 @@ public class StreamController {
         StreamEntity streamEntity = new StreamEntity();
         try {
 //            Runtime.getRuntime().exec("cmd /c start startObs.bat");
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource(UtilsConstant.SCRIPT_AUTO_START_OBS).getFile());
 
-            Runtime.getRuntime().exec( file.getAbsolutePath());
             String streamLink = YoutubeAPI.createBroadcast(streamTitle,
                     new Date(System.currentTimeMillis() + UtilsConstant.DEFAULT_DELAY_STREAM_CREATING)
                     , UtilsConstant.DEFAULT_VALIDATE_PORT);
@@ -112,5 +109,19 @@ public class StreamController {
         modelAndView.addObject(ParamConstant.STREAM_CODE, streamCode);
         modelAndView.addObject(ParamConstant.STREAM_LINK, streamLink);
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.START_OBS, method = RequestMethod.POST)
+    public void startOBS()  {
+        try{
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource(UtilsConstant.SCRIPT_AUTO_START_OBS).getFile());
+
+            Runtime.getRuntime().exec( file.getAbsolutePath());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

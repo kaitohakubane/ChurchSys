@@ -81,4 +81,29 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     public void updateSetting(SettingEntity settingEntity) {
         getSession().saveOrUpdate(settingEntity);
     }
+
+
+    @Override
+    public List<IncomingEventEntity> getIncomingEventByChurchId(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_INCOMING_EVENT_BY_CHURCH_ID)
+                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setResultTransformer(Transformers.aliasToBean(IncomingEventEntity.class));
+        List<IncomingEventEntity> incomingEventEntities = query.list();
+        return incomingEventEntities;
+    }
+
+    @Override
+    public List<IncomingClassEntity> getIncomingClassByChurchId(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_INCOMING_CLASS_BY_CHURCH_ID)
+                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setResultTransformer(Transformers.aliasToBean(IncomingClassEntity.class));
+        List<IncomingClassEntity> incomingClassEntities = query.list();
+        return incomingClassEntities;
+    }
+
+
+    @Override
+    public void createChurch(ChurchEntity churchEntity) {
+        getSession().persist(churchEntity);
+    }
 }

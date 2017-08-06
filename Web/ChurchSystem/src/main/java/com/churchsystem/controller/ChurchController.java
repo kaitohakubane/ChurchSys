@@ -33,8 +33,11 @@ public class ChurchController {
         try {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            List<IncomingEventEntity> list = churchServiceInterface.getIncomingEventByChurchId(churchId);
+            List<IncomingClassEntity> incomingClassEntities = churchServiceInterface.getIncomingClassByChurchId(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.CHURCH_HOME_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+                modelAndView = new ModelAndView(PageConstant.CHURCH_HOME_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity)
+                        .addObject(ParamConstant.INCOMING_EVENT, list).addObject(ParamConstant.INCOMING_CLASS, incomingClassEntities);
             }
 
         } catch (NumberFormatException e) {
@@ -181,4 +184,33 @@ public class ChurchController {
         return modelAndView;
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CREATE_CHURCH_URL, method = RequestMethod.POST)
+    public void createChurch(@RequestParam(value = ParamConstant.CHURCH_NAME) String name,
+                             @RequestParam(value = ParamConstant.CHURCH_ADDRESS) String address,
+                             @RequestParam(value = ParamConstant.CHURCH_TEL) String tel,
+                             @RequestParam(value = ParamConstant.CHURCH_MAIL) String mail,
+                             @RequestParam(value = ParamConstant.CHURCH_DESCRIPTION) String des,
+                             @RequestParam(value = ParamConstant.CHURCH_LONGITUDE) String lon,
+                             @RequestParam(value = ParamConstant.CHURCH_LATITUDE) String lat) {
+        try {
+            Double longitude = Double.parseDouble(lon);
+            Double latitude = Double.parseDouble(lat);
+
+            ChurchEntity churchEntity = new ChurchEntity();
+
+            churchEntity.setChurchName(name);
+            churchEntity.setAddress(address);
+            churchEntity.setTel(tel);
+            churchEntity.setMail(mail);
+            churchEntity.setDescription(des);
+            churchEntity.setLongitude(longitude);
+            churchEntity.setLatitude(latitude);
+
+            churchServiceInterface.createChurch(churchEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

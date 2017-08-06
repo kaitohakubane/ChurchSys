@@ -66,6 +66,7 @@ public class PageConstant {
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
     public static final String REGISTER_STREAM_URL = "/manager/stream/Register";
     public static final String STREAM_INSTRUCTION_URL = "/manager/stream/instruction";
+    public static final String START_OBS="/manager/StartOBS";
 
     //Notification
     public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";
@@ -114,6 +115,7 @@ public class PageConstant {
     public static final String CHURCH_SETTING_PAGE_URL = "/church/setting";
     public static final String CHURCH_MANAGEMENT_URL = "/admin/church-management";
     public static final String ADD_CHURCH_URL = "/admin/new-church";
+    public static final String CREATE_CHURCH_URL = "/admin/add-church";
     public static final String UPDATE_CHURCH_URL = "/admin/setting/update-church";
 
     // Contribution

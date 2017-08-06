@@ -31,6 +31,9 @@ public class ParamConstant {
     public static final String CHURCH_ADDRESS = "address";
     public static final String CHURCH_MAIL = "mail";
     public static final String CHURCH_DESCRIPTION = "description";
+    public static final String CHURCH_LONGITUDE = "longitude";
+    public static final String CHURCH_LATITUDE = "latitude";
+
 
     public static final String CHURCH_LIST = "churchList";
 
@@ -46,6 +49,7 @@ public class ParamConstant {
     public static final int MAXIMUM_DISTANCE = 50;
     public static final String CHURCH_INFORMATION = "churchInformationEntity";
     public static final String INCOMING_EVENT = "listIncomingEvent";
+    public static final String INCOMING_CLASS = "listIncomingClass";
     public static final String CHURCH_SETTING = "setting";
     public static final String CHURCH_IS_SYNC = "isSync";
 

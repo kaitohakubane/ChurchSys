@@ -25,4 +25,10 @@ public interface ChurchModelInterface {
     void addSetting(SettingEntity settingEntity);
 
     void updateSetting(SettingEntity settingEntity);
+
+    List<IncomingEventEntity> getIncomingEventByChurchId(int churchId);
+
+    List<IncomingClassEntity> getIncomingClassByChurchId(int churchId);
+
+    void createChurch(ChurchEntity churchEntity);
 }

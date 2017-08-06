@@ -21,6 +21,8 @@
 
     <c:import url="/resources/layouts/common/header.jsp"/>
     <link href="<c:url value="/resources/css/stream.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
     <style>
         .pac-container {
             z-index: 99999;
@@ -50,53 +52,65 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên nhà thờ:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="churchName">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Ðịa chỉ:</label>
                                         <div class="col-md-7 col-sm-7 col-xs-10">
-                                            <input type="text" class="form-control" >
+                                            <input type="text" class="form-control" id="churchAddress" disabled>
                                         </div>
-                                        <button type="button" id="btnGetLocation" data-target="#locationModal"
-                                                data-toggle="modal" class="btn btn-success btn-lg">Chọn
-                                        </button>
+                                        <div class="col-md-2 col-sm-2">
+                                            <button type="button" id="btnGetLocation" data-target="#locationModal"
+                                                    data-toggle="modal" class="btn btn-success" style="width: 100%">Chọn
+                                            </button>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Số điện thoại:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="churchTel">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Quản lí:</label>
-                                        <div class="col-md-7 col-sm-7 col-xs-10">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <button type="button" id="btnAssign" class="btn btn-success btn-lg">Tạo
-                                        </button>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Giờ hoạt động:</label>
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <input type="eu-time" id="startTime" value="06:00" class="form-control">
-                                        </div>
-
-                                        <label class="control-label col-sm-1">Đến</label>
-
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <input type="eu-time" id="endTime" value="22:00" class="form-control">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email:</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control" id="churchEmail">
                                         </div>
                                     </div>
+
+                                    <%--<div class="form-group">--%>
+                                    <%--<label class="control-label col-md-3 col-sm-3 col-xs-12">Quản lí:</label>--%>
+                                    <%--<div class="col-md-7 col-sm-7 col-xs-10">--%>
+                                    <%--<input type="text" class="form-control">--%>
+                                    <%--</div>--%>
+                                    <%--<div class="col-md-2 col-sm-2">--%>
+                                    <%--<button type="button" id="btnAssign" class="btn btn-success"--%>
+                                    <%--style="width: 100%">Tạo--%>
+                                    <%--</button>--%>
+                                    <%--</div>--%>
+                                    <%--</div>--%>
+
+                                    <%--<div class="form-group">--%>
+                                    <%--<label class="control-label col-md-3 col-sm-3 col-xs-12">Giờ hoạt động:</label>--%>
+                                    <%--<div class="col-md-4 col-sm-4 col-xs-12">--%>
+                                    <%--<input type="eu-time" id="startTime" value="06:00" class="form-control">--%>
+                                    <%--</div>--%>
+
+                                    <%--<label class="control-label col-sm-1">Đến</label>--%>
+
+                                    <%--<div class="col-md-4 col-sm-4 col-xs-12">--%>
+                                    <%--<input type="eu-time" id="endTime" value="22:00" class="form-control">--%>
+                                    <%--</div>--%>
+                                    <%--</div>--%>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <textarea class="form-control" rows="5"></textarea>
+                                            <textarea class="form-control" rows="5" id="churchDescription"></textarea>
                                         </div>
                                     </div>
 
@@ -135,15 +149,15 @@
                         <label class="col-sm-2 control-label">Location:</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="us3-address" />
+                            <input type="text" class="form-control" id="us3-address"/>
                         </div>
                     </div>
                     <%--<div class="form-group">--%>
-                        <%--<label class="col-sm-2 control-label">Radius:</label>--%>
+                    <%--<label class="col-sm-2 control-label">Radius:</label>--%>
 
-                        <%--<div class="col-sm-5">--%>
-                            <%--<input type="text" class="form-control" id="us3-radius" />--%>
-                        <%--</div>--%>
+                    <%--<div class="col-sm-5">--%>
+                    <%--<input type="text" class="form-control" id="us3-radius" />--%>
+                    <%--</div>--%>
                     <%--</div>--%>
                     <div id="us3" style="width: 100%; height: 400px;"></div>
                     <div class="clearfix">&nbsp;</div>
@@ -151,12 +165,12 @@
                         <label class="p-r-small col-sm-1 control-label">Lat.:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" style="width: 110px" id="us3-lat" />
+                            <input type="text" class="form-control" style="width: 110px" id="us3-lat" disabled/>
                         </div>
                         <label class="p-r-small col-sm-2 control-label">Long.:</label>
 
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" style="width: 110px" id="us3-lon" />
+                            <input type="text" class="form-control" style="width: 110px" id="us3-lon" disabled/>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -164,7 +178,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btnOK">Save changes</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -175,9 +189,10 @@
 
 <!-- jQuery -->
 <c:import url="/resources/layouts/common/footer.jsp"/>
-<script type="text/javascript" src='<c:url value="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyCxiXCdE2EE0GU3VB00yLdGWEZQteUx0C0"/>'></script>
+<script type="text/javascript"
+        src='<c:url value="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyCxiXCdE2EE0GU3VB00yLdGWEZQteUx0C0"/>'></script>
 <script src="<c:url value="/resources/lib/locationDist/locationpicker.jquery.js"/>"></script>
-
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/js/add-church.js"/>"></script>
 </body>
 </html>

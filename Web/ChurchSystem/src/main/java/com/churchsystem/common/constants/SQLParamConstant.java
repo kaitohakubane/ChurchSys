@@ -259,7 +259,8 @@ public class SQLParamConstant {
             "(Select s.slotId, s.eventId, s.slotDate, s1.startTime, s1.endTime from slot s, (select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime " +
             "from slothour sh, inclusion i, slot s where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 " +
             "where s.slotId = s1.slotId and s.slotStatus = 1 group by(s.eventId)) m2, user u, church ch, interaction i " +
-            "WHERE m1.eventId = m2.eventId AND m1.churchId= ch.churchId AND ch.churchId = i.churchId AND i.userId = u.userId AND u.userId=:userId AND i.enabled=true";
+            "WHERE m1.eventId = m2.eventId AND m1.churchId= ch.churchId AND ch.churchId = i.churchId AND i.userId = u.userId " +
+            "AND u.userId=:userId AND i.enabled=true ORDER BY slotDate ASC";
 
     public static final String GET_LIST_SLOT_HOUR_BY_TIME = "Select * from slothour Where startTime >=:startTime AND endTime <=:endTime";
 
@@ -285,5 +286,18 @@ public class SQLParamConstant {
             "WHERE e.isRegistered = 0  AND r.regisStatus = 1 AND r.eventId = e.eventId AND r.userId = u.userId AND r.eventId = s2.eventId " +
             "AND e.subId = sb.subId AND r.churchId =:churchId group by (r.regisId)";
 
+    public static final String GET_LIST_INCOMING_EVENT_BY_CHURCH_ID = "SELECT m1.eventId as eventId,m1.eventName as eventName, " +
+            "m1.churchId as churchId,m1.churchName as churchName,m1.subId as subId ,m1.subName as subName, m2.slotDate as slotDate , " +
+            "m2.startTime as startTime, m2.endTime as endTime FROM (select e.eventId, e.eventName, e.churchId, ch.churchName,e.subId, " +
+            "s.subName from event e , subject s, category c , church ch where e.eventStatus = 3 AND e.churchId = ch.churchId " +
+            "AND ch.churchId =:churchId AND e.privacy = 1 AND e.subId = s.subId AND s.categoryId = c.categoryId AND c.categoryId <6 " +
+            "AND c.categoryId != 3) m1, (Select s.slotId, s.eventId, s.slotDate, s1.startTime, s1.endTime from slot s, " +
+            "(select i.slotId, min(sh.startTime) as startTime, max(sh.endTime) as endTime from slothour sh, inclusion i, slot s " +
+            "where i.slotId = s.slotid and sh.slotHourId = i.slotHourId group by s.slotid) s1 where s.slotId = s1.slotId " +
+            "and s.slotStatus = 1 group by(s.eventId)) m2 WHERE m1.eventId = m2.eventId";
 
+    public static final String GET_LIST_INCOMING_CLASS_BY_CHURCH_ID = "select e.eventId as eventId, e.eventName as eventName, " +
+            "e.startDate as startDate, s.subName as subName from event e, category c, subject s where privacy = 1 " +
+            "AND e.subId = s.subId AND s.categoryId = c.categoryId AND e.eventStatus = 3 AND e.churchId =:churchId " +
+            "AND c.categoryId > 5 AND c.categoryName < 12 ORDER BY startDate asc";
 }

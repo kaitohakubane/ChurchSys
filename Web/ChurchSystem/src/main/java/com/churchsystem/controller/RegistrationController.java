@@ -142,24 +142,28 @@ public class RegistrationController {
             int churchIdInt = Integer.parseInt(churchId);
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
-            List<RegistrationEntity> registrationEntities = userServiceInterface.getAllRegistrationByUserId(userEntity.getUserId());
+
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchIdInt);
 
             List<ClassDisplayEntity> classList = registrationServiceInterface.getOnPlanClass(churchIdInt);
-            for (int i = 0; i < classList.size(); i++) {
-                for (int j = 0; j < registrationEntities.size(); j++) {
-                    if (classList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus()== ParamConstant.REGISTRATION_WAITING_STATUS) {
-                        classList.get(i).setUserStatus(ParamConstant.REGISTERED);
-                        break;
+            List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
+            if (userEntity != null) {
+                List<RegistrationEntity> registrationEntities = userServiceInterface.getAllRegistrationByUserId(userEntity.getUserId());
+                for (int i = 0; i < classList.size(); i++) {
+                    for (int j = 0; j < registrationEntities.size(); j++) {
+                        if (classList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus() == ParamConstant.REGISTRATION_WAITING_STATUS) {
+                            classList.get(i).setUserStatus(ParamConstant.REGISTERED);
+                            break;
+                        }
                     }
                 }
-            }
-            List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
-            for (int i = 0; i < classOnGoingList.size(); i++) {
-                for (int j = 0; j < registrationEntities.size(); j++) {
-                    if (classOnGoingList.get(i).getEventId() == registrationEntities.get(j).getEventId()&& registrationEntities.get(j).getRegisStatus()== ParamConstant.REGISTRATION_WAITING_STATUS) {
-                        classOnGoingList.get(i).setUserStatus(ParamConstant.REGISTERED);
-                        break;
+
+                for (int i = 0; i < classOnGoingList.size(); i++) {
+                    for (int j = 0; j < registrationEntities.size(); j++) {
+                        if (classOnGoingList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus() == ParamConstant.REGISTRATION_WAITING_STATUS) {
+                            classOnGoingList.get(i).setUserStatus(ParamConstant.REGISTERED);
+                            break;
+                        }
                     }
                 }
             }

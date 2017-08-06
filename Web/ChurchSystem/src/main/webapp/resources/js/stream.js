@@ -7,6 +7,7 @@ var START_STREAM_URL = "/manager/stream/Start";
 var FINISH_STREAM_URL = "/manager/stream/Finish";
 var MANAGER_MAIN_PAGE_URL = "/manager/";
 var STREAM_INSTRUCTION_URL = "/manager/stream/instruction";
+var START_OBS="/manager/StartOBS"
 var streamEntity = null;
 $(document).ready(function () {
     Initial();
@@ -28,6 +29,7 @@ function Initial() {
         $("#registration").modal("show");
     } else {
         $("#streamCode").val(streamCode);
+        startOBS()
     }
 
 
@@ -37,6 +39,7 @@ function Initial() {
         createStream(streamTitle, resolution);
         $("#registration").modal("hide");
         $("#streamCode").val(streamCode)
+        startOBS();
     })
 
     $("#end").on("click", function () {
@@ -110,6 +113,22 @@ function completeStream() {
         url: requestURL,
         type: requestType,
         data: requestData,
+        success: function () {
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    })
+}
+
+function startOBS(){
+    var requestURL = contextPath + START_OBS;
+    var requestType = "POST"
+
+    $.ajax({
+        url: requestURL,
+        type: requestType,
         success: function () {
 
         },
