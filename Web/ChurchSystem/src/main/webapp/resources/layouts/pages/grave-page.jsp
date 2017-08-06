@@ -39,18 +39,65 @@
 
                 <div class="tab-content">
                     <div id="step1" class="tab-pane fade in active">
-                        <div>
-                            <a class="btn btn-default" id="load-grid" href="#">Load Grid</a>
-                            <a class="btn btn-default" id="add-cabinet" href="#">Add Cabinet</a>
+                        <div class="col-md-2">
+                            <div class="color-description">
+                                <h4>Chú thích</h4>
+                                <ul>
+                                    <li style="color: #ff8c00">
+                                        <i class="fa fa-square"></i>
+                                        <span>Cửa</span>
+                                    </li>
+                                    <li style="color: #ef0b0b">
+                                        <i class="fa fa-square"></i>
+                                        <span>Tượng chúa</span>
+                                    </li>
+                                    <li style="color: #777">
+                                        <i class="fa fa-square"></i>
+                                        <span>Chưa được xét</span>
+                                    </li>
+                                    <li style="color: #01ff70">
+                                        <i class="fa fa-square"></i>
+                                        <span>Đã khởi tạo</span>
+                                    </li>
+                                    <li style="color: #3c8dbc">
+                                        <i class="fa fa-square"></i>
+                                        <span>Hết vị trí</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="grid-stack graveYard" id="graveYard">
+                        <div class="col-md-10" style="margin-top: 10px;">
+                            <div class="grid-stack graveYard" id="graveYard">
 
+                            </div>
                         </div>
                     </div>
                     <div id="step2" class="tab-pane fade">
-                        <div class="grid-stack" id="grave">
-
+                        <div class="col-md-2">
+                            <div class="color-description">
+                                <h4>Chú thích</h4>
+                                <ul>
+                                    <li style="color: #777">
+                                        <i class="fa fa-square"></i>
+                                        <span>Chưa được xét</span>
+                                    </li>
+                                    <li style="color: #4288f1">
+                                        <i class="fa fa-square"></i>
+                                        <span>Đã xem xét</span>
+                                    </li>
+                                    <li style="color: #f243b5">
+                                        <i class="fa fa-square"></i>
+                                        <span>Chờ xét duyệt</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                        <div class="col-md-10" style="margin-top: 10px;">
+                            <div class="grid-stack" id="grave">
+
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -82,13 +129,13 @@
 
                         <div class="form-group">
                             <div class="col-md-6">
-                                <img src="<c:url value="/resources/img/noimagefound.jpg" />" class="style-grave"
+                                <img src="<c:url value="/resources/img/grave2.PNG" />" class="style-grave"
                                      style="width: 100%"
                                      data-id="type1">
                             </div>
 
                             <div class="col-md-6">
-                                <img src="<c:url value="/resources/img/noimagefound.jpg" />" class="style-grave"
+                                <img src="<c:url value="/resources/img/grave1.PNG" />" class="style-grave"
                                      style="width: 100%"
                                      data-id="type2">
                             </div>
@@ -166,7 +213,7 @@
 <%--=======================--%>
 <!-- popup -->
 <div id="graveYardPopup" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 300px;">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -178,14 +225,14 @@
                         <div class="x_content">
                             <div class="form-horizontal form-label-left">
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Số mộ ngang</label>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <label class="control-label col-md-8 col-sm-8 col-xs-12">Số ô tủ ngang</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
                                         <input type="text" id="graveYardWidth" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Số mộ dọc</label>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <label class="control-label col-md-8 col-sm-8 col-xs-12">Số ô tủ dọc</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
                                         <input type="text" id="graveYardHeight" class="form-control">
                                     </div>
                                 </div>

@@ -41,3 +41,31 @@
 .graveYardFull{
     background-color:#3c8dbc;
 }
+
+.color-description {
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+}
+.color-description h4 {
+    font-size: 16px;
+    margin-top: 0;
+    padding-top: 1em;
+    text-align: center;
+}
+
+.color-description ul {
+    list-style: none;
+    padding-left: 0;
+}
+.color-description ul li {
+    font-size: 25px;
+    line-height: 30px;
+}
+.color-description ul li span {
+    font-size: 15px;
+    vertical-align: top;
+}
