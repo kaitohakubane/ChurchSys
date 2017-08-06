@@ -209,10 +209,15 @@ public class ParamConstant {
     public static final String PASSWORD = "password";
     public static final String DEFAULT_PASSWORD = "1234";
     public static final String PRIEST_ROLE = "ROLE_PRIEST";
+    public static final String MANAGER_ROLE = "ROLE_MANAGER";
     public static final boolean DEFAULT_ENABLE = true;
     public static final String INTERACTION_IS_ENABLE = "enabled";
     public static final int IS_FOLLOWING = 1;
     public static final String CURRENT_USER = "currentUser";
+    public static final String USER_NAME = "userName";
+    public static final String MANAGER_MAIL = "email";
+    public static final String MANAGER_PHONE = "phone";
+    public static final String MANAGER_CERT = "cert";
     /**
      * Status
      */

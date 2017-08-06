@@ -117,6 +117,7 @@ public class PageConstant {
     public static final String ADD_CHURCH_URL = "/admin/new-church";
     public static final String CREATE_CHURCH_URL = "/admin/add-church";
     public static final String UPDATE_CHURCH_URL = "/admin/setting/update-church";
+    public static final String ASSIGN_MANAGER_URL = "/admin/assign-manager";
 
     // Contribution
 

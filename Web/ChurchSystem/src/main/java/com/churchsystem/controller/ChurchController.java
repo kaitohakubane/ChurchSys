@@ -3,6 +3,7 @@ package com.churchsystem.controller;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
+import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
@@ -209,6 +210,49 @@ public class ChurchController {
             churchEntity.setLatitude(latitude);
 
             churchServiceInterface.createChurch(churchEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.ASSIGN_MANAGER_URL, method = RequestMethod.POST)
+    public void assignManager(@RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr,
+                              @RequestParam(value = ParamConstant.USER_NAME) String userName,
+                              @RequestParam(value = ParamConstant.ACCOUNT_ID) String accountId,
+                              @RequestParam(value = ParamConstant.MANAGER_MAIL) String mail,
+                              @RequestParam(value = ParamConstant.MANAGER_PHONE) String phone,
+                              @RequestParam(value = ParamConstant.MANAGER_CERT) String cert) {
+        try {
+            Integer churchId = Integer.parseInt(churchIdStr);
+
+            UserEntity userEntity = new UserEntity();
+            userEntity.setAccountId(accountId);
+            userEntity.setPassword(StringUtils.generateEncodePassword(ParamConstant.DEFAULT_PASSWORD));
+            userEntity.setUserName(userName);
+            userEntity.setRole(ParamConstant.MANAGER_ROLE);
+            userEntity.setTel(phone);
+            userEntity.setCertificate(cert);
+            userEntity.setEmail(mail);
+            userEntity.setEnabled(ParamConstant.DEFAULT_ENABLE);
+            userEntity.setAccountNum("");
+//
+            //insert new user
+            userServiceInterface.insertPriest(userEntity);
+
+            //get inserted user
+            UserEntity newPriest = userServiceInterface.getPriestByAccountId(accountId);
+
+
+            //map inserted user to church
+            userServiceInterface.mapUserToChurch(newPriest.getUserId(), churchId);
+
+            //map inserted user with subjects
+            for (int i = 0; i < UtilsConstant.LIST_SUBJECT_ID_OF_MANAGER.length; i++) {
+                userServiceInterface.mapPriestWithSubject(newPriest.getUserId(), UtilsConstant.LIST_SUBJECT_ID_OF_MANAGER[i]);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

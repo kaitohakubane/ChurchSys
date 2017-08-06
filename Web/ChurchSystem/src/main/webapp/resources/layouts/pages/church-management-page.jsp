@@ -20,6 +20,8 @@
     <!-- Datatables -->
     <link href="<c:url value="/resources/lib/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"/>"
           rel="stylesheet">
+    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
 
 </head>
 <body class="nav-md">
@@ -53,13 +55,9 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên nhà thờ</th>
-                                    <th>Kinh độ</th>
-                                    <th>Vĩ độ</th>
                                     <th>Điện thoại</th>
                                     <th>Địa chỉ</th>
                                     <th>Email</th>
-                                    <th>Giờ mở cửa</th>
-                                    <th>Giờ đóng cửa</th>
                                     <th>Thông tin mô tả</th>
                                     <th>Người quản lí</th>
                                     <th></th>
@@ -70,26 +68,29 @@
                                     <tr>
                                         <td>${item.churchId}</td>
                                         <td>${item.churchName}</td>
-                                        <td>${item.longitude}</td>
-                                        <td>${item.latitude}</td>
+
                                         <td>${item.tel}</td>
                                         <td>${item.address}</td>
                                         <td>${item.mail}</td>
-                                        <td>${item.startTime}</td>
-
-                                        <td>${item.endTime}</td>
                                         <td>${item.description}</td>
                                         <td>${item.accountId}</td>
                                         <td>
-                                            <button type="button" id="${item.churchId}btn"><c:choose>
-
+                                            <c:choose>
                                                 <c:when test="${not empty item.userId}">
-                                                    Đổi người quản lí
+                                                    <button type="button"
+                                                            class="btn btn-warning assign-manager"
+                                                            data-id="${item.churchId}" data-toggle="modal"
+                                                            data-target="#assignManagerPopup">Đổi người quản lí
+                                                    </button>
                                                 </c:when>
                                                 <c:when test="${empty item.userId}">
-                                                    Tạo người quản lí
+                                                    <button type="button"
+                                                            class="btn btn-success assign-manager"
+                                                            data-id="${item.churchId}" data-toggle="modal"
+                                                            data-target="#assignManagerPopup">Tạo người quản lí
+                                                    </button>
                                                 </c:when>
-                                            </c:choose></button>
+                                            </c:choose>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -102,6 +103,72 @@
         </div>
         <!-- /page content -->
 
+        <!-- popup -->
+        <div id="assignManagerPopup" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Người quản lí</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                <div class="x_content form-horizontal form-label-left">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên cha xứ:</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" id="userName" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên đăng nhập:<span
+                                                class="required">*</span></label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" required="required"
+                                                   class="form-control col-md-7 col-xs-12"
+                                                   id="accountId">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email<span
+                                                class="required">*</span></label>
+                                        <div class="col-md-9 col-sm-6 col-xs-12">
+                                            <input required="required" class="form-control col-md-7 col-xs-12"
+                                                   id="email"
+                                                   type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">SĐT:</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" id="phone" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Chứng chỉ:</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" id="cert" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-primary" id="btnOk">Xác nhận</button>
+                    </div>
+                </div>
+                <!-- /Modal content -->
+            </div>
+        </div>
+        <!-- /popup -->
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
@@ -110,6 +177,7 @@
 <!-- Datatables -->
 <script src="<c:url value="/resources/lib/vendors/datatables.net/js/jquery.dataTables.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/js/church-management.js"/>"></script>
 
 
