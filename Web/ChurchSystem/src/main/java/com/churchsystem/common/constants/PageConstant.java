@@ -143,6 +143,9 @@ public class PageConstant {
     //Mobile
     public static final String MOBILE_GET_NOTIFICATION_URL = "/mobile/notification/Get";
     public static final String MOBILE_LOGIN_URL = "/mobile/user/login";
+    public static final String MOBILE_GET_FOLLOWING_CHURCH="/mobile/user/getFollowingChurch";
+    public static final String MOBILE_GET_USER_EVENT="/mobile/user/getEvent";
+    public static final String MOBILE_GET_CHURCH_EVENT="/mobile/church/getEvent";
 
     /**
      * Common

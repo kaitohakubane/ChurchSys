@@ -136,25 +136,5 @@ public class UserController {
         }
     }
 
-    @ResponseBody
-    @RequestMapping(value = PageConstant.MOBILE_LOGIN_URL, method = RequestMethod.POST)
-    public UserEntity addNewPriest(@RequestParam(value = ParamConstant.ACCOUNT_ID) String accountId,
-                                   @RequestParam(value = ParamConstant.PASSWORD) String password) {
 
-        try {
-
-            UserEntity result = userServiceInterface.getUserByAccountId(accountId);
-            boolean compare=StringUtils.matchPassword(password,result.getPassword());
-            if(compare){
-                return result;
-            }else{
-                return null;
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
 }

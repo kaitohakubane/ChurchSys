@@ -64,4 +64,6 @@ public interface EventServiceInterface {
 
     int checkRoomForClass(SlotEntity slotEntity, Time startTime, Time endTime, int newRoomId, int churchId, int subId, Integer currentRoomId);
 
+    List<EventDataEntity> getListOfEventData(int churchId);
+
 }

@@ -55,6 +55,13 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
+    public List<EventDataEntity> getListOfEventData(int churchId){
+        List<EventDataEntity> data = eventModelInterface.getListOfEvent(churchId);
+        return data;
+    }
+
+
+    @Override
     public List<EventDisplayEntity> getListOfPublicEvent(int churchId) {
         List<EventDataEntity> data = eventModelInterface.getListOfPublicEvent(churchId);
         List<EventDisplayEntity> result = convertEventData(data);
