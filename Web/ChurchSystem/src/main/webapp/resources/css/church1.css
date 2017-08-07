@@ -1,0 +1,391 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.clearfix {
+    clear: both;
+}
+body {
+    width:100%;
+    height:100%;
+    font-family:Arial;
+    font-size:14px;
+}
+a:hover {
+    text-decoration: none;
+}
+ol, ul {
+    list-style: none;
+}
+/*header, footer {
+    min-height:50px;
+    position:relative;
+}*/
+.icon-top {
+    width: 50px;
+    height: 50px;
+}
+.icon-img {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.mega-nav {
+    background:#400f67;
+    border-radius:0;
+    margin-bottom:0;
+}
+.mega-nav.navbar-default .navbar-nav > li > a {
+    color:#fff;
+    transition: all 200ms ease-out;
+    -webkit-transition: all 200ms ease-out;
+    -ms-transition: all 200ms ease-out;
+}
+.mega-nav.navbar-default .navbar-nav > li > a:hover {
+    background:#5f2191;
+}
+.mega-nav.navbar-default .navbar-nav > li.dropdown > a:hover,
+.mega-nav.navbar-default .navbar-nav > li.dropdown > a:focus,
+.mega-nav.navbar-default .navbar-nav > li.dropdown > a:active{
+    background:#5f2191;
+    color:#fff;
+}
+#MainMenu {
+    padding-left:0;
+}
+#MainMenu .menu-list li {
+    transition: all 200ms ease-out;
+    -webkit-transition: all 200ms ease-out;
+    -ms-transition: all 200ms ease-out;
+}
+#MainMenu .menu-list > li + li {
+    border-left:1px solid rgba(255, 255, 255, 0.5);
+}
+
+.mega-nav.navbar-default .navbar-nav > li.menu-list .list-category a {
+    color:#333;
+}
+.dropdown-menu.mega-dropdown-menu{
+    background:#400f67;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 0px;
+}
+.dropdown-menu.mega-dropdown-menu li a {
+    color: #fff;
+    border-bottom:1px solid rgba(255, 255, 255, 0.5);
+}
+.dropdown-menu.mega-dropdown-menu li:last-child a {
+    border-bottom:none;
+}
+.dropdown-menu.mega-dropdown-menu li a:hover {
+    background: #5f2191;
+    transition: all 200ms ease-out;
+}
+.nav-right li {
+    float: left;
+    list-style: none;
+    margin-top: 15px;
+}
+.nav-right li a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+}
+.nav-right li a:hover {
+    background-color: #7529b2;
+    transition: 0.8s all;
+}
+a.button {
+    background-color: #5f2191;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+/*end navbar*/
+/*=====================*/
+/*church info*/
+.church-info {
+    background-color: #fff;
+    margin-top: 55px;
+    margin-bottom: 5px;
+    border:5px double #ccc;
+}
+.small-nav {
+    margin-bottom: 5px;
+}
+/*end church info*/
+/*=====================*/
+/*page content*/
+.block1 a {
+    color: #4A4C46;
+}
+.block1 a:hover {
+    color: #5f2191;
+}
+.border-top {
+    border-top: 5px solid #400f67;
+    margin-bottom: 10px;
+}
+.img-mb {
+    margin-bottom: 10px;
+}
+.set-size-img {
+    width: 100%;
+}
+.set-size-img img {
+    width: 100%;
+}
+a.main-title {
+    font-size: 1.2em;
+    color: #b30000;
+}
+.main-detail {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.topic-title {
+    margin: 0px;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: 1px solid #400f67;
+}
+.topic-title .title-color {
+    color: #fff;
+    padding: 5px;
+    background-color: #400f67;
+    display: inline-block;
+}
+.news ul {
+    padding-left: 0px;
+}
+.news ul li {
+    border-bottom: 1px solid #400f67;
+    padding: 10px 0;
+}
+.news ul li a {
+    font-weight: bold;
+}
+.mt {
+    margin-top: 15px;
+}
+.block2 {
+    border-top: 5px solid #400f67;
+    margin-top: 10px;
+}
+.block2 a {
+    color: #4A4C46;
+}
+.block2 a:hover {
+    color: #5f2191;
+}
+.block2 .topic-title {
+    margin-top: 10px;
+}
+.title-mtb {
+    margin: 10px 0px;
+    display: block;
+    font-size: 1.2em;
+}
+.b2-right-col {
+    margin-top: 10px;
+}
+.divice {
+    margin: 5px 0;
+    width: 100%;
+    height: 1px;
+    background-color: #400f67;
+}
+.block-right {
+    margin-bottom: 20px;
+}
+.videoWrapper {
+    position: relative;
+    padding-bottom: 60%;
+    padding-top: 25px;
+    height: 0;
+    border: 5px solid #eee;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/*end page content*/
+/*==========================*/
+/*footer*/
+/* Footer */
+footer{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #CCC;
+    margin-top: 20px;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+    background-color: #400f67;
+    border-top: 5px solid #350d56;
+}
+
+/*=============================*/
+/*=======================*/
+/*regis*/
+.main-login{
+    background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+.main-center{
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 10px 40px;
+    background:#400f67;
+    color: #FFF;
+    text-shadow: none;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
+span.input-group-addon i {
+    color: #400f67;
+}
+/*=============================*/
+/*=======================*/
+/*nav-pr*/
+.nav-private {
+    background-color: #400f67;
+}
+.nav-private > ul {
+    padding: 5px 0 26px 0;
+}
+.nav-private > ul > li {
+    float: left;
+    width: 14.28%;
+}
+.nav-private > ul > li > a {
+    font-size: 15px;
+    color: #fff;
+    border-left: 2px solid white;
+    display: block;
+    text-align: center;
+}
+.nav-private > ul > li:first-child > a{
+    border: none;
+}
+.nav-private > ul > li a:hover {
+    background-color: #5f2191;
+    transition: all 0.5s;
+}
+
+/*============*/
+/*noti*/
+.dropdown-menu.space li {
+    background: #f9f9f9;
+    padding: 5px;
+    margin: 5px 5px 0 5px;
+}
+.dropdown-menu.space li a:hover{
+    background: #eee;
+}
+.dropdown-menu.space li a{
+    color: #000;
+}
+.dropdown-menu.space li:first-child {
+    margin-top: 0;
+}
+.dropdown-menu.space span {
+    white-space: normal;
+}
+.dropdown-menu.space a .message {
+    display: block !important;
+}
+
+/*=============*/
+/*class*/
+.class-list {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    line-height: 35px;
+    font-size: 15px;
+}
+.class-list-title {
+    border-bottom: 1px solid #ddd;
+    background-color: #6d27a5;
+}
+ul.class-list-title{
+    padding-left: 0px;
+    text-align: center;
+}
+.class-list-title li a{
+    font-size: 18px;
+    color: #fff;
+}
+.class-element li a{
+    color: #000;
+}
+.class-element li a:hover{
+    text-decoration: underline;
+}
+
+/*===============*/
+/*intro*/
+.title-home-page h2{
+    margin-top: 0px;
+}
+
+/*================*/
+/*nav-class*/
+.nav-class {
+    background-color: #9f41ea;
+}
+.nav-class > ul {
+    padding: 5px 0 28px 0;
+}
+.nav-class > ul > li {
+    float: left;
+    width: 12.5%;
+}
+.nav-class > ul > li > a {
+    font-size: 17px;
+    color: #fff;
+    border-left: 2px solid white;
+    display: block;
+    text-align: center;
+}
+.nav-class > ul > li:first-child > a{
+    border: none;
+}
+.nav-class > ul > li a:hover {
+    background-color: #7b2cba;
+    transition: all 0.5s;
+}
+/*=============*/
+/*church-info*/
+.church-info-cover {
+    background-image: url(../img/slider-purple.jpg);
+    width: 100%;
+    height: 150px;
+    background-size: 100% 100%;
+}
+
+.event-block li {
+    background: #eee;
+    margin: 6px -8px 0 -8px;
+    padding: 3px 0 3px 8px;
+    color: #000;
+}
