@@ -1,9 +1,9 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Mr Kiet
-  Date: 07/28/17
-  Time: 1:38 AM
-  To change this template use File | Settings | File Templates.
+Created by IntelliJ IDEA.
+User: Mr Kiet
+Date: 07/28/17
+Time: 1:38 AM
+To change this template use File | Settings | File Templates.
 --%>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -114,6 +114,13 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Giao diện:</label>
+                                        <button class="col-md-3"
+                                                style="background-color: #7ab33e; border: 2px solid #7ab33e; height: 30px; margin-left: 10px;"
+                                                data-toggle="modal" data-target="#theme-modal"></button>
+                                    </div>
+
+                                    <div class="form-group">
                                         <div class="col-md-offset-3 checkbox">
                                             <label>
                                                 <c:if test="${setting.isSync == 0}">
@@ -147,6 +154,57 @@
         </div>
 
         <!-- /page content -->
+
+        <!-- popup -->
+        <div id="theme-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 400px;">
+
+                <div class="row">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 style="text-align: center;">Theme</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal form-label-left input_mask">
+
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <img src="<c:url value="/resources/img/icon.png"/>" id="theme-picture" style="width: 100%">
+                                    </div>
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <label>
+                                        <input type="radio" class="flat" name="theme-color" id="green-theme" checked> <i
+                                            class="fa fa-square"
+                                            style="font-size: 35px; color: #7ab33e ; vertical-align: middle;"></i>
+                                    </label>
+
+                                    <label style="margin-left: 10px">
+                                        <input type="radio" class="flat" name="theme-color" id="purple-theme"> <i
+                                            class="fa fa-square"
+                                            style="font-size: 35px; color: #400f67 ; vertical-align: middle;"></i>
+                                    </label>
+
+                                    <label style="margin-left: 10px">
+                                        <input type="radio" class="flat" name="theme-color" id="pink-theme"> <i
+                                            class="fa fa-square"
+                                            style="font-size: 35px; color: #ff1744 ; vertical-align: middle;"></i>
+                                    </label>
+                                </div>
+
+                                <div class="ln_solid"></div>
+                                <button type="button" class="btn btn-success pull-right">Lưu</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /popup -->
 
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
