@@ -4,9 +4,59 @@ var FAILURE_STATUS = "Cập nhật thất bại!";
 var TYPE_DANGER = "danger";
 var TYPE_SUCCESS = "success";
 $(document).ready(function () {
-
+    generalInitial()
 })
 
+
+function generalInitial(){
+    var theme = $("#theme");
+    var image = $("#theme-picture");
+    if (theme.data('color') == 0) {
+        theme.css('background-color', "#7ab33e")
+        theme.css('border-color', "#7ab33e")
+        image.attr("src", contextPath + "/resources/img/theme-0.PNG");
+        $("#green-theme").iCheck('check');
+    } else if (theme.data('color') == 1) {
+        theme.css('background-color', "#400f67")
+        image.attr("src", contextPath + "/resources/img/theme-1.PNG");
+        theme.css('border-color', "#400f67")
+        $("#purple-theme").iCheck('check');
+    } else if (theme.data('color') == 2) {
+        theme.css('background-color', "#ff1744")
+        theme.css('border-color', "#ff1744")
+        $("#pink-theme").iCheck('check');
+    }
+
+
+    $("input[name=theme-color]").on("ifChanged", function () {
+        var checked = $('input[name=theme-color]:checked');
+        if (checked.val() == 0) {
+            image.attr("src", contextPath + "/resources/img/theme-0.PNG");
+        } else if (checked.val() == 1) {
+            image.attr("src", contextPath + "/resources/img/theme-1.PNG");
+        }
+    })
+
+
+    $("#processBtn").on("click", function () {
+        var color = $('input[name=theme-color]:checked').val()
+        var theme = $("#theme");
+        if (color == 0) {
+            theme.css('background-color', "#7ab33e")
+            theme.css('border-color', "#7ab33e")
+            theme.data('color', '0')
+        } else if (color == 1) {
+            theme.css('background-color', "#400f67")
+            theme.css('border-color', "#400f67")
+            theme.data('color', '1')
+        } else if (color == 2) {
+            theme.css('background-color', "#ff1744")
+            theme.css('border-color', "#ff1744")
+            theme.data('color', '2');
+        }
+        $("#theme-modal").modal('hide');
+    })
+}
 
 $("#btnSave").on("click", function () {
     updateChurch();
@@ -33,6 +83,7 @@ function updateChurch() {
         'mail': $("#churchEmail").val(),
         'description': $("#churchDescription").val(),
         'isSync': isSync,
+        'theme': $("#theme").data('color')
     }
     console.log(requestData);
     $.ajax({
@@ -51,7 +102,6 @@ function updateChurch() {
     })
 
 }
-
 
 function onClickShowPopup(mes, type) {
 

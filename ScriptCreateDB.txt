@@ -314,6 +314,7 @@ settingId int NOT NULL auto_increment,
 churchId int,
 
 isSync int,
+theme int,
 
 primary key (settingId)
 );

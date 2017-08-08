@@ -33,6 +33,9 @@ public class ParamConstant {
     public static final String CHURCH_DESCRIPTION = "description";
     public static final String CHURCH_LONGITUDE = "longitude";
     public static final String CHURCH_LATITUDE = "latitude";
+    public static final int CHURCH_THEME_0 = 0;
+    public static final int CHURCH_THEME_1 = 1;
+    public static final String CHURCH_THEME = "theme";
 
 
     public static final String CHURCH_LIST = "churchList";
@@ -52,6 +55,7 @@ public class ParamConstant {
     public static final String INCOMING_CLASS = "listIncomingClass";
     public static final String CHURCH_SETTING = "setting";
     public static final String CHURCH_IS_SYNC = "isSync";
+
 
     /**
      * Registration
@@ -97,41 +101,40 @@ public class ParamConstant {
      * Grave
      */
 
-    public static final String GRAVE_YARD_ID="graveYardId";
-    public static final int GRAVE_YARD_NOT_INITIAL=0;
-    public static final int GRAVE_YARD_INITIAL=1;
-    public static final int GRAVE_YARD_FULL=2;
-    public static final int GRAVE_YARD_GATE=3;
-    public static final int GRAVE_YARD_STATUE=4;
-    public static final int GRAVE_WAITING_FOR_APPROVE=0;
-    public static final int GRAVE_APPROVED=1;
-    public static final int GRAVE_PROCESSING=0;
-    public static final String WIDTH="width";
-    public static final String HEIGHT="height";
-    public static final String GRAVE_YARD_LIST="graveYardList";
-    public static final String GRAVE_YARD_PROTOTYPE="prototype";
-    public static final String GRAVE_YARD_DEFAULT_NAME="Tủ ";
-    public static final String GATE_DEFAULT_NAME="Cửa vào ";
-    public static final String STATUE_DEFAULT_NAME="Tủ ";
-    public static final int GRAVE_YARD_DEFAULT_START_NUMBER=1;
-    public static final String GRAVE_ID="graveId";
-    public static final String GRAVE_STATUS="status";
-    public static final String GRAVE_NAME="graveName";
-    public static final String GRAVE_BIRTH="graveBirth";
-    public static final String GRAVE_HOME_TOWN="graveHomeTown";
-    public static final String GRAVE_DEATH_DAY="graveDeathDay";
-    public static final String GRAVE_PARISH="graveParish";
-    public static final String GRAVE_IMAGE="graveImage";
-    public static final String GRAVE_POSITION_X="positionX";
-    public static final String GRAVE_POSITION_Y="positionY";
-    public static final String GRAVE_STATUS_TYPE="statusType";
-    public static final int  ACCEPT_TYPE=1;
-    public static final int  REJECT_TYPE=0;
+    public static final String GRAVE_YARD_ID = "graveYardId";
+    public static final int GRAVE_YARD_NOT_INITIAL = 0;
+    public static final int GRAVE_YARD_INITIAL = 1;
+    public static final int GRAVE_YARD_FULL = 2;
+    public static final int GRAVE_YARD_GATE = 3;
+    public static final int GRAVE_YARD_STATUE = 4;
+    public static final int GRAVE_WAITING_FOR_APPROVE = 0;
+    public static final int GRAVE_APPROVED = 1;
+    public static final int GRAVE_PROCESSING = 0;
+    public static final String WIDTH = "width";
+    public static final String HEIGHT = "height";
+    public static final String GRAVE_YARD_LIST = "graveYardList";
+    public static final String GRAVE_YARD_PROTOTYPE = "prototype";
+    public static final String GRAVE_YARD_DEFAULT_NAME = "Tủ ";
+    public static final String GATE_DEFAULT_NAME = "Cửa vào ";
+    public static final String STATUE_DEFAULT_NAME = "Tủ ";
+    public static final int GRAVE_YARD_DEFAULT_START_NUMBER = 1;
+    public static final String GRAVE_ID = "graveId";
+    public static final String GRAVE_STATUS = "status";
+    public static final String GRAVE_NAME = "graveName";
+    public static final String GRAVE_BIRTH = "graveBirth";
+    public static final String GRAVE_HOME_TOWN = "graveHomeTown";
+    public static final String GRAVE_DEATH_DAY = "graveDeathDay";
+    public static final String GRAVE_PARISH = "graveParish";
+    public static final String GRAVE_IMAGE = "graveImage";
+    public static final String GRAVE_POSITION_X = "positionX";
+    public static final String GRAVE_POSITION_Y = "positionY";
+    public static final String GRAVE_STATUS_TYPE = "statusType";
+    public static final int ACCEPT_TYPE = 1;
+    public static final int REJECT_TYPE = 0;
 
 
     public static final int IS_SYNC = 1;
     public static final int IS_NOT_SYNC = 0;
-
 
 
     /**
@@ -238,7 +241,6 @@ public class ParamConstant {
     public static final int SLOT_STATUS_FINISH = 3;
     public static final int SLOT_UNAVAILABLE = 1;
     public static final int SLOT_AVAILABLE = 0;
-
 
 
     public static final int REGISTERED = 1;

@@ -18,7 +18,7 @@
     <title>Information Page</title>
     <c:import url="/resources/layouts/user-common/header.jsp"/>
     <!-- CSS -->
-    <link href="<c:url value="/resources/css/church.css"/>" rel="stylesheet">
+
 </head>
 <body>
 <c:import url="/resources/layouts/user-common/user-header.jsp"/>

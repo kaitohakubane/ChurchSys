@@ -4,6 +4,7 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
+import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,17 +57,19 @@ public class ChurchService implements ChurchServiceInterface {
     }
 
     @Override
-    public void editSetting(int churchId, int isSync) {
+    public void editSetting(int churchId, int isSync,int theme) {
         SettingEntity settingEntity = churchModelInterface.getSettingOfChurch(churchId);
         if (settingEntity == null) {
             if (isSync == 1) {
                 SettingEntity newSetting = new SettingEntity();
                 newSetting.setChurchId(churchId);
                 newSetting.setIsSync(isSync);
+                newSetting.setTheme(theme);
                 churchModelInterface.addSetting(newSetting);
             }
         } else {
             settingEntity.setIsSync(isSync);
+            settingEntity.setTheme(theme);
             churchModelInterface.updateSetting(settingEntity);
         }
     }
@@ -84,6 +87,14 @@ public class ChurchService implements ChurchServiceInterface {
     @Override
     public void createChurch(ChurchEntity churchEntity) {
         churchModelInterface.createChurch(churchEntity);
+        churchEntity = churchModelInterface.getChurchByInfo(churchEntity.getLongitude(), churchEntity.getLatitude());
+        SettingEntity settingEntity = new SettingEntity();
+        settingEntity.setChurchId(churchEntity.getChurchId());
+        settingEntity.setIsSync(ParamConstant.IS_NOT_SYNC);
+        settingEntity.setTheme(ParamConstant.CHURCH_THEME_0);
+        churchModelInterface.createSetting(settingEntity);
     }
+
+
 }
 

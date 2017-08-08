@@ -12,8 +12,15 @@
 <html>
 <head>
     <title>Home page</title>
-    <c:import url="/resources/layouts/user-common/header.jsp"/>
+    <!-- Bootstrap -->
+    <link href="<c:url value="/resources/lib/vendors/bootstrap/dist/css/bootstrap.min.css"/>" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="<c:url value="/resources/lib/vendors/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/common.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/map.css"/>" rel="stylesheet">
+    <script>
+        var contextPath = "${pageContext.request.contextPath}";
+    </script>
 
 </head>
 <body>

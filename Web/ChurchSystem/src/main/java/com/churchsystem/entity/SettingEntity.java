@@ -3,7 +3,7 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 7/28/2017.
+ * Created by hungmcse61561-admin on 8/8/2017.
  */
 @Entity
 @Table(name = "setting", schema = "churchsys", catalog = "")
@@ -11,6 +11,7 @@ public class SettingEntity {
     private int settingId;
     private Integer churchId;
     private Integer isSync;
+    private Integer theme;
 
     @Id
     @Column(name = "settingId")
@@ -42,6 +43,16 @@ public class SettingEntity {
         this.isSync = isSync;
     }
 
+    @Basic
+    @Column(name = "theme")
+    public Integer getTheme() {
+        return theme;
+    }
+
+    public void setTheme(Integer theme) {
+        this.theme = theme;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,6 +63,7 @@ public class SettingEntity {
         if (settingId != that.settingId) return false;
         if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (isSync != null ? !isSync.equals(that.isSync) : that.isSync != null) return false;
+        if (theme != null ? !theme.equals(that.theme) : that.theme != null) return false;
 
         return true;
     }
@@ -61,6 +73,7 @@ public class SettingEntity {
         int result = settingId;
         result = 31 * result + (churchId != null ? churchId.hashCode() : 0);
         result = 31 * result + (isSync != null ? isSync.hashCode() : 0);
+        result = 31 * result + (theme != null ? theme.hashCode() : 0);
         return result;
     }
 }

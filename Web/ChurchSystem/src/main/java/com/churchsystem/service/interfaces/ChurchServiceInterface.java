@@ -22,10 +22,12 @@ public interface ChurchServiceInterface {
 
     SettingEntity getSettingOfChurch(int churchId);
 
-    void editSetting(int churchId, int isSync);
+    void editSetting(int churchId, int isSync,int theme);
 
     List<IncomingEventEntity> getIncomingEventByChurchId(int churchId);
 
     List<IncomingClassEntity> getIncomingClassByChurchId(int churchId);
+
     void createChurch(ChurchEntity churchEntity);
+
 }

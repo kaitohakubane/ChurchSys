@@ -3,6 +3,7 @@ package com.churchsystem.controller;
 import com.churchsystem.common.constants.PageConstant;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.entity.ChurchEntity;
+import com.churchsystem.entity.SettingEntity;
 import com.churchsystem.service.ChurchService;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class CommonController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.PRAY_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+                SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
+                modelAndView = new ModelAndView(PageConstant.PRAY_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity).addObject(ParamConstant.CHURCH_SETTING, settingEntity);
             }
-
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -41,9 +42,9 @@ public class CommonController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.DONATION_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+                SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
+                modelAndView = new ModelAndView(PageConstant.DONATION_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity).addObject(ParamConstant.CHURCH_SETTING, settingEntity);
             }
-
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -57,9 +58,9 @@ public class CommonController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.CONTACT_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+                SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
+                modelAndView = new ModelAndView(PageConstant.CONTACT_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity).addObject(ParamConstant.CHURCH_SETTING, settingEntity);
             }
-
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -71,10 +72,7 @@ public class CommonController {
     public ModelAndView loadBible() {
         ModelAndView modelAndView = new ModelAndView(PageConstant.NOT_FOUND_PAGE);
         try {
-
             modelAndView = new ModelAndView(PageConstant.BIBLE_PAGE);
-
-
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -85,10 +83,7 @@ public class CommonController {
     public ModelAndView loadAugust() {
         ModelAndView modelAndView = new ModelAndView(PageConstant.NOT_FOUND_PAGE);
         try {
-
             modelAndView = new ModelAndView(PageConstant.AUGUST_PAGE);
-
-
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }

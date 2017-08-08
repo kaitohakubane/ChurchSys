@@ -31,4 +31,8 @@ public interface ChurchModelInterface {
     List<IncomingClassEntity> getIncomingClassByChurchId(int churchId);
 
     void createChurch(ChurchEntity churchEntity);
+
+    void createSetting(SettingEntity setting);
+
+    ChurchEntity getChurchByInfo( Double longitude, Double latitude);
 }

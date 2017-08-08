@@ -105,5 +105,21 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     @Override
     public void createChurch(ChurchEntity churchEntity) {
         getSession().persist(churchEntity);
+        getSession().flush();
+        getSession().clear();
+    }
+
+    @Override
+    public ChurchEntity getChurchByInfo(Double longitude, Double latitude) {
+        Criteria criteria = getSession().createCriteria(ChurchEntity.class)
+                .add(Restrictions.eq(ParamConstant.CHURCH_LONGITUDE, longitude))
+                .add(Restrictions.eq(ParamConstant.CHURCH_LATITUDE, latitude));
+        ChurchEntity result = (ChurchEntity) criteria.uniqueResult();
+        return result;
+    }
+
+    @Override
+    public void createSetting(SettingEntity setting) {
+        getSession().persist(setting);
     }
 }

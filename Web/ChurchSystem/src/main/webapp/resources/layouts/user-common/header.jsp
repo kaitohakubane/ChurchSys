@@ -13,6 +13,12 @@
 <!-- Font Awesome -->
 <link href="<c:url value="/resources/lib/vendors/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/css/common.css"/>" rel="stylesheet">
+<c:if test="${setting.theme == 0}">
+    <link href="<c:url value="/resources/css/church.css"/>" rel="stylesheet">
+</c:if>
+<c:if test="${setting.theme == 1}">
+    <link href="<c:url value="/resources/css/church1.css"/>" rel="stylesheet">
+</c:if>
 <script>
     var contextPath = "${pageContext.request.contextPath}";
 </script>

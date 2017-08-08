@@ -35,11 +35,13 @@ public class ChurchController {
         try {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+            SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
             List<IncomingEventEntity> list = churchServiceInterface.getIncomingEventByChurchId(churchId);
             List<IncomingClassEntity> incomingClassEntities = churchServiceInterface.getIncomingClassByChurchId(churchId);
             if (churchEntity != null) {
                 modelAndView = new ModelAndView(PageConstant.CHURCH_HOME_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity)
-                        .addObject(ParamConstant.INCOMING_EVENT, list).addObject(ParamConstant.INCOMING_CLASS, incomingClassEntities);
+                        .addObject(ParamConstant.INCOMING_EVENT, list).addObject(ParamConstant.INCOMING_CLASS, incomingClassEntities)
+                        .addObject(ParamConstant.CHURCH_SETTING, settingEntity);
             }
 
         } catch (NumberFormatException e) {
@@ -54,8 +56,11 @@ public class ChurchController {
         try {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+
             if (churchEntity != null) {
-                modelAndView = new ModelAndView(PageConstant.CHURCH_SCHEDULE_PAGE).addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+                SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
+                modelAndView = new ModelAndView(PageConstant.CHURCH_SCHEDULE_PAGE)
+                        .addObject(ParamConstant.CHURCH_OBJECT, churchEntity).addObject(ParamConstant.CHURCH_SETTING, settingEntity);
             }
 
         } catch (NumberFormatException e) {
@@ -118,9 +123,10 @@ public class ChurchController {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
             if (churchEntity != null) {
+                SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchEntity.getChurchId());
                 modelAndView = new ModelAndView(PageConstant.INTRODUCTION_PAGE)
                         .addObject(ParamConstant.CHURCH_INFORMATION, churchServiceInterface.getChurchInfo(churchId))
-                        .addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+                        .addObject(ParamConstant.CHURCH_OBJECT, churchEntity).addObject(ParamConstant.CHURCH_SETTING, settingEntity);
             }
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -157,7 +163,8 @@ public class ChurchController {
                              @RequestParam(value = ParamConstant.CHURCH_TEL) String tel,
                              @RequestParam(value = ParamConstant.CHURCH_MAIL) String mail,
                              @RequestParam(value = ParamConstant.CHURCH_DESCRIPTION) String des,
-                             @RequestParam(value = ParamConstant.CHURCH_IS_SYNC) String sync
+                             @RequestParam(value = ParamConstant.CHURCH_IS_SYNC) String sync,
+                             @RequestParam(value = ParamConstant.CHURCH_THEME) String theme
             , HttpServletRequest request) {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
@@ -168,10 +175,9 @@ public class ChurchController {
             churchEntity.setDescription(des);
             churchEntity.setMail(mail);
             churchServiceInterface.updateChurch(churchEntity);
-
             int isSync = Integer.parseInt(sync);
-
-            churchServiceInterface.editSetting(churchId, isSync);
+            int themeInt = Integer.parseInt(theme);
+            churchServiceInterface.editSetting(churchId, isSync,themeInt);
 
 
         } catch (Exception e) {
@@ -246,7 +252,7 @@ public class ChurchController {
             UserEntity newPriest = userServiceInterface.getPriestByAccountId(accountId);
 
             ChurchMailSender mailSender = new ChurchMailSender();
-            mailSender.sendMail(UtilsConstant.DEFAULT_ADMIN_MAIL, UtilsConstant.DEFAULT_CC_MAIL, mail, UtilsConstant.ASSIGN_CHURCH_SUBJECT + churchEntity.getChurchName(), UtilsConstant.MAIL_HEADER + userName + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_ACCOUNT + accountId + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_PASSWORD + ParamConstant.DEFAULT_PASSWORD +"\n"+UtilsConstant.MAIL_FOOTER);
+            mailSender.sendMail(UtilsConstant.DEFAULT_ADMIN_MAIL, UtilsConstant.DEFAULT_CC_MAIL, mail, UtilsConstant.ASSIGN_CHURCH_SUBJECT + churchEntity.getChurchName(), UtilsConstant.MAIL_HEADER + userName + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_ACCOUNT + accountId + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_PASSWORD + ParamConstant.DEFAULT_PASSWORD + "\n" + UtilsConstant.MAIL_FOOTER);
             //map inserted user to church
             userServiceInterface.mapUserToChurch(newPriest.getUserId(), churchId);
 
