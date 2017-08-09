@@ -21,8 +21,7 @@
 
     <c:import url="/resources/layouts/common/header.jsp"/>
     <link href="<c:url value="/resources/css/stream.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
+
     <style>
         .pac-container {
             z-index: 99999;

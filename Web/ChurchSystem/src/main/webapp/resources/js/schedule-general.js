@@ -22,6 +22,8 @@ var curSlotId;
 
 var REGISTER_SUCCESS_STATUS = "Đăng ký thành công!";
 var REGISTER_FAILURE_STATUS = "Đăng ký thất bại";
+var EDIT_SUCCESS_STATUS = "Cập nhật thành công!";
+var EDIT_FAILURE_STATUS = "Cập nhật thất bại!";
 var ERROR_STATUS = "Có lỗi xảy ra!"
 var REMOVE_SUCCESS_STATUS = "Xóa thành công!";
 var REMOVE_FAILURE_STATUS = "Xóa thất bại";
@@ -35,9 +37,6 @@ registerClassList();
 datePickerLoad();
 $(document).ready(function () {
     terminateEventCreateMenu();
-    $("#cancel").on("click", function () {
-        $("#confirmModal").modal("hide");
-    })
     $('.day-checkbox').on('ifChecked', function (event) {
         dayArray.push(event.target.id)
         dayArray.sort(function (a, b) {
@@ -153,7 +152,9 @@ function inputEventPopupInformation(event) {
         post(contextPath + UPDATE_EVENT_URL, parameter);
     })
 
-    $("#btnRemove").on('click', function () {
+
+    $("#btnRemove").unbind("click")
+    $("#btnRemove").bind("click", function () {
         checkIsManySlot(event);
         curSlotId = event.slotId;
         console.log("Selected slot ID is: " + curSlotId);
@@ -168,20 +169,22 @@ function inputEventPopupInformation(event) {
             removeSingleSlot(curSlotId);
         }
     })
-
-    $("#btnSave").on('click', function () {
+    $("#btnSave").unbind("click")
+    $("#btnSave").bind("click", function () {
         editEventNameAndPrivacy(event);
     })
-
 }
 
-$("#oneSlot").on("click", function () {
+
+$("#oneSlot").unbind("click")
+$("#oneSlot").bind("click", function () {
     console.log("Option remove one slot is selected");
     removeSingleSlot(curSlotId);
     $('#confirmDelete').modal('hide');
-
 })
-$("#allSlot").on("click", function () {
+
+$("#allSlot").unbind("click")
+$("#allSlot").bind("click", function () {
     console.log("Option remove many slot is selected");
     removeMultiSlot(curSlotId);
     $('#confirmDelete').modal('hide');

@@ -1,9 +1,6 @@
 package com.churchsystem.service.interfaces;
 
-import com.churchsystem.entity.EventDataEntity;
-import com.churchsystem.entity.EventDisplayEntity;
-import com.churchsystem.entity.EventEntity;
-import com.churchsystem.entity.SlotEntity;
+import com.churchsystem.entity.*;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -65,5 +62,7 @@ public interface EventServiceInterface {
     int checkRoomForClass(SlotEntity slotEntity, Time startTime, Time endTime, int newRoomId, int churchId, int subId, Integer currentRoomId);
 
     List<EventDataEntity> getListOfEventData(int churchId);
+
+    List<DashboardClassEntity> getUserRegisteredClass(int userId);
 
 }

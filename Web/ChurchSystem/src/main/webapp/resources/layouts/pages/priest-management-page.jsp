@@ -172,6 +172,7 @@
 <!-- Datatables -->
 <script src="<c:url value="/resources/lib/vendors/datatables.net/js/jquery.dataTables.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/js/priest.js"/>"></script>
 
 

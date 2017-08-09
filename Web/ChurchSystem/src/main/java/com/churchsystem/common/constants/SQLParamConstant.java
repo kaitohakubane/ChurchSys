@@ -300,4 +300,11 @@ public class SQLParamConstant {
             "e.startDate as startDate, s.subName as subName from event e, category c, subject s where privacy = 1 " +
             "AND e.subId = s.subId AND s.categoryId = c.categoryId AND e.eventStatus = 3 AND e.churchId =:churchId " +
             "AND c.categoryId > 5 AND c.categoryName < 12 ORDER BY startDate asc";
+
+    public static final String GET_LIST_REGISTERED_CLASS_BY_USER_ID = "SELECT e.eventName as eventName, e.startDate as startDate, " +
+            "e.eventStatus as status, c.churchName as churchName FROM registration r, event e, church c, subject s, category ca " +
+            "WHERE r.eventId = e.eventId AND " +
+            "c.churchId = r.churchId AND r.regisStatus = 3 AND r.subId = s.subId AND e.eventStatus != 1 AND e.eventStatus != 2 " +
+            "AND s.categoryId = ca.categoryId AND ca.categoryId > 5 AND ca.categoryName < 12 AND r.userId=:userId";
+
 }

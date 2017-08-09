@@ -80,4 +80,12 @@ public class SlotService implements SlotServiceInterface {
     public List<SlothourEntity> getListSlotHourByTime(Time startTime, Time endTime) {
         return slotModelInterface.getListSlotHourByTime(startTime, endTime);
     }
+
+
+    @Override
+    public void setValueForSlot(SlotEntity slotEntity, Integer conductorId, Integer roomId) {
+        slotEntity.setConductorId(conductorId);
+        slotEntity.setRoomId(roomId);
+        slotModelInterface.updateSlot(slotEntity);
+    }
 }

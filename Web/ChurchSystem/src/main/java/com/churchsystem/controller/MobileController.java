@@ -83,7 +83,8 @@ public class MobileController {
     public List<EventDataEntity> getChurchIncomingEvent(@RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr) {
         try {
             int churchId = Integer.parseInt(churchIdStr);
-            List<EventDataEntity> result = eventServiceInterface.getListOfEventData(churchId);
+             List<EventDataEntity> result = eventServiceInterface.getListOfEventData(churchId);
+//            List<EventDataEntity> result = eventServiceInterface.getListOfPublicEvent(churchId);
             return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,7 +99,7 @@ public class MobileController {
 
         try {
             int churchId = Integer.parseInt(id);
-            int userIdInt=Integer.parseInt(userId);
+            int userIdInt = Integer.parseInt(userId);
             UserEntity user = userServiceInterface.getUserByUserId(userIdInt);
 
             InteractionEntity interactionEntity = userServiceInterface.getInteraction(user.getUserId(), churchId);

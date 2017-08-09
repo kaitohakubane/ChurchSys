@@ -181,7 +181,8 @@
                                 </div>
                                 <div class="x_content bs-example-popovers">
                                     <c:forEach items="${churchList}" var="item" varStatus="status">
-                                        <div class="fl-church alert alert-dismissible fade in" id="${status.count}" role="alert">
+                                        <div class="fl-church alert alert-dismissible fade in" id="${status.count}"
+                                             role="alert">
                                             <a style="color: #fff"
                                                href="${pageContext.request.contextPath}/church?churchId=${item.churchId}">
                                                 <button type="button" class="close" data-dismiss="alert"
@@ -203,7 +204,7 @@
                         <div class="col-md-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Lớp học</h2>
+                                    <h2>Lớp giáo lí đã đăng ký</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li style="font-size: 21px;margin-left: 40px;"><i class="fa fa-book"></i></li>
                                     </ul>
@@ -211,36 +212,53 @@
                                 </div>
                                 <div class="x_content">
                                     <ul class="list-unstyled timeline">
-                                        <li>
-                                            <div class="block dbclass-block">
-                                                <div class="tags dbclass">
-                                                    <a href="" class="tag">
-                                                        <span>Đang tham gia</span>
-                                                    </a>
+                                        <c:forEach items="${dashboardClass}" var="item">
+                                            <li>
+                                                <div class="block dbclass-block">
+                                                    <div class="tags dbclass">
+                                                        <a href="" class="tag">
+                                                            <span>${item.getClassStatus()}</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="block_content">
+                                                        <h2 class="title">
+                                                            <a>${item.eventName}</a>
+                                                        </h2>
+                                                        <p class="excerpt">${item.churchName}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Lớp giáo lý hôn nhân</a>
-                                                    </h2>
-                                                    <p class="excerpt">Nhà thờ hòa khánh</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="block dbclass-block">
-                                                <div class="tags dbclass">
-                                                    <a href="" class="tag done">
-                                                        <span>Đã hoàn thành</span>
-                                                    </a>
-                                                </div>
-                                                <div class="block_content">
-                                                    <h2 class="title">
-                                                        <a>Lớp giáo dự tòng</a>
-                                                    </h2>
-                                                    <p class="excerpt">Nhà thờ hòa khánh</p>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </c:forEach>
+                                        <%--<li>--%>
+                                        <%--<div class="block dbclass-block">--%>
+                                        <%--<div class="tags dbclass">--%>
+                                        <%--<a href="" class="tag">--%>
+                                        <%--<span>Đang tham gia</span>--%>
+                                        <%--</a>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="block_content">--%>
+                                        <%--<h2 class="title">--%>
+                                        <%--<a>Lớp giáo lý hôn nhân</a>--%>
+                                        <%--</h2>--%>
+                                        <%--<p class="excerpt">Nhà thờ hòa khánh</p>--%>
+                                        <%--</div>--%>
+                                        <%--</div>--%>
+                                        <%--</li>--%>
+                                        <%--<li>--%>
+                                            <%--<div class="block dbclass-block">--%>
+                                                <%--<div class="tags dbclass">--%>
+                                                    <%--<a href="" class="tag done">--%>
+                                                        <%--<span>Đã hoàn thành</span>--%>
+                                                    <%--</a>--%>
+                                                <%--</div>--%>
+                                                <%--<div class="block_content">--%>
+                                                    <%--<h2 class="title">--%>
+                                                        <%--<a>Lớp giáo dự tòng</a>--%>
+                                                    <%--</h2>--%>
+                                                    <%--<p class="excerpt">Nhà thờ hòa khánh</p>--%>
+                                                <%--</div>--%>
+                                            <%--</div>--%>
+                                        <%--</li>--%>
                                     </ul>
 
                                 </div>

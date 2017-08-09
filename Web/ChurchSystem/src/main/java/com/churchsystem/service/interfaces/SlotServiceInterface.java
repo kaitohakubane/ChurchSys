@@ -33,4 +33,6 @@ public interface SlotServiceInterface {
     void deleteSlot(int slotId);
 
     List<SlothourEntity> getListSlotHourByTime(Time startTime, Time endTime);
+
+    void setValueForSlot(SlotEntity slotEntity, Integer conductorId, Integer roomId);
 }

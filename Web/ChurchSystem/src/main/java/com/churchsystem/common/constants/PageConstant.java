@@ -35,6 +35,7 @@ public class PageConstant {
     public static final String LOAD_PUBLIC_EVENT_REGISTER_URL = "/church/{id}/schedule/load-event/";
 
     public static final String SCHEDULE_URL = "/manager/schedule";
+    public static final String ADVANCE_CREATE_URL="/manager/advance-create-page";
     public static final String UPDATED_EVENT = "/manager/event/Updated";
     public static final String UPDATED_SINGLE_EVENT = "/manager/event/update-single-event";
     public static final String UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
@@ -175,6 +176,7 @@ public class PageConstant {
     public static final String EDIT_EVENT_PAGE = "edit-event-page";
     public static final String STREAM_PAGE = "stream-page";
     public static final String STREAM_INSTRUCTION_PAGE = "instruction-page";
+    public static final String ADVANCE_CREATE_PAGE = "advance-create-page";
 
     // Registration
     public static final String REGISTRATION_PAGE = "registration-page";

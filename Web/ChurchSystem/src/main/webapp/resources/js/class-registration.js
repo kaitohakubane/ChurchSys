@@ -30,6 +30,8 @@ $(document).ready(function () {
     $(".class-registration").on("click", function () {
         var eventId = $(this).data("id");
         registerForClass(eventId);
+        $(this).html("Đã đăng ký!");
+        $(this).attr('disabled', true);
     })
 
 })

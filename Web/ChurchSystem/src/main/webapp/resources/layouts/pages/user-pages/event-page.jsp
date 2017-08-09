@@ -22,9 +22,8 @@
     <!-- FullCalendar -->
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.css"/>" rel="stylesheet">
 
-    <!-- CSS -->
-    <link href="<c:url value="/resources/css/church.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/event-page.css"/>" rel="stylesheet">
+
 </head>
 <body>
 <c:import url="/resources/layouts/user-common/user-header.jsp"/>
@@ -188,30 +187,30 @@
     <div class="modal-dialog" style="width: 350px;">
         <div class="row">
             <div class="panel panel-success">
-                <div class="panel-heading">
+                <div class="panel-heading text-center">
                     <span style="font-size: 18px;" id="eventNameSpn">Tên Sự kiện</span>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
-                    <div class="form-horizontal">
+                    <div class="form-horizontal form-label-left">
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <input type="text" class="form-control" disabled="readonly" id="dateTxt">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Thời gian</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <input type="text" class="form-control" disabled="readonly" id="timeTxt">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <textarea class="form-control" id="messageField" disabled="readonly" rows="3"></textarea>
                             </div>
                         </div>
@@ -240,6 +239,7 @@
             'minTime': '4:30',
             'maxTime': '19:00',});
 </script>
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/church-event.js"/>"></script>
 </body>

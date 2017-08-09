@@ -56,7 +56,7 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public List<EventDataEntity> getListOfEventData(int churchId){
-        List<EventDataEntity> data = eventModelInterface.getListOfEvent(churchId);
+        List<EventDataEntity> data = eventModelInterface.getListOfPublicEvent(churchId);
         return data;
     }
 
@@ -397,5 +397,9 @@ public class EventService implements EventServiceInterface {
             return UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
         }
         return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
+    }
+
+    @Override public List<DashboardClassEntity> getUserRegisteredClass(int userId){
+        return eventModelInterface.getUserRegisteredClass(userId);
     }
 }

@@ -22,8 +22,6 @@
           rel="stylesheet">
     <link href="<c:url value="/resources/lib/sematicDist/semantic.min.css"/>" rel="stylesheet">
 
-    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
 
 </head>
 
@@ -144,9 +142,10 @@
 <!-- Datatables -->
 <script src="<c:url value="/resources/lib/vendors/datatables.net/js/jquery.dataTables.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/js/registration.js"/>"></script>
 
-<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
+
 
 </body>
 </html>

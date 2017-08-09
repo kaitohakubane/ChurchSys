@@ -1,5 +1,7 @@
 package com.churchsystem.common.constants;
 
+import java.sql.Time;
+
 /**
  * Created by Hung on 11/18/2016.
  */
@@ -36,6 +38,10 @@ public class ParamConstant {
     public static final int CHURCH_THEME_0 = 0;
     public static final int CHURCH_THEME_1 = 1;
     public static final String CHURCH_THEME = "theme";
+    public static final Time DEFAULT_START_TIME = Time.valueOf("04:00:00");
+    public static final Time DEFAULT_END_TIME = Time.valueOf("21:00:00");
+    public static final String DEFAULT_STREAM_NAME = "";
+    public static final String DEFAULT_STREAM_LINK = "";
 
 
     public static final String CHURCH_LIST = "churchList";
@@ -56,6 +62,7 @@ public class ParamConstant {
     public static final String CHURCH_SETTING = "setting";
     public static final String CHURCH_IS_SYNC = "isSync";
 
+    public static final String USER_DASHBOARD_CLASS = "dashboardClass";
 
     /**
      * Registration

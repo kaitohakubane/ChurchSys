@@ -18,8 +18,6 @@ To change this template use File | Settings | File Templates.
     <title>Setting</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
 
-    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
-
     <link href="<c:url value="/resources/lib/src/js/w2ui-1.5.rc1.min.css"/>" rel="stylesheet">
 
     <link href="<c:url value="/resources/lib/src/js/jquery-ui.min.css"/>" rel="stylesheet">
@@ -29,7 +27,6 @@ To change this template use File | Settings | File Templates.
     <!-- Dropzone.js -->
     <link href="<c:url value="/resources/lib/vendors/dropzone/dist/min/dropzone.min.css"/>" rel="stylesheet">
 
-    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
 
 </head>
 <body class="nav-md">

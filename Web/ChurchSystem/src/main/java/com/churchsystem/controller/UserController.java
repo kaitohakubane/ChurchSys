@@ -5,10 +5,7 @@ import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
 import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
-import com.churchsystem.service.interfaces.CategoryServiceInterface;
-import com.churchsystem.service.interfaces.ChurchServiceInterface;
-import com.churchsystem.service.interfaces.SubjectServiceInterface;
-import com.churchsystem.service.interfaces.UserServiceInterface;
+import com.churchsystem.service.interfaces.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,6 +33,8 @@ public class UserController {
     SubjectServiceInterface subjectServiceInterface;
     @Autowired
     ChurchServiceInterface churchServiceInterface;
+    @Autowired
+    EventServiceInterface eventServiceInterface;
 
     @RequestMapping(value = PageConstant.PRIEST_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllChurch(HttpServletRequest request) {
@@ -98,9 +97,11 @@ public class UserController {
         UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
         List<ChurchEntity> followChurch = userServiceInterface.getFollowingChurch(userEntity.getUserId());
         List<IncomingEventEntity> list = churchServiceInterface.getIncomingEvent(userEntity.getUserId());
+        List<DashboardClassEntity> dbEntity = eventServiceInterface.getUserRegisteredClass(userEntity.getUserId());
         modelAndView.addObject(ParamConstant.CHURCH_LIST, followChurch)
                 .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
                 .addObject(ParamConstant.INCOMING_EVENT, list)
+                .addObject(ParamConstant.USER_DASHBOARD_CLASS, dbEntity)
                 .addObject(ParamConstant.CURRENT_USER, userEntity);
         return modelAndView;
     }

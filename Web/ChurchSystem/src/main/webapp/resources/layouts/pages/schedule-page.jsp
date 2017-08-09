@@ -17,7 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calendar Page</title>
     <c:import url="/resources/layouts/common/header.jsp"/>
-    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
 
     <link href="<c:url value="/resources/lib/src/js/jquery-ui.min.css"/>" rel="stylesheet">
     <!-- FullCalendar -->
@@ -30,7 +29,6 @@
     <!-- iCheck -->
     <link href="<c:url value="/resources/lib/vendors/iCheck/skins/flat/green.css"/>" rel="stylesheet">
 
-    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -155,6 +153,10 @@
                                     </c:forEach>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="col-md-12 form-group" style="margin-top: -8px;font-size: 16px;">
+                            <a href="${pageContext.request.contextPath}/manager/advance-create-page">Go to advance</a>
                         </div>
 
                         <div class="col-sm-6">

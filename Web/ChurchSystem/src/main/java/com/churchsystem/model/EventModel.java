@@ -3,6 +3,7 @@ package com.churchsystem.model;
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.SQLParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
+import com.churchsystem.entity.DashboardClassEntity;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
 import com.churchsystem.entity.SlotEntity;
@@ -107,5 +108,15 @@ public class EventModel extends CommonDAO implements EventModelInterface {
                 .add(Restrictions.eq(ParamConstant.EVENT_STATUS, ParamConstant.EVENT_APPROVE_STATUS));
         List<EventEntity> result = criteria.list();
         return result;
+    }
+
+
+    @Override
+    public List<DashboardClassEntity> getUserRegisteredClass(int userId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_REGISTERED_CLASS_BY_USER_ID)
+                .setParameter(ParamConstant.USER_ID, userId)
+                .setResultTransformer(Transformers.aliasToBean(DashboardClassEntity.class));
+        List<DashboardClassEntity> dashboardClassEntities = query.list();
+        return dashboardClassEntities;
     }
 }

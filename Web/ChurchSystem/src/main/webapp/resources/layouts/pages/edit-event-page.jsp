@@ -33,8 +33,8 @@
         }
     </style>
 
-    <link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">
+    <%--<link href="<c:url value="/resources/lib/src/js/animate.css"/>" rel="stylesheet">--%>
+    <%--<link href="<c:url value="/resources/css/edit-event-page.css"/>" rel="stylesheet">--%>
 
 </head>
 <body class="nav-md">

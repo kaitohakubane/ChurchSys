@@ -177,7 +177,7 @@ public class ChurchController {
             churchServiceInterface.updateChurch(churchEntity);
             int isSync = Integer.parseInt(sync);
             int themeInt = Integer.parseInt(theme);
-            churchServiceInterface.editSetting(churchId, isSync,themeInt);
+            churchServiceInterface.editSetting(churchId, isSync, themeInt);
 
 
         } catch (Exception e) {
@@ -215,6 +215,10 @@ public class ChurchController {
             churchEntity.setDescription(des);
             churchEntity.setLongitude(longitude);
             churchEntity.setLatitude(latitude);
+            churchEntity.setStartTime(ParamConstant.DEFAULT_START_TIME);
+            churchEntity.setEndTime(ParamConstant.DEFAULT_END_TIME);
+            churchEntity.setStreamLink(ParamConstant.DEFAULT_STREAM_LINK);
+            churchEntity.setStreamName(ParamConstant.DEFAULT_STREAM_NAME);
 
             churchServiceInterface.createChurch(churchEntity);
         } catch (Exception e) {

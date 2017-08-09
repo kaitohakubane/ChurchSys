@@ -1,5 +1,6 @@
 package com.churchsystem.model.interfaces;
 
+import com.churchsystem.entity.DashboardClassEntity;
 import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
 
@@ -11,14 +12,26 @@ import java.util.List;
  */
 public interface EventModelInterface {
     List<EventDataEntity> getListOfEvent(int churchId);
+
     List<EventDataEntity> getListOfPublicEvent(int churchId);
+
     void addNewEvent(EventEntity eventEntity);
-    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId,boolean isRegistered);
-    EventEntity getEventById (int eventId);
+
+    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered);
+
+    EventEntity getEventById(int eventId);
+
     List<EventDataEntity> getCreatedEvent(int eventId);
+
     void updateEvent(EventEntity eventEntity);
+
     EventDataEntity getEventBySlotId(int slotId, int churchId);
+
     Integer getCategoryIdFromSlotId(int slotId);
+
     void deleteEvent(int eventId);
+
     List<EventEntity> getListEventOfChurch(int churchId);
+
+    List<DashboardClassEntity> getUserRegisteredClass(int userId);
 }
