@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="col-md-11">
-                            <p style="font-size: 95%;"><strong>${item.sender}</strong>${item.information}. Hãy tham gia ngay</p>
+                            <p style="font-size: 95%;"><strong>${item.sender}</strong>${item.information}</p>
                             <p style="font-size: 80%;color: #b8b8b8">${item.time}</p>
                         </div>
                         <div class="col-md-12 divice"></div>

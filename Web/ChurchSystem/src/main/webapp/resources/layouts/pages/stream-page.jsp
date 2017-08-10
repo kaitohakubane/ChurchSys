@@ -166,6 +166,7 @@
 <script>
     var streamLink="<c:out value="${streamLink}"></c:out>"
     var streamCode="<c:out value="${streamCode}"></c:out>"
+    var streamTitle="<c:out value="${streamTitle}"></c:out>"
 </script>
 
 <script src="<c:url value="/resources/js/stream.js"/>"></script>

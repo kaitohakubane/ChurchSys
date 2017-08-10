@@ -33,9 +33,7 @@ $(document).ready(function () {
     });
 
     $("#closeBtn").click(function () {
-
         $("#youtubeVideo").attr('src', "");
-
     });
 
 
@@ -46,9 +44,16 @@ $(document).ready(function () {
         $(this).find('.drop-hover').stop(true, true).delay(200).fadeOut(200);
     });
 
-
+    generalInitial();
 })
 
+function generalInitial(){
+    if(streamLink!=null&&streamLink!=""){
+        $("#stream").modal("show");
+        console.log(e.getAttribute("id"));
+        $("#youtubeVideo").attr('src', "https://www.youtube.com/embed/" +streamLink + "?autoplay=1")
+    }
+}
 
 google.maps.event.addDomListener(window, 'load', initAutocomplete);
 function initAutocomplete() {

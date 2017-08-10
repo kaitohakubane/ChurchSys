@@ -7,11 +7,11 @@ var START_STREAM_URL = "/manager/stream/Start";
 var FINISH_STREAM_URL = "/manager/stream/Finish";
 var MANAGER_MAIN_PAGE_URL = "/manager/";
 var STREAM_INSTRUCTION_URL = "/manager/stream/instruction";
-var START_OBS="/manager/StartOBS"
+var START_OBS="/manager/StartOBS";
+var STREAM_NOTIFICATION_URL = "/manager/stream/notification";
 var streamEntity = null;
 $(document).ready(function () {
     Initial();
-
 })
 
 function Initial() {
@@ -22,6 +22,8 @@ function Initial() {
         $("#step-2").show();
         $("#youtubeVideo").attr('src', "https://www.youtube.com/embed/" + streamLink + "?autoplay=1")
         streamOnAir(streamLink);
+        var streamTitle = $("#streamTitle").val();
+        pushNotification(streamLink,streamTitle);
     });
 
 
@@ -29,6 +31,7 @@ function Initial() {
         $("#registration").modal("show");
     } else {
         $("#streamCode").val(streamCode);
+        $("#streamTitle").val(streamTitle);
         startOBS()
     }
 
@@ -96,6 +99,26 @@ function streamOnAir(link) {
         data: requestData,
         success: function () {
             $("#loading").modal("hide");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    })
+}
+
+function pushNotification(link,streamTitle) {
+
+    var requestData = {
+        "streamLink": link,
+        "streamTitle":streamTitle
+    };
+    var requestURL = contextPath + STREAM_NOTIFICATION_URL;
+    var requestMethod = "POST"
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        success: function () {
         },
         error: function (jqXHR, textStatus, errorThrown) {
 

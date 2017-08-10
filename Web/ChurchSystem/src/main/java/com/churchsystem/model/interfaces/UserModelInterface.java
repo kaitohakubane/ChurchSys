@@ -28,9 +28,9 @@ public interface UserModelInterface {
 
     List<UserEntity> getAllPriest(int churchId);
 
-    List<String> getListOfChurchFollower(int churchId);
+    List<Integer> getListOfChurchFollower(int churchId);
 
-    String getChurchManagerAccount(int churchId);
+    Integer getChurchManager(int churchId);
 
     List<String> getEventRegisteredUserAccount(int eventId);
 

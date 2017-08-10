@@ -16,8 +16,13 @@ function notify(information, link, time, sender) {
     $("#notification").prepend("<li> <a href='" + contextPath + link + "'> <span> " + sender + " </span> <span class='message'> " + information +
         " </span> <span>" + time + " </span></span></span> </a> </li>")
 
-    var count = parseInt($("#numberOfNoti").html());
-    $("#numberOfNoti").html(count + 1);
+    var count = $("#numberOfNoti").html();
+    if (count == null || count == "") {
+        $("#numberOfNoti").html("1")
+    } else {
+        $("#numberOfNoti").html(parseInt(count) + 1);
+    }
+
 
 }
 

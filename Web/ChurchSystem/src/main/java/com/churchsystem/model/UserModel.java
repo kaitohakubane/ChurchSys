@@ -47,7 +47,7 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     public int getChurchIdByUserId(int userId) {
         Criteria criteria = getSession().createCriteria(InteractionEntity.class)
                 .add(Restrictions.eq("userId", userId)).add(Restrictions.eq("enabled", true));
-        InteractionEntity interactionEntity = (InteractionEntity) criteria.uniqueResult();
+        InteractionEntity interactionEntity = (InteractionEntity) criteria.list().get(0);
         return interactionEntity.getChurchId();
     }
 
@@ -128,18 +128,18 @@ public class UserModel extends CommonDAO implements UserModelInterface {
     }
 
     @Override
-    public List<String> getListOfChurchFollower(int churchId) {
-        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_OF_CHURCH_FOLLOWER_ACCOUNT)
+    public List<Integer> getListOfChurchFollower(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_OF_CHURCH_FOLLOWER)
                 .setParameter(ParamConstant.CHURCH_ID, churchId);
-        List<String> result = query.list();
+        List<Integer> result = query.list();
         return result;
     }
 
     @Override
-    public String getChurchManagerAccount(int churchId) {
-        Query query = getSession().createSQLQuery(SQLParamConstant.GET_CHURCH_MANAGER_ACCOUNT)
+    public Integer getChurchManager(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_CHURCH_MANAGER)
                 .setParameter(ParamConstant.CHURCH_ID, churchId);
-        String result = (String) query.uniqueResult();
+        Integer result = (Integer) query.uniqueResult();
         return result;
     }
 

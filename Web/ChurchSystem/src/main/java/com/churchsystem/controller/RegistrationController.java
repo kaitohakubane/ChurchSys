@@ -98,35 +98,19 @@ public class RegistrationController {
 
             EventDisplayEntity eventDisplayEntity = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(), null).get(0);
             eventDisplayEntity.setDescription(message);
+
             //Notify manager
-            String managerAccount = userServiceInterface.getChurchManagerAccount(churchId);
-            UserEntity user = userServiceInterface.getUserByAccountId(managerAccount);
+            Integer manager = userServiceInterface.getChurchManager(churchId);
             String subjectName = subjectServiceInterface.getSubjectById(subId).getSubName();
+
             String information = ParamConstant.EVENT_NAME_PRE + subjectName + ParamConstant.TIME_MESSAGE_NOTIFICATION +
                     startTimeStr + " " + slotDateStr + ParamConstant.MANAGER_REGISTRATION_MESSAGE;
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            NotificationEntity notificationEntity = new NotificationEntity();
-            notificationEntity.setTime(time);
-            notificationEntity.setType(ParamConstant.DEFAULT_TYPE);
-            notificationEntity.setUserId(user.getUserId());
-            notificationEntity.setInformation(information);
-            notificationEntity.setSender(UtilsConstant.SYSTEM_NAME);
-            ////////////////////////////////////
-            notificationEntity.setLink("");
-            notificationServiceInterface.addNotification(notificationEntity);
-            Notification msgEntity = new Notification(notificationEntity);
-            notificationServiceInterface.notify(msgEntity, managerAccount);
+            notificationServiceInterface.sendNotification(ParamConstant.SYSTEM_ID,manager, information, ParamConstant.DEFAULT_TYPE, null);
 
             //Notify user
-//            notificationEntity.setUserId(userEntity.getUserId());
-//            information = ParamConstant.USER_EVENT_REGISTRATION_NOTIFICATION + subjectName +
-//                    ParamConstant.TIME_MESSAGE_NOTIFICATION + startTimeStr + " " + slotDateStr;
-//            notificationEntity.setInformation(information);
-//            notificationEntity.setSender(churchServiceInterface.getChurchById(churchId).getChurchName());
-//            notificationServiceInterface.addNotification(notificationEntity);
-//
-//            msgEntity = new Notification(notificationEntity);
-//            notificationServiceInterface.notify(msgEntity, userEntity.getAccountId());
+            information = ParamConstant.USER_EVENT_REGISTRATION_NOTIFICATION + subjectName +
+                    ParamConstant.TIME_MESSAGE_NOTIFICATION + startTimeStr + " " + slotDateStr;
+            notificationServiceInterface.sendNotification(manager, userEntity.getUserId(), information, ParamConstant.DEFAULT_TYPE, null);
             return eventDisplayEntity;
         } catch (Exception e) {
             e.printStackTrace();
@@ -188,29 +172,12 @@ public class RegistrationController {
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
-
+            int subId = Integer.parseInt(subIdStr);
 
             int churchId = Integer.parseInt(churchIdStr);
 
             //Notify manager
-            String managerAccount = userServiceInterface.getChurchManagerAccount(churchId);
-            UserEntity user = userServiceInterface.getUserByAccountId(managerAccount);
-
-
-//            String information = ParamConstant.EVENT_NAME_PRE + subjectName;
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            NotificationEntity notificationEntity = new NotificationEntity();
-            notificationEntity.setTime(time);
-            notificationEntity.setType(ParamConstant.DEFAULT_TYPE);
-            notificationEntity.setUserId(user.getUserId());
-//            notificationEntity.setInformation(information);
-            notificationEntity.setSender(UtilsConstant.SYSTEM_NAME);
-            ////////////////////////////////////
-            notificationEntity.setLink("");
-            notificationServiceInterface.addNotification(notificationEntity);
-            Notification msgEntity = new Notification(notificationEntity);
-            notificationServiceInterface.notify(msgEntity, managerAccount);
-
+            Integer manager = userServiceInterface.getChurchManager(churchId);
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -243,6 +210,13 @@ public class RegistrationController {
             int eventId = Integer.parseInt(eventIdStr);
             EventEntity eventEntity = eventServiceInterface.getEventById(eventId);
             registrationServiceInterface.addNewRegistration(userEntity.getUserId(), eventEntity.getChurchId(), eventEntity.getSubId(), eventId, null);
+
+
+            //Notify
+            String subjectName = subjectServiceInterface.getSubjectById(eventEntity.getSubId()).getSubName();
+            int managerId=userServiceInterface.getChurchManager(eventEntity.getChurchId());
+            String information = ParamConstant.DEFINED_CLASS_NAME_PRE + subjectName + ParamConstant.MANAGER_REGISTRATION_MESSAGE;
+            notificationServiceInterface.sendNotification(ParamConstant.SYSTEM_ID, managerId, information, ParamConstant.DEFAULT_TYPE, null);
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

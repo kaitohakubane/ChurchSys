@@ -10,11 +10,11 @@ import java.util.List;
  */
 public interface NotificationServiceInterface {
 
-    public void addNotification(NotificationEntity notificationEntity);
+    void addNotification(NotificationEntity notificationEntity);
 
     void updateNotification(NotificationEntity notificationEntity);
 
     List<NotificationEntity> getUserNotification(int userId, int numberOfNoti);
 
-    void notify(Notification notification, String username);
+    void sendNotification(int senderId, int userId, String information,int type,String streamLink);
 }

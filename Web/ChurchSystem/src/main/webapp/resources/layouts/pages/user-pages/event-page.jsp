@@ -113,7 +113,7 @@
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
-                        <button type="button" class="col-md-5 btn btn-default">Hủy</button>
+                        <button type="button" class="col-md-5 btn btn-default" data-dismiss="modal">Hủy</button>
                         <button type="button" id="eventRegisteredBtn" class="col-md-5 col-md-offset-2 btn btn-primary">Đăng kí</button>
                     </div>
                 </div>

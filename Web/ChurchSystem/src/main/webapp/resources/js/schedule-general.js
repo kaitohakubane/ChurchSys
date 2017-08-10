@@ -116,7 +116,8 @@ function inputEventPopupInformation(event) {
             e.preventDefault();
             var parameter = {
                 streamLink: event.streamLink,
-                streamCode: event.streamCode
+                streamCode: event.streamCode,
+                streamTitle:event.title
             }
             post(contextPath + STREAM_URL, parameter)
         })

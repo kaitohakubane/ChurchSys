@@ -292,9 +292,8 @@ create table Notification (
 	notificationId int NOT NULL AUTO_INCREMENT,
     
 	userId int,
+
 	avatar nvarchar(255),
-    
-	type int,
 	
 	sender nvarchar(255),
 

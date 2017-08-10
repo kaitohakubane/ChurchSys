@@ -68,32 +68,20 @@ public class NotificationController {
     ChurchServiceInterface churchServiceInterface;
 
     @ResponseBody
-    @RequestMapping(value = PageConstant.STREAM_NOTIFICATION_URL, method = RequestMethod.GET)
-    public void pushNotification(@RequestParam(value = ParamConstant.NOTIFICATION_LINK) String link,
+    @RequestMapping(value = PageConstant.STREAM_NOTIFICATION_URL, method = RequestMethod.POST)
+    public void pushNotification(@RequestParam(value = ParamConstant.STREAM_LINK) String link,
                                  @RequestParam(value = ParamConstant.STREAM_TITLE) String title, HttpServletRequest request) {
 
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         String information = ParamConstant.EVENT_NAME_PRE + title + ParamConstant.STREAM_MESSAGE;
         ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
-        Timestamp time = new Timestamp(System.currentTimeMillis());
-        List<String> listAccount = userServiceInterface.getListOfChurchFollower(churchId);
-        for (String accountId : listAccount) {
-            NotificationEntity temp = new NotificationEntity();
-            UserEntity user = userServiceInterface.getUserByAccountId(accountId);
-            temp.setUserId(user.getUserId());
-            temp.setInformation(information);
-            temp.setSender(churchEntity.getChurchName());
-            temp.setLink(link);
-            temp.setTime(time);
-            temp.setType(ParamConstant.YOUTUBE_TYPE);
-            notificationServiceInterface.addNotification(temp);
-            Notification msgEntity = new Notification(temp);
-            notificationServiceInterface.notify(
-                    msgEntity, // notification object
-                    accountId                    // username
-            );
+        if(churchEntity!=null){
+            int managerId=userServiceInterface.getChurchManager(churchId);
+            List<Integer> listAccount = userServiceInterface.getListOfChurchFollower(churchId);
+            for (Integer userId : listAccount) {
+                notificationServiceInterface.sendNotification(managerId,userId,information,ParamConstant.YOUTUBE_TYPE,link);
+            }
         }
-
     }
 
     @ResponseBody

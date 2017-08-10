@@ -56,7 +56,7 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public List<UserEntity> getListSuitableConductorForSlot(Time newStartTime, Time newEndTime, Date slotDate, int churchId, int subId) {
-        List<UserEntity> userEntities = (List<UserEntity>) userModelInterface
+        List<UserEntity> userEntities =userModelInterface
                 .getListSuitableConductorForSlot(newStartTime, newEndTime, slotDate, churchId, subId);
         return userEntities;
     }
@@ -72,13 +72,13 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public List<String> getListOfChurchFollower(int churchId) {
+    public List<Integer> getListOfChurchFollower(int churchId) {
         return userModelInterface.getListOfChurchFollower(churchId);
     }
 
     @Override
-    public String getChurchManagerAccount(int churchId) {
-        return userModelInterface.getChurchManagerAccount(churchId);
+    public Integer getChurchManager(int churchId) {
+        return userModelInterface.getChurchManager(churchId);
     }
 
     @Override

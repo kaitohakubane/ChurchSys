@@ -69,3 +69,7 @@
     font-size: 15px;
     vertical-align: top;
 }
+.ui.fluid.dropdown.search.selection {
+    margin-left: 630px;
+    width: 250px;
+}

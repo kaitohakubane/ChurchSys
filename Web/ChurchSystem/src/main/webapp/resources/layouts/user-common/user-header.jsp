@@ -49,15 +49,9 @@
                             <li style="font-size: 20px"><a href="#" class="dropdown-toggle" id="noti-user"
                                                            data-toggle="dropdown"><i class="fa fa-bell"
                                                                                      aria-hidden="true"></i>
-                                <span id="numberOfNoti">1</span></a>
+                                <span id="numberOfNoti"></span></a>
                                 <ul class="dropdown-menu space" aria-labelledby="noti-user" style="width: 300px"
                                     id="notification">
-                                    <li>
-                                        <a>
-                                            <span>Chính tòa Đà Nẵng</span><br/>
-                                            <span>Film festivals used to be do-or-die moments for movie makers. They were where.</span>
-                                        </a>
-                                    </li>
 
                                     <li><a href="${pageContext.request.contextPath}/user/notifications"
                                            class="text-center"><strong>Xem tất cả </strong><i

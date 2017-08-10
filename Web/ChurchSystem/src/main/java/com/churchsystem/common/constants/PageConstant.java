@@ -148,6 +148,8 @@ public class PageConstant {
     public static final String MOBILE_GET_USER_EVENT="/mobile/user/getEvent";
     public static final String MOBILE_GET_CHURCH_EVENT="/mobile/church/getEvent";
     public static final String MOBILE_FOLLOW="/mobile/follow";
+    public static final String MOBILE_GET_CHURCH_INFORMATION="/mobile/church/getInfo";
+    public static final String MOBILE_GET_USER_CLASS="/mobile/user/getClass";
 
     /**
      * Common

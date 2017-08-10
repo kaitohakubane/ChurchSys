@@ -223,13 +223,13 @@ public class SQLParamConstant {
             "AND u.role='ROLE_PRIEST' AND i.churchId =:churchId";
 
 
-    public static final String GET_LIST_OF_CHURCH_FOLLOWER_ACCOUNT = "select u.accountId from church c, interaction i, user u " +
+    public static final String GET_LIST_OF_CHURCH_FOLLOWER = "select u.userId from church c, interaction i, user u " +
             "where c.churchId = i.churchId AND u.userId = i.userId AND u.role ='ROLE_USER' AND c.churchId =:churchId AND i.enabled=true";
 
     public static final String GET_EVENT_REGISTERED_USER_ACCOUNT = "select u.accountId from registration r , user u" +
             " where r.eventId =:eventId AND u.userId = r.userId";
 
-    public static final String GET_CHURCH_MANAGER_ACCOUNT = "select u.accountId from church c , interaction i , user u " +
+    public static final String GET_CHURCH_MANAGER = "select u.userId from church c , interaction i , user u " +
             "where i.churchId = c.churchId AND i.userId = u.userId and u.role ='ROLE_MANAGER' And c.churchId =:churchId AND i.enabled=true";
 
 

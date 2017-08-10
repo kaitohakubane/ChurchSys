@@ -67,12 +67,6 @@
                                 <span id="numberOfNoti">1</span></a>
                                 <ul class="dropdown-menu space" aria-labelledby="noti-user" style="width: 300px"
                                     id="notification">
-                                    <li>
-                                        <a>
-                                            <span>Chính tòa Đà Nẵng</span><br/>
-                                            <span>Film festivals used to be do-or-die moments for movie makers. They were where...</span>
-                                        </a>
-                                    </li>
 
                                     <li><a href="${pageContext.request.contextPath}/user/notifications"
                                            class="text-center"><strong>Xem tất cả </strong><i
@@ -256,6 +250,7 @@
     var icon = "<c:url value="/resources/img/icons8-Church-48.png"/>"
     var streaming_icon = "<c:url value="/resources/img/streamming-icon.png"/>"
     var choosing_icon = "<c:url value="/resources/img/choosing-icon.png"/>"
+    var streamLink="<c:out value="${streamLink}" />"
 </script>
 <script src="<c:url value="/resources/js/map.js"/>"></script>
 </body>

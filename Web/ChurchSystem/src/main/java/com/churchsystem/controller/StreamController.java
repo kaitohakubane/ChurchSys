@@ -28,10 +28,12 @@ public class StreamController {
 
     @RequestMapping(value = PageConstant.STREAM_URL, method = RequestMethod.POST)
     public ModelAndView loadStreamPage(@RequestParam(value = ParamConstant.STREAM_LINK, required = false) String streamLink,
-                                       @RequestParam(value = ParamConstant.STREAM_CODE, required = false) String streamCode) {
+                                       @RequestParam(value = ParamConstant.STREAM_CODE, required = false) String streamCode,
+                                       @RequestParam(value = ParamConstant.STREAM_TITLE, required = false) String streamTitle) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.STREAM_PAGE);
         modelAndView.addObject(ParamConstant.STREAM_CODE, streamCode);
         modelAndView.addObject(ParamConstant.STREAM_LINK, streamLink);
+        modelAndView.addObject(ParamConstant.STREAM_TITLE,streamTitle);
         return modelAndView;
     }
 

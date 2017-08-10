@@ -22,6 +22,7 @@
     <link href="<c:url value="/resources/lib/gridDist/gridstack.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/grave.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/lib/src/js/jquery-ui.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/lib/sematicDist/semantic.min.css"/>" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -34,7 +35,12 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#step1">Bố trí phòng</a></li>
                     <li><a data-toggle="tab" href="#step2">Sơ đồ</a></li>
-
+                  <li>
+                    <select class="ui fluid dropdown search"  id="graveSearch">
+                        <%--<c:forEach items="" var="item">--%>
+                        <option class="subClass" value="0">Tìm hài cốt</option>
+                    </select>
+                  </li>
                 </ul>
 
                 <div class="tab-content">
@@ -371,6 +377,7 @@
 </div>
 
 <c:import url="/resources/layouts/common/footer.jsp"/>
+<script src="<c:url value="/resources/lib/sematicDist/semantic.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/gridDist/lodash.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/gridDist/gridstack.js"/>"></script>

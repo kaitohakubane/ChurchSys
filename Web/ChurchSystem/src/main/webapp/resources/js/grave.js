@@ -168,13 +168,12 @@ function contextMenuInitial(e) {
         btn.bind("click", function () {
             $("#graveYardPopup").modal('show');
 
-            $("#intialGraveYard").on("click", function () {
+            $("#intialGraveYard").unbind("click");
+            $("#intialGraveYard").bind("click", function () {
                 width = $("#graveYardWidth").val();
                 height = $("#graveYardHeight").val()
                 setupGraveYard(e, width, height)
             })
-            e.removeClass("graveYardNotInitial");
-            e.addClass("graveYardInitial");
         })
     } else {
         btn.html("Xem")
@@ -244,6 +243,12 @@ function generalInitial() {
         }
     })
 
+    $("#graveSearch" +
+        "").dropdown({
+        onChange: function () {
+
+        }
+    })
     prototypePopupInitial();
 }
 
@@ -319,6 +324,9 @@ function setupGraveYard(e, width, height) {
             e.data("gravehe", res.height);
             e.data("gravewi", res.width);
             e.data("status", res.status);
+            e.data("free", res.graveAvailable);
+            e.removeClass("graveYardNotInitial");
+            e.addClass("graveYardInitial");
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -353,6 +361,7 @@ function getGrave(graveYardId, width, height) {
 
 function generateGrave(target, width, height, graveYard) {
     console.log("OK")
+    $("#grave div").remove(".grid-stack-item");
     var grid = target.data('gridstack');
     var isAdd = true;
     for (var i = 0; i < width; i++) {
@@ -390,10 +399,10 @@ function generateGrave(target, width, height, graveYard) {
 
 function initialDetailContext(e) {
     var index = e.data("grave");
-    if(listOfGrave[index].image!=null){
-        $("#image").attr("src",contextPath+"/product-images/"+listOfGrave[index].image);
-    }else{
-        $("#image").attr("src",contextPath+"/product-images/noimagefound.jpg");
+    if (listOfGrave[index].image != null) {
+        $("#image").attr("src", contextPath + "/product-images/" + listOfGrave[index].image);
+    } else {
+        $("#image").attr("src", contextPath + "/product-images/noimagefound.jpg");
     }
 
     $("#detailName").html(listOfGrave[index].name);
@@ -522,17 +531,17 @@ function terminateEventCreateMenu() {
         }
 
         if (!($('div#graveYardInformation').has(e.target).length > 0 || ($(e.target).attr('class').toString()
-                .indexOf('graveYardItem')>=0))) {
+                .indexOf('graveYardItem') >= 0))) {
             $("#graveYardInformation").fadeOut();
         }
 
         if (!($('div#regisContext').has(e.target).length > 0 || ($(e.target).attr('class').toString()
-                .indexOf('graveItem')>=0))) {
+                .indexOf('graveItem') >= 0))) {
             $("#regisContext").fadeOut();
         }
 
         if (!($('div#detailContext').has(e.target).length > 0 || ($(e.target).attr('class').toString()
-                .indexOf('graveItem')>=0))) {
+                .indexOf('graveItem') >= 0))) {
             $("#detailContext").fadeOut();
         }
 

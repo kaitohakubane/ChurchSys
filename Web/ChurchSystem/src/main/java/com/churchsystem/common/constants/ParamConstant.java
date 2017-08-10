@@ -156,8 +156,9 @@ public class ParamConstant {
     public static final String NOTIFICATION_LINK = "notificationLink";
     public static final String NOTIFICATION_INFORMATION = "notificationInformation";
     public static final String EVENT_NAME_PRE = "Sự kiện ";
+    public static final String DEFINED_CLASS_NAME_PRE = "Đăng ký mới vào lớp  ";
     public static final String STREAM_MESSAGE = " đang được trực tuyến";
-    public static final String MANAGER_REGISTRATION_MESSAGE = " mới vừa được đăng ký ở nhà thờ của bạn";
+    public static final String MANAGER_REGISTRATION_MESSAGE = " vừa được đăng ký ở nhà thờ của bạn";
     public static final String NOTIFICATION_TIME = "time";
     public static final int YOUTUBE_TYPE = 1;
     public static final int DEFAULT_TYPE = 0;
@@ -165,6 +166,7 @@ public class ParamConstant {
     public static final String USER_EVENT_REGISTRATION_NOTIFICATION = "Bạn đã đăng ký sự kiện ";
     public static final String USER_CLASS_REGISTRATION_NOTIFICATION = "Bạn đã đăng ký lớp ";
     public static final String TIME_MESSAGE_NOTIFICATION = " diễn ra vào lúc ";
+    public static final int SYSTEM_ID = -1;
 
 
     /**
@@ -228,9 +230,6 @@ public class ParamConstant {
     public static final String MANAGER_MAIL = "email";
     public static final String MANAGER_PHONE = "phone";
     public static final String MANAGER_CERT = "cert";
-    /**
-     * Status
-     */
 
     /*Event*/
     public static final int EVENT_STATUS_WAITING_FOR_APPROVE = 1;
@@ -241,6 +240,8 @@ public class ParamConstant {
     public static final int EVENT_ROOM_POSITION = 1;
     public static final int EVENT_NO_ROOM_VALUE = -1;
     public static final int EVENT_NO_CONDUCTOR_VALUE = -1;
+    public static final int REGISTERED = 1;
+    public static final int UNREGISTERED = 0;
 
     /*Slot*/
     public static final int SLOT_STATUS_OK = 1;
@@ -250,6 +251,5 @@ public class ParamConstant {
     public static final int SLOT_AVAILABLE = 0;
 
 
-    public static final int REGISTERED = 1;
-    public static final int UNREGISTERED = 0;
+
 }

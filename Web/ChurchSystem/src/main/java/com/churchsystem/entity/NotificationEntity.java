@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by hungmcse61561-admin on 7/15/2017.
+ * Created by hungmcse61561-admin on 8/10/2017.
  */
 @Entity
 @Table(name = "notification", schema = "churchsys", catalog = "")
@@ -12,7 +12,6 @@ public class NotificationEntity {
     private int notificationId;
     private Integer userId;
     private String avatar;
-    private Integer type;
     private String sender;
     private String information;
     private String link;
@@ -46,16 +45,6 @@ public class NotificationEntity {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    @Basic
-    @Column(name = "type")
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
     }
 
     @Basic
@@ -108,7 +97,6 @@ public class NotificationEntity {
         if (notificationId != that.notificationId) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (avatar != null ? !avatar.equals(that.avatar) : that.avatar != null) return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
         if (sender != null ? !sender.equals(that.sender) : that.sender != null) return false;
         if (information != null ? !information.equals(that.information) : that.information != null) return false;
         if (link != null ? !link.equals(that.link) : that.link != null) return false;
@@ -122,7 +110,6 @@ public class NotificationEntity {
         int result = notificationId;
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (sender != null ? sender.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         result = 31 * result + (link != null ? link.hashCode() : 0);

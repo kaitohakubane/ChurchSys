@@ -118,4 +118,31 @@ public class MobileController {
             e.printStackTrace();
         }
     }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.MOBILE_GET_CHURCH_INFORMATION, method = RequestMethod.POST)
+    public ChurchInfoEntity getChurchInfo(@RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr) {
+        try {
+            int churchId = Integer.parseInt(churchIdStr);
+            ChurchInfoEntity result =  churchServiceInterface.getChurchInfo(churchId);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.MOBILE_GET_USER_CLASS, method = RequestMethod.POST)
+    public List<DashboardClassEntity> getUserRegistered(@RequestParam(value = ParamConstant.USER_ID) String userIdStr) {
+        try {
+            int userId = Integer.parseInt(userIdStr);
+            List<DashboardClassEntity> result =  eventServiceInterface.getUserRegisteredClass(userId);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

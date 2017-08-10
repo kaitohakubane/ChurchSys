@@ -115,19 +115,9 @@
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
                        aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
-                        <span id="numberOfNoti" class="badge bg-green">1</span>
+                        <span id="numberOfNoti" class="badge bg-green"></span>
                     </a>
                     <ul id="notification" class="dropdown-menu list-unstyled msg_list" role="menu">
-                        <li>
-                            <a>
-
-                                <span>Hệ thống</span>
-                                <span class="message">
-                          Test message
-                        </span>
-                            </a>
-                        </li>
-
                         <li>
                             <div class="text-center">
                                 <a href="${pageContext.request.contextPath}/manager/notifications">

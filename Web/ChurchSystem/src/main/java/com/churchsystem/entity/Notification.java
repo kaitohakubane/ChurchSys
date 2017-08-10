@@ -29,11 +29,7 @@ public class Notification {
         this.avatar=entity.getAvatar();
         this.sender=entity.getSender();
         this.information=entity.getInformation();
-        if(entity.getType()== ParamConstant.YOUTUBE_TYPE){
-            this.link= PageConstant.ROOT_PATH_URL+"?"+ParamConstant.STREAM_LINK+"="+entity.getLink();
-        }else{
-            this.link=entity.getLink();
-        }
+        this.link=entity.getLink();
         this.time=entity.getTime().toString();
     }
 
