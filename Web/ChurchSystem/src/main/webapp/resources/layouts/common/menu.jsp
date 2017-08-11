@@ -117,7 +117,7 @@
                         <i class="fa fa-envelope-o"></i>
                         <span id="numberOfNoti" class="badge bg-green"></span>
                     </a>
-                    <ul id="notification" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <ul id="notification" class="dropdown-menu list-unstyled msg_list" role="menu" style="max-height: 350px;overflow: auto">
                         <li>
                             <div class="text-center">
                                 <a href="${pageContext.request.contextPath}/manager/notifications">

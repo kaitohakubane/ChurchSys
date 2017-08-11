@@ -65,8 +65,7 @@
                                                            data-toggle="dropdown"><i class="fa fa-bell"
                                                                                      aria-hidden="true"></i>
                                 <span id="numberOfNoti"></span></a>
-                                <ul class="dropdown-menu space" aria-labelledby="noti-user" style="width: 300px; max-height: 350px;
-overflow: auto;"
+                                <ul class="dropdown-menu space" aria-labelledby="noti-user" style="width: 300px; max-height: 350px;overflow: auto;"
                                     id="notification">
 
                                     <li><a href="${pageContext.request.contextPath}/user/notifications"
