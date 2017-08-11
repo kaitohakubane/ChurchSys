@@ -20,6 +20,7 @@
             <li><a href="${pageContext.request.contextPath}/church/pray?churchId=${param.churchId}">Cầu nguyện</a></li>
             <li><a href="${pageContext.request.contextPath}/church/contact?churchId=${param.churchId}">Liên hệ</a></li>
             <li><a href="${pageContext.request.contextPath}/church/donation?churchId=${param.churchId}">Đóng góp</a></li>
+            <li><a href="${pageContext.request.contextPath}/church/grave?churchId=${param.churchId}">Phòng hài cốt</a></li>
         </ul>
     </div>
 </div>

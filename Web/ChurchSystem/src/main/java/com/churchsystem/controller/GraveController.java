@@ -7,6 +7,7 @@ import com.churchsystem.common.utils.DateUtils;
 import com.churchsystem.common.utils.FileUtils;
 import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
+import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.GraveServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,16 +42,44 @@ public class GraveController {
     @Autowired
     UserServiceInterface userServiceInterface;
 
+    @Autowired
+    ChurchServiceInterface churchServiceInterface;
+
     @RequestMapping(value = PageConstant.GRAVE_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllChurch(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.GRAVE_PAGE);
         return modelAndView;
     }
 
+    @RequestMapping(value = PageConstant.CHURCH_GRAVE_URL, method = RequestMethod.GET)
+    public ModelAndView getAllChurch(@RequestParam(value = ParamConstant.CHURCH_ID) String id) {
+        ModelAndView modelAndView = new ModelAndView(PageConstant.NOT_FOUND_PAGE);
+        try {
+            int churchId = Integer.parseInt(id);
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
+
+            if (churchEntity != null) {
+                SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
+                modelAndView = new ModelAndView(PageConstant.USER_GRAVE_PAGE)
+                        .addObject(ParamConstant.CHURCH_OBJECT, churchEntity)
+                        .addObject(ParamConstant.CHURCH_SETTING, settingEntity);
+            }
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return modelAndView;
+    }
+
     @ResponseBody
     @RequestMapping(value = PageConstant.GET_GRAVE_YARD, method = RequestMethod.POST)
-    public List<GraveyardEntity> getGraveYard(HttpServletRequest request) {
-        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+    public List<GraveyardEntity> getGraveYard(HttpServletRequest request,@RequestParam(value = ParamConstant.CHURCH_ID, required = false) String churchIdStr) {
+        int churchId;
+        if(churchIdStr==null){
+            churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        }else{
+            churchId=Integer.parseInt(churchIdStr);
+        }
         List<GraveyardEntity> result = graveServiceInterface.getGraveYardOfChurch(churchId);
         return result;
     }
@@ -125,8 +154,8 @@ public class GraveController {
             int graveYardId = Integer.parseInt(graveYardIdStr);
             Date birthDay = DateUtils.getDate(graveBirthStr);
             Date deathDay = DateUtils.getDate(graveDeathStr);
-            int x=Integer.parseInt(positionX);
-            int y=Integer.parseInt(positionY);
+            int x = Integer.parseInt(positionX);
+            int y = Integer.parseInt(positionY);
 
 
             GraveEntity graveEntity = new GraveEntity();
@@ -177,29 +206,21 @@ public class GraveController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.APPROVE_GRAVE_STATUS, method = RequestMethod.POST)
-    public GraveEntity generateGrave(@RequestParam(value = ParamConstant.GRAVE_ID) String graveId,
-                                     @RequestParam(value = ParamConstant.GRAVE_STATUS_TYPE) String type) {
-        GraveEntity result = new GraveEntity();
+    public GraveDisplayEntity generateGrave(@RequestParam(value = ParamConstant.GRAVE_ID) String graveId,
+                                            @RequestParam(value = ParamConstant.GRAVE_STATUS_TYPE) String type) {
+        GraveDisplayEntity result = new GraveDisplayEntity();
         try {
             int typeInt = Integer.parseInt(type);
             int graveInt = Integer.parseInt(graveId);
+            GraveEntity entity = graveServiceInterface.getGrave(graveInt);
             if (typeInt == ParamConstant.ACCEPT_TYPE) {
 
-                /**
-                 *
-                 *  Lay object Grave ra update status thanh approved
-                 *
-                 */
+                entity.setStatus(ParamConstant.GRAVE_APPROVED);
             } else {
-
-                /**
-                 *
-                 * Xoa object grave trong DB
-                 */
-
+                entity.setStatus(ParamConstant.GRAVE_REJECT);
             }
-
-
+            graveServiceInterface.updateGrave(entity);
+            result = graveServiceInterface.getGravebyId(graveInt);
             return result;
         } catch (Exception e) {
             e.printStackTrace();
@@ -209,9 +230,16 @@ public class GraveController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.GET_GRAVE_OF_CHURCH, method = RequestMethod.POST)
-    public List<GraveDisplayEntity> getGrave(HttpServletRequest request) {
-        int churchId=(Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+    public List<GraveDisplayEntity> getGrave(HttpServletRequest request, @RequestParam(value = ParamConstant.CHURCH_ID, required = false) String churchIdStr) {
+        int churchId;
+        if (churchIdStr == null) {
+            churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        } else {
+            churchId = Integer.parseInt(churchIdStr);
+        }
         List<GraveDisplayEntity> result = graveServiceInterface.getChurchGrave(churchId);
         return result;
     }
+
+
 }

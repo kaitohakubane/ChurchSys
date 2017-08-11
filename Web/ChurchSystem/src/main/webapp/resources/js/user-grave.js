@@ -1,4 +1,7 @@
 /**
+ * Created by hungmcse61561-admin on 8/12/2017.
+ */
+/**
  * Created by hungmcse61561-admin on 7/30/2017.
  */
 
@@ -30,92 +33,6 @@ $(document).ready(function () {
     getGraveYard();
     terminateEventCreateMenu();
 })
-
-function addNewCabinet(e) {
-    var grid = e.data('gridstack');
-
-    var node = {x: 0, y: 0, width: 1, height: 1}
-
-    grid.addWidget($('<div><div class="grid-stack-item-content" >Mo thang Kiet<br/> Sinh năm 1995 mất năm 2080</div><div/>'),
-        node.x, node.y, node.width, node.height);
-
-}
-
-function initial(width, height, e) {
-    var grid = e.data('gridstack');
-    var list = [];
-    var node;
-
-    loadCabinet(width, height);
-
-    listOfGraveYard.forEach(function (e) {
-        grid.addWidget($('<div><div class="grid-stack-item-content cabinet" ></div><div/>'),
-            e.x, e.y, e.width, e.height);
-    })
-
-    grid.addWidget($('<div><div class="grid-stack-item-content gate" data-id="gate" ></div><div/>'),
-        width - 2, height - 1, 1, 1);
-
-    grid.addWidget($('<div><div class="grid-stack-item-content statue" data-id="statue" ></div><div/>'),
-        (width - 1) / 2, 1, 2, 1);
-
-    $('.grid-stack-item-content').each(function (e) {
-        if ($(this).data("id") == "statue") {
-            $(this).html("Tượng chúa")
-        } else if ($(this).data("id") == "gate") {
-            $(this).html("Cổng")
-        } else {
-            $(this).html("Tủ " + (e + 1))
-            $(this).data("id", (e + 1))
-        }
-
-    })
-
-
-}
-
-function loadGrave(width, height, target) {
-    var node;
-    var grid = target.data('gridstack');
-    for (var j = 0; j < height; j += 2) {
-        for (var i = 0; i < width; i += 2) {
-            node = {x: i, y: j, width: 2, height: 2}
-            listOfGrave.push(node);
-        }
-    }
-    listOfGrave.forEach(function (e) {
-        grid.addWidget($('<div><div class="grid-stack-item-content grave" ></div><div/>'),
-            e.x, e.y, e.width, e.height);
-    })
-    $('.grave').each(function (e) {
-        $(this).html("Tây Môn Xuy Tuyết</br>20-7-1985 - 19-5-2017")
-
-    })
-}
-
-function loadCabinet(width, height) {
-    var node;
-    for (var j = 0; j < height; j++) {
-        if (j == 0 || j == (height - 1)) {
-            for (var i = 0; i < width; i++) {
-                if (j == height - 1 && i == width - 2) {
-
-                } else {
-                    node = {x: i, y: j, width: 1, height: 1}
-                    listOfGraveYard.push(node);
-                }
-
-            }
-        }
-        else {
-            node = {x: 0, y: j, width: 1, height: 1}
-            listOfGraveYard.push(node);
-            node = {x: width - 1, y: j, width: 1, height: 1}
-            listOfGraveYard.push(node);
-        }
-    }
-
-}
 
 function generateGraveYard(target) {
     var grid = target.data('gridstack');
@@ -167,18 +84,8 @@ function contextMenuInitial(e) {
     $("#contextFree").val(data);
     var btn = $("#contextBtn");
     if (e.data("status") == 0) {
-        btn.html("Khởi tạo");
+        btn.html("Không khả dụng");
         btn.unbind("click");
-        btn.bind("click", function () {
-            $("#graveYardPopup").modal('show');
-
-            $("#intialGraveYard").unbind("click");
-            $("#intialGraveYard").bind("click", function () {
-                width = $("#graveYardWidth").val();
-                height = $("#graveYardHeight").val()
-                setupGraveYard(e, width, height)
-            })
-        })
     } else {
         btn.html("Xem")
         btn.unbind("click");
@@ -191,37 +98,15 @@ function contextMenuInitial(e) {
             generateSearch(search)
             $('.nav-tabs a[href="#step2"]').html('Sơ đồ ' + e.html());
         })
-
     }
 }
-function prototypePopupInitial() {
-    $("#prototypeWidth").val("6");
-    $("#prototypeHeight").val("4");
-}
+
 
 function generalInitial() {
     $("#graveBirthDay").datepicker();
     $("#graveDeathDay").datepicker();
     $("#graveBirthDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
     $("#graveDeathDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
-    var $box = null;
-    $('.style-grave')
-        .click(function () {
-                if ($box == null) {
-                    $box = $(this);
-                    $box.css("border", "5px double #26b99a");
-                } else {
-                    $box.css("border", "5px double #e8e8e8");
-                    if ($box != $(this)) {
-                        $box = $(this);
-                        $box.css("border", "5px double #26b99a");
-                    }
-                    else
-                        $box = null;
-                }
-                chosenPrototype = $(this).data("id");
-            }
-        );
 
     var options = {
         float: true,
@@ -229,29 +114,10 @@ function generalInitial() {
     }
     $('.grid-stack').gridstack(options);
 
-    $("#load-grid").on("click", function () {
-        initial(4, 3, $(".graveYard"));
-        loadGrave(12, 5, $(".grid-stack.cabinet"))
-    })
-
-    $("#protoypePopupBtn").on("click", function () {
-        $("#prototype").modal('hide');
-        console.log(chosenPrototype);
-        var width = $("#prototypeWidth").val();
-        var height = $("#prototypeHeight").val();
-
-        if (chosenPrototype == "") {
-
-        } else if (chosenPrototype == "type1") {
-            generatePrototype(1, width, height);
-        } else if (chosenPrototype == "type2") {
-            generatePrototype(2, width, height);
-        }
-    })
 
     getGraveOfChurch();
     initialSearchBox();
-    prototypePopupInitial();
+
 }
 
 function initialSearchBox() {
@@ -285,14 +151,6 @@ function generateSearch(search) {
         listOfChurchGrave.forEach(function (e) {
             if (e.graveId == search) {
                 console.log("graveId" + e.graveId);
-                // $(".graveItem").each(function (index, element) {
-                //     console.log(" Element data"+$(element.data("id")))
-                //     if ($(element).data("id") == search) {
-                //         $(element).addClass("result-grave");
-                //         highLighting.push($(this));
-                //         return;
-                //     }
-                // })
                 $(".graveYardItem").each(function (index, element) {
                     if (e.graveYardId == $(element).data("id")) {
                         $(element).addClass("result-grave");
@@ -305,7 +163,10 @@ function generateSearch(search) {
         listOfChurchGrave.forEach(function (e) {
             if (e.graveId == search) {
                 $(".graveItem").each(function (index, element) {
-
+                    if (e.graveId == $(element).data("id")) {
+                        $(element).addClass("result-grave");
+                        highLightingYard.push($(element));
+                    }
                 })
             }
         })
@@ -315,13 +176,12 @@ function generateSearch(search) {
     }
 }
 
-function generatePrototype(prototype, width, height) {
-    var requestURL = contextPath + GENERATE_GRAVE_YARD;
+function getGraveYard() {
+    var requestURL = contextPath + GET_GRAVE_YARD;
     var requestMethod = "POST";
+    console.log(churchId)
     var requestData = {
-        "prototype": prototype,
-        "width": width,
-        "height": height
+        "churchId": churchId
     }
     $.ajax({
         url: requestURL,
@@ -330,30 +190,8 @@ function generatePrototype(prototype, width, height) {
         dataType: 'json',
         success: function (res) {
             listOfGraveYard = res;
-            console.log(listOfGraveYard)
-            generateGraveYard($("#graveYard"));
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
-            console.error(textStatus);
-        }
-    });
-
-}
-
-function getGraveYard() {
-    var requestURL = contextPath + GET_GRAVE_YARD;
-    var requestMethod = "POST";
-
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        processData: false,
-        dataType: 'json',
-        success: function (res) {
-            listOfGraveYard = res;
             if (listOfGraveYard.length == 0 || listOfGraveYard == null) {
-                $("#prototype").modal('show');
+                alert("Nhà thờ hiện không có phòng hài cốt")
             } else {
                 generateGraveYard($("#graveYard"));
             }
@@ -365,59 +203,8 @@ function getGraveYard() {
     });
 }
 
-function setupGraveYard(e, width, height) {
-    var requestURL = contextPath + GENERATE_GRAVE;
-    var requestMethod = "POST";
-    var graveYardId = e.data("id");
-    console.log(e.data("id"));
-    console.log(width);
-    console.log(height);
-    var requestData = {
-        "graveYardId": graveYardId,
-        "width": width,
-        "height": height
-    }
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: requestData,
-        dataType: 'json',
-        success: function (res) {
-            $("#graveYardPopup").modal('hide');
-            e.data("gravehe", res.height);
-            e.data("gravewi", res.width);
-            e.data("status", res.status);
-            e.data("free", res.graveAvailable);
-            e.removeClass("graveYardNotInitial");
-            e.addClass("graveYardInitial");
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
-            console.error(textStatus);
-        }
-    });
-}
-
 
 function getGrave(graveYardId, width, height) {
-    // var requestURL = contextPath + GET_GRAVE;
-    // var requestMethod = "POST";
-    // var requestData = {
-    //     "graveYardId": graveYardId
-    // }
-    // $.ajax({
-    //     url: requestURL,
-    //     type: requestMethod,
-    //     data: requestData,
-    //     dataType: 'json',
-    //     success: function (res) {
-    //
-    //     },
-    //     error: function (jqXHR, textStatus, errorThrown) {
-    //         alert('Error happen')
-    //         console.error(textStatus);
-    //     }
-    // });
     listOfGrave = []
     listOfChurchGrave.forEach(function (e) {
         if (e.graveYardId == graveYardId) {
@@ -429,11 +216,16 @@ function getGrave(graveYardId, width, height) {
 }
 
 function getGraveOfChurch() {
+    console.log(churchId);
     var requestURL = contextPath + GET_GRAVE_OF_CHURCH;
     var requestMethod = "POST";
+    var requestData = {
+        "churchId": churchId
+    }
     $.ajax({
         url: requestURL,
         type: requestMethod,
+        data: requestData,
         async: false,
         dataType: 'json',
         success: function (res) {
@@ -502,37 +294,13 @@ function initialDetailContext(e) {
     $("#detailRegisName").html(listOfGrave[index].userName);
     $("#detailRegisPhone").html(listOfGrave[index].tel);
     $("#detailRegisMail").html(listOfGrave[index].email);
-    var processBtn;
-    var rejectBtn;
-    if (listOfGrave[index].status == 2) {
-        processBtn = $("#detailProcess");
-        processBtn.html("Duyệt");
-        processBtn.unbind("click");
-        processBtn.bind("click", function () {
-            approveGraveStatus(e, ACCEPT_TYPE)
-        })
 
-        rejectBtn = $("#detailReject");
-        rejectBtn.html("Từ chối");
-        rejectBtn.unbind("click");
-        rejectBtn.bind("click", function () {
-            approveGraveStatus(e, REJECT_TYPE)
-        })
-    } else {
-        processBtn = $("#detailProcess");
-        processBtn.html("Rút");
-        processBtn.unbind("click");
-        processBtn.bind("click", function () {
-            approveGraveStatus(e, REJECT_TYPE)
-        })
+    var rejectBtn = $("#detailReject");
+    rejectBtn.unbind("click");
+    rejectBtn.bind("click", function () {
+        $("#detailContext").fadeOut();
+    })
 
-        rejectBtn = $("#detailReject");
-        rejectBtn.html("Hủy");
-        rejectBtn.unbind("click");
-        rejectBtn.bind("click", function () {
-            $("#detailContext").fadeOut();
-        })
-    }
 }
 
 function initialRegisContext(e) {
@@ -575,28 +343,6 @@ function regisGrave(e) {
     });
 }
 
-function approveGraveStatus(e, type) {
-    var requestURL = contextPath + APPROVE_GRAVE_STATUS;
-    var requestMethod = "POST";
-    var requestData = {
-        "graveId": e.data("id"),
-        "statusType": type
-    };
-    $.ajax({
-        url: requestURL,
-        type: requestMethod,
-        data: requestData,
-        dataType: 'json',
-        success: function (res) {
-            e.data("status", res.status);
-            updateColor()
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
-            console.error(textStatus);
-        }
-    });
-}
 
 function updateColor() {
     $(".graveItem").each(function () {
