@@ -123,7 +123,7 @@
         <div class="row">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3 style="text-align: center;">Popup</h3>
+                    <h3 style="text-align: center;">Tạo tủ hài cốt</h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
@@ -260,7 +260,7 @@
 <%--/////////////////////////////////////////////////////////////////////////////////--%>
 
 <div class="row graveContextMenu" id="regisContext">
-    <div class="" style="width: 400px;">
+    <div class="" style="width: 370px;">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 style="text-align: center;">Đăng ký hài cốt</h3>
@@ -312,8 +312,8 @@
                     </form>
                     <div class="clearfix"></div>
                     <div class="form-group">
-                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" id="regisBtn" class="col-md-4 btn btn-success">Thêm</button>
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
+                            <button type="button" id="regisBtn" class="col-md-6 btn btn-success">Thêm</button>
                         </div>
                     </div>
 
@@ -328,14 +328,11 @@
 <div class="row graveContextMenu" id="detailContext">
     <div class="" style="width: 300px;">
         <div class="panel panel-success">
-            <div class="panel-heading">
-                <div class="clearfix"></div>
-            </div>
             <div class="panel-body">
                 <div class="form-horizontal form-label-left input_mask">
 
-                    <div class="img-mo"
-                         style="width: 100px; height: 100px; border: 3px double #e8e8e8; margin-left:87px; margin-bottom: 10px">
+                    <div class="col-md-4 col-md-offset-4"
+                         style="border: 3px double #e8e8e8;margin-bottom: 10px">
                         <img id="image" src="<c:url value="/resources/img/noimagefound.jpg"/>" style="width: 100%">
                     </div>
 
@@ -346,7 +343,7 @@
                         <p><b>Ngày mất</b></p>
                         <p><b>Giáo xứ</b></p>
                         <p><b>Người đặt</b></p>
-                        <p><b>Số điện thoại</b></p>
+                        <p><b>Điện thoại</b></p>
                         <p><b>E-mail</b></p>
                     </div>
 
