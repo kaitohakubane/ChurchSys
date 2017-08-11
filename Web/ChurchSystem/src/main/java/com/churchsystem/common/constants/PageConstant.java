@@ -134,13 +134,14 @@ public class PageConstant {
 
     //Grave
     public static final String GRAVE_MANAGEMENT_URL = "/manager/grave";
-    public static final String GET_GRAVE_YARD = "/manager/graveYard/Get";
+    public static final String CHURCH_GRAVE_URL = "/church/grave";
+    public static final String GET_GRAVE_YARD = "/graveYard/Get";
     public static final String GET_GRAVE = "/manager/grave/Get";
     public static final String GENERATE_GRAVE_YARD = "/manager/graveYard/Generate";
     public static final String GENERATE_GRAVE = "/manager/grave/Generate";
     public static final String REGISTER_GRAVE="/grave/Register";
     public static final String APPROVE_GRAVE_STATUS="/manager/grave/Approve";
-    public static final String GET_GRAVE_OF_CHURCH="/manager/grave/getGrave";
+    public static final String GET_GRAVE_OF_CHURCH="/grave/getGrave";
 
     //Mobile
     public static final String MOBILE_GET_NOTIFICATION_URL = "/mobile/notification/Get";
@@ -191,6 +192,7 @@ public class PageConstant {
     public static final String ROOM_MANAGEMENT_PAGE = "room-management-page";
     public static final String ROOM_MANAGEMENT_URL = "/manager/room-management";
     public static final String ADD_NEW_ROOM_URL = "/manager/room-management/add-new-room";
+
     // Church
     public static final String CHURCH_HOME_PAGE = "/user-pages/information-page";
     public static final String CHURCH_SCHEDULE_PAGE = "/user-pages/event-page";
@@ -217,6 +219,7 @@ public class PageConstant {
 
     //Grave
     public static final String GRAVE_PAGE = "grave-page";
+    public static final String USER_GRAVE_PAGE="/user-pages/user-grave-page";
 
     //Common
     public static final String DONATION_PAGE = "/info-page/donation-page";

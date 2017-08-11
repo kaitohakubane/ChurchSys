@@ -56,7 +56,6 @@ public class ChurchController {
         try {
             int churchId = Integer.parseInt(id);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
-
             if (churchEntity != null) {
                 SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchId);
                 modelAndView = new ModelAndView(PageConstant.CHURCH_SCHEDULE_PAGE)

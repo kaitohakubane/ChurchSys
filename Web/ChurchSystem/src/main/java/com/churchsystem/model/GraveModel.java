@@ -28,6 +28,13 @@ public class GraveModel extends CommonDAO implements GraveModelInterface {
     }
 
     @Override
+    public GraveEntity getGrave(int graveId) {
+        Criteria criteria = getSession().createCriteria(GraveEntity.class).add(Restrictions.eq(ParamConstant.GRAVE_ID, graveId));
+        GraveEntity result = (GraveEntity) criteria.uniqueResult();
+        return result;
+    }
+
+    @Override
     public List<GraveDisplayEntity> getGraveOfGraveYard(int graveYardId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_GRAVE)
                 .setParameter(ParamConstant.GRAVE_YARD_ID, graveYardId).setResultTransformer(Transformers.aliasToBean(GraveDisplayEntity.class));
@@ -75,17 +82,17 @@ public class GraveModel extends CommonDAO implements GraveModelInterface {
     }
 
     @Override
-    public GraveEntity getCreatingGrave(int graveYardId,int status){
-        Criteria criteria=getSession().createCriteria(GraveEntity.class)
-                .add(Restrictions.eq(ParamConstant.GRAVE_YARD_ID,graveYardId)).add(Restrictions.eq(ParamConstant.GRAVE_STATUS,status));
-        GraveEntity result=(GraveEntity)criteria.list().get(0);
+    public GraveEntity getCreatingGrave(int graveYardId, int status) {
+        Criteria criteria = getSession().createCriteria(GraveEntity.class)
+                .add(Restrictions.eq(ParamConstant.GRAVE_YARD_ID, graveYardId)).add(Restrictions.eq(ParamConstant.GRAVE_STATUS, status));
+        GraveEntity result = (GraveEntity) criteria.list().get(0);
         return result;
     }
 
     @Override
-    public List<GraveDisplayEntity> getChurchGrave(int churchId){
-        Query query=getSession().createSQLQuery(SQLParamConstant.GET_GRAVE_OF_CHURCH).setParameter(ParamConstant.CHURCH_ID,churchId).setResultTransformer(Transformers.aliasToBean(GraveDisplayEntity.class));
-        List<GraveDisplayEntity> result=query.list();
+    public List<GraveDisplayEntity> getChurchGrave(int churchId) {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_GRAVE_OF_CHURCH).setParameter(ParamConstant.CHURCH_ID, churchId).setResultTransformer(Transformers.aliasToBean(GraveDisplayEntity.class));
+        List<GraveDisplayEntity> result = query.list();
         return result;
     }
 }
