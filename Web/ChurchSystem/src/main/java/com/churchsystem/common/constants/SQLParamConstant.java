@@ -246,6 +246,7 @@ public class SQLParamConstant {
 
     public static final String GET_CHURCH_INFORMATION = "select c.churchId as churchId,c.churchName as churchName, c.tel as tel, " +
             "c.address as address, c.mail as mail, c.startTime as startTime, c.endTime as endTime, c.image as image, " +
+            "c.streamName as streamName, c.streamLink as streamLink, " +
             "c.description as description, m.userId as userId,m.userName as userName, m.certificate as certificate " +
             "from church c, user m, interaction i where m.role='ROLE_MANAGER' AND i.churchId=:churchId AND m.userId = i.userId " +
             "AND c.churchId = i.churchId";
@@ -263,7 +264,6 @@ public class SQLParamConstant {
             "AND u.userId=:userId AND i.enabled=true ORDER BY slotDate ASC";
 
     public static final String GET_LIST_SLOT_HOUR_BY_TIME = "Select * from slothour Where startTime >=:startTime AND endTime <=:endTime";
-
 
 
     public static final String GET_GRAVE_BY_ID = "SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveId =:graveId ";

@@ -16,12 +16,14 @@ public class ChurchInfoEntity {
     private int userId;
     private String userName;
     private String certificate;
+    private  String streamLink;
+    private String streamName;
 
     public ChurchInfoEntity() {
     }
 
     public ChurchInfoEntity(int churchId, String churchName, String tel, String address, String mail, Time startTime,
-                            Time endTime, String image, String description, int userId, String userName, String certificate) {
+                            Time endTime, String image, String description, int userId, String userName, String certificate, String streamLink, String streamName) {
         this.churchId = churchId;
         this.churchName = churchName;
         this.tel = tel;
@@ -34,6 +36,24 @@ public class ChurchInfoEntity {
         this.userId = userId;
         this.userName = userName;
         this.certificate = certificate;
+        this.streamLink = streamLink;
+        this.streamName = streamName;
+    }
+
+    public String getStreamLink() {
+        return streamLink;
+    }
+
+    public void setStreamLink(String streamLink) {
+        this.streamLink = streamLink;
+    }
+
+    public String getStreamName() {
+        return streamName;
+    }
+
+    public void setStreamName(String streamName) {
+        this.streamName = streamName;
     }
 
     public int getChurchId() {
