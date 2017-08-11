@@ -50,8 +50,8 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
     @Override
     public ChurchInfoEntity getChurchInfo(int churchId) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_CHURCH_INFORMATION)
-                .setParameter(ParamConstant.CHURCH_ID, churchId);
-//                .setResultTransformer(Transformers.aliasToBean(ChurchInfoEntity.class));
+                .setParameter(ParamConstant.CHURCH_ID, churchId)
+                .setResultTransformer(Transformers.aliasToBean(ChurchInfoEntity.class));
         ChurchInfoEntity churchInfoEntities = (ChurchInfoEntity) query.uniqueResult();
         return churchInfoEntities;
     }
