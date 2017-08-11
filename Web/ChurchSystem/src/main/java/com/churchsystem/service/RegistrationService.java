@@ -76,17 +76,33 @@ public class RegistrationService implements RegistrationServiceInterface {
     }
 
     @Override
-    public List<RegisDisplayEntity> getAllRegisEvent(int churchId){
+    public List<RegisDisplayEntity> getAllRegisEvent(int churchId) {
         return registrationModelInterface.getAllRegisEvent(churchId);
     }
 
     @Override
-    public List<RegisDisplayEntity> getAllRegisClass(int churchId){
+    public List<RegisDisplayEntity> getAllRegisClass(int churchId) {
         return registrationModelInterface.getAllRegisClass(churchId);
     }
 
     @Override
-    public RegistrationEntity getRegistrationById(int regisId){
+    public RegistrationEntity getRegistrationById(int regisId) {
         return registrationModelInterface.getRegistrationById(regisId);
+    }
+
+    @Override
+    public void changeStatusToDisplay(List<ClassDisplayEntity> classList, List<RegistrationEntity> registrationEntities) {
+        for (int i = 0; i < classList.size(); i++) {
+            for (int j = 0; j < registrationEntities.size(); j++) {
+                if (classList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus() == ParamConstant.REGISTRATION_WAITING_STATUS) {
+                    classList.get(i).setUserStatus(ParamConstant.REGISTERED);
+                    break;
+                }
+                if (classList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus() == ParamConstant.REGISTRATION_FINISH_STATUS) {
+                    classList.get(i).setUserStatus(ParamConstant.REGISTERED_AND_WAITING);
+                    break;
+                }
+            }
+        }
     }
 }

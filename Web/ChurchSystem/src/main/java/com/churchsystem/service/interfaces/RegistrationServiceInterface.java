@@ -32,4 +32,6 @@ public interface RegistrationServiceInterface {
     List<RegisDisplayEntity> getAllRegisClass(int churchId);
 
     RegistrationEntity getRegistrationById(int regisId);
+
+    void changeStatusToDisplay(List<ClassDisplayEntity> classList, List<RegistrationEntity> registrationEntities);
 }

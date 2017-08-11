@@ -529,11 +529,14 @@ public class EventController {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
             int isManySlot = eventServiceInterface.checkIsManySlot(slotId);
-            int eventId = slotEntity.getEventId();
+
             slotServiceInterface.deleteSlotHourBySlotId(slotId);
             slotServiceInterface.deleteSlot(slotId);
+
             if (isManySlot == UtilsConstant.IS_ONE_SLOT) {
-                eventServiceInterface.deleteEvent(eventId);
+                EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+                eventEntity.setEventStatus(ParamConstant.EVENT_DENY_STATUS);
+                eventServiceInterface.updateEvent(eventEntity);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -545,13 +548,16 @@ public class EventController {
     public void removeMultiSlot(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
-            int eventId = slotServiceInterface.getSlotById(slotId).getEventId();
+
             List<SlotEntity> slotEntities = slotServiceInterface.getListSlotOfClass(slotId);
             for (int i = 0; i < slotEntities.size(); i++) {
                 slotServiceInterface.deleteSlotHourBySlotId(slotEntities.get(i).getSlotId());
                 slotServiceInterface.deleteSlot(slotEntities.get(i).getSlotId());
             }
-            eventServiceInterface.deleteEvent(eventId);
+
+            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntities.get(UtilsConstant.ZERO).getEventId());
+            eventEntity.setEventStatus(ParamConstant.EVENT_DENY_STATUS);
+            eventServiceInterface.updateEvent(eventEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }

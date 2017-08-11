@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Trung
@@ -39,7 +40,7 @@
                     <li class="active"><a data-toggle="tab" href="#home">Sắp diễn ra</a></li>
                     <li><a data-toggle="tab" href="#menu1">Đang diễn ra</a></li>
                     <li style="margin-left: 780px;">
-                        <button class="btn btn-default" data-toggle="modal" data-target="#add-new-class">Đăng ký lớp
+                        <button class="btn btn-success" data-toggle="modal" data-target="#add-new-class">Đăng ký lớp
                             mới
                         </button>
                     </li>
@@ -145,12 +146,17 @@
                                                 <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-4">
                                                     <c:if test="${item.userStatus == 1}">
                                                         <button type="button" class="btn btn-success class-registration"
-                                                                data-id="${item.eventId}" disabled>Đã đăng ký!
+                                                                data-id="${item.eventId}" disabled>Đang chờ!
                                                         </button>
                                                     </c:if>
                                                     <c:if test="${item.userStatus == 0}">
                                                         <button type="button" class="btn btn-success class-registration"
-                                                                data-id="${item.eventId}">Đăng kí
+                                                                data-id="${item.eventId}">Đăng ký
+                                                        </button>
+                                                    </c:if>
+                                                    <c:if test="${item.userStatus ==2}">
+                                                        <button type="button" class="btn btn-success class-registration"
+                                                                data-id="${item.eventId}" disabled>Đã đăng ký!
                                                         </button>
                                                     </c:if>
                                                 </div>
@@ -267,14 +273,20 @@
                                                                 <c:if test="${item.userStatus == 1}">
                                                                     <button type="button"
                                                                             class="btn btn-success class-registration"
-                                                                            data-id="${item.eventId}" disabled>Đã đăng
-                                                                        ký!
+                                                                            data-id="${item.eventId}" disabled>Đang chờ!
                                                                     </button>
                                                                 </c:if>
                                                                 <c:if test="${item.userStatus == 0}">
                                                                     <button type="button"
                                                                             class="btn btn-success class-registration"
-                                                                            data-id="${item.eventId}">Đăng kí
+                                                                            data-id="${item.eventId}">Đăng ký
+                                                                    </button>
+                                                                </c:if>
+                                                                <c:if test="${item.userStatus ==2}">
+                                                                    <button type="button"
+                                                                            class="btn btn-success class-registration"
+                                                                            data-id="${item.eventId}" disabled>Đã đăng
+                                                                        ký!
                                                                     </button>
                                                                 </c:if>
                                                             </div>
@@ -330,14 +342,14 @@
                     <div class="form-group">
                         <!-- <label class="control-label col-md-2 col-sm-2 col-xs-12">Mô tả</label> -->
                         <div class="col-md-12 col-sm-10 col-xs-12">
-                            <textarea class="form-control" id="messageTxt" rows="3" placeholder="Mô tả thêm"></textarea>
+                            <textarea class="form-control" id="messageTxt" rows="3" placeholder="Mô tả yêu cầu..."></textarea>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <br>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-default">Hủy</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
                             <button type="submit" class="btn btn-success">Đăng ký</button>
                         </div>
                     </div>

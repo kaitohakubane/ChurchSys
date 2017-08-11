@@ -109,7 +109,7 @@ public class ParamConstant {
     public static final int EVENT_NO_ROOM_VALUE = -1;
     public static final int EVENT_NO_CONDUCTOR_VALUE = -1;
     public static final int REGISTERED = 1;
-
+    public static final int REGISTERED_AND_WAITING = 2;
 
     /**
      * Grave

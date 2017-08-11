@@ -30,10 +30,27 @@ $(document).ready(function () {
     $(".class-registration").on("click", function () {
         var eventId = $(this).data("id");
         registerForClass(eventId);
-        $(this).html("Đã đăng ký!");
+        $(this).html("Đang chờ!");
         $(this).attr('disabled', true);
     })
 
+    subjectDropdownEvent($('#category'));
+    $('#category').change(function () {
+        var firstVal = null;
+        var categoryValue = $(this).val();
+        $('#eventType option').each(function () {
+            var item = $(this);
+            if (!(item.data("category") == categoryValue)) {
+                item.hide();
+            } else {
+                if (firstVal == null) {
+                    firstVal = item.val();
+                }
+                item.show();
+            }
+        })
+        $('#eventType').val(firstVal);
+    })
 })
 
 function registerForClass(eventId) {
@@ -60,4 +77,22 @@ function registerForClass(eventId) {
             console.error(textStatus);
         }
     });
+}
+
+
+function subjectDropdownEvent(category) {
+    var firstVal = null;
+    var categoryValue = category.val();
+    $('#eventType option').each(function () {
+        var item = $(this);
+        if (!(item.data("category") == categoryValue)) {
+            item.hide();
+        } else {
+            if (firstVal == null) {
+                firstVal = item.val();
+            }
+            item.show();
+        }
+    })
+    $('#eventType').val(firstVal);
 }

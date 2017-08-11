@@ -46,6 +46,9 @@ public class RegistrationController {
     @Autowired
     private NotificationServiceInterface notificationServiceInterface;
 
+    @Autowired
+    private CategoryServiceInterface categoryServiceInterface;
+
 
 //    @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
 //    public ModelAndView getAllRegistration() {
@@ -105,7 +108,7 @@ public class RegistrationController {
 
             String information = ParamConstant.EVENT_NAME_PRE + subjectName + ParamConstant.TIME_MESSAGE_NOTIFICATION +
                     startTimeStr + " " + slotDateStr + ParamConstant.MANAGER_REGISTRATION_MESSAGE;
-            notificationServiceInterface.sendNotification(ParamConstant.SYSTEM_ID,manager, information, ParamConstant.DEFAULT_TYPE, null);
+            notificationServiceInterface.sendNotification(ParamConstant.SYSTEM_ID, manager, information, ParamConstant.DEFAULT_TYPE, null);
 
             //Notify user
             information = ParamConstant.USER_EVENT_REGISTRATION_NOTIFICATION + subjectName +
@@ -128,32 +131,21 @@ public class RegistrationController {
             UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
 
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchIdInt);
-
+            SettingEntity settingEntity = churchServiceInterface.getSettingOfChurch(churchIdInt);
             List<ClassDisplayEntity> classList = registrationServiceInterface.getOnPlanClass(churchIdInt);
             List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
             if (userEntity != null) {
                 List<RegistrationEntity> registrationEntities = userServiceInterface.getAllRegistrationByUserId(userEntity.getUserId());
-                for (int i = 0; i < classList.size(); i++) {
-                    for (int j = 0; j < registrationEntities.size(); j++) {
-                        if (classList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus() == ParamConstant.REGISTRATION_WAITING_STATUS) {
-                            classList.get(i).setUserStatus(ParamConstant.REGISTERED);
-                            break;
-                        }
-                    }
-                }
-
-                for (int i = 0; i < classOnGoingList.size(); i++) {
-                    for (int j = 0; j < registrationEntities.size(); j++) {
-                        if (classOnGoingList.get(i).getEventId() == registrationEntities.get(j).getEventId() && registrationEntities.get(j).getRegisStatus() == ParamConstant.REGISTRATION_WAITING_STATUS) {
-                            classOnGoingList.get(i).setUserStatus(ParamConstant.REGISTERED);
-                            break;
-                        }
-                    }
-                }
+                registrationServiceInterface.changeStatusToDisplay(classList, registrationEntities);
+                registrationServiceInterface.changeStatusToDisplay(classOnGoingList, registrationEntities);
             }
             modelAndView.addObject(ParamConstant.ON_PLAN_CLASS_LIST, classList)
                     .addObject(ParamConstant.ON_GOING_CLASS_LIST, classOnGoingList)
-                    .addObject(ParamConstant.CHURCH_OBJECT, churchEntity);
+                    .addObject(ParamConstant.CHURCH_OBJECT, churchEntity)
+                    .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
+                    .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
+                    .addObject(ParamConstant.CHURCH_SETTING, settingEntity);
+            ;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -166,8 +158,7 @@ public class RegistrationController {
     public int classRegister(
             @RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr,
             @RequestParam(value = ParamConstant.SUBJECT_ID) String subIdStr,
-            @RequestParam(value = ParamConstant.REGISTRATION_MESSAGE) String message,
-            @RequestParam(value = ParamConstant.REGISTRATION_EST_TIME) String estTime) {
+            @RequestParam(value = ParamConstant.REGISTRATION_MESSAGE) String message) {
         try {
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -214,7 +205,7 @@ public class RegistrationController {
 
             //Notify
             String subjectName = subjectServiceInterface.getSubjectById(eventEntity.getSubId()).getSubName();
-            int managerId=userServiceInterface.getChurchManager(eventEntity.getChurchId());
+            int managerId = userServiceInterface.getChurchManager(eventEntity.getChurchId());
             String information = ParamConstant.DEFINED_CLASS_NAME_PRE + subjectName + ParamConstant.MANAGER_REGISTRATION_MESSAGE;
             notificationServiceInterface.sendNotification(ParamConstant.SYSTEM_ID, managerId, information, ParamConstant.DEFAULT_TYPE, null);
         } catch (Exception e) {
@@ -289,7 +280,6 @@ public class RegistrationController {
         }
         return result;
     }
-
 
 
     @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
