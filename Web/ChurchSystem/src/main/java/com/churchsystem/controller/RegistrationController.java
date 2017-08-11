@@ -262,13 +262,35 @@ public class RegistrationController {
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
 
-
         } catch (Exception e) {
             e.printStackTrace();
 
         }
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.REJECT_REGISTRATION_URL, method = RequestMethod.POST)
+    public EventDisplayEntity rejectRegistration(@RequestParam(value = ParamConstant.SLOT_ID) String slotIdStr) {
+        EventDisplayEntity result = new EventDisplayEntity();
+        try {
+            int slotId = Integer.parseInt(slotIdStr);
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+
+            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationByEventId(slotEntity.getEventId());
+            registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_DENY_STATUS);
+            registrationServiceInterface.updateRegistration(registrationEntity);
+
+            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+            eventEntity.setEventStatus(ParamConstant.EVENT_DENY_STATUS);
+            eventServiceInterface.updateEvent(eventEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
 
     @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllChurch(HttpServletRequest request) {

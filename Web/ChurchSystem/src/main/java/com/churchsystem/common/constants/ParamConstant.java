@@ -104,6 +104,13 @@ public class ParamConstant {
     public static final String NO_NAME_EVENT_TITLE = "No name";
     public static final int NO_ROOM_AVAILABLE = -1;
     public static final int NO_CONDUCTOR_AVAILABLE = -1;
+    public static final int EVENT_CONDUCTOR_POSITION = 0;
+    public static final int EVENT_ROOM_POSITION = 1;
+    public static final int EVENT_NO_ROOM_VALUE = -1;
+    public static final int EVENT_NO_CONDUCTOR_VALUE = -1;
+    public static final int REGISTERED = 1;
+
+
     /**
      * Grave
      */
@@ -186,7 +193,8 @@ public class ParamConstant {
     public static final String NEW_END_TIME = "newEndTime";
     public static final String START_TIME = "startTime";
     public static final String END_TIME = "endTime";
-
+    public static final int SLOT_UNAVAILABLE = 1;
+    public static final int SLOT_AVAILABLE = 0;
 
     /**
      * Room
@@ -231,24 +239,8 @@ public class ParamConstant {
     public static final String MANAGER_PHONE = "phone";
     public static final String MANAGER_CERT = "cert";
 
-    /*Event*/
-    public static final int EVENT_STATUS_WAITING_FOR_APPROVE = 1;
-    public static final int EVENT_STATUS_DENY = 2;
-    public static final int EVENT_STATUS_APPROVED = 3;
-    public static final int EVENT_STATUS_FINISH = 4;
-    public static final int EVENT_CONDUCTOR_POSITION = 0;
-    public static final int EVENT_ROOM_POSITION = 1;
-    public static final int EVENT_NO_ROOM_VALUE = -1;
-    public static final int EVENT_NO_CONDUCTOR_VALUE = -1;
-    public static final int REGISTERED = 1;
-    public static final int UNREGISTERED = 0;
 
-    /*Slot*/
-    public static final int SLOT_STATUS_OK = 1;
-    public static final int SLOT_STATUS_CONFLICT = 2;
-    public static final int SLOT_STATUS_FINISH = 3;
-    public static final int SLOT_UNAVAILABLE = 1;
-    public static final int SLOT_AVAILABLE = 0;
+
 
 
 

@@ -47,10 +47,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by hungmcse61561-admin on 7/9/2017.
@@ -89,8 +86,13 @@ public class NotificationController {
     public List<NotificationEntity> getNotification() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String accountId = auth.getName();
+        List<NotificationEntity> notifications=new ArrayList<NotificationEntity>();
+        if (accountId.equals(UtilsConstant.ANONYMOUS_USER)) {
+            return notifications;
+        }
+
         UserEntity user = userServiceInterface.getUserByAccountId(accountId);
-        List<NotificationEntity> notifications = notificationServiceInterface
+        notifications = notificationServiceInterface
                 .getUserNotification(user.getUserId(), UtilsConstant.NOTIFICATION_NUMBER_DEFAULT);
         return notifications;
     }

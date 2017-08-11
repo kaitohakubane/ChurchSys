@@ -11,7 +11,8 @@ var CHECK_IS_MANY_SLOT = "/manager/event/check-is-many-slot";
 var SCHEDULE_URL = "/manager/schedule";
 // var REMOVE_EVENT = "/manager/schedule/remove-event";
 var REMOVE_SINGLE_SLOT = "/manager/schedule/remove-single-slot";
-var ACCEPT_REGISTRATION_URL = "/manager/registration/Accept"
+var ACCEPT_REGISTRATION_URL = "/manager/registration/Accept";
+var REJECT_REGISTRATION_URL = "/manager/registration/Reject";
 var REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
 var UPDATE_NAME_AND_PRIVACY = "/manager/schedule/update-name-privacy";
 var dayArray = [];
@@ -94,8 +95,15 @@ function inputUserEventPopup(event) {
     $('#userSlotHour').val(event.start.format('HH:mm') + " - " + event.end.format('HH:mm'));
     $('#userSubject').val(event.subName);
     getRegistrationInfo(event.slotId);
-    $('#acceptBtn').on("click", function () {
+    $("#acceptBtn").unbind("click")
+    $('#acceptBtn').bind("click", function () {
         acceptRegistration(event);
+        $("#userRegister").fadeOut();
+    })
+
+    $("#rejectBtn").unbind("click");
+    $('#rejectBtn').bind("click",function(){
+        rejectRegistration(event);
         $("#userRegister").fadeOut();
     })
 }
@@ -485,7 +493,29 @@ function acceptRegistration(event) {
             event.eventStatus = 3;
             event.color = "#01ff70";
             $('#calendar').fullCalendar('updateEvent', event);
-            onClickShowPopup(REGISTER_SUCCESS_STATUS, TYPE_SUCCESS);
+            onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            onClickShowPopup(ERROR_STATUS, TYPE_DANGER);
+            console.error(textStatus);
+        }
+    })
+}
+
+function rejectRegistration(event) {
+    var requestURL = contextPath + REJECT_REGISTRATION_URL;
+    var requestMethod = "POST";
+    var requestData = {
+        "slotId": event.slotId,
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function () {
+            $('#calendar').fullCalendar('removeEvents',event._id);
+            onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             onClickShowPopup(ERROR_STATUS, TYPE_DANGER);

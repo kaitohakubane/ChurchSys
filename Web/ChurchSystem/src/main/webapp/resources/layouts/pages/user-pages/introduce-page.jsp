@@ -18,9 +18,6 @@
     <title>Giới thiệu</title>
     <c:import url="/resources/layouts/user-common/header.jsp"/>
 
-    <!-- CSS -->
-    <link href="<c:url value="/resources/css/church.css"/>" rel="stylesheet">
-
     <link href="<c:url value="/resources/lib/lightsliderDist/css/lightslider.min.css"/>" rel="stylesheet">
 
 </head>

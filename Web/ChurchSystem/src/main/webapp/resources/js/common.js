@@ -4,6 +4,15 @@
 
 var STREAM_URL = "/manager/stream";
 var FINISH_EVENT = "/automation/finishEvent";
+var GET_NOTIFICATION_URL = "/notification/getNotification";
+
+
+var SUCCESS_STATUS = "Cập nhật thành công!";
+var FAILURE_STATUS = "Cập nhật thất bại!";
+var WARNING_STATUS = "Thay đổi này sẽ áp dụng cho các buổi liên quan!"
+var TYPE_DANGER = "danger";
+var TYPE_SUCCESS = "success";
+var TYPE_WARNING = "warning";
 /**
  * Display the notification message.
  */
@@ -11,6 +20,8 @@ $(document).ready(function () {
     $("#streamOption").on("click", function () {
         post(contextPath + STREAM_URL)
     })
+
+    loadNotification()
 })
 function notify(information, link, time, sender) {
     $("#notification").prepend("<li> <a href='" + contextPath + link + "'> <span> " + sender + " </span> <span class='message'> " + information +
@@ -22,8 +33,6 @@ function notify(information, link, time, sender) {
     } else {
         $("#numberOfNoti").html(parseInt(count) + 1);
     }
-
-
 }
 
 
@@ -169,4 +178,31 @@ function onClickShowWarningPopup(mes, type) {
         '<span data-notify="message">{2}</span>' +
         '</div>'
     });
+
+}
+function loadNotification() {
+    var requestURL = contextPath + GET_NOTIFICATION_URL;
+    var requestMethod = "POST";
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        processData: false,
+        dataType: 'json',
+        success: function (res) {
+            if(res.length==0){
+
+            }else{
+                res.forEach(function(e){
+                    $("#notification").prepend("<li> <a href='" + contextPath + e.link + "'> <span> " + e.sender + " </span> <span class='message'> " + e.information +
+                        " </span> <span>" + e.time + " </span></span></span> </a> </li>")
+
+                })
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    });
+
 }

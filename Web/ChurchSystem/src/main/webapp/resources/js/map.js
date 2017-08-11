@@ -207,7 +207,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
             scaledSize: new google.maps.Size(50, 50),
         }
     }
-    html = html + "<a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' data-id=" + churchId + " data-follow=" + isFollowed + "></i></a>"
+    html = html + "<a href='#' class='change-color'></a>"
     html = html + "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button>"
 
     console.log(churchId);

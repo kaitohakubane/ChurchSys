@@ -17,8 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contact Page</title>
     <c:import url="/resources/layouts/user-common/header.jsp"/>
-    <!-- CSS -->
-    <link href="<c:url value="/resources/css/church.css"/>" rel="stylesheet">
+
 
     <style>
         body{

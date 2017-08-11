@@ -486,8 +486,8 @@
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-default" id="rejectBtn">Reject</button>
-                            <button type="button" class="btn btn-primary" id="acceptBtn">Accept</button>
+                            <button type="button" class="btn btn-default" id="rejectBtn">Từ chối</button>
+                            <button type="button" class="btn btn-primary" id="acceptBtn">Đồng ý</button>
                         </div>
                     </div>
 
