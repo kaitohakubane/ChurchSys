@@ -103,7 +103,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-10" style="margin-top: 10px;">
+                    <div class="col-md-10" style="margin-top: 10px; height: 1000px">
                         <div class="grid-stack" id="grave">
 
                         </div>
@@ -120,15 +120,15 @@
     <div class="" style="width: 300px;">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 style="text-align: center;">Thông tin tủ</h3>
+                <div style="text-align: center;font-size: 140%;font-weight: bold">Thông tin tủ</div>
                 <div class="clearfix"></div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style="padding-bottom: 0px">
                 <div class="form-horizontal form-label-left input_mask">
 
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">Tên</label>
-                        <div class="col-md-8 col-sm-8 col-xs-12 input-group has-success">
+                        <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                             <input type="text" class="form-control" id="contextName" disabled="readonly">
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">Số vị
                             trí</label>
-                        <div class="col-md-8 col-sm-8 col-xs-12 input-group has-success">
+                        <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                             <input type="text" class="form-control" id="contextSlot" disabled="readonly">
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">Còn
                             trống</label>
-                        <div class="col-md-8 col-sm-8 col-xs-12 input-group has-success">
+                        <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                             <input type="text" class="form-control" id="contextFree" disabled="readonly">
                         </div>
                     </div>
@@ -167,46 +167,46 @@
 <%--/////////////////////////////////////////////////////////////////////////////////--%>
 
 <div class="row graveContextMenu" id="regisContext">
-    <div class="" style="width: 400px;">
+    <div class="" style="width: 370px;">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 style="text-align: center;">Đăng ký hài cốt</h3>
+                <div style="text-align: center;font-size: 140%;font-weight: bold">Đăng ký hài cốt</div>
                 <div class="clearfix"></div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style="padding-bottom: 0px">
                 <div class="form-horizontal form-label-left input_mask">
                     <form id="grave-form" role="form">
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ tên</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
                                 <input type="text" name="graveName" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày sinh</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
                                 <input type="text" name="graveBirth" class="form-control" id="graveBirthDay">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nơi sinh</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
                                 <input type="text" name="graveHomeTown" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày mất</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
                                 <input type="text" name="graveDeathDay" class="form-control" id="graveDeathDay">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Giáo xứ</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
                                 <input type="text" name="graveParish" class="form-control">
                             </div>
                         </div>
@@ -219,8 +219,8 @@
                     </form>
                     <div class="clearfix"></div>
                     <div class="form-group">
-                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" id="regisBtn" class="col-md-4 btn btn-success">Đăng Ký</button>
+                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
+                            <button type="button" id="regisBtn" class="col-md-5 btn btn-success">Đăng Ký</button>
                         </div>
                     </div>
 
@@ -235,14 +235,10 @@
 <div class="row graveContextMenu" id="detailContext">
     <div class="" style="width: 300px;">
         <div class="panel panel-success">
-            <div class="panel-heading">
-                <div class="clearfix"></div>
-            </div>
-            <div class="panel-body">
+            <div class="panel-body" style="padding: 0px;">
                 <div class="form-horizontal form-label-left input_mask">
-
-                    <div class="img-mo"
-                         style="width: 100px; height: 100px; border: 3px double #e8e8e8; margin-left:87px; margin-bottom: 10px">
+                    <div class="col-md-4 col-md-offset-4"
+                         style="border: 3px double #e8e8e8;margin-bottom: 10px; margin-top: 10px">
                         <img id="image" src="<c:url value="/resources/img/noimagefound.jpg"/>" style="width: 100%">
                     </div>
 
@@ -252,9 +248,6 @@
                         <p><b>Noi sinh</b></p>
                         <p><b>Ngày mất</b></p>
                         <p><b>Giáo xứ</b></p>
-                        <p><b>Người đặt</b></p>
-                        <p><b>Số điện thoại</b></p>
-                        <p><b>E-mail</b></p>
                     </div>
 
                     <div class="col-md-7">
@@ -264,15 +257,10 @@
                         <p id="detailDeathDay">1 -1 - 2111</p>
                         <p id="detailParish">Da Nang</p>
                         <div class="clearfix"></div>
-                        <p id="detailRegisName">Da Nang</p>
-                        <p id="detailRegisMail">Da Nang</p>
-                        <p id="detailRegisPhone">Da Nang</p>
                     </div>
                     <div class="clearfix"></div>
-                    <br>
                     <div class="form-group">
-                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <%--<button type="button" id="detailProcess" class="col-md-4 btn btn-default">Rút</button>--%>
+                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
                             <button type="button" id="detailReject" class="col-md-4 btn btn-success">Hủy</button>
                         </div>
                     </div>
