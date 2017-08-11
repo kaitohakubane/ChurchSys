@@ -40,6 +40,11 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#home">Sắp diễn ra</a></li>
                     <li><a data-toggle="tab" href="#menu1">Đang diễn ra</a></li>
+                    <li style="margin-left: 780px;">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#add-new-class">Đăng ký lớp
+                            mới
+                        </button>
+                    </li>
                 </ul>
 
                 <div class="tab-content">
@@ -291,6 +296,59 @@
         </div>
     </div>
 </div>
+<!-- popup -->
+<div id="add-new-class" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 300px;">
+
+        <div class="row">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 style="text-align: center;">Đăng ký lớp mới</h3>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-md-12 form-group left">
+                        <div class="input-group has-success">
+                            <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                            <select class="form-control" id="category">
+                                <c:forEach items="${categoryList}" var="item">
+                                    <option value="${item.categoryId}">${item.categoryName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-group right">
+                        <div class="input-group has-success">
+                            <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                            <select class="form-control" id="eventType">
+                                <c:forEach items="${subjectList}" var="item">
+                                    <option class="subClass" id="${item.subId}" value="${item.subName}"
+                                            data-category="${item.categoryId}">${item.subName}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label class="control-label col-md-2 col-sm-2 col-xs-12">Mô tả</label> -->
+                        <div class="col-md-12 col-sm-10 col-xs-12">
+                            <textarea class="form-control" id="messageTxt" rows="3" placeholder="Mô tả thêm"></textarea>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
+                            <button type="button" class="btn btn-default">Hủy</button>
+                            <button type="submit" class="btn btn-success">Đăng ký</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /popup -->
 <c:import url="/resources/layouts/user-common/user-footer.jsp"/>
 <c:import url="/resources/layouts/user-common/footer.jsp"/>
 <script>
