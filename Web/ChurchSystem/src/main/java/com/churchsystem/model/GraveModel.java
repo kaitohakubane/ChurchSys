@@ -81,5 +81,12 @@ public class GraveModel extends CommonDAO implements GraveModelInterface {
         GraveEntity result=(GraveEntity)criteria.list().get(0);
         return result;
     }
+
+    @Override
+    public List<GraveDisplayEntity> getChurchGrave(int churchId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.GET_GRAVE_OF_CHURCH).setParameter(ParamConstant.CHURCH_ID,churchId).setResultTransformer(Transformers.aliasToBean(GraveDisplayEntity.class));
+        List<GraveDisplayEntity> result=query.list();
+        return result;
+    }
 }
 

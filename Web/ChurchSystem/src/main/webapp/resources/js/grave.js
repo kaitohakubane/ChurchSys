@@ -8,6 +8,7 @@ var GENERATE_GRAVE = "/manager/grave/Generate";
 var GET_GRAVE = "/manager/grave/Get";
 var REGISTER_GRAVE = "/grave/Register";
 var APPROVE_GRAVE_STATUS = "/manager/grave/Approve";
+var GET_GRAVE_OF_CHURCH="/manager/grave/getGrave";
 var ACCEPT_TYPE = 1;
 var REJECT_TYPE = 0;
 var GRAVE_NOT_INITIAL_COLOR = "#d8d2d2";
@@ -17,8 +18,10 @@ var GRAVE_WAITING_COLOR = "#f243b5";
 var currentGraveYard;
 var listOfGraveYard = [];
 var listOfGrave = [];
+var listOfChurchGrave=[];
 var chosenPrototype = "";
 var defaultMovePlus = 2;
+var hightLighting=[];
 
 
 $(document).ready(function () {
@@ -146,8 +149,6 @@ function contextMenuInitial(e) {
 
     var width = e.data("gravewi");
     var height = e.data("gravehe");
-    console.log(width);
-    console.log(height);
     var free = e.data("free");
     var data;
     if (width != null && height != null && $.isNumeric(width) && $.isNumeric(height)) {
@@ -159,6 +160,8 @@ function contextMenuInitial(e) {
 
     if (!(free != null && $.isNumeric(free))) {
         data = 0;
+    }else{
+        data=free;
     }
     $("#contextFree").val(data);
     var btn = $("#contextBtn");
@@ -179,10 +182,10 @@ function contextMenuInitial(e) {
         btn.html("Xem")
         btn.unbind("click");
         btn.bind("click", function () {
+            $("#graveYardInformation").fadeOut();
             getGrave(e.data("id"), width, height)
             currentGraveYard = e.data("id");
-            $("#graveYardInformation").fadeOut();
-            $('.nav-tabs a[href="#step2"]').tab('show');
+            $('.nav-tabs a[href="#step2"]').click();
             $('.nav-tabs a[href="#step2"]').html('Sơ đồ ' + e.html());
         })
 
@@ -243,13 +246,26 @@ function generalInitial() {
         }
     })
 
-    $("#graveSearch" +
-        "").dropdown({
-        onChange: function () {
+    getGraveOfChurch();
+    initialSearchBox();
+    prototypePopupInitial();
+}
 
+function initialSearchBox(){
+    listOfChurchGrave.forEach(function(e){
+        var option = document.createElement("option");
+        option.text = e.name;
+        option.value= e.graveId;
+        $("#graveSearch").append(option)
+    })
+
+    $("#graveSearch").dropdown({
+        allowAdditions: true,
+        onChange: function () {
+            var abc = $('#graveSearch').dropdown('get value');
+            console.log(abc[0]);
         }
     })
-    prototypePopupInitial();
 }
 
 function generatePrototype(prototype, width, height) {
@@ -337,20 +353,44 @@ function setupGraveYard(e, width, height) {
 
 
 function getGrave(graveYardId, width, height) {
-    var requestURL = contextPath + GET_GRAVE;
+    // var requestURL = contextPath + GET_GRAVE;
+    // var requestMethod = "POST";
+    // var requestData = {
+    //     "graveYardId": graveYardId
+    // }
+    // $.ajax({
+    //     url: requestURL,
+    //     type: requestMethod,
+    //     data: requestData,
+    //     dataType: 'json',
+    //     success: function (res) {
+    //
+    //     },
+    //     error: function (jqXHR, textStatus, errorThrown) {
+    //         alert('Error happen')
+    //         console.error(textStatus);
+    //     }
+    // });
+    listOfGrave=[]
+    listOfChurchGrave.forEach(function(e){
+        if(e.graveYardId==graveYardId){
+            listOfGrave.push(e)
+        }
+    })
+    generateGrave($("#grave"), width, height, graveYardId);
+    updateColor();
+}
+
+function getGraveOfChurch() {
+    var requestURL = contextPath + GET_GRAVE_OF_CHURCH;
     var requestMethod = "POST";
-    var requestData = {
-        "graveYardId": graveYardId
-    }
     $.ajax({
         url: requestURL,
         type: requestMethod,
-        data: requestData,
+        async:false,
         dataType: 'json',
         success: function (res) {
-            listOfGrave = res;
-            generateGrave($("#grave"), width, height, graveYardId);
-            updateColor();
+            listOfChurchGrave = res;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

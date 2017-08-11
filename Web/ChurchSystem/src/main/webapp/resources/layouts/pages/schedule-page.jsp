@@ -340,7 +340,7 @@
                                         <input type="checkbox" id="7" class="flat day-checkbox"> Bảy
                                     </label>
                                     <label>
-                                        <input type="checkbox" id="8" class="flat day-checkbox"> CN
+                                        <input type="checkbox" id="1" class="flat day-checkbox"> CN
                                     </label>
                                 </div>
                             </form>
@@ -411,7 +411,7 @@
                     ?</label>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info col-md-5" id="cancel" style="margin-left: 6px">Hủy</button>
+                <button type="button" class="btn btn-info col-md-5" id="cancel" data-dismiss="modal" style="margin-left: 6px">Hủy</button>
                 <button type="button" class="btn btn-primary col-md-6" id="process">Tiếp tục</button>
             </div>
         </div>

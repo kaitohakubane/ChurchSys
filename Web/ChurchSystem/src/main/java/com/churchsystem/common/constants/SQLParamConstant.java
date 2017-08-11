@@ -264,7 +264,7 @@ public class SQLParamConstant {
 
     public static final String GET_LIST_SLOT_HOUR_BY_TIME = "Select * from slothour Where startTime >=:startTime AND endTime <=:endTime";
 
-    public static final String GET_LIST_GRAVE = "SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveYardId =:graveYardId ";
+
 
     public static final String GET_GRAVE_BY_ID = "SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveId =:graveId ";
 
@@ -306,5 +306,7 @@ public class SQLParamConstant {
             "WHERE r.eventId = e.eventId AND " +
             "c.churchId = r.churchId AND r.regisStatus = 3 AND r.subId = s.subId AND e.eventStatus != 1 AND e.eventStatus != 2 " +
             "AND s.categoryId = ca.categoryId AND ca.categoryId > 5 AND ca.categoryName < 12 AND r.userId=:userId";
+    public static final String GET_GRAVE_OF_CHURCH = "SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM (SELECT gr.* FROM grave gr , graveyard y WHERE gr.graveYardId = y.graveYardId AND y.churchId =:churchId) g LEFT JOIN user u ON g.userId = u.userId ";
 
+    public static final String GET_LIST_GRAVE = "SELECT u.userName as userName, u.email as email, u.tel as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveYardId =:graveYardId ";
 }

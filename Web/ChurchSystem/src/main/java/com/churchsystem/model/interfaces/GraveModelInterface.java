@@ -27,4 +27,6 @@ public interface GraveModelInterface {
     GraveDisplayEntity getGravebyId(int graveYardId);
 
     GraveEntity getCreatingGrave(int graveYardId,int status);
+
+    List<GraveDisplayEntity> getChurchGrave(int churchId);
 }

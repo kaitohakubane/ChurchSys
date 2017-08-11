@@ -164,32 +164,35 @@ function inputEventPopupInformation(event) {
         if (currentEventIsMultiSlot == 1) {
             console.log("Selected slot has multi slot");
             $('#confirmDelete').modal('show');
+            $("#oneSlot").unbind("click")
+            $("#oneSlot").bind("click", function () {
+                console.log("Option remove one slot is selected");
+                removeSingleSlot(event);
+                $('#confirmDelete').modal('hide');
+            })
+
+            $("#allSlot").unbind("click")
+            $("#allSlot").bind("click", function () {
+                console.log("Option remove many slot is selected");
+                removeMultiSlot(curSlotId);
+                $('#confirmDelete').modal('hide');
+            })
         }
         else if (currentEventIsMultiSlot == 0) {
             console.log("Selected slot has one slot");
-            removeSingleSlot(curSlotId);
+            removeSingleSlot(event);
         }
     })
     $("#btnSave").unbind("click")
     $("#btnSave").bind("click", function () {
         editEventNameAndPrivacy(event);
     })
+
+
 }
 
 
-$("#oneSlot").unbind("click")
-$("#oneSlot").bind("click", function () {
-    console.log("Option remove one slot is selected");
-    removeSingleSlot(curSlotId);
-    $('#confirmDelete').modal('hide');
-})
 
-$("#allSlot").unbind("click")
-$("#allSlot").bind("click", function () {
-    console.log("Option remove many slot is selected");
-    removeMultiSlot(curSlotId);
-    $('#confirmDelete').modal('hide');
-})
 
 function terminateEventCreateMenu() {
 
@@ -278,12 +281,8 @@ function streamRegister(slotId, resolution) {
         data: requestData,
         async: false,
         success: function () {
-            $("#calendar").fullCalendar('removeEventSources');
+            $("#calendar").fullCalendar('removeEvents');
             loadEvent();
-            $("#calendar").fullCalendar('addEventSource', {
-                events: eventList,
-                color: '#43abc9'
-            })
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -308,7 +307,8 @@ function removeMultiSlot(slotId) {
         success: function () {
             console.log("Removed many slot success!")
             onClickShowPopup(REMOVE_SUCCESS_STATUS, TYPE_SUCCESS);
-            // window.location.href = contextPath + SCHEDULE_URL;
+            $("#calendar").fullCalendar('removeEvents');
+            loadEvent();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             onClickShowPopup(REMOVE_FAILURE_STATUS, TYPE_DANGER);
@@ -348,11 +348,11 @@ function checkIsManySlot(event) {
     })
 }
 
-function removeSingleSlot(slotId) {
+function removeSingleSlot(event) {
     var requestURL = contextPath + REMOVE_SINGLE_SLOT;
     var requestMethod = "POST";
     var requestData = {
-        slotId: slotId
+        slotId: event.slotId
     }
     $.ajax({
         url: requestURL,
@@ -362,9 +362,11 @@ function removeSingleSlot(slotId) {
         contentType: 'application/json',
         // processData: false,
         success: function () {
-            console.log("Removed single slot with ID = " + slotId);
+            console.log("Removed single slot with ID = " + event.slotId);
             onClickShowPopup(REMOVE_SUCCESS_STATUS, TYPE_SUCCESS);
-            // window.location.href = contextPath + SCHEDULE_URL;
+            $('#eventDetailPopup').fadeOut();
+            $('#calendar').fullCalendar('removeEvents',event._id);
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             onClickShowPopup(REMOVE_FAILURE_STATUS, TYPE_DANGER);
@@ -398,12 +400,9 @@ function editEventNameAndPrivacy(event) {
         contentType: 'application/json',
         success: function () {
             onClickShowPopup(EDIT_SUCCESS_STATUS, TYPE_SUCCESS);
-            $("#calendar").fullCalendar('removeEventSources');
+            $("#calendar").fullCalendar('removeEvents');
             loadEvent();
-            $("#calendar").fullCalendar('addEventSource', {
-                events: eventList,
-                color: '#43abc9'
-            })
+            $("#eventDetailPopup").fadeOut();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             onClickShowPopup(EDIT_FAILURE_STATUS, TYPE_DANGER);

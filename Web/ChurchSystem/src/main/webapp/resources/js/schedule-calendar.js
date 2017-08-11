@@ -310,10 +310,7 @@ function calendarInitialize() {
         timeFormat: 'HH:mm'
     })
 
-    $("#calendar").fullCalendar('addEventSource', {
-        events: eventList,
-        color: '#43abc9'
-    })
+
 }
 
 
@@ -358,13 +355,13 @@ function clearCreatingEventPopup(timeSlot) {
 function loadEvent() {
     var requestURL = contextPath + LOAD_EVENT_REGISTER_URL;
     var requestMethod = "POST";
-
     $.ajax({
         url: requestURL,
         type: requestMethod,
         processData: false,
         dataType: 'json',
         success: function (res) {
+
             eventList = res;
             eventList.forEach(function (e) {
 
@@ -379,7 +376,11 @@ function loadEvent() {
                     e.color = "#777"
                 }
             })
-            calendarInitialize();
+
+            $("#calendar").fullCalendar('addEventSource', {
+                events: eventList,
+                color: '#43abc9'
+            })
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')

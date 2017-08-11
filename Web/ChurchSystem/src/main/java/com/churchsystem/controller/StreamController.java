@@ -50,21 +50,6 @@ public class StreamController {
                     new Date(System.currentTimeMillis() + UtilsConstant.DEFAULT_DELAY_STREAM_CREATING)
                     , UtilsConstant.DEFAULT_VALIDATE_PORT);
             String streamCode = YoutubeAPI.createStream(streamLink, resolution, streamLink);
-            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
-
-            if (churchEntity.getStreamLink() == null || churchEntity.getStreamLink() == "") {
-                churchEntity.setStreamLink(churchEntity.getStreamLink() + UtilsConstant.DEFAULT_DELIMETER + streamLink);
-            } else {
-                churchEntity.setStreamLink(streamLink);
-            }
-
-            if (churchEntity.getStreamName() == null || churchEntity.getStreamName() == "") {
-                churchEntity.setStreamName(churchEntity.getStreamName() + UtilsConstant.DEFAULT_DELIMETER + streamTitle);
-            } else {
-                churchEntity.setStreamName(streamTitle);
-            }
-            churchServiceInterface.updateChurch(churchEntity);
             streamEntity.setStreamLink(streamLink);
             streamEntity.setStreamCode(streamCode);
             // Command to create an external process
@@ -77,10 +62,26 @@ public class StreamController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.START_STREAM_URL, method = RequestMethod.POST)
-    public void startStream(@RequestParam(value = ParamConstant.STREAM_LINK) String broadcastId) {
+    public void startStream(HttpServletRequest request,
+                            @RequestParam(value = ParamConstant.STREAM_LINK) String streamLink,
+                            @RequestParam(value = ParamConstant.STREAM_TITLE) String streamTitle) {
         try {
-            YoutubeAPI.liveStream(broadcastId);
+            YoutubeAPI.liveStream(streamLink);
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
 
+            if (churchEntity.getStreamLink() != null && !churchEntity.getStreamLink().equals("")) {
+                churchEntity.setStreamLink(churchEntity.getStreamLink() + UtilsConstant.DEFAULT_DELIMETER + streamLink);
+            } else {
+                churchEntity.setStreamLink(streamLink);
+            }
+
+            if (churchEntity.getStreamName() != null && !churchEntity.getStreamName().equals("")) {
+                churchEntity.setStreamName(churchEntity.getStreamName() + UtilsConstant.DEFAULT_DELIMETER + streamTitle);
+            } else {
+                churchEntity.setStreamName(streamTitle);
+            }
+            churchServiceInterface.updateChurch(churchEntity);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,11 +94,15 @@ public class StreamController {
 
             int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
             ChurchEntity churchEntity = churchServiceInterface.getChurchById(churchId);
-            churchEntity.setStreamLink(churchEntity.getStreamLink().replace(broadcastId, ""));
-
             String title = YoutubeAPI.completeStream(broadcastId);
+            int k=churchEntity.getStreamLink().indexOf(broadcastId);
+            if(k!=0){
+                broadcastId=","+broadcastId;
+                title=","+title;
+            }
+            churchEntity.setStreamLink(churchEntity.getStreamLink().replace(broadcastId, ""));
+            churchEntity.setStreamName(churchEntity.getStreamName().replace(title, ""));
 
-            churchEntity.setStreamName(churchEntity.getStreamLink().replace(title, ""));
             churchServiceInterface.updateChurch(churchEntity);
         } catch (Exception e) {
             e.printStackTrace();

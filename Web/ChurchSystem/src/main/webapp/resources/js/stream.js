@@ -21,8 +21,7 @@ function Initial() {
         $("#step-1").hide();
         $("#step-2").show();
         $("#youtubeVideo").attr('src', "https://www.youtube.com/embed/" + streamLink + "?autoplay=1")
-        streamOnAir(streamLink);
-        var streamTitle = $("#streamTitle").val();
+        streamOnAir(streamLink,streamTitle);
         pushNotification(streamLink,streamTitle);
     });
 
@@ -37,7 +36,7 @@ function Initial() {
 
 
     $("#createStreambtn").on("click", function () {
-        var streamTitle = $("#streamTitle").val();
+        streamTitle = $("#streamTitle").val();
         var resolution = $("#resolution").val();
         createStream(streamTitle, resolution);
         $("#registration").modal("hide");
@@ -85,10 +84,11 @@ function createStream(title, resolution) {
     })
 }
 
-function streamOnAir(link) {
+function streamOnAir(link,title) {
 
     var requestData = {
-        "streamLink": link
+        "streamLink": link,
+        "streamTitle":title
     };
     $("#loading").modal("show");
     var requestURL = contextPath + START_STREAM_URL;

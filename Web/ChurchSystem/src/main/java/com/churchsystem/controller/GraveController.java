@@ -206,4 +206,12 @@ public class GraveController {
             return result;
         }
     }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.GET_GRAVE_OF_CHURCH, method = RequestMethod.POST)
+    public List<GraveDisplayEntity> getGrave(HttpServletRequest request) {
+        int churchId=(Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        List<GraveDisplayEntity> result = graveServiceInterface.getChurchGrave(churchId);
+        return result;
+    }
 }

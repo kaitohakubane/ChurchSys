@@ -50,7 +50,6 @@ $(document).ready(function () {
 function generalInitial(){
     if(streamLink!=null&&streamLink!=""){
         $("#stream").modal("show");
-        console.log(e.getAttribute("id"));
         $("#youtubeVideo").attr('src', "https://www.youtube.com/embed/" +streamLink + "?autoplay=1")
     }
 }

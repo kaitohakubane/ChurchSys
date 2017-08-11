@@ -125,4 +125,9 @@ public class GraveService implements GraveServiceInterface {
     public GraveEntity getCreatingGrave(int graveYardId,int status){
         return graveModelInterface.getCreatingGrave(graveYardId,status);
     }
+
+    @Override
+    public List<GraveDisplayEntity> getChurchGrave(int churchId){
+        return graveModelInterface.getChurchGrave(churchId);
+    }
 }
