@@ -11,6 +11,7 @@ import javax.mail.internet.MimeMessage;
 /**
  * Created by hungmcse61561-admin on 6/21/2017.
  */
+
 public class ChurchMailSender {
     @Autowired
     private JavaMailSenderImpl mailSender;

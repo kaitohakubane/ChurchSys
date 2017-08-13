@@ -118,6 +118,7 @@ public class ParamConstant {
      */
 
     public static final String GRAVE_YARD_ID = "graveYardId";
+    public static final String GRAVE_YARD_NAME = "graveYardName";
     public static final int GRAVE_YARD_NOT_INITIAL = 0;
     public static final int GRAVE_YARD_INITIAL = 1;
     public static final int GRAVE_YARD_FULL = 2;
@@ -133,7 +134,7 @@ public class ParamConstant {
     public static final String GRAVE_YARD_PROTOTYPE = "prototype";
     public static final String GRAVE_YARD_DEFAULT_NAME = "Tủ ";
     public static final String GATE_DEFAULT_NAME = "Cửa vào ";
-    public static final String STATUE_DEFAULT_NAME = "Tủ ";
+    public static final String STATUE_DEFAULT_NAME = "Bàn thờ ";
     public static final int GRAVE_YARD_DEFAULT_START_NUMBER = 1;
     public static final String GRAVE_ID = "graveId";
     public static final String GRAVE_STATUS = "status";
@@ -146,10 +147,15 @@ public class ParamConstant {
     public static final String GRAVE_POSITION_X = "positionX";
     public static final String GRAVE_POSITION_Y = "positionY";
     public static final String GRAVE_STATUS_TYPE = "statusType";
-    public static final String GRAVE_PHONE="phoneNum";
+    public static final String GRAVE_PHONE = "phoneNum";
+    public static final String GRAVE_USER_IDENTITY = "userIdentity";
     public static final int ACCEPT_TYPE = 1;
     public static final int REJECT_TYPE = 0;
-
+    public static final String GRAVE_TYPE="graveType";
+    public static final int GRAVE_YARD_DEFAULT_X=-1;
+    public static final int GRAVE_YARD_DEFAULT_Y=-1;
+    public static final String GRAVE_YARD_X="x";
+    public static final String GRAVE_YARD_Y="y";
 
     public static final int IS_SYNC = 1;
     public static final int IS_NOT_SYNC = 0;
@@ -242,10 +248,6 @@ public class ParamConstant {
     public static final String MANAGER_MAIL = "email";
     public static final String MANAGER_PHONE = "phone";
     public static final String MANAGER_CERT = "cert";
-
-
-
-
 
 
 }

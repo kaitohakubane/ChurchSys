@@ -73,23 +73,24 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="btn-group" style="margin-top: 10px; margin-left: 30px">
-                                <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
                                     Thêm mới <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" style="font-size: 15px;">
-                                    <li><a href="#">Tủ hài cốt</a></li>
-                                    <li><a href="#">Cửa ra vào</a></li>
+                                    <li id="createGrave"><a>Tủ hài cốt</a></li>
+                                    <li id="createGate"><a>Cửa ra vào</a></li>
                                 </ul>
                             </div>
-                        </div>
-
                         </div>
                         <div class="col-md-10" style="margin-top: 10px;">
                             <div class="grid-stack graveYard" id="graveYard">
 
                             </div>
                         </div>
+
                     </div>
+
                     <div id="step2" class="tab-pane fade">
                         <div class="col-md-2">
                             <div class="color-description">
@@ -117,14 +118,14 @@
                         </div>
 
                     </div>
-
                 </div>
             </div>
         </div>
-        <!-- /page content -->
-
-        <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
+    <!-- /page content -->
+
+    <c:import url="/resources/layouts/common/page-footer.jsp"/>
+</div>
 </div>
 
 
@@ -249,13 +250,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-7 col-sm-7 col-xs-12" style="text-align: left">Số ô tủ ngang</label>
+                                    <label class="control-label col-md-7 col-sm-7 col-xs-12" style="text-align: left">Số
+                                        ô tủ ngang</label>
                                     <div class="col-md-5 col-sm-5 col-xs-12">
                                         <input type="text" id="graveYardWidth" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-7 col-sm-7 col-xs-12" style="text-align: left">Số ô tủ dọc</label>
+                                    <label class="control-label col-md-7 col-sm-7 col-xs-12" style="text-align: left">Số
+                                        ô tủ dọc</label>
                                     <div class="col-md-5 col-sm-5 col-xs-12">
                                         <input type="text" id="graveYardHeight" class="form-control">
                                     </div>
@@ -334,6 +337,12 @@
                                 <input type="number" name="phoneNum" class="form-control">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">CMND</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="text" name="userIdentity" class="form-control">
+                            </div>
+                        </div>
                     </form>
                     <div class="clearfix"></div>
                     <div class="form-group">
@@ -369,6 +378,7 @@
                         <p><b>Giáo xứ</b></p>
                         <p><b>Người đặt</b></p>
                         <p><b>Điện thoại</b></p>
+                        <p><b>CMND</b></p>
                     </div>
 
                     <div class="col-md-7">
@@ -380,13 +390,14 @@
                         <div class="clearfix"></div>
                         <p id="detailRegisName">Da Nang</p>
                         <p id="detailRegisPhone">Da Nang</p>
+                        <p id="detailRegisIdentity">123123</p>
                     </div>
                     <div class="clearfix"></div>
                     <br>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" id="detailProcess" class="col-md-4 btn btn-default">Rút</button>
-                            <button type="button" id="detailReject" class="col-md-4 btn btn-success">Hủy</button>
+                            <button type="button" id="detailProcess" class="col-md-4 btn btn-success">Rút</button>
+                            <button type="button" id="detailReject" class="col-md-4 btn btn-default">Hủy</button>
                         </div>
                     </div>
 

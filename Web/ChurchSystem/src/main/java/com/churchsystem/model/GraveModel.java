@@ -95,5 +95,12 @@ public class GraveModel extends CommonDAO implements GraveModelInterface {
         List<GraveDisplayEntity> result = query.list();
         return result;
     }
+
+    @Override
+    public GraveyardEntity getCreatingGraveYard(int churchId){
+        Criteria criteria=getSession().createCriteria(GraveyardEntity.class).add(Restrictions.eq(ParamConstant.GRAVE_YARD_X,ParamConstant.GRAVE_YARD_DEFAULT_X)).add(Restrictions.eq(ParamConstant.GRAVE_YARD_Y,ParamConstant.GRAVE_YARD_DEFAULT_Y)).add(Restrictions.eq(ParamConstant.CHURCH_ID,churchId));
+        GraveyardEntity result=(GraveyardEntity) criteria.list().get(0);
+        return result;
+    }
 }
 

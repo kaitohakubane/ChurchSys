@@ -142,6 +142,8 @@ public class PageConstant {
     public static final String REGISTER_GRAVE="/grave/Register";
     public static final String APPROVE_GRAVE_STATUS="/manager/grave/Approve";
     public static final String GET_GRAVE_OF_CHURCH="/grave/getGrave";
+    public static final String CREATE_GRAVE_YARD="/manager/graveYard/Create";
+    public static final String UPDATE_GRAVE_YARD="/manager/graveYard/Update";
 
     //Mobile
     public static final String MOBILE_GET_NOTIFICATION_URL = "/mobile/notification/Get";

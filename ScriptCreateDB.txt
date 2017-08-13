@@ -358,6 +358,8 @@ graveYardId int,
 
 userId int,
 
+identity nvarchar(100),
+
 phone nvarchar(100),
 
 name nvarchar(255),

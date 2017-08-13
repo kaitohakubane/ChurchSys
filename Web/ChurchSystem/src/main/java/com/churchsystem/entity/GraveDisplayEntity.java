@@ -22,12 +22,21 @@ public class GraveDisplayEntity {
     private Integer status;
     private String tel;
     private String userName;
+    private String userIdentity;
+
+    public String getUserIdentity() {
+        return userIdentity;
+    }
+
+    public void setUserIdentity(String userIdentity) {
+        this.userIdentity = userIdentity;
+    }
 
     public GraveDisplayEntity() {
 
     }
 
-    public GraveDisplayEntity(int graveId, Integer graveYardId, Integer userId, String name, Date birthDay, String image, Date deathDay, String homeTown, String parish, Integer x, Integer y, Integer status, String tel, String userName) {
+    public GraveDisplayEntity(int graveId, Integer graveYardId, Integer userId, String name, Date birthDay, String image, Date deathDay, String homeTown, String parish, Integer x, Integer y, Integer status, String tel, String userName, String userIdentity) {
         this.graveId = graveId;
         this.graveYardId = graveYardId;
         this.userId = userId;
@@ -42,6 +51,7 @@ public class GraveDisplayEntity {
         this.status = status;
         this.tel = tel;
         this.userName = userName;
+        this.userIdentity = userIdentity;
     }
 
     public int getGraveId() {

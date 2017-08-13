@@ -73,12 +73,12 @@ public class GraveController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.GET_GRAVE_YARD, method = RequestMethod.POST)
-    public List<GraveyardEntity> getGraveYard(HttpServletRequest request,@RequestParam(value = ParamConstant.CHURCH_ID, required = false) String churchIdStr) {
+    public List<GraveyardEntity> getGraveYard(HttpServletRequest request, @RequestParam(value = ParamConstant.CHURCH_ID, required = false) String churchIdStr) {
         int churchId;
-        if(churchIdStr==null){
+        if (churchIdStr == null) {
             churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-        }else{
-            churchId=Integer.parseInt(churchIdStr);
+        } else {
+            churchId = Integer.parseInt(churchIdStr);
         }
         List<GraveyardEntity> result = graveServiceInterface.getGraveYardOfChurch(churchId);
         return result;
@@ -117,6 +117,7 @@ public class GraveController {
     @RequestMapping(value = PageConstant.GENERATE_GRAVE, method = RequestMethod.POST)
     public GraveyardEntity generateGrave(@RequestParam(value = ParamConstant.WIDTH) String width,
                                          @RequestParam(value = ParamConstant.HEIGHT) String height,
+                                         @RequestParam(value = ParamConstant.GRAVE_YARD_NAME) String graveYardName,
                                          @RequestParam(value = ParamConstant.GRAVE_YARD_ID) String graveYard) {
         GraveyardEntity result = new GraveyardEntity();
         try {
@@ -128,6 +129,7 @@ public class GraveController {
             result.setHeight(heightInt);
             result.setStatus(ParamConstant.GRAVE_YARD_INITIAL);
             result.setGraveAvailable(heightInt * widthInt);
+            result.setName(graveYardName);
             graveServiceInterface.updateGraveYard(result);
             return result;
         } catch (Exception e) {
@@ -148,7 +150,8 @@ public class GraveController {
                                             @RequestParam(value = ParamConstant.GRAVE_IMAGE) MultipartFile graveImgStr,
                                             @RequestParam(value = ParamConstant.GRAVE_POSITION_X) String positionX,
                                             @RequestParam(value = ParamConstant.GRAVE_POSITION_Y) String positionY,
-                                            @RequestParam(value = ParamConstant.GRAVE_PHONE,required = false) String phone
+                                            @RequestParam(value = ParamConstant.GRAVE_PHONE, required = false) String phone,
+                                            @RequestParam(value = ParamConstant.GRAVE_USER_IDENTITY, required = false) String userIdentity
 
     ) {
         GraveDisplayEntity result = new GraveDisplayEntity();
@@ -186,11 +189,12 @@ public class GraveController {
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
-            String loginUser=auth.getName();
-            UserEntity userEntity=userServiceInterface.getUserByAccountId(loginUser);
+            String loginUser = auth.getName();
+            UserEntity userEntity = userServiceInterface.getUserByAccountId(loginUser);
             if (authorities.contains(new SimpleGrantedAuthority(UtilsConstant.MANAGER_USER))) {
                 graveEntity.setStatus(ParamConstant.GRAVE_APPROVED);
                 graveEntity.setPhone(phone);
+                graveEntity.setIdentity(userIdentity);
             } else {
                 graveEntity.setStatus(ParamConstant.GRAVE_WAITING_FOR_APPROVE);
                 graveEntity.setUserId(userEntity.getUserId());
@@ -215,14 +219,15 @@ public class GraveController {
     @ResponseBody
     @RequestMapping(value = PageConstant.APPROVE_GRAVE_STATUS, method = RequestMethod.POST)
     public GraveDisplayEntity generateGrave(@RequestParam(value = ParamConstant.GRAVE_ID) String graveId,
-                                            @RequestParam(value = ParamConstant.GRAVE_STATUS_TYPE) String type) {
+                                            @RequestParam(value = ParamConstant.GRAVE_STATUS_TYPE) String type,
+                                            @RequestParam(value=ParamConstant.GRAVE_USER_IDENTITY,required = false) String userIdentity) {
         GraveDisplayEntity result = new GraveDisplayEntity();
         try {
             int typeInt = Integer.parseInt(type);
             int graveInt = Integer.parseInt(graveId);
             GraveEntity entity = graveServiceInterface.getGrave(graveInt);
             if (typeInt == ParamConstant.ACCEPT_TYPE) {
-
+                entity.setIdentity(userIdentity);
                 entity.setStatus(ParamConstant.GRAVE_APPROVED);
             } else {
                 entity.setStatus(ParamConstant.GRAVE_REJECT);
@@ -249,5 +254,52 @@ public class GraveController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CREATE_GRAVE_YARD, method = RequestMethod.POST)
+    public GraveyardEntity createGraveYard(HttpServletRequest request, @RequestParam(value = ParamConstant.GRAVE_TYPE) String type) {
+        GraveyardEntity result=new GraveyardEntity();
+        try{
+            int typeInt=Integer.parseInt(type);
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            if(typeInt==ParamConstant.GRAVE_YARD_NOT_INITIAL){
+                result.setChurchId(churchId);
+                result.setName("");
+                result.setX(ParamConstant.GRAVE_YARD_DEFAULT_X);
+                result.setY(ParamConstant.GRAVE_YARD_DEFAULT_Y);
+                result.setStatus(ParamConstant.GRAVE_YARD_NOT_INITIAL);
+                graveServiceInterface.addGraveYard(result);
 
+            }else{
+                result.setChurchId(churchId);
+                result.setName(ParamConstant.GATE_DEFAULT_NAME);
+                result.setStatus(ParamConstant.GRAVE_YARD_GATE);
+                result.setX(ParamConstant.GRAVE_YARD_DEFAULT_X);
+                result.setY(ParamConstant.GRAVE_YARD_DEFAULT_Y);
+                graveServiceInterface.addGraveYard(result);
+            }
+            result=graveServiceInterface.getCreatingGraveYard(churchId);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.UPDATE_GRAVE_YARD, method = RequestMethod.POST)
+    public void createGraveYard(HttpServletRequest request,
+                                @RequestParam(value = ParamConstant.GRAVE_YARD_ID) String graveYardId,
+                                @RequestParam(value = ParamConstant.GRAVE_YARD_X) String xString,
+                                @RequestParam(value = ParamConstant.GRAVE_YARD_Y) String yString) {
+        try{
+            int graveYard=Integer.parseInt(graveYardId);
+            int x=Integer.parseInt(xString);
+            int y=Integer.parseInt(yString);
+            GraveyardEntity result=graveServiceInterface.getGraveYardById(graveYard);
+            result.setX(x);
+            result.setY(y);
+            graveServiceInterface.updateGraveYard(result);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

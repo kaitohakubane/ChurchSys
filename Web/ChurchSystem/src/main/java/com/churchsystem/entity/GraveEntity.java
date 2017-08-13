@@ -12,6 +12,7 @@ public class GraveEntity {
     private int graveId;
     private Integer graveYardId;
     private Integer userId;
+    private String identity;
     private String phone;
     private String name;
     private Date birthDay;
@@ -51,6 +52,16 @@ public class GraveEntity {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    @Basic
+    @Column(name = "identity")
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
     @Basic
@@ -163,6 +174,7 @@ public class GraveEntity {
         if (graveId != that.graveId) return false;
         if (graveYardId != null ? !graveYardId.equals(that.graveYardId) : that.graveYardId != null) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (identity != null ? !identity.equals(that.identity) : that.identity != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (birthDay != null ? !birthDay.equals(that.birthDay) : that.birthDay != null) return false;
@@ -182,6 +194,7 @@ public class GraveEntity {
         int result = graveId;
         result = 31 * result + (graveYardId != null ? graveYardId.hashCode() : 0);
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (identity != null ? identity.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (birthDay != null ? birthDay.hashCode() : 0);
