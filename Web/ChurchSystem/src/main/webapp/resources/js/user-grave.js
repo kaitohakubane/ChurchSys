@@ -103,8 +103,8 @@ function contextMenuInitial(e) {
 
 
 function generalInitial() {
-    $("#graveBirthDay").datepicker();
-    $("#graveDeathDay").datepicker();
+    $("#graveBirthDay").datepicker({changeMonth: true,changeYear: true,yearRange: "-100:+0"});
+    $("#graveDeathDay").datepicker({changeMonth: true,changeYear: true,yearRange: "-100:+0"});
     $("#graveBirthDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
     $("#graveDeathDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
 

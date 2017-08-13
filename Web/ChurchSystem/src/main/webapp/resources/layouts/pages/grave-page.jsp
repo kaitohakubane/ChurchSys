@@ -71,9 +71,17 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="clearfix"></div>
+                            <div class="btn-group" style="margin-top: 10px; margin-left: 30px">
+                                <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Thêm mới <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" style="font-size: 15px;">
+                                    <li><a href="#">Tủ hài cốt</a></li>
+                                    <li><a href="#">Cửa ra vào</a></li>
+                                </ul>
+                            </div>
                         </div>
-
-                        <div class="grid-stack" id="itemList">
 
                         </div>
                         <div class="col-md-10" style="margin-top: 10px;">
@@ -235,20 +243,20 @@
                         <div class="x_content">
                             <div class="form-horizontal form-label-left">
                                 <div class="form-group">
-                                    <label class="control-label col-md-8 col-sm-8 col-xs-12">Tên</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-align: left">Tên</label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input type="text" id="graveYardName" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-8 col-sm-8 col-xs-12">Số ô tủ ngang</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-7 col-sm-7 col-xs-12" style="text-align: left">Số ô tủ ngang</label>
+                                    <div class="col-md-5 col-sm-5 col-xs-12">
                                         <input type="text" id="graveYardWidth" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-8 col-sm-8 col-xs-12">Số ô tủ dọc</label>
-                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-md-7 col-sm-7 col-xs-12" style="text-align: left">Số ô tủ dọc</label>
+                                    <div class="col-md-5 col-sm-5 col-xs-12">
                                         <input type="text" id="graveYardHeight" class="form-control">
                                     </div>
                                 </div>

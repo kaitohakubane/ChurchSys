@@ -129,8 +129,8 @@ function prototypePopupInitial() {
 }
 
 function generalInitial() {
-    $("#graveBirthDay").datepicker();
-    $("#graveDeathDay").datepicker();
+    $("#graveBirthDay").datepicker({changeMonth: true,changeYear: true,yearRange: "-100:+0"});
+    $("#graveDeathDay").datepicker({changeMonth: true,changeYear: true,yearRange: "-100:+0"});
     $("#graveBirthDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
     $("#graveDeathDay").datepicker('option', 'dateFormat', 'yy-mm-dd');
     var $box = null;
@@ -165,20 +165,6 @@ function generalInitial() {
         height:2,
         width:1
     }
-    $("#itemList").gridstack(options2);
-    generateItem($("#itemList"));
-
-    $('#itemList').on('removed', function(event, items) {
-        var grid=$('#itemList').data('gridstack');
-        for (var i = 0; i < items.length; i++) {
-            console.log(items[i].id)
-            if(items[i].x==0&&items[i].y==0){
-                grid.addWidget($('<div><div class="grid-stack-item-content gate"></div><div/>'), 0, 0, 1, 1);
-            }else{
-                grid.addWidget($('<div><div class="grid-stack-item-content graveYardItem graveYardNotInitial" ></div><div/>'), 0, 1, 1, 1);
-            }
-        }
-    });
 
     $('#graveYard').on('added',function(event,items){
         graveYardItemEvent();
