@@ -13,6 +13,9 @@ public class ParamConstant {
     public static final int SUCCESS = 1;
     public static final int FAILURE = 0;
 
+    public static final Integer FIVE = 5;
+    public static final Integer TWELVE = 12;
+
 
     /**
      * Homepage
@@ -131,7 +134,7 @@ public class ParamConstant {
     public static final String GRAVE_YARD_PROTOTYPE = "prototype";
     public static final String GRAVE_YARD_DEFAULT_NAME = "Tủ ";
     public static final String GATE_DEFAULT_NAME = "Cửa vào ";
-    public static final String STATUE_DEFAULT_NAME = "Tủ ";
+    public static final String STATUE_DEFAULT_NAME = "Tượng chúa ";
     public static final int GRAVE_YARD_DEFAULT_START_NUMBER = 1;
     public static final String GRAVE_ID = "graveId";
     public static final String GRAVE_STATUS = "status";

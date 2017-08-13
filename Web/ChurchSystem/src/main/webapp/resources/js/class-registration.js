@@ -2,7 +2,7 @@
  * Created by hungmcse61561-admin on 7/7/2017.
  */
 var PREDEFINED_CLASS_REGISTRATION = "/user/registration/PredefinedClass";
-
+var CLASS_REGISTRATION = "/user/registration/Class";
 
 //notify
 var REGISTER_SUCCESS_STATUS = "Đăng ký thành công!";
@@ -51,6 +51,10 @@ $(document).ready(function () {
         })
         $('#eventType').val(firstVal);
     })
+
+    $("#btnRegister").on("click",function () {
+        registerForNewClass();
+    })
 })
 
 function registerForClass(eventId) {
@@ -79,6 +83,36 @@ function registerForClass(eventId) {
     });
 }
 
+function registerForNewClass() {
+    var requestURL = contextPath + CLASS_REGISTRATION;
+    var requestMethod = "POST";
+    var requestData = {
+        "churchId": churchId,
+        "subId": $('#eventType').children(":selected").attr("id"),
+        "message": $("#messageTxt").val()
+    }
+
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        dataType: 'json',
+        success: function (res) {
+            console.log("Đăng ký thành công!");
+            // alert("Đăng ký thành công!")
+            onClickShowPopup(REGISTER_SUCCESS_STATUS, TYPE_SUCCESS);
+            $("#add-new-class").modal("hide");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Đăng ký thất bại!");
+            onClickShowPopup(REGISTER_FAILURE_STATUS, TYPE_DANGER);
+            console.error(textStatus);
+        }
+    });
+}
+
+
 
 function subjectDropdownEvent(category) {
     var firstVal = null;
@@ -96,3 +130,5 @@ function subjectDropdownEvent(category) {
     })
     $('#eventType').val(firstVal);
 }
+
+

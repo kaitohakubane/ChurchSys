@@ -68,7 +68,6 @@ public class RegistrationController {
                                                  @RequestParam(value = ParamConstant.SLOT_DATE) String slotDateStr,
                                                  @RequestParam(value = ParamConstant.REGISTRATION_MESSAGE) String message) {
         try {
-
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
 
@@ -136,16 +135,22 @@ public class RegistrationController {
             List<ClassDisplayEntity> classOnGoingList = registrationServiceInterface.getOnGoingPlanClass(churchIdInt);
             if (userEntity != null) {
                 List<RegistrationEntity> registrationEntities = userServiceInterface.getAllRegistrationByUserId(userEntity.getUserId());
-                registrationServiceInterface.changeStatusToDisplay(classList, registrationEntities);
-                registrationServiceInterface.changeStatusToDisplay(classOnGoingList, registrationEntities);
+                if (registrationEntities != null) {
+                    if (classList != null) {
+                        registrationServiceInterface.changeStatusToDisplay(classList, registrationEntities);
+                    }
+                    if (classOnGoingList != null) {
+                        registrationServiceInterface.changeStatusToDisplay(classOnGoingList, registrationEntities);
+                    }
+                }
             }
             modelAndView.addObject(ParamConstant.ON_PLAN_CLASS_LIST, classList)
                     .addObject(ParamConstant.ON_GOING_CLASS_LIST, classOnGoingList)
                     .addObject(ParamConstant.CHURCH_OBJECT, churchEntity)
-                    .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
-                    .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
+                    .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedClass())
+                    .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getClassCategoryList())
                     .addObject(ParamConstant.CHURCH_SETTING, settingEntity);
-            ;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -166,6 +171,8 @@ public class RegistrationController {
             int subId = Integer.parseInt(subIdStr);
 
             int churchId = Integer.parseInt(churchIdStr);
+
+            registrationServiceInterface.addNewRegistration(userEntity.getUserId(), churchId, subId, null, message);
 
             //Notify manager
             Integer manager = userServiceInterface.getChurchManager(churchId);

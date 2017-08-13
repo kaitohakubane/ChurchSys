@@ -11,5 +11,7 @@ import java.util.List;
 public interface SubjectServiceInterface {
     List<DisplayedSubjectEntity> getDisplayedSubject();
 
+    List<DisplayedSubjectEntity> getDisplayedClass();
+
     SubjectEntity getSubjectById(int subId);
 }

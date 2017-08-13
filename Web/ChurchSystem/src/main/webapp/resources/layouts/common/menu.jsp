@@ -47,8 +47,7 @@
                                 class="fa fa-users"></i> Quản lí thành viên nhà thờ</a></li>
                         <li><a href="${pageContext.request.contextPath}/manager/room-management"><i
                                 class="fa fa-cube"></i> Quản lí phòng</a></li>
-                        <li><a href="${pageContext.request.contextPath}/manager/grave"><i class="fa fa-braille"></i>Quản
-                            lý mộ</a></li>
+                        <li><a href="${pageContext.request.contextPath}/manager/grave"><i class="fa fa-braille"></i>Phòng hài cốt</a></li>
                         <li><a href="${pageContext.request.contextPath}/manager/registration-management"><i
                                 class="fa fa-newspaper-o"></i>Quản lý đơn đăng ký</a></li>
                         <li><a id="streamOption"><i class="fa fa-video-camera"></i> Stream</a></li>

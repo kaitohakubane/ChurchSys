@@ -305,7 +305,10 @@ function generateSearch(search) {
         listOfChurchGrave.forEach(function (e) {
             if (e.graveId == search) {
                 $(".graveItem").each(function (index, element) {
-
+                    if (e.graveId == $(element).data("id")) {
+                        $(element).addClass("result-grave");
+                        highLightingYard.push($(element));
+                    }
                 })
             }
         })

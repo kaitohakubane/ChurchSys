@@ -350,7 +350,7 @@
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                            <button type="submit" class="btn btn-success">Đăng ký</button>
+                            <button type="button" id="btnRegister" class="btn btn-success">Đăng ký</button>
                         </div>
                     </div>
                 </div>
@@ -367,6 +367,8 @@
 <%--<script src="<c:url value="/resources/js/common.js"/>"></script>--%>
 <script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/js/class-registration.js"/>"></script>
-
+<script>
+    var churchId =${param.churchId};
+</script>
 </body>
 </html>

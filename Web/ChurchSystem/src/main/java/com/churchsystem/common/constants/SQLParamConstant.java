@@ -46,6 +46,11 @@ public class SQLParamConstant {
             "FROM subject s, category c " +
             "WHERE s.categoryId = c.categoryId AND c.categoryId != 3 AND c.categoryId != 12";
 
+    public static final String GET_LIST_OF_CLASS = "SELECT s.subId as subId, s.subName as subName," +
+            " s.categoryId as categoryId " +
+            "FROM subject s, category c " +
+            "WHERE s.categoryId = c.categoryId AND c.categoryId >5 AND c.categoryId < 12";
+
     public static final String GET_EVENT_DISPLAY_SLOT = "SELECT sru.slotId as slotId, e.eventId as eventId, " +
             "sru.conductorId as conductorId, sru.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
             "st.endTime as endTime, sru.userName as conductorName, sru.slotDate as slotDate, sru.roomName as roomName, " +

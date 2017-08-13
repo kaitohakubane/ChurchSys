@@ -9,6 +9,7 @@ import com.churchsystem.service.common.ChurchMailSender;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,10 @@ public class ChurchController {
 
     @Autowired
     UserServiceInterface userServiceInterface;
+
+    @Autowired
+    private JavaMailSenderImpl mailSenderService;
+
 
     @RequestMapping(value = PageConstant.CHURCH_HOME_URL, method = RequestMethod.GET)
     public ModelAndView loadPublicEventRegister(@RequestParam(value = ParamConstant.CHURCH_ID) String id) {
@@ -255,6 +260,7 @@ public class ChurchController {
             UserEntity newPriest = userServiceInterface.getPriestByAccountId(accountId);
 
             ChurchMailSender mailSender = new ChurchMailSender();
+            mailSender.setMailSender(mailSenderService) ;
             mailSender.sendMail(UtilsConstant.DEFAULT_ADMIN_MAIL, UtilsConstant.DEFAULT_CC_MAIL, mail, UtilsConstant.ASSIGN_CHURCH_SUBJECT + churchEntity.getChurchName(), UtilsConstant.MAIL_HEADER + userName + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_ACCOUNT + accountId + "\n" + UtilsConstant.ASSIGN_CHURCH_MAIL_BODY_PASSWORD + ParamConstant.DEFAULT_PASSWORD + "\n" + UtilsConstant.MAIL_FOOTER);
             //map inserted user to church
             userServiceInterface.mapUserToChurch(newPriest.getUserId(), churchId);

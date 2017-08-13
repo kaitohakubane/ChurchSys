@@ -39,7 +39,6 @@ function assignManager(churchId) {
         "phone" : $("#phone").val(),
         "cert" : $("#cert").val(),
     }
-console.lo
     $.ajax({
         url: requestURL,
         type: requestMethod,
@@ -49,6 +48,7 @@ console.lo
             console.log("Đăng ký thành công!");
             // alert("Đăng ký thành công!")
             onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
+            $("#assignManagerPopup").modal("hide");
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("Đăng ký thất bại!");
