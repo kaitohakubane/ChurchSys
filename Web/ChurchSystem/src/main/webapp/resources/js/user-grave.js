@@ -110,7 +110,8 @@ function generalInitial() {
 
     var options = {
         float: true,
-        disableResize: true
+        disableResize: true,
+        disableDrag:true
     }
     $('.grid-stack').gridstack(options);
 

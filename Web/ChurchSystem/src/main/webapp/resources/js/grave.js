@@ -31,97 +31,20 @@ $(document).ready(function () {
     terminateEventCreateMenu();
 })
 
-function addNewCabinet(e) {
-    var grid = e.data('gridstack');
-
-    var node = {x: 0, y: 0, width: 1, height: 1}
-
-    grid.addWidget($('<div><div class="grid-stack-item-content" >Mo thang Kiet<br/> Sinh năm 1995 mất năm 2080</div><div/>'),
-        node.x, node.y, node.width, node.height);
-
-}
-
-function initial(width, height, e) {
-    var grid = e.data('gridstack');
-    var list = [];
-    var node;
-
-    loadCabinet(width, height);
-
-    listOfGraveYard.forEach(function (e) {
-        grid.addWidget($('<div><div class="grid-stack-item-content cabinet" ></div><div/>'),
-            e.x, e.y, e.width, e.height);
-    })
-
-    grid.addWidget($('<div><div class="grid-stack-item-content gate" data-id="gate" ></div><div/>'),
-        width - 2, height - 1, 1, 1);
-
-    grid.addWidget($('<div><div class="grid-stack-item-content statue" data-id="statue" ></div><div/>'),
-        (width - 1) / 2, 1, 2, 1);
-
-    $('.grid-stack-item-content').each(function (e) {
-        if ($(this).data("id") == "statue") {
-            $(this).html("Tượng chúa")
-        } else if ($(this).data("id") == "gate") {
-            $(this).html("Cổng")
-        } else {
-            $(this).html("Tủ " + (e + 1))
-            $(this).data("id", (e + 1))
-        }
-
-    })
-
-
-}
-
-function loadGrave(width, height, target) {
-    var node;
+function generateItem(target){
     var grid = target.data('gridstack');
-    for (var j = 0; j < height; j += 2) {
-        for (var i = 0; i < width; i += 2) {
-            node = {x: i, y: j, width: 2, height: 2}
-            listOfGrave.push(node);
-        }
-    }
-    listOfGrave.forEach(function (e) {
-        grid.addWidget($('<div><div class="grid-stack-item-content grave" ></div><div/>'),
-            e.x, e.y, e.width, e.height);
-    })
-    $('.grave').each(function (e) {
-        $(this).html("Tây Môn Xuy Tuyết</br>20-7-1985 - 19-5-2017")
+    grid.addWidget($('<div><div class="grid-stack-item-content gate"></div><div/>'), 0, 0, 1, 1);
 
-    })
+    grid.addWidget($('<div data-gs-id="1"><div class="grid-stack-item-content graveYardItem graveYardNotInitial"' +
+        'data-status="0" ></div><div/>'), 0, 1, 1, 1);
 }
 
-function loadCabinet(width, height) {
-    var node;
-    for (var j = 0; j < height; j++) {
-        if (j == 0 || j == (height - 1)) {
-            for (var i = 0; i < width; i++) {
-                if (j == height - 1 && i == width - 2) {
-
-                } else {
-                    node = {x: i, y: j, width: 1, height: 1}
-                    listOfGraveYard.push(node);
-                }
-
-            }
-        }
-        else {
-            node = {x: 0, y: j, width: 1, height: 1}
-            listOfGraveYard.push(node);
-            node = {x: width - 1, y: j, width: 1, height: 1}
-            listOfGraveYard.push(node);
-        }
-    }
-
-}
 
 function generateGraveYard(target) {
     var grid = target.data('gridstack');
     listOfGraveYard.forEach(function (e) {
         if (e.status < 3) {
-            grid.addWidget($('<div><div class="grid-stack-item-content graveYardItem " data-id=' + e.graveYardId + ' data-free=' + e.graveAvailable + ' data-status=' + e.status + ' data-gravewi=' + e.width + ' data-gravehe=' + e.height + '  >' + e.name + '</div><div/>'), e.x, e.y, 1, 1);
+            grid.addWidget($('<div data-gs-id='+e.graveYardId+'><div class="grid-stack-item-content graveYardItem " data-id=' + e.graveYardId + ' data-free=' + e.graveAvailable + ' data-status=' + e.status + ' data-gravewi=' + e.width + ' data-gravehe=' + e.height + '  >' + e.name + '</div><div/>'), e.x, e.y, 1, 1);
         } else if (e.status == 3) {
             grid.addWidget($('<div><div class="grid-stack-item-content gate" data-id=' + e.graveYardId + ' data-status=' + e.status + '>' + e.name + '</div><div/>'), e.x, e.y, 1, 1);
         } else {
@@ -139,6 +62,12 @@ function generateGraveYard(target) {
         }
     })
 
+
+    graveYardItemEvent();
+
+}
+
+function graveYardItemEvent(){
     $(".graveYardItem").on("click", function (x) {
         contextMenuInitial($(this))
         eventRegisterPopup(x, $("#graveYardInformation"));
@@ -147,7 +76,7 @@ function generateGraveYard(target) {
 
 function contextMenuInitial(e) {
     $("#contextName").val(e.html());
-
+    console.log('41231')
     var width = e.data("gravewi");
     var height = e.data("gravehe");
     var free = e.data("free");
@@ -225,14 +154,36 @@ function generalInitial() {
 
     var options = {
         float: true,
-        disableResize: true
+        disableResize: true,
+        acceptWidgets: '.grid-stack-item'
     }
-    $('.grid-stack').gridstack(options);
+    $('#graveYard').gridstack(options);
+    $('#grave').gridstack(options);
+    var options2={
+        float: true,
+        disableResize: true,
+        height:2,
+        width:1
+    }
+    $("#itemList").gridstack(options2);
+    generateItem($("#itemList"));
 
-    $("#load-grid").on("click", function () {
-        initial(4, 3, $(".graveYard"));
-        loadGrave(12, 5, $(".grid-stack.cabinet"))
+    $('#itemList').on('removed', function(event, items) {
+        var grid=$('#itemList').data('gridstack');
+        for (var i = 0; i < items.length; i++) {
+            console.log(items[i].id)
+            if(items[i].x==0&&items[i].y==0){
+                grid.addWidget($('<div><div class="grid-stack-item-content gate"></div><div/>'), 0, 0, 1, 1);
+            }else{
+                grid.addWidget($('<div><div class="grid-stack-item-content graveYardItem graveYardNotInitial" ></div><div/>'), 0, 1, 1, 1);
+            }
+        }
+    });
+
+    $('#graveYard').on('added',function(event,items){
+        graveYardItemEvent();
     })
+
 
     $("#protoypePopupBtn").on("click", function () {
         $("#prototype").modal('hide');
@@ -501,7 +452,6 @@ function initialDetailContext(e) {
     $("#detailHomeTown").html(listOfGrave[index].homeTown);
     $("#detailRegisName").html(listOfGrave[index].userName);
     $("#detailRegisPhone").html(listOfGrave[index].tel);
-    $("#detailRegisMail").html(listOfGrave[index].email);
     var processBtn;
     var rejectBtn;
     if (listOfGrave[index].status == 2) {

@@ -347,9 +347,12 @@ graveYardId int,
 
 userId int,
 
-name nvarchar(50),
+phone nvarchar(100),
+
+name nvarchar(255),
 
 birthDay date,
+
 image nvarchar(255),
 
 deathDay date,

@@ -147,7 +147,9 @@ public class GraveController {
                                             @RequestParam(value = ParamConstant.GRAVE_PARISH) String graveParishStr,
                                             @RequestParam(value = ParamConstant.GRAVE_IMAGE) MultipartFile graveImgStr,
                                             @RequestParam(value = ParamConstant.GRAVE_POSITION_X) String positionX,
-                                            @RequestParam(value = ParamConstant.GRAVE_POSITION_Y) String positionY
+                                            @RequestParam(value = ParamConstant.GRAVE_POSITION_Y) String positionY,
+                                            @RequestParam(value = ParamConstant.GRAVE_PHONE,required = false) String phone
+
     ) {
         GraveDisplayEntity result = new GraveDisplayEntity();
         try {
@@ -184,11 +186,17 @@ public class GraveController {
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+            String loginUser=auth.getName();
+            UserEntity userEntity=userServiceInterface.getUserByAccountId(loginUser);
             if (authorities.contains(new SimpleGrantedAuthority(UtilsConstant.MANAGER_USER))) {
                 graveEntity.setStatus(ParamConstant.GRAVE_APPROVED);
+                graveEntity.setPhone(phone);
             } else {
                 graveEntity.setStatus(ParamConstant.GRAVE_WAITING_FOR_APPROVE);
+                graveEntity.setUserId(userEntity.getUserId());
+                graveEntity.setPhone(userEntity.getTel());
             }
+
 
             graveServiceInterface.updateGrave(graveEntity);
             result = graveServiceInterface.getGravebyId(graveEntity.getGraveId());

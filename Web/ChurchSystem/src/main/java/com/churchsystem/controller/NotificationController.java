@@ -83,34 +83,25 @@ public class NotificationController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.GET_NOTIFICATION_URL, method = RequestMethod.POST)
-    public List<NotificationEntity> getNotification() {
+    public List<Notification> getNotification() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String accountId = auth.getName();
-        List<NotificationEntity> notifications=new ArrayList<NotificationEntity>();
+
+        List<Notification> result=new ArrayList<Notification>();
         if (accountId.equals(UtilsConstant.ANONYMOUS_USER)) {
-            return notifications;
+            return result;
         }
 
         UserEntity user = userServiceInterface.getUserByAccountId(accountId);
+        List<NotificationEntity> notifications=new ArrayList<NotificationEntity>();
         notifications = notificationServiceInterface
                 .getUserNotification(user.getUserId(), UtilsConstant.NOTIFICATION_NUMBER_DEFAULT);
-        return notifications;
-    }
 
-
-    @ResponseBody
-    @RequestMapping(value = PageConstant.MOBILE_GET_NOTIFICATION_URL, method = RequestMethod.POST)
-    public List<NotificationEntity> getMobileNotification(@RequestParam(value=ParamConstant.USER_ID)String userId) {
-        try{
-            int userIdInt=Integer.parseInt(userId);
-            List<NotificationEntity> notifications = notificationServiceInterface
-                    .getUserNotification((userIdInt), UtilsConstant.NOTIFICATION_NUMBER_DEFAULT);
-            return notifications;
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
+        for(NotificationEntity notification : notifications){
+            Notification item=new Notification(notification);
+            result.add(item);
         }
-
+        return result;
     }
 
 

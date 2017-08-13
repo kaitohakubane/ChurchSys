@@ -71,15 +71,15 @@ $(document).ready(function () {
 function registerClassList() {
     $('#external-events .fc-event').each(function () {
         // store data so the calendar knows to render an event upon drop
-        $(this).data('event', {
-            title: $.trim($(this).text()), // use the element's text as the event title
-            stick: true, // maintain when user navigates (see docs on the renderEvent method)
-            start: "06:00",
-            duration: "01:30",
-            color: '#24ea12',
-            subId: $(this).attr('subId'),
-            privacy: 1
-        });
+        // $(this).data('event', {
+        //     title: $.trim($(this).text()), // use the element's text as the event title
+        //     stick: true, // maintain when user navigates (see docs on the renderEvent method)
+        //     start: "06:00",
+        //     duration: "01:30",
+        //     color: '#24ea12',
+        //     subId: $(this).attr('subId'),
+        //     privacy: 1
+        // });
 
         // make the event draggable using jQuery UI
         $(this).draggable({
@@ -242,19 +242,6 @@ function terminateEventCreateMenu() {
     })
 }
 
-function appendClassToList(subId) {
-    var classTab = document.createElement('div');
-    classList.forEach(function (item) {
-        if (item[0] == subId) {
-            classTab.className = "fc-event";
-            classTab.setAttribute('subId', item[0]);
-            classTab.textContent = item[1] + ": " + item[2];
-            $('#external-events-listing').append(classTab);
-        }
-
-    })
-    registerClassList();
-}
 
 /* initialize the external events*/
 function classListInitial() {

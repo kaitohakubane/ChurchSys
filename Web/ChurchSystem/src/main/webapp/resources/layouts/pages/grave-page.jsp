@@ -35,12 +35,12 @@
                 <ul class="nav nav-tabs">
                     <li id="li-1" class="active"><a data-toggle="tab" href="#step1">Bố trí phòng</a></li>
                     <li id="li-2"><a data-toggle="tab" href="#step2">Sơ đồ</a></li>
-                  <li>
-                    <select class="ui fluid dropdown search"  id="graveSearch">
-                        <%--<c:forEach items="" var="item">--%>
-                        <option class="subClass" value="">Tìm hài cốt</option>
-                    </select>
-                  </li>
+                    <li>
+                        <select class="ui fluid dropdown search" id="graveSearch">
+                            <%--<c:forEach items="" var="item">--%>
+                            <option class="subClass" value="">Tìm hài cốt</option>
+                        </select>
+                    </li>
                 </ul>
 
                 <div class="tab-content">
@@ -71,6 +71,10 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>
+
+                        <div class="grid-stack" id="itemList">
+
                         </div>
                         <div class="col-md-10" style="margin-top: 10px;">
                             <div class="grid-stack graveYard" id="graveYard">
@@ -231,6 +235,12 @@
                         <div class="x_content">
                             <div class="form-horizontal form-label-left">
                                 <div class="form-group">
+                                    <label class="control-label col-md-8 col-sm-8 col-xs-12">Tên</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <input type="text" id="graveYardName" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label col-md-8 col-sm-8 col-xs-12">Số ô tủ ngang</label>
                                     <div class="col-md-4 col-sm-4 col-xs-12">
                                         <input type="text" id="graveYardWidth" class="form-control">
@@ -309,6 +319,13 @@
                                 <input type="file" name="graveImage" class="form-control-file">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Liên lạc </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
+                                <input type="number" name="phoneNum" class="form-control">
+                            </div>
+                        </div>
                     </form>
                     <div class="clearfix"></div>
                     <div class="form-group">
@@ -344,7 +361,6 @@
                         <p><b>Giáo xứ</b></p>
                         <p><b>Người đặt</b></p>
                         <p><b>Điện thoại</b></p>
-                        <p><b>E-mail</b></p>
                     </div>
 
                     <div class="col-md-7">
@@ -355,7 +371,6 @@
                         <p id="detailParish">Da Nang</p>
                         <div class="clearfix"></div>
                         <p id="detailRegisName">Da Nang</p>
-                        <p id="detailRegisMail">Da Nang</p>
                         <p id="detailRegisPhone">Da Nang</p>
                     </div>
                     <div class="clearfix"></div>

@@ -144,6 +144,7 @@ public class ParamConstant {
     public static final String GRAVE_POSITION_X = "positionX";
     public static final String GRAVE_POSITION_Y = "positionY";
     public static final String GRAVE_STATUS_TYPE = "statusType";
+    public static final String GRAVE_PHONE="phoneNum";
     public static final int ACCEPT_TYPE = 1;
     public static final int REJECT_TYPE = 0;
 

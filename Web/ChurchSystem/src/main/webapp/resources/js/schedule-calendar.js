@@ -30,6 +30,7 @@ var defaultMovePlus = 2;
 var listOfCreatingEvent = []
 var ClassCategoryNum = ['6', '7', '8', '9', '10', '11'];
 var defaultTimeSlot = "04:30:00 - 06:00:00";
+var eventSubId;
 
 // Initial call -------------------------------------------------------
 generalInitial();
@@ -58,7 +59,8 @@ $(document).ready(function () {
             if (setting == "1") {
                 validateGoogleAccount(creatingEvent, startTime, policy);
             } else {
-                checkEvent(creatingEvent, startTime, policy);
+                eventSubId=$('#eventType').children(":selected").attr("id");
+                checkEvent(creatingEvent, startTime, policy,eventSubId);
             }
 
 
@@ -72,9 +74,7 @@ $(document).ready(function () {
         if (isPublic) {
             policy = 1;
         }
-        var subId = $('#eventType').children(":selected").attr("id");
-        checkClass(creatingEvent, startTime, policy);
-
+        checkClass(creatingEvent, startTime, policy,eventSubId);
     })
 
 
@@ -82,24 +82,6 @@ $(document).ready(function () {
         $('#calendarPopup').fadeOut();
     })
 })
-
-var isEventOverDiv = function (x, y) {
-
-    var external_events = $('#external-events');
-    var offset = external_events.offset();
-    offset.right = external_events.width() + offset.left;
-    offset.bottom = external_events.height() + offset.top;
-
-    // Compare
-    if (x >= offset.left
-        && y >= offset.top
-        && x <= offset.right
-        && y <= offset.bottom) {
-        return true;
-    }
-    return false;
-
-}
 
 function calendarInitialize() {
 
@@ -195,10 +177,14 @@ function calendarInitialize() {
 
 
         drop: function (date, jsEvent, ui, resourceId) {
-            // $(this).remove();
-            console.log($(this).attr("subId"));
-            console.log(date.format("HH:mm:ss"));
-            console.log(date.format("DD-MM-YYYY"));
+            creatingEvent = {
+                start: date.format() + 'T04:30',
+                privacy: 1
+            }
+            $("#className").val("");
+            $("#classSubject").val($("#eventType option[id="+$(this).attr('subId')+"]").text());
+            eventSubId= $(this).attr('subId');
+            $("#createClass").modal('show');
         },
 
         eventDragStart: function (event, jsEvent, ui, view) {
@@ -208,21 +194,6 @@ function calendarInitialize() {
         },
 
         eventDragStop: function (event, jsEvent, ui, view, revertFunc) {
-            // console.log('calendar 1 eventDragStop');
-            // if (isEventOverDiv(jsEvent.clientX, jsEvent.clientY)) {
-            //     $('#calendar').fullCalendar('removeEvents', event._id);
-            //     var el = $("<div class='fc-event'>").appendTo('#external-events-listing').text(event.title);
-            //     el.draggable({
-            //         zIndex: 999,
-            //         revert: true,
-            //         revertDuration: 0
-            //     });
-            //     el.data('event', {title: event.title, id: event.id, stick: true});
-            //     registerClassList();
-            // }
-            //
-            // calEventStatus = []; // Empty
-            // // makeEventsDraggable();
 
         },
 
@@ -407,12 +378,12 @@ function subjectDropdownEvent(category) {
     $('#eventType').val(firstVal);
 }
 
-function checkEvent(event, slotId, policy) {
+function checkEvent(event, slotId, policy,eventSub) {
     var requestURL = contextPath + CHECK_EVENT_URL;
     var requestMethod = "POST";
     var requestData = {
         slotDate: event.start.split("T")[0],
-        subId: $('#eventType').children(":selected").attr("id"),
+        subId: eventSub,
         slotHour: slotId,
     }
     $.ajax({
@@ -428,10 +399,10 @@ function checkEvent(event, slotId, policy) {
                 $("#process").unbind("click")
                 $("#process").bind("click", function () {
                     $("#confirmModal").modal("hide");
-                    createEvent(creatingEvent, slotId, policy);
+                    createEvent(creatingEvent, slotId, policy,eventSub);
                 })
             } else {
-                createEvent(creatingEvent, slotId, policy);
+                createEvent(creatingEvent, slotId, policy,eventSub);
             }
             $("#calendarPopup").fadeOut();
         },
@@ -443,13 +414,13 @@ function checkEvent(event, slotId, policy) {
 }
 
 
-function createEvent(event, slotId, isPublic) {
+function createEvent(event, slotId, isPublic,eventSub) {
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
     var requestData = {
         eventName: $('#creatingEventName').val(),
         slotDate: event.start.split("T")[0],
-        subId: $('#eventType').children(":selected").attr("id"),
+        subId: eventSub,
         slotHour: slotId,
         privacy: isPublic,
         token: token
@@ -482,7 +453,7 @@ function createEvent(event, slotId, isPublic) {
     });
 }
 
-function checkClass(event, slotHourId, isPublic) {
+function checkClass(event, slotHourId, isPublic,eventSub) {
     var examDate = $("#examDate").val();
     if (examDate == null || examDate == "") {
         examDate = "2017-09-30"
@@ -492,7 +463,7 @@ function checkClass(event, slotHourId, isPublic) {
     var requestMethod = "POST";
     var requestData = {
         slotDate: event.start.split("T")[0],
-        subId: $('#eventType').children(":selected").attr("id"),
+        subId: eventSub,
         slotHour: slotHourId,
         numOfSlot: $("#numberOfSlot").val(),
         examDate: examDate,
@@ -512,14 +483,14 @@ function checkClass(event, slotHourId, isPublic) {
             if (result[0] != -1 && result[1] != -1) {
                 $("#createClass").modal("hide");
                 $("#calendarPopup").fadeOut();
-                createClass(event, slotHourId, isPublic,result[0],result[1]);
+                createClass(event, slotHourId, isPublic,result[0],result[1],eventSub);
             } else {
                 $("#confirmModal").modal("show");
                 $("#process").unbind("click")
                 $("#process").bind("click", function () {
                     $("#confirmModal").modal("hide");
                     $("#createClass").modal("hide");
-                    createClass(event, slotHourId, isPublic,result[0],result[1]);
+                    createClass(event, slotHourId, isPublic,result[0],result[1],eventSub);
                 })
 
                 $("#calendarPopup").fadeOut();
@@ -532,13 +503,13 @@ function checkClass(event, slotHourId, isPublic) {
     });
 }
 
-function createClass(event, slotHourId, isPublic,conductorId,roomId) {
+function createClass(event, slotHourId, isPublic,conductorId,roomId,eventSub) {
     $("#loading").modal('show');
     var examDate = $("#examDate").val();
     if (examDate == null || examDate == "") {
         examDate = "2017-09-30"
     }
-    var subId = $('#eventType').children(":selected").attr("id")
+    var subId = eventSub;
     var requestURL = contextPath + CREATE_CLASS_URL;
     var requestMethod = "POST";
     var requestData = {
@@ -650,7 +621,7 @@ function validateGoogleAccount(creatingEvent, startTime, policy) {
             if (token == "-1" || token == "") {
                 alert("Tài khoản google của bạn không phù hợp với setting. Vui lòng thử lại !!!");
             } else {
-                checkEvent(creatingEvent, startTime, policy);
+                checkEvent(creatingEvent, startTime, policy,eventSubId);
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {

@@ -1,5 +1,7 @@
 package com.churchsystem.entity;
 
+import com.churchsystem.common.constants.UtilsConstant;
+
 import java.sql.Date;
 
 /**
@@ -18,7 +20,6 @@ public class GraveDisplayEntity {
     private Integer x;
     private Integer y;
     private Integer status;
-    private String email;
     private String tel;
     private String userName;
 
@@ -26,7 +27,7 @@ public class GraveDisplayEntity {
 
     }
 
-    public GraveDisplayEntity(int graveId, Integer graveYardId, Integer userId, String name, Date birthDay, String image, Date deathDay, String homeTown, String parish, Integer x, Integer y, Integer status, String email, String tel, String userName) {
+    public GraveDisplayEntity(int graveId, Integer graveYardId, Integer userId, String name, Date birthDay, String image, Date deathDay, String homeTown, String parish, Integer x, Integer y, Integer status, String tel, String userName) {
         this.graveId = graveId;
         this.graveYardId = graveYardId;
         this.userId = userId;
@@ -39,7 +40,6 @@ public class GraveDisplayEntity {
         this.x = x;
         this.y = y;
         this.status = status;
-        this.email = email;
         this.tel = tel;
         this.userName = userName;
     }
@@ -140,14 +140,6 @@ public class GraveDisplayEntity {
         this.status = status;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getTel() {
         return tel;
     }
@@ -157,6 +149,9 @@ public class GraveDisplayEntity {
     }
 
     public String getUserName() {
+        if(this.userId==null){
+            this.userName= UtilsConstant.CHURCH_DEFAULT_NAME;
+        }
         return userName;
     }
 

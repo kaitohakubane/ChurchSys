@@ -31,7 +31,7 @@ public class NotificationModel extends CommonDAO implements NotificationModelInt
     @Override
     public List<NotificationEntity> getUserNotification(int userId,int numberOfNoti){
         Criteria criteria=getSession().createCriteria(NotificationEntity.class)
-                .add(Restrictions.eq(ParamConstant.USER_ID,userId)).addOrder(Order.desc(ParamConstant.NOTIFICATION_TIME))
+                .add(Restrictions.eq(ParamConstant.USER_ID,userId)).addOrder(Order.asc(ParamConstant.NOTIFICATION_TIME))
                 .setMaxResults(numberOfNoti);
         List<NotificationEntity> result=criteria.list();
         return result;

@@ -7,6 +7,7 @@ import com.churchsystem.common.utils.StringUtils;
 import com.churchsystem.entity.*;
 import com.churchsystem.service.interfaces.ChurchServiceInterface;
 import com.churchsystem.service.interfaces.EventServiceInterface;
+import com.churchsystem.service.interfaces.NotificationServiceInterface;
 import com.churchsystem.service.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -31,6 +32,9 @@ public class MobileController {
 
     @Autowired
     EventServiceInterface eventServiceInterface;
+
+    @Autowired
+    NotificationServiceInterface notificationServiceInterface;
 
     @ResponseBody
     @RequestMapping(value = PageConstant.MOBILE_LOGIN_URL, method = RequestMethod.POST)
@@ -130,6 +134,21 @@ public class MobileController {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.MOBILE_GET_NOTIFICATION_URL, method = RequestMethod.POST)
+    public List<NotificationEntity> getMobileNotification(@RequestParam(value=ParamConstant.USER_ID)String userId) {
+        try{
+            int userIdInt=Integer.parseInt(userId);
+            List<NotificationEntity> notifications = notificationServiceInterface
+                    .getUserNotification((userIdInt), UtilsConstant.NOTIFICATION_NUMBER_DEFAULT);
+            return notifications;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     @ResponseBody

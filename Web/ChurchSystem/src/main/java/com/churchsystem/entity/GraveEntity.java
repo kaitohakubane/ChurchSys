@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 7/30/2017.
+ * Created by hungmcse61561-admin on 8/13/2017.
  */
 @Entity
 @Table(name = "grave", schema = "churchsys", catalog = "")
@@ -12,6 +12,7 @@ public class GraveEntity {
     private int graveId;
     private Integer graveYardId;
     private Integer userId;
+    private String phone;
     private String name;
     private Date birthDay;
     private String image;
@@ -50,6 +51,16 @@ public class GraveEntity {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    @Basic
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Basic
@@ -152,6 +163,7 @@ public class GraveEntity {
         if (graveId != that.graveId) return false;
         if (graveYardId != null ? !graveYardId.equals(that.graveYardId) : that.graveYardId != null) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (birthDay != null ? !birthDay.equals(that.birthDay) : that.birthDay != null) return false;
         if (image != null ? !image.equals(that.image) : that.image != null) return false;
@@ -170,6 +182,7 @@ public class GraveEntity {
         int result = graveId;
         result = 31 * result + (graveYardId != null ? graveYardId.hashCode() : 0);
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (birthDay != null ? birthDay.hashCode() : 0);
         result = 31 * result + (image != null ? image.hashCode() : 0);
