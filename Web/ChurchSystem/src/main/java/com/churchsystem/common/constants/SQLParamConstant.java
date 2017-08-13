@@ -38,8 +38,14 @@ public class SQLParamConstant {
     public static final String GET_REGISTERED_CLASS = "SELECT s.subId as subId, s.subName as subName," +
             " count(s.subId) as numOfRegistration " +
             "FROM registration r, subject s " +
-            "WHERE r.churchId =:churchId and r.subId = s.subId AND r.regisStatus = 1 AND s.categoryId > 5 AND s.categoryId < 12 AND r.eventId=null " +
+            "WHERE r.churchId =:churchId and r.subId = s.subId AND r.regisStatus = 1 AND s.categoryId > 5 AND s.categoryId < 12 AND r.eventId is null " +
             "GROUP BY (s.subId)";
+
+    public static final String GET_LIST_OF_CLASS = "SELECT s.subId as subId, s.subName as subName," +
+            " s.categoryId as categoryId " +
+            "FROM subject s, category c " +
+            "WHERE s.categoryId = c.categoryId AND c.categoryId >5 AND c.categoryId < 12";
+
 
     public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +
             " s.categoryId as categoryId " +

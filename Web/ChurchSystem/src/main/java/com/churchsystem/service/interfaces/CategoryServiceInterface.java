@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface CategoryServiceInterface {
     List<CategoryEntity> getEventCategoryList();
+
+    List<CategoryEntity> getClassCategoryList();
 }

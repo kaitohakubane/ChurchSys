@@ -1,4 +1,5 @@
 package com.churchsystem.service.common;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -11,6 +12,7 @@ import javax.mail.internet.MimeMessage;
  * Created by hungmcse61561-admin on 6/21/2017.
  */
 public class ChurchMailSender {
+    @Autowired
     private JavaMailSenderImpl mailSender;
 
 

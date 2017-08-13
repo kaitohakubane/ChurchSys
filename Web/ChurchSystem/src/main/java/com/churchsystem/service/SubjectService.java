@@ -27,7 +27,13 @@ public class SubjectService implements SubjectServiceInterface {
     }
 
     @Override
-    public SubjectEntity getSubjectById(int subId){
+    public SubjectEntity getSubjectById(int subId) {
         return subjectModelInterface.getSubjectById(subId);
+    }
+
+    @Override
+    public List<DisplayedSubjectEntity> getDisplayedClass() {
+        List<DisplayedSubjectEntity> result = subjectModelInterface.getDisplayedClass();
+        return result;
     }
 }

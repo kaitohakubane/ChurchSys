@@ -20,7 +20,12 @@ public class CategoryService implements CategoryServiceInterface {
     CategoryModelInterface categoryModelInterface;
 
     @Override
-    public List<CategoryEntity> getEventCategoryList(){
+    public List<CategoryEntity> getEventCategoryList() {
         return categoryModelInterface.getEventCategoryList();
+    }
+
+    @Override
+    public List<CategoryEntity> getClassCategoryList() {
+        return categoryModelInterface.getClassCategoryList();
     }
 }

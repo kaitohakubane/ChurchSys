@@ -29,9 +29,17 @@ public class SubjectModel extends CommonDAO implements SubjectModelInterface {
     }
 
     @Override
-    public SubjectEntity getSubjectById(int subId){
-        Criteria criteria=getSession().createCriteria(SubjectEntity.class).add(Restrictions.eq(ParamConstant.SUBJECT_ID,subId));
-        SubjectEntity result=(SubjectEntity) criteria.uniqueResult();
+    public SubjectEntity getSubjectById(int subId) {
+        Criteria criteria = getSession().createCriteria(SubjectEntity.class).add(Restrictions.eq(ParamConstant.SUBJECT_ID, subId));
+        SubjectEntity result = (SubjectEntity) criteria.uniqueResult();
+        return result;
+    }
+
+    @Override
+    public List<DisplayedSubjectEntity> getDisplayedClass() {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_OF_CLASS)
+                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<DisplayedSubjectEntity> result = query.list();
         return result;
     }
 

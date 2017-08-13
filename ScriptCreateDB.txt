@@ -15,6 +15,7 @@ CREATE TABLE Church (
 	latitude double,
     
 	tel nvarchar(50),
+    
 	address nvarchar(255),
     
 	mail nvarchar(255),
@@ -22,9 +23,11 @@ CREATE TABLE Church (
 	startTime time ,
     
 	endTime time,
+    
 	image nvarchar(255),
     
-	description nvarchar (255),
+	description LONGTEXT,
+    
 	streamName nvarchar(255),
 
 	streamLink nvarchar(255),
@@ -111,7 +114,7 @@ create table Event(
 	
 	eventId int NOT NULL AUTO_INCREMENT,
     
-    	eventName nvarchar(255),
+	eventName nvarchar(255),
     
 	numOfSlot int,
     
@@ -129,7 +132,8 @@ create table Event(
     
 	description nvarchar(255),
     
-    	privacy bit,
+	privacy bit,
+    
 	isRegistered bit,
     
 	primary key (eventId)
@@ -176,6 +180,7 @@ CREATE table Post (
 	title nvarchar (255),    
     
 	information nvarchar (255),
+    
 	postDate datetime,
     
 	isContribute bit,
@@ -193,10 +198,12 @@ create table Slot (
     
 	conductorId int,
     
-    	slotDate date,
+	slotDate date,
 
 	slotStatus int,
+    
 	streamLink nvarchar(50),
+    
 	streamCode nvarchar(50),
     
 	primary key (slotId)    
@@ -313,6 +320,7 @@ settingId int NOT NULL auto_increment,
 churchId int,
 
 isSync int,
+
 theme int,
 
 primary key (settingId)
@@ -332,8 +340,11 @@ create table GraveYard(
  x int,
  
  y int,
+ 
  width int,
+ 
  height int,
+ 
  graveAvailable int, 
  
 primary key (graveYardId)
@@ -366,6 +377,8 @@ x int,
 y int, 
  
 status int,
+
+identity nvarchar(100),
  
 primary key (graveId)
 
@@ -378,7 +391,6 @@ alter table grave add foreign key (graveYardId) references graveYard(graveYardId
 alter table grave add foreign key (userId) references user(userid);
 
 alter table setting add foreign key (churchId) references church(churchId);
-
 
 alter table Subject add foreign key (categoryId) references Category(categoryId);
 
@@ -431,4 +443,3 @@ alter table Inclusion add foreign key (slotHourId) references SlotHour(slotHourI
 alter table Interaction add foreign key (churchId) references Church(churchId);
 
 alter table Interaction add foreign key (userId) references User(userId);
-

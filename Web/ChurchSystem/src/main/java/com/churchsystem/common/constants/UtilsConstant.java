@@ -59,9 +59,9 @@ public class UtilsConstant {
     public static final String DEFAULT_ADMIN_MAIL = "kaitohakubane@gmail.com";
     public static final String DEFAULT_CC_MAIL = "churchsys.manager@gmail.com";
     public static final String ASSIGN_CHURCH_SUBJECT = "Tài khoản quản lý nhà thờ ";
-    public static final String MAIL_HEADER = "Xin chào";
-    public static final String MAIL_FOOTER = "Xin cảm ơn, \n Church Online System ";
-    public static final String ASSIGN_CHURCH_MAIL_BODY_ACCOUNT = "Tài khoản của bạn là ";
-    public static final String ASSIGN_CHURCH_MAIL_BODY_PASSWORD = "Mật khẩu của bạn là ";
+    public static final String MAIL_HEADER = "Xin chào - ";
+    public static final String MAIL_FOOTER = "Xin cảm ơn, \nChurch Online System ";
+    public static final String ASSIGN_CHURCH_MAIL_BODY_ACCOUNT = "Chào mừng đến với Hệ Thống nhà thờ Online của chúng tôi.\nTài khoản của bạn là: ";
+    public static final String ASSIGN_CHURCH_MAIL_BODY_PASSWORD = "Mật khẩu của bạn là: ";
     public static final String CHURCH_DEFAULT_NAME = "Nhà thờ";
 }

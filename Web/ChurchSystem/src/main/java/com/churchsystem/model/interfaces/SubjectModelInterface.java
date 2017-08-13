@@ -12,4 +12,6 @@ public interface SubjectModelInterface {
     List<DisplayedSubjectEntity> getDisplayedSubject();
 
     SubjectEntity getSubjectById(int subId);
+
+    List<DisplayedSubjectEntity> getDisplayedClass();
 }

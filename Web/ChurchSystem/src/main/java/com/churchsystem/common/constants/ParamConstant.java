@@ -13,6 +13,8 @@ public class ParamConstant {
     public static final int SUCCESS = 1;
     public static final int FAILURE = 0;
 
+    public static final Integer FIVE = 5;
+    public static final Integer TWELVE = 12;
 
     /**
      * Homepage

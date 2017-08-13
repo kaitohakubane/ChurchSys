@@ -17,7 +17,7 @@ public interface RegistrationServiceInterface {
 
     void updateRegistration(RegistrationEntity registrationEntity);
 
-    void addNewRegistration(int userId, int churchId, int subId, int eventId, String message);
+    void addNewRegistration(int userId, int churchId, int subId, Integer eventId, String message);
 
     List<RegistrationEntity> getWaitingRegistrationBySubId(int subId);
 
