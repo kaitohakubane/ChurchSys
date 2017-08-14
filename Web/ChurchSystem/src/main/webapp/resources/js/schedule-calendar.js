@@ -74,6 +74,7 @@ $(document).ready(function () {
         if (isPublic) {
             policy = 1;
         }
+        eventSubId=$('#eventType').children(":selected").attr("id");
         checkClass(creatingEvent, startTime, policy,eventSubId);
     })
 
