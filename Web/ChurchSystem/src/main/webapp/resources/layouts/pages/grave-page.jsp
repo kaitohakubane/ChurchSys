@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mộ phần</title>
+    <title>Phòng hài cốt</title>
 
     <c:import url="/resources/layouts/common/header.jsp"/>
     <link href="<c:url value="/resources/lib/gridDist/gridstack.css"/>" rel="stylesheet">
@@ -171,7 +171,7 @@
                         </div>
 
                         <div class="ln_solid"></div>
-                        <button type="button" class="btn btn-success pull-right" id="protoypePopupBtn">Create</button>
+                        <button type="button" class="btn btn-success pull-right" id="protoypePopupBtn">Khởi tạo</button>
 
                     </div>
                 </div>
@@ -281,7 +281,7 @@
 <%--/////////////////////////////////////////////////////////////////////////////////--%>
 
 <div class="row graveContextMenu" id="regisContext">
-    <div class="" style="width: 370px;">
+    <div class="" style="width: 580px;">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 style="text-align: center;">Đăng ký hài cốt</h3>
@@ -290,64 +290,70 @@
             <div class="panel-body">
                 <div class="form-horizontal form-label-left input_mask">
                     <form id="grave-form" role="form">
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ tên</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                                <input type="text" name="graveName" class="form-control">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-3 col-xs-12" style="text-align: left;">Họ tên</label>
+                                <div class="col-md-8 col-sm-9 col-xs-12 input-group has-success">
+                                    <input type="text" name="graveName" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-3 col-xs-12" style="text-align: left;">Ngày sinh</label>
+                                <div class="col-md-8 col-sm-9 col-xs-12 input-group has-success">
+                                    <input type="text" name="graveBirth" class="form-control" id="graveBirthDay">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-3 col-xs-12" style="text-align: left;">Nơi sinh</label>
+                                <div class="col-md-8 col-sm-9 col-xs-12 input-group has-success">
+                                    <input type="text" name="graveHomeTown" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-3 col-xs-12" style="text-align: left;">Ngày mất</label>
+                                <div class="col-md-8 col-sm-9 col-xs-12 input-group has-success">
+                                    <input type="text" name="graveDeathDay" class="form-control" id="graveDeathDay">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày sinh</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                                <input type="text" name="graveBirth" class="form-control" id="graveBirthDay">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-3 col-xs-12" style="text-align: left;">Giáo xứ</label>
+                                <div class="col-md-8 col-sm-9 col-xs-12 input-group has-success">
+                                    <input type="text" name="graveParish" class="form-control">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nơi sinh</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                                <input type="text" name="graveHomeTown" class="form-control">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-3 col-xs-12" style="text-align: left;">Liên lạc </label>
+                                <div class="col-md-8 col-sm-9 col-xs-12 input-group has-success">
+                                    <input type="number" name="phoneNum" class="form-control">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày mất</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                                <input type="text" name="graveDeathDay" class="form-control" id="graveDeathDay">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-3 col-xs-12" style="text-align: left;">CMND</label>
+                                <div class="col-md-8 col-sm-9 col-xs-12 input-group has-success">
+                                    <input type="text" name="userIdentity" class="form-control">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Giáo xứ</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                                <input type="text" name="graveParish" class="form-control">
+                            <div class="form-group">
+                                <div class="col-md-11 col-sm-9 col-xs-12 col-md-offset-1 input-group has-success">
+                                    <input type="file" name="graveImage" class="form-control-file">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3 input-group has-success">
-                                <input type="file" name="graveImage" class="form-control-file">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Liên lạc </label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                                <input type="number" name="phoneNum" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">CMND</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 input-group has-success">
-                                <input type="text" name="userIdentity" class="form-control">
-                            </div>
                         </div>
                     </form>
                     <div class="clearfix"></div>
                     <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-4">
-                            <button type="button" id="regisBtn" class="col-md-6 btn btn-success">Thêm</button>
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
+                            <button type="button" id="regisBtn" class="btn btn-success">Thêm</button>
                         </div>
                     </div>
 
@@ -366,7 +372,7 @@
                 <div class="form-horizontal form-label-left input_mask">
 
                     <div class="col-md-4 col-md-offset-4"
-                         style="border: 3px double #e8e8e8;margin-bottom: 10px">
+                         style="margin-bottom: 10px">
                         <img id="image" src="<c:url value="/resources/img/noimagefound.jpg"/>" style="width: 100%">
                     </div>
 
@@ -396,8 +402,8 @@
                     <br>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                            <button type="button" id="detailProcess" class="col-md-4 btn btn-success">Rút</button>
-                            <button type="button" id="detailReject" class="col-md-4 btn btn-default">Hủy</button>
+                            <button type="button" id="detailProcess" class="btn btn-success">Rút</button>
+                            <button type="button" id="detailReject" class="btn btn-default">Hủy</button>
                         </div>
                     </div>
 

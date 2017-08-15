@@ -428,6 +428,7 @@ function getGraveOfChurch() {
         dataType: 'json',
         success: function (res) {
             listOfChurchGrave = res;
+            console.log(res)
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -478,8 +479,6 @@ function generateGrave(target, width, height, graveYard) {
 
 function initialDetailContext(e) {
     var index = e.data("grave");
-    console.log(listOfGrave);
-    console.log(index);
     if (listOfGrave[index].image != null) {
         $("#image").attr("src", contextPath + "/product-images/" + listOfGrave[index].image);
     } else {
@@ -496,17 +495,16 @@ function initialDetailContext(e) {
         $("#identityContainer").append("<input type='text' id='detailRegisIdentity' class='form-control'>");
         processBtn.unbind("click");
         processBtn.bind("click", function () {
-            var userIdentity=$("#deatilRegisIdentity").val();
+            var userIdentity=$("#detailRegisIdentity").val();
             approveGraveStatus(index,e, ACCEPT_TYPE,userIdentity)
             $("#detailContext").fadeOut();
-
         })
 
         rejectBtn = $("#detailReject");
         rejectBtn.html("Từ chối");
         rejectBtn.unbind("click");
         rejectBtn.bind("click", function () {
-            approveGraveStatus(index,e, REJECT_TYPE,0)
+            approveGraveStatus(index,e, REJECT_TYPE,null)
             $("#detailContext").fadeOut();
         })
     } else {
@@ -516,7 +514,7 @@ function initialDetailContext(e) {
         $("#identityContainer").append("<p id='detailRegisIdentity'></p>");
         processBtn.unbind("click");
         processBtn.bind("click", function () {
-            approveGraveStatus(index,e, REJECT_TYPE,0)
+            approveGraveStatus(index,e, REJECT_TYPE,null)
             $("#detailContext").fadeOut();
         })
 
@@ -535,6 +533,7 @@ function initialDetailContext(e) {
     $("#detailRegisName").html(listOfGrave[index].userName);
     $("#detailRegisPhone").html(listOfGrave[index].tel);
     $("#detailRegisIdentity").html(listOfGrave[index].userIdentity);
+    console.log(listOfGrave[index].userIdentity)
 }
 
 function initialRegisContext(e) {
@@ -593,6 +592,7 @@ function approveGraveStatus(index,e, type,userIdentity) {
         success: function (res) {
             e.data("status", res.status);
             listOfGrave[index].status=res.status;
+            listOfGrave[index].userIdentity=res.userIdentity;
             updateColor()
         },
         error: function (jqXHR, textStatus, errorThrown) {

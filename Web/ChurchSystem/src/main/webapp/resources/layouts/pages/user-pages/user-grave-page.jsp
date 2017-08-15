@@ -238,7 +238,7 @@
             <div class="panel-body" style="padding: 0px;">
                 <div class="form-horizontal form-label-left input_mask">
                     <div class="col-md-4 col-md-offset-4"
-                         style="border: 3px double #e8e8e8;margin-bottom: 10px; margin-top: 10px">
+                         style="margin-bottom: 10px; margin-top: 10px">
                         <img id="image" src="<c:url value="/resources/img/noimagefound.jpg"/>" style="width: 100%">
                     </div>
 
