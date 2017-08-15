@@ -3,7 +3,7 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 6/12/2017.
+ * Created by hungmcse61561-admin on 8/15/2017.
  */
 @Entity
 @Table(name = "question", schema = "churchsys", catalog = "")
@@ -13,7 +13,7 @@ public class QuestionEntity {
     private Integer userId;
     private String information;
     private String quesStatus;
-    private Integer subId;
+    private Integer kind;
 
     @Id
     @Column(name = "quesId")
@@ -66,13 +66,13 @@ public class QuestionEntity {
     }
 
     @Basic
-    @Column(name = "subId")
-    public Integer getSubId() {
-        return subId;
+    @Column(name = "kind")
+    public Integer getKind() {
+        return kind;
     }
 
-    public void setSubId(Integer subId) {
-        this.subId = subId;
+    public void setKind(Integer kind) {
+        this.kind = kind;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class QuestionEntity {
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (information != null ? !information.equals(that.information) : that.information != null) return false;
         if (quesStatus != null ? !quesStatus.equals(that.quesStatus) : that.quesStatus != null) return false;
-        if (subId != null ? !subId.equals(that.subId) : that.subId != null) return false;
+        if (kind != null ? !kind.equals(that.kind) : that.kind != null) return false;
 
         return true;
     }
@@ -99,7 +99,7 @@ public class QuestionEntity {
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         result = 31 * result + (quesStatus != null ? quesStatus.hashCode() : 0);
-        result = 31 * result + (subId != null ? subId.hashCode() : 0);
+        result = 31 * result + (kind != null ? kind.hashCode() : 0);
         return result;
     }
 }

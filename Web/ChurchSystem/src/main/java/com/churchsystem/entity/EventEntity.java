@@ -2,9 +2,10 @@ package com.churchsystem.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
- * Created by hungmcse61561-admin on 7/7/2017.
+ * Created by hungmcse61561-admin on 8/15/2017.
  */
 @Entity
 @Table(name = "event", schema = "churchsys", catalog = "")
@@ -21,6 +22,7 @@ public class EventEntity {
     private String description;
     private Boolean privacy;
     private Boolean isRegistered;
+    private Timestamp createdTime;
 
     @Id
     @Column(name = "eventId")
@@ -142,6 +144,16 @@ public class EventEntity {
         isRegistered = registered;
     }
 
+    @Basic
+    @Column(name = "createdTime")
+    public Timestamp getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -161,6 +173,7 @@ public class EventEntity {
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (privacy != null ? !privacy.equals(that.privacy) : that.privacy != null) return false;
         if (isRegistered != null ? !isRegistered.equals(that.isRegistered) : that.isRegistered != null) return false;
+        if (createdTime != null ? !createdTime.equals(that.createdTime) : that.createdTime != null) return false;
 
         return true;
     }
@@ -179,6 +192,7 @@ public class EventEntity {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (privacy != null ? privacy.hashCode() : 0);
         result = 31 * result + (isRegistered != null ? isRegistered.hashCode() : 0);
+        result = 31 * result + (createdTime != null ? createdTime.hashCode() : 0);
         return result;
     }
 }

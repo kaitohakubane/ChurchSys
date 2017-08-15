@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 6/30/2017.
+ * Created by hungmcse61561-admin on 8/15/2017.
  */
 @Entity
 @Table(name = "slot", schema = "churchsys", catalog = "")
@@ -17,6 +17,7 @@ public class SlotEntity {
     private Integer slotStatus;
     private String streamLink;
     private String streamCode;
+    private Integer isStream;
 
     @Id
     @Column(name = "slotId")
@@ -98,6 +99,16 @@ public class SlotEntity {
         this.streamCode = streamCode;
     }
 
+    @Basic
+    @Column(name = "isStream")
+    public Integer getIsStream() {
+        return isStream;
+    }
+
+    public void setIsStream(Integer isStream) {
+        this.isStream = isStream;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,6 +124,7 @@ public class SlotEntity {
         if (slotStatus != null ? !slotStatus.equals(that.slotStatus) : that.slotStatus != null) return false;
         if (streamLink != null ? !streamLink.equals(that.streamLink) : that.streamLink != null) return false;
         if (streamCode != null ? !streamCode.equals(that.streamCode) : that.streamCode != null) return false;
+        if (isStream != null ? !isStream.equals(that.isStream) : that.isStream != null) return false;
 
         return true;
     }
@@ -127,6 +139,7 @@ public class SlotEntity {
         result = 31 * result + (slotStatus != null ? slotStatus.hashCode() : 0);
         result = 31 * result + (streamLink != null ? streamLink.hashCode() : 0);
         result = 31 * result + (streamCode != null ? streamCode.hashCode() : 0);
+        result = 31 * result + (isStream != null ? isStream.hashCode() : 0);
         return result;
     }
 }

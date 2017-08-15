@@ -160,8 +160,14 @@ function generalInitial() {
         disableResize: true,
         acceptWidgets: '.grid-stack-item'
     }
+    var graveOptions = {
+        float: true,
+        disableResize: true,
+        acceptWidgets: '.grid-stack-item',
+        disableDrag: true
+    }
     $('#graveYard').gridstack(options);
-    $('#grave').gridstack(options);
+    $('#grave').gridstack(graveOptions);
 
 
 
@@ -480,36 +486,38 @@ function initialDetailContext(e) {
         $("#image").attr("src", contextPath + "/product-images/noimagefound.jpg");
     }
 
-    $("#detailName").html(listOfGrave[index].name);
-    $("#detailBirthday").html(listOfGrave[index].birthDay);
-    $("#detailParish").html(listOfGrave[index].parish);
-    $("#detailDeathDay").html(listOfGrave[index].deathDay);
-    $("#detailHomeTown").html(listOfGrave[index].homeTown);
-    $("#detailRegisName").html(listOfGrave[index].userName);
-    $("#detailRegisPhone").html(listOfGrave[index].tel);
-    $("#detailRegisIdentity").html(listOfGrave[index].userIdentity);
+
     var processBtn;
     var rejectBtn;
     if (listOfGrave[index].status == 2) {
         processBtn = $("#detailProcess");
         processBtn.html("Duyệt");
+        $("#detailRegisIdentity").remove();
+        $("#identityContainer").append("<input type='text' id='detailRegisIdentity' class='form-control'>");
         processBtn.unbind("click");
         processBtn.bind("click", function () {
-            approveGraveStatus(e, ACCEPT_TYPE)
+            var userIdentity=$("#deatilRegisIdentity").val();
+            approveGraveStatus(index,e, ACCEPT_TYPE,userIdentity)
+            $("#detailContext").fadeOut();
+
         })
 
         rejectBtn = $("#detailReject");
         rejectBtn.html("Từ chối");
         rejectBtn.unbind("click");
         rejectBtn.bind("click", function () {
-            approveGraveStatus(e, REJECT_TYPE)
+            approveGraveStatus(index,e, REJECT_TYPE,0)
+            $("#detailContext").fadeOut();
         })
     } else {
         processBtn = $("#detailProcess");
         processBtn.html("Rút");
+        $("#detailRegisIdentity").remove();
+        $("#identityContainer").append("<p id='detailRegisIdentity'></p>");
         processBtn.unbind("click");
         processBtn.bind("click", function () {
-            approveGraveStatus(e, REJECT_TYPE)
+            approveGraveStatus(index,e, REJECT_TYPE,0)
+            $("#detailContext").fadeOut();
         })
 
         rejectBtn = $("#detailReject");
@@ -519,6 +527,14 @@ function initialDetailContext(e) {
             $("#detailContext").fadeOut();
         })
     }
+    $("#detailName").html(listOfGrave[index].name);
+    $("#detailBirthday").html(listOfGrave[index].birthDay);
+    $("#detailParish").html(listOfGrave[index].parish);
+    $("#detailDeathDay").html(listOfGrave[index].deathDay);
+    $("#detailHomeTown").html(listOfGrave[index].homeTown);
+    $("#detailRegisName").html(listOfGrave[index].userName);
+    $("#detailRegisPhone").html(listOfGrave[index].tel);
+    $("#detailRegisIdentity").html(listOfGrave[index].userIdentity);
 }
 
 function initialRegisContext(e) {
@@ -561,12 +577,13 @@ function regisGrave(e) {
     });
 }
 
-function approveGraveStatus(e, type) {
+function approveGraveStatus(index,e, type,userIdentity) {
     var requestURL = contextPath + APPROVE_GRAVE_STATUS;
     var requestMethod = "POST";
     var requestData = {
         "graveId": e.data("id"),
-        "statusType": type
+        "statusType": type,
+        "userIdentity": userIdentity
     };
     $.ajax({
         url: requestURL,
@@ -575,6 +592,7 @@ function approveGraveStatus(e, type) {
         dataType: 'json',
         success: function (res) {
             e.data("status", res.status);
+            listOfGrave[index].status=res.status;
             updateColor()
         },
         error: function (jqXHR, textStatus, errorThrown) {

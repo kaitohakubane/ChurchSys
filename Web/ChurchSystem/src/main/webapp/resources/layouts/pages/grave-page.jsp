@@ -390,7 +390,7 @@
                         <div class="clearfix"></div>
                         <p id="detailRegisName">Da Nang</p>
                         <p id="detailRegisPhone">Da Nang</p>
-                        <p id="detailRegisIdentity">123123</p>
+                        <div id="identityContainer"><p id="detailRegisIdentity">123123</p></div>
                     </div>
                     <div class="clearfix"></div>
                     <br>

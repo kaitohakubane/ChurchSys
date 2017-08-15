@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by hungmcse61561-admin on 6/18/2017.
+ * Created by hungmcse61561-admin on 8/15/2017.
  */
 @Entity
 @Table(name = "post", schema = "churchsys", catalog = "")
@@ -14,7 +14,6 @@ public class PostEntity {
     private String title;
     private String information;
     private Timestamp postDate;
-    private Boolean isContribute;
 
     @Id
     @Column(name = "postId")
@@ -66,16 +65,6 @@ public class PostEntity {
         this.postDate = postDate;
     }
 
-    @Basic
-    @Column(name = "isContribute")
-    public Boolean getContribute() {
-        return isContribute;
-    }
-
-    public void setContribute(Boolean contribute) {
-        isContribute = contribute;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,7 +77,6 @@ public class PostEntity {
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (information != null ? !information.equals(that.information) : that.information != null) return false;
         if (postDate != null ? !postDate.equals(that.postDate) : that.postDate != null) return false;
-        if (isContribute != null ? !isContribute.equals(that.isContribute) : that.isContribute != null) return false;
 
         return true;
     }
@@ -100,7 +88,6 @@ public class PostEntity {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         result = 31 * result + (postDate != null ? postDate.hashCode() : 0);
-        result = 31 * result + (isContribute != null ? isContribute.hashCode() : 0);
         return result;
     }
 }

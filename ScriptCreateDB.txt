@@ -135,6 +135,8 @@ create table Event(
 	privacy bit,
     
 	isRegistered bit,
+	
+	createdTime datetime,
     
 	primary key (eventId)
 
@@ -144,6 +146,12 @@ create table Type (
 	typeId int NOT NULL AUTO_INCREMENT,
     
 	description nvarchar(255),
+	
+	loopType int,
+	
+	lastGenerated date,
+	
+	kind int,
     
 	primary key (typeId)
 
@@ -182,8 +190,7 @@ CREATE table Post (
 	information nvarchar (255),
     
 	postDate datetime,
-    
-	isContribute bit,
+  
     
 	primary key (postId)
 
@@ -205,6 +212,8 @@ create table Slot (
 	streamLink nvarchar(50),
     
 	streamCode nvarchar(50),
+	
+	isStream int,
     
 	primary key (slotId)    
 
@@ -254,15 +263,15 @@ create table Question (
 	
 	quesId int NOT NULL AUTO_INCREMENT,
     
-	conductorId int,
-    
+	conductorId int,    	
+
 	userId int,
     
 	information nvarchar(255),
     
 	quesStatus nvarchar(255),
-    
-	subId int,    
+    	
+	kind int,
     
 	primary key (quesId)
 
@@ -273,8 +282,8 @@ create table Contribution(
 	contributeId int NOT NULL AUTO_INCREMENT,
     
 	userId int,
-    
-	postId int,	
+   	
+	churchId int,	
     
 	donate long,
         
@@ -379,8 +388,6 @@ x int,
 y int, 
  
 status int,
-
-identity nvarchar(100),
  
 primary key (graveId)
 
@@ -414,8 +421,6 @@ alter table Registration add foreign key (userId) references User(userId);
 
 alter table Registration add foreign key (churchId) references Church(churchId);
 
-alter table Question add foreign key (subId) references Subject (subId);
-
 alter table Question add foreign key (userId) references User (userId);
 
 alter table Question add foreign key (conductorId) references User(userId);
@@ -423,8 +428,6 @@ alter table Question add foreign key (conductorId) references User(userId);
 alter table Post add foreign key (conductorId) references User(userId);
 
 alter table Contribution add foreign key (userId) references User (userId);
-
-alter table Contribution add foreign key (postId) references Post(postId);
 
 alter table Slot add foreign key (eventId) references Event(eventId);
 
@@ -445,3 +448,5 @@ alter table Inclusion add foreign key (slotHourId) references SlotHour(slotHourI
 alter table Interaction add foreign key (churchId) references Church(churchId);
 
 alter table Interaction add foreign key (userId) references User(userId);
+
+alter table Contribution add foreign key (churchId) references Church(churchId);

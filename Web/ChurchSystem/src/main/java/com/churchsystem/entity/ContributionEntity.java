@@ -3,14 +3,13 @@ package com.churchsystem.entity;
 import javax.persistence.*;
 
 /**
- * Created by hungmcse61561-admin on 6/12/2017.
+ * Created by hungmcse61561-admin on 8/15/2017.
  */
 @Entity
 @Table(name = "contribution", schema = "churchsys", catalog = "")
 public class ContributionEntity {
     private int contributeId;
-    private Integer userId;
-    private Integer postId;
+    private Integer churchId;
     private String donate;
 
     @Id
@@ -24,23 +23,13 @@ public class ContributionEntity {
     }
 
     @Basic
-    @Column(name = "userId")
-    public Integer getUserId() {
-        return userId;
+    @Column(name = "churchId")
+    public Integer getChurchId() {
+        return churchId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "postId")
-    public Integer getPostId() {
-        return postId;
-    }
-
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setChurchId(Integer churchId) {
+        this.churchId = churchId;
     }
 
     @Basic
@@ -61,8 +50,7 @@ public class ContributionEntity {
         ContributionEntity that = (ContributionEntity) o;
 
         if (contributeId != that.contributeId) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-        if (postId != null ? !postId.equals(that.postId) : that.postId != null) return false;
+        if (churchId != null ? !churchId.equals(that.churchId) : that.churchId != null) return false;
         if (donate != null ? !donate.equals(that.donate) : that.donate != null) return false;
 
         return true;
@@ -71,8 +59,7 @@ public class ContributionEntity {
     @Override
     public int hashCode() {
         int result = contributeId;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (postId != null ? postId.hashCode() : 0);
+        result = 31 * result + (churchId != null ? churchId.hashCode() : 0);
         result = 31 * result + (donate != null ? donate.hashCode() : 0);
         return result;
     }
