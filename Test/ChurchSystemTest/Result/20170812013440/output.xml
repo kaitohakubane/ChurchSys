@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170812 01:34:41.848" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="C:\Users\Trung\Desktop\ProjectTeam5\Test\ChurchSystemTest\TestCase\getLocation.robot" id="s1" name="getLocation">
+<test id="s1-t1" name="Test case 11">
+<kw name="Open Browser To Login Page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170812 01:34:42.583" level="INFO">Opening browser 'googlechrome' to base url 'http://localhost:8088/ChurchSystem/'</msg>
+<status status="PASS" endtime="20170812 01:34:48.408" starttime="20170812 01:34:42.583"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170812 01:34:49.545" starttime="20170812 01:34:48.408"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20170812 01:34:49.550" starttime="20170812 01:34:49.546"></status>
+</kw>
+<status status="PASS" endtime="20170812 01:34:49.551" starttime="20170812 01:34:42.583"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="MainMenu"]/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20170812 01:34:49.552" level="INFO">Clicking element 'xpath=//*[@id="MainMenu"]/div/ul/li[2]/a'.</msg>
+<status status="PASS" endtime="20170812 01:34:55.951" starttime="20170812 01:34:49.551"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>managerId</arg>
+<arg>hungmc_manager_hoakhanh</arg>
+</arguments>
+<msg timestamp="20170812 01:34:55.951" level="INFO">Typing text 'hungmc_manager_hoakhanh' into text field 'managerId'</msg>
+<status status="PASS" endtime="20170812 01:35:05.188" starttime="20170812 01:34:55.951"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>password</arg>
+<arg>Abcd1234</arg>
+</arguments>
+<msg timestamp="20170812 01:35:05.188" level="INFO">Typing password into text field 'password'</msg>
+<status status="PASS" endtime="20170812 01:35:14.372" starttime="20170812 01:35:05.188"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input</arg>
+</arguments>
+<msg timestamp="20170812 01:35:14.372" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input'.</msg>
+<status status="PASS" endtime="20170812 01:35:20.957" starttime="20170812 01:35:14.372"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="sidebar-menu"]/div/ul/li[2]</arg>
+</arguments>
+<msg timestamp="20170812 01:35:20.957" level="INFO">Clicking element 'xpath=//*[@id="sidebar-menu"]/div/ul/li[2]'.</msg>
+<status status="PASS" endtime="20170812 01:35:27.949" starttime="20170812 01:35:20.957"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="calendar"]/div[2]/div/table/tbody/tr/td/div/div/div[6]/div[1]/table/tbody/tr/td[2]</arg>
+</arguments>
+<msg timestamp="20170812 01:35:27.949" level="INFO">Clicking element 'xpath=//*[@id="calendar"]/div[2]/div/table/tbody/tr/td/div/div/div[6]/div[1]/table/tbody/tr/td[2]'.</msg>
+<status status="PASS" endtime="20170812 01:35:34.253" starttime="20170812 01:35:27.949"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>creatingEventName</arg>
+<arg>Giáo lý hôn nhân</arg>
+</arguments>
+<msg timestamp="20170812 01:35:34.253" level="INFO">Typing text 'Giáo lý hôn nhân' into text field 'creatingEventName'</msg>
+<status status="PASS" endtime="20170812 01:35:43.579" starttime="20170812 01:35:34.253"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>category</arg>
+<arg>6</arg>
+</arguments>
+<msg timestamp="20170812 01:35:43.579" level="INFO">Selecting value(s) '6' from list 'category'.</msg>
+<status status="PASS" endtime="20170812 01:36:01.837" starttime="20170812 01:35:43.579"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>createEventbtn</arg>
+</arguments>
+<msg timestamp="20170812 01:36:01.837" level="INFO">Clicking button 'createEventbtn'.</msg>
+<status status="PASS" endtime="20170812 01:36:14.043" starttime="20170812 01:36:01.837"></status>
+</kw>
+<kw name="Clear Element Text" library="Selenium2Library">
+<doc>Clears the text value of text entry element identified by `locator`.</doc>
+<arguments>
+<arg>numberOfSlot</arg>
+</arguments>
+<status status="PASS" endtime="20170812 01:36:20.129" starttime="20170812 01:36:14.043"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>numberOfSlot</arg>
+<arg>6</arg>
+</arguments>
+<msg timestamp="20170812 01:36:20.129" level="INFO">Typing text '6' into text field 'numberOfSlot'</msg>
+<status status="PASS" endtime="20170812 01:36:29.220" starttime="20170812 01:36:20.129"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="createClass"]/div/div/div[1]/div/div/div[2]/form/div[6]/label[2]/div/ins</arg>
+</arguments>
+<msg timestamp="20170812 01:36:29.220" level="INFO">Clicking element 'xpath=//*[@id="createClass"]/div/div/div[1]/div/div/div[2]/form/div[6]/label[2]/div/ins'.</msg>
+<status status="PASS" endtime="20170812 01:36:35.406" starttime="20170812 01:36:29.220"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="createClass"]/div/div/div[1]/div/div/div[2]/form/div[6]/label[4]/div/ins</arg>
+</arguments>
+<msg timestamp="20170812 01:36:35.406" level="INFO">Clicking element 'xpath=//*[@id="createClass"]/div/div/div[1]/div/div/div[2]/form/div[6]/label[4]/div/ins'.</msg>
+<status status="PASS" endtime="20170812 01:36:41.550" starttime="20170812 01:36:35.406"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="createClass"]/div/div/div[1]/div/div/div[2]/form/div[6]/label[6]/div/ins</arg>
+</arguments>
+<msg timestamp="20170812 01:36:41.550" level="INFO">Clicking element 'xpath=//*[@id="createClass"]/div/div/div[1]/div/div/div[2]/form/div[6]/label[6]/div/ins'.</msg>
+<status status="PASS" endtime="20170812 01:36:47.708" starttime="20170812 01:36:41.550"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>createClassbtn</arg>
+</arguments>
+<msg timestamp="20170812 01:36:47.708" level="INFO">Clicking button 'createClassbtn'.</msg>
+<status status="PASS" endtime="20170812 01:36:59.981" starttime="20170812 01:36:47.708"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20170812 01:36:59.981" starttime="20170812 01:36:59.981"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170812 01:37:06.156" starttime="20170812 01:36:59.981"></status>
+</kw>
+<status status="PASS" endtime="20170812 01:37:06.156" critical="yes" starttime="20170812 01:34:42.583"></status>
+</test>
+<doc>This is a test for get location</doc>
+<status status="PASS" endtime="20170812 01:37:06.156" starttime="20170812 01:34:41.848"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="getLocation" pass="1">getLocation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
