@@ -185,14 +185,15 @@ CREATE table Post (
     
 	conductorId int,
 
+	churchId int,
+
 	title nvarchar (255),    
     
 	information nvarchar (255),
     
 	postDate datetime,
   
-    
-	primary key (postId)
+ 	primary key (postId)
 
 );
 create table Slot (
@@ -261,7 +262,7 @@ create table interaction (
 create table Question (
 
 	
-	quesId int NOT NULL AUTO_INCREMENT,
+	questionId int NOT NULL AUTO_INCREMENT,
     
 	conductorId int,    	
 
@@ -392,6 +393,8 @@ status int,
 primary key (graveId)
 
 );
+
+alter table post add foreign key (churchId) references church(churchId);
 
 alter table graveYard add foreign key (churchId) references church(churchId);
 
