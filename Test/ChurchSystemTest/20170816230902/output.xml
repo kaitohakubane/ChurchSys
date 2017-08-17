@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170816 23:09:07.717" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="C:\Users\Trung\Desktop\ProjectTeam5\Test\ChurchSystemTest\TestCase\getLocation.robot" id="s1" name="getLocation">
+<test id="s1-t1" name="Test case 20">
+<kw name="Open Browser To Login Page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170816 23:09:10.589" level="INFO">Opening browser 'googlechrome' to base url 'http://localhost:8066/ChurchSystem/'</msg>
+<status status="PASS" endtime="20170816 23:09:23.151" starttime="20170816 23:09:10.589"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170816 23:09:24.284" starttime="20170816 23:09:23.152"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20170816 23:09:24.285" starttime="20170816 23:09:24.284"></status>
+</kw>
+<status status="PASS" endtime="20170816 23:09:24.286" starttime="20170816 23:09:10.587"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="MainMenu"]/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20170816 23:09:24.288" level="INFO">Clicking element 'xpath=//*[@id="MainMenu"]/div/ul/li[2]/a'.</msg>
+<status status="PASS" endtime="20170816 23:09:27.658" starttime="20170816 23:09:24.287"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>managerId</arg>
+<arg>hungmc_manager_hoakhanh</arg>
+</arguments>
+<msg timestamp="20170816 23:09:27.658" level="INFO">Typing text 'hungmc_manager_hoakhanh' into text field 'managerId'</msg>
+<status status="PASS" endtime="20170816 23:09:30.902" starttime="20170816 23:09:27.658"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>password</arg>
+<arg>Abcd1234</arg>
+</arguments>
+<msg timestamp="20170816 23:09:30.902" level="INFO">Typing password into text field 'password'</msg>
+<status status="PASS" endtime="20170816 23:09:34.117" starttime="20170816 23:09:30.902"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input</arg>
+</arguments>
+<msg timestamp="20170816 23:09:34.117" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input'.</msg>
+<status status="PASS" endtime="20170816 23:09:37.171" starttime="20170816 23:09:34.117"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="sidebar-menu"]/div/ul/li[6]</arg>
+</arguments>
+<msg timestamp="20170816 23:09:37.173" level="INFO">Clicking element 'xpath=//*[@id="sidebar-menu"]/div/ul/li[6]'.</msg>
+<status status="PASS" endtime="20170816 23:09:40.242" starttime="20170816 23:09:37.172"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>btnApprove3</arg>
+</arguments>
+<msg timestamp="20170816 23:09:40.242" level="INFO">Clicking button 'btnApprove3'.</msg>
+<status status="PASS" endtime="20170816 23:09:44.613" starttime="20170816 23:09:40.242"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20170816 23:09:44.613" starttime="20170816 23:09:44.613"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170816 23:09:48.773" starttime="20170816 23:09:44.613"></status>
+</kw>
+<status status="PASS" endtime="20170816 23:09:48.773" critical="yes" starttime="20170816 23:09:10.586"></status>
+</test>
+<doc>This is a test for get location</doc>
+<status status="PASS" endtime="20170816 23:09:48.773" starttime="20170816 23:09:07.724"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="getLocation" pass="1">getLocation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

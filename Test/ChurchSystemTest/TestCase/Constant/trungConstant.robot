@@ -1,4 +1,4 @@
 *** Variables ***
-${SERVER}               http://localhost:8088/ChurchSystem/
+${SERVER}               http://localhost:8066/ChurchSystem/
 ${BROWSER}              googlechrome
-${DELAY}                3
+${DELAY}                1

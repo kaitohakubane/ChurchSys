@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170816 23:22:57.249" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="C:\Users\Trung\Desktop\ProjectTeam5\Test\ChurchSystemTest\TestCase\getLocation.robot" id="s1" name="getLocation">
+<test id="s1-t1" name="Test case 4">
+<kw name="Open Browser To Login Page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170816 23:22:58.264" level="INFO">Opening browser 'googlechrome' to base url 'http://localhost:8066/ChurchSystem/'</msg>
+<status status="PASS" endtime="20170816 23:23:06.552" starttime="20170816 23:22:58.264"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170816 23:23:07.672" starttime="20170816 23:23:06.553"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20170816 23:23:07.674" starttime="20170816 23:23:07.673"></status>
+</kw>
+<status status="PASS" endtime="20170816 23:23:07.674" starttime="20170816 23:22:58.264"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="MainMenu"]/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20170816 23:23:07.677" level="INFO">Clicking element 'xpath=//*[@id="MainMenu"]/div/ul/li[2]/a'.</msg>
+<status status="PASS" endtime="20170816 23:23:10.177" starttime="20170816 23:23:07.677"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>managerId</arg>
+<arg>kietta_user</arg>
+</arguments>
+<msg timestamp="20170816 23:23:10.177" level="INFO">Typing text 'kietta_user' into text field 'managerId'</msg>
+<status status="PASS" endtime="20170816 23:23:13.597" starttime="20170816 23:23:10.177"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>password</arg>
+<arg>Abcd1234</arg>
+</arguments>
+<msg timestamp="20170816 23:23:13.598" level="INFO">Typing password into text field 'password'</msg>
+<status status="PASS" endtime="20170816 23:23:16.758" starttime="20170816 23:23:13.597"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input</arg>
+</arguments>
+<msg timestamp="20170816 23:23:16.758" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input'.</msg>
+<status status="PASS" endtime="20170816 23:23:20.387" starttime="20170816 23:23:16.758"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>geocontainer</arg>
+<arg>10</arg>
+</arguments>
+<status status="PASS" endtime="20170816 23:23:21.434" starttime="20170816 23:23:20.387"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>geocontainer</arg>
+</arguments>
+<msg timestamp="20170816 23:23:21.434" level="INFO">Clicking element 'geocontainer'.</msg>
+<status status="PASS" endtime="20170816 23:23:23.563" starttime="20170816 23:23:21.434"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>1</arg>
+<arg>10</arg>
+</arguments>
+<status status="PASS" endtime="20170816 23:23:24.629" starttime="20170816 23:23:23.566"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20170816 23:23:24.629" level="INFO">Clicking button '1'.</msg>
+<status status="PASS" endtime="20170816 23:23:34.460" starttime="20170816 23:23:24.629"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=/html/body/div[2]/div/div[2]/div/ul/li[4]/a</arg>
+</arguments>
+<msg timestamp="20170816 23:23:34.460" level="INFO">Clicking element 'xpath=/html/body/div[2]/div/div[2]/div/ul/li[4]/a'.</msg>
+<status status="PASS" endtime="20170816 23:23:43.350" starttime="20170816 23:23:34.460"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>//*[@id="home"]/div[2]/div/div/div[2]/div[13]/div/button</arg>
+</arguments>
+<msg timestamp="20170816 23:23:43.350" level="INFO">Clicking button '//*[@id="home"]/div[2]/div/div/div[2]/div[13]/div/button'.</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170816 23:23:46.884" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20170816 23:23:46.884" starttime="20170816 23:23:45.459"></status>
+</kw>
+<msg timestamp="20170816 23:23:46.931" level="FAIL">ValueError: Element locator '//*[@id="home"]/div[2]/div/div/div[2]/div[13]/div/button' did not match any elements.</msg>
+<status status="FAIL" endtime="20170816 23:23:46.931" starttime="20170816 23:23:43.350"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170816 23:23:51.713" starttime="20170816 23:23:46.931"></status>
+</kw>
+<status status="FAIL" endtime="20170816 23:23:51.713" critical="yes" starttime="20170816 23:22:58.264">ValueError: Element locator '//*[@id="home"]/div[2]/div/div/div[2]/div[13]/div/button' did not match any elements.</status>
+</test>
+<doc>This is a test for get location</doc>
+<status status="FAIL" endtime="20170816 23:23:51.713" starttime="20170816 23:22:57.249"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="getLocation" pass="0">getLocation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170816 21:28:14.430" generator="Robot 3.0.2 (Python 2.7.13 on win32)">
+<suite source="C:\Users\Trung\Desktop\ProjectTeam5\Test\ChurchSystemTest\TestCase\getLocation.robot" id="s1" name="getLocation">
+<test id="s1-t1" name="Test case 11">
+<kw name="Open Browser To Login Page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${SERVER}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170816 21:28:16.508" level="INFO">Opening browser 'googlechrome' to base url 'http://localhost:8066/ChurchSystem/'</msg>
+<status status="PASS" endtime="20170816 21:28:27.772" starttime="20170816 21:28:16.508"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170816 21:28:28.913" starttime="20170816 21:28:27.773"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20170816 21:28:28.917" starttime="20170816 21:28:28.913"></status>
+</kw>
+<status status="PASS" endtime="20170816 21:28:28.917" starttime="20170816 21:28:16.508"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="MainMenu"]/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20170816 21:28:28.926" level="INFO">Clicking element 'xpath=//*[@id="MainMenu"]/div/ul/li[2]/a'.</msg>
+<status status="PASS" endtime="20170816 21:28:35.514" starttime="20170816 21:28:28.926"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>managerId</arg>
+<arg>hungmc_manager_hoakhanh</arg>
+</arguments>
+<msg timestamp="20170816 21:28:35.514" level="INFO">Typing text 'hungmc_manager_hoakhanh' into text field 'managerId'</msg>
+<status status="PASS" endtime="20170816 21:28:44.800" starttime="20170816 21:28:35.514"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>password</arg>
+<arg>Abcd1234</arg>
+</arguments>
+<msg timestamp="20170816 21:28:44.801" level="INFO">Typing password into text field 'password'</msg>
+<status status="PASS" endtime="20170816 21:28:54.148" starttime="20170816 21:28:44.800"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input</arg>
+</arguments>
+<msg timestamp="20170816 21:28:54.148" level="INFO">Clicking element 'xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input'.</msg>
+<status status="PASS" endtime="20170816 21:29:00.872" starttime="20170816 21:28:54.148"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="sidebar-menu"]/div/ul/li[2]</arg>
+</arguments>
+<msg timestamp="20170816 21:29:00.872" level="INFO">Clicking element 'xpath=//*[@id="sidebar-menu"]/div/ul/li[2]'.</msg>
+<status status="PASS" endtime="20170816 21:29:08.504" starttime="20170816 21:29:00.872"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id="calendar"]/div[2]/div/table/tbody/tr/td/div/div/div[6]/div[1]/table/tbody/tr/td[2]</arg>
+</arguments>
+<msg timestamp="20170816 21:29:08.504" level="INFO">Clicking element 'xpath=//*[@id="calendar"]/div[2]/div/table/tbody/tr/td/div/div/div[6]/div[1]/table/tbody/tr/td[2]'.</msg>
+<status status="PASS" endtime="20170816 21:29:14.731" starttime="20170816 21:29:08.504"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>creatingEventName</arg>
+<arg>Giáo lý hôn nhân</arg>
+</arguments>
+<msg timestamp="20170816 21:29:14.731" level="INFO">Typing text 'Giáo lý hôn nhân' into text field 'creatingEventName'</msg>
+<status status="PASS" endtime="20170816 21:29:24.005" starttime="20170816 21:29:14.731"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>category</arg>
+<arg>6</arg>
+</arguments>
+<msg timestamp="20170816 21:29:24.005" level="INFO">Selecting value(s) '6' from list 'category'.</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170816 21:29:38.250" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=60.0.3112.90)
+  (Driver info: chromedriver=2.31.488763 (092de99f48a300323ecf8c2a4e2e7cab51de5ba8),platform=Windows NT 6.3.9600 x86_64)
+</msg>
+<status status="FAIL" endtime="20170816 21:29:38.250" starttime="20170816 21:29:34.109"></status>
+</kw>
+<msg timestamp="20170816 21:29:38.250" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: chrome not reachable
+  (Session info: chrome=60.0.3112.90)
+  (Driver info: chromedriver=2.31.488763 (092de99f48a300323ecf8c2a4e2e7cab51de5ba8),platform=Windows NT 6.3.9600 x86_64)
+</msg>
+<msg timestamp="20170816 21:29:38.281" level="FAIL">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=60.0.3112.90)
+  (Driver info: chromedriver=2.31.488763 (092de99f48a300323ecf8c2a4e2e7cab51de5ba8),platform=Windows NT 6.3.9600 x86_64)
+</msg>
+<status status="FAIL" endtime="20170816 21:29:38.281" starttime="20170816 21:29:24.005"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170816 21:29:44.337" starttime="20170816 21:29:38.281"></status>
+</kw>
+<status status="FAIL" endtime="20170816 21:29:44.337" critical="yes" starttime="20170816 21:28:16.508">WebDriverException: Message: chrome not reachable
+  (Session info: chrome=60.0.3112.90)
+  (Driver info: chromedriver=2.31.488763 (092de99f48a300323ecf8c2a4e2e7cab51de5ba8),platform=Windows NT 6.3.9600 x86_64)
+</status>
+</test>
+<doc>This is a test for get location</doc>
+<status status="FAIL" endtime="20170816 21:29:44.837" starttime="20170816 21:28:14.430"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="getLocation" pass="0">getLocation</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20170816 21:29:38.250" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: chrome not reachable
+  (Session info: chrome=60.0.3112.90)
+  (Driver info: chromedriver=2.31.488763 (092de99f48a300323ecf8c2a4e2e7cab51de5ba8),platform=Windows NT 6.3.9600 x86_64)
+</msg>
+</errors>
+</robot>
