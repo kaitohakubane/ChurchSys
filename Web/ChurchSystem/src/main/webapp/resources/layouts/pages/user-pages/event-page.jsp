@@ -33,23 +33,6 @@
     <div class="row">
         <c:import url="/resources/layouts/user-common/church-info.jsp"/>
         <c:import url="/resources/layouts/user-common/navbar-private.jsp"/>
-        <%--<div class="small-nav col-md-12">--%>
-            <%--<div class="row">--%>
-                <%--<div class="col-md-4">--%>
-                    <%--<a href="${pageContext.request.contextPath}/church?churchId=${param.churchId}" class="col-md-12 btn btn-default">Tin--%>
-                        <%--tức</a>--%>
-                <%--</div>--%>
-                <%--<div class="col-md-4">--%>
-                    <%--<a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}" class="col-md-12 btn btn-default active">Sự kiện</a>--%>
-                <%--</div>--%>
-                <%--<div class="col-md-4">--%>
-                    <%--<a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}" class="col-md-12 btn btn-default">Đăng ký lớp học</a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="col-md-12">--%>
-            <%--<div class="border-top"></div>--%>
-        <%--</div>--%>
     </div>
 </div>
 <!-- end church info -->
@@ -76,9 +59,8 @@
                     <label class="control-label col-md-4 col-sm-4 col-xs-12">Sự kiện</label>
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <select id="subjectId" class="form-control">
-                            <option>Choose option</option>
-                            <option value="29">Đám ma</option>
                             <option value="28">Đám cưới</option>
+                            <option value="29">Đám ma</option>
                             <option value="27">Rửa tội</option>
                         </select>
                     </div>
@@ -113,7 +95,7 @@
                 <div class="clearfix"></div>
                 <div class="form-group">
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
-                        <button type="button" class="col-md-5 btn btn-default" data-dismiss="modal">Hủy</button>
+                        <button type="button" class="col-md-5 btn btn-default" id="cancelBtn">Hủy</button>
                         <button type="button" id="eventRegisteredBtn" class="col-md-5 col-md-offset-2 btn btn-primary">Đăng kí</button>
                     </div>
                 </div>
@@ -233,6 +215,7 @@
 <!-- FullCalendar -->
 <script src="<c:url value="/resources/lib/vendors/moment/min/moment.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.js"/>"></script>
+<script src="<c:url value="/resources/lib/vendors/fullcalendar/dist/lang/vi.js"/>"></script>
 <script>
     var churchId =${param.churchId}
         $('#startTime').timepicker({'timeFormat': 'H:i',

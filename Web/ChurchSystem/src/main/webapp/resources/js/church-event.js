@@ -10,18 +10,22 @@ var lastClickedEvent = null;
 var lastEventColor = null;
 var eventList = [];
 var defaultMovePlus = 2;
+var defaultStartTime = "15:00";
+$(document).ready(function(){
+    terminateEventMenu()
+    loadEvent();
+    calendarInitial();
+    generalIntial();
+})
 
-terminateEventMenu()
-loadEvent();
-calendarInitial();
-generalIntial();
 
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
 
 function calendarInitial() {
     $('#calendar').fullCalendar({
+        locale: 'vi',
         header: {
-            right: 'today,agendaDay,month,testTimeLine',
+            right: 'today,agendaDay,month',
             left: 'prev,next',
             center: 'title'
         },
@@ -35,7 +39,14 @@ function calendarInitial() {
                 selectable: true,
             }
         },
+        select: function (start, end, jsEvent, view) {
+            var popup = $('#eventCreator')
+            var startTime = start.format("HH:mm");
+            clearEventCreatorMenu(startTime);
+            eventRegisterPopup(jsEvent, popup);
+        },
         dayClick: function (date, jsEvent, view) {
+            clearEventCreatorMenu(defaultStartTime)
             if (view.name == 'month') {
                 if (lastClickedDay != null) {
                     lastClickedDay.css('background-color', '#ffffff')
@@ -47,6 +58,8 @@ function calendarInitial() {
                     $(this).css('background-color', '#fcf2b3');
                     lastClickedDay = $(this);
                 }
+            } else {
+
             }
 
             creatingEvent = {
@@ -96,8 +109,8 @@ function generalIntial() {
         var estTime = $("#estTime").val();
         var startTime = $('#startTime').val();
         var subId = $("#subjectId").val();
-        var message=$("#messageTxt").val();
-        registerEvent(creatingEvent, churchId, startTime, estTime, subId,message)
+        var message = $("#messageTxt").val();
+        registerEvent(creatingEvent, churchId, startTime, estTime, subId, message)
     })
 }
 
@@ -127,7 +140,7 @@ function loadEvent() {
     });
 }
 
-function registerEvent(event, churchId, startTime, estTime, subId,message) {
+function registerEvent(event, churchId, startTime, estTime, subId, message) {
     var requestURL = contextPath + ADD_REGISTRATION;
     var requestMethod = "POST";
     var requestData = {
@@ -136,7 +149,7 @@ function registerEvent(event, churchId, startTime, estTime, subId,message) {
         "estTime": estTime,
         "slotDate": event.start.split("T")[0],
         "subId": subId,
-        "message":message
+        "message": message
     }
 
     $.ajax({
@@ -149,10 +162,10 @@ function registerEvent(event, churchId, startTime, estTime, subId,message) {
             $("#eventCreator").fadeOut();
             $("#notifyPopup").modal('show');
             $("#eventNameSpn").html(res.title);
-            var startTime=res.start.split("T")[1];
-            var endTime=res.end.split("T")[1];
-            var date=res.start.split("T")[0];
-            $("#timeTxt").val(startTime+ " - " +endTime);
+            var startTime = res.start.split("T")[1];
+            var endTime = res.end.split("T")[1];
+            var date = res.start.split("T")[0];
+            $("#timeTxt").val(startTime + " - " + endTime);
             $("#dateTxt").val(date);
             $("#messageField").val(res.description);
 
@@ -179,19 +192,23 @@ function inputEventPopupInformation(event) {
 function terminateEventMenu() {
 
     $(document).bind('click', function (e) {
-        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String ||
-            $(e.target).prop("tagName") == "small")) {
+        console.log($(e.target).prop("tagName").toUpperCase());
+        if ($(e.target).prop("tagName").toUpperCase() == "SMALL") {
+            return;
+        }
+
+        if (!(typeof $(e.target).attr('class') === "string" || $(e.target).attr('class') instanceof String)) {
             $("#eventDetailPopup").fadeOut();
             $("#eventCreator").fadeOut();
             return;
         }
 
+        console.log(!($(e.target).attr('class').toString().indexOf('fc-widget-content')));
+
 
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-            $('div#eventCreator').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                .indexOf('fc-widget-content'))||$('ul.ui-timepicker-list').has(e.target).length > 0)) {
+            $('div#eventCreator').has(e.target).length > 0 || $('ul.ui-timepicker-list').has(e.target).length > 0 || !($(e.target).attr('class').toString().indexOf('fc-widget-content')))) {
             $("#eventCreator").fadeOut();
-            console.log('close');
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
@@ -203,5 +220,13 @@ function terminateEventMenu() {
 
         }
     })
+
+    $("#cancelBtn").on("click", function () {
+        $("#eventCreator").fadeOut();
+    })
 }
 
+function clearEventCreatorMenu(startTime) {
+    $("#startTime").val(startTime);
+    $("#messageTxt").val("");
+}

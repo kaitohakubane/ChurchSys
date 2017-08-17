@@ -14,7 +14,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="${pageContext.request.contextPath}/index" class="site_title"><i class="fa fa-wifi"></i> <span>Church Online System</span></a>
+            <a href="${pageContext.request.contextPath}/index" class="site_title"><span>Church Online System</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -22,8 +22,8 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>Hung Mai</h2>
+                <span>Welcome</span>
+                <%--<h2>Hung Mai</h2>--%>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -38,7 +38,7 @@
                 <ul class="nav side-menu">
                     <sec:authentication property="principal.authorities" var="authorities"/>
                     <c:if test="${fn:contains(authorities, 'ROLE_MANAGER')}">
-                        <li><a href="${pageContext.request.contextPath}/index"><i class="fa fa-university"></i> Home</a>
+                        <li><a href="${pageContext.request.contextPath}/index"><i class="fa fa-university"></i>Trang chủ</a>
                         </li>
 
                         <li><a href="${pageContext.request.contextPath}/manager/schedule"><i class="fa fa-calendar"></i>
@@ -95,19 +95,23 @@
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
-                        Hung Akai
+                        <sec:authentication var="principal" property="principal"/>
+                        <c:choose>
+                            <c:when test="${principal ne 'anonymousUser'}">
+                                ${principal.username}
+                            </c:when></c:choose>
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="javascript:;"> Profile</a></li>
+                        <li><a href="javascript:;"> Thông Tin</a></li>
                         <li>
                             <a href="${pageContext.request.contextPath}/church/setting">
-                                <span>Settings</span>
+                                <span>Cài Đặt</span>
                             </a>
                         </li>
-                        <li><a href="javascript:;">Help</a></li>
+                        <li><a href="javascript:;">Giúp đỡ</a></li>
                         <li><a href="${pageContext.request.contextPath}/logout"><i
-                                class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                class="fa fa-sign-out pull-right"></i>Thoát</a></li>
                     </ul>
                 </li>
 
@@ -117,7 +121,8 @@
                         <i class="fa fa-envelope-o"></i>
                         <span id="numberOfNoti" class="badge bg-green"></span>
                     </a>
-                    <ul id="notification" class="dropdown-menu list-unstyled msg_list" role="menu" style="max-height: 350px;overflow: auto">
+                    <ul id="notification" class="dropdown-menu list-unstyled msg_list" role="menu"
+                        style="max-height: 350px;overflow: auto">
                         <li>
                             <div class="text-center">
                                 <a href="${pageContext.request.contextPath}/manager/notifications">

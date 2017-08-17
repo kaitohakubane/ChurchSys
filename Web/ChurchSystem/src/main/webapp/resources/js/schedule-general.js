@@ -116,7 +116,6 @@ function inputEventPopupInformation(event) {
     $('#eventPopupRoom').val(event.roomName);
     var streamBtn = $("#streamBtn");
     if (event.streamLink != null) {
-        console.log("stream Null")
         streamBtn.removeClass("btn-primary")
         streamBtn.addClass("btn-dark")
         streamBtn.unbind("click");
@@ -216,12 +215,11 @@ function terminateEventCreateMenu() {
             $("#userRegister").fadeOut();
             return;
         }
-
+        console.log(!($(e.target).attr('class').toString().indexOf('fc-widget-content')));
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
                 $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
                     .indexOf('fc-widget-content')))) {
             $("#calendarPopup").fadeOut();
-            console.log('close Popup');
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||

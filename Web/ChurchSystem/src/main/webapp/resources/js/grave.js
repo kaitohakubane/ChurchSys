@@ -14,8 +14,8 @@ var REJECT_TYPE = 0;
 var GRAVE_NOT_INITIAL_COLOR = "#d8d2d2";
 var GRAVE_APPROVED_COLOR = "#4288f1";
 var GRAVE_WAITING_COLOR = "#f243b5";
-var CREATE_GRAVE_YARD="/manager/graveYard/Create";
-var  UPDATE_GRAVE_YARD="/manager/graveYard/Update";
+var CREATE_GRAVE_YARD = "/manager/graveYard/Create";
+var UPDATE_GRAVE_YARD = "/manager/graveYard/Update";
 
 var currentGraveYard;
 var listOfGraveYard = [];
@@ -35,7 +35,6 @@ $(document).ready(function () {
     terminateEventCreateMenu();
     graveYardListInitial();
 })
-
 
 
 function generateGraveYard(target) {
@@ -170,8 +169,6 @@ function generalInitial() {
     $('#grave').gridstack(graveOptions);
 
 
-
-
     $("#protoypePopupBtn").on("click", function () {
         $("#prototype").modal('hide');
         console.log(chosenPrototype);
@@ -193,64 +190,64 @@ function generalInitial() {
 
 }
 
-function graveYardListInitial(){
+function graveYardListInitial() {
 
-    $('#graveYard').on('change', function(event, items) {
+    $('#graveYard').on('change', function (event, items) {
         graveYardItemEvent();
         for (var i = 0; i < items.length; i++) {
             console.log(items[i].id);
-            updateGraveYard(items[i].id,items[i].x,items[i].y);
+            updateGraveYard(items[i].id, items[i].x, items[i].y);
         }
     });
 
-    $("#createGrave").on("click",function(){
-        var grid=$('#graveYard').data('gridstack');
+    $("#createGrave").on("click", function () {
+        var grid = $('#graveYard').data('gridstack');
         createGraveYard(0);
         grid.addWidget($('<div data-gs-id=' + creatingGraveYard.graveYardId + '><div class="grid-stack-item-content graveYardItem graveYardNotInitial" data-id=' + creatingGraveYard.graveYardId + ' data-status=' + 0 + '></div><div/>'), 0, 0, 1, 1);
     })
 
-    $("#createGate").on("click",function(){
-        var grid=$('#graveYard').data('gridstack');
+    $("#createGate").on("click", function () {
+        var grid = $('#graveYard').data('gridstack');
         createGraveYard(3);
         grid.addWidget($('<div data-gs-id=' + creatingGraveYard.graveYardId + '><div class="grid-stack-item-content graveYardItem gate" data-id=' + creatingGraveYard.graveYardId + ' data-status=' + 3 + '></div><div/>'), 0, 0, 1, 1);
     })
 
 }
 
-function createGraveYard(type){
-        var requestURL = contextPath + CREATE_GRAVE_YARD;
-        var requestMethod = "POST";
-        var requestData = {
-            "graveType": type
-        }
-        $.ajax({
-            url: requestURL,
-            type: requestMethod,
-            data: requestData,
-            async:false,
-            dataType: 'json',
-            success: function (res) {
-                creatingGraveYard=res;
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error(textStatus);
-            }
-        });
-}
-
-function updateGraveYard(graveYardId,x,y){
-    var requestURL = contextPath + UPDATE_GRAVE_YARD;
+function createGraveYard(type) {
+    var requestURL = contextPath + CREATE_GRAVE_YARD;
     var requestMethod = "POST";
     var requestData = {
-        "graveYardId": graveYardId,
-        "x":x,
-        "y":y
+        "graveType": type
     }
     $.ajax({
         url: requestURL,
         type: requestMethod,
         data: requestData,
-        async:false,
+        async: false,
+        dataType: 'json',
+        success: function (res) {
+            creatingGraveYard = res;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(textStatus);
+        }
+    });
+}
+
+function updateGraveYard(graveYardId, x, y) {
+    var requestURL = contextPath + UPDATE_GRAVE_YARD;
+    var requestMethod = "POST";
+    var requestData = {
+        "graveYardId": graveYardId,
+        "x": x,
+        "y": y
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
         success: function () {
 
         },
@@ -458,8 +455,8 @@ function generateGrave(target, width, height, graveYard) {
     }
 
     $(".grid-stack-item").on("click", function () {
-        selectedX=$(this).data("gs-x");
-        selectedY=$(this).data("gs-y");
+        selectedX = $(this).data("gs-x");
+        selectedY = $(this).data("gs-y");
     })
     $(".graveItem").on("click", function (x) {
         if ($(this).data("status") == 0) {
@@ -495,8 +492,8 @@ function initialDetailContext(e) {
         $("#identityContainer").append("<input type='text' id='detailRegisIdentity' class='form-control'>");
         processBtn.unbind("click");
         processBtn.bind("click", function () {
-            var userIdentity=$("#detailRegisIdentity").val();
-            approveGraveStatus(index,e, ACCEPT_TYPE,userIdentity)
+            var userIdentity = $("#detailRegisIdentity").val();
+            approveGraveStatus(index, e, ACCEPT_TYPE, userIdentity)
             $("#detailContext").fadeOut();
         })
 
@@ -504,7 +501,7 @@ function initialDetailContext(e) {
         rejectBtn.html("Từ chối");
         rejectBtn.unbind("click");
         rejectBtn.bind("click", function () {
-            approveGraveStatus(index,e, REJECT_TYPE,null)
+            approveGraveStatus(index, e, REJECT_TYPE, null)
             $("#detailContext").fadeOut();
         })
     } else {
@@ -514,7 +511,7 @@ function initialDetailContext(e) {
         $("#identityContainer").append("<p id='detailRegisIdentity'></p>");
         processBtn.unbind("click");
         processBtn.bind("click", function () {
-            approveGraveStatus(index,e, REJECT_TYPE,null)
+            approveGraveStatus(index, e, REJECT_TYPE, null)
             $("#detailContext").fadeOut();
         })
 
@@ -567,7 +564,7 @@ function regisGrave(e) {
             listOfGrave.push(res);
             $("#regisContext").fadeOut();
             updateColor();
-            e.closest('.grid-stack-item').attr("data-gs-id",res.graveId)
+            e.closest('.grid-stack-item').attr("data-gs-id", res.graveId)
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -576,7 +573,7 @@ function regisGrave(e) {
     });
 }
 
-function approveGraveStatus(index,e, type,userIdentity) {
+function approveGraveStatus(index, e, type, userIdentity) {
     var requestURL = contextPath + APPROVE_GRAVE_STATUS;
     var requestMethod = "POST";
     var requestData = {
@@ -591,8 +588,8 @@ function approveGraveStatus(index,e, type,userIdentity) {
         dataType: 'json',
         success: function (res) {
             e.data("status", res.status);
-            listOfGrave[index].status=res.status;
-            listOfGrave[index].userIdentity=res.userIdentity;
+            listOfGrave[index].status = res.status;
+            listOfGrave[index].userIdentity = res.userIdentity;
             updateColor()
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -633,8 +630,7 @@ function terminateEventCreateMenu() {
         }
 
         if (!($('div#regisContext').has(e.target).length > 0 || ($(e.target).attr('class').toString()
-                .indexOf('graveItem') >= 0)||($(e.target).attr('class').toString()
-                .indexOf('ui-datepicker-div') >= 0))) {
+                .indexOf('graveItem') >= 0) || $('div#ui-datepicker-div').has(e.target).length > 0 )) {
             $("#regisContext").fadeOut();
         }
 
