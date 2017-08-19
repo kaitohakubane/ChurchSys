@@ -112,6 +112,7 @@ public class ParamConstant {
     public static final int EVENT_NO_CONDUCTOR_VALUE = -1;
     public static final int REGISTERED = 1;
     public static final int REGISTERED_AND_WAITING = 2;
+    public static final String CREATED_TIME="createdTime";
 
     /**
      * Grave
@@ -205,6 +206,8 @@ public class ParamConstant {
     public static final String END_TIME = "endTime";
     public static final int SLOT_UNAVAILABLE = 1;
     public static final int SLOT_AVAILABLE = 0;
+    public static final int IS_STREAMED=1;
+    public static final int NOT_STREAM=0;
 
     /**
      * Room

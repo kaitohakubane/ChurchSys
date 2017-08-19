@@ -16,6 +16,7 @@ import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -53,11 +54,12 @@ public class EventModel extends CommonDAO implements EventModelInterface {
     }
 
     @Override
-    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered) {
+    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered,Timestamp time) {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_CREATING_EVENT)
                 .setParameter(ParamConstant.EVENT_DATE, date).setParameter(ParamConstant.EVENT_STATUS, status)
                 .setParameter(ParamConstant.EVENT_SUBJECT_ID, subId)
                 .setParameter(ParamConstant.CHURCH_ID, churchId).setParameter(ParamConstant.IS_EVENT_REGISTERED, isRegistered)
+                .setParameter(ParamConstant.CREATED_TIME,time)
                 .setResultTransformer(Transformers.aliasToBean(EventEntity.class));
         EventEntity result = (EventEntity) query.uniqueResult();
         return result;

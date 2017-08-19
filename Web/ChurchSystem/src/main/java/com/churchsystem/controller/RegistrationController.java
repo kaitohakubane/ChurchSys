@@ -82,11 +82,12 @@ public class RegistrationController {
 
             String eventName = subjectServiceInterface.getSubjectById(subId).getSubName() + "-" + userEntity.getUserName();
 
+            Timestamp creatingTime=new Timestamp(System.currentTimeMillis());
             eventServiceInterface.createEvent(eventName, slotDate, subId, false, churchId
-                    , null, ParamConstant.NON_REPEAT_TYPE, true, UtilsConstant.ONE);
+                    , null, ParamConstant.NON_REPEAT_TYPE, true, UtilsConstant.ONE,creatingTime);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId, true);
+                    subId, churchId, true,creatingTime);
 
             registrationServiceInterface.addNewRegistration(userEntity.getUserId(), churchId, subId, eventEntity.getEventId(), null);
 

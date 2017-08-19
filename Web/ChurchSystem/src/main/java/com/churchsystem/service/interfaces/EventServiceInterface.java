@@ -5,6 +5,7 @@ import com.churchsystem.entity.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,8 @@ public interface EventServiceInterface {
 
     List<EventDisplayEntity> getListOfPublicEvent(int churchId);
 
-    void createEvent(String eventName, Date eventDate, int subId, boolean privacy,
-                     int churchId, Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot);
+    void createEvent(String eventName, Date eventDate, int subId, boolean privacy, int churchId
+            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot,Timestamp createdTime);
 
     void mappingResource(int slotId, int slotHour);
 
@@ -29,7 +30,7 @@ public interface EventServiceInterface {
 
     SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, Integer roomId, Integer conductorId, Date itemDate, int subId);
 
-    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered);
+    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered,Timestamp time);
 
     void updateEvent(EventEntity eventEntity);
 

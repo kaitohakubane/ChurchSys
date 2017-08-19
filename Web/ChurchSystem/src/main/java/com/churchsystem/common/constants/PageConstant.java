@@ -68,6 +68,7 @@ public class PageConstant {
     public static final String REGISTER_STREAM_URL = "/manager/stream/Register";
     public static final String STREAM_INSTRUCTION_URL = "/manager/stream/instruction";
     public static final String START_OBS="/manager/StartOBS";
+    public static final String STREAM_EVENT="/manager/stream/UpdateEvent";
 
     //Notification
     public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";

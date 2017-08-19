@@ -207,6 +207,9 @@ public class GraveController {
 
             GraveyardEntity graveyardEntity = graveServiceInterface.getGraveYardById(graveYardId);
             graveyardEntity.setGraveAvailable(graveyardEntity.getGraveAvailable() - 1);
+            if(graveyardEntity.getGraveAvailable()==0){
+                graveyardEntity.setStatus(ParamConstant.GRAVE_YARD_FULL);
+            }
             graveServiceInterface.updateGraveYard(graveyardEntity);
 
         } catch (Exception e) {

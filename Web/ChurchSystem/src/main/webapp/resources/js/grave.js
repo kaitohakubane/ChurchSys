@@ -284,18 +284,9 @@ function generateSearch(search) {
         e.removeClass("result-grave");
     })
     if ($.isNumeric(search)) {
-
         listOfChurchGrave.forEach(function (e) {
             if (e.graveId == search) {
                 console.log("graveId" + e.graveId);
-                // $(".graveItem").each(function (index, element) {
-                //     console.log(" Element data"+$(element.data("id")))
-                //     if ($(element).data("id") == search) {
-                //         $(element).addClass("result-grave");
-                //         highLighting.push($(this));
-                //         return;
-                //     }
-                // })
                 $(".graveYardItem").each(function (index, element) {
                     if (e.graveYardId == $(element).data("id")) {
                         $(element).addClass("result-grave");
@@ -308,7 +299,10 @@ function generateSearch(search) {
         listOfChurchGrave.forEach(function (e) {
             if (e.graveId == search) {
                 $(".graveItem").each(function (index, element) {
-
+                    if (e.graveId == $(element).data("id")) {
+                        $(element).addClass("result-grave");
+                        highLightingYard.push($(element));
+                    }
                 })
             }
         })

@@ -116,6 +116,7 @@ To change this template use File | Settings | File Templates.
                                                 style="background-color: #7ab33e; border: 2px solid #7ab33e; height: 30px; margin-left: 10px;"
                                                 id="theme" data-color="${setting.theme}"
                                                 data-toggle="modal" data-target="#theme-modal"></button>
+                                        <label class="control-label col-md-offset-1" style="cursor: pointer;"><a id="previewLink">Xem thử</a></label>
                                     </div>
 
                                     <div class="form-group">
@@ -235,6 +236,7 @@ To change this template use File | Settings | File Templates.
 
 <script>
     $('input[type=eu-time]').w2field('time', {format: 'h24'});
+    var churchId=<c:out value="${sessionScope.churchId}"></c:out>
 </script>
 
 </body>

@@ -15,6 +15,8 @@ var ACCEPT_REGISTRATION_URL = "/manager/registration/Accept";
 var REJECT_REGISTRATION_URL = "/manager/registration/Reject";
 var REMOVE_MULTI_SLOT = "/manager/schedule/remove-multi-slot";
 var UPDATE_NAME_AND_PRIVACY = "/manager/schedule/update-name-privacy";
+var STREAM_EVENT = "/manager/stream/UpdateEvent"
+
 var dayArray = [];
 var streamResolutionDefault = "240p"
 var workingEvent;
@@ -51,12 +53,10 @@ $(document).ready(function () {
         if (index > -1) {
             dayArray.splice(index, 1);
         }
-        console.log(dayArray)
     });
 
 
     $("#createStreambtn").on("click", function () {
-        console.log($(this).data("id"))
         streamRegister($(this).data("id"), $("#resolution").val())
         $("#resolution").val(streamResolutionDefault);
         $("#registration").modal('hide');
@@ -102,7 +102,7 @@ function inputUserEventPopup(event) {
     })
 
     $("#rejectBtn").unbind("click");
-    $('#rejectBtn').bind("click",function(){
+    $('#rejectBtn').bind("click", function () {
         rejectRegistration(event);
         $("#userRegister").fadeOut();
     })
@@ -115,25 +115,50 @@ function inputEventPopupInformation(event) {
     $('#eventPopupConductor').val(event.conductorName);
     $('#eventPopupRoom').val(event.roomName);
     var streamBtn = $("#streamBtn");
-    if (event.streamLink != null) {
-        streamBtn.removeClass("btn-primary")
-        streamBtn.addClass("btn-dark")
+    console.log(event.streamLink)
+    console.log(event.isStream=='0');
+    if (event.streamLink != null && event.isStream == '0') {
+        if (streamBtn.attr("class").includes("btn-success")) {
+            streamBtn.removeClass("btn-success");
+
+        }
+        if(streamBtn.attr("class").includes("btn-dark")){
+            streamBtn.removeClass("btn-dark")
+        }
+        streamBtn.addClass("btn-danger")
         streamBtn.unbind("click");
         streamBtn.on("click", function (e) {
             e.preventDefault();
+            streamEvent(event.slotId);
             var parameter = {
                 streamLink: event.streamLink,
                 streamCode: event.streamCode,
-                streamTitle:event.title
+                streamTitle: event.title
             }
             post(contextPath + STREAM_URL, parameter)
         })
-    } else {
-        if (streamBtn.attr("class").includes("btn-dark")) {
 
-            streamBtn.removeClass("btn-dark");
-            streamBtn.addClass("btn-primary")
+    }
+    else if (event.isStream=='1') {
+        if (streamBtn.attr("class").includes("btn-success")) {
+            streamBtn.removeClass("btn-success");
+
         }
+        if(streamBtn.attr("class").includes("btn-danger")){
+            streamBtn.removeClass("btn-danger")
+        }
+        streamBtn.addClass("btn-dark");
+        streamBtn.unbind("click");
+    }
+    else {
+        if (streamBtn.attr("class").includes("btn-dark")) {
+            streamBtn.removeClass("btn-dark");
+
+        }
+        if(streamBtn.attr("class").includes("btn-danger")){
+            streamBtn.removeClass("btn-danger")
+        }
+        streamBtn.addClass("btn-success")
         streamBtn.unbind("click");
         streamBtn.on("click", function (e) {
             $("#registration").modal('show');
@@ -199,8 +224,6 @@ function inputEventPopupInformation(event) {
 }
 
 
-
-
 function terminateEventCreateMenu() {
 
     $(document).bind('click', function (e) {
@@ -215,26 +238,25 @@ function terminateEventCreateMenu() {
             $("#userRegister").fadeOut();
             return;
         }
-        console.log(!($(e.target).attr('class').toString().indexOf('fc-widget-content')));
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-                $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
-                    .indexOf('fc-widget-content')))) {
+            $('div#calendarPopup').has(e.target).length > 0 || !($(e.target).attr('class').toString()
+                .indexOf('fc-widget-content')))) {
             $("#calendarPopup").fadeOut();
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-                ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
-                    .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
-                    .attr('class').toString()
-                    .indexOf('fc-bg') >= 0))) {
+            ($('div#eventDetailPopup').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
+                .attr('class').toString()
+                .indexOf('fc-bg') >= 0))) {
             $("#eventDetailPopup").fadeOut();
         }
 
         if (!(($(e.target).attr('class').toString().indexOf('fc-content') >= 0) ||
-                ($('div#userRegister').has(e.target).length > 0) || ($(e.target).attr('class').toString()
-                    .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
-                    .attr('class').toString()
-                    .indexOf('fc-bg') >= 0))) {
+            ($('div#userRegister').has(e.target).length > 0) || ($(e.target).attr('class').toString()
+                .indexOf('fc-title') >= 0) || ($(e.target).attr('class').toString().indexOf('fc-time') >= 0) || ($(e.target)
+                .attr('class').toString()
+                .indexOf('fc-bg') >= 0))) {
             $("#userRegister").fadeOut();
         }
     })
@@ -263,7 +285,6 @@ function streamRegister(slotId, resolution) {
     var requestURL = contextPath + REGISTER_STREAM_URL;
     var requestMethod = "POST";
     var requestData = {
-
         "slotId": slotId,
         "resolution": resolution
     }
@@ -276,6 +297,26 @@ function streamRegister(slotId, resolution) {
         success: function () {
             $("#calendar").fullCalendar('removeEvents');
             loadEvent();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error happen')
+            console.error(textStatus);
+        }
+    })
+}
+
+function streamEvent(slotId) {
+    var requestURL = contextPath + STREAM_EVENT;
+    var requestMethod = "POST";
+    var requestData = {
+        "slotId": slotId,
+    }
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: requestData,
+        async: false,
+        success: function () {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error happen')
@@ -358,7 +399,7 @@ function removeSingleSlot(event) {
             console.log("Removed single slot with ID = " + event.slotId);
             onClickShowPopup(REMOVE_SUCCESS_STATUS, TYPE_SUCCESS);
             $('#eventDetailPopup').fadeOut();
-            $('#calendar').fullCalendar('removeEvents',event._id);
+            $('#calendar').fullCalendar('removeEvents', event._id);
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -499,7 +540,7 @@ function rejectRegistration(event) {
         data: requestData,
         async: false,
         success: function () {
-            $('#calendar').fullCalendar('removeEvents',event._id);
+            $('#calendar').fullCalendar('removeEvents', event._id);
             onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
         },
         error: function (jqXHR, textStatus, errorThrown) {

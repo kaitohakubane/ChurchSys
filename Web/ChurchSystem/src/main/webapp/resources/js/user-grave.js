@@ -95,6 +95,7 @@ function contextMenuInitial(e) {
             currentGraveYard = e.data("id");
             $('.nav-tabs a[href="#step2"]').click();
             var search = $('#graveSearch').dropdown('get value')[0];
+            console.log(search)
             generateSearch(search)
             $('.nav-tabs a[href="#step2"]').html('Sơ đồ ' + e.html());
         })
@@ -148,7 +149,6 @@ function generateSearch(search) {
         e.removeClass("result-grave");
     })
     if ($.isNumeric(search)) {
-
         listOfChurchGrave.forEach(function (e) {
             if (e.graveId == search) {
                 console.log("graveId" + e.graveId);

@@ -5,6 +5,7 @@ import com.churchsystem.entity.EventDataEntity;
 import com.churchsystem.entity.EventEntity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public interface EventModelInterface {
 
     void addNewEvent(EventEntity eventEntity);
 
-    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered);
+    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered,Timestamp time);
 
     EventEntity getEventById(int eventId);
 

@@ -33,4 +33,6 @@ public interface GraveModelInterface {
     GraveEntity getGrave(int graveId);
 
     GraveyardEntity getCreatingGraveYard(int churchId);
+
+    void removeGrave(int graveId);
 }

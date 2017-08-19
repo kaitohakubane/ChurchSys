@@ -26,14 +26,20 @@ public class EventDataEntity {
     private Integer status;
     private String streamLink;
     private String streamCode;
+    private Integer isStream;
+
+    public void setIsStream(Integer isStream) {
+        this.isStream = isStream;
+    }
+
+    public Integer getIsStream() {
+        return isStream;
+    }
 
     public EventDataEntity() {
     }
 
-    public EventDataEntity(int slotId, int eventId, Integer conductorId, Integer roomId, Integer subId, Date slotDate,
-                           Time startTime, Time endTime, String conductorName, String roomName, Boolean privacy,
-                           String description, String subName, Integer eventStatus, String eventName, Integer status,
-                           String streamLink, String streamCode) {
+    public EventDataEntity(int slotId, int eventId, Integer conductorId, Integer roomId, Integer subId, Date slotDate, Time startTime, Time endTime, String conductorName, String roomName, Boolean privacy, String description, String subName, Integer eventStatus, String eventName, Integer status, String streamLink, String streamCode, Integer isStream) {
         this.slotId = slotId;
         this.eventId = eventId;
         this.conductorId = conductorId;
@@ -52,6 +58,7 @@ public class EventDataEntity {
         this.status = status;
         this.streamLink = streamLink;
         this.streamCode = streamCode;
+        this.isStream = isStream;
     }
 
     public String getStreamLink() {

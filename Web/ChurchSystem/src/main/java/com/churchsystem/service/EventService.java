@@ -103,7 +103,7 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public void createEvent(String eventName, Date eventDate, int subId, boolean privacy, int churchId
-            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot) {
+            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot,Timestamp createdTime) {
         EventEntity inputEvent = new EventEntity();
         inputEvent.setChurchId(churchId);
         inputEvent.setEventStatus(ParamConstant.WAITING_FOR_APPROVE_STATUS);
@@ -118,6 +118,7 @@ public class EventService implements EventServiceInterface {
         inputEvent.setExamDate(examDate);
         inputEvent.setRegistered(isRegistered);
         inputEvent.setNumOfSlot(numberOfSlot);
+        inputEvent.setCreatedTime(createdTime);
         eventModelInterface.addNewEvent(inputEvent);
     }
 
@@ -271,8 +272,8 @@ public class EventService implements EventServiceInterface {
 
 
     @Override
-    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered) {
-        return eventModelInterface.getCreatingEvent(date, status, subId, churchId, isRegistered);
+    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered,Timestamp time) {
+        return eventModelInterface.getCreatingEvent(date, status, subId, churchId, isRegistered,time);
     }
 
     @Override

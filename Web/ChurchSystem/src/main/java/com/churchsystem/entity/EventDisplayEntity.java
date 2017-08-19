@@ -24,8 +24,17 @@ public class EventDisplayEntity {
     private String streamLink;
     private String streamCode;
     private int eventStatus;
+    private Integer isStream;
 
     public EventDisplayEntity() {
+    }
+
+    public Integer getIsStream() {
+        return isStream;
+    }
+
+    public void setIsStream(Integer isStream) {
+        this.isStream = isStream;
     }
 
     public EventDisplayEntity(EventDataEntity dataEntity) {
@@ -47,6 +56,7 @@ public class EventDisplayEntity {
         this.streamLink=dataEntity.getStreamLink();
         this.streamCode=dataEntity.getStreamCode();
         this.eventStatus=dataEntity.getEventStatus();
+        this.isStream=dataEntity.getIsStream();
     }
 
     public int getEventStatus() {

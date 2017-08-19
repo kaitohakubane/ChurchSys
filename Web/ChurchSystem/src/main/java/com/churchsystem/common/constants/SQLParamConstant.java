@@ -52,7 +52,7 @@ public class SQLParamConstant {
             "FROM subject s, category c " +
             "WHERE s.categoryId = c.categoryId AND c.categoryId != 3 AND c.categoryId != 12";
 
-    public static final String GET_EVENT_DISPLAY_SLOT = "SELECT sru.slotId as slotId, e.eventId as eventId, " +
+    public static final String GET_EVENT_DISPLAY_SLOT = "SELECT sru.slotId as slotId, e.eventId as eventId, sru.isStream as isStream, " +
             "sru.conductorId as conductorId, sru.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
             "st.endTime as endTime, sru.userName as conductorName, sru.slotDate as slotDate, sru.roomName as roomName, " +
             "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
@@ -64,7 +64,7 @@ public class SQLParamConstant {
             "WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) st WHERE su.subId = e.subId " +
             "AND st.slotId = sru.slotId AND sru.eventId = e.eventId AND e.churchId =:churchId AND eventStatus != 2";
 
-    public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT = "SELECT s.slotId as slotId, s.eventId as eventId, " +
+    public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT = "SELECT s.slotId as slotId, s.eventId as eventId, sru.isStream as isStream, " +
             "s.conductorId as conductorId, s.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
             "st.endTime as endTime, u.userName as conductorName,s.slotDate as slotDate, r.roomName as roomName, " +
             "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
@@ -77,7 +77,7 @@ public class SQLParamConstant {
 
     public static final String GET_CREATING_EVENT = "SELECT * FROM event " +
             "WHERE startDate =:eventDate AND eventStatus =:eventStatus AND churchId =:churchId AND subId =:eventSubId AND " +
-            "isRegistered =:isRegistered AND eventId" +
+            "isRegistered =:isRegistered AND createdTime =:createdTime AND eventId" +
             " NOT IN ( SELECT eventId FROM Slot WHERE eventId IS NOT NULL)";
     ;
 
@@ -315,4 +315,5 @@ public class SQLParamConstant {
     public static final String GET_GRAVE_OF_CHURCH = "SELECT u.userName as userName, g.identity as userIdentity, g.phone as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM (SELECT gr.* FROM grave gr , graveyard y WHERE gr.graveYardId = y.graveYardId AND y.churchId =:churchId) g LEFT JOIN user u ON g.userId = u.userId ";
 
     public static final String GET_LIST_GRAVE = "SELECT u.userName as userName, g.identity as userIdentity, g.phone as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveYardId =:graveYardId ";
+    public static final String REMOVE_GRAVE = "DELETE FROM grave WHERE graveId =:graveId";
 }

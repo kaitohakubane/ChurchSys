@@ -102,5 +102,12 @@ public class GraveModel extends CommonDAO implements GraveModelInterface {
         GraveyardEntity result=(GraveyardEntity) criteria.list().get(0);
         return result;
     }
+
+    @Override
+    public void removeGrave(int graveId){
+        Query query=getSession().createSQLQuery(SQLParamConstant.REMOVE_GRAVE).setParameter(ParamConstant.GRAVE_ID,graveId);
+        query.executeUpdate();
+    }
+
 }
 

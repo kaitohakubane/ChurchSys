@@ -78,11 +78,12 @@ public class EventController {
                 privacy = false;
             }
 
+            Timestamp creatingTime=new Timestamp(System.currentTimeMillis());
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId
-                    , privacy, churchId, null, ParamConstant.NON_REPEAT_TYPE, false, UtilsConstant.ONE);
+                    , privacy, churchId, null, ParamConstant.NON_REPEAT_TYPE, false, UtilsConstant.ONE,creatingTime);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId, false);
+                    subId, churchId, false,creatingTime);
             SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId, eventEntity.getEventId());
             List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
             for (int i = 0; i < slotEntities.size(); i++) {
@@ -232,12 +233,12 @@ public class EventController {
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
             //Create Class
+            Timestamp creatingTime=new Timestamp(System.currentTimeMillis());
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), datesOfClass.get(0), subId
-                    , privacy, churchId, examDate, typeEntity.getTypeId(), false, numberOfSlot);
+                    , privacy, churchId, examDate, typeEntity.getTypeId(), false, numberOfSlot,creatingTime);
 
 
-            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId, false);
+            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId, false,creatingTime);
 
             for (int i = 0; i < datesOfClass.size(); i++) {
                 Date itemDate = datesOfClass.get(i);
@@ -581,6 +582,21 @@ public class EventController {
             String streamCode = YoutubeAPI.createStream(streamLink, resolution, streamLink);
             slotEntity.setStreamLink(streamLink);
             slotEntity.setStreamCode(streamCode);
+            slotEntity.setIsStream(ParamConstant.NOT_STREAM);
+            slotServiceInterface.updateSlot(slotEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.STREAM_EVENT, method = RequestMethod.POST)
+    public void registerStreamEvent(@RequestParam(value = ParamConstant.SLOT_ID) String slotIdStr) {
+
+        try {
+            int slotId = Integer.parseInt(slotIdStr);
+            SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            slotEntity.setIsStream(ParamConstant.IS_STREAMED);
             slotServiceInterface.updateSlot(slotEntity);
         } catch (Exception e) {
             e.printStackTrace();

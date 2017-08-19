@@ -4,12 +4,16 @@ var FAILURE_STATUS = "Cập nhật thất bại!";
 var TYPE_DANGER = "danger";
 var TYPE_SUCCESS = "success";
 $(document).ready(function () {
-    generalInitial()
+    generalInitial();
 })
-
 
 function generalInitial(){
     var theme = $("#theme");
+    $("#previewLink").on("click",function(){
+        var strWindowFeatures = "location=yes,height=570,width=800,scrollbars=yes,status=yes";
+        var URL = "http://localhost:8066/ChurchSystem/church?churchId="+churchId;
+        var win = window.open(URL, "_blank", strWindowFeatures);
+    })
     var image = $("#theme-picture");
     if (theme.data('color') == 0) {
         theme.css('background-color', "#7ab33e")
