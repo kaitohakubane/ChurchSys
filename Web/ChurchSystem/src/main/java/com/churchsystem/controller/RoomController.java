@@ -31,7 +31,7 @@ public class RoomController {
     SubjectServiceInterface subjectServiceInterface;
 
     @RequestMapping(value = PageConstant.ROOM_MANAGEMENT_URL, method = RequestMethod.GET)
-    public ModelAndView getAllChurch(HttpServletRequest request) {
+    public ModelAndView getAllRoom(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.ROOM_MANAGEMENT_PAGE);
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         List<RoomEntity> roomEntities = roomServiceInterface.getAllRoom(churchId);

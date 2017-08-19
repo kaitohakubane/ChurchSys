@@ -512,7 +512,7 @@ public class EventController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CHECK_IS_MANY_SLOT, method = RequestMethod.POST)
-    public Integer checkIsClass(@RequestBody EventJsonEntity eventJsonEntity) {
+    public Integer checkIsManySlot(@RequestBody EventJsonEntity eventJsonEntity) {
         try {
             int slotId = Integer.parseInt(eventJsonEntity.getSlotId());
             return eventServiceInterface.checkIsManySlot(slotId);

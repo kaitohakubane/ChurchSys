@@ -160,7 +160,7 @@ public class RegistrationController {
     //KietTA
     @ResponseBody
     @RequestMapping(value = PageConstant.CLASS_REGISTRATION, method = RequestMethod.POST)
-    public int classRegister(
+    public int registerNewClass(
             @RequestParam(value = ParamConstant.CHURCH_ID) String churchIdStr,
             @RequestParam(value = ParamConstant.SUBJECT_ID) String subIdStr,
             @RequestParam(value = ParamConstant.REGISTRATION_MESSAGE) String message) {

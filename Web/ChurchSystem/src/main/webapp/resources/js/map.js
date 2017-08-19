@@ -254,7 +254,7 @@ function searchNearLocationAjaxCall(center) {
             infoWindow.close();
             listOfLocation = res;
             var bounds = new google.maps.LatLngBounds();
-            if (listOfLocation == null) {
+            if (listOfLocation.length==0) {
                 return;
             }
             listOfLocation.forEach(function (e, i) {

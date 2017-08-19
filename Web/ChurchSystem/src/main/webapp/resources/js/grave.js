@@ -461,6 +461,7 @@ function generateGrave(target, width, height, graveYard) {
     $(".graveItem").on("click", function (x) {
         if ($(this).data("status") == 0) {
             $("#detailContext").fadeOut();
+            clearRegistration();
             initialRegisContext($(this));
             eventRegisterPopup(x, $("#regisContext"));
 
@@ -479,7 +480,7 @@ function initialDetailContext(e) {
     if (listOfGrave[index].image != null) {
         $("#image").attr("src", contextPath + "/product-images/" + listOfGrave[index].image);
     } else {
-        $("#image").attr("src", contextPath + "/product-images/noimagefound.jpg");
+        $("#image").attr("src", contextPath + "/resources/img/noimagefound.jpg");
     }
 
 
@@ -640,4 +641,15 @@ function terminateEventCreateMenu() {
         }
 
     })
+}
+
+function clearRegistration(){
+    $("#graveName").val("")
+    $("#graveBirth").val("")
+    $("#graveHomeTown").val("")
+    $("#graveDeathDay").val("")
+    $("#graveParish").val("")
+    $("#phoneNum").val("")
+    $("#userIdentity").val("")
+    $("#graveImage").val("")
 }

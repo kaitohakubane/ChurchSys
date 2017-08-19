@@ -53,7 +53,7 @@ public class DashboardClassEntity {
     }
 
     public String getClassStatus() {
-        String result = "";
+        String result;
         Date curDate = DateUtils.getCurrentDate();
         if(status==4){
             result = "Đã hoàn thành";
@@ -62,7 +62,7 @@ public class DashboardClassEntity {
                 result = "Sắp diễn ra";
             }
             else {
-                result += "Đang diễn ra";
+                result = "Đang diễn ra";
             }
         }
         return result;

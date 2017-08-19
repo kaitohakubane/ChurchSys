@@ -262,7 +262,7 @@ create table interaction (
 create table Question (
 
 	
-	questionId int NOT NULL AUTO_INCREMENT,
+	quesId int NOT NULL AUTO_INCREMENT,
     
 	conductorId int,    	
 
