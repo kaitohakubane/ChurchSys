@@ -208,6 +208,9 @@ public class ParamConstant {
     public static final int SLOT_AVAILABLE = 0;
     public static final int IS_STREAMED=1;
     public static final int NOT_STREAM=0;
+    public static final int DEFAULT_NOT_AVAILABLE_ROOM_ID = 0;
+    public static final int DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID = 0;
+
 
     /**
      * Room

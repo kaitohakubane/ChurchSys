@@ -78,12 +78,12 @@ public class EventController {
                 privacy = false;
             }
 
-            Timestamp creatingTime=new Timestamp(System.currentTimeMillis());
+            Timestamp creatingTime = new Timestamp(System.currentTimeMillis());
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), slotDate, subId
-                    , privacy, churchId, null, ParamConstant.NON_REPEAT_TYPE, false, UtilsConstant.ONE,creatingTime);
+                    , privacy, churchId, null, ParamConstant.NON_REPEAT_TYPE, false, UtilsConstant.ONE, creatingTime);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId, false,creatingTime);
+                    subId, churchId, false, creatingTime);
             SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId, eventEntity.getEventId());
             List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
             for (int i = 0; i < slotEntities.size(); i++) {
@@ -173,7 +173,10 @@ public class EventController {
 
         if (eventDataEntity.getConductorId() != null) {
             UserEntity currentConductor = userServiceInterface.getUserByUserId(eventDataEntity.getConductorId());
-            if (!conductorIdList.contains(currentConductor.getUserId())) {
+            if (!conductorIdList.contains(currentConductor.getUserId()) && eventDataEntity.getConductorId() != ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID) {
+                userEntities.add(currentConductor);
+            }
+            if (userEntities.size() == UtilsConstant.ZERO) {
                 userEntities.add(currentConductor);
             }
         }
@@ -196,7 +199,10 @@ public class EventController {
         List<Integer> roomIdList = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, eventDataEntity.getSlotDate(), churchId, eventDataEntity.getSubId());
         if (eventDataEntity.getRoomId() != null) {
             RoomEntity currentRoom = roomServiceInterface.getRoomById(eventDataEntity.getRoomId());
-            if (!roomIdList.contains(currentRoom.getRoomId())) {
+            if (!roomIdList.contains(currentRoom.getRoomId()) && eventDataEntity.getRoomId() != ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID) {
+                roomEntities.add(currentRoom);
+            }
+            if (roomEntities.size() == UtilsConstant.ZERO) {
                 roomEntities.add(currentRoom);
             }
         }
@@ -233,12 +239,12 @@ public class EventController {
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
             //Create Class
-            Timestamp creatingTime=new Timestamp(System.currentTimeMillis());
+            Timestamp creatingTime = new Timestamp(System.currentTimeMillis());
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), datesOfClass.get(0), subId
-                    , privacy, churchId, examDate, typeEntity.getTypeId(), false, numberOfSlot,creatingTime);
+                    , privacy, churchId, examDate, typeEntity.getTypeId(), false, numberOfSlot, creatingTime);
 
 
-            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId, false,creatingTime);
+            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId, false, creatingTime);
 
             for (int i = 0; i < datesOfClass.size(); i++) {
                 Date itemDate = datesOfClass.get(i);
@@ -262,7 +268,6 @@ public class EventController {
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
             result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(), eventJsonEntity.getToken());
-
 
 
         } catch (Exception e) {
@@ -343,7 +348,7 @@ public class EventController {
             if (eventJsonEntity.getConductorId() != null) {
                 conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
             } else {
-                conductorId = null;
+                conductorId = ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID;
             }
 
             //Check null Room
@@ -351,12 +356,12 @@ public class EventController {
             if (eventJsonEntity.getRoomId() != null) {
                 roomId = Integer.parseInt(eventJsonEntity.getRoomId());
             } else {
-                roomId = null;
+                roomId = ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID;
             }
 
             //Check status
             Integer status;
-            if (roomId != null && conductorId != null) {
+            if (roomId != ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID && conductorId != ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID) {
                 status = ParamConstant.SLOT_OK_STATUS;
             } else {
                 status = ParamConstant.SLOT_CONFLICT_STATUS;
@@ -378,13 +383,7 @@ public class EventController {
             }
             eventServiceInterface.updateEventNameAndPrivacy(slotEntity, eventName, privacy);
 
-            //Insert new row to Inclusion
-            slotServiceInterface.deleteSlotHourBySlotId(slotId);
-
-            for (int i = 0; i < slotHour.size(); i++) {
-                eventServiceInterface.mappingResource(slotId, slotHour.get(i));
-            }
-
+            eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -406,10 +405,15 @@ public class EventController {
             for (SlotEntity slotEntity : slotEntities) {
                 slotEntity.setConductorId(conductorId);
                 slotEntity.setRoomId(roomId);
-                slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
-
-                eventServiceInterface.updateRepeatSlot(slotEntity, slotHour);
-
+                Integer status;
+                if (roomId != ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID && conductorId != ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID) {
+                    status = ParamConstant.SLOT_OK_STATUS;
+                } else {
+                    status = ParamConstant.SLOT_CONFLICT_STATUS;
+                }
+                slotEntity.setSlotStatus(status);
+                slotServiceInterface.updateSlot(slotEntity);
+                eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
             }
             boolean privacy = true;
             if (intPrivacy == UtilsConstant.ZERO) {
@@ -436,28 +440,39 @@ public class EventController {
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
             List<SlothourEntity> slotHour = slotServiceInterface.getListSlotHourByTime(startTime, endTime);
 
+            //get current room and conductor;
+            if (slotEntity.getRoomId() == null) {
+                slotEntity.setRoomId(ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID);
+            }
+            if (slotEntity.getConductorId() == null) {
+                slotEntity.setConductorId(ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID);
+            }
 
+            int curRoomId = slotEntity.getRoomId();
+            int curConductorId = slotEntity.getConductorId();
 
+            slotServiceInterface.setValueForSlot(slotEntity, null, null);
+
+            String roomName = roomServiceInterface.getRoomById(curRoomId).getRoomName();
+            String conductorName = userServiceInterface.getUserByUserId(curConductorId).getUserName();
+
+            List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
+            List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
+
+            //case edited slot is OK
             if (slotEntity.getSlotStatus() == ParamConstant.SLOT_OK_STATUS) {
-                int curRoomId = slotEntity.getRoomId();
-                int curConductorId = slotEntity.getConductorId();
-                slotServiceInterface.setValueForSlot(slotEntity, null, null);
-
-                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
-                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
-
                 if (!listRoomId.contains(curRoomId)) {
-                    slotEntity.setRoomId(null);
+                    slotEntity.setRoomId(ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
-                    eventDataEntity.setRoomName(null);
+                    eventDataEntity.setRoomName(roomServiceInterface.getRoomById(ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID).getRoomName());
                     eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 } else {
                     slotEntity.setRoomId(curRoomId);
                 }
                 if (!listConductorId.contains(curConductorId)) {
-                    slotEntity.setConductorId(null);
+                    slotEntity.setConductorId(ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
-                    eventDataEntity.setConductorName(null);
+                    eventDataEntity.setConductorName(userServiceInterface.getUserByUserId(ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID).getUserName());
                     eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 } else {
                     slotEntity.setConductorId(curConductorId);
@@ -465,24 +480,23 @@ public class EventController {
                 slotEntity.setSlotDate(slotDate);
                 slotServiceInterface.updateSlot(slotEntity);
 
-                slotServiceInterface.deleteSlotHourBySlotId(slotId);
 
+                // map new slot hour
+                slotServiceInterface.deleteSlotHourBySlotId(slotId);
                 for (int i = 0; i < slotHour.size(); i++) {
                     eventServiceInterface.mappingResource(slotId, slotHour.get(i).getSlotHourId());
                 }
             } else {
-                List<Integer> listRoomId = roomServiceInterface.getIdListSuitableRoomForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
-                List<Integer> listConductorId = userServiceInterface.getIdListSuitableConductorForSlot(startTime, endTime, slotDate, churchId, eventDataEntity.getSubId());
                 if (listRoomId == null) {
-                    slotEntity.setRoomId(null);
+                    slotEntity.setRoomId(ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
-                    eventDataEntity.setRoomName(null);
+                    eventDataEntity.setRoomName(roomServiceInterface.getRoomById(ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID).getRoomName());
                     eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 }
                 if (listConductorId == null) {
-                    slotEntity.setConductorId(null);
+                    slotEntity.setConductorId(ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID);
                     slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
-                    eventDataEntity.setConductorName(null);
+                    eventDataEntity.setConductorName(conductorName);
                     eventDataEntity.setStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 }
                 if (listRoomId != null && listConductorId != null) {
@@ -717,12 +731,12 @@ public class EventController {
                 int isConductorAvailable = eventServiceInterface.checkConductorForClass(slotEntities.get(i), startTime, endTime, newConductorId, churchId, subId, currentConductorId);
 
                 if (isRoomAvailable == UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
-                    slotEntities.get(i).setRoomId(null);
+                    slotEntities.get(i).setRoomId(ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID);
                     slotEntities.get(i).setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 }
 
                 if (isConductorAvailable == UtilsConstant.NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
-                    slotEntities.get(i).setConductorId(null);
+                    slotEntities.get(i).setConductorId(ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID);
                     slotEntities.get(i).setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
                 } else if (isRoomAvailable == UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS && isConductorAvailable == UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS) {
                     slotEntities.get(i).setRoomId(newRoomId);
@@ -730,7 +744,7 @@ public class EventController {
                     slotEntities.get(i).setSlotStatus(ParamConstant.SLOT_OK_STATUS);
                 }
 
-                eventServiceInterface.updateRepeatSlot(slotEntities.get(i), slotHour);
+                eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
             }
 
             boolean privacy = true;

@@ -50,7 +50,7 @@ public interface EventServiceInterface {
 
     void updateEventNameAndPrivacy(SlotEntity slotEntity, String eventName, boolean privacy);
 
-    void updateRepeatSlot(SlotEntity slotEntity, ArrayList<Integer> slotHour);
+    void mappingResource(int slotId, ArrayList<Integer> slotHour);
 
     String updateGoogleCalendarEvent(SlotEntity slotEntity, Time startTime, Time endTime, String eventName) throws IOException;
 

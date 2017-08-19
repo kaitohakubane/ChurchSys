@@ -55,7 +55,7 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public List<EventDataEntity> getListOfEventData(int churchId){
+    public List<EventDataEntity> getListOfEventData(int churchId) {
         List<EventDataEntity> data = eventModelInterface.getListOfPublicEvent(churchId);
         return data;
     }
@@ -344,13 +344,11 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public void updateRepeatSlot(SlotEntity slotEntity, ArrayList<Integer> slotHour) {
-        slotModelInterface.updateSlot(slotEntity);
-
-        slotModelInterface.deleteSlotHourBySlotId(slotEntity.getSlotId());
+    public void mappingResource(int slotId, ArrayList<Integer> slotHour) {
+        slotModelInterface.deleteSlotHourBySlotId(slotId);
 
         for (int i = 0; i < slotHour.size(); i++) {
-            mappingResource(slotEntity.getSlotId(), slotHour.get(i));
+            mappingResource(slotId, slotHour.get(i));
         }
     }
 
@@ -400,7 +398,8 @@ public class EventService implements EventServiceInterface {
         return UtilsConstant.AVAILABLE_FOR_ALL_SLOT_OF_CLASS;
     }
 
-    @Override public List<DashboardClassEntity> getUserRegisteredClass(int userId){
+    @Override
+    public List<DashboardClassEntity> getUserRegisteredClass(int userId) {
         return eventModelInterface.getUserRegisteredClass(userId);
     }
 }
