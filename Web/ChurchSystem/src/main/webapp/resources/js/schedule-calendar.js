@@ -31,7 +31,7 @@ var listOfCreatingEvent = []
 var ClassCategoryNum = ['6', '7', '8', '9', '10', '11'];
 var defaultTimeSlot = "04:30:00 - 06:00:00";
 var eventSubId;
-
+var currentDraggingEvent;
 // Initial call -------------------------------------------------------
 generalInitial();
 calendarInitialize();
@@ -106,34 +106,38 @@ function calendarInitialize() {
 
         select: function (start, end, jsEvent, view) {
             var popup = $('#calendarPopup')
-            console.log('select')
             var startTime = start.format("HH:mm:ss");
             var endTime = end.format("HH:mm:ss")
             var timeSlot = startTime + " - " + endTime;
-            clearCreatingEventPopup(timeSlot);
-            eventRegisterPopup(jsEvent, popup);
+            console.log(start>currentDateTime)
+            if(start>currentDateTime){
+                clearCreatingEventPopup(timeSlot);
+                eventRegisterPopup(jsEvent, popup);
+            }
+
         },
 
         dayClick: function (date, jsEvent, view) {
-
-            clearCreatingEventPopup(defaultTimeSlot);
-            creatingEvent = {
-                start: date.format() + 'T04:30',
-                privacy: 1
-            }
-            if (view.name == 'month') {
-                if (lastClickedDay != null) {
-                    lastClickedDay.css('background-color', '#ffffff')
+            var clickedDate=date.format();
+            if(new Date(clickedDate)>=new Date(today)){
+                clearCreatingEventPopup(defaultTimeSlot);
+                creatingEvent = {
+                    start: date.format() + 'T04:30',
+                    privacy: 1
                 }
+                if (view.name == 'month') {
+                    if (lastClickedDay != null) {
+                        lastClickedDay.css('background-color', '#ffffff')
+                    }
 
-                var popup = $('#calendarPopup')
-                eventRegisterPopup(jsEvent, popup);
-                if (date.format() != today) {
-                    $(this).css('background-color', '#fcf2b3');
-                    lastClickedDay = $(this);
+                    var popup = $('#calendarPopup')
+                    eventRegisterPopup(jsEvent, popup);
+                    if (date.format() != today) {
+                        $(this).css('background-color', '#fcf2b3');
+                        lastClickedDay = $(this);
+                    }
                 }
             }
-
 
         },
 
@@ -168,11 +172,6 @@ function calendarInitialize() {
             }
         },
 
-        eventRender: function (event, element) {
-
-        },
-
-
         drop: function (date, jsEvent, ui, resourceId) {
             creatingEvent = {
                 start: date.format() + 'T04:30',
@@ -186,13 +185,7 @@ function calendarInitialize() {
         },
 
         eventDragStart: function (event, jsEvent, ui, view) {
-            // Add dragging event in global var
-            calEventStatus['calendar'] = '#calendar';
-            calEventStatus['event_id'] = event._id;
-        },
-
-        eventDragStop: function (event, jsEvent, ui, view, revertFunc) {
-
+            currentDraggingEvent=event.start.format();
         },
 
         eventResize: function (event, delta, revertFunc) {
@@ -230,41 +223,48 @@ function calendarInitialize() {
         },
 
         eventDrop: function (event, delta, revertFunc, jsEvent, ui, view) {
-            console.log('eventDrop')
-
-            if (typeof event.end === 'undefined' || !event.end) {
-                return;
-            }
-            var start = event.start.format('HH:mm');
-            var end = event.end.format('HH:mm');
-            if (start < '04:30' || end > '21:00' || start > end) {
+            if(new Date(currentDraggingEvent)<new Date(today)){
                 revertFunc();
-                console.log('revert');
-            } else {
-                checkValidDragDropEvent(event);
-                if (IS_AVAILABLE == 1) {
-                    console.log("New time is available for whole class!")
-                    updateEventOnSchedule(event)
+            }else{
+                if (typeof event.end === 'undefined' || !event.end) {
+                    return;
                 }
-                if (IS_AVAILABLE == 0) {
-                    console.log("New time is not available for whole class!")
-                    $("#confirmModal").modal("show");
+                var start = event.start.format('HH:mm');
+                var end = event.end.format('HH:mm');
+                if (start < '04:30' || end > '21:00' || start > end) {
+                    revertFunc();
+                    console.log('revert');
+                } else {
+                    checkValidDragDropEvent(event);
+                    if (IS_AVAILABLE == 1) {
+                        console.log("New time is available for whole class!")
+                        updateEventOnSchedule(event)
+                    }
+                    if (IS_AVAILABLE == 0) {
+                        console.log("New time is not available for whole class!")
+                        $("#confirmModal").modal("show");
 
-                    $("#process").unbind("click")
-                    $("#process").bind("click", function () {
-                        $("#confirmModal").modal("hide");
-                        updateEventOnSchedule(event);
-                    })
+                        $("#process").unbind("click")
+                        $("#process").bind("click", function () {
+                            $("#confirmModal").modal("hide");
+                            updateEventOnSchedule(event);
+                        })
 
-                    $("#cancel").unbind("click")
-                    $("#cancel").bind("click", function () {
-                        $("#confirmModal").modal("hide");
-                        revertFunc();
-                        console.log('revert');
-                    })
+                        $("#cancel").unbind("click")
+                        $("#cancel").bind("click", function () {
+                            $("#confirmModal").modal("hide");
+                            revertFunc();
+                            console.log('revert');
+                        })
+                    }
+                    $('#calendar').fullCalendar('updateEvent', event);
                 }
-                $('#calendar').fullCalendar('updateEvent', event);
             }
+
+        },
+        eventConstraint: {
+            start: moment().format('YYYY-MM-DD'),
+            end: '2100-01-01' // hard coded goodness unfortunately
         },
 
         eventStartEditable: true,
@@ -300,12 +300,14 @@ function generalInitial() {
             }
         })
         $('#eventType').val(firstVal);
-        // $('.day-checkbox').on('ifChanged', function () {
-        //     $("#examDate").val(calculateExamDate(creatingEvent,$("#numberOfSlot").val()));
-        // })
     })
     $("#examDate").datepicker({changeMonth: true, changeYear: true, yearRange: "-100:+0"});
     $("#examDate").datepicker('option', 'dateFormat', 'yy-mm-dd');
+    $("#numberOfSlot").on("change",function(){
+        if(dayArray.length!=0&&$.isNumeric($("#numberOfSlot").val())){
+            $("#examDate").val(calculateExamDate(creatingEvent,$("#numberOfSlot").val()));
+        }
+    })
 }
 
 function clearCreatingEventPopup(timeSlot) {

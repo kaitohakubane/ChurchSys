@@ -45,6 +45,10 @@ $(document).ready(function () {
         dayArray.sort(function (a, b) {
             return a - b;
         })
+        if(dayArray.length!=0&&$.isNumeric($("#numberOfSlot").val())){
+            $("#examDate").val(calculateExamDate(creatingEvent,$("#numberOfSlot").val()));
+        }
+
         console.log(dayArray)
     });
 
@@ -52,6 +56,9 @@ $(document).ready(function () {
         var index = dayArray.indexOf(event.target.id);
         if (index > -1) {
             dayArray.splice(index, 1);
+        }
+        if(dayArray.length!=0&&$.isNumeric($("#numberOfSlot").val())){
+            $("#examDate").val(calculateExamDate(creatingEvent,$("#numberOfSlot").val()));
         }
     });
 
@@ -552,26 +559,30 @@ function rejectRegistration(event) {
 }
 
 function calculateExamDate(event,numberOfSlot){
-    var min =6;
     var startDate=event.start.split("T")[0];
-    console.log(startDate);
     var dayOfWeek =  new Date(startDate).getDay();
-    var recent=0;
+    var recent=-1;
     dayArray.forEach(function(e){
         var item=parseInt(e)-1;
         var dif=item-dayOfWeek;
-        if(dif>=0&&dif<min){
-            min=dif;
-            recent=item;
+        if(dif>=0&&dif>max){
+            max=dif;
+            recent=e;
         }
     })
+    var max=recent;
+    if(recent=-1){
+        dayArray.forEach(function(e){
+            if((e-1)> max){
+                max=(e-1);
+            }
+        })
+        max=max+6;
+    }
+
     var date=new Date(startDate);
-    console.log(date)
-    date.setDate(date.getDate() + (recent+(7-date.getDay())) % 7);
-    console.log(date)
-    var plus=parseInt(numberOfSlot)/dayArray.length;
-    console.log(plus);
-    var result=new Date(date.getDate()+plus).toISOString().slice(0,10);
-    console.log(result);
-    return result;
+    date.setDate(date.getDate() + (max+(7-date.getDay())) % 7);
+    var plus=(parseInt(numberOfSlot)/parseInt(dayArray.length));
+    date.setDate(date.getDate()+parseInt(plus)*6+10);
+    return date.toISOString().slice(0,10);
 }
