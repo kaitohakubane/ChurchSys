@@ -280,14 +280,27 @@ public class RegistrationController {
         try {
             int slotId = Integer.parseInt(slotIdStr);
             SlotEntity slotEntity = slotServiceInterface.getSlotById(slotId);
+            int eventId = slotEntity.getEventId();
 
-            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationByEventId(slotEntity.getEventId());
+            slotServiceInterface.deleteSlotHourBySlotId(slotId);
+            slotServiceInterface.deleteSlot(slotId);
+
+            RegistrationEntity registrationEntity = registrationServiceInterface.getRegistrationByEventId(eventId);
             registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_DENY_STATUS);
             registrationServiceInterface.updateRegistration(registrationEntity);
 
-            EventEntity eventEntity = eventServiceInterface.getEventById(slotEntity.getEventId());
+            EventEntity eventEntity = eventServiceInterface.getEventById(eventId);
             eventEntity.setEventStatus(ParamConstant.EVENT_DENY_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
+
+            //Notify user
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity manager = userServiceInterface.getUserByAccountId(auth.getName());
+            SubjectEntity subjectEntity = subjectServiceInterface.getSubjectById(eventEntity.getSubId());
+            String information = ParamConstant.USER_REJECT_MESSAGE_PRE + subjectEntity.getSubName() +
+                    ParamConstant.USER_TIME_MESSAGE + eventEntity.getStartDate().toString() + ParamConstant.USER_REJECT_MESSAGE_POST;
+            notificationServiceInterface.sendNotification(manager.getUserId(), registrationEntity.getUserId(), information, ParamConstant.DEFAULT_TYPE, null);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

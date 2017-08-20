@@ -73,8 +73,8 @@ public class EventController {
             int subId = Integer.parseInt(eventJsonEntity.getSubId());
             int slotHour = Integer.parseInt(eventJsonEntity.getSlotHour());
             int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
-            int conductorId=Integer.parseInt(eventJsonEntity.getConductorId());
-            int roomId=Integer.parseInt(eventJsonEntity.getRoomId());
+            int conductorId = Integer.parseInt(eventJsonEntity.getConductorId());
+            int roomId = Integer.parseInt(eventJsonEntity.getRoomId());
             boolean privacy = true;
             if (intPrivacy == UtilsConstant.ZERO) {
                 privacy = false;
@@ -86,7 +86,7 @@ public class EventController {
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
                     subId, churchId, false, creatingTime);
-            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId, eventEntity.getEventId(),conductorId,roomId);
+            SlotEntity slotEntity = eventServiceInterface.createSlotForEvent(slotDate, slotHour, churchId, subId, eventEntity.getEventId(), conductorId, roomId);
             List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(slotEntity.getEventId());
             for (int i = 0; i < slotEntities.size(); i++) {
                 eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
@@ -334,9 +334,6 @@ public class EventController {
             return UtilsConstant.ERROR;
         }
     }
-
-
-
 
 
     @ResponseBody
@@ -636,7 +633,7 @@ public class EventController {
     @ResponseBody
     @RequestMapping(value = PageConstant.CHECK_EVENT_URL, method = RequestMethod.POST)
     public List<Integer> checkEventConstraint(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
-        List<Integer> result=new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<Integer>();
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             Date slotDate = DateUtils.getDate(eventJsonEntity.getSlotDate());
@@ -882,7 +879,10 @@ public class EventController {
     @RequestMapping(value = PageConstant.ADVANCE_CREATE_URL, method = RequestMethod.GET)
     public ModelAndView loadAdvanceCreate(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.ADVANCE_CREATE_PAGE);
-
+        modelAndView.addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour())
+                .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
+                .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
+                .addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour());
         return modelAndView;
     }
 

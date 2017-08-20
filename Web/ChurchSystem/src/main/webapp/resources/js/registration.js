@@ -34,19 +34,23 @@ function popupInitial() {
 $(".event-approve").on("click", function () {
     var regisId = $(this).data("id");
     acceptEventRegistration(regisId);
+    $('#event_datatable').DataTable().row($(this).parents('tr')).remove().draw();
 })
 $(".event-reject").on("click", function () {
     var regisId = $(this).data("id");
     rejectEventRegistration(regisId);
+    $('#event_datatable').DataTable().row($(this).parents('tr')).remove().draw();
 })
 
 $(".class-approve").on("click", function () {
     var regisId = $(this).data("id");
-    acceptClassRegistration(regisId);
+    //acceptClassRegistration(regisId);
+    $('#class_datatable').DataTable().row($(this).parents('tr')).remove().draw();
 })
 $(".class-reject").on("click", function () {
     var regisId = $(this).data("id");
     rejectClassRegistration(regisId);
+    $('#class_datatable').DataTable().row($(this).parents('tr')).remove().draw();
 })
 
 function acceptEventRegistration(regisId) {
