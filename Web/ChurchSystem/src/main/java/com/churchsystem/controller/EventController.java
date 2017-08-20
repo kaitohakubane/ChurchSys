@@ -336,6 +336,9 @@ public class EventController {
     }
 
 
+
+
+
     @ResponseBody
     @RequestMapping(value = PageConstant.UPDATED_SINGLE_EVENT, method = RequestMethod.POST)
     public void updateSingleEvent(@RequestBody EventJsonEntity eventJsonEntity) {
@@ -645,6 +648,24 @@ public class EventController {
         }
         return result;
     }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_USER_EVENT_URL, method = RequestMethod.POST)
+    public List<Integer> checkUserEventConstraint(@RequestParam(value=ParamConstant.SLOT_ID) String slotIdStr,
+                                                  @RequestParam(value=ParamConstant.START_TIME) String startTime,
+                                                  @RequestParam(value=ParamConstant.END_TIME)String endTime ,HttpServletRequest request) {
+        List<Integer> result=new ArrayList<Integer>();
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int slotId = Integer.parseInt(slotIdStr);
+            SlotEntity slotEntity=slotServiceInterface.getSlotById(slotId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
     @ResponseBody
     @RequestMapping(value = PageConstant.CHECK_CLASS_URL, method = RequestMethod.POST)

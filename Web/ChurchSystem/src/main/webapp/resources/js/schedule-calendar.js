@@ -165,11 +165,8 @@ function calendarInitialize() {
             } else {
                 var popup = $('#eventDetailPopup');
                 inputEventPopupInformation(event);
-
                 eventRegisterPopup(jsEvent, popup);
             }
-
-
         },
 
         eventRender: function (event, element) {

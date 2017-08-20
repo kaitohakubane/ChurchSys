@@ -9,17 +9,17 @@ var lastClickedDay = null;
 var lastClickedEvent = null;
 var lastEventColor = null;
 var eventList = [];
-var defaultMovePlus = 2;
+var defaultMovePlus = 10;
 var defaultStartTime = "15:00";
 $(document).ready(function(){
     terminateEventMenu()
-    loadEvent();
-    calendarInitial();
     generalIntial();
+
 })
-
-
+loadEvent();
+calendarInitial();
 var today = $('#calendar').fullCalendar('getDate').format('YYYY-MM-DD');
+
 
 function calendarInitial() {
     $('#calendar').fullCalendar({
@@ -127,6 +127,7 @@ function loadEvent() {
         dataType: 'json',
         success: function (res) {
             eventList = res;
+            console.log(res)
             eventList.forEach(function (e) {
                 if (e.status == 3) {
                     e.color = "#777"
@@ -192,7 +193,6 @@ function inputEventPopupInformation(event) {
 function terminateEventMenu() {
 
     $(document).bind('click', function (e) {
-        console.log($(e.target).prop("tagName").toUpperCase());
         if ($(e.target).prop("tagName").toUpperCase() == "SMALL") {
             return;
         }
@@ -202,12 +202,9 @@ function terminateEventMenu() {
             $("#eventCreator").fadeOut();
             return;
         }
-
-        console.log(!($(e.target).attr('class').toString().indexOf('fc-widget-content')));
-
-
+        console.log(!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ))
         if (!($(e.target).attr('class').toString().indexOf('fc-day') >= 0 ||
-            $('div#eventCreator').has(e.target).length > 0 || $('ul.ui-timepicker-list').has(e.target).length > 0 || !($(e.target).attr('class').toString().indexOf('fc-widget-content')))) {
+            $('div#eventCreator').has(e.target).length > 0 || $('ul.ui-timepicker-list').has(e.target).length > 0)) {
             $("#eventCreator").fadeOut();
         }
 

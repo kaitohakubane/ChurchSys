@@ -181,6 +181,12 @@ public class ParamConstant {
     public static final String NOTIFICATION_LIST = "notificationList";
     public static final String USER_EVENT_REGISTRATION_NOTIFICATION = "Bạn đã đăng ký sự kiện ";
     public static final String USER_CLASS_REGISTRATION_NOTIFICATION = "Bạn đã đăng ký lớp ";
+    public static final String USER_REJECT_MESSAGE_PRE="Rất tiếc đăng ký ";
+    public static final String USER_REJECT_MESSAGE_POST=" đã bị từ chối";
+    public static final String USER_TIME_MESSAGE=" của bạn ngày";
+    public static final String USER_ACCEPT_MESSAGE_PRE="Đăng ký ";
+    public static final String USER_ACCEPT_MESSAGE_POST=" đã được chấp thuận";
+    public static final String USER_CLASS_PRE="Đăng ký vào lớp ";
     public static final String TIME_MESSAGE_NOTIFICATION = " diễn ra vào lúc ";
     public static final int SYSTEM_ID = -1;
 

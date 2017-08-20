@@ -19,9 +19,11 @@
     <c:import url="/resources/layouts/user-common/header.jsp"/>
 
     <link href="<c:url value="/resources/lib/gridDist/jquery.timepicker.css"/>" rel="stylesheet">
+
     <!-- FullCalendar -->
     <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.min.css"/>" rel="stylesheet">
-
+    <link href="<c:url value="/resources/lib/vendors/fullcalendar/dist/fullcalendar.print.css"/>" rel="stylesheet"
+          media="print">
     <link href="<c:url value="/resources/css/event-page.css"/>" rel="stylesheet">
 
 </head>

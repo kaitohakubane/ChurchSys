@@ -82,14 +82,14 @@ public class RegistrationController {
 
             String eventName = subjectServiceInterface.getSubjectById(subId).getSubName() + "-" + userEntity.getUserName();
 
-            Timestamp creatingTime=new Timestamp(System.currentTimeMillis());
+            Timestamp creatingTime = new Timestamp(System.currentTimeMillis());
             eventServiceInterface.createEvent(eventName, slotDate, subId, false, churchId
-                    , null, ParamConstant.NON_REPEAT_TYPE, true, UtilsConstant.ONE,creatingTime);
+                    , null, ParamConstant.NON_REPEAT_TYPE, true, UtilsConstant.ONE, creatingTime);
 
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(slotDate, ParamConstant.WAITING_FOR_APPROVE_STATUS,
-                    subId, churchId, true,creatingTime);
+                    subId, churchId, true, creatingTime);
 
-            registrationServiceInterface.addNewRegistration(userEntity.getUserId(), churchId, subId, eventEntity.getEventId(), null);
+            registrationServiceInterface.addNewRegistration(userEntity.getUserId(), churchId, subId, eventEntity.getEventId(), message);
 
             eventServiceInterface.createSlotForUserEvent(eventEntity.getEventId(), startTime, endTime, churchId, slotDate, subId);
 
@@ -315,6 +315,14 @@ public class RegistrationController {
             EventEntity eventEntity = eventServiceInterface.getEventById(registrationEntity.getEventId());
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
+
+            //Notify user
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity manager = userServiceInterface.getUserByAccountId(auth.getName());
+            SubjectEntity subjectEntity = subjectServiceInterface.getSubjectById(eventEntity.getSubId());
+            String information = ParamConstant.USER_ACCEPT_MESSAGE_PRE + subjectEntity.getSubName() +
+                    ParamConstant.USER_TIME_MESSAGE + eventEntity.getStartDate().toString() + ParamConstant.USER_ACCEPT_MESSAGE_POST;
+            notificationServiceInterface.sendNotification(manager.getUserId(), registrationEntity.getUserId(), information, ParamConstant.DEFAULT_TYPE, null);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -343,6 +351,14 @@ public class RegistrationController {
             eventEntity.setEventStatus(ParamConstant.EVENT_DENY_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
 
+            //Notify user
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity manager = userServiceInterface.getUserByAccountId(auth.getName());
+            SubjectEntity subjectEntity = subjectServiceInterface.getSubjectById(eventEntity.getSubId());
+            String information = ParamConstant.USER_REJECT_MESSAGE_PRE + subjectEntity.getSubName() +
+                    ParamConstant.USER_TIME_MESSAGE + eventEntity.getStartDate().toString() + ParamConstant.USER_REJECT_MESSAGE_POST;
+            notificationServiceInterface.sendNotification(manager.getUserId(), registrationEntity.getUserId(), information, ParamConstant.DEFAULT_TYPE, null);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -361,6 +377,15 @@ public class RegistrationController {
             registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_DENY_STATUS);
             registrationServiceInterface.updateRegistration(registrationEntity);
 
+            //Notify user
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity manager = userServiceInterface.getUserByAccountId(auth.getName());
+            EventEntity eventEntity = eventServiceInterface.getEventById(registrationEntity.getEventId());
+            String information = ParamConstant.USER_CLASS_PRE + eventEntity.getEventName() +
+                    ParamConstant.USER_TIME_MESSAGE + eventEntity.getStartDate().toString() + ParamConstant.USER_REJECT_MESSAGE_POST;
+            notificationServiceInterface.sendNotification(manager.getUserId(), registrationEntity.getUserId(),
+                    information, ParamConstant.DEFAULT_TYPE, null);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -378,6 +403,14 @@ public class RegistrationController {
             registrationEntity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
             registrationServiceInterface.updateRegistration(registrationEntity);
 
+            //Notify user
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserEntity manager = userServiceInterface.getUserByAccountId(auth.getName());
+            EventEntity eventEntity = eventServiceInterface.getEventById(registrationEntity.getEventId());
+            String information = ParamConstant.USER_CLASS_PRE + eventEntity.getEventName() +
+                    ParamConstant.USER_TIME_MESSAGE + eventEntity.getStartDate().toString() + ParamConstant.USER_ACCEPT_MESSAGE_POST;
+            notificationServiceInterface.sendNotification(manager.getUserId(), registrationEntity.getUserId(),
+                    information, ParamConstant.DEFAULT_TYPE, null);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -43,6 +43,7 @@ public class PageConstant {
 
     public static final String CREATE_EVENT_URL = "/manager/event/Add";
     public static final String CHECK_EVENT_URL = "/manager/event/Check";
+    public static final String CHECK_USER_EVENT_URL = "/manager/event/CheckUser";
     public static final String UPDATE_EVENT_URL = "/manager/event/Update";
     public static final String LOAD_CONDUCTOR = "/manager/event/load-conductor";
     public static final String LOAD_ROOM = "/manager/event/load-room";
