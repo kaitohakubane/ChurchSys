@@ -64,4 +64,5 @@ public class UtilsConstant {
     public static final String ASSIGN_CHURCH_MAIL_BODY_ACCOUNT = "Chào mừng đến với Hệ Thống nhà thờ Online của chúng tôi.\nTài khoản của bạn là: ";
     public static final String ASSIGN_CHURCH_MAIL_BODY_PASSWORD = "Mật khẩu của bạn là: ";
     public static final String CHURCH_DEFAULT_NAME = "Nhà thờ";
+    public static final String TIME_STAMP_DEFAULT_PATTERN="YYYY-MM-dd hh:mm:ss";
 }

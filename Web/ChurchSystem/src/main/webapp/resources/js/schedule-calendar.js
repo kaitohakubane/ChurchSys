@@ -397,7 +397,7 @@ function checkEvent(event, slotId, policy,eventSub) {
         success: function (res) {
             var result=res;
 
-            if (result[0] == 0 &&result[1]==0) {
+            if (result[0] == 0 ||result[1]==0) {
                 $("#confirmModal").modal("show");
                 $("#process").unbind("click")
                 $("#process").bind("click", function () {

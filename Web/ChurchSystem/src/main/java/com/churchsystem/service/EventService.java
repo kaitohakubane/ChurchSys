@@ -111,6 +111,8 @@ public class EventService implements EventServiceInterface {
         if (eventName.equals("")) {
             eventName = ParamConstant.NO_NAME_EVENT_TITLE;
         }
+        String creatingTime= new SimpleDateFormat(UtilsConstant.TIME_STAMP_DEFAULT_PATTERN).format(createdTime);
+        createdTime= Timestamp.valueOf(creatingTime);
         inputEvent.setEventName(eventName);
         inputEvent.setSubId(subId);
         inputEvent.setPrivacy(privacy);

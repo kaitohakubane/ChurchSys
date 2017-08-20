@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -55,6 +56,8 @@ public class EventModel extends CommonDAO implements EventModelInterface {
 
     @Override
     public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered,Timestamp time) {
+        String creatingTime= new SimpleDateFormat(UtilsConstant.TIME_STAMP_DEFAULT_PATTERN).format(time);
+        time= Timestamp.valueOf(creatingTime);
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_CREATING_EVENT)
                 .setParameter(ParamConstant.EVENT_DATE, date).setParameter(ParamConstant.EVENT_STATUS, status)
                 .setParameter(ParamConstant.EVENT_SUBJECT_ID, subId)
