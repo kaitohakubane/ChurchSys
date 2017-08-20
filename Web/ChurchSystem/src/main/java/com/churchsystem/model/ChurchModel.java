@@ -39,6 +39,10 @@ public class ChurchModel extends CommonDAO implements ChurchModelInterface {
         return churchMapEntities;
     }
 
+    /**
+     * Get all church in system for Admin view
+     * @return list of all church in system and its manager
+     */
     @Override
     public List<ChurchDisplayEntity> getAllChurch() {
         Query query = getSession().createSQLQuery(SQLParamConstant.GET_LIST_DISPLAYED_CHURCH).setResultTransformer
