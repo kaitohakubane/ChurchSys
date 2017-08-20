@@ -64,7 +64,7 @@ public class SQLParamConstant {
             "WHERE i.slotId = s.slotid AND sh.slotHourId = i.slotHourId GROUP BY s.slotid) st WHERE su.subId = e.subId " +
             "AND st.slotId = sru.slotId AND sru.eventId = e.eventId AND e.churchId =:churchId AND eventStatus != 2";
 
-    public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT = "SELECT s.slotId as slotId, s.eventId as eventId, sru.isStream as isStream, " +
+    public static final String GET_PUBLIC_EVENT_DISPLAY_SLOT = "SELECT s.slotId as slotId, s.eventId as eventId, " +
             "s.conductorId as conductorId, s.roomId as roomId, su.subId as subId, st.startTime as startTime, " +
             "st.endTime as endTime, u.userName as conductorName,s.slotDate as slotDate, r.roomName as roomName, " +
             "e.privacy as privacy, e.description as description, su.subName as subName, e.eventStatus as eventStatus, " +
