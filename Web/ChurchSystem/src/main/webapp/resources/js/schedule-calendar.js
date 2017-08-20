@@ -395,15 +395,17 @@ function checkEvent(event, slotId, policy,eventSub) {
         processData: false,
         dataType: 'json',
         success: function (res) {
-            if (res != 0) {
+            var result=res;
+
+            if (result[0] == 0 &&result[1]==0) {
                 $("#confirmModal").modal("show");
                 $("#process").unbind("click")
                 $("#process").bind("click", function () {
                     $("#confirmModal").modal("hide");
-                    createEvent(creatingEvent, slotId, policy,eventSub);
+                    createEvent(creatingEvent, slotId, policy,eventSub,result[0],result[1]);
                 })
             } else {
-                createEvent(creatingEvent, slotId, policy,eventSub);
+                createEvent(creatingEvent, slotId, policy,eventSub,result[0],result[1]);
             }
             $("#calendarPopup").fadeOut();
         },
@@ -415,7 +417,7 @@ function checkEvent(event, slotId, policy,eventSub) {
 }
 
 
-function createEvent(event, slotId, isPublic,eventSub) {
+function createEvent(event, slotId, isPublic,eventSub,conductorId,roomId) {
     var requestURL = contextPath + CREATE_EVENT_URL;
     var requestMethod = "POST";
     var requestData = {
@@ -424,6 +426,8 @@ function createEvent(event, slotId, isPublic,eventSub) {
         subId: eventSub,
         slotHour: slotId,
         privacy: isPublic,
+        roomId:roomId,
+        conductorId:conductorId,
         token: token
     }
 
@@ -481,7 +485,7 @@ function checkClass(event, slotHourId, isPublic,eventSub) {
         success: function (res) {
             var result = res;
             console.log(result);
-            if (result[0] != -1 && result[1] != -1) {
+            if (result[0] != 0 && result[1] != 0) {
                 $("#createClass").modal("hide");
                 $("#calendarPopup").fadeOut();
                 createClass(event, slotHourId, isPublic,result[0],result[1],eventSub);

@@ -104,12 +104,10 @@ public class ParamConstant {
     public static final String CATEGORY_ID = "categoryId";
     public static final int CLASS_CATEGORY = 4;
     public static final String NO_NAME_EVENT_TITLE = "No name";
-    public static final int NO_ROOM_AVAILABLE = -1;
-    public static final int NO_CONDUCTOR_AVAILABLE = -1;
+    public static final int NO_ROOM_AVAILABLE = 0;
+    public static final int NO_CONDUCTOR_AVAILABLE = 0;
     public static final int EVENT_CONDUCTOR_POSITION = 0;
     public static final int EVENT_ROOM_POSITION = 1;
-    public static final int EVENT_NO_ROOM_VALUE = -1;
-    public static final int EVENT_NO_CONDUCTOR_VALUE = -1;
     public static final int REGISTERED = 1;
     public static final int REGISTERED_AND_WAITING = 2;
     public static final String CREATED_TIME="createdTime";

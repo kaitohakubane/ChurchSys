@@ -123,17 +123,18 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId) {
-        //Need to fix
-        Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId, subId);
-        Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId, subId);
+    public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId,int conductorId,
+                                         int roomId) {
         SlotEntity slotEntity = new SlotEntity();
-        if (conductorId == null || roomId == null) {
+
+        if (conductorId == ParamConstant.NO_CONDUCTOR_AVAILABLE || roomId == ParamConstant.NO_ROOM_AVAILABLE) {
             slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
         } else {
             slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
         }
 
+        slotEntity.setConductorId(conductorId);
+        slotEntity.setRoomId(roomId);
         slotEntity.setEventId(eventId);
         slotEntity.setConductorId(conductorId);
         slotEntity.setRoomId(roomId);
@@ -143,14 +144,20 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public int checkEventSlot(Date eventDate, int slotHour, int churchId, int subId) {
-        //Need to fix
+    public List<Integer> checkEventSlot(Date eventDate, int slotHour, int churchId, int subId) {
+
+        List<Integer> result = new ArrayList<Integer>();
+        result.add(ParamConstant.NO_CONDUCTOR_AVAILABLE);
+        result.add(ParamConstant.NO_ROOM_AVAILABLE);
         Integer conductorId = userModelInterface.getSuitableConductorForSlot(slotHour, eventDate, churchId, subId);
         Integer roomId = roomModelInterface.getSuitableRoomForSlot(slotHour, eventDate, churchId, subId);
-        if (conductorId == null || roomId == null) {
-            return ParamConstant.SLOT_UNAVAILABLE;
+        if (conductorId != null) {
+            result.add(ParamConstant.EVENT_CONDUCTOR_POSITION, conductorId);
         }
-        return ParamConstant.SLOT_AVAILABLE;
+        if(roomId!=null){
+            result.add(ParamConstant.EVENT_ROOM_POSITION, roomId);
+        }
+        return result;
     }
 
 
@@ -170,12 +177,6 @@ public class EventService implements EventServiceInterface {
             slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
         }
         slotEntity.setEventId(eventId);
-        if (conductorId == ParamConstant.NO_CONDUCTOR_AVAILABLE) {
-            conductorId = null;
-        }
-        if (roomId == ParamConstant.NO_CONDUCTOR_AVAILABLE) {
-            roomId = null;
-        }
         slotEntity.setConductorId(conductorId);
         slotEntity.setRoomId(roomId);
         slotEntity.setSlotDate(itemDate);
@@ -187,8 +188,8 @@ public class EventService implements EventServiceInterface {
     public List<Integer> checkEventClass(List<Date> eventDate, int slotHour, int churchId, int subId) {
         //Need to fix
         List<Integer> result = new ArrayList<Integer>();
-        result.add(ParamConstant.EVENT_NO_CONDUCTOR_VALUE);
-        result.add(ParamConstant.EVENT_NO_ROOM_VALUE);
+        result.add(ParamConstant.NO_CONDUCTOR_AVAILABLE);
+        result.add(ParamConstant.NO_ROOM_AVAILABLE);
         List<Integer> conductorId = userModelInterface.getListSuitableConductorForSlotHour(slotHour, eventDate.get(0), churchId, subId);
         List<Integer> roomId = roomModelInterface.getListSuitableRoomForSlotHour(slotHour, eventDate.get(0), churchId, subId);
 

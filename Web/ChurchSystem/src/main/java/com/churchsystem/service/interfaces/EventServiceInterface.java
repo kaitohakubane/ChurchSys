@@ -26,7 +26,8 @@ public interface EventServiceInterface {
 
     List<EventDisplayEntity> getCreatedEvent(int eventId, String token) throws IOException;
 
-    SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId);
+    SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId,int conductorId,
+                       int roomId);
 
     SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, Integer roomId, Integer conductorId, Date itemDate, int subId);
 
@@ -54,7 +55,7 @@ public interface EventServiceInterface {
 
     String updateGoogleCalendarEvent(SlotEntity slotEntity, Time startTime, Time endTime, String eventName) throws IOException;
 
-    int checkEventSlot(Date eventDate, int slotHour, int churchId, int subId);
+    List<Integer> checkEventSlot(Date eventDate, int slotHour, int churchId, int subId);
 
     List<Integer> checkEventClass(List<Date> eventDate, int slotHour, int churchId, int subId);
 
