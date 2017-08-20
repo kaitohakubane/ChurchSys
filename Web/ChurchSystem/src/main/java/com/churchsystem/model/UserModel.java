@@ -206,7 +206,9 @@ public class UserModel extends CommonDAO implements UserModelInterface {
 
     @Override
     public List<RegistrationEntity> getAllRegistrationByUserId(int userId) {
-        Criteria criteria = getSession().createCriteria(RegistrationEntity.class).add(Restrictions.eq(ParamConstant.USER_ID, userId));
+        Criteria criteria = getSession().createCriteria(RegistrationEntity.class)
+                .add(Restrictions.eq(ParamConstant.USER_ID, userId))
+                .add(Restrictions.isNotNull(ParamConstant.EVENT_ID));
         List<RegistrationEntity> result = criteria.list();
         return result;
     }

@@ -493,7 +493,8 @@ function getRegistrationInfo(slotId) {
         async: false,
         success: function (res) {
             $("#userPhone").val(res.phone);
-            $("#userMail").val(res.mail);
+            $("#conductor").val(res.conductor);
+            $("#room").val(res.room);
             $("#userMessage").val(res.description);
             $("#userName").val(res.userName);
         },
@@ -548,4 +549,29 @@ function rejectRegistration(event) {
             console.error(textStatus);
         }
     })
+}
+
+function calculateExamDate(event,numberOfSlot){
+    var min =6;
+    var startDate=event.start.split("T")[0];
+    console.log(startDate);
+    var dayOfWeek =  new Date(startDate).getDay();
+    var recent=0;
+    dayArray.forEach(function(e){
+        var item=parseInt(e)-1;
+        var dif=item-dayOfWeek;
+        if(dif>=0&&dif<min){
+            min=dif;
+            recent=item;
+        }
+    })
+    var date=new Date(startDate);
+    console.log(date)
+    date.setDate(date.getDate() + (recent+(7-date.getDay())) % 7);
+    console.log(date)
+    var plus=parseInt(numberOfSlot)/dayArray.length;
+    console.log(plus);
+    var result=new Date(date.getDate()+plus).toISOString().slice(0,10);
+    console.log(result);
+    return result;
 }

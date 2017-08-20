@@ -8,15 +8,19 @@ public class UserRegistrationInformation {
     private String phone;
     private String mail;
     private String description;
+    private String conductor;
+    private String room;
 
     public UserRegistrationInformation() {
     }
 
-    public UserRegistrationInformation(String userName, String phone, String mail, String description) {
+    public UserRegistrationInformation(String userName, String phone, String mail, String description, String conductor, String room) {
         this.userName = userName;
         this.phone = phone;
         this.mail = mail;
         this.description = description;
+        this.conductor = conductor;
+        this.room = room;
     }
 
     public String getUserName() {
@@ -49,5 +53,21 @@ public class UserRegistrationInformation {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(String conductor) {
+        this.conductor = conductor;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
     }
 }

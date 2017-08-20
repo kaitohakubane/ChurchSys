@@ -48,7 +48,7 @@
                         <li><a href="${pageContext.request.contextPath}/manager/room-management"><i
                                 class="fa fa-cube"></i> Quản lí phòng</a></li>
                         <li><a href="${pageContext.request.contextPath}/manager/grave"><i class="fa fa-braille"></i>Quản
-                            lý phòng hài cốt</a></li>
+                            lý phòng tro cốt</a></li>
                         <li><a href="${pageContext.request.contextPath}/manager/registration-management"><i
                                 class="fa fa-newspaper-o"></i>Quản lý đơn đăng ký</a></li>
                         <li><a id="streamOption"><i class="fa fa-video-camera"></i> Stream</a></li>

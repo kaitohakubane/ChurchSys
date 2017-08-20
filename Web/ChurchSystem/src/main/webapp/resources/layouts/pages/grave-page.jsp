@@ -55,7 +55,7 @@
                                     </li>
                                     <li style="color: #ef0b0b">
                                         <i class="fa fa-square"></i>
-                                        <span>Tượng chúa</span>
+                                        <span>Bàn thờ</span>
                                     </li>
                                     <li style="color: #777">
                                         <i class="fa fa-square"></i>

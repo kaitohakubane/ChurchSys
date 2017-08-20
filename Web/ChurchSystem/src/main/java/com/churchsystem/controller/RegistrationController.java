@@ -44,10 +44,13 @@ public class RegistrationController {
     ChurchServiceInterface churchServiceInterface;
 
     @Autowired
-    private NotificationServiceInterface notificationServiceInterface;
+    NotificationServiceInterface notificationServiceInterface;
 
     @Autowired
-    private CategoryServiceInterface categoryServiceInterface;
+    CategoryServiceInterface categoryServiceInterface;
+
+    @Autowired
+    RoomServiceInterface roomServiceInterface;
 
 
 //    @RequestMapping(value = PageConstant.REGISTRATION_MANAGEMENT_URL, method = RequestMethod.GET)
@@ -237,6 +240,8 @@ public class RegistrationController {
             result.setMail(userEntity.getEmail());
             result.setPhone(userEntity.getTel());
             result.setUserName(userEntity.getUserName());
+            result.setConductor(userServiceInterface.getUserByUserId(slotEntity.getConductorId()).getUserName());
+            result.setRoom(roomServiceInterface.getRoomById(slotEntity.getRoomId()).getRoomName());
 
         } catch (Exception e) {
             e.printStackTrace();

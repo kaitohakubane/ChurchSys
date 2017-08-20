@@ -471,9 +471,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Mail</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Conductor</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
-                            <input type="text" id="userMail" disabled="disabled" class="form-control">
+                            <input type="text" id="conductor" disabled="disabled" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Room</label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <input type="text" id="room" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">

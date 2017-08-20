@@ -234,6 +234,9 @@ public class GraveController {
                 entity.setStatus(ParamConstant.GRAVE_APPROVED);
             } else {
                 entity.setStatus(ParamConstant.GRAVE_REJECT);
+                GraveyardEntity graveyardEntity =graveServiceInterface.getGraveYardById(entity.getGraveYardId());
+                graveyardEntity.setGraveAvailable(graveyardEntity.getGraveAvailable()+1);
+                graveServiceInterface.updateGraveYard(graveyardEntity);
             }
             graveServiceInterface.updateGrave(entity);
             result = graveServiceInterface.getGravebyId(graveInt);

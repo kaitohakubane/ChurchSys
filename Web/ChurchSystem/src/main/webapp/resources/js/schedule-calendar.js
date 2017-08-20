@@ -54,7 +54,7 @@ $(document).ready(function () {
             $("#classSubject").val($("#eventType").val());
             $("#slotNumPopup").val($("#slotNum").val());
             $("#createClass").modal("show");
-
+            eventSubId=$('#eventType').children(":selected").attr("id");
         } else {
             if (setting == "1") {
                 validateGoogleAccount(creatingEvent, startTime, policy);
@@ -74,7 +74,6 @@ $(document).ready(function () {
         if (isPublic) {
             policy = 1;
         }
-        eventSubId=$('#eventType').children(":selected").attr("id");
         checkClass(creatingEvent, startTime, policy,eventSubId);
     })
 
@@ -182,6 +181,7 @@ function calendarInitialize() {
             $("#className").val("");
             $("#classSubject").val($("#eventType option[id="+$(this).attr('subId')+"]").text());
             eventSubId= $(this).attr('subId');
+            console.log(eventSubId);
             $("#createClass").modal('show');
         },
 
@@ -196,8 +196,6 @@ function calendarInitialize() {
         },
 
         eventResize: function (event, delta, revertFunc) {
-
-
             var start = event.start.format('HH:mm');
             var end = event.end.format('HH:mm');
             if (start < '04:30' || end > '21:00' || start > end) {
@@ -302,8 +300,12 @@ function generalInitial() {
             }
         })
         $('#eventType').val(firstVal);
+        // $('.day-checkbox').on('ifChanged', function () {
+        //     $("#examDate").val(calculateExamDate(creatingEvent,$("#numberOfSlot").val()));
+        // })
     })
-
+    $("#examDate").datepicker({changeMonth: true, changeYear: true, yearRange: "-100:+0"});
+    $("#examDate").datepicker('option', 'dateFormat', 'yy-mm-dd');
 }
 
 function clearCreatingEventPopup(timeSlot) {

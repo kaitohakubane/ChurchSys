@@ -244,30 +244,29 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate, int subId) {
-//        Integer conductorId = null;
-//        Integer roomId = null;
-//
-//        List<Integer> listConductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId, subId);
-//        List<Integer> listRoomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId, subId);
-//        if (listConductorId.size() > 0) {
-//            conductorId = listConductorId.get(UtilsConstant.ZERO);
-//        }
-//
-//        if (listRoomId.size() > 0) {
-//            roomId = listRoomId.get(UtilsConstant.ZERO);
-//        }
-//
+        Integer conductorId = null;
+        Integer roomId = null;
+
+        List<Integer> listConductorId = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId, subId);
+        List<Integer> listRoomId = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId, subId);
+        if (listConductorId.size() > 0) {
+            conductorId = listConductorId.get(UtilsConstant.ZERO);
+        }
+
+        if (listRoomId.size() > 0) {
+            roomId = listRoomId.get(UtilsConstant.ZERO);
+        }
         SlotEntity slotEntity = new SlotEntity();
-//
-//        if (conductorId == null || roomId == null) {
-//            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
-//        } else {
+
+        if (conductorId == null || roomId == null) {
+            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+        } else {
             slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
-//        }
+        }
 
         slotEntity.setEventId(eventId);
-//        slotEntity.setConductorId(conductorId);
-//        slotEntity.setRoomId(roomId);
+        slotEntity.setConductorId(conductorId);
+        slotEntity.setRoomId(roomId);
         slotEntity.setSlotDate(itemDate);
         slotModelInterface.addNewSlot(slotEntity);
         return slotEntity;
