@@ -18,7 +18,7 @@ public interface EventServiceInterface {
     List<EventDisplayEntity> getListOfPublicEvent(int churchId);
 
     void createEvent(String eventName, Date eventDate, int subId, boolean privacy, int churchId
-            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot,Timestamp createdTime);
+            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot, Timestamp createdTime);
 
     void mappingResource(int slotId, int slotHour);
 
@@ -26,16 +26,18 @@ public interface EventServiceInterface {
 
     List<EventDisplayEntity> getCreatedEvent(int eventId, String token) throws IOException;
 
-    SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId,int conductorId,
-                       int roomId);
+    SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId, int conductorId,
+                                  int roomId);
 
     SlotEntity createSlotForClass(int eventId, int slotHour, int churchId, Integer roomId, Integer conductorId, Date itemDate, int subId);
 
-    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered,Timestamp time);
+    EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered, Timestamp time);
 
     void updateEvent(EventEntity eventEntity);
 
     EventDataEntity getEventBySlotId(int slotId, int churchId);
+
+    SlotEntity createSlotForAdvanceEvent(int eventId, ArrayList<Integer> slotHour, Date itemDate, int conductorId, int roomId);
 
     SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate, int subId);
 
@@ -66,5 +68,7 @@ public interface EventServiceInterface {
     List<EventDataEntity> getListOfEventData(int churchId);
 
     List<DashboardClassEntity> getUserRegisteredClass(int userId);
+
+    int checkAdvanceCreate(List<Date> eventDate, Time startTime,Time endTime, int churchId, int subId);
 
 }

@@ -28,6 +28,8 @@ public interface SlotServiceInterface {
 
     List<SlothourEntity> getSlotHourByTimeRange(String startTime, int estTime) throws ParseException;
 
+    TypeEntity getTypeByLoopTypeAndKind(int loopType, int kind, String des);
+
     List<SlotEntity> getListSlotOfClass(int slotId);
 
     void deleteSlot(int slotId);

@@ -10,8 +10,8 @@ $(document).ready(function () {
 function generalInitial(){
     var theme = $("#theme");
     $("#previewLink").on("click",function(){
-        var strWindowFeatures = "location=yes,height=570,width=800,scrollbars=yes,status=yes";
-        var URL = "http://localhost:8066/ChurchSystem/church?churchId="+churchId;
+        var strWindowFeatures = "location=yes,height=570,width=1000,scrollbars=yes,status=yes";
+        var URL = contextPath+"/church?churchId="+churchId;
         var win = window.open(URL, "_blank", strWindowFeatures);
     })
     var image = $("#theme-picture");
