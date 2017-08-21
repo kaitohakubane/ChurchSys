@@ -87,7 +87,6 @@ public class EventService implements EventServiceInterface {
             result.add(item);
 
             if (token != "" && token != null) {
-
                 Timestamp dateStart = new Timestamp(eventDataEntities.get(i).getStartTime().getTime() + eventDataEntities.get(i).getSlotDate().getTime() +
                         UtilsConstant.GMT_PLUSING);
                 DateTime startDate = new DateTime(dateStart);
