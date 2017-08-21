@@ -59,7 +59,17 @@ function generateGraveYard(target) {
         }
     })
 
-
+    listOfChurchGrave.forEach(function(e){
+        if(e.status==2){
+            $(".graveYardItem").each(function () {
+                if($(this).data("id")==e.graveYardId){
+                    if(!($(this).hasClass("regis-graveYard"))){
+                        $(this).addClass("regis-graveYard");
+                    }
+                }
+            })
+        }
+    })
     graveYardItemEvent();
 
 }
@@ -430,6 +440,7 @@ function getGraveOfChurch() {
 
 function generateGrave(target, width, height, graveYard) {
     $("#grave div").remove(".grid-stack-item");
+    $("#grave h1").remove(".default-text");
     var grid = target.data('gridstack');
     var isAdd = true;
     for (var i = 0; i < width; i++) {

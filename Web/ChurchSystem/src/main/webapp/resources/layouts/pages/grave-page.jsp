@@ -121,7 +121,7 @@
                         </div>
                         <div class="col-md-10" style="margin-top: 10px;">
                             <div class="grid-stack" id="grave">
-
+                                    <h1 class="default-text">Xin hãy chọn tủ</h1>
                             </div>
                         </div>
 
