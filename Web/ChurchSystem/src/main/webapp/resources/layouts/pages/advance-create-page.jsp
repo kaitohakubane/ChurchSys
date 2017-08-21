@@ -57,7 +57,7 @@
 
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" placeholder="Tên sự kiện">
+                                            <input type="text" class="form-control" placeholder="Tên sự kiện" id="eventName">
                                         </div>
                                     </div>
 
@@ -126,7 +126,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Lặp:</label>
                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                 <select class="form-control" id="option-select">
-                                                    <option value="">Chọn</option>
+                                                    <option data-id="" value="">Chọn</option>
                                                     <option data-id="ngày" value="1">Hàng ngày</option>
                                                     <option data-id="tuần" value="2">Hàng tuần</option>
                                                     <option data-id="tháng" value="3">Hàng tháng</option>
@@ -211,13 +211,6 @@
                                         <div class="clearfix"></div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Bắt đầu:</label>
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <input type="text" class="form-control" id="advance-startDate" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Kết thúc
                                                 sau:</label>
 
@@ -234,7 +227,12 @@
                                     </div>
 
                                     <div class="col-md-12 form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12"
+                                               style="text-align: left">Bắt đầu:</label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <input type="text" class="form-control" id="advance-startDate" readonly>
+                                        </div>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12 col-md-offset-1"
                                                style="text-align: left">Công khai</label>
                                         <label class="control-label" style="margin-left: -30px;margin-top: -7px">
                                             <input type="checkbox" id="createEventPopupIsPublic" class="js-switch"
@@ -271,7 +269,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body " id="confirmInfor">
-                <label>Không tìm được phòng hoặc người chịu trách nhiệm cho sự kiện (lớp) này. Bạn có muốn tiếp tục
+                <label>Không tìm được phòng hoặc người chịu trách nhiệm cho tất cả các buổi. Bạn có muốn tiếp tục
                     ?</label>
             </div>
             <div class="modal-footer">

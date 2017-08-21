@@ -102,7 +102,7 @@ public class EventService implements EventServiceInterface {
 
     @Override
     public void createEvent(String eventName, Date eventDate, int subId, boolean privacy, int churchId
-            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot,Timestamp createdTime) {
+            , Date examDate, Integer typeId, boolean isRegistered, int numberOfSlot, Timestamp createdTime) {
         EventEntity inputEvent = new EventEntity();
         inputEvent.setChurchId(churchId);
         inputEvent.setEventStatus(ParamConstant.WAITING_FOR_APPROVE_STATUS);
@@ -110,8 +110,8 @@ public class EventService implements EventServiceInterface {
         if (eventName.equals("")) {
             eventName = ParamConstant.NO_NAME_EVENT_TITLE;
         }
-        String creatingTime= new SimpleDateFormat(UtilsConstant.TIME_STAMP_DEFAULT_PATTERN).format(createdTime);
-        createdTime= Timestamp.valueOf(creatingTime);
+        String creatingTime = new SimpleDateFormat(UtilsConstant.TIME_STAMP_DEFAULT_PATTERN).format(createdTime);
+        createdTime = Timestamp.valueOf(creatingTime);
         inputEvent.setEventName(eventName);
         inputEvent.setSubId(subId);
         inputEvent.setPrivacy(privacy);
@@ -124,7 +124,7 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId,int conductorId,
+    public SlotEntity createSlotForEvent(Date eventDate, int slotHour, int churchId, int subId, int eventId, int conductorId,
                                          int roomId) {
         SlotEntity slotEntity = new SlotEntity();
 
@@ -155,7 +155,7 @@ public class EventService implements EventServiceInterface {
         if (conductorId != null) {
             result.add(ParamConstant.EVENT_CONDUCTOR_POSITION, conductorId);
         }
-        if(roomId!=null){
+        if (roomId != null) {
             result.add(ParamConstant.EVENT_ROOM_POSITION, roomId);
         }
         return result;
@@ -186,18 +186,43 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public SlotEntity createSlotForAdvanceEvent(int eventId, ArrayList<Integer> slotHour, Date itemDate, int conductorId, int roomId){
+    public SlotEntity createSlotForAdvanceEvent(int eventId, Time startTime, Time endTime, Date itemDate, int churchId, int subId) {
         SlotEntity slotEntity = new SlotEntity();
+
+        List<Integer> roomList = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, itemDate, churchId, subId);
+        List<Integer> conductorList = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, itemDate, churchId, subId);
+
+        slotEntity.setEventId(eventId);
+        slotEntity.setSlotDate(itemDate);
+
+        if (roomList.size() > 0 && conductorList.size() > 0) {
+            slotEntity.setConductorId(conductorList.get(UtilsConstant.ZERO));
+            slotEntity.setRoomId(roomList.get(UtilsConstant.ZERO));
+            slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
+        }
+        if (roomList.size() == 0) {
+            slotEntity.setRoomId(ParamConstant.DEFAULT_NOT_AVAILABLE_ROOM_ID);
+            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+            if (conductorList.size() > 0) {
+                slotEntity.setConductorId(conductorList.get(UtilsConstant.ZERO));
+            }
+        }
+        if (conductorList.size() == 0) {
+            slotEntity.setConductorId(ParamConstant.DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID);
+            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+            if (roomList.size() > 0) {
+                slotEntity.setRoomId(roomList.get(UtilsConstant.ZERO));
+            }
+        }
 
 //        if (conductorId == ParamConstant.NO_CONDUCTOR_AVAILABLE || roomId == ParamConstant.NO_ROOM_AVAILABLE) {
 //            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
 //        } else {
 //            slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
 //        }
-        slotEntity.setEventId(eventId);
+
 //        slotEntity.setConductorId(conductorId);
 //        slotEntity.setRoomId(roomId);
-        slotEntity.setSlotDate(itemDate);
         slotModelInterface.addNewSlot(slotEntity);
         return slotEntity;
     }
@@ -290,8 +315,8 @@ public class EventService implements EventServiceInterface {
 
 
     @Override
-    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered,Timestamp time) {
-        return eventModelInterface.getCreatingEvent(date, status, subId, churchId, isRegistered,time);
+    public EventEntity getCreatingEvent(Date date, int status, int subId, int churchId, boolean isRegistered, Timestamp time) {
+        return eventModelInterface.getCreatingEvent(date, status, subId, churchId, isRegistered, time);
     }
 
     @Override
@@ -362,15 +387,6 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public void mappingResource(int slotId, ArrayList<Integer> slotHour) {
-        slotModelInterface.deleteSlotHourBySlotId(slotId);
-
-        for (int i = 0; i < slotHour.size(); i++) {
-            mappingResource(slotId, slotHour.get(i));
-        }
-    }
-
-    @Override
     public String updateGoogleCalendarEvent(SlotEntity slotEntity, Time startTime, Time endTime, String eventName) throws IOException {
 //        //Calendar update
 //        Timestamp dateStart = new Timestamp(startTime.getTime() + slotEntity.getSlotDate().getTime() +
@@ -422,18 +438,18 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
-    public int checkAdvanceCreate(List<Date> eventDate, Time startTime,Time endTime, int churchId, int subId) {
+    public int checkAdvanceCreate(List<Date> eventDate, Time startTime, Time endTime, int churchId, int subId) {
         //Need to fix
         List<Integer> result = new ArrayList<Integer>();
         result.add(ParamConstant.NO_CONDUCTOR_AVAILABLE);
         result.add(ParamConstant.NO_ROOM_AVAILABLE);
-        for (Date date: eventDate) {
-            List<Integer> roomList=roomModelInterface.getIdListSuitableRoomForSlot(startTime,endTime,date,churchId,subId);
-            if(roomList.size()==0){
+        for (Date date : eventDate) {
+            List<Integer> roomList = roomModelInterface.getIdListSuitableRoomForSlot(startTime, endTime, date, churchId, subId);
+            if (roomList.size() == 0) {
                 return UtilsConstant.NOT_STATUS;
             }
-            List<Integer> conductorList=userModelInterface.getIdListSuitableConductorForSlot(startTime,endTime,date,churchId,subId);
-            if(conductorList.size()==0){
+            List<Integer> conductorList = userModelInterface.getIdListSuitableConductorForSlot(startTime, endTime, date, churchId, subId);
+            if (conductorList.size() == 0) {
                 return UtilsConstant.NOT_STATUS;
             }
         }

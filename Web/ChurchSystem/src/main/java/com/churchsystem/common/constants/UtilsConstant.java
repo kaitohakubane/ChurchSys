@@ -18,7 +18,7 @@ public class UtilsConstant {
     public static final String NORMAL_USER = "ROLE_USER";
     public static final String ADMIN_USER = "ROLE_ADMIN";
     public static final String ZERO_STRING = "0";
-
+    public static final String NULL_STRING = "";
     public static final String REDIRECT_STRING = "redirect:";
     public static final String DEFAULT_DELIMETER = ",";
     public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
@@ -51,19 +51,22 @@ public class UtilsConstant {
 
     public static final boolean TRUE = true;
     public static final boolean FALSE = false;
-    public static final int OK_STATUS=1;
-    public static final int NOT_STATUS=0;
+    public static final int OK_STATUS = 1;
+    public static final int NOT_STATUS = 0;
     public static final int NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 0;
     public static final int AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 1;
     public static final String SCRIPT_AUTO_START_OBS = "startObs.bat";
     public static final Integer[] LIST_SUBJECT_ID_OF_MANAGER = {1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52};
     public static final String DEFAULT_ADMIN_MAIL = "churchsys.manager@gmail.com";
+
     public static final String DEFAULT_CC_MAIL = "churchsys.manager@gmail.com";
+
+
     public static final String ASSIGN_CHURCH_SUBJECT = "Tài khoản quản lý nhà thờ ";
     public static final String MAIL_HEADER = "Xin chào - ";
     public static final String MAIL_FOOTER = "Xin cảm ơn, \nChurch Online System ";
     public static final String ASSIGN_CHURCH_MAIL_BODY_ACCOUNT = "Chào mừng đến với Hệ Thống nhà thờ Online của chúng tôi.\nTài khoản của bạn là: ";
     public static final String ASSIGN_CHURCH_MAIL_BODY_PASSWORD = "Mật khẩu của bạn là: ";
     public static final String CHURCH_DEFAULT_NAME = "Nhà thờ";
-    public static final String TIME_STAMP_DEFAULT_PATTERN="YYYY-MM-dd hh:mm:ss";
+    public static final String TIME_STAMP_DEFAULT_PATTERN = "YYYY-MM-dd hh:mm:ss";
 }

@@ -3,7 +3,7 @@
  */
 
 var CREATE_CHURCH_URL = "/admin/add-church";
-
+var CHURCH_MANAGEMENT_URL = "/admin/church-management";
 
 var SUCCESS_STATUS = "Thành công!";
 var FAILURE_STATUS = "Thất bại!";
@@ -28,6 +28,9 @@ $(document).ready(function () {
     $('#locationModal').on('shown.bs.modal', function () {
         $('#us3').locationpicker('autosize');
     });
+    $("#btnBack").on("click", function () {
+        window.location.href = contextPath + CHURCH_MANAGEMENT_URL;
+    })
 })
 
 
@@ -67,6 +70,10 @@ function addChurch() {
         async: false,
         success: function () {
             onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
+            setTimeout(function () {
+                window.location.href = contextPath + CHURCH_MANAGEMENT_URL;
+            }, 3000);
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             onClickShowPopup(FAILURE_STATUS, TYPE_DANGER);

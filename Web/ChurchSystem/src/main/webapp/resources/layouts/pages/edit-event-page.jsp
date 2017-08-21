@@ -184,6 +184,7 @@
         </div>
     </div>
 </div>
+
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>

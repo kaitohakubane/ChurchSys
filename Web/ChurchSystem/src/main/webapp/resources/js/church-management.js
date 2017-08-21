@@ -3,7 +3,7 @@
  */
 var ADD_CHURCH_URL = "/admin/new-church";
 var ASSIGN_MANAGER_URL = "/admin/assign-manager";
-
+var CHURCH_MANAGEMENT_URL = "/admin/church-management";
 //notify
 var SUCCESS_STATUS = "Thành công!";
 var FAILURE_STATUS = "Thất bại";
@@ -39,7 +39,6 @@ function assignManager(churchId) {
         "phone" : $("#phone").val(),
         "cert" : $("#cert").val(),
     }
-console.lo
     $.ajax({
         url: requestURL,
         type: requestMethod,
@@ -49,6 +48,7 @@ console.lo
             console.log("Đăng ký thành công!");
             // alert("Đăng ký thành công!")
             onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("Đăng ký thất bại!");

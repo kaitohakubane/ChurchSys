@@ -1,9 +1,8 @@
-
-
 var CHECK_ADVANCE_URL = "/manager/event/advanceCheck";
+var ADVANCE_CREATE_EVENT_URL = "/manager/event/advance-create";
 var dayArray;
-var isLoop=0;
-var monthDes=1;
+var isLoop = 0;
+var monthDes = 1;
 $(document).ready(function () {
     $("#advance-startDate").datepicker();
     $("#advance-startDate").datepicker('option', 'dateFormat', 'yy-mm-dd');
@@ -31,11 +30,11 @@ $(document).ready(function () {
         var selectedValue = $(this).val();
         if (selectedValue == "showForm") {
             $("#hiding-form").show();
-            isLoop=1;
+            isLoop = 1;
         }
         else if (selectedValue == "hideForm") {
             $("#hiding-form").hide();
-            isLoop=0;
+            isLoop = 0;
         }
     });
 
@@ -70,10 +69,9 @@ $(document).ready(function () {
     $("#week-selected").hide();
     $("#month-selected").hide();
 
-         generalInitial()
+    generalInitial()
 
 })
-
 
 
 function subjectDropdownEvent(category) {
@@ -93,14 +91,14 @@ function subjectDropdownEvent(category) {
     $('#eventType').val(firstVal);
 }
 
-function generalInitial(){
+function generalInitial() {
     $("input:radio[name=month]").on('ifChanged', function () {
         var selectedValue = $(this).val();
         if (selectedValue == "1") {
-            monthDes=1;
+            monthDes = 1;
         }
         else if (selectedValue == "2") {
-            monthDes=2;
+            monthDes = 2;
         }
     });
 
@@ -119,41 +117,42 @@ function generalInitial(){
         }
     });
 
-    $("#btnSave").on("click",function(){
-        var loopType=$("#option-select").val();
-        var kind=$("#kind").val();
-        var repeatTime=$("#numOfRepeat").val();
-        var eventSub=$('#eventType').children(":selected").attr("id");
+    $("#btnSave").on("click", function () {
+        var loopType = $("#option-select").val();
+        var kind = $("#kind").val();
+        var repeatTime = $("#numOfRepeat").val();
+        var eventSub = $('#eventType').children(":selected").attr("id");
         var isPublic = $("#createEventPopupIsPublic").prop('checked');
         var policy = 0;
         if (isPublic) {
             policy = 1;
         }
         console.log(policy);
-        if(isLoop==1){
-            if(loopType=='1'){
-                checkAdvance(policy,eventSub,repeatTime,loopType,kind,null)
+        if (isLoop == 1) {
+            if (loopType == '1') {
+                checkAdvance(policy, eventSub, repeatTime, loopType, kind, null)
                 console.log("Day type")
-            }else if(loopType=='2'){
-                checkAdvance(policy,eventSub,repeatTime,loopType,kind,dayArray.toString())
+            } else if (loopType == '2') {
+                checkAdvance(policy, eventSub, repeatTime, loopType, kind, dayArray.toString())
                 console.log("Week type")
-            }else if(loopType=='3'){
-                checkAdvance(policy,eventSub,repeatTime,loopType,kind,monthDes);
+            } else if (loopType == '3') {
+                checkAdvance(policy, eventSub, repeatTime, loopType, kind, monthDes);
                 console.log("Month type")
-            }else if(loopType=='4'){
-                checkAdvance(policy,eventSub,repeatTime,loopType,kind,null)
+            } else if (loopType == '4') {
+                checkAdvance(policy, eventSub, repeatTime, loopType, kind, null)
                 console.log("Year type")
             }
         }
 
     })
 
-    $("#btnBack").on("click",function(){
-        document.location.href=contextPath+"/manager/schedule";
+
+    $("#btnBack").on("click", function () {
+        document.location.href = contextPath + "/manager/schedule";
     })
 }
 
-function checkAdvance(isPublic,eventSub,numberOfSlot,type,kind,typeString) {
+function checkAdvance(isPublic, eventSub, numberOfSlot, type, kind, typeString) {
     var requestURL = contextPath + CHECK_ADVANCE_URL;
     var requestMethod = "POST";
     var requestData = {
@@ -163,8 +162,8 @@ function checkAdvance(isPublic,eventSub,numberOfSlot,type,kind,typeString) {
         endTime: $("#endTime").val(),
         numOfSlot: numberOfSlot,
         type: type,
-        kind:kind,
-        typeString:typeString
+        kind: kind,
+        typeString: typeString
     }
 
     $.ajax({
@@ -176,25 +175,72 @@ function checkAdvance(isPublic,eventSub,numberOfSlot,type,kind,typeString) {
         dataType: 'json',
         success: function (res) {
             var result = res;
-            alert(result);
-            // if (result[0] != 0 && result[1] != 0) {
-            //     $("#createClass").modal("hide");
-            //     $("#calendarPopup").fadeOut();
-            //     createClass(event, isPublic,result[0],result[1],eventSub);
-            // } else {
-            //     $("#confirmModal").modal("show");
-            //     $("#process").unbind("click")
-            //     $("#process").bind("click", function () {
-            //         $("#confirmModal").modal("hide");
-            //         $("#createClass").modal("hide");
-            //         createClass(event, slotHourId, isPublic,result[0],result[1],eventSub);
-            //     })
-            //
-            //     $("#calendarPopup").fadeOut();
-            // }
+            console.log(result);
+            if (result == 1) {
+                $("#createClass").modal("hide");
+                $("#calendarPopup").fadeOut();
+                advanceCreate(typeString);
+            } else {
+                $("#confirmModal").modal("show");
+                $("#process").unbind("click")
+                $("#process").bind("click", function () {
+                    $("#confirmModal").modal("hide");
+                    $("#createClass").modal("hide");
+                    advanceCreate(typeString);
+                })
+
+                $("#calendarPopup").fadeOut();
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error happen')
+            console.log('Error happen')
+            console.error(textStatus);
+        }
+    });
+}
+
+
+function advanceCreate(typeString) {
+    var isPublic = $("#createEventPopupIsPublic").prop('checked');
+    console.log(isPublic);
+    var privacy;
+    if (isPublic) {
+        privacy = 1
+    }
+    else {
+        privacy = 0
+    }
+    var requestURL = contextPath + ADVANCE_CREATE_EVENT_URL;
+    var requestMethod = "POST";
+    var requestData = {
+        eventName: $("#eventName").val(),
+        slotDate: $("#advance-startDate").val(),
+        subId: $('#eventType').children(":selected").attr("id"),
+        slotHour: $("#startTime").children(":selected").attr("id") + ',' + $("#endTime").children(":selected").attr("id"),
+        startTime: $("#startTime").val(),
+        endTime: $("#endTime").val(),
+        numOfSlot: $("#numOfRepeat").val(),
+        type: $("#option-select").val(),
+        kind: $("#kind").val(),
+        typeString: typeString,
+        privacy: privacy,
+    }
+    console.log(requestData);
+    $.ajax({
+        url: requestURL,
+        type: requestMethod,
+        data: JSON.stringify(requestData),
+        contentType: 'application/json',
+        processData: false,
+        dataType: 'json',
+
+        success: function (res) {
+            var result = res;
+            console.log(result);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('Error happen')
             console.error(textStatus);
         }
     });

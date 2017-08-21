@@ -145,6 +145,7 @@ function calendarInitialize() {
                 }
             }
 
+            $("#advance-create").attr("href",contextPath+"/manager/advance-create-page?date=")
             $("#advance-create").attr("href",$("#advance-create").attr("href")+date.format());
 
         },

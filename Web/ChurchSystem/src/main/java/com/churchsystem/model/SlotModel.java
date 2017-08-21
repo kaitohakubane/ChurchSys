@@ -38,6 +38,7 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     @Override
     public void mappingSlotHour(InclusionEntity inclusionEntity) {
         getSession().persist(inclusionEntity);
+
     }
 
     @Override

@@ -386,7 +386,10 @@ public class EventController {
             }
             eventServiceInterface.updateEventNameAndPrivacy(slotEntity, eventName, privacy);
 
-            eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
+            slotServiceInterface.deleteSlotHourBySlotId(slotId);
+            for (int i = 0; i < slotHour.size(); i++) {
+                eventServiceInterface.mappingResource(slotId, slotHour.get(i));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -416,7 +419,11 @@ public class EventController {
                 }
                 slotEntity.setSlotStatus(status);
                 slotServiceInterface.updateSlot(slotEntity);
-                eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
+
+                slotServiceInterface.deleteSlotHourBySlotId(slotId);
+                for (int i = 0; i < slotHour.size(); i++) {
+                    eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour.get(i));
+                }
             }
             boolean privacy = true;
             if (intPrivacy == UtilsConstant.ZERO) {
@@ -516,7 +523,6 @@ public class EventController {
                 slotServiceInterface.updateSlot(slotEntity);
 
                 slotServiceInterface.deleteSlotHourBySlotId(slotId);
-
                 for (int i = 0; i < slotHour.size(); i++) {
                     eventServiceInterface.mappingResource(slotId, slotHour.get(i).getSlotHourId());
                 }
@@ -747,7 +753,10 @@ public class EventController {
                     slotEntities.get(i).setSlotStatus(ParamConstant.SLOT_OK_STATUS);
                 }
 
-                eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour);
+                slotServiceInterface.deleteSlotHourBySlotId(slotId);
+                for (int j = 0; j < slotHour.size(); j++) {
+                    eventServiceInterface.mappingResource(slotEntities.get(i).getSlotId(), slotHour.get(j));
+                }
             }
 
             boolean privacy = true;
@@ -901,20 +910,21 @@ public class EventController {
             if (intPrivacy == UtilsConstant.ZERO) {
                 privacy = false;
             }
-
+            int type = Integer.parseInt(eventJsonEntity.getType());
+            int kind = Integer.parseInt(eventJsonEntity.getKind());
+            String typeString = eventJsonEntity.getTypeString();
             ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
-            Integer loopType = Integer.parseInt(eventJsonEntity.getSelectedType());
-            Integer kind = Integer.parseInt(eventJsonEntity.getKind());
-            String des = eventJsonEntity.getType();
-
-            TypeEntity typeEntity = slotServiceInterface.getTypeByLoopTypeAndKind(loopType, kind, des);
+            if (typeString == null) {
+                typeString = UtilsConstant.NULL_STRING;
+            }
+            TypeEntity typeEntity = slotServiceInterface.getTypeByLoopTypeAndKind(type, kind, typeString);
             if (typeEntity == null) {
                 typeEntity = new TypeEntity();
-                typeEntity.setLoopType(loopType);
+                typeEntity.setLoopType(type);
                 typeEntity.setKind(kind);
-                typeEntity.setDescription(des);
+                typeEntity.setDescription(typeString);
                 slotServiceInterface.addNewType(typeEntity);
-                typeEntity = slotServiceInterface.getTypeByLoopTypeAndKind(loopType, kind, des);
+                typeEntity = slotServiceInterface.getTypeByLoopTypeAndKind(type, kind, typeString);
             }
 
             List<Date> datesOfClass = DateUtils.getListOfAdvanceEventDate(typeEntity, eventJsonEntity.getSlotDate(), numOfSlot);
@@ -926,10 +936,19 @@ public class EventController {
             EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId, false, creatingTime);
             for (int i = 0; i < datesOfClass.size(); i++) {
                 Date itemDate = datesOfClass.get(i);
-                SlotEntity slotEntity = eventServiceInterface.createSlotForAdvanceEvent(eventEntity.getEventId(), slotHour,
-                        itemDate, 0, 0);
-                eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
+                eventServiceInterface.createSlotForAdvanceEvent(eventEntity.getEventId(), eventJsonEntity.getStartTime(), eventJsonEntity.getEndTime(),
+                        itemDate, churchId, subId);
             }
+
+
+            List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(eventEntity.getEventId());
+
+            for (SlotEntity slotEntity : slotEntities) {
+                for (int i = 0; i < slotHour.size(); i++) {
+                    eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour.get(i));
+                }
+            }
+
 
             eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
             eventServiceInterface.updateEvent(eventEntity);
@@ -938,7 +957,7 @@ public class EventController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return result;
     }
 
     @ResponseBody
@@ -948,80 +967,20 @@ public class EventController {
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         try {
             int subId = Integer.parseInt(eventJsonEntity.getSubId());
-            int type=Integer.parseInt(eventJsonEntity.getType());
-            int kind=Integer.parseInt(eventJsonEntity.getKind());
-            String typeString=eventJsonEntity.getTypeString();
+            int type = Integer.parseInt(eventJsonEntity.getType());
+            int kind = Integer.parseInt(eventJsonEntity.getKind());
+            String typeString = eventJsonEntity.getTypeString();
             int numberOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
-            TypeEntity typeEntity=new TypeEntity();
+            TypeEntity typeEntity = new TypeEntity();
             typeEntity.setLoopType(type);
             typeEntity.setKind(kind);
             typeEntity.setDescription(typeString);
             List<Date> listOfAdvanceEventDate = DateUtils.getListOfAdvanceEventDate(typeEntity, eventJsonEntity.getSlotDate(), numberOfSlot);
 
-            return eventServiceInterface.checkAdvanceCreate(listOfAdvanceEventDate,eventJsonEntity.getStartTime(),eventJsonEntity.getEndTime(),churchId,subId);
+            return eventServiceInterface.checkAdvanceCreate(listOfAdvanceEventDate, eventJsonEntity.getStartTime(), eventJsonEntity.getEndTime(), churchId, subId);
         } catch (Exception e) {
             e.printStackTrace();
             return UtilsConstant.NOT_STATUS;
         }
     }
-
-//    @ResponseBody
-//    @RequestMapping(value = PageConstant.CREATE_ADVANCE_URL, method = RequestMethod.POST)
-//    public List<EventDisplayEntity> createAdvance(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
-//        List<EventDisplayEntity> result = null;
-//        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-//        try {
-//            int subId = Integer.parseInt(eventJsonEntity.getSubId());
-//            int type=Integer.parseInt(eventJsonEntity.getType());
-//            int kind=Integer.parseInt(eventJsonEntity.getKind());
-//            String typeString=eventJsonEntity.getTypeString();
-//            int numberOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
-//            int intPrivacy=Integer.parseInt(eventJsonEntity.getPrivacy());
-//            boolean privacy = true;
-//            if (intPrivacy == UtilsConstant.ZERO) {
-//                privacy = false;
-//            }
-//
-//            TypeEntity typeEntity=new TypeEntity();
-//            typeEntity.setLoopType(type);
-//            typeEntity.setKind(kind);
-//            typeEntity.setDescription(typeString);
-//            List<Date> listOfAdvanceEventDate = DateUtils.getListOfAdvanceEventDate(typeEntity, eventJsonEntity.getSlotDate(), numberOfSlot);
-//
-//            Timestamp creatingTime = new Timestamp(System.currentTimeMillis());
-//            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), listOfAdvanceEventDate.get(0), subId
-//                    , privacy, churchId, null, typeEntity.getTypeId(), false, numberOfSlot, creatingTime);
-//
-//
-//            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(listOfAdvanceEventDate.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId, false, creatingTime);
-//
-//            for (int i = 0; i < listOfAdvanceEventDate.size(); i++) {
-//                Date itemDate = listOfAdvanceEventDate.get(i);
-//                eventServiceInterface.createSlotForTimeRageEvent(eventEntity.getEventId(), eventJsonEntity.getStartTime(), eventJsonEntity.getEndTime(),
-//                        churchId,itemDate, subId);
-//            }
-//
-//            List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(eventEntity.getEventId());
-//
-//            for (SlotEntity slotEntity : slotEntities) {
-////                eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
-//            }
-//
-//            List<RegistrationEntity> registrationEntities = registrationServiceInterface.getWaitingRegistrationBySubId(subId);
-//            for (RegistrationEntity entity : registrationEntities) {
-//                entity.setEventId(eventEntity.getEventId());
-//                entity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
-//                registrationServiceInterface.updateRegistration(entity);
-//            }
-//
-//            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
-//            eventServiceInterface.updateEvent(eventEntity);
-//            result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(), eventJsonEntity.getToken());
-//
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return result;
-//    }
 }

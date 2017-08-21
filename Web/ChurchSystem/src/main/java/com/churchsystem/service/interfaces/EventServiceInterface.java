@@ -37,7 +37,7 @@ public interface EventServiceInterface {
 
     EventDataEntity getEventBySlotId(int slotId, int churchId);
 
-    SlotEntity createSlotForAdvanceEvent(int eventId, ArrayList<Integer> slotHour, Date itemDate, int conductorId, int roomId);
+    SlotEntity createSlotForAdvanceEvent(int eventId, Time startTime, Time endTime, Date itemDate, int churchId, int subId);
 
     SlotEntity createSlotForUserEvent(int eventId, Time startTime, Time endTime, int churchId, Date itemDate, int subId);
 
@@ -53,8 +53,6 @@ public interface EventServiceInterface {
 
     void updateEventNameAndPrivacy(SlotEntity slotEntity, String eventName, boolean privacy);
 
-    void mappingResource(int slotId, ArrayList<Integer> slotHour);
-
     String updateGoogleCalendarEvent(SlotEntity slotEntity, Time startTime, Time endTime, String eventName) throws IOException;
 
     List<Integer> checkEventSlot(Date eventDate, int slotHour, int churchId, int subId);
@@ -69,6 +67,6 @@ public interface EventServiceInterface {
 
     List<DashboardClassEntity> getUserRegisteredClass(int userId);
 
-    int checkAdvanceCreate(List<Date> eventDate, Time startTime,Time endTime, int churchId, int subId);
+    int checkAdvanceCreate(List<Date> eventDate, Time startTime, Time endTime, int churchId, int subId);
 
 }
