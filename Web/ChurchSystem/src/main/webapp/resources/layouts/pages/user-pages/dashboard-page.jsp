@@ -268,17 +268,6 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Sự kiện sắp diễn ra</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li>
-                                        <button type="button" class="btn btn-round btn-success">Ngày</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="btn btn-round btn-success">Tuần</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="btn btn-round btn-success">Tháng</button>
-                                    </li>
-                                </ul>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">

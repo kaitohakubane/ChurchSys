@@ -110,7 +110,7 @@ public class ParamConstant {
     public static final int EVENT_ROOM_POSITION = 1;
     public static final int REGISTERED = 1;
     public static final int REGISTERED_AND_WAITING = 2;
-    public static final String CREATED_TIME="createdTime";
+    public static final String CREATED_TIME = "createdTime";
 
     /**
      * Grave
@@ -150,11 +150,11 @@ public class ParamConstant {
     public static final String GRAVE_USER_IDENTITY = "userIdentity";
     public static final int ACCEPT_TYPE = 1;
     public static final int REJECT_TYPE = 0;
-    public static final String GRAVE_TYPE="graveType";
-    public static final int GRAVE_YARD_DEFAULT_X=-1;
-    public static final int GRAVE_YARD_DEFAULT_Y=-1;
-    public static final String GRAVE_YARD_X="x";
-    public static final String GRAVE_YARD_Y="y";
+    public static final String GRAVE_TYPE = "graveType";
+    public static final int GRAVE_YARD_DEFAULT_X = -1;
+    public static final int GRAVE_YARD_DEFAULT_Y = -1;
+    public static final String GRAVE_YARD_X = "x";
+    public static final String GRAVE_YARD_Y = "y";
 
     public static final int IS_SYNC = 1;
     public static final int IS_NOT_SYNC = 0;
@@ -181,12 +181,12 @@ public class ParamConstant {
     public static final String NOTIFICATION_LIST = "notificationList";
     public static final String USER_EVENT_REGISTRATION_NOTIFICATION = " Bạn đã đăng ký sự kiện ";
     public static final String USER_CLASS_REGISTRATION_NOTIFICATION = " Bạn đã đăng ký lớp ";
-    public static final String USER_REJECT_MESSAGE_PRE="Rất tiếc đăng ký ";
-    public static final String USER_REJECT_MESSAGE_POST=" đã bị từ chối!";
-    public static final String USER_TIME_MESSAGE=" của bạn ngày ";
-    public static final String USER_ACCEPT_MESSAGE_PRE="Đăng ký ";
-    public static final String USER_ACCEPT_MESSAGE_POST=" đã được chấp thuận";
-    public static final String USER_CLASS_PRE="Đăng ký vào lớp ";
+    public static final String USER_REJECT_MESSAGE_PRE = "Rất tiếc đăng ký ";
+    public static final String USER_REJECT_MESSAGE_POST = " đã bị từ chối!";
+    public static final String USER_TIME_MESSAGE = " của bạn ngày ";
+    public static final String USER_ACCEPT_MESSAGE_PRE = "Đăng ký ";
+    public static final String USER_ACCEPT_MESSAGE_POST = " đã được chấp thuận";
+    public static final String USER_CLASS_PRE = "Đăng ký vào lớp ";
     public static final String TIME_MESSAGE_NOTIFICATION = " diễn ra vào lúc ";
     public static final int SYSTEM_ID = -1;
 
@@ -210,11 +210,11 @@ public class ParamConstant {
     public static final String END_TIME = "endTime";
     public static final int SLOT_UNAVAILABLE = 1;
     public static final int SLOT_AVAILABLE = 0;
-    public static final int IS_STREAMED=1;
-    public static final int NOT_STREAM=0;
+    public static final int IS_STREAMED = 1;
+    public static final int NOT_STREAM = 0;
     public static final int DEFAULT_NOT_AVAILABLE_ROOM_ID = 0;
     public static final int DEFAULT_NOT_AVAILABLE_CONDUCTOR_ID = 0;
-
+    public static final String DATE = "date";
 
     /**
      * Room
@@ -231,6 +231,15 @@ public class ParamConstant {
 
     public static final String TYPE_DESCRIPTION = "description";
     public static final int NON_REPEAT_TYPE = 1;
+    public static final String TYPE_LOOP_TYPE = "loopType";
+    public static final String TYPE_KIND = "kind";
+    public static final int TYPE_DAYS = 1;
+    public static final int TYPE_WEEKS = 2;
+    public static final int TYPE_MONTHS = 3;
+    public static final String TYPE_MONTHS_DAY_OF_MONTH = "1";
+    public static final String TYPE_MONTHS_DAY_OF_WEEK = "2";
+
+    public static final int TYPE_YEARS = 4;
 
     /**
      * Stream

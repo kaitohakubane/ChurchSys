@@ -187,6 +187,23 @@ public class EventService implements EventServiceInterface {
     }
 
     @Override
+    public SlotEntity createSlotForAdvanceEvent(int eventId, ArrayList<Integer> slotHour, Date itemDate, int conductorId, int roomId){
+        SlotEntity slotEntity = new SlotEntity();
+
+//        if (conductorId == ParamConstant.NO_CONDUCTOR_AVAILABLE || roomId == ParamConstant.NO_ROOM_AVAILABLE) {
+//            slotEntity.setSlotStatus(ParamConstant.SLOT_CONFLICT_STATUS);
+//        } else {
+//            slotEntity.setSlotStatus(ParamConstant.SLOT_OK_STATUS);
+//        }
+        slotEntity.setEventId(eventId);
+//        slotEntity.setConductorId(conductorId);
+//        slotEntity.setRoomId(roomId);
+        slotEntity.setSlotDate(itemDate);
+        slotModelInterface.addNewSlot(slotEntity);
+        return slotEntity;
+    }
+
+    @Override
     public List<Integer> checkEventClass(List<Date> eventDate, int slotHour, int churchId, int subId) {
         //Need to fix
         List<Integer> result = new ArrayList<Integer>();
@@ -404,4 +421,24 @@ public class EventService implements EventServiceInterface {
     public List<DashboardClassEntity> getUserRegisteredClass(int userId) {
         return eventModelInterface.getUserRegisteredClass(userId);
     }
+
+    @Override
+    public int checkAdvanceCreate(List<Date> eventDate, Time startTime,Time endTime, int churchId, int subId) {
+        //Need to fix
+        List<Integer> result = new ArrayList<Integer>();
+        result.add(ParamConstant.NO_CONDUCTOR_AVAILABLE);
+        result.add(ParamConstant.NO_ROOM_AVAILABLE);
+        for (Date date: eventDate) {
+            List<Integer> roomList=roomModelInterface.getIdListSuitableRoomForSlot(startTime,endTime,date,churchId,subId);
+            if(roomList.size()==0){
+                return UtilsConstant.NOT_STATUS;
+            }
+            List<Integer> conductorList=userModelInterface.getIdListSuitableConductorForSlot(startTime,endTime,date,churchId,subId);
+            if(conductorList.size()==0){
+                return UtilsConstant.NOT_STATUS;
+            }
+        }
+        return UtilsConstant.OK_STATUS;
+    }
+
 }

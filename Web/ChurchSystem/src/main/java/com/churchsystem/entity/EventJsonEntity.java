@@ -21,6 +21,8 @@ public class EventJsonEntity {
     private Time startTime;
     private Time endTime;
     private String token;
+    private String selectedType;
+    private String kind;
 
     public EventJsonEntity() {
     }
@@ -33,10 +35,10 @@ public class EventJsonEntity {
         this.token = token;
     }
 
-    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy, String typeString,
-                           String numOfSlot, String examDate, String type, String slotId, String conductorId, String roomId, Time startTime, Time endTime, String token) {
+    public EventJsonEntity(String eventName, String slotDate, String subId, String slotHour, String privacy,
+                           String typeString, String numOfSlot, String examDate, String type, String slotId, String conductorId,
+                           String roomId, Time startTime, Time endTime, String token, String selectedType, String kind) {
         this.eventName = eventName;
-        this.token = token;
         this.slotDate = slotDate;
         this.subId = subId;
         this.slotHour = slotHour;
@@ -50,6 +52,25 @@ public class EventJsonEntity {
         this.roomId = roomId;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.token = token;
+        this.selectedType = selectedType;
+        this.kind = kind;
+    }
+
+    public String getSelectedType() {
+        return selectedType;
+    }
+
+    public void setSelectedType(String selectedType) {
+        this.selectedType = selectedType;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
     }
 
     public Time getStartTime() {

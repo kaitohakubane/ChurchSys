@@ -95,12 +95,12 @@ To change this template use File | Settings | File Templates.
                                     <%--</div>--%>
                                     <%--</div>--%>
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Hình ảnh:</label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <form action="form_upload.html" class="dropzone"></form>
-                                        </div>
-                                    </div>
+                                    <%--<div class="form-group">--%>
+                                        <%--<label class="control-label col-md-3 col-sm-3 col-xs-12">Hình ảnh:</label>--%>
+                                        <%--<div class="col-md-9 col-sm-9 col-xs-12">--%>
+                                            <%--<form action="form_upload.html" class="dropzone"></form>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả:</label>

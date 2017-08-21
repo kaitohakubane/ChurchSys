@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    Suite description
-
+Library                 Selenium2Library
+Resource                ${CURDIR}/Constant/testConstant.robot
 *** Keywords ***
 Open Browser To Login Page
     Open Browser        ${SERVER}   ${BROWSER}
@@ -24,7 +25,7 @@ Test case 2 (go to schedule page)
     Open Browser To Login Page
     Click Element       xpath=//*[@id="MainMenu"]/div/ul/li[2]/a
     Input Text          managerId            hungmc_manager_hoakhanh
-    Input Password      password            Abcd1234
+    Input Password      password             Abcd1234
     Click Element       xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input
     Click Element       xpath=//*[@id="sidebar-menu"]/div/ul/li[2]
     Set Selenium Speed  ${DELAY}

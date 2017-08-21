@@ -127,28 +127,28 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Slot:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Thời gian:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupTime" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Subject:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Chủ đề:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupSubject" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Assigned:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phụ trách:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupConductor" class="form-control" disabled="readonly">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Room:</label>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Phòng:</label>
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
                             <input type="text" id="eventPopupRoom" class="form-control" disabled="readonly">
                         </div>

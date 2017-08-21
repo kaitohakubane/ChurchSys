@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation           This is a test for get location
 Library                 Selenium2Library
-Resource                ${CURDIR}/Constant/trungConstant.robot
+Resource                ${CURDIR}/Constant/testConstant.robot
 
 
 *** Keywords ***

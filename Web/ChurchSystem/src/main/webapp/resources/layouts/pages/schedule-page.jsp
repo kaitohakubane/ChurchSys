@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="col-md-12 form-group" style="margin-top: -8px;font-size: 16px;">
-                            <a href="${pageContext.request.contextPath}/manager/advance-create-page">Go to advance</a>
+                            <a href="${pageContext.request.contextPath}/manager/advance-create-page?date=" id="advance-create">Nâng cao</a>
                         </div>
 
                         <div class="col-sm-6">
@@ -447,7 +447,7 @@
             <div class="x_content">
                 <div class="form-horizontal form-label-left">
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Username</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input type="text" disabled="disabled" id="userName" class="form-control">
                         </div>
@@ -465,25 +465,25 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Phone</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Điện thoại</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input type="text" id="userPhone" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Conductor</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Phụ trách</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input type="text" id="conductor" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Room</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Phòng</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input type="text" id="room" disabled="disabled" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Description</label>
+                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Mô tả</label>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <input type="text" id="userMessage" disabled="disabled" class="form-control">
                         </div>

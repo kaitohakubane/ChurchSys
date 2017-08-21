@@ -60,40 +60,7 @@
                                             <input type="text" class="form-control" placeholder="Tên sự kiện">
                                         </div>
                                     </div>
-                                    <%--<div class="col-md-6 form-group left">--%>
-                                    <%--<div class="input-group has-success">--%>
-                                    <%--<span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>--%>
-                                    <%--<select class="form-control" id="category">--%>
-                                    <%--<c:forEach items="${categoryList}" var="item">--%>
-                                    <%--<option value="${item.categoryId}">${item.categoryName}</option>--%>
-                                    <%--</c:forEach>--%>
-                                    <%--</select>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="col-md-6 form-group right">--%>
-                                    <%--<div class="input-group has-success">--%>
-                                    <%--<span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>--%>
-                                    <%--<select class="form-control" id="eventType">--%>
-                                    <%--<c:forEach items="${subjectList}" var="item">--%>
-                                    <%--<option class="subClass" id="${item.subId}" value="${item.subName}"--%>
-                                    <%--data-category="${item.categoryId}">${item.subName}</option>--%>
-                                    <%--</c:forEach>--%>
-                                    <%--</select>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
 
-                                    <%--<div class="col-md-12 form-group has-success">--%>
-                                    <%--<div class="input-group">--%>
-                                    <%--<span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>--%>
-                                    <%--<select class="form-control" id="slotNum">--%>
-                                    <%--<c:forEach items="${slotHourList}" var="item">--%>
-                                    <%--<option id="${item.slotHourId}" value="${item.startTime} - ${item.endTime}">--%>
-                                    <%--${item.startTime} - ${item.endTime}--%>
-                                    <%--</option>--%>
-                                    <%--</c:forEach>--%>
-                                    <%--</select>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                                         <select class="form-control has-feedback-left" id="category">
                                             <c:forEach items="${categoryList}" var="item">
@@ -115,33 +82,6 @@
                                               aria-hidden="true"></span>
                                     </div>
 
-                                    <%--<div class="form-group">--%>
-                                    <%--<div class="col-md-6">--%>
-                                    <%--<select class="form-control has-feedback-left" id="startTime">--%>
-                                    <%--<c:forEach items="${slotHourList}" var="item">--%>
-                                    <%--<option id="${item.slotHourId}"--%>
-                                    <%--value="${item.startTime}">                                                            ${item.startTime}--%>
-                                    <%--</option>--%>
-                                    <%--</c:forEach>--%>
-                                    <%--</select>--%>
-                                    <%--<span class="fa fa-clock-o form-control-feedback left"--%>
-                                    <%--aria-hidden="true"></span>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-
-                                    <%--<div class="form-group">--%>
-                                    <%--<div class="col-md-6">--%>
-                                    <%--<select class="form-control has-feedback-left" id="endTime">--%>
-                                    <%--<c:forEach items="${slotHourList}" var="item">--%>
-                                    <%--<option id="${item.slotHourId}"                                                            value="${item.endTime}">--%>
-                                    <%--${item.endTime}--%>
-                                    <%--</option>--%>
-                                    <%--</c:forEach>--%>
-                                    <%--</select>--%>
-                                    <%--<span class="fa fa-clock-o form-control-feedback left"--%>
-                                    <%--aria-hidden="true"></span>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
                                     <div class="col-md-6 slotHour col-sm-6 col-xs-12 form-group has-feedback">
                                         <%--<label for="startTime"></label>--%>
                                         <select id="startTime" class="form-control has-feedback-left" name="startTime">
@@ -187,10 +127,10 @@
                                             <div class="col-md-3 col-sm-3 col-xs-12">
                                                 <select class="form-control" id="option-select">
                                                     <option value="">Chọn</option>
-                                                    <option value="ngày">Hàng ngày</option>
-                                                    <option value="tuần">Hàng tuần</option>
-                                                    <option value="tháng">Hàng tháng</option>
-                                                    <option value="năm">Hàng năm</option>
+                                                    <option data-id="ngày" value="1">Hàng ngày</option>
+                                                    <option data-id="tuần" value="2">Hàng tuần</option>
+                                                    <option data-id="tháng" value="3">Hàng tháng</option>
+                                                    <option data-id="năm" value="4">Hàng năm</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -198,37 +138,37 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Mỗi:</label>
                                             <div class="col-md-2 col-sm-2 col-xs-12">
-                                                <select class="form-control">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
-                                                    <option>11</option>
-                                                    <option>12</option>
-                                                    <option>13</option>
-                                                    <option>14</option>
-                                                    <option>15</option>
-                                                    <option>16</option>
-                                                    <option>17</option>
-                                                    <option>18</option>
-                                                    <option>19</option>
-                                                    <option>20</option>
-                                                    <option>21</option>
-                                                    <option>22</option>
-                                                    <option>23</option>
-                                                    <option>24</option>
-                                                    <option>25</option>
-                                                    <option>26</option>
-                                                    <option>27</option>
-                                                    <option>28</option>
-                                                    <option>29</option>
-                                                    <option>30</option>
+                                                <select class="form-control" id="kind">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
                                                 </select>
                                             </div>
                                             <label class="control-label" id="option-result"></label>
@@ -237,34 +177,35 @@
                                         <div class="col-md-12 form-group" id="week-selected">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Vào:</label>
                                             <label class="control-label">
-                                                <input type="checkbox" class="flat"> Hai
+                                                <input type="checkbox" id="2" class="flat day-checkbox"> Hai
                                             </label>
                                             <label>
-                                                <input type="checkbox" class="flat"> Ba
+                                                <input type="checkbox" id="3" class="flat day-checkbox"> Ba
                                             </label>
                                             <label>
-                                                <input type="checkbox" class="flat"> Tư
-                                                <label>
-                                                    <input type="checkbox" class="flat"> Năm
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" class="flat"> Sáu
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" class="flat"> Bảy
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" class="flat"> CN
-                                                </label>
+                                                <input type="checkbox" id="4" class="flat day-checkbox"> Tư
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="5" class="flat day-checkbox"> Năm
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="6" class="flat day-checkbox"> Sáu
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="7" class="flat day-checkbox"> Bảy
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="1" class="flat day-checkbox"> CN
                                             </label>
                                         </div>
 
                                         <div class="col-md-12 form-group" id="month-selected">
                                             <label class="control-label col-md-4 col-md-offset-2">
-                                                <input type="radio" class="flat" checked name="month"> Ngày của tháng
+                                                <input type="radio" value="1" class="flat" checked name="month"> Ngày
+                                                của tháng
                                             </label>
                                             <label class="control-label col-md-4">
-                                                <input type="radio" class="flat" name="month"> Ngày của tuần
+                                                <input type="radio" class="flat" name="month" value="2"> Ngày của tuần
                                             </label>
                                         </div>
                                         <div class="clearfix"></div>
@@ -272,21 +213,18 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Bắt đầu:</label>
                                             <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <input type="text" class="form-control" id="advance-starDay">
+                                                <input type="text" class="form-control" id="advance-startDate" readonly>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Kết thúc
                                                 sau:</label>
-                                            <%--<label class="control-label col-md-2">--%>
-                                            <%--<input type="radio" class="flat" checked name="end"> Never--%>
-                                            <%--</label>--%>
+
                                             <div class="col-md-4">
-                                                <%--<input type="radio" class="flat" name="end"> After--%>
                                                 <label class="control-label">
                                                     <input type="number" min="1" max="30"
-                                                           id="numOfRepeat" value="1"> buổi
+                                                           id="numOfRepeat" value="1" style="text-align: center"> buổi
                                                 </label>
                                             </div>
                                         </div>
@@ -294,44 +232,13 @@
                                         <div class="ln_solid"></div>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <!-- End Hide Repeat Oncheck -->
-
-                                    <%--<div class="form-group">--%>
-                                    <%--<label class="control-label col-md-2 col-sm-2 col-xs-12">Assigned:</label>--%>
-                                    <%--<div class="col-md-10 col-sm-10 col-xs-12">--%>
-                                    <%--<select class="form-control">--%>
-                                    <%--<option>Choose option</option>--%>
-                                    <%--<option>Option one</option>--%>
-                                    <%--<option>Option two</option>--%>
-                                    <%--<option>Option three</option>--%>
-                                    <%--<option>Option four</option>--%>
-                                    <%--</select>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="form-group">--%>
-                                    <%--<label class="control-label col-md-2 col-sm-2 col-xs-12">Room:</label>--%>
-                                    <%--<div class="col-md-10 col-sm-10 col-xs-12">--%>
-                                    <%--<select class="form-control">--%>
-                                    <%--<option>Choose option</option>--%>
-                                    <%--<option>Option one</option>--%>
-                                    <%--<option>Option two</option>--%>
-                                    <%--<option>Option three</option>--%>
-                                    <%--<option>Option four</option>--%>
-                                    <%--</select>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="form-group">--%>
-                                    <%--<label class="control-label col-md-2 col-sm-2 col-xs-12">Status:</label>--%>
-                                    <%--<div class="col-md-10 col-sm-10 col-xs-12">--%>
-                                    <%--<input type="text" class="form-control" disabled="readonly">--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
 
                                     <div class="col-md-12 form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12"
                                                style="text-align: left">Công khai</label>
                                         <label class="control-label" style="margin-left: -30px;margin-top: -7px">
-                                            <input type="checkbox" class="js-switch" checked/>
+                                            <input type="checkbox" id="createEventPopupIsPublic" class="js-switch"
+                                                   checked/>
                                         </label>
                                     </div>
                                     <div class="clearfix"></div>
@@ -356,6 +263,27 @@
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
+
+<%--Confirm Modal--%>
+<div class="modal fade confirm-modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true"
+     data-keyboard="false" style="margin-top: 220px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body " id="confirmInfor">
+                <label>Không tìm được phòng hoặc người chịu trách nhiệm cho sự kiện (lớp) này. Bạn có muốn tiếp tục
+                    ?</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info col-md-5" id="cancel" data-dismiss="modal"
+                        style="margin-left: 6px">Hủy
+                </button>
+                <button type="button" class="btn btn-primary col-md-6" id="process">Tiếp tục</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
@@ -370,6 +298,10 @@
 <script src="<c:url value="/resources/js/advance-create.js"/>"></script>
 
 <script src="<c:url value="/resources/lib/src/js/jquery-ui.min.js"/>"></script>
+
+<script>
+    var slotDate = "<c:out value="${slotDate}" />"
+</script>
 
 </body>
 </html>

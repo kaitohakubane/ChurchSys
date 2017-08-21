@@ -41,6 +41,8 @@ public class PageConstant {
     public static final String UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
     public static final String UPDATED_ERROR_REPEAT_EVENT = "/manager/event/update-error-repeat-event";
 
+    public static final String ADVANCE_CREATE_EVENT_URL ="/manager/event/advance-create";
+
     public static final String CREATE_EVENT_URL = "/manager/event/Add";
     public static final String CHECK_EVENT_URL = "/manager/event/Check";
     public static final String CHECK_USER_EVENT_URL = "/manager/event/CheckUser";
@@ -57,7 +59,9 @@ public class PageConstant {
     public static final String FINISH_EVENT = "/automation/finishEvent";
 
     public static final String UPDATE_NAME_AND_PRIVACY = "/manager/schedule/update-name-privacy";
-    public static final String GET_EXAM_DATE = "/manager/event/Add/get-exam-date";
+
+    public static final String CHECK_ADVANCE_URL = "/manager/event/advanceCheck";
+    public static final String CREATE_ADVANCE_URL = "/manager/event/advanceCreate";
 
     //Stream
     public static final String STREAM_URL = "/manager/stream";
@@ -185,6 +189,7 @@ public class PageConstant {
     public static final String STREAM_PAGE = "stream-page";
     public static final String STREAM_INSTRUCTION_PAGE = "instruction-page";
     public static final String ADVANCE_CREATE_PAGE = "advance-create-page";
+
 
     // Registration
     public static final String REGISTRATION_PAGE = "registration-page";

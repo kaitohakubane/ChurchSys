@@ -51,7 +51,8 @@ public class UtilsConstant {
 
     public static final boolean TRUE = true;
     public static final boolean FALSE = false;
-
+    public static final int OK_STATUS=1;
+    public static final int NOT_STATUS=0;
     public static final int NOT_AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 0;
     public static final int AVAILABLE_FOR_ALL_SLOT_OF_CLASS = 1;
     public static final String SCRIPT_AUTO_START_OBS = "startObs.bat";

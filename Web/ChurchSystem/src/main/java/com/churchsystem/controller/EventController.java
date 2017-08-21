@@ -240,6 +240,7 @@ public class EventController {
             }
 
             List<Date> datesOfClass = DateUtils.getListOfClassDate(eventJsonEntity.getType(), eventJsonEntity.getSlotDate(), numberOfSlot);
+            datesOfClass.add(examDate);
             //Create Class
             Timestamp creatingTime = new Timestamp(System.currentTimeMillis());
             eventServiceInterface.createEvent(eventJsonEntity.getEventName(), datesOfClass.get(0), subId
@@ -760,7 +761,6 @@ public class EventController {
     }
 
 
-
     @ResponseBody
     @RequestMapping(value = PageConstant.CHECK_CONFLICT_FOR_DRAG_DROP_EVENT, method = RequestMethod.POST)
     public int checkConductorForDragDropEvent(@RequestBody EventJsonEntity eventJsonEntity,
@@ -877,13 +877,151 @@ public class EventController {
     }
 
     @RequestMapping(value = PageConstant.ADVANCE_CREATE_URL, method = RequestMethod.GET)
-    public ModelAndView loadAdvanceCreate(HttpServletRequest request) {
+    public ModelAndView loadAdvanceCreate(@RequestParam(value = ParamConstant.DATE) String date) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.ADVANCE_CREATE_PAGE);
         modelAndView.addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour())
                 .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
                 .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
-                .addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour());
+                .addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour())
+                .addObject(ParamConstant.SLOT_DATE, date);
         return modelAndView;
     }
 
+    @ResponseBody
+    @RequestMapping(value = PageConstant.ADVANCE_CREATE_EVENT_URL, method = RequestMethod.POST)
+    public List<EventDisplayEntity> createAdvanceEvent(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        List<EventDisplayEntity> result = null;
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            String eventName = eventJsonEntity.getEventName();
+            int numOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            int intPrivacy = Integer.parseInt(eventJsonEntity.getPrivacy());
+            boolean privacy = true;
+            if (intPrivacy == UtilsConstant.ZERO) {
+                privacy = false;
+            }
+
+            ArrayList<Integer> slotHour = StringUtils.convertStringToListOfSlotHour(eventJsonEntity.getSlotHour());
+            Integer loopType = Integer.parseInt(eventJsonEntity.getSelectedType());
+            Integer kind = Integer.parseInt(eventJsonEntity.getKind());
+            String des = eventJsonEntity.getType();
+
+            TypeEntity typeEntity = slotServiceInterface.getTypeByLoopTypeAndKind(loopType, kind, des);
+            if (typeEntity == null) {
+                typeEntity = new TypeEntity();
+                typeEntity.setLoopType(loopType);
+                typeEntity.setKind(kind);
+                typeEntity.setDescription(des);
+                slotServiceInterface.addNewType(typeEntity);
+                typeEntity = slotServiceInterface.getTypeByLoopTypeAndKind(loopType, kind, des);
+            }
+
+            List<Date> datesOfClass = DateUtils.getListOfAdvanceEventDate(typeEntity, eventJsonEntity.getSlotDate(), numOfSlot);
+            //Create Class
+            Timestamp creatingTime = new Timestamp(System.currentTimeMillis());
+            eventServiceInterface.createEvent(eventName, datesOfClass.get(0), subId
+                    , privacy, churchId, null, typeEntity.getTypeId(), false, numOfSlot, creatingTime);
+
+            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(datesOfClass.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId, false, creatingTime);
+            for (int i = 0; i < datesOfClass.size(); i++) {
+                Date itemDate = datesOfClass.get(i);
+                SlotEntity slotEntity = eventServiceInterface.createSlotForAdvanceEvent(eventEntity.getEventId(), slotHour,
+                        itemDate, 0, 0);
+                eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
+            }
+
+            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
+            eventServiceInterface.updateEvent(eventEntity);
+            result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(), eventJsonEntity.getToken());
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = PageConstant.CHECK_ADVANCE_URL, method = RequestMethod.POST)
+    public int checkAdvance(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+        List<Integer> result = new ArrayList<Integer>();
+        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+        try {
+            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+            int type=Integer.parseInt(eventJsonEntity.getType());
+            int kind=Integer.parseInt(eventJsonEntity.getKind());
+            String typeString=eventJsonEntity.getTypeString();
+            int numberOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
+            TypeEntity typeEntity=new TypeEntity();
+            typeEntity.setLoopType(type);
+            typeEntity.setKind(kind);
+            typeEntity.setDescription(typeString);
+            List<Date> listOfAdvanceEventDate = DateUtils.getListOfAdvanceEventDate(typeEntity, eventJsonEntity.getSlotDate(), numberOfSlot);
+
+            return eventServiceInterface.checkAdvanceCreate(listOfAdvanceEventDate,eventJsonEntity.getStartTime(),eventJsonEntity.getEndTime(),churchId,subId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return UtilsConstant.NOT_STATUS;
+        }
+    }
+
+//    @ResponseBody
+//    @RequestMapping(value = PageConstant.CREATE_ADVANCE_URL, method = RequestMethod.POST)
+//    public List<EventDisplayEntity> createAdvance(@RequestBody EventJsonEntity eventJsonEntity, HttpServletRequest request) {
+//        List<EventDisplayEntity> result = null;
+//        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+//        try {
+//            int subId = Integer.parseInt(eventJsonEntity.getSubId());
+//            int type=Integer.parseInt(eventJsonEntity.getType());
+//            int kind=Integer.parseInt(eventJsonEntity.getKind());
+//            String typeString=eventJsonEntity.getTypeString();
+//            int numberOfSlot = Integer.parseInt(eventJsonEntity.getNumOfSlot());
+//            int intPrivacy=Integer.parseInt(eventJsonEntity.getPrivacy());
+//            boolean privacy = true;
+//            if (intPrivacy == UtilsConstant.ZERO) {
+//                privacy = false;
+//            }
+//
+//            TypeEntity typeEntity=new TypeEntity();
+//            typeEntity.setLoopType(type);
+//            typeEntity.setKind(kind);
+//            typeEntity.setDescription(typeString);
+//            List<Date> listOfAdvanceEventDate = DateUtils.getListOfAdvanceEventDate(typeEntity, eventJsonEntity.getSlotDate(), numberOfSlot);
+//
+//            Timestamp creatingTime = new Timestamp(System.currentTimeMillis());
+//            eventServiceInterface.createEvent(eventJsonEntity.getEventName(), listOfAdvanceEventDate.get(0), subId
+//                    , privacy, churchId, null, typeEntity.getTypeId(), false, numberOfSlot, creatingTime);
+//
+//
+//            EventEntity eventEntity = eventServiceInterface.getCreatingEvent(listOfAdvanceEventDate.get(0), ParamConstant.WAITING_FOR_APPROVE_STATUS, subId, churchId, false, creatingTime);
+//
+//            for (int i = 0; i < listOfAdvanceEventDate.size(); i++) {
+//                Date itemDate = listOfAdvanceEventDate.get(i);
+//                eventServiceInterface.createSlotForTimeRageEvent(eventEntity.getEventId(), eventJsonEntity.getStartTime(), eventJsonEntity.getEndTime(),
+//                        churchId,itemDate, subId);
+//            }
+//
+//            List<SlotEntity> slotEntities = slotServiceInterface.getSlotByEventId(eventEntity.getEventId());
+//
+//            for (SlotEntity slotEntity : slotEntities) {
+////                eventServiceInterface.mappingResource(slotEntity.getSlotId(), slotHour);
+//            }
+//
+//            List<RegistrationEntity> registrationEntities = registrationServiceInterface.getWaitingRegistrationBySubId(subId);
+//            for (RegistrationEntity entity : registrationEntities) {
+//                entity.setEventId(eventEntity.getEventId());
+//                entity.setRegisStatus(ParamConstant.REGISTRATION_FINISH_STATUS);
+//                registrationServiceInterface.updateRegistration(entity);
+//            }
+//
+//            eventEntity.setEventStatus(ParamConstant.EVENT_APPROVE_STATUS);
+//            eventServiceInterface.updateEvent(eventEntity);
+//            result = eventServiceInterface.getCreatedEvent(eventEntity.getEventId(), eventJsonEntity.getToken());
+//
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return result;
+//    }
 }

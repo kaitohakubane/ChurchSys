@@ -34,6 +34,11 @@ public class SlotService implements SlotServiceInterface {
     }
 
     @Override
+    public TypeEntity getTypeByLoopTypeAndKind(int loopType, int kind, String des) {
+        return slotModelInterface.getTypeByLoopTypeAndKind(loopType, kind, des);
+    }
+
+    @Override
     public void deleteSlotHourBySlotId(int slotId) {
         slotModelInterface.deleteSlotHourBySlotId(slotId);
     }

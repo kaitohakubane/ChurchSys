@@ -69,6 +69,16 @@ public class SlotModel extends CommonDAO implements SlotModelInterface {
     }
 
     @Override
+    public TypeEntity getTypeByLoopTypeAndKind(int loopType, int kind, String des) {
+        Criteria criteria = getSession().createCriteria(TypeEntity.class)
+                .add(Restrictions.eq(ParamConstant.TYPE_LOOP_TYPE, loopType))
+                .add(Restrictions.eq(ParamConstant.TYPE_KIND, kind))
+                .add(Restrictions.eq(ParamConstant.TYPE_DESCRIPTION, des));
+        TypeEntity typeEntity = (TypeEntity) criteria.uniqueResult();
+        return typeEntity;
+    }
+
+    @Override
     public SlotEntity getSlotById(int slotId) {
         Criteria criteria = getSession().createCriteria(SlotEntity.class).add(Restrictions.eq(ParamConstant.SLOT_ID, slotId));
         SlotEntity slotEntity = (SlotEntity) criteria.uniqueResult();

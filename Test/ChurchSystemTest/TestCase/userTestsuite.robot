@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    Suite description
-
+Library                 Selenium2Library
+Resource                ${CURDIR}/Constant/testConstant.robot
 *** Keywords ***
 Open Browser To Login Page
     Open Browser        ${SERVER}   ${BROWSER}
@@ -211,7 +212,7 @@ Test case 18 (follow a church)
     Open Browser To Login Page
     Click Element       xpath=//*[@id="MainMenu"]/div/ul/li[2]/a
     Input Text          managerId            kietta_user
-    Input Password      password            Abcd1234
+    Input Password      password             Abcd1234
     Click Element       xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input
     Wait Until Page Contains Element        geocontainer       10
     Click Element       geocontainer

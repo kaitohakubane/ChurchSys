@@ -139,6 +139,8 @@ function calendarInitialize() {
                 }
             }
 
+            $("#advance-create").attr("href",$("#advance-create").attr("href")+date.format());
+
         },
 
         dayRender: function (date, element, view) {
