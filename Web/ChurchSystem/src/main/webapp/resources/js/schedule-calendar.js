@@ -57,6 +57,7 @@ $(document).ready(function () {
             eventSubId=$('#eventType').children(":selected").attr("id");
         } else {
             if (setting == "1") {
+                eventSubId=$('#eventType').children(":selected").attr("id");
                 validateGoogleAccount(creatingEvent, startTime, policy);
             } else {
                 eventSubId=$('#eventType').children(":selected").attr("id");

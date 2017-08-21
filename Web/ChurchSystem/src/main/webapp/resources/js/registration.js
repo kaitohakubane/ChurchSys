@@ -44,7 +44,7 @@ $(".event-reject").on("click", function () {
 
 $(".class-approve").on("click", function () {
     var regisId = $(this).data("id");
-    //acceptClassRegistration(regisId);
+    acceptClassRegistration(regisId);
     $('#class_datatable').DataTable().row($(this).parents('tr')).remove().draw();
 })
 $(".class-reject").on("click", function () {
