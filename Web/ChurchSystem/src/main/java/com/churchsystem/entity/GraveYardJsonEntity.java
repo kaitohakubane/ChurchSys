@@ -1,7 +1,7 @@
 package com.churchsystem.entity;
 
 /**
- * Created by hungmcse61561-admin on 7/30/2017.
+ * Created by Trung on 7/30/2017.
  */
 public class GraveYardJsonEntity {
     private Integer graveYardId;

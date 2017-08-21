@@ -5,7 +5,7 @@ import com.churchsystem.common.constants.UtilsConstant;
 import java.sql.Date;
 
 /**
- * Created by hungmcse61561-admin on 8/5/2017.
+ * Created by Trung on 8/5/2017.
  */
 public class GraveDisplayEntity {
     private int graveId;

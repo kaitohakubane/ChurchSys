@@ -43,7 +43,7 @@
                 <li>
                     <select class="ui fluid dropdown search" id="graveSearch">
                         <%--<c:forEach items="" var="item">--%>
-                        <option class="subClass" value="">Tìm hài cốt</option>
+                        <option class="subClass" value="">Tìm vị trí</option>
                     </select>
                 </li>
             </ul>
@@ -74,6 +74,10 @@
                                     <i class="fa fa-square"></i>
                                     <span>Hết vị trí</span>
                                 </li>
+                                <li style="color: #ff8514">
+                                    <i class="fa fa-square"></i>
+                                    <span>Vị trí đang tìm</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -99,6 +103,10 @@
                                 <li style="color: #f243b5">
                                     <i class="fa fa-square"></i>
                                     <span>Chờ xét duyệt</span>
+                                </li>
+                                <li style="color: #ff8514">
+                                    <i class="fa fa-square"></i>
+                                    <span>Vị trí đang tìm</span>
                                 </li>
                             </ul>
                         </div>
@@ -167,7 +175,7 @@
 <%--/////////////////////////////////////////////////////////////////////////////////--%>
 
 <div class="row graveContextMenu" id="regisContext">
-    <div class="" style="width: 370px;">
+    <div class="" style="width: 350px;">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <div style="text-align: center;font-size: 140%;font-weight: bold">Đăng ký hài cốt</div>
@@ -177,42 +185,42 @@
                 <div class="form-horizontal form-label-left input_mask">
                     <form id="grave-form" role="form">
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Họ tên</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Họ tên</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <input type="text" name="graveName" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày sinh</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày sinh</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <input type="text" name="graveBirth" class="form-control" id="graveBirthDay">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nơi sinh</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Nơi sinh</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <input type="text" name="graveHomeTown" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ngày mất</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Ngày mất</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <input type="text" name="graveDeathDay" class="form-control" id="graveDeathDay">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Giáo xứ</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 has-success">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Giáo xứ</label>
+                            <div class="col-md-8 col-sm-8 col-xs-12 has-success">
                                 <input type="text" name="graveParish" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3 input-group has-success">
+                            <div class="col-md-11 col-sm-11 col-xs-12 col-md-offset-1 input-group has-success">
                                 <input type="file" name="graveImage" class="form-control-file">
                             </div>
                         </div>
@@ -261,7 +269,7 @@
                     <div class="clearfix"></div>
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-4">
-                            <button type="button" id="detailReject" class="col-md-4 btn btn-success">Hủy</button>
+                            <button type="button" id="detailReject" class="col-md-4 btn btn-success">Xong</button>
                         </div>
                     </div>
 

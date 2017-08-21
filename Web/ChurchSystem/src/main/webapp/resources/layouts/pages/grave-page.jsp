@@ -38,7 +38,7 @@
                     <li>
                         <select class="ui fluid dropdown search" id="graveSearch">
                             <%--<c:forEach items="" var="item">--%>
-                            <option class="subClass" value="">Tìm hài cốt</option>
+                            <option class="subClass" value="">Tìm vị trí</option>
                         </select>
                     </li>
                 </ul>
@@ -68,6 +68,10 @@
                                     <li style="color: #3c8dbc">
                                         <i class="fa fa-square"></i>
                                         <span>Hết vị trí</span>
+                                    </li>
+                                    <li style="color: #ff8514">
+                                        <i class="fa fa-square"></i>
+                                        <span>Vị trí đang tìm</span>
                                     </li>
                                 </ul>
                             </div>
@@ -107,6 +111,10 @@
                                     <li style="color: #f243b5">
                                         <i class="fa fa-square"></i>
                                         <span>Chờ xét duyệt</span>
+                                    </li>
+                                    <li style="color: #ff8514">
+                                        <i class="fa fa-square"></i>
+                                        <span>Vị trí đang tìm</span>
                                     </li>
                                 </ul>
                             </div>
@@ -403,7 +411,7 @@
                     <div class="form-group">
                         <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
                             <button type="button" id="detailProcess" class="btn btn-success">Rút</button>
-                            <button type="button" id="detailReject" class="btn btn-default">Hủy</button>
+                            <button type="button" id="detailReject" class="btn btn-default">Xong</button>
                         </div>
                     </div>
 
