@@ -59,7 +59,7 @@ $(document).ready(function () {
         } else {
             if (setting == "1") {
                 eventSubId=$('#eventType').children(":selected").attr("id");
-                validateGoogleAccount(creatingEvent, startTime, policy,0);
+                validateGoogleAccount(creatingEvent, startTime, policy);
             } else {
                 eventSubId=$('#eventType').children(":selected").attr("id");
                 checkEvent(creatingEvent, startTime, policy,eventSubId);
@@ -76,11 +76,7 @@ $(document).ready(function () {
         if (isPublic) {
             policy = 1;
         }
-        if(setting =="1"){
-            validateGoogleAccount(creatingEvent, startTime, policy,1);
-        }else {
-            checkClass(creatingEvent, startTime, policy,eventSubId);
-        }
+        checkClass(creatingEvent, startTime, policy,eventSubId);
     })
 
 
@@ -538,7 +534,6 @@ function createClass(event, slotHourId, isPublic,conductorId,roomId,eventSub) {
         type: dayArray.toString(),
         conductorId:conductorId,
         roomId:roomId,
-        token:token
     }
 
     $.ajax({
@@ -621,7 +616,7 @@ function updateEventOnSchedule(event) {
     });
 }
 
-function validateGoogleAccount(creatingEvent, startTime, policy,type) {
+function validateGoogleAccount(creatingEvent, startTime, policy) {
     var requestData = {
         "token": token
     }
@@ -637,12 +632,7 @@ function validateGoogleAccount(creatingEvent, startTime, policy,type) {
             if (token == "-1" || token == "") {
                 alert("Tài khoản google của bạn không phù hợp với setting. Vui lòng thử lại !!!");
             } else {
-                if(type==0){
                     checkEvent(creatingEvent, startTime, policy,eventSubId);
-                }else if(type==1){
-                    checkClass(creatingEvent, startTime, policy,eventSubId);
-                }
-
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
