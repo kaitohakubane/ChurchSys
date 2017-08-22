@@ -46,6 +46,11 @@ public class SQLParamConstant {
             "FROM subject s, category c " +
             "WHERE s.categoryId = c.categoryId AND c.categoryId >5 AND c.categoryId < 12";
 
+    public static final String GET_LIST_OF_EVENT = "SELECT s.subId as subId, s.subName as subName," +
+            " s.categoryId as categoryId " +
+            "FROM subject s, category c " +
+            "WHERE s.categoryId = c.categoryId AND c.categoryId <5 AND c.categoryId != 3";
+
 
     public static final String GET_LIST_OF_SUBJECT = "SELECT s.subId as subId, s.subName as subName," +
             " s.categoryId as categoryId " +

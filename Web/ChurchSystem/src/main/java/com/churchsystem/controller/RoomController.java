@@ -35,7 +35,8 @@ public class RoomController {
         ModelAndView modelAndView = new ModelAndView(PageConstant.ROOM_MANAGEMENT_PAGE);
         int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
         List<RoomEntity> roomEntities = roomServiceInterface.getAllRoom(churchId);
-        modelAndView.addObject(ParamConstant.ROOM_LIST, roomEntities).addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
+        modelAndView.addObject(ParamConstant.ROOM_LIST, roomEntities)
+                .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
                 .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList());
         return modelAndView;
     }
@@ -57,14 +58,14 @@ public class RoomController {
             roomServiceInterface.insertRoom(roomEntity);
 
             //get inserted room
-            RoomEntity newRoom = roomServiceInterface.getRoomByNameAndChurchId(roomName, churchId,ParamConstant.NO_SUBJECT_STATUS);
-
+            RoomEntity newRoom = roomServiceInterface.getRoomByNameAndChurchId(roomName, churchId, ParamConstant.NO_SUBJECT_STATUS);
+            if (selectedSubject.length > 0) {
+                newRoom.setRoomStatus(ParamConstant.ENABLE_STATUS);
+            }
             //map inserted room with subjects
             for (int i = 0; i < selectedSubject.length; i++) {
                 roomServiceInterface.mapRoomWithSubject(newRoom.getRoomId(), selectedSubject[i]);
             }
-
-            newRoom.setRoomStatus(ParamConstant.ENABLE_STATUS);
             roomServiceInterface.updateRoom(newRoom);
             return ParamConstant.SUCCESS;
         } catch (Exception e) {

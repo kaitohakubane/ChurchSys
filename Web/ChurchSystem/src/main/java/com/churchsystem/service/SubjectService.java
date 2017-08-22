@@ -36,4 +36,11 @@ public class SubjectService implements SubjectServiceInterface {
         List<DisplayedSubjectEntity> result = subjectModelInterface.getDisplayedClass();
         return result;
     }
+
+    @Override
+    public List<DisplayedSubjectEntity> getDisplayedEvent()
+    {
+        List<DisplayedSubjectEntity> result = subjectModelInterface.getDisplayedEvent();
+        return result;
+    }
 }
