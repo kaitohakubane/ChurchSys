@@ -28,15 +28,15 @@ public class UserServiceTest {
         UserEntity userEntity = new UserEntity();
         userEntity.setAccountId("hungmc_user");
         Mockito.when(userModelInterface.getUserByAccountId("hungmc_user")).thenReturn(userEntity);
-        assertEquals(userService.getUserByAccountId("hungmc_user"),userEntity);
+        assertEquals(userService.getUserByAccountId("hungmc_user"), userEntity);
     }
 
     @Test
     public void getUserByUserId() throws Exception {
-        UserEntity userEntity  = new UserEntity();
+        UserEntity userEntity = new UserEntity();
         userEntity.setUserId(1);
         Mockito.when(userModelInterface.getUserByUserId(1)).thenReturn(userEntity);
-        assertEquals(userService.getUserByUserId(1),userEntity);
+        assertEquals(userService.getUserByUserId(1), userEntity);
     }
 
     @Test
@@ -44,8 +44,19 @@ public class UserServiceTest {
         UserEntity userEntity = new UserEntity();
         userEntity.setAccountId("hungmc_user");
         userEntity.setPassword("Abcd1234");
-        Mockito.when(userModelInterface.getUserByAccountIdAndPassword("hungmc_user","Abcd1234")).thenReturn(userEntity);
-        assertEquals(userService.getUserByAccountIdAndPassword("hungmc_user","Abcd1234"),userEntity);
+        Mockito.when(userModelInterface.getUserByAccountIdAndPassword("hungmc_user", "Abcd1234")).thenReturn(userEntity);
+        assertEquals(userService.getUserByAccountIdAndPassword("hungmc_user", "Abcd1234"), userEntity);
+    }
+
+
+    @Test
+    public void getUserInteraction() throws Exception {
+        InteractionEntity interactionEntity = new InteractionEntity();
+        interactionEntity.setUserId(1);
+        interactionEntity.setChurchId(1);
+        Mockito.when(userModelInterface.getInteraction(1, 1)).thenReturn(interactionEntity);
+        assertEquals(userService.getInteraction(1, 1), interactionEntity);
+
     }
 
     @Test
@@ -88,16 +99,6 @@ public class UserServiceTest {
 
     @Test
     public void getPriestByAccountId() throws Exception {
-    }
-
-    @Test
-    public void getUserInteraction() throws Exception {
-        InteractionEntity interactionEntity = new InteractionEntity();
-        interactionEntity.setUserId(1);
-        interactionEntity.setChurchId(1);
-        Mockito.when(userModelInterface.getInteraction(1, 1)).thenReturn(interactionEntity);
-        assertEquals(userService.getInteraction(1,1),interactionEntity);
-
     }
 
     @Test

@@ -26,27 +26,34 @@ public class ChurchServiceTest {
     @Mock
     ChurchModelInterface churchModelInterface;
 
+    public ChurchEntity testChurchEntity = new ChurchEntity();
+    public ChurchEntity setTestChurchEntity(int churchId, String name){
+        testChurchEntity.setChurchId(churchId);
+        testChurchEntity.setChurchName(name);
+        return testChurchEntity;
+    }
+
     @Test
     public void getChurchById() throws Exception {
-        ChurchEntity churchEntity=new ChurchEntity();
+        ChurchEntity churchEntity = new ChurchEntity();
         churchEntity.setChurchId(1);
         Mockito.when(churchModelInterface.getChurchById(1)).thenReturn(churchEntity);
-
-        assertEquals(churchService.getChurchById(1),churchEntity);
+        assertEquals(churchService.getChurchById(1), churchEntity);
     }
 
     @Test
     public void updateChurch() throws Exception {
-    }
-
-
-    @Test
-    public void getNearbyChurch() throws Exception {
-
-    }
-
-    @Test
-    public void getAllChurch() throws Exception {
+        ChurchEntity churchEntity = new ChurchEntity();
+        churchEntity.setChurchId(1);
+        Mockito.when(churchModelInterface.getChurchById(1)).thenReturn(churchEntity);
+        setTestChurchEntity(1,"abc");
+        churchEntity.setChurchName("abc");
+        churchEntity.setStreamName("123");
+        churchEntity.setStreamLink("www.youtube.com");
+        churchEntity.setDescription("abc");
+        //Mockito.when(churchModelInterface.updateChurch(churchEntity)).thenReturn(churchEntity);
+        churchModelInterface.updateChurch(churchEntity);
+        assertNotEquals(testChurchEntity, churchEntity);
     }
 
     @Test
@@ -54,11 +61,29 @@ public class ChurchServiceTest {
         ChurchInfoEntity churchInfoEntity = new ChurchInfoEntity();
         churchInfoEntity.setChurchId(1);
         Mockito.when(churchModelInterface.getChurchInfo(1)).thenReturn(churchInfoEntity);
-        assertEquals(churchService.getChurchInfo(1),churchInfoEntity);
+        assertEquals(churchService.getChurchInfo(1), churchInfoEntity);
     }
 
     @Test
+    public void getNearbyChurch() throws Exception {
+        ChurchInfoEntity churchInfoEntity = new ChurchInfoEntity();
+        churchInfoEntity.setChurchId(1);
+        Mockito.when(churchModelInterface.getChurchInfo(1)).thenReturn(churchInfoEntity);
+        assertEquals(churchService.getChurchInfo(1), churchInfoEntity);
+    }
+
+    @Test
+    public void getAllChurch() throws Exception {
+        ChurchInfoEntity churchInfoEntity = new ChurchInfoEntity();
+        churchInfoEntity.setChurchId(1);
+        Mockito.when(churchModelInterface.getChurchInfo(1)).thenReturn(churchInfoEntity);
+        assertEquals(churchService.getChurchInfo(1), churchInfoEntity);
+    }
+
+
+    @Test
     public void getIncomingEvent() throws Exception {
+
     }
 
     @Test

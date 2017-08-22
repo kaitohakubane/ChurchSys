@@ -24,20 +24,13 @@ public class GraveServiceTest {
     @Mock
     GraveModelInterface graveModelInterface;
 
-    @Test
-    public void getGraveYardOfChurch() throws Exception {
-    }
-
-    @Test
-    public void getGraveOfGraveYard() throws Exception {
-    }
 
     @Test
     public void getGraveYardById() throws Exception {
         GraveyardEntity graveyardEntity = new GraveyardEntity();
         graveyardEntity.setGraveYardId(1);
         Mockito.when(graveModelInterface.getGraveYardById(1)).thenReturn(graveyardEntity);
-        assertEquals(graveService.getGraveYardById(1),graveyardEntity);
+        assertEquals(graveService.getGraveYardById(1), graveyardEntity);
     }
 
     @Test
@@ -45,7 +38,7 @@ public class GraveServiceTest {
         GraveDisplayEntity graveDisplayEntity = new GraveDisplayEntity();
         graveDisplayEntity.setGraveYardId(1);
         Mockito.when(graveModelInterface.getGravebyId(1)).thenReturn(graveDisplayEntity);
-        assertEquals(graveService.getGravebyId(1),graveDisplayEntity);
+        assertEquals(graveService.getGravebyId(1), graveDisplayEntity);
     }
 
     @Test
@@ -53,8 +46,29 @@ public class GraveServiceTest {
         GraveEntity graveEntity = new GraveEntity();
         graveEntity.setGraveYardId(1);
         graveEntity.setStatus(1);
-        Mockito.when(graveModelInterface.getCreatingGrave(1,1)).thenReturn(graveEntity);
-        assertEquals(graveService.getCreatingGrave(1,1),graveEntity);
+        Mockito.when(graveModelInterface.getCreatingGrave(1, 1)).thenReturn(graveEntity);
+        assertEquals(graveService.getCreatingGrave(1, 1), graveEntity);
+    }
+
+
+    @Test
+    public void getGrave() throws Exception {
+        GraveEntity graveEntity = new GraveEntity();
+        graveEntity.setGraveId(1);
+        Mockito.when(graveModelInterface.getGrave(1)).thenReturn(graveEntity);
+        assertEquals(graveService.getGrave(1), graveEntity);
+    }
+
+    @Test
+    public void getCreatingGraveYard() throws Exception {
+        GraveyardEntity graveyardEntity = new GraveyardEntity();
+        graveyardEntity.setChurchId(1);
+        Mockito.when(graveModelInterface.getCreatingGraveYard(1)).thenReturn(graveyardEntity);
+        assertEquals(graveService.getCreatingGraveYard(1), graveyardEntity);
+    }
+
+    @Test
+    public void getGraveYardOfChurch() throws Exception {
     }
 
     @Test
@@ -63,19 +77,6 @@ public class GraveServiceTest {
     }
 
     @Test
-    public void getGrave() throws Exception {
-        GraveEntity graveEntity = new GraveEntity();
-        graveEntity.setGraveId(1);
-        Mockito.when(graveModelInterface.getGrave(1)).thenReturn(graveEntity);
-        assertEquals(graveService.getGrave(1),graveEntity);
+    public void getGraveOfGraveYard() throws Exception {
     }
-
-    @Test
-    public void getCreatingGraveYard() throws Exception {
-        GraveyardEntity graveyardEntity = new GraveyardEntity();
-        graveyardEntity.setChurchId(1);
-        Mockito.when(graveModelInterface.getCreatingGraveYard(1)).thenReturn(graveyardEntity);
-        assertEquals(graveService.getCreatingGraveYard(1),graveyardEntity);
-    }
-
 }

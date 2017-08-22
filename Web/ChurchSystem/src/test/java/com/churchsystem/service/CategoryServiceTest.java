@@ -21,6 +21,7 @@ public class CategoryServiceTest {
     CategoryModelInterface categoryModelInterface;
     @Test
     public void getEventCategoryList() throws Exception {
+
     }
 
     @Test

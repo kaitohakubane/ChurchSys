@@ -629,6 +629,7 @@ function validateGoogleAccount(creatingEvent, startTime, policy) {
         async: false,
         success: function (res) {
             token = res;
+            console.log('token');
             if (token == "-1" || token == "") {
                 alert("Tài khoản google của bạn không phù hợp với setting. Vui lòng thử lại !!!");
             } else {

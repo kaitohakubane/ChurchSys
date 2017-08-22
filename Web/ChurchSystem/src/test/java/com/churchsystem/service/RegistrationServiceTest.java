@@ -22,6 +22,21 @@ public class RegistrationServiceTest {
     @Mock
     RegistrationModelInterface registrationModelInterface;
     @Test
+    public void getRegistrationById() throws Exception {
+        RegistrationEntity registrationEntity =  new RegistrationEntity();
+        registrationEntity.setRegisId(1);
+        Mockito.when(registrationModelInterface.getRegistrationById(1)).thenReturn(registrationEntity);
+        assertEquals(registrationService.getRegistrationById(1),registrationEntity);
+    }
+    @Test
+    public void getRegistrationByEventId() throws Exception {
+        RegistrationEntity registrationEntity = new RegistrationEntity();
+        registrationEntity.setEventId(1);
+        Mockito.when(registrationModelInterface.getRegistrationByEventId(1)).thenReturn(registrationEntity);
+        assertEquals(registrationService.getRegistrationByEventId(1),registrationEntity);
+
+    }
+    @Test
     public void getRegistration() throws Exception {
     }
 
@@ -45,14 +60,6 @@ public class RegistrationServiceTest {
     public void getOnGoingPlanClass() throws Exception {
     }
 
-    @Test
-    public void getRegistrationByEventId() throws Exception {
-        RegistrationEntity registrationEntity = new RegistrationEntity();
-        registrationEntity.setEventId(1);
-        Mockito.when(registrationModelInterface.getRegistrationByEventId(1)).thenReturn(registrationEntity);
-        assertEquals(registrationService.getRegistrationByEventId(1),registrationEntity);
-
-    }
 
     @Test
     public void getAllRegisEvent() throws Exception {
@@ -62,12 +69,6 @@ public class RegistrationServiceTest {
     public void getAllRegisClass() throws Exception {
     }
 
-    @Test
-    public void getRegistrationById() throws Exception {
-        RegistrationEntity registrationEntity =  new RegistrationEntity();
-        registrationEntity.setRegisId(1);
-        Mockito.when(registrationModelInterface.getRegistrationById(1)).thenReturn(registrationEntity);
-        assertEquals(registrationService.getRegistrationById(1),registrationEntity);
-    }
+
 
 }

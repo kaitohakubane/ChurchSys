@@ -26,6 +26,23 @@ public class EventServiceTest {
 
     @Mock
     EventModelInterface eventModelInterface;
+
+    @Test
+    public void getEventById() throws Exception {
+        EventEntity eventEntity = new EventEntity();
+        eventEntity.setEventId(1);
+        Mockito.when(eventModelInterface.getEventById(1)).thenReturn(eventEntity);
+        assertEquals(eventService.getEventById(1), eventEntity);
+    }
+
+    @Test
+    public void getEventBySlotId() throws Exception {
+        EventDataEntity eventDataEntity = new EventDataEntity();
+        eventDataEntity.setSlotId(3);
+        Mockito.when(eventModelInterface.getEventBySlotId(3, 1)).thenReturn(eventDataEntity);
+        assertEquals(eventService.getEventBySlotId(3, 1), eventDataEntity);
+    }
+
     @Test
     public void getListOfEvent() throws Exception {
     }
@@ -41,22 +58,6 @@ public class EventServiceTest {
     @Test
     public void getCreatedEvent() throws Exception {
 
-    }
-
-    @Test
-    public void getEventById() throws Exception {
-        EventEntity eventEntity = new EventEntity();
-        eventEntity.setEventId(1);
-        Mockito.when(eventModelInterface.getEventById(1)).thenReturn(eventEntity);
-        assertEquals(eventService.getEventById(1),eventEntity);
-    }
-
-    @Test
-    public void getEventBySlotId() throws Exception {
-        EventDataEntity eventDataEntity = new EventDataEntity();
-        eventDataEntity.setSlotId(3);
-        Mockito.when(eventModelInterface.getEventBySlotId(3,1)).thenReturn(eventDataEntity);
-        assertEquals(eventService.getEventBySlotId(3,1),eventDataEntity);
     }
 
     @Test

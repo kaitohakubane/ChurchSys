@@ -62,7 +62,7 @@ public class ChurchMapEntityTest {
     public void getDistance() throws Exception {
         ChurchMapEntity churchMapEntity = new ChurchMapEntity();
         churchMapEntity.setDistance(test);
-        assertEquals(test, churchMapEntity.getDistance());
+        assertEquals(test, churchMapEntity.getDistance(),5);
     }
 
     @Test

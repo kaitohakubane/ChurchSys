@@ -21,9 +21,15 @@ public class RoomServiceTest {
 
     @Mock
     RoomModelInterface roomModelInterface;
-    @Test
-    public void getRoomBySub() throws Exception {
 
+    @Test
+    public void getRoomByNameAndChurchId() throws Exception {
+        RoomEntity roomEntity = new RoomEntity();
+        roomEntity.setRoomName("101");
+        roomEntity.setChurchId(1);
+        roomEntity.setRoomStatus(1);
+        Mockito.when(roomModelInterface.getRoomByNameAndChurchId("101", 1, 1)).thenReturn(roomEntity);
+        assertEquals(roomService.getRoomByNameAndChurchId("101", 1, 1), roomEntity);
     }
 
     @Test
@@ -31,7 +37,12 @@ public class RoomServiceTest {
         RoomEntity roomEntity = new RoomEntity();
         roomEntity.setRoomId(1);
         Mockito.when(roomModelInterface.getRoomById(1)).thenReturn(roomEntity);
-        assertEquals(roomService.getRoomById(1),roomEntity);
+        assertEquals(roomService.getRoomById(1), roomEntity);
+    }
+
+    @Test
+    public void getRoomBySub() throws Exception {
+
     }
 
     @Test
@@ -54,14 +65,5 @@ public class RoomServiceTest {
     public void getAllRoom() throws Exception {
     }
 
-    @Test
-    public void getRoomByNameAndChurchId() throws Exception {
-        RoomEntity roomEntity = new RoomEntity();
-        roomEntity.setRoomName("101");
-        roomEntity.setChurchId(1);
-        roomEntity.setRoomStatus(1);
-        Mockito.when(roomModelInterface.getRoomByNameAndChurchId("101",1,1)).thenReturn(roomEntity);
-        assertEquals(roomService.getRoomByNameAndChurchId("101",1,1),roomEntity);
-    }
 
 }

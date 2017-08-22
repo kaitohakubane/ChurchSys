@@ -47,6 +47,7 @@ function assignManager(churchId) {
         success: function () {
             console.log("Đăng ký thành công!");
             // alert("Đăng ký thành công!")
+            $('#assignManagerPopup').modal('hide')
             onClickShowPopup(SUCCESS_STATUS, TYPE_SUCCESS);
 
         },
