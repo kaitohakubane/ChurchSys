@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,30 +46,45 @@ public class EventServiceTest {
 
     @Test
     public void getListOfEvent() throws Exception {
+        List<EventDataEntity> test = new ArrayList<EventDataEntity>();
+        Mockito.when(eventModelInterface.getListOfEvent(1)).thenReturn(test);
+        assertNotNull(test);
     }
 
     @Test
     public void getListOfEventData() throws Exception {
+        List<EventDataEntity> test = new ArrayList<EventDataEntity>();
+        Mockito.when(eventModelInterface.getListOfPublicEvent(1)).thenReturn(test);
+        assertNotNull(test);
     }
 
     @Test
     public void getListOfPublicEvent() throws Exception {
+        List<EventDataEntity> test = new ArrayList<EventDataEntity>();
+        Mockito.when(eventModelInterface.getListOfPublicEvent(1)).thenReturn(test);
+        assertNotNull(test);
     }
 
     @Test
     public void getCreatedEvent() throws Exception {
-
+        List<EventDataEntity> test = new ArrayList<EventDataEntity>();
+        Mockito.when(eventModelInterface.getCreatedEvent(1)).thenReturn(test);
+        assertNotNull(test);
     }
 
     @Test
     public void getCategoryIdFromSlotId() throws Exception {
-
+        int test = 0;
+        Mockito.when(eventModelInterface.getCategoryIdFromSlotId(1)).thenReturn(test);
+        assertNotNull(test);
 
     }
 
     @Test
     public void getUserRegisteredClass() throws Exception {
-
+        List<DashboardClassEntity> test = new ArrayList<DashboardClassEntity>();
+        Mockito.when(eventModelInterface.getUserRegisteredClass(1)).thenReturn(test);
+        assertNotNull(test);
     }
 
 }

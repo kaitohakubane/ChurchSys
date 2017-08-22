@@ -1,8 +1,6 @@
 package com.churchsystem.service;
 
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.ChurchInfoEntity;
-import com.churchsystem.entity.ChurchMapEntity;
+import com.churchsystem.entity.*;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -27,7 +26,8 @@ public class ChurchServiceTest {
     ChurchModelInterface churchModelInterface;
 
     public ChurchEntity testChurchEntity = new ChurchEntity();
-    public ChurchEntity setTestChurchEntity(int churchId, String name){
+
+    public ChurchEntity setTestChurchEntity(int churchId, String name) {
         testChurchEntity.setChurchId(churchId);
         testChurchEntity.setChurchName(name);
         return testChurchEntity;
@@ -46,7 +46,7 @@ public class ChurchServiceTest {
         ChurchEntity churchEntity = new ChurchEntity();
         churchEntity.setChurchId(1);
         Mockito.when(churchModelInterface.getChurchById(1)).thenReturn(churchEntity);
-        setTestChurchEntity(1,"abc");
+        setTestChurchEntity(1, "abc");
         churchEntity.setChurchName("abc");
         churchEntity.setStreamName("123");
         churchEntity.setStreamLink("www.youtube.com");
@@ -83,23 +83,35 @@ public class ChurchServiceTest {
 
     @Test
     public void getIncomingEvent() throws Exception {
-
+        List<IncomingEventEntity> test = new ArrayList<IncomingEventEntity>();
+        Mockito.when(churchModelInterface.getIncomingEvent(1)).thenReturn(test);
+        assertNotNull(test);
     }
 
     @Test
     public void getSettingOfChurch() throws Exception {
+        SettingEntity settingEntity = new SettingEntity();
+        Mockito.when(churchModelInterface.getSettingOfChurch(1)).thenReturn(settingEntity);
+        assertNotNull(settingEntity);
     }
 
-    @Test
-    public void editSetting() throws Exception {
-    }
 
     @Test
     public void getIncomingEventByChurchId() throws Exception {
+        List<IncomingEventEntity> test = new ArrayList<IncomingEventEntity>();
+        Mockito.when(churchModelInterface.getIncomingEvent(1)).thenReturn(test);
+        assertNotNull(test);
     }
 
     @Test
     public void getIncomingClassByChurchId() throws Exception {
+        List<IncomingClassEntity> test = new ArrayList<IncomingClassEntity>();
+        Mockito.when(churchModelInterface.getIncomingClassByChurchId(1)).thenReturn(test);
+        assertNotNull(test);
+    }
+
+    @Test
+    public void editSetting() throws Exception {
     }
 
     @Test
