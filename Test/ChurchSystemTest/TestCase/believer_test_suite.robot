@@ -16,8 +16,7 @@ Open Browser To Server Page
 Test case 2 Believer
     Open Browser To Server Page
     Click Element       xpath=//*[@id="MainMenu"]/div/ul/li[2]/a
-    Sleep           1
-    Input Text          managerId           kietta_user
+    Input Text          managerId           ${USER_ACCOUNT}
     Input Password      password            ${PASSWORD}
     Click Element       xpath=/html/body/div[1]/div/div/div/div[2]/form/fieldset/input
     Wait Until Page Contains Element        pac-input       10
