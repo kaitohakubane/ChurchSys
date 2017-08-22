@@ -83,7 +83,7 @@
                                         <%--<label for="startTime"></label>--%>
                                         <select id="startTime" class="form-control has-feedback-left" name="startTime">
                                             <c:forEach items="${slotHourList}" var="item">
-                                                <option id="${item.slotHourId}" data-id="${item.startTime}">
+                                                <option id="${item.slotHourId}" data-id="${item.startTime}" value="${item.startTime}">
                                                         ${item.startTime}
                                                 </option>
                                             </c:forEach>
@@ -96,7 +96,7 @@
                                         <%--<label for="endTime"></label>--%>
                                         <select id="endTime" class="form-control has-feedback-left" name="endTime">
                                             <c:forEach items="${slotHourList}" var="item">
-                                                <option id="${item.slotHourId}" data-id="${item.endTime}">
+                                                <option id="${item.slotHourId}" data-id="${item.endTime}" value="${item.endTime}">
                                                         ${item.endTime}
                                                 </option>
                                             </c:forEach>

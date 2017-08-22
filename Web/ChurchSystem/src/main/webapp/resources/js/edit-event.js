@@ -28,76 +28,103 @@ var event;
 var currentEventIsMultiSlot;
 var selectedDate;
 var selectedStatus;
+var currentStart;
+var currentEnd;
+var slotDate;
 $(document).ready(function () {
     Initial();
     $("#slotDate").datepicker();
     $("#slotDate").datepicker('option', 'dateFormat', 'yy-mm-dd');
     inputEditEventInformation();
-})
-
-$("#slotDate").on("change", function () {
-    if (currentEventIsMultiSlot == 1) {
-        if (selectedDate != $("#slotDate").val()) {
-            console.log($("#manySlotCheck").prop("checked"))
-            if ($("#manySlotCheck").prop("checked")) {
-                $("#manySlotCheck").prop("checked", false);
-                console.log("Clicked")
-            }
-            console.log("Value of check box is: " + $("#manySlotCheck").prop("checked"))
-            $("#divCheckbox").hide();
-        } else {
-            $("#divCheckbox").show();
+    slotDate=$("#slotDate").val()
+    $("#slotDate").on("change", function () {
+        var date=new Date($(this).val());
+        var current=new Date()
+        console.log(date);
+        if(date<current){
+            $(this).val(slotDate)
         }
-    }
-})
+        slotDate=$(this).val();
+        if (currentEventIsMultiSlot == 1) {
+            if (selectedDate != $("#slotDate").val()) {
+                console.log($("#manySlotCheck").prop("checked"))
+                if ($("#manySlotCheck").prop("checked")) {
+                    $("#manySlotCheck").prop("checked", false);
+                    console.log("Clicked")
+                }
+                console.log("Value of check box is: " + $("#manySlotCheck").prop("checked"))
+                $("#divCheckbox").hide();
+            } else {
+                $("#divCheckbox").show();
+            }
+        }
+    })
 
-$("#txtTitle").on('change', function () {
-    onClickShowWarningPopup(WARNING_STATUS, TYPE_WARNING);
-})
-
-
-$("#editEventIsChecked").on('change', function () {
-    if (selectedStatus == $("#editEventIsChecked").prop('checked')) {
+    $("#txtTitle").on('change', function () {
         onClickShowWarningPopup(WARNING_STATUS, TYPE_WARNING);
-    }
-})
+    })
 
 
-$("#btnBack").on("click", function () {
-    window.location.href = contextPath + SCHEDULE_URL;
-})
+    $("#editEventIsChecked").on('change', function () {
+        if (selectedStatus == $("#editEventIsChecked").prop('checked')) {
+            onClickShowWarningPopup(WARNING_STATUS, TYPE_WARNING);
+        }
+    })
 
-$("#btnSave").on("click", function updateEvent(e) {
-    e.preventDefault();
-    if (currentEventIsMultiSlot == 1) {
-        console.log("Current event is many slot");
-        if ($("#manySlotCheck").prop("checked")) {
-            checkConductorForClass();
-            checkRoomForClass();
-            if (CONDUCTOR_IS_AVAILABLE == 0 || ROOM_IS_AVAILABLE == 0) {
-                $("#confirmModal").modal("show");
+
+    $("#btnBack").on("click", function () {
+        window.location.href = contextPath + SCHEDULE_URL;
+    })
+
+
+
+    $("#btnSave").on("click", function updateEvent(e) {
+        e.preventDefault();
+        if (currentEventIsMultiSlot == 1) {
+            console.log("Current event is many slot");
+            if ($("#manySlotCheck").prop("checked")) {
+                checkConductorForClass();
+                checkRoomForClass();
+                if (CONDUCTOR_IS_AVAILABLE == 0 || ROOM_IS_AVAILABLE == 0) {
+                    $("#confirmModal").modal("show");
+                }
+                else {
+                    updateRepeatEvent();
+                }
+            }else{
+                updateSingleEvent();
             }
-            else {
-                updateRepeatEvent();
-            }
-        }else{
+
+
+        } else if (currentEventIsMultiSlot == 0) {
+            console.log("Current event is one slot");
             updateSingleEvent();
         }
 
+    })
 
-    } else if (currentEventIsMultiSlot == 0) {
-        console.log("Current event is one slot");
-        updateSingleEvent();
-    }
+    $("#btnContinous").on("click", function () {
+        updateErrorRepeatEvent();
+    })
+    currentStart=$("#startTime").val()
+    currentEnd=$("#endTime").val();
+    $("#startTime").on("change",function(){
+        if(parseInt($('#startTime').children(":selected").attr('id'))>=parseInt($("#endTime").children(":selected").attr('id'))){
+      ;
+            $(this).val(currentStart)
+        }
+        currentStart=$(this).val();
+    })
+
+    $("#endTime").on("change",function(){
+        if(parseInt($('#startTime').children(":selected").attr('id'))>=parseInt($("#endTime").children(":selected").attr('id'))){
+            $(this).val(currentEnd)
+        }
+        currentEnd=$(this).val();
+    })
 
 })
 
-// $("#oneSlot").on("click", function () {
-//     updateSingleEvent();
-// })
-$("#btnContinous").on("click", function () {
-    updateErrorRepeatEvent();
-})
 
 function inputEditEventInformation() {
     console.log(slotDate)
@@ -564,62 +591,4 @@ function updateErrorRepeatEvent() {
     })
 
 }
-
-
-
-$("#startTime").on("change", function () {
-    $("#editForm").validate()
-})
-
-$("#endTime").on("change", function () {
-    $("#editForm").validate()
-})
-
-
-var checkTime = function (startTime, endTime) {
-    var sTime = new Date(startTime);
-    var eTime = new Date(endTime);
-
-    if (eTime < sTime) {
-        return true
-    }
-}
-
-
-jQuery.validator.addMethod("checkTime", function (value, element) {
-
-    return checkTime($('#startTime').val(), $("#endTime").val());
-}, "Thời gian bắt đầu phải sớm hơn thời gian kết thúc");
-
-
-$("#slotDate").validate({
-    rules: {
-        // startTime: {
-        //     checkTime: true
-        // },
-        // endTime: {
-        //     checkTime: true
-        // },
-        slotDate: {isAfterCurrentDate: true}
-    },
-    messages: {
-        // startTime: "Thời gian bắt đầu phải sớm hơn thời gian kết thúc",
-        // endTime: "Thời gian kết thúc phải sau thời gian bắt đầu",
-        slotDate: "Phải sau ngày hiện tại"
-    }
-})
-
-
-var isAfterCurrentDate = function () {
-    var curDate = new Date();
-    console.log(curDate)
-    selectedDate = new Date($("#slotDate").val());
-    console.log(selectedDate)
-    console.log(selectedDate > curDate)
-    return selectedDate > curDate
-
-};
-jQuery.validator.addMethod("isAfterCurrentDate", function () {
-    return isAfterCurrentDate();
-});
 
