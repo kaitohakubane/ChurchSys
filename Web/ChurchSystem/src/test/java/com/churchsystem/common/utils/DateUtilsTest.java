@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,10 +47,13 @@ public class DateUtilsTest {
 
     String date = "2005-08-25";
 
+
+    Time time = new Time(Calendar.getInstance().getTimeInMillis());
+
     @Test
     public void getCurrentDate() throws Exception {
         Date currentDate = new Date(GregorianCalendar.getInstance().getTimeInMillis());
-        assertEquals(currentDate, DateUtils.getCurrentDate());
+        assertEquals(currentDate.getTime(), DateUtils.getCurrentDate().getTime(),1000);
     }
 
     @Test
@@ -149,10 +154,30 @@ public class DateUtilsTest {
 
     @Test
     public void parseStringToTime() throws Exception {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm");
+        java.util.Date test = Calendar.getInstance().getTime();
+        long ms = test.getTime();
+        Time t = new Time(ms);
+        assertEquals(t.getTime(), time.getTime(),1000);
     }
 
     @Test
     public void getEndTimeFromRange() throws Exception {
+        String startTimeStr = time.toString();
+        String hour = startTimeStr.split(UtilsConstant.TIME_DELIMETER)[UtilsConstant.ZERO];
+        Integer intVal = Integer.parseInt(hour);
+        intVal = intVal + 2;
+        String resultString = intVal.toString();
+        if (intVal < UtilsConstant.TEN) {
+            resultString = "0" + resultString;
+        }
+
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startTimeStr);
+        stringBuilder.replace(UtilsConstant.ZERO, UtilsConstant.TWO, resultString);
+        Time endTime = DateUtils.parseStringToTime(stringBuilder.toString());
+        assertEquals(endTime, DateUtils.getEndTimeFromRange(time, 2));
     }
 
 }
