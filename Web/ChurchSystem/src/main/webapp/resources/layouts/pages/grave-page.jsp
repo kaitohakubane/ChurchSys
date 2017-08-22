@@ -61,6 +61,10 @@
                                         <i class="fa fa-square"></i>
                                         <span>Chưa được xét</span>
                                     </li>
+                                    <li style="color: #f243b5">
+                                        <i class="fa fa-square"></i>
+                                        <span>Có đơn chờ duyệt</span>
+                                    </li>
                                     <li style="color: #01ff70">
                                         <i class="fa fa-square"></i>
                                         <span>Đã khởi tạo</span>

@@ -16,20 +16,27 @@ Open Browser To Server Page
 
 Test case 1 Guest
     Open Browser To Server Page
+    Sleep           8
     Input Text      pac-input       ${SEACH_LOCATION}
+    Sleep           2
     Press Key       pac-input       \\13
+    Sleep           1
     Wait Until Page Contains Element        1
-    Set Selenium Implicit Wait      5
+    Sleep           8
     Click Button       1
+    Sleep           10
     Click Element       xpath=/html/body/div[2]/div/div[2]/div/ul/li[1]/a
-    Set Selenium Implicit Wait      10
+    Sleep           10
     Click Element       xpath=/html/body/div[2]/div/div[2]/div/ul/li[3]/a
-    Set Selenium Implicit Wait      5
+    Sleep           10
     Click Element       xpath=/html/body/div[2]/div/div[2]/div/ul/li[4]/a
-    Set Selenium Implicit Wait      5
+    Sleep           10
     Click Element       xpath=/html/body/div[2]/div/div[2]/div/ul/li[5]/a
-    Set Selenium Implicit Wait      5
+    Sleep           10
     Click Element       xpath=/html/body/div[2]/div/div[2]/div/ul/li[6]/a
-    Set Selenium Implicit Wait      5
+    Execute JavaScript      window.scrollTo(0, 600)
+    Execute JavaScript      window.scrollTo(0, 00)
+    Sleep           10
     Click Element       xpath=/html/body/div[2]/div/div[2]/div/ul/li[8]/a
+    Sleep           10
     [Teardown]     Close Browser

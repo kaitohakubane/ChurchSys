@@ -522,7 +522,7 @@ function initialDetailContext(e) {
         })
 
         rejectBtn = $("#detailReject");
-        rejectBtn.html("Hủy");
+        rejectBtn.html("Xong");
         rejectBtn.unbind("click");
         rejectBtn.bind("click", function () {
             $("#detailContext").fadeOut();
