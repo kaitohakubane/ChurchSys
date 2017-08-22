@@ -192,7 +192,7 @@ function getCurrentPosition(map, isGetChurch) {
 
 
 function createMarker(latlng, churchId, churchName, address, tel, startTime, endTime, streamLink, streamName, varStatus, isFollowed) {
-    var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
+    var html = "<b class='info-txt'>" + churchName + "</b> <div class='info-txt'>" + address + "</div><div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ hoạt động : " +
         startTime + " - " + endTime + "</div>";
     var markerIcon = image;
     if (!(streamLink == null || streamLink == "")) {
@@ -225,7 +225,7 @@ function createMarker(latlng, churchId, churchName, address, tel, startTime, end
     });
 
     var sidebarHTML = "<div class='church-name'>" + churchName + "</div> <div class='address'>" + address + "</div>" +
-        "<div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ lễ : " +
+        "<div class='info-txt'> Phone number : " + tel + "</div>" + "<div class='info-txt'>Giờ hoạt động : " +
         startTime + " - " + endTime + "</div>" +
         "<div class='btnDiv'><a href='#' class='change-color'><i class='fa fa-star fa-lg' onclick='changeColor(this)' data-id=" + churchId + " data-follow=" + isFollowed + "></i></a>" +
         "<button class='churchBtn' id=" + churchId + " onclick='gotoChurchPage(this)' >Main Page </button></div>";

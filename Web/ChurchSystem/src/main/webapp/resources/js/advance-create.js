@@ -237,7 +237,7 @@ function advanceCreate(typeString) {
         success: function (res) {
             var result = res;
             console.log(result);
-
+            window.location.href=contextPath+"/manager/schedule";
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('Error happen')
