@@ -889,8 +889,8 @@ public class EventController {
     public ModelAndView loadAdvanceCreate(@RequestParam(value = ParamConstant.DATE) String date) {
         ModelAndView modelAndView = new ModelAndView(PageConstant.ADVANCE_CREATE_PAGE);
         modelAndView.addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour())
-                .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCategoryList())
-                .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedSubject())
+                .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getEventCateList())
+                .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getDisplayedEvent())
                 .addObject(ParamConstant.SLOT_HOUR_LIST, slotServiceInterface.getListOfSlotHour())
                 .addObject(ParamConstant.SLOT_DATE, date);
         return modelAndView;

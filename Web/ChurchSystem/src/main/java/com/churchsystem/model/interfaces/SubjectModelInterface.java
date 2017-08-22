@@ -13,5 +13,7 @@ public interface SubjectModelInterface {
 
     SubjectEntity getSubjectById(int subId);
 
+    List<DisplayedSubjectEntity> getDisplayedEvent();
+
     List<DisplayedSubjectEntity> getDisplayedClass();
 }

@@ -49,6 +49,7 @@
                                     <th>ID</th>
                                     <th>Tên phòng</th>
                                     <th>Trạng thái</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,7 +57,22 @@
                                     <tr>
                                         <td>${item.roomId}</td>
                                         <td>${item.roomName}</td>
-                                        <td>${item.roomStatus}</td>
+                                        <c:if test="${item.roomStatus == 1}">
+                                            <td>Bình thường</td>
+                                        </c:if>
+                                        <c:if test="${item.roomStatus == 0}">
+                                            <td>Không hoạt động</td>
+                                        </c:if>
+                                        <td>
+                                        <button type="button" id="btnEdit${item.roomId}"
+                                                data-id="${item.roomId}"
+                                                class="btn btn-warning event-approve">Sửa
+                                        </button>
+                                        <button type="button" id="btnRemove${item.roomId}"
+                                                data-id="${item.roomId}"
+                                                class="btn btn-danger event-reject">Xóa
+                                        </button>
+                                    </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

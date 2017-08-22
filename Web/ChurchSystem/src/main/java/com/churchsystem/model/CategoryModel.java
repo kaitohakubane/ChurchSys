@@ -26,9 +26,19 @@ public class CategoryModel extends CommonDAO implements CategoryModelInterface {
     }
 
     @Override
+    public List<CategoryEntity> getEventCateList(){
+        Criteria criteria = getSession().createCriteria(CategoryEntity.class)
+                .add(Restrictions.lt("categoryId",ParamConstant.FIVE))
+                .add(Restrictions.ne("categoryId",ParamConstant.NOT_FIRST_EVENT_CATEGORY_ID));
+        List<CategoryEntity> result = criteria.list();
+        return result;
+    }
+
+    @Override
     public List<CategoryEntity> getClassCategoryList() {
         Criteria criteria = getSession().createCriteria(CategoryEntity.class).
-                add(Restrictions.lt("categoryId", ParamConstant.TWELVE)).add(Restrictions.gt("categoryId", ParamConstant.FIVE));
+                add(Restrictions.lt("categoryId", ParamConstant.TWELVE))
+                .add(Restrictions.gt("categoryId", ParamConstant.FIVE));
         List<CategoryEntity> result = criteria.list();
         return result;
     }

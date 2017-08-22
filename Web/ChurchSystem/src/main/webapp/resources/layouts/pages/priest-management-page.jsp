@@ -52,6 +52,7 @@
                                     <th>SĐT</th>
                                     <th>Chứng chỉ</th>
                                     <th>Email</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -63,6 +64,16 @@
                                         <td>${item.tel}</td>
                                         <td>${item.certificate}</td>
                                         <td>${item.email}</td>
+                                        <td>
+                                            <button type="button" id="btnEdit${item.roomId}"
+                                                    data-id="${item.roomId}"
+                                                    class="btn btn-warning event-approve">Sửa
+                                            </button>
+                                            <button type="button" id="btnRemove${item.roomId}"
+                                                    data-id="${item.roomId}"
+                                                    class="btn btn-danger event-reject">Xóa
+                                            </button>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
