@@ -66,8 +66,8 @@ public class CalendarAPI {
 
         event.setColorId(UtilsConstant.GOOGLE_CALENDAR_EVENT_CORLOR_ID);
         String calendarId = "primary";
-        String eventId = StringUtils.formatForLeadingZero(id, UtilsConstant.GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID);
-        event.setId(eventId);
+//        String eventId = StringUtils.formatForLeadingZero(id, UtilsConstant.GOOGLE_CALENDAR_EVENT_PADDING_SIZE_ID);
+//        event.setId(eventId);
         event = calendar.events().insert(calendarId, event).execute();
         return event.getHtmlLink();
     }

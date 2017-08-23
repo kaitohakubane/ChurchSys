@@ -113,7 +113,7 @@
     <div class="" style="width: 300px;">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h4>Event Detail</h4>
+                <h4>Thông tin chi tiết</h4>
                 <div class="clearfix"></div>
             </div>
             <div class="panel-body">
