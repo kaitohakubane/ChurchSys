@@ -135,6 +135,10 @@ public class PageConstant {
     public static final String USER_DASHBOARD_URL = "/user/dashboard";
     public static final String FOLLOW_ACTION = "/follow-action";
 
+    // Chat
+    public static final String MANAGER_CONTACT_URL="/manager/contact";
+    public static final String USER_CHAT_URL="/user/chat";
+
     // Validate
     public static final String GOOGLE_VALIDATE_URL = "/manager/google/Validate";
 
@@ -237,5 +241,6 @@ public class PageConstant {
     public static final String BIBLE_PAGE = "/info-page/bible-page";
     public static final String AUGUST_PAGE = "/info-page/august-page";
 
-
+    //Chat
+    public static final String MANAGER_CONTACT_PAGE="/manager-contact-page";
 }
