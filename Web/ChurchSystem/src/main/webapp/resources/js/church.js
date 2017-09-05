@@ -11,9 +11,9 @@ $(document).ready(function () {
     });
 
     $('ul li.dropdown').hover(function () {
-        $(this).find('.abc').stop(true, true).delay(200).fadeIn(200);
+        $(this).find('.online').stop(true, true).delay(200).fadeIn(200);
     }, function () {
-        $(this).find('.abc').stop(true, true).delay(200).fadeOut(200);
+        $(this).find('.online').stop(true, true).delay(200).fadeOut(200);
     });
 
     $("#menu-toggle").click(function(e) {

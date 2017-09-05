@@ -17,6 +17,15 @@
             <li><a href="${pageContext.request.contextPath}/church?churchId=${param.churchId}">Tin tức</a></li>
             <li><a href="${pageContext.request.contextPath}/church/schedule?churchId=${param.churchId}">Sự kiện</a></li>
             <li><a href="${pageContext.request.contextPath}/church/class?churchId=${param.churchId}">Lớp giáo lý</a></li>
+            <li class="dropdown list-category">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    </i>Học giáo lý <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu mega-dropdown-menu online" style="min-width: 128px">
+                    <li><a href="#">Bài học</a></li>
+                    <li><a href="#">Bài giảng</a></li>
+                </ul>
+            </li>
             <li><a href="${pageContext.request.contextPath}/church/pray?churchId=${param.churchId}">Cầu nguyện</a></li>
             <li><a href="${pageContext.request.contextPath}/church/contact?churchId=${param.churchId}">Liên hệ</a></li>
             <li><a href="${pageContext.request.contextPath}/church/donation?churchId=${param.churchId}">Đóng góp</a></li>
