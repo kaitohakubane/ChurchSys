@@ -136,6 +136,21 @@
                         </li>
                     </ul>
                 </li>
+
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
+                       aria-expanded="false">
+                        <i class="fa fa-commenting-o"></i>
+                        <span id="numberOfMessage" class="badge bg-green"></span>
+                    </a>
+                    <ul id="message" class="dropdown-menu list-unstyled msg_list" role="menu"
+                        style="max-height: 350px;overflow: auto">
+                        <li>
+
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
     </div>
