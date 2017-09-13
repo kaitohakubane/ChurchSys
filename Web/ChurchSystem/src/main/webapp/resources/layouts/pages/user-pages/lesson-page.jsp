@@ -27,7 +27,7 @@
             color: #fff;
             text-align: center;
             font-size: 22px;
-            padding: 9px;
+            padding: 9px 100px;
         }
         .list-bottom{
             height: 40px;
@@ -93,7 +93,11 @@
     <div class="row">
         <div class="col-md-4">
             <div class="list-heading">
-                <p>Danh sách bài học</p>
+                <select class="form-control" id="category">
+                    <option value="">Giáo lý hôn nhân</option>
+                    <option value="">Giáo lý nghĩa sĩ</option>
+                    <option value="">Giáo lý dự tòng</option>
+                </select>
             </div>
             <div class="lesson-list">
                 <ul class="list-lesson-name">
