@@ -18,74 +18,6 @@
     <title>Lecture Page</title>
     <c:import url="/resources/layouts/user-common/header.jsp"/>
 
-
-    <style>
-        .list-heading{
-            height: 50px;
-            background: #616e82;
-            border-radius: 8px 8px 0 0;
-            color: #fff;
-            text-align: center;
-            font-size: 22px;
-            padding: 9px;
-        }
-        .list-bottom{
-            height: 40px;
-            background: #616e82;
-            border-radius: 0px 0px 8px 8px;
-        }
-        .lecture-list {
-            background: #eee;
-            height: 500px;
-            overflow: auto;
-        }
-        .lecture-list::-webkit-scrollbar{
-            width: 8px;
-        }
-        .lecture-list::-webkit-scrollbar-thumb{
-            border-radius: 5px;
-            background: #e8e8e8;
-        }
-        .lecture-list ul {
-            padding: 0px;
-        }
-        .lecture-list ul li {
-            list-style: none;
-            padding: 10px 15px;
-        }
-        .lecture-list li:hover {
-            background: #ccc;
-        }
-        .active-lecture {
-            background: #ccc;
-        }
-        .lecture-list ul li .name {
-            font-size: 20px;
-            color: #333;
-        }
-        .lecture-name{
-            height: 50px;
-            background: #616e82;
-            border-radius: 8px 8px 0 0;
-            color: #fff;
-            text-align: center;
-            font-size: 22px;
-            padding: 9px;
-        }
-        .videoWrapper-lecture {
-            position: relative;
-            padding-bottom: 62%;
-            padding-top: 35px;
-            height: 0;
-        }
-        .videoWrapper-lecture iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 <body>
 <c:import url="/resources/layouts/user-common/user-header.jsp"/>
@@ -101,7 +33,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <div class="list-heading">
+            <div class="list-heading-lecture">
                 <p>Danh sách bài học</p>
             </div>
             <div class="lecture-list">

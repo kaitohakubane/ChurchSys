@@ -18,65 +18,6 @@
     <title>Lesson Page</title>
     <c:import url="/resources/layouts/user-common/header.jsp"/>
 
-
-    <style>
-        .list-heading{
-            height: 50px;
-            background: #616e82;
-            border-radius: 8px 8px 0 0;
-            color: #fff;
-            text-align: center;
-            font-size: 22px;
-            padding: 9px 100px;
-        }
-        .list-bottom{
-            height: 40px;
-            background: #616e82;
-            border-radius: 0px 0px 8px 8px;
-        }
-        .lesson-list {
-            background: #eee;
-            height: 500px;
-            overflow: auto;
-        }
-        .lesson-list::-webkit-scrollbar{
-            width: 8px;
-        }
-        .lesson-list::-webkit-scrollbar-thumb{
-            border-radius: 5px;
-            background: #e8e8e8;
-        }
-        .lesson-list ul {
-            padding: 0px;
-        }
-        .lesson-list ul li {
-            list-style: none;
-            padding: 10px 15px;
-        }
-        .lesson-list li:hover {
-            background: #ccc;
-        }
-        .active-lesson {
-            background: #ccc;
-        }
-        .lesson-list ul li .name {
-            font-size: 20px;
-            color: #333;
-        }
-        .lesson-name{
-            height: 50px;
-            background: #616e82;
-            border-radius: 8px 8px 0 0;
-            color: #fff;
-            text-align: center;
-            font-size: 22px;
-            padding: 9px;
-        }
-        .lesson-content {
-            padding: 15px;
-            background: #eee;
-        }
-    </style>
 </head>
 <body>
 <c:import url="/resources/layouts/user-common/user-header.jsp"/>
@@ -92,7 +33,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <div class="list-heading">
+            <div class="list-heading-lesson">
                 <select class="form-control" id="category">
                     <option value="">Giáo lý hôn nhân</option>
                     <option value="">Giáo lý nghĩa sĩ</option>
