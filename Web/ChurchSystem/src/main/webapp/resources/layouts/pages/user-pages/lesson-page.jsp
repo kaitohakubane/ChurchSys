@@ -34,27 +34,21 @@
     <div class="row">
         <div class="col-md-4">
             <div class="list-heading-lesson">
-                <select class="form-control" id="category">
-                    <option value="">Giáo lý hôn nhân</option>
-                    <option value="">Giáo lý nghĩa sĩ</option>
-                    <option value="">Giáo lý dự tòng</option>
-                </select>
+                <p>Danh sách bài học</p>
             </div>
             <div class="lesson-list">
-                <ul class="list-lesson-name">
-                    <li>
-                        <a href="#">
-                            <div class="name">
-                                <span>Bài 1 - Bài học về đạo lý</span>
-                            </div>
-                        </a>
+                <ul class="nav nav-list">
+                    <li class="subject-name"><label class="tree-toggle nav-header"><i class="fa fa-th-list" aria-hidden="true"></i> Giáo lý dự tòng</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> Link</a></li>
+                            <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> Link</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="#">
-                            <div class="name">
-                                <span>Bài 2 - Bài học về thiên chúa</span>
-                            </div>
-                        </a>
+                    <li class="subject-name"><label class="tree-toggle nav-header"><i class="fa fa-th-list" aria-hidden="true"></i> Giáo lý dự trưởng</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> Link</a></li>
+                            <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> Link</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

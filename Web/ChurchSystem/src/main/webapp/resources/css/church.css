@@ -398,7 +398,7 @@ ul.class-list-title{
     color: #fff;
     text-align: center;
     font-size: 22px;
-    padding: 9px 100px;
+    padding: 9px;
 }
 .list-bottom{
     height: 40px;
@@ -415,23 +415,24 @@ ul.class-list-title{
 }
 .lesson-list::-webkit-scrollbar-thumb{
     border-radius: 5px;
-    background: #e8e8e8;
+    background: #999;
 }
-.lesson-list ul {
-    padding: 0px;
-}
-.lesson-list ul li {
-    list-style: none;
+.lesson-list ul li.subject-name{
+    border-bottom: 1px solid #d3d3d3;
     padding: 10px 15px;
 }
-.lesson-list li:hover {
+.nav>li>a:hover,.nav>li>a:focus{
     background: #ccc;
 }
 .active-lesson {
     background: #ccc;
 }
-.lesson-list ul li .name {
+.lesson-list ul li.subject-name {
     font-size: 20px;
+    color: #333;
+}
+li.subject-name ul li a{
+    font-size: 18px;
     color: #333;
 }
 .lesson-name{
