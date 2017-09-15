@@ -39,7 +39,7 @@
                                 <input class="form-control" id="managerId" placeholder="Username" name="accountId" type="text" autofocus>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="password" placeholder="Password" name="password" type="password">
+                                <input class="form-control" id="password" placeholder="Password" name="password" type="password" value="Abcd1234">
                             </div>
                             <div class="checkbox">
                                 <label>

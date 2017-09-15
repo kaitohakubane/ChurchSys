@@ -16,4 +16,5 @@ public interface SubjectServiceInterface {
     SubjectEntity getSubjectById(int subId);
 
     List<DisplayedSubjectEntity> getDisplayedClass();
+    List<DisplayedSubjectEntity> getSubjectforLesson();
 }

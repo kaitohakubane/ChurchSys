@@ -320,5 +320,18 @@ public class SQLParamConstant {
     public static final String GET_GRAVE_OF_CHURCH = "SELECT u.userName as userName, g.identity as userIdentity, g.phone as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM (SELECT gr.* FROM grave gr , graveyard y WHERE gr.graveYardId = y.graveYardId AND y.churchId =:churchId) g LEFT JOIN user u ON g.userId = u.userId ";
 
     public static final String GET_LIST_GRAVE = "SELECT u.userName as userName, g.identity as userIdentity, g.phone as tel, g.graveId as graveId, g.graveYardId as graveYardId, g.userId as userId, g.name as name, g.birthDay as birthDay, g.image as image, g.deathDay as deathDay, g.homeTown as homeTown, g.parish as parish, g.x as x, g.y as y, g.status as status FROM grave g LEFT JOIN user u ON g.userId = u.userId WHERE g.graveYardId =:graveYardId ";
+
     public static final String REMOVE_GRAVE = "DELETE FROM grave WHERE graveId =:graveId";
+
+    public static final String GET_LESSON_OF_CHURCH = "select l.title as title, l.description as description, s.subName as subName " +
+            "from lesson l, subject s where churchId =:churchId AND l.subId = s.subId";
+
+    public static final String GET_ALL_LESSON = "select l.lessonId as lessonId, l.title as title, l.description as description, l.subId as subId, " +
+            "l.churchId as churchId, s.categoryId as categoryId, c.categoryName as categoryName from Lesson l, Subject s, Category c Where s.categoryId = c.categoryId AND l.subId = s.subId and l.churchId =:churchId";
+
+    public static final String GET_SUBJECT_FOR_LESSON = "SELECT s.subId as subId, s.subName as subName," +
+            " s.categoryId as categoryId " +
+            "FROM subject s, category c " +
+            "WHERE s.categoryId = c.categoryId AND c.categoryId >5  AND c.categoryId <12 ";
+
 }

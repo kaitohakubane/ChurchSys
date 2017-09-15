@@ -16,4 +16,5 @@ public interface SubjectModelInterface {
     List<DisplayedSubjectEntity> getDisplayedEvent();
 
     List<DisplayedSubjectEntity> getDisplayedClass();
+    List<DisplayedSubjectEntity> getSubjectforLesson();
 }

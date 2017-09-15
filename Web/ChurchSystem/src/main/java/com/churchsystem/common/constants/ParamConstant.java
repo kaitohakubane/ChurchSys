@@ -63,7 +63,7 @@ public class ParamConstant {
     public static final String INCOMING_CLASS = "listIncomingClass";
     public static final String CHURCH_SETTING = "setting";
     public static final String CHURCH_IS_SYNC = "isSync";
-
+    public static final String CHURCH_LESSON = "lesson";
     public static final String USER_DASHBOARD_CLASS = "dashboardClass";
 
     /**
@@ -268,5 +268,11 @@ public class ParamConstant {
     public static final String MANAGER_PHONE = "phone";
     public static final String MANAGER_CERT = "cert";
 
-
+    /**
+     * LESSON
+     */
+    public static final String LESSON_ID = "lessonId";
+    public static final String LESSON_LIST = "lessonlist";
+    public static final String LESSON_TITLE = "title";
+    public static final String LESSON_DESCRIPTION = "description";
 }

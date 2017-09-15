@@ -173,7 +173,12 @@ public class PageConstant {
     public static final String CONTACT_URL = "/church/contact";
     public static final String BIBLE_URL = "/bible";
     public static final String AUGUST_URL = "/calendar/august";
-
+    /**
+     *  LESSON
+     */
+    public static final String LESSON_MANAGEMENT_URL ="/manager/lesson-management";
+    public static final String ADD_LESSON_URL="/manager/lesson-management/add";
+    public static final String VIEW_LESSON_URL="church/lesson";
 
     /**
      * For jsp page constant
@@ -243,4 +248,8 @@ public class PageConstant {
 
     //Chat
     public static final String MANAGER_CONTACT_PAGE="/manager-contact-page";
+    //
+    public static final String ADD_LESSON="/add-lesson";
+    public static final String MANAGER_LESSON_MANAGEMENT_PAGE="/lesson-management-page";
+    public static final String LESSON_PAGE="/user-pages/lesson-page";
 }

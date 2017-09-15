@@ -51,4 +51,11 @@ public class SubjectModel extends CommonDAO implements SubjectModelInterface {
         return result;
     }
 
+    @Override
+    public List<DisplayedSubjectEntity> getSubjectforLesson() {
+        Query query = getSession().createSQLQuery(SQLParamConstant.GET_SUBJECT_FOR_LESSON)
+                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
+        List<DisplayedSubjectEntity> result = query.list();
+        return result;
+    }
 }

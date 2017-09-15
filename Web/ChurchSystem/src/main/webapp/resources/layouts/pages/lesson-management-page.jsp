@@ -53,20 +53,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Nhận biết thiên chú</td>
-                                    <td>Giảng cho người mới vào đạo....</td>
-                                    <td>Giáo lý dự tòng</td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-warning event-approve">Sửa
-                                        </button>
-                                        <button type="button"
-                                                class="btn btn-danger event-reject">Xóa
-                                        </button>
-                                    </td>
-                                </tr>
+                                <c:forEach var="item" items="${lessonlist}">
+                                    <tr>
+                                        <td>${item.title}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.subName}</td>
+
+                                        <td>
+                                            <button type="button" id="btnEdit${item.lessonId}"
+                                                    data-id="${item.lessonId}"
+                                                    class="btn btn-warning event-approve">Sửa
+                                            </button>
+                                            <button type="button" id="btnRemove${item.lessonId}"
+                                                    data-id="${item.lessonId}"
+                                                    class="btn btn-danger event-reject">Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -96,22 +100,44 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên bài học:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <input type="text" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" class="form-control col-md-7 col-xs-12" id="title">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả:</label>
                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" rows="3" id="description"></textarea>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Môn:</label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control" id="category">
+                                    <%--<div class="form-group">--%>
+                                        <%--<label class="control-label col-md-3 col-sm-3 col-xs-12">Môn:</label>--%>
+                                        <%--<div class="col-md-9 col-sm-9 col-xs-12">--%>
+                                            <%--<select class="form-control" id="category">--%>
 
+                                            <%--</select>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                    <div class="col-md-6 form-group left">
+                                        <div class="input-group has-success">
+                                            <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                                            <select class="form-control" id="category">
+                                                <c:forEach items="${categoryList}" var="item">
+                                                    <option value="${item.categoryId}">${item.categoryName}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 form-group right">
+                                        <div class="input-group has-success">
+                                            <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                                            <select class="form-control" id="eventType">
+                                                <c:forEach items="${subjectList}" var="item">
+                                                    <option class="subClass" id="${item.subId}" value="${item.subName}"
+                                                            data-category="${item.categoryId}">${item.subName}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>
@@ -123,7 +149,7 @@
                     <div class="clearfix"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-primary" id="btnOk">Thêm</button>
+                        <button type="button" class="btn btn-primary" id="btnOk">Ok</button>
                     </div>
                 </div>
                 <!-- /Modal content -->
@@ -134,6 +160,7 @@
 <!-- Datatables -->
 <script src="<c:url value="/resources/lib/vendors/datatables.net/js/jquery.dataTables.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"/>"></script>
-
+<script src="<c:url value="/resources/lib/src/js/bootstrap-notify.min.js"/>"></script>
+<script src="<c:url value="/resources/js/lesson.js"/>"></script>
 </body>
 </html>

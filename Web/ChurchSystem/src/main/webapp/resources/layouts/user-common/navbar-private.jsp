@@ -22,7 +22,7 @@
                     </i>Học giáo lý <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu mega-dropdown-menu online" style="min-width: 128px">
-                    <li><a href="#">Bài học</a></li>
+                    <li><a href="${pageContext.request.contextPath}/church/lesson?churchId=${param.churchId}">Bài học</a></li>
                     <li><a href="#">Bài giảng</a></li>
                 </ul>
             </li>
