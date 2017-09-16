@@ -2,15 +2,14 @@ package com.churchsystem.service;
 
 import com.churchsystem.common.constants.ParamConstant;
 import com.churchsystem.common.constants.UtilsConstant;
-import com.churchsystem.entity.ChurchEntity;
-import com.churchsystem.entity.Notification;
-import com.churchsystem.entity.NotificationEntity;
-import com.churchsystem.entity.UserEntity;
+import com.churchsystem.entity.*;
+import com.churchsystem.model.interfaces.ChatModelInterface;
 import com.churchsystem.model.interfaces.ChurchModelInterface;
 import com.churchsystem.model.interfaces.NotificationModelInterface;
 import com.churchsystem.model.interfaces.UserModelInterface;
 import com.churchsystem.service.interfaces.NotificationServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +28,9 @@ public class NotificationService implements NotificationServiceInterface {
 
     @Autowired
     SimpMessagingTemplate messagingTemplate;
+
+    @Autowired
+    ChatModelInterface chatModelInterface;
 
     @Autowired
     UserModelInterface userModelInterface;
@@ -57,7 +59,6 @@ public class NotificationService implements NotificationServiceInterface {
                 "/queue/notify",
                 notification
         );
-
     }
 
     @Override

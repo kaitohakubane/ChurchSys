@@ -35,13 +35,13 @@ public class PageConstant {
     public static final String LOAD_PUBLIC_EVENT_REGISTER_URL = "/church/{id}/schedule/load-event/";
 
     public static final String SCHEDULE_URL = "/manager/schedule";
-    public static final String ADVANCE_CREATE_URL="/manager/advance-create-page";
+    public static final String ADVANCE_CREATE_URL = "/manager/advance-create-page";
     public static final String UPDATED_EVENT = "/manager/event/Updated";
     public static final String UPDATED_SINGLE_EVENT = "/manager/event/update-single-event";
     public static final String UPDATED_REPEAT_EVENT = "/manager/event/update-repeat-event";
     public static final String UPDATED_ERROR_REPEAT_EVENT = "/manager/event/update-error-repeat-event";
 
-    public static final String ADVANCE_CREATE_EVENT_URL ="/manager/event/advance-create";
+    public static final String ADVANCE_CREATE_EVENT_URL = "/manager/event/advance-create";
 
     public static final String CREATE_EVENT_URL = "/manager/event/Add";
     public static final String CHECK_EVENT_URL = "/manager/event/Check";
@@ -72,8 +72,8 @@ public class PageConstant {
     public static final String FINISH_STREAM_URL = "/manager/stream/Finish";
     public static final String REGISTER_STREAM_URL = "/manager/stream/Register";
     public static final String STREAM_INSTRUCTION_URL = "/manager/stream/instruction";
-    public static final String START_OBS="/manager/StartOBS";
-    public static final String STREAM_EVENT="/manager/stream/UpdateEvent";
+    public static final String START_OBS = "/manager/StartOBS";
+    public static final String STREAM_EVENT = "/manager/stream/UpdateEvent";
 
     //Notification
     public static final String STREAM_NOTIFICATION_URL = "/manager/stream/notification";
@@ -136,8 +136,8 @@ public class PageConstant {
     public static final String FOLLOW_ACTION = "/follow-action";
 
     // Chat
-    public static final String MANAGER_CONTACT_URL="/manager/contact";
-    public static final String USER_CHAT_URL="/user/chat";
+    public static final String MANAGER_CONTACT_URL = "/manager/contact";
+    public static final String USER_CHAT_URL = "/user/chat";
 
     // Validate
     public static final String GOOGLE_VALIDATE_URL = "/manager/google/Validate";
@@ -149,21 +149,21 @@ public class PageConstant {
     public static final String GET_GRAVE = "/manager/grave/Get";
     public static final String GENERATE_GRAVE_YARD = "/manager/graveYard/Generate";
     public static final String GENERATE_GRAVE = "/manager/grave/Generate";
-    public static final String REGISTER_GRAVE="/grave/Register";
-    public static final String APPROVE_GRAVE_STATUS="/manager/grave/Approve";
-    public static final String GET_GRAVE_OF_CHURCH="/grave/getGrave";
-    public static final String CREATE_GRAVE_YARD="/manager/graveYard/Create";
-    public static final String UPDATE_GRAVE_YARD="/manager/graveYard/Update";
+    public static final String REGISTER_GRAVE = "/grave/Register";
+    public static final String APPROVE_GRAVE_STATUS = "/manager/grave/Approve";
+    public static final String GET_GRAVE_OF_CHURCH = "/grave/getGrave";
+    public static final String CREATE_GRAVE_YARD = "/manager/graveYard/Create";
+    public static final String UPDATE_GRAVE_YARD = "/manager/graveYard/Update";
 
     //Mobile
     public static final String MOBILE_GET_NOTIFICATION_URL = "/mobile/notification/Get";
     public static final String MOBILE_LOGIN_URL = "/mobile/user/login";
-    public static final String MOBILE_GET_FOLLOWING_CHURCH="/mobile/user/getFollowingChurch";
-    public static final String MOBILE_GET_USER_EVENT="/mobile/user/getEvent";
-    public static final String MOBILE_GET_CHURCH_EVENT="/mobile/church/getEvent";
-    public static final String MOBILE_FOLLOW="/mobile/follow";
-    public static final String MOBILE_GET_CHURCH_INFORMATION="/mobile/church/getInfo";
-    public static final String MOBILE_GET_USER_CLASS="/mobile/user/getClass";
+    public static final String MOBILE_GET_FOLLOWING_CHURCH = "/mobile/user/getFollowingChurch";
+    public static final String MOBILE_GET_USER_EVENT = "/mobile/user/getEvent";
+    public static final String MOBILE_GET_CHURCH_EVENT = "/mobile/church/getEvent";
+    public static final String MOBILE_FOLLOW = "/mobile/follow";
+    public static final String MOBILE_GET_CHURCH_INFORMATION = "/mobile/church/getInfo";
+    public static final String MOBILE_GET_USER_CLASS = "/mobile/user/getClass";
 
     /**
      * Common
@@ -237,7 +237,7 @@ public class PageConstant {
 
     //Grave
     public static final String GRAVE_PAGE = "grave-page";
-    public static final String USER_GRAVE_PAGE="/user-pages/user-grave-page";
+    public static final String USER_GRAVE_PAGE = "/user-pages/user-grave-page";
 
     //Common
     public static final String DONATION_PAGE = "/info-page/donation-page";
@@ -247,9 +247,11 @@ public class PageConstant {
     public static final String AUGUST_PAGE = "/info-page/august-page";
 
     //Chat
-    public static final String MANAGER_CONTACT_PAGE="/manager-contact-page";
-    //
     public static final String ADD_LESSON="/add-lesson";
     public static final String MANAGER_LESSON_MANAGEMENT_PAGE="/lesson-management-page";
     public static final String LESSON_PAGE="/user-pages/lesson-page";
+    public static final String MANAGER_CONTACT_PAGE = "/manager-contact-page";
+    public static final String CHAT_URL = "/common/chat";
+    public static final String LOAD_USER="/chat/loadUser";
+    public static final String LOAD_CHAT_HISTORY="/chat/loadHistory";
 }

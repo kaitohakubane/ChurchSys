@@ -33,6 +33,12 @@
                         ,JSON.parse(notification.body).time,JSON.parse(notification.body).sender);
 
             });
+
+            stompClient.subscribe('/user/queue/chat', function (notification) {
+                if(isChat==true){
+                    chat(JSON.parse(notification.body).message,JSON.parse(notification.body).sender)
+                }
+            });
         });
 
         return;

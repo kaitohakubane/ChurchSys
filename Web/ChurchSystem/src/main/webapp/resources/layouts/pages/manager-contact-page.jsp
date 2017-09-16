@@ -39,23 +39,10 @@
                                 <p>Danh sách liên lạc</p>
                             </div>
                             <div class="conversationsList">
-                                <ul class="list-chatter">
-                                    <li>
-                                        <a href="#">
-                                            <div class="user-photo"><img src="images/img.jpg"></div>
-                                            <div class="name">
-                                                <span>Trần Anh Kiệt</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="user-photo"><img src="images/img.jpg"></div>
-                                            <div class="name">
-                                                <span>Trần Anh Kiệt</span>
-                                            </div>
-                                        </a>
-                                    </li>
+                                <ul class="list-chatter" >
+                                    <li class="chatter" id="" data-name=""> <a href="#" > <div class="user-photo">' +
+                                        <img src=""></div> <div class="name">  +
+                                        <span></span> </div> </a> </li>
                                 </ul>
                             </div>
 
@@ -67,33 +54,21 @@
 
                             <div class="chatter-info">
                                 <div class="chatter-image">
-                                    <img src="images/img.jpg">
+                                    <img src="">
                                 </div>
 
-                                <div class="chatter-name">
-                                    <span>Trần Anh Kiệt</span>
+                                <div class="chatter-name" >
+                                    <span id="chattingUser"></span>
                                 </div>
                             </div>
 
                             <div class="chatbox">
-
-                                <div class="chatlogs">
-                                    <div class="chat self">
-                                        <p class="chat-message">Hello...</p>
-                                    </div>
-
-                                    <div class="chat another">
-                                        <div class="user-photo"><img src="images/img.jpg"></div>
-                                        <p class="chat-message">Hello...</p>
-                                    </div>
-
-                                </div>
-
+                                <div class="chatlogs"></div>
                             </div>
 
                             <div class="chat-form">
-                                <textarea name="" id=""></textarea>
-                                <button><i class="fa fa-paper-plane" aria-hidden="true"><div>Gửi</div></i></button>
+                                <textarea name="" id="chatInput"></textarea>
+                                <button id="sendBtn"><i class="fa fa-paper-plane" aria-hidden="true"><div>Gửi</div></i></button>
                             </div>
 
                         </div>
@@ -108,7 +83,7 @@
                                 <!-- menu profile quick info -->
                                 <div class="profile clearfix">
                                     <div class="profile_pic">
-                                        <img src="images/img.jpg" class="img-circle profile_img dbimg">
+                                        <img src="" class="img-circle profile_img dbimg">
                                     </div>
                                 </div>
                                 <!-- /menu profile quick info -->
@@ -121,28 +96,21 @@
                                         <li class="col-md-12">
                                             <div class="row">
                                                 <p class="col-md-4 col-md-offset-1"><b>Tên:</b></p>
-                                                <p class="col-md-7">Trần Anh Kiệt</p>
-                                            </div>
-                                        </li>
-
-                                        <li class="col-md-12">
-                                            <div class="row">
-                                                <p class="col-md-4 col-md-offset-1"><b>Ngày sinh:</b></p>
-                                                <p class="col-md-7">24-07-1994</p>
+                                                <p class="col-md-7" id="informationName"></p>
                                             </div>
                                         </li>
 
                                         <li class="col-md-12">
                                             <div class="row">
                                                 <p class="col-md-4 col-md-offset-1"><b>Điện thoại:</b></p>
-                                                <p class="col-md-7">0123456789</p>
+                                                <p class="col-md-7" id="informationPhone"></p>
                                             </div>
                                         </li>
 
                                         <li class="col-md-12">
                                             <div class="row">
                                                 <p class="col-md-4 col-md-offset-1"><b>Email:</b></p>
-                                                <p class="col-md-7">kietta@gmail.com</p>
+                                                <p class="col-md-7" id="informationMail" ></p>
                                             </div>
                                         </li>
                                     </ul>
@@ -163,6 +131,10 @@
         <c:import url="/resources/layouts/common/page-footer.jsp"/>
     </div>
 </div>
+<script>
+    var managerId=${userId};
+    var isChat=true;
+</script>
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/js/manager-contact-page.js"/>"></script>
 

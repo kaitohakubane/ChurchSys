@@ -395,7 +395,7 @@ primary key (graveId)
 );
 
 create table ChatMessage(
-  messageId int,
+  messageId int not null auto_increment,
   senderId int,
   receiverId int,
   information text,

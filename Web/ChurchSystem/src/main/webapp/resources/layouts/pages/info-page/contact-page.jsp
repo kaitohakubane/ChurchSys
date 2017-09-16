@@ -48,17 +48,16 @@
                     </div>
 
                     <div class="chat another">
-                        <div class="user-photo"><img src="images/img.jpg"></div>
+                        <div class="user-photo"><img src=""></div>
                         <p class="chat-message">Hello...</p>
                     </div>
-
                 </div>
 
             </div>
 
             <div class="chat-form">
-                <textarea name="" id=""></textarea>
-                <button><i class="fa fa-paper-plane" aria-hidden="true"><div>Gửi</div></i></button>
+                <textarea name="" id="chatInput"></textarea>
+                <button id="sendBtn"><i class="fa fa-paper-plane" aria-hidden="true"><div>Gửi</div></i></button>
             </div>
 
         </div>
@@ -128,7 +127,11 @@
 <c:import url="/resources/layouts/user-common/user-footer.jsp"/>
 
 <c:import url="/resources/layouts/user-common/footer.jsp"/>
-
+<script>
+    var churchId =${param.churchId};
+    var isChat=true;
+</script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
+<script src="<c:url value="/resources/js/contact.js"/>"></script>
 </body>
 </html>

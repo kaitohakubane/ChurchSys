@@ -20,9 +20,9 @@ $(document).ready(function () {
     $("#streamOption").on("click", function () {
         post(contextPath + STREAM_URL)
     })
-
     loadNotification()
 })
+
 function notify(information, link, time, sender) {
     $("#notification").prepend("<li> <a href='" + contextPath + link + "'> <span> " + sender + " </span> <span class='message'> " + information +
         " </span> <span>" + time + " </span></span></span> </a> </li>")
@@ -35,6 +35,17 @@ function notify(information, link, time, sender) {
     }
 }
 
+function chatAlert(message, sender,senderName) {
+    $("#message").prepend("<li> <a href='" + contextPath + "/manager/contact?accountId="+sender+"'> <span> " + senderName + " </span> <span class='message'> " + message +
+        " </span> </span></span> </a> </li>")
+
+    var count = $("#numberOfNoti").html();
+    if (count == null || count == "") {
+        $("#numberOfMessage").html("1")
+    } else {
+        $("#numberOfMessage").html(parseInt(count) + 1);
+    }
+}
 
 function eventRegisterPopup(e, popup) {
     console.log("popup")
