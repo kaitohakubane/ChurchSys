@@ -402,6 +402,34 @@ create table ChatMessage(
   primary key (messageId)
 );
 
+create table Lecture(
+  lectureId int not null auto_increment,
+  title nvarchar(50),
+  description nvarchar(255),
+  linkvideo nvarchar(255),
+  churchId int,
+  primary key (lectureId)
+);
+
+create table Lesson(
+  lessonId int not null auto_increment,
+  title nvarchar(50),
+  description longtext,
+  subId int,
+  churchId int,
+  primary key (lessonId)
+);
+
+alter table ChatMessage add foreign key(senderId) references user(userId);
+
+alter table ChatMessage add foreign key(receiverId) references user(userId);
+
+alter table lecture add foreign key(churchId) references church(churchId);
+
+alter table lesson add foreign key(churchId) references church(churchId);
+
+alter table lesson add foreign key(subId) references subject(subId);
+
 alter table post add foreign key (churchId) references church(churchId);
 
 alter table graveYard add foreign key (churchId) references church(churchId);
