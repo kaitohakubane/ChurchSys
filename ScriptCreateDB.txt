@@ -394,6 +394,14 @@ primary key (graveId)
 
 );
 
+create table ChatMessage(
+  messageId int,
+  senderId int,
+  receiverId int,
+  information text,
+  primary key (messageId)
+);
+
 alter table post add foreign key (churchId) references church(churchId);
 
 alter table graveYard add foreign key (churchId) references church(churchId);
