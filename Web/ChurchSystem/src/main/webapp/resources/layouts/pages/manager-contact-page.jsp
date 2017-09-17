@@ -44,7 +44,7 @@
                                     <c:if test="${ not empty chatter}">
                                         <li class="chatter" id="${chatter.accountId}" data-name="${chatter.userName}"><a
                                                 href="#">
-                                            <div class="user-photo"><img src=""></div>
+                                            <div class="user-photo"><img src="${pageContext.request.contextPath}/resources/img/user.png"></div>
                                             <div class="name"><span>${chatter.userName}</span></div>
                                         </a></li>
                                     </c:if>
@@ -59,7 +59,7 @@
 
                             <div class="chatter-info">
                                 <div class="chatter-image">
-                                    <img src="">
+                                    <img src="${pageContext.request.contextPath}/resources/img/user.png">
                                 </div>
 
                                 <div class="chatter-name">
@@ -92,7 +92,7 @@
                                 <!-- menu profile quick info -->
                                 <div class="profile clearfix">
                                     <div class="profile_pic">
-                                        <img src="" class="img-circle profile_img dbimg">
+                                        <img src="${pageContext.request.contextPath}/resources/img/user.png" class="img-circle profile_img dbimg">
                                     </div>
                                 </div>
                                 <!-- /menu profile quick info -->

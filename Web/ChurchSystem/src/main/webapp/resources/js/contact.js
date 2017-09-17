@@ -28,7 +28,7 @@ function generalInitial() {
         if (e.senderId == accountId) {
             $(".chatlogs").append('<div class="chat self"> <p class="chat-message">' + e.information + '</p> </div>');
         } else {
-            $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src="/resources/img/user.png"></div> ' +
+            $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src="'+contextPath+'/resources/img/icon.png"></div> ' +
                 '<p class="chat-message">' + e.information + '</p> </div>');
         }
     })
@@ -56,7 +56,7 @@ function loadChatHistory() {
 }
 
 function chat(message,sender) {
-    $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src=/resources/img/user.png"></div> <p class="chat-message">'+message+'</p> </div>');
+    $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src="'+contextPath+'/resources/img/icon.png"></div> <p class="chat-message">'+message+'</p> </div>');
 }
 
 function sendServerMessage(message) {
