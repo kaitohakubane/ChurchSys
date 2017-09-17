@@ -39,7 +39,7 @@ function chatAlert(message, sender,senderName) {
     $("#message").prepend("<li> <a href='" + contextPath + "/manager/contact?accountId="+sender+"'> <span> " + senderName + " </span> <span class='message'> " + message +
         " </span> </span></span> </a> </li>")
 
-    var count = $("#numberOfNoti").html();
+    var count = $("#numberOfMessage").html();
     if (count == null || count == "") {
         $("#numberOfMessage").html("1")
     } else {

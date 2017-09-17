@@ -39,10 +39,15 @@
                                 <p>Danh sách liên lạc</p>
                             </div>
                             <div class="conversationsList">
-                                <ul class="list-chatter" >
-                                    <li class="chatter" id="" data-name=""> <a href="#" > <div class="user-photo">' +
-                                        <img src=""></div> <div class="name">  +
-                                        <span></span> </div> </a> </li>
+
+                                <ul class="list-chatter">
+                                    <c:if test="${ not empty chatter}">
+                                        <li class="chatter" id="${chatter.accountId}" data-name="${chatter.userName}"><a
+                                                href="#">
+                                            <div class="user-photo"><img src=""></div>
+                                            <div class="name"><span>${chatter.userName}</span></div>
+                                        </a></li>
+                                    </c:if>
                                 </ul>
                             </div>
 
@@ -57,18 +62,22 @@
                                     <img src="">
                                 </div>
 
-                                <div class="chatter-name" >
+                                <div class="chatter-name">
                                     <span id="chattingUser"></span>
                                 </div>
                             </div>
 
                             <div class="chatbox">
-                                <div class="chatlogs"></div>
+                                <div class="chatlogs">
+
+                                </div>
                             </div>
 
                             <div class="chat-form">
                                 <textarea name="" id="chatInput"></textarea>
-                                <button id="sendBtn"><i class="fa fa-paper-plane" aria-hidden="true"><div>Gửi</div></i></button>
+                                <button id="sendBtn"><i class="fa fa-paper-plane" aria-hidden="true">
+                                    <div>Gửi</div>
+                                </i></button>
                             </div>
 
                         </div>
@@ -110,7 +119,7 @@
                                         <li class="col-md-12">
                                             <div class="row">
                                                 <p class="col-md-4 col-md-offset-1"><b>Email:</b></p>
-                                                <p class="col-md-7" id="informationMail" ></p>
+                                                <p class="col-md-7" id="informationMail"></p>
                                             </div>
                                         </li>
                                     </ul>
@@ -132,8 +141,8 @@
     </div>
 </div>
 <script>
-    var managerId=${userId};
-    var isChat=true;
+    var managerId =${userId};
+    var isChat = true;
 </script>
 <c:import url="/resources/layouts/common/footer.jsp"/>
 <script src="<c:url value="/resources/js/manager-contact-page.js"/>"></script>

@@ -282,6 +282,6 @@ public class ParamConstant {
     public static final String SENDER_ID = "senderId";
     public static final String RECEIVER_ID = "receiverId";
     public static final String MESSAGE_ID = "messageId";
-    public static final String CHATTER_ID="chatterId";
+    public static final String CHATTER="chatter";
 
 }

@@ -50,7 +50,7 @@
             });
 
             stompClient.subscribe('/user/queue/chat', function (notification) {
-                if(isChat!=undefined){
+                if(typeof isChat !== 'undefined'){
                     chat(JSON.parse(notification.body).message,JSON.parse(notification.body).sender);
                 }else{
                     chatAlert(JSON.parse(notification.body).message,JSON.parse(notification.body).sender,JSON.parse(notification.body).senderName)

@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "chatmessage", schema = "churchsys", catalog = "")
-public class ChatmessageEntity {
+public class ChatmessageEntity implements Comparable<ChatmessageEntity> {
     private int messageId;
     private Integer senderId;
     private Integer receiverId;
@@ -75,5 +75,10 @@ public class ChatmessageEntity {
         result = 31 * result + (receiverId != null ? receiverId.hashCode() : 0);
         result = 31 * result + (information != null ? information.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public int compareTo(ChatmessageEntity o) {
+        return this.getMessageId()-o.getMessageId();
     }
 }

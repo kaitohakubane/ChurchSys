@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -46,7 +48,7 @@ public class ChatController {
         if(accountId!=null){
             entity=userServiceInterface.getUserByAccountId(accountId);
         }
-        modelAndView.addObject(ParamConstant.CHATTER_ID,entity);
+        modelAndView.addObject(ParamConstant.CHATTER,entity);
         return modelAndView;
     }
 
@@ -71,11 +73,24 @@ public class ChatController {
 
     @ResponseBody
     @RequestMapping(value = PageConstant.LOAD_CHAT_HISTORY, method = RequestMethod.POST)
-    public List<ChatmessageEntity> loadChatHistory(@RequestParam(value = ParamConstant.ACCOUNT_ID) String senderId) {
+    public List<ChatmessageEntity> loadChatHistory(@RequestParam(value = ParamConstant.ACCOUNT_ID, required = false) String senderId,
+                                                   @RequestParam(value=ParamConstant.CHURCH_ID,required = false) Integer churchId) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserEntity manager = userServiceInterface.getUserByAccountId(auth.getName());
-        UserEntity sender = userServiceInterface.getUserByAccountId(senderId);
+        UserEntity sender=null;
+        if(senderId!=null){
+             sender = userServiceInterface.getUserByAccountId(senderId);
+        }else{
+            int managerId=userServiceInterface.getChurchManager(churchId);
+            sender=userServiceInterface.getUserByUserId(managerId);
+        }
+
         List<ChatmessageEntity> result = chatServiceInterface.getChatHistory(sender.getUserId(), manager.getUserId());
+        for (ChatmessageEntity temp: chatServiceInterface.getChatHistory(manager.getUserId(),sender.getUserId())) {
+            result.add(temp);
+        }
+
+        Collections.sort(result);
         return result;
     }
 

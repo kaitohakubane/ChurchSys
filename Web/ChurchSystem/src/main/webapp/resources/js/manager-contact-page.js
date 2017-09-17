@@ -9,6 +9,10 @@ var LOAD_CHAT_HISTORY = "/chat/loadHistory";
 var currentUser;
 var chattingUser;
 var chatHistory = [];
+
+
+generalInit();
+
 function activeChatRegister() {
     $('ul.list-chatter > li').click(function (e) {
         e.preventDefault();
@@ -17,7 +21,26 @@ function activeChatRegister() {
     });
 }
 
-sendMessage();
+function generalInit(){
+    $(".chatter").each(function(){
+        activeChatRegister();
+        commonInit();
+        listOfChatter.push($(this).attr('id'))
+        $(this).click();
+        return;
+    })
+    sendMessage();
+
+    $("#chatInput").keypress(function(){
+        var key=window.event.keyCode;
+        if(key===13){
+            $(".chatlogs").append('<div class="chat self"> <p class="chat-message">' + $('#chatInput').val() + '</p> </div>');
+            sendServerMessage($('#chatInput').val(),currentUser.accountId)
+            $('#chatInput').val('');
+        }
+    })
+}
+
 function sendMessage() {
     $("#sendBtn").on("click", function () {
         $(".chatlogs").append('<div class="chat self"> <p class="chat-message">' + $('#chatInput').val() + '</p> </div>');

@@ -43,14 +43,6 @@
             <div class="chatbox">
 
                 <div class="chatlogs">
-                    <div class="chat self">
-                        <p class="chat-message">Hello...</p>
-                    </div>
-
-                    <div class="chat another">
-                        <div class="user-photo"><img src=""></div>
-                        <p class="chat-message">Hello...</p>
-                    </div>
                 </div>
 
             </div>
@@ -130,6 +122,7 @@
 <script>
     var churchId =${param.churchId};
     var isChat=true;
+    var accountId=${userId};
 </script>
 <script src="<c:url value="/resources/js/church.js"/>"></script>
 <script src="<c:url value="/resources/js/contact.js"/>"></script>
