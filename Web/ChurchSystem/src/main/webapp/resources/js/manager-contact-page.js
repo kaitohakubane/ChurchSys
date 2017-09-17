@@ -52,7 +52,7 @@ function sendMessage() {
 
 function chat(message, sender) {
     if(chattingUser==sender){
-        $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src=""></div> <p class="chat-message">' + message + '</p> </div>');
+        $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src="/resources/img/user.png"></div> <p class="chat-message">' + message + '</p> </div>');
     }
 
     listOfChatter.forEach(function (e) {
@@ -74,7 +74,7 @@ function chat(message, sender) {
 function loadNewUser(sender) {
     loadUser(sender);
     $('.list-chatter').prepend(' <li class="chatter" id="' + sender + '" data-name="' + currentUser.userName + '"> <a href="#" > <div class="user-photo">' +
-        '<img src=""></div> <div class="name"> ' +
+        '<img src="/resources/img/user.png"></div> <div class="name"> ' +
         '<span>' + currentUser.userName + '</span> </div> </a> </li>')
 }
 
@@ -95,7 +95,7 @@ function commonInit() {
             if (e.senderId == managerId) {
                 $(".chatlogs").append('<div class="chat self"> <p class="chat-message">' + e.information + '</p> </div>');
             } else {
-                $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src=""></div> ' +
+                $(".chatlogs").append('<div class="chat another"> <div class="user-photo"><img src="/resources/img/user.png"></div> ' +
                     '<p class="chat-message">' + e.information + '</p> </div>');
             }
         })

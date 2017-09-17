@@ -145,9 +145,6 @@
                     </a>
                     <ul id="message" class="dropdown-menu list-unstyled msg_list" role="menu"
                         style="max-height: 350px;overflow: auto">
-                        <li>
-
-                        </li>
                     </ul>
                 </li>
 
