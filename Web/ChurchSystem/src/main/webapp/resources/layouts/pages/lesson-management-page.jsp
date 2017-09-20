@@ -45,7 +45,7 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <%--<th>ID</th>--%>
                                     <th>Tên bài học</th>
                                     <th>Mô tả</th>
                                     <th>Môn</th>
@@ -111,15 +111,9 @@
                                         </div>
                                     </div>
 
-                                    <%--<div class="form-group">--%>
-                                        <%--<label class="control-label col-md-3 col-sm-3 col-xs-12">Môn:</label>--%>
-                                        <%--<div class="col-md-9 col-sm-9 col-xs-12">--%>
-                                            <%--<select class="form-control" id="category">--%>
-
-                                            <%--</select>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                    <div class="col-md-6 form-group left">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Môn:</label>
+                                        <div class="col-md-6 ">
                                         <div class="input-group has-success">
                                             <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
                                             <select class="form-control" id="category">
@@ -128,9 +122,11 @@
                                                 </c:forEach>
                                             </select>
                                         </div>
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-6 form-group right">
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-3">
                                         <div class="input-group has-success">
                                             <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
                                             <select class="form-control" id="eventType">
@@ -139,6 +135,7 @@
                                                             data-category="${item.categoryId}">${item.subName}</option>
                                                 </c:forEach>
                                             </select>
+                                        </div>
                                         </div>
                                     </div>
 

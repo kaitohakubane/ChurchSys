@@ -333,5 +333,5 @@ public class SQLParamConstant {
             " s.categoryId as categoryId " +
             "FROM subject s, category c " +
             "WHERE s.categoryId = c.categoryId AND c.categoryId >5  AND c.categoryId <12 ";
-
+    public static  final  String  GET_ALL_LECTURE =" select * from lecture where churchId =:churchId";
 }

@@ -23,7 +23,7 @@
                 </a>
                 <ul class="dropdown-menu mega-dropdown-menu online" style="min-width: 128px">
                     <li><a href="${pageContext.request.contextPath}/church/lesson?churchId=${param.churchId}">Bài học</a></li>
-                    <li><a href="#">Bài giảng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/church/lecture?churchId=${param.churchId}">Bài giảng</a></li>
                 </ul>
             </li>
             <li><a href="${pageContext.request.contextPath}/church/pray?churchId=${param.churchId}">Cầu nguyện</a></li>

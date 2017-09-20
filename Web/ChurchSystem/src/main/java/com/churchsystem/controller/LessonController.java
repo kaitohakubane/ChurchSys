@@ -34,16 +34,20 @@ public class LessonController {
 
     @RequestMapping(value = PageConstant.LESSON_MANAGEMENT_URL, method = RequestMethod.GET)
     public ModelAndView getAllLesson(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView(PageConstant.MANAGER_LESSON_MANAGEMENT_PAGE);
-        int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
-        //int subId =(Integer) request.getSession().getAttribute(ParamConstant.SUBJECT_ID);
-        List<LessonEntity> lessonEntities = lessonServiceInterface.getAllLessonOfChurch(churchId);
-        modelAndView.addObject(ParamConstant.LESSON_LIST, lessonEntities)
-                .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getSubjectforLesson())
-                .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getClassCategoryList());
+        ModelAndView modelAndView = new ModelAndView(PageConstant.NOT_FOUND_PAGE);
+        try {
+            modelAndView = new ModelAndView(PageConstant.MANAGER_LESSON_MANAGEMENT_PAGE);
+            int churchId = (Integer) request.getSession().getAttribute(ParamConstant.CHURCH_ID);
+            //int subId =(Integer) request.getSession().getAttribute(ParamConstant.SUBJECT_ID);
+            List<LessonEntity> lessonEntities = lessonServiceInterface.getAllLessonOfChurch(churchId);
+            modelAndView.addObject(ParamConstant.LESSON_LIST, lessonEntities)
+                    .addObject(ParamConstant.SUBJECT_LIST, subjectServiceInterface.getSubjectforLesson())
+                    .addObject(ParamConstant.CATEGORY_LIST, categoryServiceInterface.getClassCategoryList());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         return modelAndView;
-
-
     }
 
     @RequestMapping(value = PageConstant.VIEW_LESSON_URL, method = RequestMethod.GET)
@@ -67,8 +71,6 @@ public class LessonController {
 
         return modelAndView;
     }
-
-
 
 
     @ResponseBody

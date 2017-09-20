@@ -45,7 +45,7 @@
                             <table id="datatable" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <%--<th>ID</th>--%>
                                     <th>Tên bài giảng</th>
                                     <th>Mô tả</th>
                                     <th>Video</th>
@@ -53,20 +53,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Nhận biết thiên chú</td>
-                                    <td>Giảng cho người mới vào đạo....</td>
-                                    <td>Giaoly.mp4</td>
-                                    <td>
-                                        <button type="button"
-                                                class="btn btn-warning event-approve">Sửa
-                                        </button>
-                                        <button type="button"
-                                                class="btn btn-danger event-reject">Xóa
-                                        </button>
-                                    </td>
-                                </tr>
+                                <c:forEach var="item" items="${lecturelist}">
+                                    <tr>
+                                        <td>${item.title}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.linkvideo}</td>
+
+                                        <td>
+                                            <button type="button" id="btnEdit${item.lectureId}"
+                                                    data-id="${item.lectureId}"
+                                                    class="btn btn-warning event-approve">Sửa
+                                            </button>
+                                            <button type="button" id="btnRemove${item.lectureId}"
+                                                    data-id="${item.lectureId}"
+                                                    class="btn btn-danger event-reject">Xóa
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -96,21 +100,21 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên bài giảng:</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control col-md-7 col-xs-12">
+                                    <input type="text" id="title" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả:</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" rows="3" id="description"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Video:</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Link Video:</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="file" class="form-control-file">
+                                    <input type="text" id="link" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
 
@@ -121,7 +125,7 @@
             <div class="clearfix"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                <button type="button" class="btn btn-primary" id="btnOk">Thêm</button>
+                <button type="button" class="btn btn-primary" id="btnOk">Ok</button>
             </div>
         </div>
         <!-- /Modal content -->
@@ -132,6 +136,6 @@
 <!-- Datatables -->
 <script src="<c:url value="/resources/lib/vendors/datatables.net/js/jquery.dataTables.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"/>"></script>
-
+<script src="<c:url value="/resources/js/lecture.js"/>"></script>
 </body>
 </html>

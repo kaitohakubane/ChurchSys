@@ -277,11 +277,20 @@ public class ParamConstant {
     public static final String LESSON_DESCRIPTION = "description";
     /**
      * Chat
+     *
      */
     public static final String CHAT_MESSAGE = "message";
     public static final String SENDER_ID = "senderId";
     public static final String RECEIVER_ID = "receiverId";
     public static final String MESSAGE_ID = "messageId";
     public static final String CHATTER="chatter";
+
+    /**
+     * LECTURE
+     */
+    public  static final String LECTURE_LIST = "lecturelist";
+    public static final String LECTURE_TITLE ="title";
+    public static final String LECTURE_DESCRIPTION="description";
+    public static  final String LECTURE_LINK = "link";
 
 }

@@ -34,23 +34,19 @@
     <div class="row">
         <div class="col-md-4">
             <div class="list-heading-lecture">
-                <p>Danh sách bài học</p>
+                <p>Danh sách bài giảng</p>
             </div>
             <div class="lecture-list">
                 <ul class="list-lecture-name">
                     <li>
-                        <a href="#">
-                            <div class="name">
-                                <span>Bài 1 - Bài giảng về đạo lý</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="name">
-                                <span>Bài 2 - Bài giảng về thiên chúa</span>
-                            </div>
-                        </a>
+                        <c:forEach items="${lecturelist}" var="temp">
+                            <ul class="nav nav-list tree">
+                                <li><a href="#" class="lectureId" data-id="${temp.lectureId}" data-title="${temp.title}"
+                                       data-link="${temp.linkvideo}">
+                                    <i class="fa fa-book" aria-hidden="true"></i> ${temp.title}
+                                </a></li>
+                            </ul>
+                        </c:forEach>
                     </li>
                 </ul>
             </div>
@@ -62,11 +58,11 @@
         <div class="col-md-8">
             <div class="lecture">
                 <div class="lecture-name">
-                    <p>Bài 1 - Bài giảng về đạo lý</p>
+                    <p id="contentTitle">Vui lòng chọn bài giảng</p>
                 </div>
                 <div class="lecture-content">
                     <div class="videoWrapper-lecture">
-                        <iframe id="youtubeVideo" width="480" height="360" src="https://www.youtube.com/embed/t9qNS6aHMw8"
+                        <iframe id="youtubeVideo" width="480" height="360"
                                 frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>

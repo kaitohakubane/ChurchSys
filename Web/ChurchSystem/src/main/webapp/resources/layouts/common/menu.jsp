@@ -53,8 +53,8 @@
                                 class="fa fa-newspaper-o"></i>Quản lý đơn đăng ký</a></li>
                         <li><a id="streamOption"><i class="fa fa-video-camera"></i> Stream</a></li>
                         <li><a href="${pageContext.request.contextPath}/manager/lesson-management"><i class="fa fa-book"></i> Quản lý bài học</a></li>
-                        <li><a><i class="fa fa-file-video-o"></i> Quản lý bài giảng</a></li>
-                        <li><a href="${pageContext.request.contextPath}/manager/contact"><i class="fa fa-commenting"></i> Liên hệ giáo dân</a></li>
+                        <li><a href ="${pageContext.request.contextPath}/manager/lecture-management"><i class="fa fa-file-video-o"></i> Quản lý bài giảng</a></li>
+                        <li><a href ="${pageContext.request.contextPath}/manager/contact"><i class="fa fa-commenting"></i> Liên hệ giáo dân</a></li>
                     </c:if>
                     <c:if test="${!fn:contains(authorities, 'ROLE_MANAGER')}">
                         <li><a href="${pageContext.request.contextPath}/admin/church-management"><i

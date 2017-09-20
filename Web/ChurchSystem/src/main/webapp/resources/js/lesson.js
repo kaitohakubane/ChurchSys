@@ -1,83 +1,51 @@
 /**
  * Created by Trung on 9/5/2017.
  */
-// $('ul.list-lesson-name > li').click(function (e) {
-//     e.preventDefault();
-//     $('ul.list-lesson-name > li').removeClass('active-lesson');
-//     $(this).addClass('active-lesson');
-// });
+$('.tree-toggle').click(function () {
+    $(this).parent().children('ul.tree').toggle(200);
+});
+$(function(){
+    $('.tree-toggle').parent().children('ul.tree').toggle(200);
+});
+
 var ADD_LESSON = "/manager/lesson-management/add";
 var LESSON_MANAGEMENT = "/manager/lesson-management";
 var LESSON_CONTENT = "/church/lessoncontent";
 $(document).ready(function () {
-    $("#subject").dropdown({
-        allowAdditions: true,
-        onChange: function () {
-            var abc = $('#subject').dropdown('get value');
-            console.log(abc);
-            listOfSub = [];
-            var list = abc[abc.length - 1];
-            if (list == null) {
-                return;
-            }
-            list.forEach(function (e) {
-                console.log(e)
-                $("#subject option").each(function () {
-                    if ($(this).val() == e) {
-                        if (!listOfSub.includes($(this).attr("id"))) {
-                            listOfSub.push($(this).attr("id"));
-                        }
-                    }
-                })
-            })
-        }
-    })
-    generalInitial();
-})
-
-function generalInitial() {
     subjectDropdownEvent($('#category'));
     $('#category').change(function () {
-
-            var categoryValue = $(this).val();
-
-            $('#subject option').each(function () {
-
-                var item = $(this);
-                if (!(item.data("category") == categoryValue)) {
-                    $('.menu div').each(function () {
-
-                        if (($(this).data('value') == item.val()))
-                            $(this).hide()
-                    })
-                } else {
-                    $('.menu div').each(function () {
-                        if ($(this).data('value') == item.val())
-                            $(this).show()
-                    })
+        var firstVal = null;
+        var categoryValue = $(this).val();
+        $('#eventType option').each(function () {
+            var item = $(this);
+            if (!(item.data("category") == categoryValue)) {
+                item.hide();
+            } else {
+                if (firstVal == null) {
+                    firstVal = item.val();
                 }
-            })
-        }
-    )
-}
+                item.show();
+            }
+        })
+        $('#eventType').val(firstVal);
+    })
+})
 
 function subjectDropdownEvent(category) {
-
+    var firstVal = null;
     var categoryValue = category.val();
-    $('#subject option').each(function () {
+    $('#eventType option').each(function () {
         var item = $(this);
         if (!(item.data("category") == categoryValue)) {
-            $('.menu div').each(function () {
-                if (($(this).data('value') == item.val()))
-                    $(this).hide()
-            })
+            item.hide();
         } else {
-            $('.menu div').each(function () {
-                if ($(this).data('value') == item.val())
-                    $(this).show()
-            })
+            if (firstVal == null) {
+                firstVal = item.val();
+            }
+            item.show();
         }
     })
+    $('#eventType').val(firstVal);
 }
 
 $(".lessonId").on("click", function () {
