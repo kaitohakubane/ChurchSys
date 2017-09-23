@@ -77,6 +77,7 @@ public class ChatmessageEntity implements Comparable<ChatmessageEntity> {
         return result;
     }
 
+    //sort message ( am xep truoc, duong xep sau )
     @Override
     public int compareTo(ChatmessageEntity o) {
         return this.getMessageId()-o.getMessageId();

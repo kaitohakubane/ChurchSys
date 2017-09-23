@@ -38,16 +38,14 @@
             </div>
             <div class="lecture-list">
                 <ul class="list-lecture-name">
-                    <li>
                         <c:forEach items="${lecturelist}" var="temp">
                             <ul class="nav nav-list tree">
-                                <li><a href="#" class="lectureId" data-id="${temp.lectureId}" data-title="${temp.title}"
+                                <li style="font-size: 20px;"><a href="#" class="lectureId" data-id="${temp.lectureId}" data-title="${temp.title}"
                                        data-link="${temp.linkvideo}">
                                     <i class="fa fa-book" aria-hidden="true"></i> ${temp.title}
                                 </a></li>
                             </ul>
                         </c:forEach>
-                    </li>
                 </ul>
             </div>
 

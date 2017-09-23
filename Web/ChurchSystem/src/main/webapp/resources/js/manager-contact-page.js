@@ -29,7 +29,13 @@ function generalInit(){
         $(this).click();
         return;
     })
-    sendMessage();
+
+
+    $("#sendBtn").on("click", function () {
+        $(".chatlogs").append('<div class="chat self"> <p class="chat-message">' + $('#chatInput').val() + '</p> </div>');
+        sendServerMessage($('#chatInput').val(),currentUser.accountId)
+        $('#chatInput').val('');
+    })
 
     $("#chatInput").keypress(function(){
         var key=window.event.keyCode;
@@ -39,15 +45,6 @@ function generalInit(){
             $('#chatInput').val('');
         }
     })
-}
-
-function sendMessage() {
-    $("#sendBtn").on("click", function () {
-        $(".chatlogs").append('<div class="chat self"> <p class="chat-message">' + $('#chatInput').val() + '</p> </div>');
-        sendServerMessage($('#chatInput').val(),currentUser.accountId)
-        $('#chatInput').val('');
-    })
-
 }
 
 function chat(message, sender) {
@@ -82,7 +79,7 @@ function loadNewUser(sender) {
 function commonInit() {
     $('.chatter').unbind("click");
     $('.chatter').bind("click", function () {
-        console.log('cHATING')
+
         $(".chatlogs").empty();
         loadChatHistory($(this).attr('id'));
         $('#chatter-name').val($(this).data('name'));

@@ -50,16 +50,18 @@ public class ChatService implements ChatServiceInterface {
 
     @Override
     public void sendChat(int senderId, int userId, String information) {
+        //save message
         ChatmessageEntity chatmessageEntity = new ChatmessageEntity();
         chatmessageEntity.setInformation(information);
         chatmessageEntity.setReceiverId(userId);
         chatmessageEntity.setSenderId(senderId);
-
+        chatModelInterface.createChat(chatmessageEntity);
+        //get info chatter
         UserEntity sender = userModelInterface.getUserByUserId(senderId);
         UserEntity receiver = userModelInterface.getUserByUserId(userId);
 
-        chatModelInterface.createChat(chatmessageEntity);
         MessageEntity messageEntity = new MessageEntity(sender.getAccountId(), information,sender.getUserName());
+        //send message
         chat(messageEntity, receiver.getAccountId());
     }
 }

@@ -372,16 +372,9 @@
                     </div>
                 </div>
                 <div class="block-right">
-                    <h2 class="topic-title"><a href="#" class="title-color">Chia sẻ lời chúa</a></h2>
+                    <h2 class="topic-title"><a href="#" class="title-color">Thánh ca</a></h2>
                     <div class="videoWrapper">
-                        <iframe width="480" height="360" src="https://www.youtube.com/embed/t9qNS6aHMw8" frameborder="0"
-                                allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="block-right">
-                    <h2 class="topic-title"><a href="#" class="title-color">Bài giảng - Thánh lễ</a></h2>
-                    <div class="videoWrapper">
-                        <iframe width="480" height="360" src="https://www.youtube.com/embed/WYOocqjRM_Y" frameborder="0"
+                        <iframe width="480" height="360" src="https://www.youtube.com/embed/E7g-nT5SWdw" frameborder="0"
                                 allowfullscreen></iframe>
                     </div>
                 </div>

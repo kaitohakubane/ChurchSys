@@ -44,6 +44,7 @@ public class ChatController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
         modelAndView.addObject(ParamConstant.USER_ID, userEntity.getUserId());
+
         UserEntity entity=null;
         if(accountId!=null){
             entity=userServiceInterface.getUserByAccountId(accountId);
@@ -57,9 +58,10 @@ public class ChatController {
     public void loadManagerContact(@RequestParam(value = ParamConstant.CHAT_MESSAGE) String message,
                                    @RequestParam(value = ParamConstant.CHURCH_ID, required = false) Integer churchId,
                                    @RequestParam(value = ParamConstant.ACCOUNT_ID, required = false) String accountId) {
-
+        // lay thang dang dang nhap
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserEntity userEntity = userServiceInterface.getUserByAccountId(auth.getName());
+
         if (churchId != null) {
             int receiverId = userServiceInterface.getChurchManager(churchId);
             chatServiceInterface.sendChat(userEntity.getUserId(), receiverId, message);
